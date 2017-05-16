@@ -47,6 +47,11 @@ namespace GLDotNet
             return "UNKNOWN";
         }
 
+        public string GetString(uint name)
+        {
+            return Marshal.PtrToStringAnsi(this._GetString(name));
+        }
+
         public void ShaderSource(uint shader, string source)
         {
             int length = source.Length;

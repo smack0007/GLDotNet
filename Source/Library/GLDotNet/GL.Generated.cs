@@ -6927,15 +6927,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public IntPtr GetString(uint name)
-		{
-			var result = this._GetString(name);
-#if DEBUG
-			this.CheckErrors("GetString");
-#endif
-			return result;
-		}
-
 		public IntPtr GetStringi(uint name, uint index)
 		{
 			var result = this._GetStringi(name, index);
