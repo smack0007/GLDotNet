@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace GLDotNet.WPF
 {
-    public static class WGL
+    public class WGL : IGLPlatformContext
     {
         private const string OpenGL32Library = "opengl32.dll";
 
@@ -67,7 +67,7 @@ namespace GLDotNet.WPF
 
         [DllImport("gdi32.dll")]
         public static extern int ChoosePixelFormat(IntPtr hdc, ref PixelFormatDescriptor ppfd);
-                
+
         [DllImport("user32.dll")]
         public static extern IntPtr GetDC(IntPtr hwnd);
 
@@ -81,7 +81,7 @@ namespace GLDotNet.WPF
         private static extern IntPtr GetProcAddressWin32(IntPtr hModule, string lpProcName);
 
         [DllImport("kernel32.dll", EntryPoint = "LoadLibrary")]
-        private static extern IntPtr LoadLibrary(string lpFileName);
+        public static extern IntPtr LoadLibrary(string lpFileName);
 
         [DllImport("user32.dll")]
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
@@ -91,18 +91,22 @@ namespace GLDotNet.WPF
 
         public delegate IntPtr _CreateContextAttribsARB(IntPtr hDC, IntPtr hShareContext, int[] attribList);
 
-        private static IntPtr _hWnd;
-        private static IntPtr _hDC;
-        private static IntPtr _hRC;
-        private static IntPtr _hModule;
+        private IntPtr hWnd;
+        private IntPtr hDC;
+        private IntPtr hRC;
+        private IntPtr hModule;
 
-        public static void Initialize(IntPtr hWnd, int versionMajor, int versionMinor)
+        public int VersionMajor { get; }
+
+        public int VersionMinor { get; }
+
+        public WGL(IntPtr hWnd, int versionMajor, int versionMinor)
         {
-            _hWnd = hWnd;
+            this.hWnd = hWnd;
 
-            _hDC = GetDC(_hWnd);
+            this.hDC = GetDC(this.hWnd);
 
-            if (_hDC == IntPtr.Zero)
+            if (this.hDC == IntPtr.Zero)
                 throw new InvalidOperationException("Could not get a device context (hDC).");
 
             PixelFormatDescriptor pfd = new PixelFormatDescriptor()
@@ -111,25 +115,25 @@ namespace GLDotNet.WPF
                 nVersion = 1,
                 dwFlags = (PFD_SUPPORT_OPENGL | PFD_DRAW_TO_WINDOW | PFD_DOUBLEBUFFER),
                 iPixelType = (byte)PFD_TYPE_RGBA,
-                cColorBits = (byte)GetDeviceCaps(_hDC, BITSPIXEL),
+                cColorBits = (byte)GetDeviceCaps(this.hDC, BITSPIXEL),
                 cDepthBits = 32,
                 iLayerType = (byte)PFD_MAIN_PLANE
             };
 
-            int pixelformat = ChoosePixelFormat(_hDC, ref pfd);
+            int pixelformat = ChoosePixelFormat(this.hDC, ref pfd);
 
             if (pixelformat == 0)
                 throw new InvalidOperationException("Could not find A suitable pixel format.");
 
-            if (SetPixelFormat(_hDC, pixelformat, ref pfd) == 0)
+            if (SetPixelFormat(this.hDC, pixelformat, ref pfd) == 0)
                 throw new InvalidOperationException("Could not set the pixel format.");
 
-            IntPtr tempContext = CreateContext(_hDC);
+            IntPtr tempContext = CreateContext(this.hDC);
 
             if (tempContext == IntPtr.Zero)
                 throw new InvalidOperationException("Unable to create temporary render context.");
 
-            if (!MakeCurrent(_hDC, tempContext))
+            if (!MakeCurrent(this.hDC, tempContext))
                 throw new InvalidOperationException("Unable to make temporary render context current.");
 
             int[] attribs = new int[]
@@ -142,48 +146,51 @@ namespace GLDotNet.WPF
 
             IntPtr proc = GetProcAddressWgl("wglCreateContextAttribsARB");
             _CreateContextAttribsARB createContextAttribs = (_CreateContextAttribsARB)Marshal.GetDelegateForFunctionPointer(proc, typeof(_CreateContextAttribsARB));
-            _hRC = createContextAttribs(_hDC, IntPtr.Zero, attribs);
+            this.hRC = createContextAttribs(this.hDC, IntPtr.Zero, attribs);
 
             MakeCurrent(IntPtr.Zero, IntPtr.Zero);
             DeleteContext(tempContext);
 
-            if (_hRC == IntPtr.Zero)
+            if (this.hRC == IntPtr.Zero)
                 throw new InvalidOperationException("Unable to create render context.");
 
-            if (!MakeCurrent(_hDC, _hRC))
+            if (!MakeCurrent(this.hDC, this.hRC))
                 throw new InvalidOperationException("Unable to make render context current.");
 
-            _hModule = LoadLibrary(OpenGL32Library);
+            this.hModule = LoadLibrary(OpenGL32Library);
+
+            this.VersionMajor = versionMajor;
+            this.VersionMinor = versionMinor;
         }
 
-        public static void Shutdown()
+        public void Dispose()
         {
             MakeCurrent(IntPtr.Zero, IntPtr.Zero);
-            DeleteContext(_hRC);
+            DeleteContext(this.hRC);
 
-            ReleaseDC(_hWnd, _hDC);
+            ReleaseDC(this.hWnd, this.hDC);
         }
 
-        public static IntPtr GetProcAddress(string name)
+        public IntPtr GetProcAddress(string name)
         {
             IntPtr procAddress = GetProcAddressWgl(name);
 
             if (procAddress == IntPtr.Zero)
             {
-                procAddress = GetProcAddressWin32(_hModule, name);
+                procAddress = GetProcAddressWin32(this.hModule, name);
             }
 
             return procAddress;
         }
 
-        public static bool MakeCurrent()
+        public void MakeCurrent()
         {
-            return MakeCurrent(_hDC, _hRC);
+            MakeCurrent(this.hDC, this.hRC);
         }
 
-        public static void SwapBuffers()
+        public void SwapBuffers()
         {
-            SwapBuffers(_hDC);
+            SwapBuffers(this.hDC);
         }
     }
 }

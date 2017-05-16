@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DBD6953-A9AA-48F5-A809-E5FC532FA767}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Generator</RootNamespace>
+    <RootNamespace>GLGenerator</RootNamespace>
     <AssemblyName>Generator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

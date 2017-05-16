@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Generator
+namespace GLGenerator
 {
     class Program
     {
@@ -32,6 +32,8 @@ namespace Generator
 
             public List<FunctionParamData> Params { get; } = new List<FunctionParamData>();
 
+            public bool OutputPublicMethod { get; set; } = true;
+
             public override string ToString() => $"{this.ReturnType} {this.Name}({string.Join(", ", this.Params)})";
         }
 
@@ -41,11 +43,22 @@ namespace Generator
 
             public int PointerCount { get; set; }
 
+            public bool TypeOverridden { get; private set; } = false;
+
+            public string TypePrefix { get; set; }
+
             public string Type { get; set; }
 
             public string Name { get; set; }
 
             public override string ToString() => $"{this.Type}: {this.Name}";
+
+            public void OverrideType(string type, string typePrefix = null)
+            {
+                this.TypePrefix = typePrefix;
+                this.Type = type;
+                this.TypeOverridden = true;
+            }
         }
 
         static void Main(string[] args)
@@ -55,6 +68,33 @@ namespace Generator
             var functions = new List<FunctionData>();
 
             Parse(lines, enums, functions);
+
+            functions.Single(x => x.Name == "glGetError").OutputPublicMethod = false;
+            functions.Single(x => x.Name == "glLinkProgram").OutputPublicMethod = false;
+
+            var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
+            glShaderSource.Params.Single(x => x.Name == "string").OverrideType("ref string");
+            glShaderSource.Params.Single(x => x.Name == "length").OverrideType("ref int");
+            glShaderSource.OutputPublicMethod = false;
+
+            var glGetProgramiv = functions.Single(x => x.Name == "glGetProgramiv");
+            glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("out int");
+            glGetProgramiv.OutputPublicMethod = false;
+
+            var glGetProgramInfoLog = functions.Single(x => x.Name == "glGetProgramInfoLog");
+            glGetProgramInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
+            glGetProgramInfoLog.OutputPublicMethod = false;
+
+            var glGetShaderiv = functions.Single(x => x.Name == "glGetShaderiv");
+            glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("out int");
+            glGetShaderiv.OutputPublicMethod = false;
+
+            var glGetShaderInfoLog = functions.Single(x => x.Name == "glGetShaderInfoLog");
+            glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
+            glGetShaderInfoLog.OutputPublicMethod = false;
+
+            var glUniformMatrix4fv = functions.Single(x => x.Name == "glUniformMatrix4fv");
+            glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
 
             Write(enums, functions);
         }
@@ -100,7 +140,7 @@ namespace Generator
                         VersionMajor = versionMajor,
                         VersionMinor = versionMinor,
                     };
-                    
+
                     function.ReturnType = parts[j];
                     j++;
 
@@ -155,27 +195,18 @@ namespace Generator
 
         private static void Write(List<EnumData> enums, List<FunctionData> functions)
         {
-            string[] license = File.ReadAllLines("License.txt");
-
             StringBuilder sb = new StringBuilder(1024);
-
-            foreach (var line in license)
-            {
-                sb.Append("// ");
-                sb.AppendLine(line);
-            }
-
-            sb.AppendLine();
 
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Runtime.InteropServices;");
+            sb.AppendLine("using System.Text;");
             sb.AppendLine();
             sb.AppendLine("namespace GLDotNet");
             sb.AppendLine("{");
-            sb.AppendLine("\tpublic static class GL");
+            sb.AppendLine("\tpublic sealed partial class GL");
             sb.AppendLine("\t{");
-            
-            foreach (var @enum in enums)
+
+            foreach (var @enum in enums.OrderBy(x => x.Name))
             {
                 string type = "uint";
                 string name = @enum.Name;
@@ -201,9 +232,11 @@ namespace Generator
             sb.AppendLine($"\t\tpublic static class Delegates");
             sb.AppendLine("\t\t{");
 
-            foreach (var function in functions)
+            var filteredFunctions = functions.OrderBy(x => x.Name);
+
+            foreach (var function in filteredFunctions)
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x.Type, x.IsConst, x.PointerCount) + " " + GetParamName(x.Name)));
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
                 string functionName = GetFunctionName(function.Name);
                 sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {functionName}({parameters});");
@@ -213,27 +246,28 @@ namespace Generator
             sb.AppendLine("\t\t}");
             sb.AppendLine();
 
-            foreach (var function in functions)
+            sb.AppendLine("\t\tprivate readonly IGLPlatformContext platformContext;");
+            sb.AppendLine();
+
+            foreach (var function in filteredFunctions)
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x.Type, x.IsConst, x.PointerCount) + " " + GetParamName(x.Name)));
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
                 string functionName = GetFunctionName(function.Name);
-                sb.AppendLine($"\t\tpublic static Delegates.{functionName} {functionName};");
+                sb.AppendLine($"\t\tprivate Delegates.{functionName} _{functionName};");
                 sb.AppendLine();
             }
 
-            sb.AppendLine("\t\tpublic static void Initialize(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
+            sb.AppendLine("\t\tpublic GL(IGLPlatformContext platformContext)");
             sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\tif (getProcAddress == null) throw new ArgumentNullException(nameof(getProcAddress));");
+            sb.AppendLine("\t\t\tthis.platformContext = platformContext ?? throw new ArgumentNullException(nameof(platformContext));");
             sb.AppendLine();
 
             int versionMajor = -1;
             int versionMinor = -1;
-            
+
             foreach (var function in functions)
             {
-                string functionName = GetFunctionName(function.Name);
-
                 if (versionMajor != function.VersionMajor || versionMinor != function.VersionMinor)
                 {
                     if (versionMajor != -1)
@@ -245,24 +279,84 @@ namespace Generator
                     versionMajor = function.VersionMajor;
                     versionMinor = function.VersionMinor;
 
-                    sb.AppendLine($"\t\t\tif (versionMajor > {versionMajor} || (versionMajor == {versionMajor} && versionMinor >= {versionMinor}))");
+                    sb.AppendLine($"\t\t\tif (this.platformContext.VersionMajor > {versionMajor} || (this.platformContext.VersionMajor == {versionMajor} && this.platformContext.VersionMinor >= {versionMinor}))");
                     sb.AppendLine("\t\t\t{");
                 }
 
-                sb.AppendLine($"\t\t\t\t{functionName} = (Delegates.{functionName})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{functionName}));");
+                string functionName = GetFunctionName(function.Name);
+                sb.AppendLine($"\t\t\t\tthis._{functionName} = (Delegates.{functionName})Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress(\"{function.Name}\"), typeof(Delegates.{functionName}));");
             }
 
             sb.AppendLine("\t\t\t}");
 
+            sb.AppendLine();
+            sb.AppendLine("\t\t\tthis.Initialize();");
+
             sb.AppendLine("\t\t}");
+            sb.AppendLine();
+
+            foreach (var function in filteredFunctions.Where(x => x.OutputPublicMethod))
+            {
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
+                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
+                string returnType = GetReturnType(function.ReturnType);
+
+                string functionName = GetFunctionName(function.Name);
+                sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
+                sb.AppendLine("\t\t{");
+
+                if (returnType != "void")
+                {
+                    sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
+                }
+                else
+                {
+                    sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
+                }
+
+                sb.AppendLine($"#if DEBUG");
+                sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
+                sb.AppendLine("#endif");
+
+                if (returnType != "void")
+                {
+                    sb.AppendLine($"\t\t\treturn result;");
+                }
+
+                sb.AppendLine("\t\t}");
+                sb.AppendLine();
+
+                if (function.Name.StartsWith("glDelete") &&
+                    function.Name != "glDeleteProgram" &&
+                    function.Name != "glDeleteShader" &&
+                    function.Name != "glDeleteSync")
+                {
+                    sb.AppendLine($"\t\tpublic void {functionName.TrimEnd('s')}(uint handle)");
+                    sb.AppendLine("\t\t{");
+                    sb.AppendLine($"\t\t\tUintBuffer[0] = handle;");
+                    sb.AppendLine($"\t\t\t{functionName}(1, UintBuffer);");
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
+                else if (function.Name.StartsWith("glGen") &&
+                         !function.Name.StartsWith("glGenerate"))
+                {
+                    sb.AppendLine($"\t\tpublic uint {functionName.TrimEnd('s')}()");
+                    sb.AppendLine("\t\t{");
+                    sb.AppendLine($"\t\t\t{functionName}(1, UintBuffer);");
+                    sb.AppendLine($"\t\t\treturn UintBuffer[0];");
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
+            }
 
             sb.AppendLine("\t}");
             sb.AppendLine("}");
 
-            File.WriteAllText(@"..\..\..\..\Library\GLDotNet\GL.cs", sb.ToString());
+            File.WriteAllText(@"..\..\..\..\Library\GLDotNet\GL.Generated.cs", sb.ToString());
         }
 
-        private static object GetReturnType(string returnType)
+        private static string GetReturnType(string returnType)
         {
             switch (returnType)
             {
@@ -298,86 +392,112 @@ namespace Generator
             return name;
         }
 
-        private static string GetParamType(string type, bool isConst, int pointerCount)
+        private static string GetParamType(FunctionParamData param)
         {
-            switch (type)
+            string type = param.Type;
+
+            if (!param.TypeOverridden)
             {
-                case "GLboolean":
-                    type = "bool";
-                    break;
+                switch (param.Type)
+                {
+                    case "GLboolean":
+                        type = "bool";
+                        break;
 
-                case "GLubyte":
-                    type = "byte";
-                    break;
+                    case "GLubyte":
+                        type = "byte";
+                        break;
 
-                case "GLchar":
-                    if (pointerCount == 1)
-                    {
-                        type = "string";
-                    }
-                    else if (pointerCount == 2)
-                    {
-                        type = "string[]";
-                    }
-                    break;
+                    case "GLchar":
+                        if (param.PointerCount == 1)
+                        {
+                            if (param.IsConst)
+                            {
+                                type = "string";
+                            }
+                            else
+                            {
+                                type = "StringBuilder";
+                            }
+                        }
+                        else if (param.PointerCount == 2)
+                        {
+                            type = "string[]";
+                        }
+                        break;
 
-                case "GLdouble":
-                    type = "double";
-                    break;
+                    case "GLDEBUGPROC":
+                        type = "DebugProc";
+                        break;
 
-                case "GLfloat":
-                    type = "float";
-                    break;
+                    case "GLdouble":
+                        type = "double";
+                        break;
 
-                case "GLint":
-                case "GLsizei":
-                case "GLintptr":
-                case "GLsizeiptr":
-                    type = "int";
-                    break;
+                    case "GLfloat":
+                        type = "float";
+                        break;
 
-                case "GLsync":
-                case "GLDEBUGPROC":
-                    type = "IntPtr";
-                    break;
+                    case "GLint":
+                    case "GLsizei":
+                    case "GLintptr":
+                    case "GLsizeiptr":
+                        type = "int";
+                        break;
 
-                case "void":
-                    if (pointerCount == 2)
-                    {
-                        type = "IntPtr[]";
-                    }
-                    else
-                    {
+                    case "GLsync":
                         type = "IntPtr";
+                        break;
+
+                    case "void":
+                        if (param.PointerCount == 2)
+                        {
+                            type = "IntPtr[]";
+                        }
+                        else
+                        {
+                            type = "IntPtr";
+                        }
+                        break;
+
+                    case "GLint64":
+                        type = "long";
+                        break;
+
+                    case "GLbyte":
+                        type = "sbyte";
+                        break;
+
+                    case "GLshort":
+                        type = "short";
+                        break;
+
+                    case "GLbitfield":
+                    case "GLenum":
+                    case "GLuint":
+                        type = "uint";
+                        break;
+
+                    case "GLuint64":
+                        type = "ulong";
+                        break;
+
+                    case "GLushort":
+                        type = "ushort";
+                        break;
+                }
+
+                if (!type.StartsWith("string") && !type.StartsWith("StringBuilder") && !type.StartsWith("IntPtr"))
+                {
+                    if (param.PointerCount > 0)
+                    {
+                        type += "[]";
                     }
-                    break;
-
-                case "GLint64":
-                    type  = "long";
-                    break;
-
-                case "GLbyte":
-                    type = "sbyte";
-                    break;
-
-                case "GLshort":
-                    type = "short";
-                    break;
-
-                case "GLbitfield":
-                case "GLenum":
-                case "GLuint":
-                    type = "uint";
-                    break;
-
-                case "GLuint64":
-                    type = "ulong";
-                    break;
-
-                case "GLushort":
-                    type = "ushort";
-                    break;
+                }
             }
+
+            if (param.TypePrefix != null)
+                type = param.TypePrefix + " " + type;
 
             return type;
         }
@@ -389,6 +509,18 @@ namespace Generator
                 name == "string")
             {
                 name = "@" + name;
+            }
+
+            return name;
+        }
+
+        private static string GetParamInvoke(string name, string prefix)
+        {
+            name = GetParamName(name);
+
+            if (prefix != null)
+            {
+                name = prefix + " " + name;
             }
 
             return name;
