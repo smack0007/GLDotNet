@@ -20,6 +20,8 @@ namespace GLGenerator
         {
             public string Name { get; set; }
 
+            public string Type { get; set; }
+
             public List<string> EnumNames { get; } = new List<string>();
 
             public override string ToString() => this.Name;
@@ -81,9 +83,13 @@ namespace GLGenerator
 
             foreach (var groupNode in xml.Descendants("group"))
             {
+                if (groupNode.Attribute("name").Value == "Boolean")
+                    continue;
+
                 var enumGroup = new EnumGroupData()
                 {
-                    Name = groupNode.Attribute("name").Value
+                    Name = groupNode.Attribute("name").Value,
+                    Type = "uint"
                 };
 
                 foreach (var enumNode in groupNode.Elements())
@@ -156,7 +162,8 @@ namespace GLGenerator
             var glUniformMatrix4fv = functions.Single(x => x.Name == "glUniformMatrix4fv");
             glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
 
-            Write(enums, functions);
+            WriteEnumGroups(enumGroups);
+            Write(enumGroups, enums, functions);
         }
 
         private static void Parse(string[] lines, List<EnumData> enums, List<FunctionData> functions)
@@ -253,7 +260,31 @@ namespace GLGenerator
             }
         }
 
-        private static void Write(List<EnumData> enums, List<FunctionData> functions)
+        private static void WriteEnumGroups(List<EnumGroupData> enumGroups)
+        {
+            StringBuilder sb = new StringBuilder(1024);
+
+            sb.AppendLine("using System;");
+            sb.AppendLine();
+            sb.AppendLine("namespace GLDotNet");
+            sb.AppendLine("{");
+
+            foreach (var enumGroup in enumGroups.OrderBy(x => x.Name))
+            {
+                string name = enumGroup.Name;
+                                
+                sb.AppendLine($"\t\tpublic enum {name} : {enumGroup.Type}");
+                sb.AppendLine("\t\t{");
+                sb.AppendLine("\t\t}");
+                sb.AppendLine();
+            }
+
+            sb.AppendLine("}");
+
+            File.WriteAllText(@"..\..\..\..\Library\GLDotNet\GLEnums.Generated.cs", sb.ToString());
+        }
+
+        private static void Write(List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
         {
             StringBuilder sb = new StringBuilder(1024);
 
@@ -292,9 +323,9 @@ namespace GLGenerator
             sb.AppendLine($"\t\tpublic static class Delegates");
             sb.AppendLine("\t\t{");
 
-            var filteredFunctions = functions.OrderBy(x => x.Name);
+            var orderedFunctions = functions.OrderBy(x => x.Name);
 
-            foreach (var function in filteredFunctions)
+            foreach (var function in orderedFunctions)
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
@@ -309,7 +340,7 @@ namespace GLGenerator
             sb.AppendLine("\t\tprivate readonly IGLPlatformContext platformContext;");
             sb.AppendLine();
 
-            foreach (var function in filteredFunctions)
+            foreach (var function in orderedFunctions)
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
@@ -355,7 +386,7 @@ namespace GLGenerator
             sb.AppendLine("\t\t}");
             sb.AppendLine();
 
-            foreach (var function in filteredFunctions.Where(x => x.OutputPublicMethod))
+            foreach (var function in orderedFunctions.Where(x => x.OutputPublicMethod))
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
                 string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
@@ -408,6 +439,36 @@ namespace GLGenerator
                     sb.AppendLine("\t\t}");
                     sb.AppendLine();
                 }
+
+                if (function.Params.Any(x => x.EnumGroup != null))
+                {
+                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, true) + " " + GetParamName(x.Name)));
+                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? x.EnumGroup.Type : null)));
+
+                    sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
+                    sb.AppendLine("\t\t{");
+
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
+                    }
+
+                    sb.AppendLine($"#if DEBUG");
+                    sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
+                    sb.AppendLine("#endif");
+
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\treturn result;");
+                    }
+
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
             }
 
             sb.AppendLine("\t}");
@@ -452,8 +513,13 @@ namespace GLGenerator
             return name;
         }
 
-        private static string GetParamType(FunctionParamData param)
+        private static string GetParamType(FunctionParamData param, bool useEnumGroup = false)
         {
+            if (useEnumGroup && param.EnumGroup != null)
+            {
+                return param.EnumGroup.Name;
+            }
+
             string type = param.Type;
 
             if (!param.TypeOverridden)
@@ -574,13 +640,18 @@ namespace GLGenerator
             return name;
         }
 
-        private static string GetParamInvoke(string name, string prefix)
+        private static string GetParamInvoke(string name, string prefix, string cast = null)
         {
             name = GetParamName(name);
 
             if (prefix != null)
             {
                 name = prefix + " " + name;
+            }
+
+            if (cast != null)
+            {
+                name = $"({cast}){name}";
             }
 
             return name;

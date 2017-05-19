@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="GL.cs" />
     <Compile Include="GL.Generated.cs" />
+    <Compile Include="GLEnums.Generated.cs" />
     <Compile Include="GLException.cs" />
     <Compile Include="IGLPlatformContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
