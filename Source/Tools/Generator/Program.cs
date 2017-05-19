@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GLGenerator
 {
@@ -13,6 +14,15 @@ namespace GLGenerator
             public int VersionMajor { get; set; }
 
             public int VersionMinor { get; set; }
+        }
+
+        class EnumGroupData
+        {
+            public string Name { get; set; }
+
+            public List<string> EnumNames { get; } = new List<string>();
+
+            public override string ToString() => this.Name;
         }
 
         class EnumData : BaseData
@@ -51,6 +61,8 @@ namespace GLGenerator
 
             public string Name { get; set; }
 
+            public EnumGroupData EnumGroup { get; set; }
+
             public override string ToString() => $"{this.Type}: {this.Name}";
 
             public void OverrideType(string type, string typePrefix = null)
@@ -63,11 +75,58 @@ namespace GLGenerator
 
         static void Main(string[] args)
         {
+            var xml = XDocument.Load("gl.xml");
+
+            var enumGroups = new List<EnumGroupData>();
+
+            foreach (var groupNode in xml.Descendants("group"))
+            {
+                var enumGroup = new EnumGroupData()
+                {
+                    Name = groupNode.Attribute("name").Value
+                };
+
+                foreach (var enumNode in groupNode.Elements())
+                {
+                    enumGroup.EnumNames.Add(enumNode.Attribute("name").Value);
+                }
+
+                enumGroups.Add(enumGroup);
+            }
+
             var lines = File.ReadAllLines("glcorearb.h");
             var enums = new List<EnumData>();
             var functions = new List<FunctionData>();
 
             Parse(lines, enums, functions);
+
+            foreach (var commandNode in xml.Descendants("command"))
+            {
+                var functionName = commandNode.Element("proto")?.Element("name")?.Value;
+
+                if (functionName == null)
+                    continue;
+
+                var function = functions.SingleOrDefault(x => x.Name == functionName);
+
+                if (function == null)
+                    continue;
+
+                foreach (var paramNode in commandNode.Elements("param").Where(x => x.Attribute("group") != null))
+                {
+                    var enumGroup = enumGroups.SingleOrDefault(x => x.Name == paramNode.Attribute("group").Value);
+
+                    if (enumGroup == null)
+                        continue;
+
+                    var functionParam = function.Params.SingleOrDefault(x => x.Name == paramNode.Element("name").Value);
+
+                    if (functionParam == null)
+                        continue;
+
+                    functionParam.EnumGroup = enumGroup;
+                }
+            }
 
             functions.Single(x => x.Name == "glGetError").OutputPublicMethod = false;
             functions.Single(x => x.Name == "glGetString").OutputPublicMethod = false;
