@@ -2,464 +2,454 @@ using System;
 
 namespace GLDotNet
 {
-		public enum AccumOp : uint
-		{
-		}
-
-		public enum AlphaFunction : uint
-		{
-		}
-
-		public enum AttribMask : uint
-		{
-		}
-
-		public enum BlendEquationModeEXT : uint
-		{
-		}
-
 		public enum BlendingFactorDest : uint
 		{
+			DST_ALPHA = 0x0304,
+			ONE = 1,
+			ONE_MINUS_DST_ALPHA = 0x0305,
+			ONE_MINUS_SRC_ALPHA = 0x0303,
+			ONE_MINUS_SRC_COLOR = 0x0301,
+			SRC_ALPHA = 0x0302,
+			SRC_COLOR = 0x0300,
+			ZERO = 0,
 		}
 
 		public enum BlendingFactorSrc : uint
 		{
+			DST_ALPHA = 0x0304,
+			DST_COLOR = 0x0306,
+			ONE = 1,
+			ONE_MINUS_DST_ALPHA = 0x0305,
+			ONE_MINUS_DST_COLOR = 0x0307,
+			ONE_MINUS_SRC_ALPHA = 0x0303,
+			SRC_ALPHA = 0x0302,
+			SRC_ALPHA_SATURATE = 0x0308,
+			ZERO = 0,
 		}
 
-		public enum BufferAccessARB : uint
+		public enum BufferAccess : uint
 		{
+			READ_ONLY = 0x88B8,
+			WRITE_ONLY = 0x88B9,
+			READ_WRITE = 0x88BA,
 		}
 
-		public enum BufferTargetARB : uint
+		public enum BufferTarget : uint
 		{
+			ARRAY_BUFFER = 0x8892,
+			ATOMIC_COUNTER_BUFFER = 0x92C0,
+			COPY_READ_BUFFER = 0x8F36,
+			COPY_WRITE_BUFFER = 0x8F37,
+			DISPATCH_INDIRECT_BUFFER = 0x90EE,
+			DRAW_INDIRECT_BUFFER = 0x8F3F,
+			ELEMENT_ARRAY_BUFFER = 0x8893,
+			PIXEL_PACK_BUFFER = 0x88EB,
+			PIXEL_UNPACK_BUFFER = 0x88EC,
+			QUERY_BUFFER = 0x9192,
+			SHADER_STORAGE_BUFFER = 0x90D2,
+			TEXTURE_BUFFER = 0x8C2A,
+			TRANSFORM_FEEDBACK_BUFFER = 0x8C8E,
+			UNIFORM_BUFFER = 0x8A11,
 		}
 
-		public enum BufferUsageARB : uint
+		public enum BufferUsage : uint
 		{
+			STREAM_DRAW = 0x88E0,
+			STREAM_READ = 0x88E1,
+			STREAM_COPY = 0x88E2,
+			STATIC_DRAW = 0x88E4,
+			STATIC_READ = 0x88E5,
+			STATIC_COPY = 0x88E6,
+			DYNAMIC_DRAW = 0x88E8,
+			DYNAMIC_READ = 0x88E9,
+			DYNAMIC_COPY = 0x88EA,
 		}
 
 		public enum ClearBufferMask : uint
 		{
-		}
-
-		public enum ClientAttribMask : uint
-		{
-		}
-
-		public enum ClipPlaneName : uint
-		{
-		}
-
-		public enum ColorMaterialFace : uint
-		{
-		}
-
-		public enum ColorMaterialParameter : uint
-		{
-		}
-
-		public enum ColorPointerType : uint
-		{
-		}
-
-		public enum ColorTableParameterPNameSGI : uint
-		{
-		}
-
-		public enum ColorTableTargetSGI : uint
-		{
-		}
-
-		public enum ContextFlagMask : uint
-		{
-		}
-
-		public enum ContextProfileMask : uint
-		{
-		}
-
-		public enum ConvolutionBorderModeEXT : uint
-		{
-		}
-
-		public enum ConvolutionParameterEXT : uint
-		{
-		}
-
-		public enum ConvolutionTargetEXT : uint
-		{
+			COLOR_BUFFER_BIT = 0x00004000,
+			DEPTH_BUFFER_BIT = 0x00000100,
+			STENCIL_BUFFER_BIT = 0x00000400,
 		}
 
 		public enum CullFaceMode : uint
 		{
-		}
-
-		public enum DataType : uint
-		{
+			BACK = 0x0405,
+			FRONT = 0x0404,
+			FRONT_AND_BACK = 0x0408,
 		}
 
 		public enum DepthFunction : uint
 		{
+			ALWAYS = 0x0207,
+			EQUAL = 0x0202,
+			GEQUAL = 0x0206,
+			GREATER = 0x0204,
+			LEQUAL = 0x0203,
+			LESS = 0x0201,
+			NEVER = 0x0200,
+			NOTEQUAL = 0x0205,
 		}
 
 		public enum DrawBufferMode : uint
 		{
+			BACK = 0x0405,
+			BACK_LEFT = 0x0402,
+			BACK_RIGHT = 0x0403,
+			FRONT = 0x0404,
+			FRONT_AND_BACK = 0x0408,
+			FRONT_LEFT = 0x0400,
+			FRONT_RIGHT = 0x0401,
+			LEFT = 0x0406,
+			NONE = 0,
+			RIGHT = 0x0407,
 		}
 
 		public enum DrawElementsType : uint
 		{
+			UNSIGNED_BYTE = 0x1401,
+			UNSIGNED_SHORT = 0x1403,
+			UNSIGNED_INT = 0x1405,
 		}
 
 		public enum EnableCap : uint
 		{
-		}
-
-		public enum ErrorCode : uint
-		{
-		}
-
-		public enum FeedBackToken : uint
-		{
-		}
-
-		public enum FeedbackType : uint
-		{
-		}
-
-		public enum FfdMaskSGIX : uint
-		{
-		}
-
-		public enum FfdTargetSGIX : uint
-		{
-		}
-
-		public enum FogCoordinatePointerType : uint
-		{
-		}
-
-		public enum FogMode : uint
-		{
-		}
-
-		public enum FogParameter : uint
-		{
-		}
-
-		public enum FogPointerTypeEXT : uint
-		{
-		}
-
-		public enum FogPointerTypeIBM : uint
-		{
-		}
-
-		public enum FragmentLightModelParameterSGIX : uint
-		{
-		}
-
-		public enum FramebufferFetchNoncoherent : uint
-		{
+			BLEND = 0x0BE2,
+			COLOR_LOGIC_OP = 0x0BF2,
+			CULL_FACE = 0x0B44,
+			DEPTH_TEST = 0x0B71,
+			DITHER = 0x0BD0,
+			LINE_SMOOTH = 0x0B20,
+			POLYGON_OFFSET_FILL = 0x8037,
+			POLYGON_OFFSET_LINE = 0x2A02,
+			POLYGON_OFFSET_POINT = 0x2A01,
+			POLYGON_SMOOTH = 0x0B41,
+			SCISSOR_TEST = 0x0C11,
+			STENCIL_TEST = 0x0B90,
+			TEXTURE_1D = 0x0DE0,
+			TEXTURE_2D = 0x0DE1,
+			VERTEX_ARRAY = 0x8074,
 		}
 
 		public enum FrontFaceDirection : uint
 		{
-		}
-
-		public enum GetColorTableParameterPNameSGI : uint
-		{
-		}
-
-		public enum GetConvolutionParameter : uint
-		{
-		}
-
-		public enum GetHistogramParameterPNameEXT : uint
-		{
-		}
-
-		public enum GetMapQuery : uint
-		{
-		}
-
-		public enum GetMinmaxParameterPNameEXT : uint
-		{
-		}
-
-		public enum GetPixelMap : uint
-		{
+			CCW = 0x0901,
+			CW = 0x0900,
 		}
 
 		public enum GetPName : uint
 		{
-		}
-
-		public enum GetPointervPName : uint
-		{
+			ALIASED_LINE_WIDTH_RANGE = 0x846E,
+			BLEND = 0x0BE2,
+			BLEND_DST = 0x0BE0,
+			BLEND_SRC = 0x0BE1,
+			COLOR_CLEAR_VALUE = 0x0C22,
+			COLOR_LOGIC_OP = 0x0BF2,
+			COLOR_WRITEMASK = 0x0C23,
+			CULL_FACE = 0x0B44,
+			CULL_FACE_MODE = 0x0B45,
+			DEPTH_CLEAR_VALUE = 0x0B73,
+			DEPTH_FUNC = 0x0B74,
+			DEPTH_RANGE = 0x0B70,
+			DEPTH_TEST = 0x0B71,
+			DEPTH_WRITEMASK = 0x0B72,
+			DITHER = 0x0BD0,
+			DOUBLEBUFFER = 0x0C32,
+			DRAW_BUFFER = 0x0C01,
+			FRONT_FACE = 0x0B46,
+			LINE_SMOOTH = 0x0B20,
+			LINE_SMOOTH_HINT = 0x0C52,
+			LINE_WIDTH = 0x0B21,
+			LINE_WIDTH_GRANULARITY = 0x0B23,
+			LINE_WIDTH_RANGE = 0x0B22,
+			LOGIC_OP_MODE = 0x0BF0,
+			MAX_CLIP_DISTANCES = 0x0D32,
+			MAX_TEXTURE_SIZE = 0x0D33,
+			MAX_VIEWPORT_DIMS = 0x0D3A,
+			PACK_ALIGNMENT = 0x0D05,
+			PACK_LSB_FIRST = 0x0D01,
+			PACK_ROW_LENGTH = 0x0D02,
+			PACK_SKIP_PIXELS = 0x0D04,
+			PACK_SKIP_ROWS = 0x0D03,
+			PACK_SWAP_BYTES = 0x0D00,
+			POINT_SIZE = 0x0B11,
+			POINT_SIZE_GRANULARITY = 0x0B13,
+			POINT_SIZE_RANGE = 0x0B12,
+			POLYGON_MODE = 0x0B40,
+			POLYGON_OFFSET_FACTOR = 0x8038,
+			POLYGON_OFFSET_FILL = 0x8037,
+			POLYGON_OFFSET_LINE = 0x2A02,
+			POLYGON_OFFSET_POINT = 0x2A01,
+			POLYGON_OFFSET_UNITS = 0x2A00,
+			POLYGON_SMOOTH = 0x0B41,
+			POLYGON_SMOOTH_HINT = 0x0C53,
+			READ_BUFFER = 0x0C02,
+			SCISSOR_BOX = 0x0C10,
+			SCISSOR_TEST = 0x0C11,
+			SMOOTH_LINE_WIDTH_GRANULARITY = 0x0B23,
+			SMOOTH_LINE_WIDTH_RANGE = 0x0B22,
+			SMOOTH_POINT_SIZE_GRANULARITY = 0x0B13,
+			SMOOTH_POINT_SIZE_RANGE = 0x0B12,
+			STENCIL_CLEAR_VALUE = 0x0B91,
+			STENCIL_FAIL = 0x0B94,
+			STENCIL_FUNC = 0x0B92,
+			STENCIL_PASS_DEPTH_FAIL = 0x0B95,
+			STENCIL_PASS_DEPTH_PASS = 0x0B96,
+			STENCIL_REF = 0x0B97,
+			STENCIL_TEST = 0x0B90,
+			STENCIL_VALUE_MASK = 0x0B93,
+			STENCIL_WRITEMASK = 0x0B98,
+			STEREO = 0x0C33,
+			SUBPIXEL_BITS = 0x0D50,
+			TEXTURE_1D = 0x0DE0,
+			TEXTURE_2D = 0x0DE1,
+			TEXTURE_BINDING_1D = 0x8068,
+			TEXTURE_BINDING_2D = 0x8069,
+			TEXTURE_BINDING_3D = 0x806A,
+			UNPACK_ALIGNMENT = 0x0CF5,
+			UNPACK_LSB_FIRST = 0x0CF1,
+			UNPACK_ROW_LENGTH = 0x0CF2,
+			UNPACK_SKIP_PIXELS = 0x0CF4,
+			UNPACK_SKIP_ROWS = 0x0CF3,
+			UNPACK_SWAP_BYTES = 0x0CF0,
+			VERTEX_ARRAY = 0x8074,
+			VIEWPORT = 0x0BA2,
 		}
 
 		public enum GetTextureParameter : uint
 		{
+			TEXTURE_ALPHA_SIZE = 0x805F,
+			TEXTURE_BLUE_SIZE = 0x805E,
+			TEXTURE_BORDER_COLOR = 0x1004,
+			TEXTURE_GREEN_SIZE = 0x805D,
+			TEXTURE_HEIGHT = 0x1001,
+			TEXTURE_INTERNAL_FORMAT = 0x1003,
+			TEXTURE_MAG_FILTER = 0x2800,
+			TEXTURE_MIN_FILTER = 0x2801,
+			TEXTURE_RED_SIZE = 0x805C,
+			TEXTURE_WIDTH = 0x1000,
+			TEXTURE_WRAP_S = 0x2802,
+			TEXTURE_WRAP_T = 0x2803,
 		}
 
 		public enum HintMode : uint
 		{
+			DONT_CARE = 0x1100,
+			FASTEST = 0x1101,
+			NICEST = 0x1102,
 		}
 
 		public enum HintTarget : uint
 		{
-		}
-
-		public enum HistogramTargetEXT : uint
-		{
-		}
-
-		public enum IndexPointerType : uint
-		{
-		}
-
-		public enum InterleavedArrayFormat : uint
-		{
-		}
-
-		public enum InternalFormat : uint
-		{
-		}
-
-		public enum LightEnvModeSGIX : uint
-		{
-		}
-
-		public enum LightEnvParameterSGIX : uint
-		{
-		}
-
-		public enum LightModelColorControl : uint
-		{
-		}
-
-		public enum LightModelParameter : uint
-		{
-		}
-
-		public enum LightName : uint
-		{
-		}
-
-		public enum LightParameter : uint
-		{
-		}
-
-		public enum ListMode : uint
-		{
-		}
-
-		public enum ListNameType : uint
-		{
-		}
-
-		public enum ListParameterName : uint
-		{
+			FRAGMENT_SHADER_DERIVATIVE_HINT = 0x8B8B,
+			LINE_SMOOTH_HINT = 0x0C52,
+			POLYGON_SMOOTH_HINT = 0x0C53,
+			PROGRAM_BINARY_RETRIEVABLE_HINT = 0x8257,
+			TEXTURE_COMPRESSION_HINT = 0x84EF,
 		}
 
 		public enum LogicOp : uint
 		{
-		}
-
-		public enum MapBufferUsageMask : uint
-		{
-		}
-
-		public enum MapTarget : uint
-		{
-		}
-
-		public enum MapTextureFormatINTEL : uint
-		{
+			AND = 0x1501,
+			AND_INVERTED = 0x1504,
+			AND_REVERSE = 0x1502,
+			CLEAR = 0x1500,
+			COPY = 0x1503,
+			COPY_INVERTED = 0x150C,
+			EQUIV = 0x1509,
+			INVERT = 0x150A,
+			NAND = 0x150E,
+			NOOP = 0x1505,
+			NOR = 0x1508,
+			OR = 0x1507,
+			OR_INVERTED = 0x150D,
+			OR_REVERSE = 0x150B,
+			SET = 0x150F,
+			XOR = 0x1506,
 		}
 
 		public enum MaterialFace : uint
 		{
-		}
-
-		public enum MaterialParameter : uint
-		{
-		}
-
-		public enum MatrixMode : uint
-		{
-		}
-
-		public enum MemoryBarrierMask : uint
-		{
-		}
-
-		public enum MeshMode1 : uint
-		{
-		}
-
-		public enum MeshMode2 : uint
-		{
-		}
-
-		public enum MinmaxTargetEXT : uint
-		{
-		}
-
-		public enum NormalPointerType : uint
-		{
-		}
-
-		public enum OcclusionQueryEventMaskAMD : uint
-		{
-		}
-
-		public enum PixelCopyType : uint
-		{
+			BACK = 0x0405,
+			FRONT = 0x0404,
+			FRONT_AND_BACK = 0x0408,
 		}
 
 		public enum PixelFormat : uint
 		{
-		}
-
-		public enum PixelMap : uint
-		{
+			ALPHA = 0x1906,
+			BLUE = 0x1905,
+			DEPTH_COMPONENT = 0x1902,
+			GREEN = 0x1904,
+			RED = 0x1903,
+			RGB = 0x1907,
+			RGBA = 0x1908,
+			STENCIL_INDEX = 0x1901,
+			UNSIGNED_INT = 0x1405,
+			UNSIGNED_SHORT = 0x1403,
 		}
 
 		public enum PixelStoreParameter : uint
 		{
-		}
-
-		public enum PixelStoreResampleMode : uint
-		{
-		}
-
-		public enum PixelStoreSubsampleRate : uint
-		{
-		}
-
-		public enum PixelTexGenMode : uint
-		{
-		}
-
-		public enum PixelTexGenParameterNameSGIS : uint
-		{
-		}
-
-		public enum PixelTransferParameter : uint
-		{
+			PACK_ALIGNMENT = 0x0D05,
+			PACK_IMAGE_HEIGHT = 0x806C,
+			PACK_LSB_FIRST = 0x0D01,
+			PACK_ROW_LENGTH = 0x0D02,
+			PACK_SKIP_IMAGES = 0x806B,
+			PACK_SKIP_PIXELS = 0x0D04,
+			PACK_SKIP_ROWS = 0x0D03,
+			PACK_SWAP_BYTES = 0x0D00,
+			UNPACK_ALIGNMENT = 0x0CF5,
+			UNPACK_IMAGE_HEIGHT = 0x806E,
+			UNPACK_LSB_FIRST = 0x0CF1,
+			UNPACK_ROW_LENGTH = 0x0CF2,
+			UNPACK_SKIP_IMAGES = 0x806D,
+			UNPACK_SKIP_PIXELS = 0x0CF4,
+			UNPACK_SKIP_ROWS = 0x0CF3,
+			UNPACK_SWAP_BYTES = 0x0CF0,
 		}
 
 		public enum PixelType : uint
 		{
-		}
-
-		public enum PointParameterNameSGIS : uint
-		{
+			BYTE = 0x1400,
+			FLOAT = 0x1406,
+			INT = 0x1404,
+			SHORT = 0x1402,
+			UNSIGNED_BYTE = 0x1401,
+			UNSIGNED_BYTE_3_3_2 = 0x8032,
+			UNSIGNED_INT = 0x1405,
+			UNSIGNED_INT_10_10_10_2 = 0x8036,
+			UNSIGNED_INT_8_8_8_8 = 0x8035,
+			UNSIGNED_SHORT = 0x1403,
+			UNSIGNED_SHORT_4_4_4_4 = 0x8033,
+			UNSIGNED_SHORT_5_5_5_1 = 0x8034,
 		}
 
 		public enum PolygonMode : uint
 		{
+			FILL = 0x1B02,
+			LINE = 0x1B01,
+			POINT = 0x1B00,
 		}
 
 		public enum PrimitiveType : uint
 		{
+			LINES = 0x0001,
+			LINES_ADJACENCY = 0x000A,
+			LINE_LOOP = 0x0002,
+			LINE_STRIP = 0x0003,
+			LINE_STRIP_ADJACENCY = 0x000B,
+			PATCHES = 0x000E,
+			POINTS = 0x0000,
+			QUADS = 0x0007,
+			TRIANGLES = 0x0004,
+			TRIANGLES_ADJACENCY = 0x000C,
+			TRIANGLE_FAN = 0x0006,
+			TRIANGLE_STRIP = 0x0005,
+			TRIANGLE_STRIP_ADJACENCY = 0x000D,
 		}
 
 		public enum ReadBufferMode : uint
 		{
-		}
-
-		public enum RenderingMode : uint
-		{
-		}
-
-		public enum SamplePatternSGIS : uint
-		{
-		}
-
-		public enum SeparableTargetEXT : uint
-		{
-		}
-
-		public enum ShadingModel : uint
-		{
+			BACK = 0x0405,
+			BACK_LEFT = 0x0402,
+			BACK_RIGHT = 0x0403,
+			FRONT = 0x0404,
+			FRONT_LEFT = 0x0400,
+			FRONT_RIGHT = 0x0401,
+			LEFT = 0x0406,
+			RIGHT = 0x0407,
 		}
 
 		public enum StencilFaceDirection : uint
 		{
+			FRONT = 0x0404,
+			BACK = 0x0405,
+			FRONT_AND_BACK = 0x0408,
 		}
 
 		public enum StencilFunction : uint
 		{
+			ALWAYS = 0x0207,
+			EQUAL = 0x0202,
+			GEQUAL = 0x0206,
+			GREATER = 0x0204,
+			LEQUAL = 0x0203,
+			LESS = 0x0201,
+			NEVER = 0x0200,
+			NOTEQUAL = 0x0205,
 		}
 
 		public enum StencilOp : uint
 		{
+			DECR = 0x1E03,
+			INCR = 0x1E02,
+			INVERT = 0x150A,
+			KEEP = 0x1E00,
+			REPLACE = 0x1E01,
+			ZERO = 0,
 		}
 
 		public enum StringName : uint
 		{
-		}
-
-		public enum TexCoordPointerType : uint
-		{
-		}
-
-		public enum TextureCoordName : uint
-		{
-		}
-
-		public enum TextureEnvMode : uint
-		{
-		}
-
-		public enum TextureEnvParameter : uint
-		{
-		}
-
-		public enum TextureEnvTarget : uint
-		{
-		}
-
-		public enum TextureFilterFuncSGIS : uint
-		{
-		}
-
-		public enum TextureGenMode : uint
-		{
-		}
-
-		public enum TextureGenParameter : uint
-		{
-		}
-
-		public enum TextureMagFilter : uint
-		{
-		}
-
-		public enum TextureMinFilter : uint
-		{
+			EXTENSIONS = 0x1F03,
+			RENDERER = 0x1F01,
+			VENDOR = 0x1F00,
+			VERSION = 0x1F02,
+			SHADING_LANGUAGE_VERSION = 0x8B8C,
 		}
 
 		public enum TextureParameterName : uint
 		{
+			TEXTURE_BORDER_COLOR = 0x1004,
+			TEXTURE_MAG_FILTER = 0x2800,
+			TEXTURE_MIN_FILTER = 0x2801,
+			TEXTURE_WRAP_R = 0x8072,
+			TEXTURE_WRAP_S = 0x2802,
+			TEXTURE_WRAP_T = 0x2803,
+			TEXTURE_BASE_LEVEL = 0x813C,
+			TEXTURE_COMPARE_MODE = 0x884C,
+			TEXTURE_COMPARE_FUNC = 0x884D,
+			TEXTURE_LOD_BIAS = 0x8501,
+			TEXTURE_MIN_LOD = 0x813A,
+			TEXTURE_MAX_LOD = 0x813B,
+			TEXTURE_MAX_LEVEL = 0x813D,
+			TEXTURE_SWIZZLE_R = 0x8E42,
+			TEXTURE_SWIZZLE_G = 0x8E43,
+			TEXTURE_SWIZZLE_B = 0x8E44,
+			TEXTURE_SWIZZLE_A = 0x8E45,
+			TEXTURE_SWIZZLE_RGBA = 0x8E46,
+			DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
 		}
 
 		public enum TextureTarget : uint
 		{
-		}
-
-		public enum TextureWrapMode : uint
-		{
-		}
-
-		public enum UseProgramStageMask : uint
-		{
-		}
-
-		public enum VertexPointerType : uint
-		{
+			PROXY_TEXTURE_1D = 0x8063,
+			PROXY_TEXTURE_1D_ARRAY = 0x8C19,
+			PROXY_TEXTURE_2D = 0x8064,
+			PROXY_TEXTURE_2D_ARRAY = 0x8C1B,
+			PROXY_TEXTURE_2D_MULTISAMPLE = 0x9101,
+			PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9103,
+			PROXY_TEXTURE_3D = 0x8070,
+			PROXY_TEXTURE_CUBE_MAP = 0x851B,
+			PROXY_TEXTURE_CUBE_MAP_ARRAY = 0x900B,
+			PROXY_TEXTURE_RECTANGLE = 0x84F7,
+			TEXTURE_1D = 0x0DE0,
+			TEXTURE_2D = 0x0DE1,
+			TEXTURE_3D = 0x806F,
+			TEXTURE_RECTANGLE = 0x84F5,
+			TEXTURE_CUBE_MAP = 0x8513,
+			TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515,
+			TEXTURE_CUBE_MAP_NEGATIVE_X = 0x8516,
+			TEXTURE_CUBE_MAP_POSITIVE_Y = 0x8517,
+			TEXTURE_CUBE_MAP_NEGATIVE_Y = 0x8518,
+			TEXTURE_CUBE_MAP_POSITIVE_Z = 0x8519,
+			TEXTURE_CUBE_MAP_NEGATIVE_Z = 0x851A,
+			TEXTURE_CUBE_MAP_ARRAY = 0x9009,
+			TEXTURE_1D_ARRAY = 0x8C18,
+			TEXTURE_2D_ARRAY = 0x8C1A,
+			TEXTURE_2D_MULTISAMPLE = 0x9100,
+			TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9102,
 		}
 
 }

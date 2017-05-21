@@ -4764,17 +4764,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BindBuffer(uint target, uint buffer)
+		public void BindBuffer(BufferTarget target, uint buffer)
 		{
-			this._BindBuffer(target, buffer);
+			this._BindBuffer((uint)target, buffer);
 #if DEBUG
 			this.CheckErrors("BindBuffer");
 #endif
 		}
 
-		public void BindBuffer(BufferTargetARB target, uint buffer)
+		public void BindBuffer(uint target, uint buffer)
 		{
-			this._BindBuffer((uint)target, buffer);
+			this._BindBuffer(target, buffer);
 #if DEBUG
 			this.CheckErrors("BindBuffer");
 #endif
@@ -4884,17 +4884,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BindTexture(uint target, uint texture)
+		public void BindTexture(TextureTarget target, uint texture)
 		{
-			this._BindTexture(target, texture);
+			this._BindTexture((uint)target, texture);
 #if DEBUG
 			this.CheckErrors("BindTexture");
 #endif
 		}
 
-		public void BindTexture(TextureTarget target, uint texture)
+		public void BindTexture(uint target, uint texture)
 		{
-			this._BindTexture((uint)target, texture);
+			this._BindTexture(target, texture);
 #if DEBUG
 			this.CheckErrors("BindTexture");
 #endif
@@ -4980,14 +4980,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BlendEquationSeparate(BlendEquationModeEXT modeRGB, BlendEquationModeEXT modeAlpha)
-		{
-			this._BlendEquationSeparate((uint)modeRGB, (uint)modeAlpha);
-#if DEBUG
-			this.CheckErrors("BlendEquationSeparate");
-#endif
-		}
-
 		public void BlendEquationSeparatei(uint buf, uint modeRGB, uint modeAlpha)
 		{
 			this._BlendEquationSeparatei(buf, modeRGB, modeAlpha);
@@ -4996,17 +4988,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BlendFunc(uint sfactor, uint dfactor)
+		public void BlendFunc(BlendingFactorSrc sfactor, BlendingFactorDest dfactor)
 		{
-			this._BlendFunc(sfactor, dfactor);
+			this._BlendFunc((uint)sfactor, (uint)dfactor);
 #if DEBUG
 			this.CheckErrors("BlendFunc");
 #endif
 		}
 
-		public void BlendFunc(BlendingFactorSrc sfactor, BlendingFactorDest dfactor)
+		public void BlendFunc(uint sfactor, uint dfactor)
 		{
-			this._BlendFunc((uint)sfactor, (uint)dfactor);
+			this._BlendFunc(sfactor, dfactor);
 #if DEBUG
 			this.CheckErrors("BlendFunc");
 #endif
@@ -5036,17 +5028,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
+		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, ClearBufferMask mask, uint filter)
 		{
-			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, (uint)mask, filter);
 #if DEBUG
 			this.CheckErrors("BlitFramebuffer");
 #endif
 		}
 
-		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, ClearBufferMask mask, uint filter)
+		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
 		{
-			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, (uint)mask, filter);
+			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 #if DEBUG
 			this.CheckErrors("BlitFramebuffer");
 #endif
@@ -5060,17 +5052,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BufferData(uint target, int size, IntPtr data, uint usage)
+		public void BufferData(BufferTarget target, int size, IntPtr data, BufferUsage usage)
 		{
-			this._BufferData(target, size, data, usage);
+			this._BufferData((uint)target, size, data, (uint)usage);
 #if DEBUG
 			this.CheckErrors("BufferData");
 #endif
 		}
 
-		public void BufferData(BufferTargetARB target, int size, IntPtr data, BufferUsageARB usage)
+		public void BufferData(uint target, int size, IntPtr data, uint usage)
 		{
-			this._BufferData((uint)target, size, data, (uint)usage);
+			this._BufferData(target, size, data, usage);
 #if DEBUG
 			this.CheckErrors("BufferData");
 #endif
@@ -5084,17 +5076,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BufferSubData(uint target, int offset, int size, IntPtr data)
+		public void BufferSubData(BufferTarget target, int offset, int size, IntPtr data)
 		{
-			this._BufferSubData(target, offset, size, data);
+			this._BufferSubData((uint)target, offset, size, data);
 #if DEBUG
 			this.CheckErrors("BufferSubData");
 #endif
 		}
 
-		public void BufferSubData(BufferTargetARB target, int offset, int size, IntPtr data)
+		public void BufferSubData(uint target, int offset, int size, IntPtr data)
 		{
-			this._BufferSubData((uint)target, offset, size, data);
+			this._BufferSubData(target, offset, size, data);
 #if DEBUG
 			this.CheckErrors("BufferSubData");
 #endif
@@ -5126,17 +5118,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void Clear(uint mask)
+		public void Clear(ClearBufferMask mask)
 		{
-			this._Clear(mask);
+			this._Clear((uint)mask);
 #if DEBUG
 			this.CheckErrors("Clear");
 #endif
 		}
 
-		public void Clear(ClearBufferMask mask)
+		public void Clear(uint mask)
 		{
-			this._Clear((uint)mask);
+			this._Clear(mask);
 #if DEBUG
 			this.CheckErrors("Clear");
 #endif
@@ -5327,14 +5319,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
-		{
-			this._CompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
-#if DEBUG
-			this.CheckErrors("CompressedTexImage1D");
-#endif
-		}
-
 		public void CompressedTexImage1D(TextureTarget target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
 		{
 			this._CompressedTexImage1D((uint)target, level, internalformat, width, border, imageSize, data);
@@ -5343,11 +5327,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
+		public void CompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+			this._CompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
 #if DEBUG
-			this.CheckErrors("CompressedTexImage2D");
+			this.CheckErrors("CompressedTexImage1D");
 #endif
 		}
 
@@ -5359,11 +5343,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
+		public void CompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+			this._CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
 #if DEBUG
-			this.CheckErrors("CompressedTexImage3D");
+			this.CheckErrors("CompressedTexImage2D");
 #endif
 		}
 
@@ -5375,11 +5359,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
+		public void CompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+			this._CompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
 #if DEBUG
-			this.CheckErrors("CompressedTexSubImage1D");
+			this.CheckErrors("CompressedTexImage3D");
 #endif
 		}
 
@@ -5391,11 +5375,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
+		public void CompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
 		{
-			this._CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+			this._CompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
 #if DEBUG
-			this.CheckErrors("CompressedTexSubImage2D");
+			this.CheckErrors("CompressedTexSubImage1D");
 #endif
 		}
 
@@ -5407,17 +5391,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
+		public void CompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
 		{
-			this._CompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+			this._CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
 #if DEBUG
-			this.CheckErrors("CompressedTexSubImage3D");
+			this.CheckErrors("CompressedTexSubImage2D");
 #endif
 		}
 
 		public void CompressedTexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, int imageSize, IntPtr data)
 		{
 			this._CompressedTexSubImage3D((uint)target, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, imageSize, data);
+#if DEBUG
+			this.CheckErrors("CompressedTexSubImage3D");
+#endif
+		}
+
+		public void CompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
+		{
+			this._CompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 #if DEBUG
 			this.CheckErrors("CompressedTexSubImage3D");
 #endif
@@ -5471,14 +5463,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border)
-		{
-			this._CopyTexImage1D(target, level, internalformat, x, y, width, border);
-#if DEBUG
-			this.CheckErrors("CopyTexImage1D");
-#endif
-		}
-
 		public void CopyTexImage1D(TextureTarget target, int level, uint internalformat, int x, int y, int width, int border)
 		{
 			this._CopyTexImage1D((uint)target, level, internalformat, x, y, width, border);
@@ -5487,11 +5471,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border)
+		public void CopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border)
 		{
-			this._CopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+			this._CopyTexImage1D(target, level, internalformat, x, y, width, border);
 #if DEBUG
-			this.CheckErrors("CopyTexImage2D");
+			this.CheckErrors("CopyTexImage1D");
 #endif
 		}
 
@@ -5503,11 +5487,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width)
+		public void CopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border)
 		{
-			this._CopyTexSubImage1D(target, level, xoffset, x, y, width);
+			this._CopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 #if DEBUG
-			this.CheckErrors("CopyTexSubImage1D");
+			this.CheckErrors("CopyTexImage2D");
 #endif
 		}
 
@@ -5519,11 +5503,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height)
+		public void CopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width)
 		{
-			this._CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+			this._CopyTexSubImage1D(target, level, xoffset, x, y, width);
 #if DEBUG
-			this.CheckErrors("CopyTexSubImage2D");
+			this.CheckErrors("CopyTexSubImage1D");
 #endif
 		}
 
@@ -5535,17 +5519,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
+		public void CopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height)
 		{
-			this._CopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+			this._CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 #if DEBUG
-			this.CheckErrors("CopyTexSubImage3D");
+			this.CheckErrors("CopyTexSubImage2D");
 #endif
 		}
 
 		public void CopyTexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
 		{
 			this._CopyTexSubImage3D((uint)target, level, xoffset, yoffset, zoffset, x, y, width, height);
+#if DEBUG
+			this.CheckErrors("CopyTexSubImage3D");
+#endif
+		}
+
+		public void CopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
+		{
+			this._CopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 #if DEBUG
 			this.CheckErrors("CopyTexSubImage3D");
 #endif
@@ -5674,17 +5666,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CullFace(uint mode)
+		public void CullFace(CullFaceMode mode)
 		{
-			this._CullFace(mode);
+			this._CullFace((uint)mode);
 #if DEBUG
 			this.CheckErrors("CullFace");
 #endif
 		}
 
-		public void CullFace(CullFaceMode mode)
+		public void CullFace(uint mode)
 		{
-			this._CullFace((uint)mode);
+			this._CullFace(mode);
 #if DEBUG
 			this.CheckErrors("CullFace");
 #endif
@@ -5864,17 +5856,17 @@ namespace GLDotNet
 			DeleteVertexArrays(1, UintBuffer);
 		}
 
-		public void DepthFunc(uint func)
+		public void DepthFunc(DepthFunction func)
 		{
-			this._DepthFunc(func);
+			this._DepthFunc((uint)func);
 #if DEBUG
 			this.CheckErrors("DepthFunc");
 #endif
 		}
 
-		public void DepthFunc(DepthFunction func)
+		public void DepthFunc(uint func)
 		{
-			this._DepthFunc((uint)func);
+			this._DepthFunc(func);
 #if DEBUG
 			this.CheckErrors("DepthFunc");
 #endif
@@ -5928,17 +5920,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void Disable(uint cap)
+		public void Disable(EnableCap cap)
 		{
-			this._Disable(cap);
+			this._Disable((uint)cap);
 #if DEBUG
 			this.CheckErrors("Disable");
 #endif
 		}
 
-		public void Disable(EnableCap cap)
+		public void Disable(uint cap)
 		{
-			this._Disable((uint)cap);
+			this._Disable(cap);
 #if DEBUG
 			this.CheckErrors("Disable");
 #endif
@@ -5984,14 +5976,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawArrays(uint mode, int first, int count)
-		{
-			this._DrawArrays(mode, first, count);
-#if DEBUG
-			this.CheckErrors("DrawArrays");
-#endif
-		}
-
 		public void DrawArrays(PrimitiveType mode, int first, int count)
 		{
 			this._DrawArrays((uint)mode, first, count);
@@ -6000,11 +5984,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawArraysIndirect(uint mode, IntPtr indirect)
+		public void DrawArrays(uint mode, int first, int count)
 		{
-			this._DrawArraysIndirect(mode, indirect);
+			this._DrawArrays(mode, first, count);
 #if DEBUG
-			this.CheckErrors("DrawArraysIndirect");
+			this.CheckErrors("DrawArrays");
 #endif
 		}
 
@@ -6016,11 +6000,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawArraysInstanced(uint mode, int first, int count, int instancecount)
+		public void DrawArraysIndirect(uint mode, IntPtr indirect)
 		{
-			this._DrawArraysInstanced(mode, first, count, instancecount);
+			this._DrawArraysIndirect(mode, indirect);
 #if DEBUG
-			this.CheckErrors("DrawArraysInstanced");
+			this.CheckErrors("DrawArraysIndirect");
 #endif
 		}
 
@@ -6032,11 +6016,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance)
+		public void DrawArraysInstanced(uint mode, int first, int count, int instancecount)
 		{
-			this._DrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
+			this._DrawArraysInstanced(mode, first, count, instancecount);
 #if DEBUG
-			this.CheckErrors("DrawArraysInstancedBaseInstance");
+			this.CheckErrors("DrawArraysInstanced");
 #endif
 		}
 
@@ -6048,17 +6032,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawBuffer(uint buf)
+		public void DrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance)
 		{
-			this._DrawBuffer(buf);
+			this._DrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
 #if DEBUG
-			this.CheckErrors("DrawBuffer");
+			this.CheckErrors("DrawArraysInstancedBaseInstance");
 #endif
 		}
 
 		public void DrawBuffer(DrawBufferMode buf)
 		{
 			this._DrawBuffer((uint)buf);
+#if DEBUG
+			this.CheckErrors("DrawBuffer");
+#endif
+		}
+
+		public void DrawBuffer(uint buf)
+		{
+			this._DrawBuffer(buf);
 #if DEBUG
 			this.CheckErrors("DrawBuffer");
 #endif
@@ -6072,14 +6064,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElements(uint mode, int count, uint type, IntPtr indices)
-		{
-			this._DrawElements(mode, count, type, indices);
-#if DEBUG
-			this.CheckErrors("DrawElements");
-#endif
-		}
-
 		public void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices)
 		{
 			this._DrawElements((uint)mode, count, (uint)type, indices);
@@ -6088,11 +6072,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex)
+		public void DrawElements(uint mode, int count, uint type, IntPtr indices)
 		{
-			this._DrawElementsBaseVertex(mode, count, type, indices, basevertex);
+			this._DrawElements(mode, count, type, indices);
 #if DEBUG
-			this.CheckErrors("DrawElementsBaseVertex");
+			this.CheckErrors("DrawElements");
 #endif
 		}
 
@@ -6104,11 +6088,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsIndirect(uint mode, uint type, IntPtr indirect)
+		public void DrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex)
 		{
-			this._DrawElementsIndirect(mode, type, indirect);
+			this._DrawElementsBaseVertex(mode, count, type, indices, basevertex);
 #if DEBUG
-			this.CheckErrors("DrawElementsIndirect");
+			this.CheckErrors("DrawElementsBaseVertex");
 #endif
 		}
 
@@ -6120,11 +6104,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount)
+		public void DrawElementsIndirect(uint mode, uint type, IntPtr indirect)
 		{
-			this._DrawElementsInstanced(mode, count, type, indices, instancecount);
+			this._DrawElementsIndirect(mode, type, indirect);
 #if DEBUG
-			this.CheckErrors("DrawElementsInstanced");
+			this.CheckErrors("DrawElementsIndirect");
 #endif
 		}
 
@@ -6136,11 +6120,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
+		public void DrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount)
 		{
-			this._DrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance);
+			this._DrawElementsInstanced(mode, count, type, indices, instancecount);
 #if DEBUG
-			this.CheckErrors("DrawElementsInstancedBaseInstance");
+			this.CheckErrors("DrawElementsInstanced");
 #endif
 		}
 
@@ -6152,11 +6136,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex)
+		public void DrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
 		{
-			this._DrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+			this._DrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance);
 #if DEBUG
-			this.CheckErrors("DrawElementsInstancedBaseVertex");
+			this.CheckErrors("DrawElementsInstancedBaseInstance");
 #endif
 		}
 
@@ -6168,11 +6152,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
+		public void DrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex)
 		{
-			this._DrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance);
+			this._DrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
 #if DEBUG
-			this.CheckErrors("DrawElementsInstancedBaseVertexBaseInstance");
+			this.CheckErrors("DrawElementsInstancedBaseVertex");
 #endif
 		}
 
@@ -6184,11 +6168,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices)
+		public void DrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
 		{
-			this._DrawRangeElements(mode, start, end, count, type, indices);
+			this._DrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance);
 #if DEBUG
-			this.CheckErrors("DrawRangeElements");
+			this.CheckErrors("DrawElementsInstancedBaseVertexBaseInstance");
 #endif
 		}
 
@@ -6200,11 +6184,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex)
+		public void DrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices)
 		{
-			this._DrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+			this._DrawRangeElements(mode, start, end, count, type, indices);
 #if DEBUG
-			this.CheckErrors("DrawRangeElementsBaseVertex");
+			this.CheckErrors("DrawRangeElements");
 #endif
 		}
 
@@ -6216,11 +6200,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawTransformFeedback(uint mode, uint id)
+		public void DrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex)
 		{
-			this._DrawTransformFeedback(mode, id);
+			this._DrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
 #if DEBUG
-			this.CheckErrors("DrawTransformFeedback");
+			this.CheckErrors("DrawRangeElementsBaseVertex");
 #endif
 		}
 
@@ -6232,11 +6216,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawTransformFeedbackInstanced(uint mode, uint id, int instancecount)
+		public void DrawTransformFeedback(uint mode, uint id)
 		{
-			this._DrawTransformFeedbackInstanced(mode, id, instancecount);
+			this._DrawTransformFeedback(mode, id);
 #if DEBUG
-			this.CheckErrors("DrawTransformFeedbackInstanced");
+			this.CheckErrors("DrawTransformFeedback");
 #endif
 		}
 
@@ -6248,11 +6232,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawTransformFeedbackStream(uint mode, uint id, uint stream)
+		public void DrawTransformFeedbackInstanced(uint mode, uint id, int instancecount)
 		{
-			this._DrawTransformFeedbackStream(mode, id, stream);
+			this._DrawTransformFeedbackInstanced(mode, id, instancecount);
 #if DEBUG
-			this.CheckErrors("DrawTransformFeedbackStream");
+			this.CheckErrors("DrawTransformFeedbackInstanced");
 #endif
 		}
 
@@ -6264,11 +6248,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount)
+		public void DrawTransformFeedbackStream(uint mode, uint id, uint stream)
 		{
-			this._DrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
+			this._DrawTransformFeedbackStream(mode, id, stream);
 #if DEBUG
-			this.CheckErrors("DrawTransformFeedbackStreamInstanced");
+			this.CheckErrors("DrawTransformFeedbackStream");
 #endif
 		}
 
@@ -6280,17 +6264,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void Enable(uint cap)
+		public void DrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount)
 		{
-			this._Enable(cap);
+			this._DrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
 #if DEBUG
-			this.CheckErrors("Enable");
+			this.CheckErrors("DrawTransformFeedbackStreamInstanced");
 #endif
 		}
 
 		public void Enable(EnableCap cap)
 		{
 			this._Enable((uint)cap);
+#if DEBUG
+			this.CheckErrors("Enable");
+#endif
+		}
+
+		public void Enable(uint cap)
+		{
+			this._Enable(cap);
 #if DEBUG
 			this.CheckErrors("Enable");
 #endif
@@ -6377,17 +6369,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void FlushMappedBufferRange(uint target, int offset, int length)
+		public void FlushMappedBufferRange(BufferTarget target, int offset, int length)
 		{
-			this._FlushMappedBufferRange(target, offset, length);
+			this._FlushMappedBufferRange((uint)target, offset, length);
 #if DEBUG
 			this.CheckErrors("FlushMappedBufferRange");
 #endif
 		}
 
-		public void FlushMappedBufferRange(BufferTargetARB target, int offset, int length)
+		public void FlushMappedBufferRange(uint target, int offset, int length)
 		{
-			this._FlushMappedBufferRange((uint)target, offset, length);
+			this._FlushMappedBufferRange(target, offset, length);
 #if DEBUG
 			this.CheckErrors("FlushMappedBufferRange");
 #endif
@@ -6457,17 +6449,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void FrontFace(uint mode)
+		public void FrontFace(FrontFaceDirection mode)
 		{
-			this._FrontFace(mode);
+			this._FrontFace((uint)mode);
 #if DEBUG
 			this.CheckErrors("FrontFace");
 #endif
 		}
 
-		public void FrontFace(FrontFaceDirection mode)
+		public void FrontFace(uint mode)
 		{
-			this._FrontFace((uint)mode);
+			this._FrontFace(mode);
 #if DEBUG
 			this.CheckErrors("FrontFace");
 #endif
@@ -6720,6 +6712,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetBooleanv(GetPName pname, bool[] data)
+		{
+			this._GetBooleanv((uint)pname, data);
+#if DEBUG
+			this.CheckErrors("GetBooleanv");
+#endif
+		}
+
 		public void GetBooleanv(uint pname, bool[] data)
 		{
 			this._GetBooleanv(pname, data);
@@ -6728,11 +6728,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetBooleanv(GetPName pname, bool[] data)
+		public void GetBufferParameteri64v(BufferTarget target, uint pname, long[] @params)
 		{
-			this._GetBooleanv((uint)pname, data);
+			this._GetBufferParameteri64v((uint)target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetBooleanv");
+			this.CheckErrors("GetBufferParameteri64v");
 #endif
 		}
 
@@ -6744,11 +6744,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetBufferParameteri64v(BufferTargetARB target, uint pname, long[] @params)
+		public void GetBufferParameteriv(BufferTarget target, uint pname, int[] @params)
 		{
-			this._GetBufferParameteri64v((uint)target, pname, @params);
+			this._GetBufferParameteriv((uint)target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetBufferParameteri64v");
+			this.CheckErrors("GetBufferParameteriv");
 #endif
 		}
 
@@ -6760,11 +6760,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetBufferParameteriv(BufferTargetARB target, uint pname, int[] @params)
+		public void GetBufferPointerv(BufferTarget target, uint pname, IntPtr[] @params)
 		{
-			this._GetBufferParameteriv((uint)target, pname, @params);
+			this._GetBufferPointerv((uint)target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetBufferParameteriv");
+			this.CheckErrors("GetBufferPointerv");
 #endif
 		}
 
@@ -6776,11 +6776,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetBufferPointerv(BufferTargetARB target, uint pname, IntPtr[] @params)
+		public void GetBufferSubData(BufferTarget target, int offset, int size, IntPtr data)
 		{
-			this._GetBufferPointerv((uint)target, pname, @params);
+			this._GetBufferSubData((uint)target, offset, size, data);
 #if DEBUG
-			this.CheckErrors("GetBufferPointerv");
+			this.CheckErrors("GetBufferSubData");
 #endif
 		}
 
@@ -6792,25 +6792,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetBufferSubData(BufferTargetARB target, int offset, int size, IntPtr data)
+		public void GetCompressedTexImage(TextureTarget target, int level, IntPtr img)
 		{
-			this._GetBufferSubData((uint)target, offset, size, data);
+			this._GetCompressedTexImage((uint)target, level, img);
 #if DEBUG
-			this.CheckErrors("GetBufferSubData");
+			this.CheckErrors("GetCompressedTexImage");
 #endif
 		}
 
 		public void GetCompressedTexImage(uint target, int level, IntPtr img)
 		{
 			this._GetCompressedTexImage(target, level, img);
-#if DEBUG
-			this.CheckErrors("GetCompressedTexImage");
-#endif
-		}
-
-		public void GetCompressedTexImage(TextureTarget target, int level, IntPtr img)
-		{
-			this._GetCompressedTexImage((uint)target, level, img);
 #if DEBUG
 			this.CheckErrors("GetCompressedTexImage");
 #endif
@@ -6849,17 +6841,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetDoublev(uint pname, double[] data)
+		public void GetDoublev(GetPName pname, double[] data)
 		{
-			this._GetDoublev(pname, data);
+			this._GetDoublev((uint)pname, data);
 #if DEBUG
 			this.CheckErrors("GetDoublev");
 #endif
 		}
 
-		public void GetDoublev(GetPName pname, double[] data)
+		public void GetDoublev(uint pname, double[] data)
 		{
-			this._GetDoublev((uint)pname, data);
+			this._GetDoublev(pname, data);
 #if DEBUG
 			this.CheckErrors("GetDoublev");
 #endif
@@ -6873,17 +6865,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetFloatv(uint pname, float[] data)
+		public void GetFloatv(GetPName pname, float[] data)
 		{
-			this._GetFloatv(pname, data);
+			this._GetFloatv((uint)pname, data);
 #if DEBUG
 			this.CheckErrors("GetFloatv");
 #endif
 		}
 
-		public void GetFloatv(GetPName pname, float[] data)
+		public void GetFloatv(uint pname, float[] data)
 		{
-			this._GetFloatv((uint)pname, data);
+			this._GetFloatv(pname, data);
 #if DEBUG
 			this.CheckErrors("GetFloatv");
 #endif
@@ -6956,17 +6948,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetIntegerv(uint pname, int[] data)
+		public void GetIntegerv(GetPName pname, int[] data)
 		{
-			this._GetIntegerv(pname, data);
+			this._GetIntegerv((uint)pname, data);
 #if DEBUG
 			this.CheckErrors("GetIntegerv");
 #endif
 		}
 
-		public void GetIntegerv(GetPName pname, int[] data)
+		public void GetIntegerv(uint pname, int[] data)
 		{
-			this._GetIntegerv((uint)pname, data);
+			this._GetIntegerv(pname, data);
 #if DEBUG
 			this.CheckErrors("GetIntegerv");
 #endif
@@ -7119,14 +7111,6 @@ namespace GLDotNet
 		public void GetPointerv(uint pname, IntPtr[] @params)
 		{
 			this._GetPointerv(pname, @params);
-#if DEBUG
-			this.CheckErrors("GetPointerv");
-#endif
-		}
-
-		public void GetPointerv(GetPointervPName pname, IntPtr[] @params)
-		{
-			this._GetPointerv((uint)pname, @params);
 #if DEBUG
 			this.CheckErrors("GetPointerv");
 #endif
@@ -7386,14 +7370,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexImage(uint target, int level, uint format, uint type, IntPtr pixels)
-		{
-			this._GetTexImage(target, level, format, type, pixels);
-#if DEBUG
-			this.CheckErrors("GetTexImage");
-#endif
-		}
-
 		public void GetTexImage(TextureTarget target, int level, PixelFormat format, PixelType type, IntPtr pixels)
 		{
 			this._GetTexImage((uint)target, level, (uint)format, (uint)type, pixels);
@@ -7402,11 +7378,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
+		public void GetTexImage(uint target, int level, uint format, uint type, IntPtr pixels)
 		{
-			this._GetTexLevelParameterfv(target, level, pname, @params);
+			this._GetTexImage(target, level, format, type, pixels);
 #if DEBUG
-			this.CheckErrors("GetTexLevelParameterfv");
+			this.CheckErrors("GetTexImage");
 #endif
 		}
 
@@ -7418,11 +7394,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
+		public void GetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
 		{
-			this._GetTexLevelParameteriv(target, level, pname, @params);
+			this._GetTexLevelParameterfv(target, level, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetTexLevelParameteriv");
+			this.CheckErrors("GetTexLevelParameterfv");
 #endif
 		}
 
@@ -7434,11 +7410,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexParameterfv(uint target, uint pname, float[] @params)
+		public void GetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
 		{
-			this._GetTexParameterfv(target, pname, @params);
+			this._GetTexLevelParameteriv(target, level, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetTexParameterfv");
+			this.CheckErrors("GetTexLevelParameteriv");
 #endif
 		}
 
@@ -7450,11 +7426,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexParameterIiv(uint target, uint pname, int[] @params)
+		public void GetTexParameterfv(uint target, uint pname, float[] @params)
 		{
-			this._GetTexParameterIiv(target, pname, @params);
+			this._GetTexParameterfv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetTexParameterIiv");
+			this.CheckErrors("GetTexParameterfv");
 #endif
 		}
 
@@ -7466,11 +7442,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexParameterIuiv(uint target, uint pname, uint[] @params)
+		public void GetTexParameterIiv(uint target, uint pname, int[] @params)
 		{
-			this._GetTexParameterIuiv(target, pname, @params);
+			this._GetTexParameterIiv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetTexParameterIuiv");
+			this.CheckErrors("GetTexParameterIiv");
 #endif
 		}
 
@@ -7482,17 +7458,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void GetTexParameteriv(uint target, uint pname, int[] @params)
+		public void GetTexParameterIuiv(uint target, uint pname, uint[] @params)
 		{
-			this._GetTexParameteriv(target, pname, @params);
+			this._GetTexParameterIuiv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("GetTexParameteriv");
+			this.CheckErrors("GetTexParameterIuiv");
 #endif
 		}
 
 		public void GetTexParameteriv(TextureTarget target, GetTextureParameter pname, int[] @params)
 		{
 			this._GetTexParameteriv((uint)target, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTexParameteriv");
+#endif
+		}
+
+		public void GetTexParameteriv(uint target, uint pname, int[] @params)
+		{
+			this._GetTexParameteriv(target, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetTexParameteriv");
 #endif
@@ -7740,17 +7724,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void Hint(uint target, uint mode)
+		public void Hint(HintTarget target, HintMode mode)
 		{
-			this._Hint(target, mode);
+			this._Hint((uint)target, (uint)mode);
 #if DEBUG
 			this.CheckErrors("Hint");
 #endif
 		}
 
-		public void Hint(HintTarget target, HintMode mode)
+		public void Hint(uint target, uint mode)
 		{
-			this._Hint((uint)target, (uint)mode);
+			this._Hint(target, mode);
 #if DEBUG
 			this.CheckErrors("Hint");
 #endif
@@ -7829,18 +7813,18 @@ namespace GLDotNet
 			return result;
 		}
 
-		public bool IsEnabled(uint cap)
+		public bool IsEnabled(EnableCap cap)
 		{
-			var result = this._IsEnabled(cap);
+			var result = this._IsEnabled((uint)cap);
 #if DEBUG
 			this.CheckErrors("IsEnabled");
 #endif
 			return result;
 		}
 
-		public bool IsEnabled(EnableCap cap)
+		public bool IsEnabled(uint cap)
 		{
-			var result = this._IsEnabled((uint)cap);
+			var result = this._IsEnabled(cap);
 #if DEBUG
 			this.CheckErrors("IsEnabled");
 #endif
@@ -7963,6 +7947,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void LogicOp(LogicOp opcode)
+		{
+			this._LogicOp((uint)opcode);
+#if DEBUG
+			this.CheckErrors("LogicOp");
+#endif
+		}
+
 		public void LogicOp(uint opcode)
 		{
 			this._LogicOp(opcode);
@@ -7971,12 +7963,13 @@ namespace GLDotNet
 #endif
 		}
 
-		public void LogicOp(LogicOp opcode)
+		public IntPtr MapBuffer(BufferTarget target, BufferAccess access)
 		{
-			this._LogicOp((uint)opcode);
+			var result = this._MapBuffer((uint)target, (uint)access);
 #if DEBUG
-			this.CheckErrors("LogicOp");
+			this.CheckErrors("MapBuffer");
 #endif
+			return result;
 		}
 
 		public IntPtr MapBuffer(uint target, uint access)
@@ -7988,11 +7981,11 @@ namespace GLDotNet
 			return result;
 		}
 
-		public IntPtr MapBuffer(BufferTargetARB target, BufferAccessARB access)
+		public IntPtr MapBufferRange(BufferTarget target, int offset, int length, uint access)
 		{
-			var result = this._MapBuffer((uint)target, (uint)access);
+			var result = this._MapBufferRange((uint)target, offset, length, access);
 #if DEBUG
-			this.CheckErrors("MapBuffer");
+			this.CheckErrors("MapBufferRange");
 #endif
 			return result;
 		}
@@ -8000,15 +7993,6 @@ namespace GLDotNet
 		public IntPtr MapBufferRange(uint target, int offset, int length, uint access)
 		{
 			var result = this._MapBufferRange(target, offset, length, access);
-#if DEBUG
-			this.CheckErrors("MapBufferRange");
-#endif
-			return result;
-		}
-
-		public IntPtr MapBufferRange(BufferTargetARB target, int offset, int length, uint access)
-		{
-			var result = this._MapBufferRange((uint)target, offset, length, access);
 #if DEBUG
 			this.CheckErrors("MapBufferRange");
 #endif
@@ -8057,14 +8041,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawArrays(uint mode, int[] first, int[] count, int drawcount)
-		{
-			this._MultiDrawArrays(mode, first, count, drawcount);
-#if DEBUG
-			this.CheckErrors("MultiDrawArrays");
-#endif
-		}
-
 		public void MultiDrawArrays(PrimitiveType mode, int[] first, int[] count, int drawcount)
 		{
 			this._MultiDrawArrays((uint)mode, first, count, drawcount);
@@ -8073,11 +8049,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride)
+		public void MultiDrawArrays(uint mode, int[] first, int[] count, int drawcount)
 		{
-			this._MultiDrawArraysIndirect(mode, indirect, drawcount, stride);
+			this._MultiDrawArrays(mode, first, count, drawcount);
 #if DEBUG
-			this.CheckErrors("MultiDrawArraysIndirect");
+			this.CheckErrors("MultiDrawArrays");
 #endif
 		}
 
@@ -8089,11 +8065,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawElements(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount)
+		public void MultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride)
 		{
-			this._MultiDrawElements(mode, count, type, indices, drawcount);
+			this._MultiDrawArraysIndirect(mode, indirect, drawcount, stride);
 #if DEBUG
-			this.CheckErrors("MultiDrawElements");
+			this.CheckErrors("MultiDrawArraysIndirect");
 #endif
 		}
 
@@ -8105,11 +8081,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount, int[] basevertex)
+		public void MultiDrawElements(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount)
 		{
-			this._MultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+			this._MultiDrawElements(mode, count, type, indices, drawcount);
 #if DEBUG
-			this.CheckErrors("MultiDrawElementsBaseVertex");
+			this.CheckErrors("MultiDrawElements");
 #endif
 		}
 
@@ -8121,17 +8097,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride)
+		public void MultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount, int[] basevertex)
 		{
-			this._MultiDrawElementsIndirect(mode, type, indirect, drawcount, stride);
+			this._MultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
 #if DEBUG
-			this.CheckErrors("MultiDrawElementsIndirect");
+			this.CheckErrors("MultiDrawElementsBaseVertex");
 #endif
 		}
 
 		public void MultiDrawElementsIndirect(PrimitiveType mode, uint type, IntPtr indirect, int drawcount, int stride)
 		{
 			this._MultiDrawElementsIndirect((uint)mode, type, indirect, drawcount, stride);
+#if DEBUG
+			this.CheckErrors("MultiDrawElementsIndirect");
+#endif
+		}
+
+		public void MultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride)
+		{
+			this._MultiDrawElementsIndirect(mode, type, indirect, drawcount, stride);
 #if DEBUG
 			this.CheckErrors("MultiDrawElementsIndirect");
 #endif
@@ -8273,14 +8257,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void PixelStoref(uint pname, float param)
-		{
-			this._PixelStoref(pname, param);
-#if DEBUG
-			this.CheckErrors("PixelStoref");
-#endif
-		}
-
 		public void PixelStoref(PixelStoreParameter pname, float param)
 		{
 			this._PixelStoref((uint)pname, param);
@@ -8289,17 +8265,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void PixelStorei(uint pname, int param)
+		public void PixelStoref(uint pname, float param)
 		{
-			this._PixelStorei(pname, param);
+			this._PixelStoref(pname, param);
 #if DEBUG
-			this.CheckErrors("PixelStorei");
+			this.CheckErrors("PixelStoref");
 #endif
 		}
 
 		public void PixelStorei(PixelStoreParameter pname, int param)
 		{
 			this._PixelStorei((uint)pname, param);
+#if DEBUG
+			this.CheckErrors("PixelStorei");
+#endif
+		}
+
+		public void PixelStorei(uint pname, int param)
+		{
+			this._PixelStorei(pname, param);
 #if DEBUG
 			this.CheckErrors("PixelStorei");
 #endif
@@ -8345,17 +8329,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void PolygonMode(uint face, uint mode)
+		public void PolygonMode(MaterialFace face, PolygonMode mode)
 		{
-			this._PolygonMode(face, mode);
+			this._PolygonMode((uint)face, (uint)mode);
 #if DEBUG
 			this.CheckErrors("PolygonMode");
 #endif
 		}
 
-		public void PolygonMode(MaterialFace face, PolygonMode mode)
+		public void PolygonMode(uint face, uint mode)
 		{
-			this._PolygonMode((uint)face, (uint)mode);
+			this._PolygonMode(face, mode);
 #if DEBUG
 			this.CheckErrors("PolygonMode");
 #endif
@@ -8825,17 +8809,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void ReadBuffer(uint src)
+		public void ReadBuffer(ReadBufferMode src)
 		{
-			this._ReadBuffer(src);
+			this._ReadBuffer((uint)src);
 #if DEBUG
 			this.CheckErrors("ReadBuffer");
 #endif
 		}
 
-		public void ReadBuffer(ReadBufferMode src)
+		public void ReadBuffer(uint src)
 		{
-			this._ReadBuffer((uint)src);
+			this._ReadBuffer(src);
 #if DEBUG
 			this.CheckErrors("ReadBuffer");
 #endif
@@ -8849,17 +8833,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void ReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels)
+		public void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels)
 		{
-			this._ReadPixels(x, y, width, height, format, type, pixels);
+			this._ReadPixels(x, y, width, height, (uint)format, (uint)type, pixels);
 #if DEBUG
 			this.CheckErrors("ReadPixels");
 #endif
 		}
 
-		public void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels)
+		public void ReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels)
 		{
-			this._ReadPixels(x, y, width, height, (uint)format, (uint)type, pixels);
+			this._ReadPixels(x, y, width, height, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("ReadPixels");
 #endif
@@ -9009,14 +8993,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void StencilFunc(uint func, int @ref, uint mask)
-		{
-			this._StencilFunc(func, @ref, mask);
-#if DEBUG
-			this.CheckErrors("StencilFunc");
-#endif
-		}
-
 		public void StencilFunc(StencilFunction func, int @ref, uint mask)
 		{
 			this._StencilFunc((uint)func, @ref, mask);
@@ -9025,17 +9001,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void StencilFuncSeparate(uint face, uint func, int @ref, uint mask)
+		public void StencilFunc(uint func, int @ref, uint mask)
 		{
-			this._StencilFuncSeparate(face, func, @ref, mask);
+			this._StencilFunc(func, @ref, mask);
 #if DEBUG
-			this.CheckErrors("StencilFuncSeparate");
+			this.CheckErrors("StencilFunc");
 #endif
 		}
 
 		public void StencilFuncSeparate(StencilFaceDirection face, StencilFunction func, int @ref, uint mask)
 		{
 			this._StencilFuncSeparate((uint)face, (uint)func, @ref, mask);
+#if DEBUG
+			this.CheckErrors("StencilFuncSeparate");
+#endif
+		}
+
+		public void StencilFuncSeparate(uint face, uint func, int @ref, uint mask)
+		{
+			this._StencilFuncSeparate(face, func, @ref, mask);
 #if DEBUG
 			this.CheckErrors("StencilFuncSeparate");
 #endif
@@ -9049,14 +9033,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void StencilMaskSeparate(uint face, uint mask)
-		{
-			this._StencilMaskSeparate(face, mask);
-#if DEBUG
-			this.CheckErrors("StencilMaskSeparate");
-#endif
-		}
-
 		public void StencilMaskSeparate(StencilFaceDirection face, uint mask)
 		{
 			this._StencilMaskSeparate((uint)face, mask);
@@ -9065,11 +9041,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void StencilOp(uint fail, uint zfail, uint zpass)
+		public void StencilMaskSeparate(uint face, uint mask)
 		{
-			this._StencilOp(fail, zfail, zpass);
+			this._StencilMaskSeparate(face, mask);
 #if DEBUG
-			this.CheckErrors("StencilOp");
+			this.CheckErrors("StencilMaskSeparate");
 #endif
 		}
 
@@ -9081,11 +9057,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void StencilOpSeparate(uint face, uint sfail, uint dpfail, uint dppass)
+		public void StencilOp(uint fail, uint zfail, uint zpass)
 		{
-			this._StencilOpSeparate(face, sfail, dpfail, dppass);
+			this._StencilOp(fail, zfail, zpass);
 #if DEBUG
-			this.CheckErrors("StencilOpSeparate");
+			this.CheckErrors("StencilOp");
 #endif
 		}
 
@@ -9097,17 +9073,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexBuffer(uint target, uint internalformat, uint buffer)
+		public void StencilOpSeparate(uint face, uint sfail, uint dpfail, uint dppass)
 		{
-			this._TexBuffer(target, internalformat, buffer);
+			this._StencilOpSeparate(face, sfail, dpfail, dppass);
 #if DEBUG
-			this.CheckErrors("TexBuffer");
+			this.CheckErrors("StencilOpSeparate");
 #endif
 		}
 
 		public void TexBuffer(TextureTarget target, uint internalformat, uint buffer)
 		{
 			this._TexBuffer((uint)target, internalformat, buffer);
+#if DEBUG
+			this.CheckErrors("TexBuffer");
+#endif
+		}
+
+		public void TexBuffer(uint target, uint internalformat, uint buffer)
+		{
+			this._TexBuffer(target, internalformat, buffer);
 #if DEBUG
 			this.CheckErrors("TexBuffer");
 #endif
@@ -9121,14 +9105,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels)
-		{
-			this._TexImage1D(target, level, internalformat, width, border, format, type, pixels);
-#if DEBUG
-			this.CheckErrors("TexImage1D");
-#endif
-		}
-
 		public void TexImage1D(TextureTarget target, int level, int internalformat, int width, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
 			this._TexImage1D((uint)target, level, internalformat, width, border, (uint)format, (uint)type, pixels);
@@ -9137,17 +9113,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
+		public void TexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels)
 		{
-			this._TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+			this._TexImage1D(target, level, internalformat, width, border, format, type, pixels);
 #if DEBUG
-			this.CheckErrors("TexImage2D");
+			this.CheckErrors("TexImage1D");
 #endif
 		}
 
 		public void TexImage2D(TextureTarget target, int level, int internalformat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
 			this._TexImage2D((uint)target, level, internalformat, width, height, border, (uint)format, (uint)type, pixels);
+#if DEBUG
+			this.CheckErrors("TexImage2D");
+#endif
+		}
+
+		public void TexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
+		{
+			this._TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage2D");
 #endif
@@ -9161,17 +9145,17 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
+		public void TexImage3D(TextureTarget target, int level, int internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
-			this._TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+			this._TexImage3D((uint)target, level, internalformat, width, height, depth, border, (uint)format, (uint)type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage3D");
 #endif
 		}
 
-		public void TexImage3D(TextureTarget target, int level, int internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels)
+		public void TexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
 		{
-			this._TexImage3D((uint)target, level, internalformat, width, height, depth, border, (uint)format, (uint)type, pixels);
+			this._TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage3D");
 #endif
@@ -9185,14 +9169,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameterf(uint target, uint pname, float param)
-		{
-			this._TexParameterf(target, pname, param);
-#if DEBUG
-			this.CheckErrors("TexParameterf");
-#endif
-		}
-
 		public void TexParameterf(TextureTarget target, TextureParameterName pname, float param)
 		{
 			this._TexParameterf((uint)target, (uint)pname, param);
@@ -9201,11 +9177,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameterfv(uint target, uint pname, float[] @params)
+		public void TexParameterf(uint target, uint pname, float param)
 		{
-			this._TexParameterfv(target, pname, @params);
+			this._TexParameterf(target, pname, param);
 #if DEBUG
-			this.CheckErrors("TexParameterfv");
+			this.CheckErrors("TexParameterf");
 #endif
 		}
 
@@ -9217,11 +9193,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameteri(uint target, uint pname, int param)
+		public void TexParameterfv(uint target, uint pname, float[] @params)
 		{
-			this._TexParameteri(target, pname, param);
+			this._TexParameterfv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("TexParameteri");
+			this.CheckErrors("TexParameterfv");
 #endif
 		}
 
@@ -9233,11 +9209,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameterIiv(uint target, uint pname, int[] @params)
+		public void TexParameteri(uint target, uint pname, int param)
 		{
-			this._TexParameterIiv(target, pname, @params);
+			this._TexParameteri(target, pname, param);
 #if DEBUG
-			this.CheckErrors("TexParameterIiv");
+			this.CheckErrors("TexParameteri");
 #endif
 		}
 
@@ -9249,11 +9225,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameterIuiv(uint target, uint pname, uint[] @params)
+		public void TexParameterIiv(uint target, uint pname, int[] @params)
 		{
-			this._TexParameterIuiv(target, pname, @params);
+			this._TexParameterIiv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("TexParameterIuiv");
+			this.CheckErrors("TexParameterIiv");
 #endif
 		}
 
@@ -9265,17 +9241,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexParameteriv(uint target, uint pname, int[] @params)
+		public void TexParameterIuiv(uint target, uint pname, uint[] @params)
 		{
-			this._TexParameteriv(target, pname, @params);
+			this._TexParameterIuiv(target, pname, @params);
 #if DEBUG
-			this.CheckErrors("TexParameteriv");
+			this.CheckErrors("TexParameterIuiv");
 #endif
 		}
 
 		public void TexParameteriv(TextureTarget target, TextureParameterName pname, int[] @params)
 		{
 			this._TexParameteriv((uint)target, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("TexParameteriv");
+#endif
+		}
+
+		public void TexParameteriv(uint target, uint pname, int[] @params)
+		{
+			this._TexParameteriv(target, pname, @params);
 #if DEBUG
 			this.CheckErrors("TexParameteriv");
 #endif
@@ -9321,14 +9305,6 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
-		{
-			this._TexSubImage1D(target, level, xoffset, width, format, type, pixels);
-#if DEBUG
-			this.CheckErrors("TexSubImage1D");
-#endif
-		}
-
 		public void TexSubImage1D(TextureTarget target, int level, int xoffset, int width, PixelFormat format, PixelType type, IntPtr pixels)
 		{
 			this._TexSubImage1D((uint)target, level, xoffset, width, (uint)format, (uint)type, pixels);
@@ -9337,11 +9313,11 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
+		public void TexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
 		{
-			this._TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+			this._TexSubImage1D(target, level, xoffset, width, format, type, pixels);
 #if DEBUG
-			this.CheckErrors("TexSubImage2D");
+			this.CheckErrors("TexSubImage1D");
 #endif
 		}
 
@@ -9353,17 +9329,25 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
+		public void TexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
 		{
-			this._TexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+			this._TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 #if DEBUG
-			this.CheckErrors("TexSubImage3D");
+			this.CheckErrors("TexSubImage2D");
 #endif
 		}
 
 		public void TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, PixelType type, IntPtr pixels)
 		{
 			this._TexSubImage3D((uint)target, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, (uint)type, pixels);
+#if DEBUG
+			this.CheckErrors("TexSubImage3D");
+#endif
+		}
+
+		public void TexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
+		{
+			this._TexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("TexSubImage3D");
 #endif
@@ -9953,18 +9937,18 @@ namespace GLDotNet
 #endif
 		}
 
-		public bool UnmapBuffer(uint target)
+		public bool UnmapBuffer(BufferTarget target)
 		{
-			var result = this._UnmapBuffer(target);
+			var result = this._UnmapBuffer((uint)target);
 #if DEBUG
 			this.CheckErrors("UnmapBuffer");
 #endif
 			return result;
 		}
 
-		public bool UnmapBuffer(BufferTargetARB target)
+		public bool UnmapBuffer(uint target)
 		{
-			var result = this._UnmapBuffer((uint)target);
+			var result = this._UnmapBuffer(target);
 #if DEBUG
 			this.CheckErrors("UnmapBuffer");
 #endif

@@ -24,6 +24,8 @@ namespace GLGenerator
 
             public List<string> EnumNames { get; } = new List<string>();
 
+            public bool IsInUse { get; set; }
+
             public override string ToString() => this.Name;
         }
 
@@ -76,64 +78,17 @@ namespace GLGenerator
         }
 
         static void Main(string[] args)
-        {
+        {            
+            var lines = File.ReadAllLines("glcorearb.h");
             var xml = XDocument.Load("gl.xml");
 
             var enumGroups = new List<EnumGroupData>();
-
-            foreach (var groupNode in xml.Descendants("group"))
-            {
-                if (groupNode.Attribute("name").Value == "Boolean")
-                    continue;
-
-                var enumGroup = new EnumGroupData()
-                {
-                    Name = groupNode.Attribute("name").Value,
-                    Type = "uint"
-                };
-
-                foreach (var enumNode in groupNode.Elements())
-                {
-                    enumGroup.EnumNames.Add(enumNode.Attribute("name").Value);
-                }
-
-                enumGroups.Add(enumGroup);
-            }
-
-            var lines = File.ReadAllLines("glcorearb.h");
             var enums = new List<EnumData>();
             var functions = new List<FunctionData>();
 
-            Parse(lines, enums, functions);
-
-            foreach (var commandNode in xml.Descendants("command"))
-            {
-                var functionName = commandNode.Element("proto")?.Element("name")?.Value;
-
-                if (functionName == null)
-                    continue;
-
-                var function = functions.SingleOrDefault(x => x.Name == functionName);
-
-                if (function == null)
-                    continue;
-
-                foreach (var paramNode in commandNode.Elements("param").Where(x => x.Attribute("group") != null))
-                {
-                    var enumGroup = enumGroups.SingleOrDefault(x => x.Name == paramNode.Attribute("group").Value);
-
-                    if (enumGroup == null)
-                        continue;
-
-                    var functionParam = function.Params.SingleOrDefault(x => x.Name == paramNode.Element("name").Value);
-
-                    if (functionParam == null)
-                        continue;
-
-                    functionParam.EnumGroup = enumGroup;
-                }
-            }
-
+            ParseHeaderFile(lines, enums, functions);
+            ParseXmlFile(xml, enumGroups, enums, functions);
+                        
             functions.Single(x => x.Name == "glGetError").OutputPublicMethod = false;
             functions.Single(x => x.Name == "glGetString").OutputPublicMethod = false;
             functions.Single(x => x.Name == "glLinkProgram").OutputPublicMethod = false;
@@ -162,11 +117,76 @@ namespace GLGenerator
             var glUniformMatrix4fv = functions.Single(x => x.Name == "glUniformMatrix4fv");
             glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
 
-            WriteEnumGroups(enumGroups);
+            WriteEnumGroups(enumGroups, enums);
             Write(enumGroups, enums, functions);
         }
 
-        private static void Parse(string[] lines, List<EnumData> enums, List<FunctionData> functions)
+        private static void ParseXmlFile(XDocument xml, List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
+        {
+            foreach (var groupNode in xml.Descendants("group"))
+            {
+                if (groupNode.Attribute("name").Value == "Boolean")
+                    continue;
+
+                var enumGroup = new EnumGroupData()
+                {
+                    Name = groupNode.Attribute("name").Value,
+                    Type = "uint"
+                };
+
+                foreach (var enumNode in groupNode.Elements())
+                {
+                    //if (removedEnums.Contains(enumNode.Attribute("name").Value))
+                    //    continue;
+
+                    var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumNode.Attribute("name").Value);
+
+                    if (@enum != null)
+                    {
+                        enumGroup.EnumNames.Add(enumNode.Attribute("name").Value);
+                    }
+                }
+
+                if (enumGroup.EnumNames.Any())
+                    enumGroups.Add(enumGroup);
+            }
+
+            foreach (var commandNode in xml.Descendants("command"))
+            {
+                var functionName = commandNode.Element("proto")?.Element("name")?.Value;
+
+                if (functionName == null)
+                    continue;
+
+                var function = functions.SingleOrDefault(x => x.Name == functionName);
+
+                if (function == null)
+                    continue;
+
+                foreach (var paramNode in commandNode.Elements("param").Where(x => x.Attribute("group") != null))
+                {
+                    var enumGroup = enumGroups.SingleOrDefault(x => x.Name == paramNode.Attribute("group").Value);
+
+                    if (enumGroup == null)
+                        continue;
+
+                    var functionParam = function.Params.SingleOrDefault(x => x.Name == paramNode.Element("name").Value);
+
+                    if (functionParam == null)
+                        continue;
+
+                    functionParam.EnumGroup = enumGroup;
+                    enumGroup.IsInUse = true;
+                }
+            }
+
+            foreach (var enumGroup in enumGroups.Where(x => !x.IsInUse).ToArray())
+            {
+                enumGroups.Remove(enumGroup);
+            }
+        }
+
+        private static void ParseHeaderFile(string[] lines, List<EnumData> enums, List<FunctionData> functions)
         {
             int versionMajor = 0;
             int versionMinor = 0;
@@ -260,7 +280,7 @@ namespace GLGenerator
             }
         }
 
-        private static void WriteEnumGroups(List<EnumGroupData> enumGroups)
+        private static void WriteEnumGroups(List<EnumGroupData> enumGroups, List<EnumData> enums)
         {
             StringBuilder sb = new StringBuilder(1024);
 
@@ -270,11 +290,40 @@ namespace GLGenerator
             sb.AppendLine("{");
 
             foreach (var enumGroup in enumGroups.OrderBy(x => x.Name))
-            {
-                string name = enumGroup.Name;
-                                
-                sb.AppendLine($"\t\tpublic enum {name} : {enumGroup.Type}");
+            {                                
+                sb.AppendLine($"\t\tpublic enum {GetEnumGroupName(enumGroup)} : {enumGroup.Type}");
                 sb.AppendLine("\t\t{");
+
+                foreach (var enumName in enumGroup.EnumNames)
+                {
+                    var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumName);
+
+                    if (@enum != null)
+                    {
+                        string type = "uint";
+                        string name = @enum.Name;
+                        string value = @enum.Value;
+
+                        if (value == "0xFFFFFFFFFFFFFFFFull")
+                            value = "0xFFFFFFFFFFFFFFFF";
+
+                        if (value.EndsWith("ull") || value == "0xFFFFFFFFFFFFFFFF")
+                        {
+                            type = "ulong";
+                        }
+                        else if (value.EndsWith("u") || value == "0xFFFFFFFF")
+                        {
+                            type = "uint";
+                        }
+
+                        sb.AppendLine($"\t\t\t{name} = {value},");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"\t\t\t// {enumName}");
+                    }
+                }
+
                 sb.AppendLine("\t\t}");
                 sb.AppendLine();
             }
@@ -388,11 +437,44 @@ namespace GLGenerator
 
             foreach (var function in orderedFunctions.Where(x => x.OutputPublicMethod))
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
                 string returnType = GetReturnType(function.ReturnType);
-
                 string functionName = GetFunctionName(function.Name);
+                string parameters = null;
+                string parameterNames = null;
+
+                if (function.Params.Any(x => x.EnumGroup != null))
+                {
+                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, true) + " " + GetParamName(x.Name)));
+                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? x.EnumGroup.Type : null)));
+
+                    sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
+                    sb.AppendLine("\t\t{");
+
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
+                    }
+
+                    sb.AppendLine($"#if DEBUG");
+                    sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
+                    sb.AppendLine("#endif");
+
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\treturn result;");
+                    }
+
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
+
+                parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
+                parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
+
                 sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
                 sb.AppendLine("\t\t{");
 
@@ -436,36 +518,6 @@ namespace GLGenerator
                     sb.AppendLine("\t\t{");
                     sb.AppendLine($"\t\t\t{functionName}(1, UintBuffer);");
                     sb.AppendLine($"\t\t\treturn UintBuffer[0];");
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
-
-                if (function.Params.Any(x => x.EnumGroup != null))
-                {
-                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, true) + " " + GetParamName(x.Name)));
-                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? x.EnumGroup.Type : null)));
-
-                    sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
-                    sb.AppendLine("\t\t{");
-
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
-                    }
-
-                    sb.AppendLine($"#if DEBUG");
-                    sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
-                    sb.AppendLine("#endif");
-
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\treturn result;");
-                    }
-
                     sb.AppendLine("\t\t}");
                     sb.AppendLine();
                 }
@@ -517,7 +569,7 @@ namespace GLGenerator
         {
             if (useEnumGroup && param.EnumGroup != null)
             {
-                return param.EnumGroup.Name;
+                return GetEnumGroupName(param.EnumGroup);
             }
 
             string type = param.Type;
@@ -653,6 +705,16 @@ namespace GLGenerator
             {
                 name = $"({cast}){name}";
             }
+
+            return name;
+        }
+
+        private static string GetEnumGroupName(EnumGroupData enumGroup)
+        {
+            string name = enumGroup.Name;
+
+            if (name.EndsWith("ARB"))
+                name = name.Substring(0, name.Length - "ARB".Length);
 
             return name;
         }
