@@ -284,8 +284,6 @@ namespace GLGenerator
         {
             StringBuilder sb = new StringBuilder(1024);
 
-            sb.AppendLine("using System;");
-            sb.AppendLine();
             sb.AppendLine("namespace GLDotNet");
             sb.AppendLine("{");
 
@@ -298,30 +296,10 @@ namespace GLGenerator
                 {
                     var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumName);
 
-                    if (@enum != null)
-                    {
-                        string type = "uint";
-                        string name = @enum.Name;
-                        string value = @enum.Value;
-
-                        if (value == "0xFFFFFFFFFFFFFFFFull")
-                            value = "0xFFFFFFFFFFFFFFFF";
-
-                        if (value.EndsWith("ull") || value == "0xFFFFFFFFFFFFFFFF")
-                        {
-                            type = "ulong";
-                        }
-                        else if (value.EndsWith("u") || value == "0xFFFFFFFF")
-                        {
-                            type = "uint";
-                        }
-
-                        sb.AppendLine($"\t\t\t{name} = {value},");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"\t\t\t// {enumName}");
-                    }
+                    string name = GetEnumName(@enum.Name);
+                    string value = @enum.Value;
+                                                
+                    sb.AppendLine($"\t\t\t{name} = {value},");
                 }
 
                 sb.AppendLine("\t\t}");
@@ -715,6 +693,32 @@ namespace GLGenerator
 
             if (name.EndsWith("ARB"))
                 name = name.Substring(0, name.Length - "ARB".Length);
+
+            return name;
+        }
+
+        private static string GetEnumName(string input)
+        {
+            string[] parts = input.Split('_');
+            string[] temp = new string[parts.Length];
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i].Length > 0)
+                {
+                    int capitalizeLength = 1;
+
+                    if (parts[i].Length > 1 && char.IsDigit(parts[i][0]))
+                        capitalizeLength = 2;
+
+                    temp[i] = parts[i].Substring(0, capitalizeLength).ToUpper() + parts[i].Substring(capitalizeLength).ToLower();
+                }
+            }
+
+            string name = string.Join(string.Empty, temp);
+
+            if (char.IsDigit(name[0]))
+                name = "_" + name;
 
             return name;
         }
