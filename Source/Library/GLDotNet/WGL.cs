@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace GLDotNet.WPF
+namespace GLDotNet
 {
     public class WGL : IGLPlatformContext
     {
