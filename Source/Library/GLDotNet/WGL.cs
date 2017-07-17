@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if WGL
+
+using System;
 using System.Runtime.InteropServices;
 
 namespace GLDotNet
@@ -194,3 +196,5 @@ namespace GLDotNet
         }
     }
 }
+
+#endif
