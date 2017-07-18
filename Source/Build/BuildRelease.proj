@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+    <PropertyGroup>
+        <RootDir>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..'))\</RootDir>
+        <ExternalDir>$(RootDir)External\</ExternalDir>
+        <SourceDir>$(RootDir)Source\</SourceDir>
+        <OutputDir>$(RootDir)bin\</OutputDir>
+    </PropertyGroup>
+
+    <Import Project="$(SourceDir)Library\GLDotNet\GLDotNet.csproj" />
+    
+    <Target Name="LogParameters">
+        <Message Text="RootDir = $(RootDir)" />
+        <Message Text="OutputDir = $(OutputDir)" />
+    </Target>
+
+    <Target Name="Clean" DependsOnTargets="LogParameters">
+        <RemoveDir Directories="$(OutputDir)" />
+    </Target>
+
+    <Target Name="CopySource">
+        <MakeDir Directories="$(OutputDir)" />
+
+        <PropertyGroup>
+            <SourcePropsFileName>$(OutputDir)GLDotNet.props</SourcePropsFileName>
+        </PropertyGroup>
+        
+        <ItemGroup>
+            <FilesToCopy Include="@(Compile)" Exclude="Properties\AssemblyInfo.cs" />
+        </ItemGroup>
+
+        <PropertyGroup>
+            <CompileTags>@(FilesToCopy->'%24(MSBuildThisFileDirectory)%(Identity)', '&quot; /&gt;;&lt;Compile Include=&quot;')</CompileTags>
+        </PropertyGroup>
+        
+        <PropertyGroup>
+            <SourcePropsText>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&lt;Project ToolsVersion=&quot;15.0&quot; xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&lt;ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&lt;Compile Include=&quot;$(CompileTags)&quot; /&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&lt;/ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&lt;/Project&gt;;</SourcePropsText>
+        </PropertyGroup>
+        
+        <WriteLinesToFile
+            File="$(SourcePropsFileName)"
+            Lines="$(SourcePropsText)"
+            Overwrite="false" />
+
+        <Copy SourceFiles="@(FilesToCopy->'$(SourceDir)Library\GLDotNet\%(Identity)')"
+              DestinationFolder="$(OutputDir)" />
+    </Target>
+    
+    <Target Name="Build" DependsOnTargets="Clean;CopySource">
+        <Exec Command="&quot;$(ExternalDir)Amalgamate\Amalgamate.exe&quot; &quot;$(SourceDir)Library\GLDotNet&quot; &quot;$(OutputDir)GLDotNet.cs&quot;" />
+
+        <MSBuild Projects="$(SourceDir)GLDotNet.sln" Properties="Configuration=Release;Platform=Any CPU;OutputPath=$(OutputDir)" />
+    </Target>
+</Project>
