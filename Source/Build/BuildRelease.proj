@@ -52,8 +52,6 @@
     </Target>
     
     <Target Name="Build" DependsOnTargets="Clean;CopySource">
-        <Exec Command="&quot;$(ExternalDir)Amalgamate\Amalgamate.exe&quot; &quot;$(SourceDir)Library\GLDotNet&quot; &quot;$(OutputDir)GLDotNet.cs&quot;" />
-
         <MSBuild Projects="$(SourceDir)GLDotNet.sln" Properties="Configuration=Release;Platform=Any CPU;OutputPath=$(OutputDir)" />
     </Target>
 </Project>
