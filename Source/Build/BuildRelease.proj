@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<Project DefaultTargets="Build">
     <PropertyGroup>
         <RootDir>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..'))\</RootDir>
         <ExternalDir>$(RootDir)External\</ExternalDir>
@@ -26,19 +25,18 @@
         </PropertyGroup>
         
         <ItemGroup>
-            <FilesToCopy Include="@(Compile)" Exclude="Properties\AssemblyInfo.cs" />
+            <FilesToCopy Include="$(SourceDir)Library\GLDotNet\**\*.cs" />
         </ItemGroup>
 
         <PropertyGroup>
-            <CompileTags>@(FilesToCopy->'%24(MSBuildThisFileDirectory)%(Identity)', '&quot; /&gt;;&lt;Compile Include=&quot;')</CompileTags>
+            <CompileTags>@(FilesToCopy->'%24(MSBuildThisFileDirectory)%(Filename)%(Extension)', '&quot; /&gt;;&lt;Compile Include=&quot;')</CompileTags>
         </PropertyGroup>
         
         <PropertyGroup>
-            <SourcePropsText>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)&lt;Project ToolsVersion=&quot;15.0&quot; xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)&lt;ItemGroup&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)&lt;Compile Include=&quot;$(CompileTags)&quot; /&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)&lt;/ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>&lt;Project&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)  &lt;ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)    &lt;Compile Include=&quot;$(CompileTags)&quot; /&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)  &lt;/ItemGroup&gt;;</SourcePropsText>
             <SourcePropsText>$(SourcePropsText)&lt;/Project&gt;;</SourcePropsText>
         </PropertyGroup>
         
@@ -47,7 +45,7 @@
             Lines="$(SourcePropsText)"
             Overwrite="false" />
 
-        <Copy SourceFiles="@(FilesToCopy->'$(SourceDir)Library\GLDotNet\%(Identity)')"
+        <Copy SourceFiles="@(FilesToCopy)"
               DestinationFolder="$(OutputDir)" />
     </Target>
     
