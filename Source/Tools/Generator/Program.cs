@@ -79,8 +79,8 @@ namespace GLGenerator
 
         static void Main(string[] args)
         {            
-            var lines = File.ReadAllLines("glcorearb.h");
-            var xml = XDocument.Load("gl.xml");
+            var lines = File.ReadAllLines(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "glcorearb.h"));
+            var xml = XDocument.Load(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "gl.xml"));
 
             var enumGroups = new List<EnumGroupData>();
             var enums = new List<EnumData>();
@@ -308,7 +308,7 @@ namespace GLGenerator
 
             sb.AppendLine("}");
 
-            File.WriteAllText(@"..\..\..\..\Library\GLDotNet\GLEnums.Generated.cs", sb.ToString());
+            File.WriteAllText(@"..\..\Library\GLDotNet\GLEnums.Generated.cs", sb.ToString());
         }
 
         private static void Write(List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
@@ -504,7 +504,7 @@ namespace GLGenerator
             sb.AppendLine("\t}");
             sb.AppendLine("}");
 
-            File.WriteAllText(@"..\..\..\..\Library\GLDotNet\GL.Generated.cs", sb.ToString());
+            File.WriteAllText(@"..\..\Library\GLDotNet\GL.Generated.cs", sb.ToString());
         }
 
         private static string GetReturnType(string returnType)

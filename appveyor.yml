@@ -6,3 +6,4 @@ build:
 artifacts:
 - path: bin\*
   name: Output
+  
