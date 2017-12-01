@@ -117,5 +117,10 @@ namespace GLDotNet
                 throw new GLException($"Failed to link program: {infoLog}");
             }
         }
+
+        public void SwapBuffers()
+        {
+            this.platformContext.SwapBuffers();
+        }
     }
 }

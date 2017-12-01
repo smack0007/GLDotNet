@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;WGL</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;WIN32</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\GLDotNet\GLDotNet.csproj" />
+  </ItemGroup>
 
 </Project>

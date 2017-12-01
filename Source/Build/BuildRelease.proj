@@ -34,9 +34,9 @@
         
         <PropertyGroup>
             <SourcePropsText>&lt;Project&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)  &lt;ItemGroup&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)    &lt;Compile Include=&quot;$(CompileTags)&quot; /&gt;;</SourcePropsText>
-            <SourcePropsText>$(SourcePropsText)  &lt;/ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&nbsp;&nbsp;&lt;ItemGroup&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&nbsp;&nbsp;&nbsp;&nbsp;&lt;Compile Include=&quot;$(CompileTags)&quot; /&gt;;</SourcePropsText>
+            <SourcePropsText>$(SourcePropsText)&nbsp;&nbsp;&lt;/ItemGroup&gt;;</SourcePropsText>
             <SourcePropsText>$(SourcePropsText)&lt;/Project&gt;;</SourcePropsText>
         </PropertyGroup>
         
