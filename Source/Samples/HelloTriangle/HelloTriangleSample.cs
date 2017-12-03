@@ -12,24 +12,22 @@ namespace HelloTriangle
     public class HelloTriangleSample : Sample
     {
         private const string VertexShader = @"#version 450
+layout(location = 0) in vec3 vertPosition;
+layout(location = 1) in vec3 vertColor;
 
-layout(location = 0) in vec3 vertex_position;
-layout(location = 1) in vec3 vertex_colour;
-
-out vec3 colour;
+out vec3 fragColor;
 
 void main() {
-	colour = vertex_colour;
-	gl_Position = vec4(vertex_position, 1.0);
+	fragColor = vertColor;
+	gl_Position = vec4(vertPosition, 1.0);
 }";
 
         private const string FragmentShader = @"#version 450
-
-in vec3 colour;
-out vec4 frag_colour;
+in vec3 fragColor;
+out vec4 outColor;
 
 void main() {
-	frag_colour = vec4 (colour, 1.0);
+	outColor = vec4(fragColor, 1.0);
 }";
 
         private uint vertexArray;
@@ -66,12 +64,6 @@ void main() {
             this.GL.AttachShader(this.shaderProgram, fs);
             this.GL.AttachShader(this.shaderProgram, vs);
             this.GL.LinkProgram(this.shaderProgram);
-
-            var status = this.GL.GetProgramiv(this.shaderProgram, GL.LINK_STATUS);
-            if (status != GL.TRUE)
-            {
-                // TODO: Get error  
-            }
 
             this.GL.Enable(EnableCap.DepthTest);
             this.GL.DepthFunc(DepthFunction.Less);
