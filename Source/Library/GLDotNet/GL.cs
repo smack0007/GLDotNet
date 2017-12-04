@@ -20,6 +20,7 @@ namespace GLDotNet
 
         private void Initialize()
         {
+            this.Utility = new GLUtility(this);
         }
 
         private void CheckErrors(string functionName)
@@ -37,21 +38,6 @@ namespace GLDotNet
             {
                 this.BufferData(target, memory.Length, memory.DataPointer, usage);
             }
-        }
-
-        public uint CompileShader(string source, uint type)
-        {
-            var shaderHandle = this.CreateShader(type);
-            this.ShaderSource(shaderHandle, source);
-            this.CompileShader(shaderHandle);
-
-            if (this.GetShaderiv(shaderHandle, GL.COMPILE_STATUS) == GL.FALSE)
-            {
-                string infoLog = this.GetShaderInfoLog(shaderHandle);
-                throw new GLException($"Failed to compile shader: {infoLog}");
-            }
-
-            return shaderHandle;
         }
 
         private string GetErrorString(uint error)
@@ -108,16 +94,6 @@ namespace GLDotNet
             this._GetShaderiv(shader, pname, out int @params);
             CheckErrors("GetShaderiv");
             return @params;
-        }
-
-        public void LinkProgram(uint program)
-        {
-            this._LinkProgram(program);
-            if (this.GetProgramiv(program, GL.LINK_STATUS) == GL.FALSE)
-            {
-                string infoLog = this.GetProgramInfoLog(program);
-                throw new GLException($"Failed to link program: {infoLog}");
-            }
         }
 
         public void ShaderSource(uint shader, string source)

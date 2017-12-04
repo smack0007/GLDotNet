@@ -57,13 +57,9 @@ void main() {
             this.GL.EnableVertexAttribArray(0);
             this.GL.EnableVertexAttribArray(1);
 
-            uint vs = this.GL.CompileShader(VertexShader, GL.VERTEX_SHADER);
-            uint fs = this.GL.CompileShader(FragmentShader, GL.FRAGMENT_SHADER);            
-
-            this.shaderProgram = this.GL.CreateProgram();
-            this.GL.AttachShader(this.shaderProgram, fs);
-            this.GL.AttachShader(this.shaderProgram, vs);
-            this.GL.LinkProgram(this.shaderProgram);
+            uint vs = this.GL.Utility.CreateAndCompileShader(GL.VERTEX_SHADER, VertexShader);
+            uint fs = this.GL.Utility.CreateAndCompileShader(GL.FRAGMENT_SHADER, FragmentShader);
+            this.shaderProgram = this.GL.Utility.CreateAndLinkProgram(vs, fs);            
 
             this.GL.Enable(EnableCap.DepthTest);
             this.GL.DepthFunc(DepthFunction.Less);

@@ -7947,6 +7947,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void LinkProgram(uint program)
+		{
+			this._LinkProgram(program);
+#if DEBUG
+			this.CheckErrors("LinkProgram");
+#endif
+		}
+
 		public void LogicOp(LogicOp opcode)
 		{
 			this._LogicOp((uint)opcode);

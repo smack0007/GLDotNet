@@ -91,7 +91,6 @@ namespace GLGenerator
                         
             functions.Single(x => x.Name == "glGetError").OutputPublicMethod = false;
             functions.Single(x => x.Name == "glGetString").OutputPublicMethod = false;
-            functions.Single(x => x.Name == "glLinkProgram").OutputPublicMethod = false;
 
             var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
             glShaderSource.Params.Single(x => x.Name == "string").OverrideType("ref string");
