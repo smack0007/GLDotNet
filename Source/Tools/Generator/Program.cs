@@ -26,6 +26,8 @@ namespace GLGenerator
 
             public bool IsInUse { get; set; }
 
+            public bool HasFlagsAttribtue { get; set; }
+
             public override string ToString() => this.Name;
         }
 
@@ -47,6 +49,8 @@ namespace GLGenerator
             public List<FunctionParamData> Params { get; } = new List<FunctionParamData>();
 
             public bool OutputPublicMethod { get; set; } = true;
+
+            public bool DisableEnumGroupOverload { get; set; } = false;
 
             public override string ToString() => $"{this.ReturnType} {this.Name}({string.Join(", ", this.Params)})";
         }
@@ -116,6 +120,15 @@ namespace GLGenerator
             var glUniformMatrix4fv = functions.Single(x => x.Name == "glUniformMatrix4fv");
             glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
 
+            // The following overrides can be reenabled once out parameters are properly implemented.
+            functions.Single(x => x.Name == "glGetActiveAttrib").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glGetActiveUniform").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glGetDebugMessageLog").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glInvalidateNamedFramebufferData").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glInvalidateNamedFramebufferSubData").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glInvalidateSubFramebuffer").DisableEnumGroupOverload = true;
+            functions.Single(x => x.Name == "glNamedFramebufferDrawBuffers").DisableEnumGroupOverload = true;
+            
             WriteEnumGroups(enumGroups, enums);
             Write(enumGroups, enums, functions);
         }
@@ -140,7 +153,7 @@ namespace GLGenerator
 
                     var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumNode.Attribute("name").Value);
 
-                    if (@enum != null)
+                    if (@enum != null && !enumGroup.EnumNames.Contains(enumNode.Attribute("name").Value))
                     {
                         enumGroup.EnumNames.Add(enumNode.Attribute("name").Value);
                     }
@@ -176,11 +189,24 @@ namespace GLGenerator
 
                     functionParam.EnumGroup = enumGroup;
                     enumGroup.IsInUse = true;
+
+                    if (functionParam.Type != "GLenum")
+                    {
+                        if (functionParam.Type == "GLbitfield")
+                        {
+                            enumGroup.HasFlagsAttribtue = true;
+                        }
+                        else if (functionParam.Type == "GLint")
+                        {
+                            enumGroup.Type = "int";
+                        }
+                    }
                 }
             }
 
             foreach (var enumGroup in enumGroups.Where(x => !x.IsInUse).ToArray())
             {
+                Console.WriteLine($"Removing EnumGroup: {enumGroup.Name}.");
                 enumGroups.Remove(enumGroup);
             }
         }
@@ -419,10 +445,10 @@ namespace GLGenerator
                 string parameters = null;
                 string parameterNames = null;
 
-                if (function.Params.Any(x => x.EnumGroup != null))
+                if (function.Params.Any(x => x.EnumGroup != null) && !function.DisableEnumGroupOverload)
                 {
                     parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, true) + " " + GetParamName(x.Name)));
-                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? x.EnumGroup.Type : null)));
+                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? GetParamType(x) : null)));
 
                     sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
                     sb.AppendLine("\t\t{");
@@ -546,7 +572,7 @@ namespace GLGenerator
         {
             if (useEnumGroup && param.EnumGroup != null)
             {
-                return GetEnumGroupName(param.EnumGroup);
+                return GetEnumGroupName(param.EnumGroup, param.PointerCount > 0);
             }
 
             string type = param.Type;
@@ -686,12 +712,15 @@ namespace GLGenerator
             return name;
         }
 
-        private static string GetEnumGroupName(EnumGroupData enumGroup)
+        private static string GetEnumGroupName(EnumGroupData enumGroup, bool asArray = false)
         {
             string name = enumGroup.Name;
 
             if (name.EndsWith("ARB"))
                 name = name.Substring(0, name.Length - "ARB".Length);
+
+            if (asArray)
+                name += "[]";
 
             return name;
         }

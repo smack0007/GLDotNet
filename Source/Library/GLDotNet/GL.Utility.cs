@@ -17,7 +17,7 @@ namespace GLDotNet
                 this.gl = gl;
             }
 
-            public uint CreateAndCompileShader(uint type, string source)
+            public uint CreateAndCompileShader(ShaderType type, string source)
             {
                 var shader = this.gl.CreateShader(type);
                 this.gl.ShaderSource(shader, source);

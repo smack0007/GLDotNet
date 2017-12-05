@@ -4708,6 +4708,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ActiveTexture(TextureUnit texture)
+		{
+			this._ActiveTexture((uint)texture);
+#if DEBUG
+			this.CheckErrors("ActiveTexture");
+#endif
+		}
+
 		public void ActiveTexture(uint texture)
 		{
 			this._ActiveTexture(texture);
@@ -4724,11 +4732,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BeginConditionalRender(uint id, TypeEnum mode)
+		{
+			this._BeginConditionalRender(id, (uint)mode);
+#if DEBUG
+			this.CheckErrors("BeginConditionalRender");
+#endif
+		}
+
 		public void BeginConditionalRender(uint id, uint mode)
 		{
 			this._BeginConditionalRender(id, mode);
 #if DEBUG
 			this.CheckErrors("BeginConditionalRender");
+#endif
+		}
+
+		public void BeginQuery(QueryTarget target, uint id)
+		{
+			this._BeginQuery((uint)target, id);
+#if DEBUG
+			this.CheckErrors("BeginQuery");
 #endif
 		}
 
@@ -4740,11 +4764,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BeginQueryIndexed(QueryTarget target, uint index, uint id)
+		{
+			this._BeginQueryIndexed((uint)target, index, id);
+#if DEBUG
+			this.CheckErrors("BeginQueryIndexed");
+#endif
+		}
+
 		public void BeginQueryIndexed(uint target, uint index, uint id)
 		{
 			this._BeginQueryIndexed(target, index, id);
 #if DEBUG
 			this.CheckErrors("BeginQueryIndexed");
+#endif
+		}
+
+		public void BeginTransformFeedback(PrimitiveType primitiveMode)
+		{
+			this._BeginTransformFeedback((uint)primitiveMode);
+#if DEBUG
+			this.CheckErrors("BeginTransformFeedback");
 #endif
 		}
 
@@ -4780,11 +4820,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BindBufferBase(BufferTarget target, uint index, uint buffer)
+		{
+			this._BindBufferBase((uint)target, index, buffer);
+#if DEBUG
+			this.CheckErrors("BindBufferBase");
+#endif
+		}
+
 		public void BindBufferBase(uint target, uint index, uint buffer)
 		{
 			this._BindBufferBase(target, index, buffer);
 #if DEBUG
 			this.CheckErrors("BindBufferBase");
+#endif
+		}
+
+		public void BindBufferRange(BufferTarget target, uint index, uint buffer, int offset, int size)
+		{
+			this._BindBufferRange((uint)target, index, buffer, offset, size);
+#if DEBUG
+			this.CheckErrors("BindBufferRange");
 #endif
 		}
 
@@ -4796,11 +4852,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BindBuffersBase(BufferTarget target, uint first, int count, uint[] buffers)
+		{
+			this._BindBuffersBase((uint)target, first, count, buffers);
+#if DEBUG
+			this.CheckErrors("BindBuffersBase");
+#endif
+		}
+
 		public void BindBuffersBase(uint target, uint first, int count, uint[] buffers)
 		{
 			this._BindBuffersBase(target, first, count, buffers);
 #if DEBUG
 			this.CheckErrors("BindBuffersBase");
+#endif
+		}
+
+		public void BindBuffersRange(BufferTarget target, uint first, int count, uint[] buffers, int[] offsets, int[] sizes)
+		{
+			this._BindBuffersRange((uint)target, first, count, buffers, offsets, sizes);
+#if DEBUG
+			this.CheckErrors("BindBuffersRange");
 #endif
 		}
 
@@ -4828,11 +4900,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BindFramebuffer(FramebufferTarget target, uint framebuffer)
+		{
+			this._BindFramebuffer((uint)target, framebuffer);
+#if DEBUG
+			this.CheckErrors("BindFramebuffer");
+#endif
+		}
+
 		public void BindFramebuffer(uint target, uint framebuffer)
 		{
 			this._BindFramebuffer(target, framebuffer);
 #if DEBUG
 			this.CheckErrors("BindFramebuffer");
+#endif
+		}
+
+		public void BindImageTexture(uint unit, uint texture, int level, bool layered, int layer, BufferAccess access, InternalFormat format)
+		{
+			this._BindImageTexture(unit, texture, level, layered, layer, (uint)access, (uint)format);
+#if DEBUG
+			this.CheckErrors("BindImageTexture");
 #endif
 		}
 
@@ -4857,6 +4945,14 @@ namespace GLDotNet
 			this._BindProgramPipeline(pipeline);
 #if DEBUG
 			this.CheckErrors("BindProgramPipeline");
+#endif
+		}
+
+		public void BindRenderbuffer(RenderbufferTarget target, uint renderbuffer)
+		{
+			this._BindRenderbuffer((uint)target, renderbuffer);
+#if DEBUG
+			this.CheckErrors("BindRenderbuffer");
 #endif
 		}
 
@@ -4916,6 +5012,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BindTransformFeedback(BindTransformFeedbackTarget target, uint id)
+		{
+			this._BindTransformFeedback((uint)target, id);
+#if DEBUG
+			this.CheckErrors("BindTransformFeedback");
+#endif
+		}
+
 		public void BindTransformFeedback(uint target, uint id)
 		{
 			this._BindTransformFeedback(target, id);
@@ -4956,11 +5060,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BlendEquation(BlendEquationModeEXT mode)
+		{
+			this._BlendEquation((uint)mode);
+#if DEBUG
+			this.CheckErrors("BlendEquation");
+#endif
+		}
+
 		public void BlendEquation(uint mode)
 		{
 			this._BlendEquation(mode);
 #if DEBUG
 			this.CheckErrors("BlendEquation");
+#endif
+		}
+
+		public void BlendEquationi(uint buf, BlendEquationModeEXT mode)
+		{
+			this._BlendEquationi(buf, (uint)mode);
+#if DEBUG
+			this.CheckErrors("BlendEquationi");
 #endif
 		}
 
@@ -4972,11 +5092,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BlendEquationSeparate(BlendEquationModeEXT modeRGB, BlendEquationModeEXT modeAlpha)
+		{
+			this._BlendEquationSeparate((uint)modeRGB, (uint)modeAlpha);
+#if DEBUG
+			this.CheckErrors("BlendEquationSeparate");
+#endif
+		}
+
 		public void BlendEquationSeparate(uint modeRGB, uint modeAlpha)
 		{
 			this._BlendEquationSeparate(modeRGB, modeAlpha);
 #if DEBUG
 			this.CheckErrors("BlendEquationSeparate");
+#endif
+		}
+
+		public void BlendEquationSeparatei(uint buf, BlendEquationModeEXT modeRGB, BlendEquationModeEXT modeAlpha)
+		{
+			this._BlendEquationSeparatei(buf, (uint)modeRGB, (uint)modeAlpha);
+#if DEBUG
+			this.CheckErrors("BlendEquationSeparatei");
 #endif
 		}
 
@@ -4988,7 +5124,7 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BlendFunc(BlendingFactorSrc sfactor, BlendingFactorDest dfactor)
+		public void BlendFunc(BlendingFactor sfactor, BlendingFactor dfactor)
 		{
 			this._BlendFunc((uint)sfactor, (uint)dfactor);
 #if DEBUG
@@ -5004,11 +5140,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BlendFunci(uint buf, BlendingFactor src, BlendingFactor dst)
+		{
+			this._BlendFunci(buf, (uint)src, (uint)dst);
+#if DEBUG
+			this.CheckErrors("BlendFunci");
+#endif
+		}
+
 		public void BlendFunci(uint buf, uint src, uint dst)
 		{
 			this._BlendFunci(buf, src, dst);
 #if DEBUG
 			this.CheckErrors("BlendFunci");
+#endif
+		}
+
+		public void BlendFuncSeparate(BlendingFactor sfactorRGB, BlendingFactor dfactorRGB, BlendingFactor sfactorAlpha, BlendingFactor dfactorAlpha)
+		{
+			this._BlendFuncSeparate((uint)sfactorRGB, (uint)dfactorRGB, (uint)sfactorAlpha, (uint)dfactorAlpha);
+#if DEBUG
+			this.CheckErrors("BlendFuncSeparate");
 #endif
 		}
 
@@ -5020,6 +5172,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BlendFuncSeparatei(uint buf, BlendingFactor srcRGB, BlendingFactor dstRGB, BlendingFactor srcAlpha, BlendingFactor dstAlpha)
+		{
+			this._BlendFuncSeparatei(buf, (uint)srcRGB, (uint)dstRGB, (uint)srcAlpha, (uint)dstAlpha);
+#if DEBUG
+			this.CheckErrors("BlendFuncSeparatei");
+#endif
+		}
+
 		public void BlendFuncSeparatei(uint buf, uint srcRGB, uint dstRGB, uint srcAlpha, uint dstAlpha)
 		{
 			this._BlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
@@ -5028,9 +5188,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, ClearBufferMask mask, uint filter)
+		public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, ClearBufferMask mask, BlitFramebufferFilter filter)
 		{
-			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, (uint)mask, filter);
+			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, (uint)mask, (uint)filter);
 #if DEBUG
 			this.CheckErrors("BlitFramebuffer");
 #endif
@@ -5041,6 +5201,14 @@ namespace GLDotNet
 			this._BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 #if DEBUG
 			this.CheckErrors("BlitFramebuffer");
+#endif
+		}
+
+		public void BlitNamedFramebuffer(uint readFramebuffer, uint drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, ClearBufferMask mask, BlitFramebufferFilter filter)
+		{
+			this._BlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, (uint)mask, (uint)filter);
+#if DEBUG
+			this.CheckErrors("BlitNamedFramebuffer");
 #endif
 		}
 
@@ -5068,6 +5236,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void BufferStorage(BufferStorageTarget target, int size, IntPtr data, MapBufferUsageMask flags)
+		{
+			this._BufferStorage((uint)target, size, data, (uint)flags);
+#if DEBUG
+			this.CheckErrors("BufferStorage");
+#endif
+		}
+
 		public void BufferStorage(uint target, int size, IntPtr data, uint flags)
 		{
 			this._BufferStorage(target, size, data, flags);
@@ -5092,11 +5268,29 @@ namespace GLDotNet
 #endif
 		}
 
+		public uint CheckFramebufferStatus(FramebufferTarget target)
+		{
+			var result = this._CheckFramebufferStatus((uint)target);
+#if DEBUG
+			this.CheckErrors("CheckFramebufferStatus");
+#endif
+			return result;
+		}
+
 		public uint CheckFramebufferStatus(uint target)
 		{
 			var result = this._CheckFramebufferStatus(target);
 #if DEBUG
 			this.CheckErrors("CheckFramebufferStatus");
+#endif
+			return result;
+		}
+
+		public uint CheckNamedFramebufferStatus(uint framebuffer, FramebufferTarget target)
+		{
+			var result = this._CheckNamedFramebufferStatus(framebuffer, (uint)target);
+#if DEBUG
+			this.CheckErrors("CheckNamedFramebufferStatus");
 #endif
 			return result;
 		}
@@ -5134,11 +5328,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearBufferData(BufferStorageTarget target, InternalFormat internalformat, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearBufferData((uint)target, (uint)internalformat, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearBufferData");
+#endif
+		}
+
 		public void ClearBufferData(uint target, uint internalformat, uint format, uint type, IntPtr data)
 		{
 			this._ClearBufferData(target, internalformat, format, type, data);
 #if DEBUG
 			this.CheckErrors("ClearBufferData");
+#endif
+		}
+
+		public void ClearBufferfi(Buffer buffer, int drawbuffer, float depth, int stencil)
+		{
+			this._ClearBufferfi((uint)buffer, drawbuffer, depth, stencil);
+#if DEBUG
+			this.CheckErrors("ClearBufferfi");
 #endif
 		}
 
@@ -5150,11 +5360,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearBufferfv(Buffer buffer, int drawbuffer, float[] value)
+		{
+			this._ClearBufferfv((uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearBufferfv");
+#endif
+		}
+
 		public void ClearBufferfv(uint buffer, int drawbuffer, float[] value)
 		{
 			this._ClearBufferfv(buffer, drawbuffer, value);
 #if DEBUG
 			this.CheckErrors("ClearBufferfv");
+#endif
+		}
+
+		public void ClearBufferiv(Buffer buffer, int drawbuffer, int[] value)
+		{
+			this._ClearBufferiv((uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearBufferiv");
 #endif
 		}
 
@@ -5166,11 +5392,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearBufferSubData(uint target, InternalFormat internalformat, int offset, int size, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearBufferSubData(target, (uint)internalformat, offset, size, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearBufferSubData");
+#endif
+		}
+
 		public void ClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
 		{
 			this._ClearBufferSubData(target, internalformat, offset, size, format, type, data);
 #if DEBUG
 			this.CheckErrors("ClearBufferSubData");
+#endif
+		}
+
+		public void ClearBufferuiv(Buffer buffer, int drawbuffer, uint[] value)
+		{
+			this._ClearBufferuiv((uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearBufferuiv");
 #endif
 		}
 
@@ -5206,11 +5448,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearNamedBufferData(uint buffer, InternalFormat internalformat, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearNamedBufferData(buffer, (uint)internalformat, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearNamedBufferData");
+#endif
+		}
+
 		public void ClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, IntPtr data)
 		{
 			this._ClearNamedBufferData(buffer, internalformat, format, type, data);
 #if DEBUG
 			this.CheckErrors("ClearNamedBufferData");
+#endif
+		}
+
+		public void ClearNamedBufferSubData(uint buffer, InternalFormat internalformat, int offset, int size, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearNamedBufferSubData(buffer, (uint)internalformat, offset, size, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearNamedBufferSubData");
 #endif
 		}
 
@@ -5222,11 +5480,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearNamedFramebufferfi(uint framebuffer, Buffer buffer, int drawbuffer, float depth, int stencil)
+		{
+			this._ClearNamedFramebufferfi(framebuffer, (uint)buffer, drawbuffer, depth, stencil);
+#if DEBUG
+			this.CheckErrors("ClearNamedFramebufferfi");
+#endif
+		}
+
 		public void ClearNamedFramebufferfi(uint framebuffer, uint buffer, int drawbuffer, float depth, int stencil)
 		{
 			this._ClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
 #if DEBUG
 			this.CheckErrors("ClearNamedFramebufferfi");
+#endif
+		}
+
+		public void ClearNamedFramebufferfv(uint framebuffer, Buffer buffer, int drawbuffer, float[] value)
+		{
+			this._ClearNamedFramebufferfv(framebuffer, (uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearNamedFramebufferfv");
 #endif
 		}
 
@@ -5238,11 +5512,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearNamedFramebufferiv(uint framebuffer, Buffer buffer, int drawbuffer, int[] value)
+		{
+			this._ClearNamedFramebufferiv(framebuffer, (uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearNamedFramebufferiv");
+#endif
+		}
+
 		public void ClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int[] value)
 		{
 			this._ClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
 #if DEBUG
 			this.CheckErrors("ClearNamedFramebufferiv");
+#endif
+		}
+
+		public void ClearNamedFramebufferuiv(uint framebuffer, Buffer buffer, int drawbuffer, uint[] value)
+		{
+			this._ClearNamedFramebufferuiv(framebuffer, (uint)buffer, drawbuffer, value);
+#if DEBUG
+			this.CheckErrors("ClearNamedFramebufferuiv");
 #endif
 		}
 
@@ -5262,11 +5552,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ClearTexImage(uint texture, int level, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearTexImage(texture, level, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearTexImage");
+#endif
+		}
+
 		public void ClearTexImage(uint texture, int level, uint format, uint type, IntPtr data)
 		{
 			this._ClearTexImage(texture, level, format, type, data);
 #if DEBUG
 			this.CheckErrors("ClearTexImage");
+#endif
+		}
+
+		public void ClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, PixelType type, IntPtr data)
+		{
+			this._ClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, (uint)type, data);
+#if DEBUG
+			this.CheckErrors("ClearTexSubImage");
 #endif
 		}
 
@@ -5278,6 +5584,15 @@ namespace GLDotNet
 #endif
 		}
 
+		public uint ClientWaitSync(IntPtr sync, SyncObjectMask flags, ulong timeout)
+		{
+			var result = this._ClientWaitSync(sync, (uint)flags, timeout);
+#if DEBUG
+			this.CheckErrors("ClientWaitSync");
+#endif
+			return result;
+		}
+
 		public uint ClientWaitSync(IntPtr sync, uint flags, ulong timeout)
 		{
 			var result = this._ClientWaitSync(sync, flags, timeout);
@@ -5285,6 +5600,14 @@ namespace GLDotNet
 			this.CheckErrors("ClientWaitSync");
 #endif
 			return result;
+		}
+
+		public void ClipControl(ClipControlOrigin origin, ClipControlDepth depth)
+		{
+			this._ClipControl((uint)origin, (uint)depth);
+#if DEBUG
+			this.CheckErrors("ClipControl");
+#endif
 		}
 
 		public void ClipControl(uint origin, uint depth)
@@ -5319,9 +5642,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage1D(TextureTarget target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
+		public void CompressedTexImage1D(TextureTarget target, int level, InternalFormat internalformat, int width, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexImage1D((uint)target, level, internalformat, width, border, imageSize, data);
+			this._CompressedTexImage1D((uint)target, level, (uint)internalformat, width, border, imageSize, data);
 #if DEBUG
 			this.CheckErrors("CompressedTexImage1D");
 #endif
@@ -5335,9 +5658,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage2D(TextureTarget target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
+		public void CompressedTexImage2D(TextureTarget target, int level, InternalFormat internalformat, int width, int height, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexImage2D((uint)target, level, internalformat, width, height, border, imageSize, data);
+			this._CompressedTexImage2D((uint)target, level, (uint)internalformat, width, height, border, imageSize, data);
 #if DEBUG
 			this.CheckErrors("CompressedTexImage2D");
 #endif
@@ -5351,9 +5674,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CompressedTexImage3D(TextureTarget target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
+		public void CompressedTexImage3D(TextureTarget target, int level, InternalFormat internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
 		{
-			this._CompressedTexImage3D((uint)target, level, internalformat, width, height, depth, border, imageSize, data);
+			this._CompressedTexImage3D((uint)target, level, (uint)internalformat, width, height, depth, border, imageSize, data);
 #if DEBUG
 			this.CheckErrors("CompressedTexImage3D");
 #endif
@@ -5415,11 +5738,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void CompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, PixelFormat format, int imageSize, IntPtr data)
+		{
+			this._CompressedTextureSubImage1D(texture, level, xoffset, width, (uint)format, imageSize, data);
+#if DEBUG
+			this.CheckErrors("CompressedTextureSubImage1D");
+#endif
+		}
+
 		public void CompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
 		{
 			this._CompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
 #if DEBUG
 			this.CheckErrors("CompressedTextureSubImage1D");
+#endif
+		}
+
+		public void CompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, PixelFormat format, int imageSize, IntPtr data)
+		{
+			this._CompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, (uint)format, imageSize, data);
+#if DEBUG
+			this.CheckErrors("CompressedTextureSubImage2D");
 #endif
 		}
 
@@ -5431,6 +5770,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void CompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, int imageSize, IntPtr data)
+		{
+			this._CompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, imageSize, data);
+#if DEBUG
+			this.CheckErrors("CompressedTextureSubImage3D");
+#endif
+		}
+
 		public void CompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
 		{
 			this._CompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
@@ -5439,11 +5786,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void CopyBufferSubData(CopyBufferSubDataTarget readTarget, CopyBufferSubDataTarget writeTarget, int readOffset, int writeOffset, int size)
+		{
+			this._CopyBufferSubData((uint)readTarget, (uint)writeTarget, readOffset, writeOffset, size);
+#if DEBUG
+			this.CheckErrors("CopyBufferSubData");
+#endif
+		}
+
 		public void CopyBufferSubData(uint readTarget, uint writeTarget, int readOffset, int writeOffset, int size)
 		{
 			this._CopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
 #if DEBUG
 			this.CheckErrors("CopyBufferSubData");
+#endif
+		}
+
+		public void CopyImageSubData(uint srcName, CopyBufferSubDataTarget srcTarget, int srcLevel, int srcX, int srcY, int srcZ, uint dstName, CopyBufferSubDataTarget dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth)
+		{
+			this._CopyImageSubData(srcName, (uint)srcTarget, srcLevel, srcX, srcY, srcZ, dstName, (uint)dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+#if DEBUG
+			this.CheckErrors("CopyImageSubData");
 #endif
 		}
 
@@ -5463,9 +5826,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexImage1D(TextureTarget target, int level, uint internalformat, int x, int y, int width, int border)
+		public void CopyTexImage1D(TextureTarget target, int level, InternalFormat internalformat, int x, int y, int width, int border)
 		{
-			this._CopyTexImage1D((uint)target, level, internalformat, x, y, width, border);
+			this._CopyTexImage1D((uint)target, level, (uint)internalformat, x, y, width, border);
 #if DEBUG
 			this.CheckErrors("CopyTexImage1D");
 #endif
@@ -5479,9 +5842,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void CopyTexImage2D(TextureTarget target, int level, uint internalformat, int x, int y, int width, int height, int border)
+		public void CopyTexImage2D(TextureTarget target, int level, InternalFormat internalformat, int x, int y, int width, int height, int border)
 		{
-			this._CopyTexImage2D((uint)target, level, internalformat, x, y, width, height, border);
+			this._CopyTexImage2D((uint)target, level, (uint)internalformat, x, y, width, height, border);
 #if DEBUG
 			this.CheckErrors("CopyTexImage2D");
 #endif
@@ -5600,6 +5963,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void CreateQueries(QueryTarget target, int n, uint[] ids)
+		{
+			this._CreateQueries((uint)target, n, ids);
+#if DEBUG
+			this.CheckErrors("CreateQueries");
+#endif
+		}
+
 		public void CreateQueries(uint target, int n, uint[] ids)
 		{
 			this._CreateQueries(target, n, ids);
@@ -5624,11 +5995,29 @@ namespace GLDotNet
 #endif
 		}
 
+		public uint CreateShader(ShaderType type)
+		{
+			var result = this._CreateShader((uint)type);
+#if DEBUG
+			this.CheckErrors("CreateShader");
+#endif
+			return result;
+		}
+
 		public uint CreateShader(uint type)
 		{
 			var result = this._CreateShader(type);
 #if DEBUG
 			this.CheckErrors("CreateShader");
+#endif
+			return result;
+		}
+
+		public uint CreateShaderProgramv(ShaderType type, int count, string[] strings)
+		{
+			var result = this._CreateShaderProgramv((uint)type, count, strings);
+#if DEBUG
+			this.CheckErrors("CreateShaderProgramv");
 #endif
 			return result;
 		}
@@ -5640,6 +6029,14 @@ namespace GLDotNet
 			this.CheckErrors("CreateShaderProgramv");
 #endif
 			return result;
+		}
+
+		public void CreateTextures(TextureTarget target, int n, uint[] textures)
+		{
+			this._CreateTextures((uint)target, n, textures);
+#if DEBUG
+			this.CheckErrors("CreateTextures");
+#endif
 		}
 
 		public void CreateTextures(uint target, int n, uint[] textures)
@@ -5690,11 +6087,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void DebugMessageControl(DebugSource source, DebugType type, DebugSeverity severity, int count, uint[] ids, bool enabled)
+		{
+			this._DebugMessageControl((uint)source, (uint)type, (uint)severity, count, ids, enabled);
+#if DEBUG
+			this.CheckErrors("DebugMessageControl");
+#endif
+		}
+
 		public void DebugMessageControl(uint source, uint type, uint severity, int count, uint[] ids, bool enabled)
 		{
 			this._DebugMessageControl(source, type, severity, count, ids, enabled);
 #if DEBUG
 			this.CheckErrors("DebugMessageControl");
+#endif
+		}
+
+		public void DebugMessageInsert(DebugSource source, DebugType type, uint id, DebugSeverity severity, int length, string buf)
+		{
+			this._DebugMessageInsert((uint)source, (uint)type, id, (uint)severity, length, buf);
+#if DEBUG
+			this.CheckErrors("DebugMessageInsert");
 #endif
 		}
 
@@ -5936,6 +6349,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void Disablei(EnableCap target, uint index)
+		{
+			this._Disablei((uint)target, index);
+#if DEBUG
+			this.CheckErrors("Disablei");
+#endif
+		}
+
 		public void Disablei(uint target, uint index)
 		{
 			this._Disablei(target, index);
@@ -6096,9 +6517,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsIndirect(PrimitiveType mode, uint type, IntPtr indirect)
+		public void DrawElementsIndirect(PrimitiveType mode, DrawElementsType type, IntPtr indirect)
 		{
-			this._DrawElementsIndirect((uint)mode, type, indirect);
+			this._DrawElementsIndirect((uint)mode, (uint)type, indirect);
 #if DEBUG
 			this.CheckErrors("DrawElementsIndirect");
 #endif
@@ -6128,9 +6549,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstancedBaseInstance(PrimitiveType mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
+		public void DrawElementsInstancedBaseInstance(PrimitiveType mode, int count, PrimitiveType type, IntPtr indices, int instancecount, uint baseinstance)
 		{
-			this._DrawElementsInstancedBaseInstance((uint)mode, count, type, indices, instancecount, baseinstance);
+			this._DrawElementsInstancedBaseInstance((uint)mode, count, (uint)type, indices, instancecount, baseinstance);
 #if DEBUG
 			this.CheckErrors("DrawElementsInstancedBaseInstance");
 #endif
@@ -6160,9 +6581,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void DrawElementsInstancedBaseVertexBaseInstance(PrimitiveType mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
+		public void DrawElementsInstancedBaseVertexBaseInstance(PrimitiveType mode, int count, PrimitiveType type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
 		{
-			this._DrawElementsInstancedBaseVertexBaseInstance((uint)mode, count, type, indices, instancecount, basevertex, baseinstance);
+			this._DrawElementsInstancedBaseVertexBaseInstance((uint)mode, count, (uint)type, indices, instancecount, basevertex, baseinstance);
 #if DEBUG
 			this.CheckErrors("DrawElementsInstancedBaseVertexBaseInstance");
 #endif
@@ -6288,6 +6709,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void Enablei(EnableCap target, uint index)
+		{
+			this._Enablei((uint)target, index);
+#if DEBUG
+			this.CheckErrors("Enablei");
+#endif
+		}
+
 		public void Enablei(uint target, uint index)
 		{
 			this._Enablei(target, index);
@@ -6320,11 +6749,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void EndQuery(QueryTarget target)
+		{
+			this._EndQuery((uint)target);
+#if DEBUG
+			this.CheckErrors("EndQuery");
+#endif
+		}
+
 		public void EndQuery(uint target)
 		{
 			this._EndQuery(target);
 #if DEBUG
 			this.CheckErrors("EndQuery");
+#endif
+		}
+
+		public void EndQueryIndexed(QueryTarget target, uint index)
+		{
+			this._EndQueryIndexed((uint)target, index);
+#if DEBUG
+			this.CheckErrors("EndQueryIndexed");
 #endif
 		}
 
@@ -6342,6 +6787,15 @@ namespace GLDotNet
 #if DEBUG
 			this.CheckErrors("EndTransformFeedback");
 #endif
+		}
+
+		public IntPtr FenceSync(SyncCondition condition, uint flags)
+		{
+			var result = this._FenceSync((uint)condition, flags);
+#if DEBUG
+			this.CheckErrors("FenceSync");
+#endif
+			return result;
 		}
 
 		public IntPtr FenceSync(uint condition, uint flags)
@@ -6393,11 +6847,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void FramebufferParameteri(FramebufferTarget target, FramebufferParameterName pname, int param)
+		{
+			this._FramebufferParameteri((uint)target, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("FramebufferParameteri");
+#endif
+		}
+
 		public void FramebufferParameteri(uint target, uint pname, int param)
 		{
 			this._FramebufferParameteri(target, pname, param);
 #if DEBUG
 			this.CheckErrors("FramebufferParameteri");
+#endif
+		}
+
+		public void FramebufferRenderbuffer(FramebufferTarget target, FramebufferAttachment attachment, RenderbufferTarget renderbuffertarget, uint renderbuffer)
+		{
+			this._FramebufferRenderbuffer((uint)target, (uint)attachment, (uint)renderbuffertarget, renderbuffer);
+#if DEBUG
+			this.CheckErrors("FramebufferRenderbuffer");
 #endif
 		}
 
@@ -6409,11 +6879,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void FramebufferTexture(FramebufferTarget target, FramebufferAttachment attachment, uint texture, int level)
+		{
+			this._FramebufferTexture((uint)target, (uint)attachment, texture, level);
+#if DEBUG
+			this.CheckErrors("FramebufferTexture");
+#endif
+		}
+
 		public void FramebufferTexture(uint target, uint attachment, uint texture, int level)
 		{
 			this._FramebufferTexture(target, attachment, texture, level);
 #if DEBUG
 			this.CheckErrors("FramebufferTexture");
+#endif
+		}
+
+		public void FramebufferTexture1D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget textarget, uint texture, int level)
+		{
+			this._FramebufferTexture1D((uint)target, (uint)attachment, (uint)textarget, texture, level);
+#if DEBUG
+			this.CheckErrors("FramebufferTexture1D");
 #endif
 		}
 
@@ -6425,6 +6911,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget textarget, uint texture, int level)
+		{
+			this._FramebufferTexture2D((uint)target, (uint)attachment, (uint)textarget, texture, level);
+#if DEBUG
+			this.CheckErrors("FramebufferTexture2D");
+#endif
+		}
+
 		public void FramebufferTexture2D(uint target, uint attachment, uint textarget, uint texture, int level)
 		{
 			this._FramebufferTexture2D(target, attachment, textarget, texture, level);
@@ -6433,11 +6927,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void FramebufferTexture3D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget textarget, uint texture, int level, int zoffset)
+		{
+			this._FramebufferTexture3D((uint)target, (uint)attachment, (uint)textarget, texture, level, zoffset);
+#if DEBUG
+			this.CheckErrors("FramebufferTexture3D");
+#endif
+		}
+
 		public void FramebufferTexture3D(uint target, uint attachment, uint textarget, uint texture, int level, int zoffset)
 		{
 			this._FramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
 #if DEBUG
 			this.CheckErrors("FramebufferTexture3D");
+#endif
+		}
+
+		public void FramebufferTextureLayer(FramebufferTarget target, FramebufferAttachment attachment, uint texture, int level, int layer)
+		{
+			this._FramebufferTextureLayer((uint)target, (uint)attachment, texture, level, layer);
+#if DEBUG
+			this.CheckErrors("FramebufferTextureLayer");
 #endif
 		}
 
@@ -6477,6 +6987,14 @@ namespace GLDotNet
 		{
 			GenBuffers(1, UintBuffer);
 			return UintBuffer[0];
+		}
+
+		public void GenerateMipmap(TextureTarget target)
+		{
+			this._GenerateMipmap((uint)target);
+#if DEBUG
+			this.CheckErrors("GenerateMipmap");
+#endif
 		}
 
 		public void GenerateMipmap(uint target)
@@ -6607,6 +7125,14 @@ namespace GLDotNet
 			return UintBuffer[0];
 		}
 
+		public void GetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, AtomicCounterBufferPName pname, int[] @params)
+		{
+			this._GetActiveAtomicCounterBufferiv(program, bufferIndex, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetActiveAtomicCounterBufferiv");
+#endif
+		}
+
 		public void GetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params)
 		{
 			this._GetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params);
@@ -6623,6 +7149,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetActiveSubroutineName(uint program, ShaderType shadertype, uint index, int bufsize, int[] length, StringBuilder name)
+		{
+			this._GetActiveSubroutineName(program, (uint)shadertype, index, bufsize, length, name);
+#if DEBUG
+			this.CheckErrors("GetActiveSubroutineName");
+#endif
+		}
+
 		public void GetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
 		{
 			this._GetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
@@ -6631,11 +7165,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetActiveSubroutineUniformiv(uint program, ShaderType shadertype, uint index, SubroutineParameterName pname, int[] values)
+		{
+			this._GetActiveSubroutineUniformiv(program, (uint)shadertype, index, (uint)pname, values);
+#if DEBUG
+			this.CheckErrors("GetActiveSubroutineUniformiv");
+#endif
+		}
+
 		public void GetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int[] values)
 		{
 			this._GetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
 #if DEBUG
 			this.CheckErrors("GetActiveSubroutineUniformiv");
+#endif
+		}
+
+		public void GetActiveSubroutineUniformName(uint program, ShaderType shadertype, uint index, int bufsize, int[] length, StringBuilder name)
+		{
+			this._GetActiveSubroutineUniformName(program, (uint)shadertype, index, bufsize, length, name);
+#if DEBUG
+			this.CheckErrors("GetActiveSubroutineUniformName");
 #endif
 		}
 
@@ -6652,6 +7202,14 @@ namespace GLDotNet
 			this._GetActiveUniform(program, index, bufSize, length, size, type, name);
 #if DEBUG
 			this.CheckErrors("GetActiveUniform");
+#endif
+		}
+
+		public void GetActiveUniformBlockiv(uint program, uint uniformBlockIndex, UniformBlockPName pname, int[] @params)
+		{
+			this._GetActiveUniformBlockiv(program, uniformBlockIndex, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetActiveUniformBlockiv");
 #endif
 		}
 
@@ -6679,6 +7237,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, UniformPName pname, int[] @params)
+		{
+			this._GetActiveUniformsiv(program, uniformCount, uniformIndices, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetActiveUniformsiv");
+#endif
+		}
+
 		public void GetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, uint pname, int[] @params)
 		{
 			this._GetActiveUniformsiv(program, uniformCount, uniformIndices, pname, @params);
@@ -6702,6 +7268,14 @@ namespace GLDotNet
 			this.CheckErrors("GetAttribLocation");
 #endif
 			return result;
+		}
+
+		public void GetBooleani_v(BufferTarget target, uint index, bool[] data)
+		{
+			this._GetBooleani_v((uint)target, index, data);
+#if DEBUG
+			this.CheckErrors("GetBooleani_v");
+#endif
 		}
 
 		public void GetBooleani_v(uint target, uint index, bool[] data)
@@ -6833,6 +7407,14 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetDoublei_v(TypeEnum target, uint index, double[] data)
+		{
+			this._GetDoublei_v((uint)target, index, data);
+#if DEBUG
+			this.CheckErrors("GetDoublei_v");
+#endif
+		}
+
 		public void GetDoublei_v(uint target, uint index, double[] data)
 		{
 			this._GetDoublei_v(target, index, data);
@@ -6854,6 +7436,14 @@ namespace GLDotNet
 			this._GetDoublev(pname, data);
 #if DEBUG
 			this.CheckErrors("GetDoublev");
+#endif
+		}
+
+		public void GetFloati_v(TypeEnum target, uint index, float[] data)
+		{
+			this._GetFloati_v((uint)target, index, data);
+#if DEBUG
+			this.CheckErrors("GetFloati_v");
 #endif
 		}
 
@@ -6899,11 +7489,27 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetFramebufferAttachmentParameteriv(FramebufferTarget target, FramebufferAttachment attachment, FramebufferAttachmentParameterName pname, int[] @params)
+		{
+			this._GetFramebufferAttachmentParameteriv((uint)target, (uint)attachment, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetFramebufferAttachmentParameteriv");
+#endif
+		}
+
 		public void GetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int[] @params)
 		{
 			this._GetFramebufferAttachmentParameteriv(target, attachment, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetFramebufferAttachmentParameteriv");
+#endif
+		}
+
+		public void GetFramebufferParameteriv(FramebufferTarget target, FramebufferAttachmentParameterName pname, int[] @params)
+		{
+			this._GetFramebufferParameteriv((uint)target, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetFramebufferParameteriv");
 #endif
 		}
 
@@ -6924,6 +7530,14 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetInteger64i_v(TypeEnum target, uint index, long[] data)
+		{
+			this._GetInteger64i_v((uint)target, index, data);
+#if DEBUG
+			this.CheckErrors("GetInteger64i_v");
+#endif
+		}
+
 		public void GetInteger64i_v(uint target, uint index, long[] data)
 		{
 			this._GetInteger64i_v(target, index, data);
@@ -6932,11 +7546,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetInteger64v(GetPName pname, long[] data)
+		{
+			this._GetInteger64v((uint)pname, data);
+#if DEBUG
+			this.CheckErrors("GetInteger64v");
+#endif
+		}
+
 		public void GetInteger64v(uint pname, long[] data)
 		{
 			this._GetInteger64v(pname, data);
 #if DEBUG
 			this.CheckErrors("GetInteger64v");
+#endif
+		}
+
+		public void GetIntegeri_v(TypeEnum target, uint index, int[] data)
+		{
+			this._GetIntegeri_v((uint)target, index, data);
+#if DEBUG
+			this.CheckErrors("GetIntegeri_v");
 #endif
 		}
 
@@ -6964,11 +7594,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetInternalformati64v(TextureTarget target, InternalFormat internalformat, InternalFormatPName pname, int bufSize, long[] @params)
+		{
+			this._GetInternalformati64v((uint)target, (uint)internalformat, (uint)pname, bufSize, @params);
+#if DEBUG
+			this.CheckErrors("GetInternalformati64v");
+#endif
+		}
+
 		public void GetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params)
 		{
 			this._GetInternalformati64v(target, internalformat, pname, bufSize, @params);
 #if DEBUG
 			this.CheckErrors("GetInternalformati64v");
+#endif
+		}
+
+		public void GetInternalformativ(TextureTarget target, InternalFormat internalformat, InternalFormatPName pname, int bufSize, int[] @params)
+		{
+			this._GetInternalformativ((uint)target, (uint)internalformat, (uint)pname, bufSize, @params);
+#if DEBUG
+			this.CheckErrors("GetInternalformativ");
 #endif
 		}
 
@@ -6988,6 +7634,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetNamedBufferParameteri64v(uint buffer, VertexBufferObjectParameter pname, long[] @params)
+		{
+			this._GetNamedBufferParameteri64v(buffer, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetNamedBufferParameteri64v");
+#endif
+		}
+
 		public void GetNamedBufferParameteri64v(uint buffer, uint pname, long[] @params)
 		{
 			this._GetNamedBufferParameteri64v(buffer, pname, @params);
@@ -6996,11 +7650,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetNamedBufferParameteriv(uint buffer, VertexBufferObjectParameter pname, int[] @params)
+		{
+			this._GetNamedBufferParameteriv(buffer, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetNamedBufferParameteriv");
+#endif
+		}
+
 		public void GetNamedBufferParameteriv(uint buffer, uint pname, int[] @params)
 		{
 			this._GetNamedBufferParameteriv(buffer, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetNamedBufferParameteriv");
+#endif
+		}
+
+		public void GetNamedBufferPointerv(uint buffer, VertexBufferObjectParameter pname, IntPtr[] @params)
+		{
+			this._GetNamedBufferPointerv(buffer, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetNamedBufferPointerv");
 #endif
 		}
 
@@ -7020,11 +7690,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetNamedFramebufferAttachmentParameteriv(uint framebuffer, FramebufferAttachment attachment, FramebufferAttachmentParameterName pname, int[] @params)
+		{
+			this._GetNamedFramebufferAttachmentParameteriv(framebuffer, (uint)attachment, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetNamedFramebufferAttachmentParameteriv");
+#endif
+		}
+
 		public void GetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int[] @params)
 		{
 			this._GetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetNamedFramebufferAttachmentParameteriv");
+#endif
+		}
+
+		public void GetNamedFramebufferParameteriv(uint framebuffer, GetFramebufferParameter pname, int[] param)
+		{
+			this._GetNamedFramebufferParameteriv(framebuffer, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("GetNamedFramebufferParameteriv");
 #endif
 		}
 
@@ -7036,6 +7722,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetNamedRenderbufferParameteriv(uint renderbuffer, RenderbufferParameterName pname, int[] @params)
+		{
+			this._GetNamedRenderbufferParameteriv(renderbuffer, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetNamedRenderbufferParameteriv");
+#endif
+		}
+
 		public void GetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int[] @params)
 		{
 			this._GetNamedRenderbufferParameteriv(renderbuffer, pname, @params);
@@ -7044,11 +7738,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetnCompressedTexImage(TextureTarget target, int lod, int bufSize, IntPtr pixels)
+		{
+			this._GetnCompressedTexImage((uint)target, lod, bufSize, pixels);
+#if DEBUG
+			this.CheckErrors("GetnCompressedTexImage");
+#endif
+		}
+
 		public void GetnCompressedTexImage(uint target, int lod, int bufSize, IntPtr pixels)
 		{
 			this._GetnCompressedTexImage(target, lod, bufSize, pixels);
 #if DEBUG
 			this.CheckErrors("GetnCompressedTexImage");
+#endif
+		}
+
+		public void GetnTexImage(TextureTarget target, int level, PixelFormat format, PixelType type, int bufSize, IntPtr pixels)
+		{
+			this._GetnTexImage((uint)target, level, (uint)format, (uint)type, bufSize, pixels);
+#if DEBUG
+			this.CheckErrors("GetnTexImage");
 #endif
 		}
 
@@ -7108,6 +7818,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetPointerv(GetPointervPName pname, IntPtr[] @params)
+		{
+			this._GetPointerv((uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetPointerv");
+#endif
+		}
+
 		public void GetPointerv(uint pname, IntPtr[] @params)
 		{
 			this._GetPointerv(pname, @params);
@@ -7121,6 +7839,14 @@ namespace GLDotNet
 			this._GetProgramBinary(program, bufSize, length, binaryFormat, binary);
 #if DEBUG
 			this.CheckErrors("GetProgramBinary");
+#endif
+		}
+
+		public void GetProgramInterfaceiv(uint program, ProgramInterface programInterface, ProgramInterfacePName pname, int[] @params)
+		{
+			this._GetProgramInterfaceiv(program, (uint)programInterface, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetProgramInterfaceiv");
 #endif
 		}
 
@@ -7140,12 +7866,29 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetProgramPipelineiv(uint pipeline, PipelineParameterName pname, int[] @params)
+		{
+			this._GetProgramPipelineiv(pipeline, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetProgramPipelineiv");
+#endif
+		}
+
 		public void GetProgramPipelineiv(uint pipeline, uint pname, int[] @params)
 		{
 			this._GetProgramPipelineiv(pipeline, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetProgramPipelineiv");
 #endif
+		}
+
+		public uint GetProgramResourceIndex(uint program, ProgramInterface programInterface, string name)
+		{
+			var result = this._GetProgramResourceIndex(program, (uint)programInterface, name);
+#if DEBUG
+			this.CheckErrors("GetProgramResourceIndex");
+#endif
+			return result;
 		}
 
 		public uint GetProgramResourceIndex(uint program, uint programInterface, string name)
@@ -7157,6 +7900,14 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetProgramResourceiv(uint program, ProgramInterface programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params)
+		{
+			this._GetProgramResourceiv(program, (uint)programInterface, index, propCount, props, bufSize, length, @params);
+#if DEBUG
+			this.CheckErrors("GetProgramResourceiv");
+#endif
+		}
+
 		public void GetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params)
 		{
 			this._GetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, @params);
@@ -7165,11 +7916,29 @@ namespace GLDotNet
 #endif
 		}
 
+		public int GetProgramResourceLocation(uint program, ProgramInterface programInterface, string name)
+		{
+			var result = this._GetProgramResourceLocation(program, (uint)programInterface, name);
+#if DEBUG
+			this.CheckErrors("GetProgramResourceLocation");
+#endif
+			return result;
+		}
+
 		public int GetProgramResourceLocation(uint program, uint programInterface, string name)
 		{
 			var result = this._GetProgramResourceLocation(program, programInterface, name);
 #if DEBUG
 			this.CheckErrors("GetProgramResourceLocation");
+#endif
+			return result;
+		}
+
+		public int GetProgramResourceLocationIndex(uint program, ProgramInterface programInterface, string name)
+		{
+			var result = this._GetProgramResourceLocationIndex(program, (uint)programInterface, name);
+#if DEBUG
+			this.CheckErrors("GetProgramResourceLocationIndex");
 #endif
 			return result;
 		}
@@ -7183,11 +7952,27 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetProgramResourceName(uint program, ProgramInterface programInterface, uint index, int bufSize, int[] length, StringBuilder name)
+		{
+			this._GetProgramResourceName(program, (uint)programInterface, index, bufSize, length, name);
+#if DEBUG
+			this.CheckErrors("GetProgramResourceName");
+#endif
+		}
+
 		public void GetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int[] length, StringBuilder name)
 		{
 			this._GetProgramResourceName(program, programInterface, index, bufSize, length, name);
 #if DEBUG
 			this.CheckErrors("GetProgramResourceName");
+#endif
+		}
+
+		public void GetProgramStageiv(uint program, ShaderType shadertype, ProgramStagePName pname, int[] values)
+		{
+			this._GetProgramStageiv(program, (uint)shadertype, (uint)pname, values);
+#if DEBUG
+			this.CheckErrors("GetProgramStageiv");
 #endif
 		}
 
@@ -7199,11 +7984,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetQueryBufferObjecti64v(uint id, uint buffer, QueryObjectParameterName pname, int offset)
+		{
+			this._GetQueryBufferObjecti64v(id, buffer, (uint)pname, offset);
+#if DEBUG
+			this.CheckErrors("GetQueryBufferObjecti64v");
+#endif
+		}
+
 		public void GetQueryBufferObjecti64v(uint id, uint buffer, uint pname, int offset)
 		{
 			this._GetQueryBufferObjecti64v(id, buffer, pname, offset);
 #if DEBUG
 			this.CheckErrors("GetQueryBufferObjecti64v");
+#endif
+		}
+
+		public void GetQueryBufferObjectiv(uint id, uint buffer, QueryObjectParameterName pname, int offset)
+		{
+			this._GetQueryBufferObjectiv(id, buffer, (uint)pname, offset);
+#if DEBUG
+			this.CheckErrors("GetQueryBufferObjectiv");
 #endif
 		}
 
@@ -7215,11 +8016,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetQueryBufferObjectui64v(uint id, uint buffer, QueryObjectParameterName pname, int offset)
+		{
+			this._GetQueryBufferObjectui64v(id, buffer, (uint)pname, offset);
+#if DEBUG
+			this.CheckErrors("GetQueryBufferObjectui64v");
+#endif
+		}
+
 		public void GetQueryBufferObjectui64v(uint id, uint buffer, uint pname, int offset)
 		{
 			this._GetQueryBufferObjectui64v(id, buffer, pname, offset);
 #if DEBUG
 			this.CheckErrors("GetQueryBufferObjectui64v");
+#endif
+		}
+
+		public void GetQueryBufferObjectuiv(uint id, uint buffer, QueryObjectParameterName pname, int offset)
+		{
+			this._GetQueryBufferObjectuiv(id, buffer, (uint)pname, offset);
+#if DEBUG
+			this.CheckErrors("GetQueryBufferObjectuiv");
 #endif
 		}
 
@@ -7231,11 +8048,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetQueryIndexediv(uint target, uint index, QueryParameterName pname, int[] @params)
+		{
+			this._GetQueryIndexediv(target, index, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryIndexediv");
+#endif
+		}
+
 		public void GetQueryIndexediv(uint target, uint index, uint pname, int[] @params)
 		{
 			this._GetQueryIndexediv(target, index, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetQueryIndexediv");
+#endif
+		}
+
+		public void GetQueryiv(QueryTarget target, QueryParameterName pname, int[] @params)
+		{
+			this._GetQueryiv((uint)target, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryiv");
 #endif
 		}
 
@@ -7247,11 +8080,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetQueryObjecti64v(uint id, QueryObjectParameterName pname, long[] @params)
+		{
+			this._GetQueryObjecti64v(id, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryObjecti64v");
+#endif
+		}
+
 		public void GetQueryObjecti64v(uint id, uint pname, long[] @params)
 		{
 			this._GetQueryObjecti64v(id, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetQueryObjecti64v");
+#endif
+		}
+
+		public void GetQueryObjectiv(uint id, QueryObjectParameterName pname, int[] @params)
+		{
+			this._GetQueryObjectiv(id, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryObjectiv");
 #endif
 		}
 
@@ -7263,11 +8112,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetQueryObjectui64v(uint id, QueryObjectParameterName pname, ulong[] @params)
+		{
+			this._GetQueryObjectui64v(id, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryObjectui64v");
+#endif
+		}
+
 		public void GetQueryObjectui64v(uint id, uint pname, ulong[] @params)
 		{
 			this._GetQueryObjectui64v(id, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetQueryObjectui64v");
+#endif
+		}
+
+		public void GetQueryObjectuiv(uint id, QueryObjectParameterName pname, uint[] @params)
+		{
+			this._GetQueryObjectuiv(id, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetQueryObjectuiv");
 #endif
 		}
 
@@ -7279,11 +8144,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetRenderbufferParameteriv(RenderbufferTarget target, RenderbufferParameterName pname, int[] @params)
+		{
+			this._GetRenderbufferParameteriv((uint)target, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetRenderbufferParameteriv");
+#endif
+		}
+
 		public void GetRenderbufferParameteriv(uint target, uint pname, int[] @params)
 		{
 			this._GetRenderbufferParameteriv(target, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetRenderbufferParameteriv");
+#endif
+		}
+
+		public void GetSamplerParameterfv(uint sampler, SamplerParameterName pname, float[] @params)
+		{
+			this._GetSamplerParameterfv(sampler, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetSamplerParameterfv");
 #endif
 		}
 
@@ -7295,11 +8176,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetSamplerParameterIiv(uint sampler, SamplerParameterName pname, int[] @params)
+		{
+			this._GetSamplerParameterIiv(sampler, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetSamplerParameterIiv");
+#endif
+		}
+
 		public void GetSamplerParameterIiv(uint sampler, uint pname, int[] @params)
 		{
 			this._GetSamplerParameterIiv(sampler, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetSamplerParameterIiv");
+#endif
+		}
+
+		public void GetSamplerParameterIuiv(uint sampler, SamplerParameterName pname, uint[] @params)
+		{
+			this._GetSamplerParameterIuiv(sampler, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetSamplerParameterIuiv");
 #endif
 		}
 
@@ -7311,11 +8208,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetSamplerParameteriv(uint sampler, SamplerParameterName pname, int[] @params)
+		{
+			this._GetSamplerParameteriv(sampler, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetSamplerParameteriv");
+#endif
+		}
+
 		public void GetSamplerParameteriv(uint sampler, uint pname, int[] @params)
 		{
 			this._GetSamplerParameteriv(sampler, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetSamplerParameteriv");
+#endif
+		}
+
+		public void GetShaderPrecisionFormat(ShaderType shadertype, PrecisionType precisiontype, int[] range, int[] precision)
+		{
+			this._GetShaderPrecisionFormat((uint)shadertype, (uint)precisiontype, range, precision);
+#if DEBUG
+			this.CheckErrors("GetShaderPrecisionFormat");
 #endif
 		}
 
@@ -7335,11 +8248,29 @@ namespace GLDotNet
 #endif
 		}
 
+		public IntPtr GetStringi(StringName name, uint index)
+		{
+			var result = this._GetStringi((uint)name, index);
+#if DEBUG
+			this.CheckErrors("GetStringi");
+#endif
+			return result;
+		}
+
 		public IntPtr GetStringi(uint name, uint index)
 		{
 			var result = this._GetStringi(name, index);
 #if DEBUG
 			this.CheckErrors("GetStringi");
+#endif
+			return result;
+		}
+
+		public uint GetSubroutineIndex(uint program, ShaderType shadertype, string name)
+		{
+			var result = this._GetSubroutineIndex(program, (uint)shadertype, name);
+#if DEBUG
+			this.CheckErrors("GetSubroutineIndex");
 #endif
 			return result;
 		}
@@ -7353,6 +8284,15 @@ namespace GLDotNet
 			return result;
 		}
 
+		public int GetSubroutineUniformLocation(uint program, ShaderType shadertype, string name)
+		{
+			var result = this._GetSubroutineUniformLocation(program, (uint)shadertype, name);
+#if DEBUG
+			this.CheckErrors("GetSubroutineUniformLocation");
+#endif
+			return result;
+		}
+
 		public int GetSubroutineUniformLocation(uint program, uint shadertype, string name)
 		{
 			var result = this._GetSubroutineUniformLocation(program, shadertype, name);
@@ -7360,6 +8300,14 @@ namespace GLDotNet
 			this.CheckErrors("GetSubroutineUniformLocation");
 #endif
 			return result;
+		}
+
+		public void GetSynciv(IntPtr sync, SyncParameterName pname, int bufSize, int[] length, int[] values)
+		{
+			this._GetSynciv(sync, (uint)pname, bufSize, length, values);
+#if DEBUG
+			this.CheckErrors("GetSynciv");
+#endif
 		}
 
 		public void GetSynciv(IntPtr sync, uint pname, int bufSize, int[] length, int[] values)
@@ -7482,11 +8430,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTextureImage(uint texture, int level, PixelFormat format, PixelType type, int bufSize, IntPtr pixels)
+		{
+			this._GetTextureImage(texture, level, (uint)format, (uint)type, bufSize, pixels);
+#if DEBUG
+			this.CheckErrors("GetTextureImage");
+#endif
+		}
+
 		public void GetTextureImage(uint texture, int level, uint format, uint type, int bufSize, IntPtr pixels)
 		{
 			this._GetTextureImage(texture, level, format, type, bufSize, pixels);
 #if DEBUG
 			this.CheckErrors("GetTextureImage");
+#endif
+		}
+
+		public void GetTextureLevelParameterfv(uint texture, int level, GetTextureParameter pname, float[] @params)
+		{
+			this._GetTextureLevelParameterfv(texture, level, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureLevelParameterfv");
 #endif
 		}
 
@@ -7498,11 +8462,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTextureLevelParameteriv(uint texture, int level, GetTextureParameter pname, int[] @params)
+		{
+			this._GetTextureLevelParameteriv(texture, level, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureLevelParameteriv");
+#endif
+		}
+
 		public void GetTextureLevelParameteriv(uint texture, int level, uint pname, int[] @params)
 		{
 			this._GetTextureLevelParameteriv(texture, level, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetTextureLevelParameteriv");
+#endif
+		}
+
+		public void GetTextureParameterfv(uint texture, GetTextureParameter pname, float[] @params)
+		{
+			this._GetTextureParameterfv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureParameterfv");
 #endif
 		}
 
@@ -7514,11 +8494,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTextureParameterIiv(uint texture, GetTextureParameter pname, int[] @params)
+		{
+			this._GetTextureParameterIiv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureParameterIiv");
+#endif
+		}
+
 		public void GetTextureParameterIiv(uint texture, uint pname, int[] @params)
 		{
 			this._GetTextureParameterIiv(texture, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetTextureParameterIiv");
+#endif
+		}
+
+		public void GetTextureParameterIuiv(uint texture, GetTextureParameter pname, uint[] @params)
+		{
+			this._GetTextureParameterIuiv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureParameterIuiv");
 #endif
 		}
 
@@ -7530,11 +8526,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTextureParameteriv(uint texture, GetTextureParameter pname, int[] @params)
+		{
+			this._GetTextureParameteriv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetTextureParameteriv");
+#endif
+		}
+
 		public void GetTextureParameteriv(uint texture, uint pname, int[] @params)
 		{
 			this._GetTextureParameteriv(texture, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetTextureParameteriv");
+#endif
+		}
+
+		public void GetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, PixelType type, int bufSize, IntPtr pixels)
+		{
+			this._GetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, (uint)type, bufSize, pixels);
+#if DEBUG
+			this.CheckErrors("GetTextureSubImage");
 #endif
 		}
 
@@ -7546,6 +8558,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTransformFeedbacki_v(uint xfb, TransformFeedbackPName pname, uint index, int[] param)
+		{
+			this._GetTransformFeedbacki_v(xfb, (uint)pname, index, param);
+#if DEBUG
+			this.CheckErrors("GetTransformFeedbacki_v");
+#endif
+		}
+
 		public void GetTransformFeedbacki_v(uint xfb, uint pname, uint index, int[] param)
 		{
 			this._GetTransformFeedbacki_v(xfb, pname, index, param);
@@ -7554,11 +8574,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetTransformFeedbacki64_v(uint xfb, TransformFeedbackPName pname, uint index, long[] param)
+		{
+			this._GetTransformFeedbacki64_v(xfb, (uint)pname, index, param);
+#if DEBUG
+			this.CheckErrors("GetTransformFeedbacki64_v");
+#endif
+		}
+
 		public void GetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long[] param)
 		{
 			this._GetTransformFeedbacki64_v(xfb, pname, index, param);
 #if DEBUG
 			this.CheckErrors("GetTransformFeedbacki64_v");
+#endif
+		}
+
+		public void GetTransformFeedbackiv(uint xfb, TransformFeedbackPName pname, int[] param)
+		{
+			this._GetTransformFeedbackiv(xfb, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("GetTransformFeedbackiv");
 #endif
 		}
 
@@ -7628,6 +8664,14 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void GetUniformSubroutineuiv(ShaderType shadertype, int location, uint[] @params)
+		{
+			this._GetUniformSubroutineuiv((uint)shadertype, location, @params);
+#if DEBUG
+			this.CheckErrors("GetUniformSubroutineuiv");
+#endif
+		}
+
 		public void GetUniformSubroutineuiv(uint shadertype, int location, uint[] @params)
 		{
 			this._GetUniformSubroutineuiv(shadertype, location, @params);
@@ -7644,6 +8688,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetVertexArrayIndexed64iv(uint vaobj, uint index, VertexArrayPName pname, long[] param)
+		{
+			this._GetVertexArrayIndexed64iv(vaobj, index, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("GetVertexArrayIndexed64iv");
+#endif
+		}
+
 		public void GetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long[] param)
 		{
 			this._GetVertexArrayIndexed64iv(vaobj, index, pname, param);
@@ -7652,11 +8704,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetVertexArrayIndexediv(uint vaobj, uint index, VertexArrayPName pname, int[] param)
+		{
+			this._GetVertexArrayIndexediv(vaobj, index, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("GetVertexArrayIndexediv");
+#endif
+		}
+
 		public void GetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int[] param)
 		{
 			this._GetVertexArrayIndexediv(vaobj, index, pname, param);
 #if DEBUG
 			this.CheckErrors("GetVertexArrayIndexediv");
+#endif
+		}
+
+		public void GetVertexArrayiv(uint vaobj, VertexArrayPName pname, int[] param)
+		{
+			this._GetVertexArrayiv(vaobj, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("GetVertexArrayiv");
 #endif
 		}
 
@@ -7684,11 +8752,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void GetVertexAttribIiv(uint index, VertexAttribEnum pname, int[] @params)
+		{
+			this._GetVertexAttribIiv(index, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetVertexAttribIiv");
+#endif
+		}
+
 		public void GetVertexAttribIiv(uint index, uint pname, int[] @params)
 		{
 			this._GetVertexAttribIiv(index, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetVertexAttribIiv");
+#endif
+		}
+
+		public void GetVertexAttribIuiv(uint index, VertexAttribEnum pname, uint[] @params)
+		{
+			this._GetVertexAttribIuiv(index, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetVertexAttribIuiv");
 #endif
 		}
 
@@ -7705,6 +8789,14 @@ namespace GLDotNet
 			this._GetVertexAttribiv(index, pname, @params);
 #if DEBUG
 			this.CheckErrors("GetVertexAttribiv");
+#endif
+		}
+
+		public void GetVertexAttribLdv(uint index, VertexAttribEnum pname, double[] @params)
+		{
+			this._GetVertexAttribLdv(index, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("GetVertexAttribLdv");
 #endif
 		}
 
@@ -7753,6 +8845,14 @@ namespace GLDotNet
 			this._InvalidateBufferSubData(buffer, offset, length);
 #if DEBUG
 			this.CheckErrors("InvalidateBufferSubData");
+#endif
+		}
+
+		public void InvalidateFramebuffer(FramebufferTarget target, int numAttachments, uint[] attachments)
+		{
+			this._InvalidateFramebuffer((uint)target, numAttachments, attachments);
+#if DEBUG
+			this.CheckErrors("InvalidateFramebuffer");
 #endif
 		}
 
@@ -7827,6 +8927,15 @@ namespace GLDotNet
 			var result = this._IsEnabled(cap);
 #if DEBUG
 			this.CheckErrors("IsEnabled");
+#endif
+			return result;
+		}
+
+		public bool IsEnabledi(EnableCap target, uint index)
+		{
+			var result = this._IsEnabledi((uint)target, index);
+#if DEBUG
+			this.CheckErrors("IsEnabledi");
 #endif
 			return result;
 		}
@@ -7989,9 +9098,9 @@ namespace GLDotNet
 			return result;
 		}
 
-		public IntPtr MapBufferRange(BufferTarget target, int offset, int length, uint access)
+		public IntPtr MapBufferRange(BufferTarget target, int offset, int length, BufferAccessMask access)
 		{
-			var result = this._MapBufferRange((uint)target, offset, length, access);
+			var result = this._MapBufferRange((uint)target, offset, length, (uint)access);
 #if DEBUG
 			this.CheckErrors("MapBufferRange");
 #endif
@@ -8007,11 +9116,29 @@ namespace GLDotNet
 			return result;
 		}
 
+		public IntPtr MapNamedBuffer(uint buffer, BufferAccess access)
+		{
+			var result = this._MapNamedBuffer(buffer, (uint)access);
+#if DEBUG
+			this.CheckErrors("MapNamedBuffer");
+#endif
+			return result;
+		}
+
 		public IntPtr MapNamedBuffer(uint buffer, uint access)
 		{
 			var result = this._MapNamedBuffer(buffer, access);
 #if DEBUG
 			this.CheckErrors("MapNamedBuffer");
+#endif
+			return result;
+		}
+
+		public IntPtr MapNamedBufferRange(uint buffer, int offset, int length, BufferAccessMask access)
+		{
+			var result = this._MapNamedBufferRange(buffer, offset, length, (uint)access);
+#if DEBUG
+			this.CheckErrors("MapNamedBufferRange");
 #endif
 			return result;
 		}
@@ -8025,11 +9152,27 @@ namespace GLDotNet
 			return result;
 		}
 
+		public void MemoryBarrier(MemoryBarrierMask barriers)
+		{
+			this._MemoryBarrier((uint)barriers);
+#if DEBUG
+			this.CheckErrors("MemoryBarrier");
+#endif
+		}
+
 		public void MemoryBarrier(uint barriers)
 		{
 			this._MemoryBarrier(barriers);
 #if DEBUG
 			this.CheckErrors("MemoryBarrier");
+#endif
+		}
+
+		public void MemoryBarrierByRegion(MemoryBarrierMask barriers)
+		{
+			this._MemoryBarrierByRegion((uint)barriers);
+#if DEBUG
+			this.CheckErrors("MemoryBarrierByRegion");
 #endif
 		}
 
@@ -8113,9 +9256,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void MultiDrawElementsIndirect(PrimitiveType mode, uint type, IntPtr indirect, int drawcount, int stride)
+		public void MultiDrawElementsIndirect(PrimitiveType mode, DrawElementsType type, IntPtr indirect, int drawcount, int stride)
 		{
-			this._MultiDrawElementsIndirect((uint)mode, type, indirect, drawcount, stride);
+			this._MultiDrawElementsIndirect((uint)mode, (uint)type, indirect, drawcount, stride);
 #if DEBUG
 			this.CheckErrors("MultiDrawElementsIndirect");
 #endif
@@ -8129,11 +9272,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedBufferData(uint buffer, int size, IntPtr data, VertexBufferObjectUsage usage)
+		{
+			this._NamedBufferData(buffer, size, data, (uint)usage);
+#if DEBUG
+			this.CheckErrors("NamedBufferData");
+#endif
+		}
+
 		public void NamedBufferData(uint buffer, int size, IntPtr data, uint usage)
 		{
 			this._NamedBufferData(buffer, size, data, usage);
 #if DEBUG
 			this.CheckErrors("NamedBufferData");
+#endif
+		}
+
+		public void NamedBufferStorage(uint buffer, int size, IntPtr data, MapBufferUsageMask flags)
+		{
+			this._NamedBufferStorage(buffer, size, data, (uint)flags);
+#if DEBUG
+			this.CheckErrors("NamedBufferStorage");
 #endif
 		}
 
@@ -8153,6 +9312,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedFramebufferDrawBuffer(uint framebuffer, ColorBuffer buf)
+		{
+			this._NamedFramebufferDrawBuffer(framebuffer, (uint)buf);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferDrawBuffer");
+#endif
+		}
+
 		public void NamedFramebufferDrawBuffer(uint framebuffer, uint buf)
 		{
 			this._NamedFramebufferDrawBuffer(framebuffer, buf);
@@ -8169,11 +9336,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedFramebufferParameteri(uint framebuffer, FramebufferParameterName pname, int param)
+		{
+			this._NamedFramebufferParameteri(framebuffer, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferParameteri");
+#endif
+		}
+
 		public void NamedFramebufferParameteri(uint framebuffer, uint pname, int param)
 		{
 			this._NamedFramebufferParameteri(framebuffer, pname, param);
 #if DEBUG
 			this.CheckErrors("NamedFramebufferParameteri");
+#endif
+		}
+
+		public void NamedFramebufferReadBuffer(uint framebuffer, ColorBuffer src)
+		{
+			this._NamedFramebufferReadBuffer(framebuffer, (uint)src);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferReadBuffer");
 #endif
 		}
 
@@ -8185,11 +9368,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedFramebufferRenderbuffer(uint framebuffer, FramebufferAttachment attachment, RenderbufferTarget renderbuffertarget, uint renderbuffer)
+		{
+			this._NamedFramebufferRenderbuffer(framebuffer, (uint)attachment, (uint)renderbuffertarget, renderbuffer);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferRenderbuffer");
+#endif
+		}
+
 		public void NamedFramebufferRenderbuffer(uint framebuffer, uint attachment, uint renderbuffertarget, uint renderbuffer)
 		{
 			this._NamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer);
 #if DEBUG
 			this.CheckErrors("NamedFramebufferRenderbuffer");
+#endif
+		}
+
+		public void NamedFramebufferTexture(uint framebuffer, FramebufferAttachment attachment, uint texture, int level)
+		{
+			this._NamedFramebufferTexture(framebuffer, (uint)attachment, texture, level);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferTexture");
 #endif
 		}
 
@@ -8201,11 +9400,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedFramebufferTextureLayer(uint framebuffer, FramebufferAttachment attachment, uint texture, int level, int layer)
+		{
+			this._NamedFramebufferTextureLayer(framebuffer, (uint)attachment, texture, level, layer);
+#if DEBUG
+			this.CheckErrors("NamedFramebufferTextureLayer");
+#endif
+		}
+
 		public void NamedFramebufferTextureLayer(uint framebuffer, uint attachment, uint texture, int level, int layer)
 		{
 			this._NamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer);
 #if DEBUG
 			this.CheckErrors("NamedFramebufferTextureLayer");
+#endif
+		}
+
+		public void NamedRenderbufferStorage(uint renderbuffer, InternalFormat internalformat, int width, int height)
+		{
+			this._NamedRenderbufferStorage(renderbuffer, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("NamedRenderbufferStorage");
 #endif
 		}
 
@@ -8217,11 +9432,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void NamedRenderbufferStorageMultisample(uint renderbuffer, int samples, InternalFormat internalformat, int width, int height)
+		{
+			this._NamedRenderbufferStorageMultisample(renderbuffer, samples, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("NamedRenderbufferStorageMultisample");
+#endif
+		}
+
 		public void NamedRenderbufferStorageMultisample(uint renderbuffer, int samples, uint internalformat, int width, int height)
 		{
 			this._NamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
 #if DEBUG
 			this.CheckErrors("NamedRenderbufferStorageMultisample");
+#endif
+		}
+
+		public void ObjectLabel(ObjectIdentifier identifier, uint name, int length, string label)
+		{
+			this._ObjectLabel((uint)identifier, name, length, label);
+#if DEBUG
+			this.CheckErrors("ObjectLabel");
 #endif
 		}
 
@@ -8241,11 +9472,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void PatchParameterfv(PatchParameterName pname, float[] values)
+		{
+			this._PatchParameterfv((uint)pname, values);
+#if DEBUG
+			this.CheckErrors("PatchParameterfv");
+#endif
+		}
+
 		public void PatchParameterfv(uint pname, float[] values)
 		{
 			this._PatchParameterfv(pname, values);
 #if DEBUG
 			this.CheckErrors("PatchParameterfv");
+#endif
+		}
+
+		public void PatchParameteri(PatchParameterName pname, int value)
+		{
+			this._PatchParameteri((uint)pname, value);
+#if DEBUG
+			this.CheckErrors("PatchParameteri");
 #endif
 		}
 
@@ -8382,6 +9629,14 @@ namespace GLDotNet
 			this._ProgramBinary(program, binaryFormat, binary, length);
 #if DEBUG
 			this.CheckErrors("ProgramBinary");
+#endif
+		}
+
+		public void ProgramParameteri(uint program, ProgramParameterPName pname, int value)
+		{
+			this._ProgramParameteri(program, (uint)pname, value);
+#if DEBUG
+			this.CheckErrors("ProgramParameteri");
 #endif
 		}
 
@@ -8793,6 +10048,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void ProvokingVertex(VertexProvokingMode mode)
+		{
+			this._ProvokingVertex((uint)mode);
+#if DEBUG
+			this.CheckErrors("ProvokingVertex");
+#endif
+		}
+
 		public void ProvokingVertex(uint mode)
 		{
 			this._ProvokingVertex(mode);
@@ -8801,11 +10064,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void PushDebugGroup(DebugSource source, uint id, int length, string message)
+		{
+			this._PushDebugGroup((uint)source, id, length, message);
+#if DEBUG
+			this.CheckErrors("PushDebugGroup");
+#endif
+		}
+
 		public void PushDebugGroup(uint source, uint id, int length, string message)
 		{
 			this._PushDebugGroup(source, id, length, message);
 #if DEBUG
 			this.CheckErrors("PushDebugGroup");
+#endif
+		}
+
+		public void QueryCounter(uint id, QueryTarget target)
+		{
+			this._QueryCounter(id, (uint)target);
+#if DEBUG
+			this.CheckErrors("QueryCounter");
 #endif
 		}
 
@@ -8830,6 +10109,14 @@ namespace GLDotNet
 			this._ReadBuffer(src);
 #if DEBUG
 			this.CheckErrors("ReadBuffer");
+#endif
+		}
+
+		public void ReadnPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, int bufSize, IntPtr data)
+		{
+			this._ReadnPixels(x, y, width, height, (uint)format, (uint)type, bufSize, data);
+#if DEBUG
+			this.CheckErrors("ReadnPixels");
 #endif
 		}
 
@@ -8865,11 +10152,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void RenderbufferStorage(RenderbufferTarget target, InternalFormat internalformat, int width, int height)
+		{
+			this._RenderbufferStorage((uint)target, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("RenderbufferStorage");
+#endif
+		}
+
 		public void RenderbufferStorage(uint target, uint internalformat, int width, int height)
 		{
 			this._RenderbufferStorage(target, internalformat, width, height);
 #if DEBUG
 			this.CheckErrors("RenderbufferStorage");
+#endif
+		}
+
+		public void RenderbufferStorageMultisample(RenderbufferTarget target, int samples, InternalFormat internalformat, int width, int height)
+		{
+			this._RenderbufferStorageMultisample((uint)target, samples, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("RenderbufferStorageMultisample");
 #endif
 		}
 
@@ -8905,11 +10208,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void SamplerParameterf(uint sampler, SamplerParameterName pname, float param)
+		{
+			this._SamplerParameterf(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameterf");
+#endif
+		}
+
 		public void SamplerParameterf(uint sampler, uint pname, float param)
 		{
 			this._SamplerParameterf(sampler, pname, param);
 #if DEBUG
 			this.CheckErrors("SamplerParameterf");
+#endif
+		}
+
+		public void SamplerParameterfv(uint sampler, SamplerParameterName pname, float[] param)
+		{
+			this._SamplerParameterfv(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameterfv");
 #endif
 		}
 
@@ -8921,11 +10240,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void SamplerParameteri(uint sampler, SamplerParameterName pname, int param)
+		{
+			this._SamplerParameteri(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameteri");
+#endif
+		}
+
 		public void SamplerParameteri(uint sampler, uint pname, int param)
 		{
 			this._SamplerParameteri(sampler, pname, param);
 #if DEBUG
 			this.CheckErrors("SamplerParameteri");
+#endif
+		}
+
+		public void SamplerParameterIiv(uint sampler, SamplerParameterName pname, int[] param)
+		{
+			this._SamplerParameterIiv(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameterIiv");
 #endif
 		}
 
@@ -8937,11 +10272,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void SamplerParameterIuiv(uint sampler, SamplerParameterName pname, uint[] param)
+		{
+			this._SamplerParameterIuiv(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameterIuiv");
+#endif
+		}
+
 		public void SamplerParameterIuiv(uint sampler, uint pname, uint[] param)
 		{
 			this._SamplerParameterIuiv(sampler, pname, param);
 #if DEBUG
 			this.CheckErrors("SamplerParameterIuiv");
+#endif
+		}
+
+		public void SamplerParameteriv(uint sampler, SamplerParameterName pname, int[] param)
+		{
+			this._SamplerParameteriv(sampler, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("SamplerParameteriv");
 #endif
 		}
 
@@ -9089,9 +10440,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexBuffer(TextureTarget target, uint internalformat, uint buffer)
+		public void TexBuffer(TextureTarget target, InternalFormat internalformat, uint buffer)
 		{
-			this._TexBuffer((uint)target, internalformat, buffer);
+			this._TexBuffer((uint)target, (uint)internalformat, buffer);
 #if DEBUG
 			this.CheckErrors("TexBuffer");
 #endif
@@ -9105,6 +10456,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TexBufferRange(TextureTarget target, InternalFormat internalformat, uint buffer, int offset, int size)
+		{
+			this._TexBufferRange((uint)target, (uint)internalformat, buffer, offset, size);
+#if DEBUG
+			this.CheckErrors("TexBufferRange");
+#endif
+		}
+
 		public void TexBufferRange(uint target, uint internalformat, uint buffer, int offset, int size)
 		{
 			this._TexBufferRange(target, internalformat, buffer, offset, size);
@@ -9113,9 +10472,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage1D(TextureTarget target, int level, int internalformat, int width, int border, PixelFormat format, PixelType type, IntPtr pixels)
+		public void TexImage1D(TextureTarget target, int level, InternalFormat internalformat, int width, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
-			this._TexImage1D((uint)target, level, internalformat, width, border, (uint)format, (uint)type, pixels);
+			this._TexImage1D((uint)target, level, (int)internalformat, width, border, (uint)format, (uint)type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage1D");
 #endif
@@ -9129,9 +10488,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage2D(TextureTarget target, int level, int internalformat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr pixels)
+		public void TexImage2D(TextureTarget target, int level, InternalFormat internalformat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
-			this._TexImage2D((uint)target, level, internalformat, width, height, border, (uint)format, (uint)type, pixels);
+			this._TexImage2D((uint)target, level, (int)internalformat, width, height, border, (uint)format, (uint)type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage2D");
 #endif
@@ -9145,6 +10504,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TexImage2DMultisample(TextureTarget target, int samples, InternalFormat internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			this._TexImage2DMultisample((uint)target, samples, (uint)internalformat, width, height, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TexImage2DMultisample");
+#endif
+		}
+
 		public void TexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
 		{
 			this._TexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
@@ -9153,9 +10520,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void TexImage3D(TextureTarget target, int level, int internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels)
+		public void TexImage3D(TextureTarget target, int level, InternalFormat internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels)
 		{
-			this._TexImage3D((uint)target, level, internalformat, width, height, depth, border, (uint)format, (uint)type, pixels);
+			this._TexImage3D((uint)target, level, (int)internalformat, width, height, depth, border, (uint)format, (uint)type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage3D");
 #endif
@@ -9166,6 +10533,14 @@ namespace GLDotNet
 			this._TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("TexImage3D");
+#endif
+		}
+
+		public void TexImage3DMultisample(TextureTarget target, int samples, InternalFormat internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			this._TexImage3DMultisample((uint)target, samples, (uint)internalformat, width, height, depth, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TexImage3DMultisample");
 #endif
 		}
 
@@ -9273,11 +10648,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TexStorage1D(TextureTarget target, int levels, InternalFormat internalformat, int width)
+		{
+			this._TexStorage1D((uint)target, levels, (uint)internalformat, width);
+#if DEBUG
+			this.CheckErrors("TexStorage1D");
+#endif
+		}
+
 		public void TexStorage1D(uint target, int levels, uint internalformat, int width)
 		{
 			this._TexStorage1D(target, levels, internalformat, width);
 #if DEBUG
 			this.CheckErrors("TexStorage1D");
+#endif
+		}
+
+		public void TexStorage2D(TextureTarget target, int levels, InternalFormat internalformat, int width, int height)
+		{
+			this._TexStorage2D((uint)target, levels, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("TexStorage2D");
 #endif
 		}
 
@@ -9289,6 +10680,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TexStorage2DMultisample(TextureTarget target, int samples, InternalFormat internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			this._TexStorage2DMultisample((uint)target, samples, (uint)internalformat, width, height, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TexStorage2DMultisample");
+#endif
+		}
+
 		public void TexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
 		{
 			this._TexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
@@ -9297,11 +10696,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TexStorage3D(TextureTarget target, int levels, InternalFormat internalformat, int width, int height, int depth)
+		{
+			this._TexStorage3D((uint)target, levels, (uint)internalformat, width, height, depth);
+#if DEBUG
+			this.CheckErrors("TexStorage3D");
+#endif
+		}
+
 		public void TexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth)
 		{
 			this._TexStorage3D(target, levels, internalformat, width, height, depth);
 #if DEBUG
 			this.CheckErrors("TexStorage3D");
+#endif
+		}
+
+		public void TexStorage3DMultisample(TextureTarget target, int samples, InternalFormat internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			this._TexStorage3DMultisample((uint)target, samples, (uint)internalformat, width, height, depth, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TexStorage3DMultisample");
 #endif
 		}
 
@@ -9369,11 +10784,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureBuffer(uint texture, InternalFormat internalformat, uint buffer)
+		{
+			this._TextureBuffer(texture, (uint)internalformat, buffer);
+#if DEBUG
+			this.CheckErrors("TextureBuffer");
+#endif
+		}
+
 		public void TextureBuffer(uint texture, uint internalformat, uint buffer)
 		{
 			this._TextureBuffer(texture, internalformat, buffer);
 #if DEBUG
 			this.CheckErrors("TextureBuffer");
+#endif
+		}
+
+		public void TextureBufferRange(uint texture, InternalFormat internalformat, uint buffer, int offset, int size)
+		{
+			this._TextureBufferRange(texture, (uint)internalformat, buffer, offset, size);
+#if DEBUG
+			this.CheckErrors("TextureBufferRange");
 #endif
 		}
 
@@ -9385,11 +10816,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureParameterf(uint texture, TextureParameterName pname, float param)
+		{
+			this._TextureParameterf(texture, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("TextureParameterf");
+#endif
+		}
+
 		public void TextureParameterf(uint texture, uint pname, float param)
 		{
 			this._TextureParameterf(texture, pname, param);
 #if DEBUG
 			this.CheckErrors("TextureParameterf");
+#endif
+		}
+
+		public void TextureParameterfv(uint texture, TextureParameterName pname, float[] param)
+		{
+			this._TextureParameterfv(texture, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("TextureParameterfv");
 #endif
 		}
 
@@ -9401,11 +10848,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureParameteri(uint texture, TextureParameterName pname, int param)
+		{
+			this._TextureParameteri(texture, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("TextureParameteri");
+#endif
+		}
+
 		public void TextureParameteri(uint texture, uint pname, int param)
 		{
 			this._TextureParameteri(texture, pname, param);
 #if DEBUG
 			this.CheckErrors("TextureParameteri");
+#endif
+		}
+
+		public void TextureParameterIiv(uint texture, TextureParameterName pname, int[] @params)
+		{
+			this._TextureParameterIiv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("TextureParameterIiv");
 #endif
 		}
 
@@ -9417,11 +10880,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureParameterIuiv(uint texture, TextureParameterName pname, uint[] @params)
+		{
+			this._TextureParameterIuiv(texture, (uint)pname, @params);
+#if DEBUG
+			this.CheckErrors("TextureParameterIuiv");
+#endif
+		}
+
 		public void TextureParameterIuiv(uint texture, uint pname, uint[] @params)
 		{
 			this._TextureParameterIuiv(texture, pname, @params);
 #if DEBUG
 			this.CheckErrors("TextureParameterIuiv");
+#endif
+		}
+
+		public void TextureParameteriv(uint texture, TextureParameterName pname, int[] param)
+		{
+			this._TextureParameteriv(texture, (uint)pname, param);
+#if DEBUG
+			this.CheckErrors("TextureParameteriv");
 #endif
 		}
 
@@ -9433,11 +10912,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureStorage1D(uint texture, int levels, InternalFormat internalformat, int width)
+		{
+			this._TextureStorage1D(texture, levels, (uint)internalformat, width);
+#if DEBUG
+			this.CheckErrors("TextureStorage1D");
+#endif
+		}
+
 		public void TextureStorage1D(uint texture, int levels, uint internalformat, int width)
 		{
 			this._TextureStorage1D(texture, levels, internalformat, width);
 #if DEBUG
 			this.CheckErrors("TextureStorage1D");
+#endif
+		}
+
+		public void TextureStorage2D(uint texture, int levels, InternalFormat internalformat, int width, int height)
+		{
+			this._TextureStorage2D(texture, levels, (uint)internalformat, width, height);
+#if DEBUG
+			this.CheckErrors("TextureStorage2D");
 #endif
 		}
 
@@ -9449,11 +10944,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureStorage2DMultisample(uint texture, int samples, InternalFormat internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			this._TextureStorage2DMultisample(texture, samples, (uint)internalformat, width, height, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TextureStorage2DMultisample");
+#endif
+		}
+
 		public void TextureStorage2DMultisample(uint texture, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
 		{
 			this._TextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations);
 #if DEBUG
 			this.CheckErrors("TextureStorage2DMultisample");
+#endif
+		}
+
+		public void TextureStorage3D(uint texture, int levels, InternalFormat internalformat, int width, int height, int depth)
+		{
+			this._TextureStorage3D(texture, levels, (uint)internalformat, width, height, depth);
+#if DEBUG
+			this.CheckErrors("TextureStorage3D");
 #endif
 		}
 
@@ -9465,11 +10976,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureStorage3DMultisample(uint texture, int samples, InternalFormat internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			this._TextureStorage3DMultisample(texture, samples, (uint)internalformat, width, height, depth, fixedsamplelocations);
+#if DEBUG
+			this.CheckErrors("TextureStorage3DMultisample");
+#endif
+		}
+
 		public void TextureStorage3DMultisample(uint texture, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
 		{
 			this._TextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
 #if DEBUG
 			this.CheckErrors("TextureStorage3DMultisample");
+#endif
+		}
+
+		public void TextureSubImage1D(uint texture, int level, int xoffset, int width, PixelFormat format, PixelType type, IntPtr pixels)
+		{
+			this._TextureSubImage1D(texture, level, xoffset, width, (uint)format, (uint)type, pixels);
+#if DEBUG
+			this.CheckErrors("TextureSubImage1D");
 #endif
 		}
 
@@ -9481,6 +11008,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, PixelFormat format, PixelType type, IntPtr pixels)
+		{
+			this._TextureSubImage2D(texture, level, xoffset, yoffset, width, height, (uint)format, (uint)type, pixels);
+#if DEBUG
+			this.CheckErrors("TextureSubImage2D");
+#endif
+		}
+
 		public void TextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
 		{
 			this._TextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
@@ -9489,11 +11024,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void TextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, PixelFormat format, PixelType type, IntPtr pixels)
+		{
+			this._TextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, (uint)format, (uint)type, pixels);
+#if DEBUG
+			this.CheckErrors("TextureSubImage3D");
+#endif
+		}
+
 		public void TextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
 		{
 			this._TextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 #if DEBUG
 			this.CheckErrors("TextureSubImage3D");
+#endif
+		}
+
+		public void TextureView(uint texture, TextureTarget target, uint origtexture, InternalFormat internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers)
+		{
+			this._TextureView(texture, (uint)target, origtexture, (uint)internalformat, minlevel, numlevels, minlayer, numlayers);
+#if DEBUG
+			this.CheckErrors("TextureView");
 #endif
 		}
 
@@ -9937,6 +11488,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void UniformSubroutinesuiv(ShaderType shadertype, int count, uint[] indices)
+		{
+			this._UniformSubroutinesuiv((uint)shadertype, count, indices);
+#if DEBUG
+			this.CheckErrors("UniformSubroutinesuiv");
+#endif
+		}
+
 		public void UniformSubroutinesuiv(uint shadertype, int count, uint[] indices)
 		{
 			this._UniformSubroutinesuiv(shadertype, count, indices);
@@ -9980,6 +11539,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void UseProgramStages(uint pipeline, UseProgramStageMask stages, uint program)
+		{
+			this._UseProgramStages(pipeline, (uint)stages, program);
+#if DEBUG
+			this.CheckErrors("UseProgramStages");
+#endif
+		}
+
 		public void UseProgramStages(uint pipeline, uint stages, uint program)
 		{
 			this._UseProgramStages(pipeline, stages, program);
@@ -10012,6 +11579,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexArrayAttribFormat(uint vaobj, uint attribindex, int size, VertexAttribType type, bool normalized, uint relativeoffset)
+		{
+			this._VertexArrayAttribFormat(vaobj, attribindex, size, (uint)type, normalized, relativeoffset);
+#if DEBUG
+			this.CheckErrors("VertexArrayAttribFormat");
+#endif
+		}
+
 		public void VertexArrayAttribFormat(uint vaobj, uint attribindex, int size, uint type, bool normalized, uint relativeoffset)
 		{
 			this._VertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset);
@@ -10020,11 +11595,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexArrayAttribIFormat(uint vaobj, uint attribindex, int size, VertexAttribType type, uint relativeoffset)
+		{
+			this._VertexArrayAttribIFormat(vaobj, attribindex, size, (uint)type, relativeoffset);
+#if DEBUG
+			this.CheckErrors("VertexArrayAttribIFormat");
+#endif
+		}
+
 		public void VertexArrayAttribIFormat(uint vaobj, uint attribindex, int size, uint type, uint relativeoffset)
 		{
 			this._VertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset);
 #if DEBUG
 			this.CheckErrors("VertexArrayAttribIFormat");
+#endif
+		}
+
+		public void VertexArrayAttribLFormat(uint vaobj, uint attribindex, int size, VertexAttribType type, uint relativeoffset)
+		{
+			this._VertexArrayAttribLFormat(vaobj, attribindex, size, (uint)type, relativeoffset);
+#if DEBUG
+			this.CheckErrors("VertexArrayAttribLFormat");
 #endif
 		}
 
@@ -10548,6 +12139,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribIPointer(uint index, int size, VertexAttribPointerType type, int stride, IntPtr pointer)
+		{
+			this._VertexAttribIPointer(index, size, (uint)type, stride, pointer);
+#if DEBUG
+			this.CheckErrors("VertexAttribIPointer");
+#endif
+		}
+
 		public void VertexAttribIPointer(uint index, int size, uint type, int stride, IntPtr pointer)
 		{
 			this._VertexAttribIPointer(index, size, type, stride, pointer);
@@ -10620,11 +12219,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribLFormat(uint attribindex, int size, VertexAttribType type, uint relativeoffset)
+		{
+			this._VertexAttribLFormat(attribindex, size, (uint)type, relativeoffset);
+#if DEBUG
+			this.CheckErrors("VertexAttribLFormat");
+#endif
+		}
+
 		public void VertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset)
 		{
 			this._VertexAttribLFormat(attribindex, size, type, relativeoffset);
 #if DEBUG
 			this.CheckErrors("VertexAttribLFormat");
+#endif
+		}
+
+		public void VertexAttribLPointer(uint index, int size, VertexAttribPointerType type, int stride, IntPtr pointer)
+		{
+			this._VertexAttribLPointer(index, size, (uint)type, stride, pointer);
+#if DEBUG
+			this.CheckErrors("VertexAttribLPointer");
 #endif
 		}
 
@@ -10636,11 +12251,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribP1ui(uint index, VertexAttribPointerType type, bool normalized, uint value)
+		{
+			this._VertexAttribP1ui(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP1ui");
+#endif
+		}
+
 		public void VertexAttribP1ui(uint index, uint type, bool normalized, uint value)
 		{
 			this._VertexAttribP1ui(index, type, normalized, value);
 #if DEBUG
 			this.CheckErrors("VertexAttribP1ui");
+#endif
+		}
+
+		public void VertexAttribP1uiv(uint index, VertexAttribPointerType type, bool normalized, uint[] value)
+		{
+			this._VertexAttribP1uiv(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP1uiv");
 #endif
 		}
 
@@ -10652,11 +12283,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribP2ui(uint index, VertexAttribPointerType type, bool normalized, uint value)
+		{
+			this._VertexAttribP2ui(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP2ui");
+#endif
+		}
+
 		public void VertexAttribP2ui(uint index, uint type, bool normalized, uint value)
 		{
 			this._VertexAttribP2ui(index, type, normalized, value);
 #if DEBUG
 			this.CheckErrors("VertexAttribP2ui");
+#endif
+		}
+
+		public void VertexAttribP2uiv(uint index, VertexAttribPointerType type, bool normalized, uint[] value)
+		{
+			this._VertexAttribP2uiv(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP2uiv");
 #endif
 		}
 
@@ -10668,11 +12315,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribP3ui(uint index, VertexAttribPointerType type, bool normalized, uint value)
+		{
+			this._VertexAttribP3ui(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP3ui");
+#endif
+		}
+
 		public void VertexAttribP3ui(uint index, uint type, bool normalized, uint value)
 		{
 			this._VertexAttribP3ui(index, type, normalized, value);
 #if DEBUG
 			this.CheckErrors("VertexAttribP3ui");
+#endif
+		}
+
+		public void VertexAttribP3uiv(uint index, VertexAttribPointerType type, bool normalized, uint[] value)
+		{
+			this._VertexAttribP3uiv(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP3uiv");
 #endif
 		}
 
@@ -10684,6 +12347,14 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribP4ui(uint index, VertexAttribPointerType type, bool normalized, uint value)
+		{
+			this._VertexAttribP4ui(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP4ui");
+#endif
+		}
+
 		public void VertexAttribP4ui(uint index, uint type, bool normalized, uint value)
 		{
 			this._VertexAttribP4ui(index, type, normalized, value);
@@ -10692,11 +12363,27 @@ namespace GLDotNet
 #endif
 		}
 
+		public void VertexAttribP4uiv(uint index, VertexAttribPointerType type, bool normalized, uint[] value)
+		{
+			this._VertexAttribP4uiv(index, (uint)type, normalized, value);
+#if DEBUG
+			this.CheckErrors("VertexAttribP4uiv");
+#endif
+		}
+
 		public void VertexAttribP4uiv(uint index, uint type, bool normalized, uint[] value)
 		{
 			this._VertexAttribP4uiv(index, type, normalized, value);
 #if DEBUG
 			this.CheckErrors("VertexAttribP4uiv");
+#endif
+		}
+
+		public void VertexAttribPointer(uint index, int size, VertexAttribPointerType type, bool normalized, int stride, IntPtr pointer)
+		{
+			this._VertexAttribPointer(index, size, (uint)type, normalized, stride, pointer);
+#if DEBUG
+			this.CheckErrors("VertexAttribPointer");
 #endif
 		}
 

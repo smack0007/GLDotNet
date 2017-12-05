@@ -17,7 +17,8 @@ layout(location = 1) in vec3 vertColor;
 
 out vec3 fragColor;
 
-void main() {
+void main()
+{
 	fragColor = vertColor;
 	gl_Position = vec4(vertPosition, 1.0);
 }";
@@ -26,7 +27,8 @@ void main() {
 in vec3 fragColor;
 out vec4 outColor;
 
-void main() {
+void main()
+{
 	outColor = vec4(fragColor, 1.0);
 }";
 
@@ -51,14 +53,14 @@ void main() {
             this.vertexArray = this.GL.GenVertexArray();
             this.GL.BindVertexArray(this.vertexArray);
             this.GL.BindBuffer(BufferTarget.ArrayBuffer, pointsBuffer);
-            this.GL.VertexAttribPointer(0, 3, GL.FLOAT, false, 0, IntPtr.Zero);
+            this.GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero);
             this.GL.BindBuffer(BufferTarget.ArrayBuffer, colorsBuffer);
-            this.GL.VertexAttribPointer(1, 3, GL.FLOAT, false, 0, IntPtr.Zero);
+            this.GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero);
             this.GL.EnableVertexAttribArray(0);
             this.GL.EnableVertexAttribArray(1);
 
-            uint vs = this.GL.Utility.CreateAndCompileShader(GL.VERTEX_SHADER, VertexShader);
-            uint fs = this.GL.Utility.CreateAndCompileShader(GL.FRAGMENT_SHADER, FragmentShader);
+            uint vs = this.GL.Utility.CreateAndCompileShader(ShaderType.VertexShader, VertexShader);
+            uint fs = this.GL.Utility.CreateAndCompileShader(ShaderType.FragmentShader, FragmentShader);
             this.shaderProgram = this.GL.Utility.CreateAndLinkProgram(vs, fs);            
 
             this.GL.Enable(EnableCap.DepthTest);
