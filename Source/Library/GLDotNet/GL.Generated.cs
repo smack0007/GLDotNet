@@ -2446,7 +2446,7 @@ namespace GLDotNet
 
 			public delegate void UniformMatrix4dv(int location, int count, bool transpose, double[] value);
 
-			public delegate void UniformMatrix4fv(int location, int count, bool transpose, ref float value);
+			public delegate void UniformMatrix4fv(int location, int count, bool transpose, float[] value);
 
 			public delegate void UniformMatrix4x2dv(int location, int count, bool transpose, double[] value);
 
@@ -11448,9 +11448,9 @@ namespace GLDotNet
 #endif
 		}
 
-		public void UniformMatrix4fv(int location, int count, bool transpose, ref float value)
+		public void UniformMatrix4fv(int location, int count, bool transpose, float[] value)
 		{
-			this._UniformMatrix4fv(location, count, transpose, ref value);
+			this._UniformMatrix4fv(location, count, transpose, value);
 #if DEBUG
 			this.CheckErrors("UniformMatrix4fv");
 #endif

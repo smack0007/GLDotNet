@@ -117,9 +117,6 @@ namespace GLGenerator
             glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
             glGetShaderInfoLog.OutputPublicMethod = false;
 
-            var glUniformMatrix4fv = functions.Single(x => x.Name == "glUniformMatrix4fv");
-            glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
-
             // The following overrides can be reenabled once out parameters are properly implemented.
             functions.Single(x => x.Name == "glGetActiveAttrib").DisableEnumGroupOverload = true;
             functions.Single(x => x.Name == "glGetActiveUniform").DisableEnumGroupOverload = true;
