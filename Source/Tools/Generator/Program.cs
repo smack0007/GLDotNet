@@ -52,6 +52,23 @@ namespace GLGenerator
 
             public bool DisableEnumGroupOverload { get; set; } = false;
 
+            public FunctionData() { }
+
+            public FunctionData(FunctionData functionData)
+            {
+                this.ReturnType = functionData.ReturnType;
+                this.Name = functionData.Name;
+
+                this.Params = new List<FunctionParamData>();
+                foreach (var param in functionData.Params)
+                {
+                    this.Params.Add(new FunctionParamData(param));
+                }
+
+                this.OutputPublicMethod = functionData.OutputPublicMethod;
+                this.DisableEnumGroupOverload = functionData.DisableEnumGroupOverload;
+            }
+
             public override string ToString() => $"{this.ReturnType} {this.Name}({string.Join(", ", this.Params)})";
         }
 
@@ -70,6 +87,19 @@ namespace GLGenerator
             public string Name { get; set; }
 
             public EnumGroupData EnumGroup { get; set; }
+
+            public FunctionParamData() { }
+
+            public FunctionParamData(FunctionParamData functionParamData)
+            {
+                this.IsConst = functionParamData.IsConst;
+                this.PointerCount = functionParamData.PointerCount;
+                this.TypeOverridden = functionParamData.TypeOverridden;
+                this.TypePrefix = functionParamData.TypePrefix;
+                this.Type = functionParamData.Type;
+                this.Name = functionParamData.Name;
+                this.EnumGroup = functionParamData.EnumGroup;
+        }
 
             public override string ToString() => $"{this.Type}: {this.Name}";
 
@@ -116,6 +146,11 @@ namespace GLGenerator
             var glGetShaderInfoLog = functions.Single(x => x.Name == "glGetShaderInfoLog");
             glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
             glGetShaderInfoLog.OutputPublicMethod = false;
+
+            var glUniformMatrix4fv = new FunctionData(functions.Single(x => x.Name == "glUniformMatrix4fv"));
+            glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
+            glUniformMatrix4fv.Name = glUniformMatrix4fv.Name + "ByRef";
+            functions.Add(glUniformMatrix4fv);
 
             // The following overrides can be reenabled once out parameters are properly implemented.
             functions.Single(x => x.Name == "glGetActiveAttrib").DisableEnumGroupOverload = true;
@@ -424,7 +459,16 @@ namespace GLGenerator
                 }
 
                 string functionName = GetFunctionName(function.Name);
-                sb.AppendLine($"\t\t\t\tthis._{functionName} = (Delegates.{functionName})Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress(\"{function.Name}\"), typeof(Delegates.{functionName}));");
+
+                // removes the appended reference name (if it exists) for the generated code pointing to the openGL functions
+                string glFunctionName = function.Name;
+                string appendedName = "ByRef";
+                if (glFunctionName.Contains(appendedName))
+                {
+                    glFunctionName = glFunctionName.Remove(glFunctionName.Length - appendedName.Length);
+                }
+
+                sb.AppendLine($"\t\t\t\tthis._{functionName} = (Delegates.{functionName})Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress(\"{glFunctionName}\"), typeof(Delegates.{functionName}));");
             }
 
             sb.AppendLine("\t\t\t}");

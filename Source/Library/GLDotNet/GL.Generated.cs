@@ -2448,6 +2448,8 @@ namespace GLDotNet
 
 			public delegate void UniformMatrix4fv(int location, int count, bool transpose, float[] value);
 
+			public delegate void UniformMatrix4fvByRef(int location, int count, bool transpose, ref float value);
+
 			public delegate void UniformMatrix4x2dv(int location, int count, bool transpose, double[] value);
 
 			public delegate void UniformMatrix4x2fv(int location, int count, bool transpose, float[] value);
@@ -3758,6 +3760,8 @@ namespace GLDotNet
 
 		private Delegates.UniformMatrix4fv _UniformMatrix4fv;
 
+		private Delegates.UniformMatrix4fvByRef _UniformMatrix4fvByRef;
+
 		private Delegates.UniformMatrix4x2dv _UniformMatrix4x2dv;
 
 		private Delegates.UniformMatrix4x2fv _UniformMatrix4x2fv;
@@ -4695,6 +4699,11 @@ namespace GLDotNet
 				this._GetnUniformuiv = (Delegates.GetnUniformuiv)Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress("glGetnUniformuiv"), typeof(Delegates.GetnUniformuiv));
 				this._ReadnPixels = (Delegates.ReadnPixels)Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress("glReadnPixels"), typeof(Delegates.ReadnPixels));
 				this._TextureBarrier = (Delegates.TextureBarrier)Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress("glTextureBarrier"), typeof(Delegates.TextureBarrier));
+			}
+
+			if (this.platformContext.VersionMajor > 0 || (this.platformContext.VersionMajor == 0 && this.platformContext.VersionMinor >= 0))
+			{
+				this._UniformMatrix4fvByRef = (Delegates.UniformMatrix4fvByRef)Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress("glUniformMatrix4fv"), typeof(Delegates.UniformMatrix4fvByRef));
 			}
 
 			this.Initialize();
@@ -11453,6 +11462,14 @@ namespace GLDotNet
 			this._UniformMatrix4fv(location, count, transpose, value);
 #if DEBUG
 			this.CheckErrors("UniformMatrix4fv");
+#endif
+		}
+
+		public void UniformMatrix4fvByRef(int location, int count, bool transpose, ref float value)
+		{
+			this._UniformMatrix4fvByRef(location, count, transpose, ref value);
+#if DEBUG
+			this.CheckErrors("UniformMatrix4fvByRef");
 #endif
 		}
 
