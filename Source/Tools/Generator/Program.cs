@@ -161,7 +161,6 @@ namespace GLGenerator
             functions.Single(x => x.Name == "glInvalidateSubFramebuffer").DisableEnumGroupOverload = true;
             functions.Single(x => x.Name == "glNamedFramebufferDrawBuffers").DisableEnumGroupOverload = true;
             
-            WriteEnumGroups(enumGroups, enums);
             Write(enumGroups, enums, functions);
         }
 
@@ -258,7 +257,7 @@ namespace GLGenerator
                 }
                 else if (lines[i].StartsWith("#define GL_") && !lines[i].StartsWith("#define GL_VERSION_"))
                 {
-                    var parts = lines[i].Substring("#define GL_".Length).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    var parts = lines[i].Substring("#define ".Length).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                     enums.Add(new EnumData()
                     {
@@ -337,37 +336,6 @@ namespace GLGenerator
             }
         }
 
-        private static void WriteEnumGroups(List<EnumGroupData> enumGroups, List<EnumData> enums)
-        {
-            StringBuilder sb = new StringBuilder(1024);
-
-            sb.AppendLine("namespace GLDotNet");
-            sb.AppendLine("{");
-
-            foreach (var enumGroup in enumGroups.OrderBy(x => x.Name))
-            {                                
-                sb.AppendLine($"\t\tpublic enum {GetEnumGroupName(enumGroup)} : {enumGroup.Type}");
-                sb.AppendLine("\t\t{");
-
-                foreach (var enumName in enumGroup.EnumNames)
-                {
-                    var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumName);
-
-                    string name = GetEnumName(@enum.Name);
-                    string value = @enum.Value;
-                                                
-                    sb.AppendLine($"\t\t\t{name} = {value},");
-                }
-
-                sb.AppendLine("\t\t}");
-                sb.AppendLine();
-            }
-
-            sb.AppendLine("}");
-
-            File.WriteAllText(@"..\..\Library\GLDotNet\GLEnums.Generated.cs", sb.ToString());
-        }
-
         private static void Write(List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
         {
             StringBuilder sb = new StringBuilder(1024);
@@ -378,7 +346,7 @@ namespace GLGenerator
             sb.AppendLine();
             sb.AppendLine("namespace GLDotNet");
             sb.AppendLine("{");
-            sb.AppendLine("\tpublic sealed partial class GL");
+            sb.AppendLine("\tpublic static class GL");
             sb.AppendLine("\t{");
 
             foreach (var @enum in enums.OrderBy(x => x.Name))
@@ -404,6 +372,9 @@ namespace GLGenerator
 
             sb.AppendLine();
 
+            sb.AppendLine("\t\tpublic delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);");
+            sb.AppendLine();
+
             sb.AppendLine($"\t\tpublic static class Delegates");
             sb.AppendLine("\t\t{");
 
@@ -413,53 +384,28 @@ namespace GLGenerator
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
-                string functionName = GetFunctionName(function.Name);
-                sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {functionName}({parameters});");
+                sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}({parameters});");
                 sb.AppendLine();
             }
 
             sb.AppendLine("\t\t}");
             sb.AppendLine();
 
-            sb.AppendLine("\t\tprivate readonly IGLPlatformContext platformContext;");
-            sb.AppendLine();
-
             foreach (var function in orderedFunctions)
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
-                string functionName = GetFunctionName(function.Name);
-                sb.AppendLine($"\t\tprivate Delegates.{functionName} _{functionName};");
+                sb.AppendLine($"\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; private set; }}");
                 sb.AppendLine();
             }
 
-            sb.AppendLine("\t\tpublic GL(IGLPlatformContext platformContext)");
+            sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress)");
             sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\tthis.platformContext = platformContext ?? throw new ArgumentNullException(nameof(platformContext));");
+            sb.AppendLine("\t\t\tif (getProcAddress == null) throw new ArgumentNullException(nameof(getProcAddress));");
             sb.AppendLine();
 
-            int versionMajor = -1;
-            int versionMinor = -1;
-
-            foreach (var function in functions)
+            foreach (var function in orderedFunctions)
             {
-                if (versionMajor != function.VersionMajor || versionMinor != function.VersionMinor)
-                {
-                    if (versionMajor != -1)
-                    {
-                        sb.AppendLine("\t\t\t}");
-                        sb.AppendLine();
-                    }
-
-                    versionMajor = function.VersionMajor;
-                    versionMinor = function.VersionMinor;
-
-                    sb.AppendLine($"\t\t\tif (this.platformContext.VersionMajor > {versionMajor} || (this.platformContext.VersionMajor == {versionMajor} && this.platformContext.VersionMinor >= {versionMinor}))");
-                    sb.AppendLine("\t\t\t{");
-                }
-
-                string functionName = GetFunctionName(function.Name);
-
                 // removes the appended reference name (if it exists) for the generated code pointing to the openGL functions
                 string glFunctionName = function.Name;
                 string appendedName = "ByRef";
@@ -468,109 +414,16 @@ namespace GLGenerator
                     glFunctionName = glFunctionName.Remove(glFunctionName.Length - appendedName.Length);
                 }
 
-                sb.AppendLine($"\t\t\t\tthis._{functionName} = (Delegates.{functionName})Marshal.GetDelegateForFunctionPointer(this.platformContext.GetProcAddress(\"{glFunctionName}\"), typeof(Delegates.{functionName}));");
+                sb.AppendLine($"\t\t\t{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
             }
-
-            sb.AppendLine("\t\t\t}");
-
-            sb.AppendLine();
-            sb.AppendLine("\t\t\tthis.Initialize();");
 
             sb.AppendLine("\t\t}");
             sb.AppendLine();
 
-            foreach (var function in orderedFunctions.Where(x => x.OutputPublicMethod))
-            {
-                string returnType = GetReturnType(function.ReturnType);
-                string functionName = GetFunctionName(function.Name);
-                string parameters = null;
-                string parameterNames = null;
-
-                if (function.Params.Any(x => x.EnumGroup != null) && !function.DisableEnumGroupOverload)
-                {
-                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, true) + " " + GetParamName(x.Name)));
-                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix, x.EnumGroup != null ? GetParamType(x) : null)));
-
-                    sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
-                    sb.AppendLine("\t\t{");
-
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
-                    }
-
-                    sb.AppendLine($"#if DEBUG");
-                    sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
-                    sb.AppendLine("#endif");
-
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\treturn result;");
-                    }
-
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
-
-                parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-                parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
-
-                sb.AppendLine($"\t\tpublic {returnType} {functionName}({parameters})");
-                sb.AppendLine("\t\t{");
-
-                if (returnType != "void")
-                {
-                    sb.AppendLine($"\t\t\tvar result = this._{functionName}({parameterNames});");
-                }
-                else
-                {
-                    sb.AppendLine($"\t\t\tthis._{functionName}({parameterNames});");
-                }
-
-                sb.AppendLine($"#if DEBUG");
-                sb.AppendLine($"\t\t\tthis.CheckErrors(\"{functionName}\");");
-                sb.AppendLine("#endif");
-
-                if (returnType != "void")
-                {
-                    sb.AppendLine($"\t\t\treturn result;");
-                }
-
-                sb.AppendLine("\t\t}");
-                sb.AppendLine();
-
-                if (function.Name.StartsWith("glDelete") &&
-                    function.Name != "glDeleteProgram" &&
-                    function.Name != "glDeleteShader" &&
-                    function.Name != "glDeleteSync")
-                {
-                    sb.AppendLine($"\t\tpublic void {functionName.TrimEnd('s')}(uint handle)");
-                    sb.AppendLine("\t\t{");
-                    sb.AppendLine($"\t\t\tUintBuffer[0] = handle;");
-                    sb.AppendLine($"\t\t\t{functionName}(1, UintBuffer);");
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
-                else if (function.Name.StartsWith("glGen") &&
-                         !function.Name.StartsWith("glGenerate"))
-                {
-                    sb.AppendLine($"\t\tpublic uint {functionName.TrimEnd('s')}()");
-                    sb.AppendLine("\t\t{");
-                    sb.AppendLine($"\t\t\t{functionName}(1, UintBuffer);");
-                    sb.AppendLine($"\t\t\treturn UintBuffer[0];");
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
-            }
-
             sb.AppendLine("\t}");
             sb.AppendLine("}");
 
-            File.WriteAllText(@"..\..\Library\GLDotNet\GL.Generated.cs", sb.ToString());
+            File.WriteAllText(@"..\..\..\..\..\Library\GLDotNet\GL.Generated.cs", sb.ToString());
         }
 
         private static string GetReturnType(string returnType)
@@ -600,13 +453,6 @@ namespace GLGenerator
             }
 
             return returnType;
-        }
-
-        private static string GetFunctionName(string name)
-        {
-            name = name.Substring("gl".Length);
-
-            return name;
         }
 
         private static string GetParamType(FunctionParamData param, bool useEnumGroup = false)

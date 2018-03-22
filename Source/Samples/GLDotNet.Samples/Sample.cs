@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using static GLDotNet.GL;
+using static GLDotNet.WGL;
 
 namespace GLDotNet.Samples
 {
@@ -109,13 +111,12 @@ namespace GLDotNet.Samples
 
         public int FramesPerSecond { get; private set; }
 
-        public GL GL { get; }
-
         public Sample()
         {
             this.PlatformInitialize();
 
-            this.GL = new GL(new WGL(this.Handle, 4, 5));
+            wglInit(this.Handle, 4, 5);
+            glInit(wglGetProcAddress);
         }
 
         ~Sample()
@@ -131,6 +132,8 @@ namespace GLDotNet.Samples
 
         protected virtual void Dispose(bool disposing)
         {
+            wglShutdown();
+
             this.PlatformDispose(disposing);
         }
 

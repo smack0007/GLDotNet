@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace GLDotNet
+namespace GLDotNet.Samples
 {
     public struct MemoryBlock : IDisposable
     {

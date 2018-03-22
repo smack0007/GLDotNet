@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace GLDotNet
 {
-    public class WGL : IGLPlatformContext
+    public static class WGL
     {
         private const string OpenGL32Library = "opengl32.dll";
 
@@ -93,22 +93,18 @@ namespace GLDotNet
 
         public delegate IntPtr _CreateContextAttribsARB(IntPtr hDC, IntPtr hShareContext, int[] attribList);
 
-        private IntPtr hWnd;
-        private IntPtr hDC;
-        private IntPtr hRC;
-        private IntPtr hModule;
+        private static IntPtr hWnd;
+        private static IntPtr hDC;
+        private static IntPtr hRC;
+        private static IntPtr hModule;
 
-        public int VersionMajor { get; }
-
-        public int VersionMinor { get; }
-
-        public WGL(IntPtr hWnd, int versionMajor, int versionMinor)
+        public static void wglInit(IntPtr hWnd, int versionMajor, int versionMinor)
         {
-            this.hWnd = hWnd;
+            WGL.hWnd = hWnd;
 
-            this.hDC = GetDC(this.hWnd);
+            hDC = GetDC(hWnd);
 
-            if (this.hDC == IntPtr.Zero)
+            if (hDC == IntPtr.Zero)
                 throw new InvalidOperationException("Could not get a device context (hDC).");
 
             PixelFormatDescriptor pfd = new PixelFormatDescriptor()
@@ -117,25 +113,25 @@ namespace GLDotNet
                 nVersion = 1,
                 dwFlags = (PFD_SUPPORT_OPENGL | PFD_DRAW_TO_WINDOW | PFD_DOUBLEBUFFER),
                 iPixelType = (byte)PFD_TYPE_RGBA,
-                cColorBits = (byte)GetDeviceCaps(this.hDC, BITSPIXEL),
+                cColorBits = (byte)GetDeviceCaps(hDC, BITSPIXEL),
                 cDepthBits = 32,
                 iLayerType = (byte)PFD_MAIN_PLANE
             };
 
-            int pixelformat = ChoosePixelFormat(this.hDC, ref pfd);
+            int pixelformat = ChoosePixelFormat(hDC, ref pfd);
 
             if (pixelformat == 0)
                 throw new InvalidOperationException("Could not find A suitable pixel format.");
 
-            if (SetPixelFormat(this.hDC, pixelformat, ref pfd) == 0)
+            if (SetPixelFormat(hDC, pixelformat, ref pfd) == 0)
                 throw new InvalidOperationException("Could not set the pixel format.");
 
-            IntPtr tempContext = CreateContext(this.hDC);
+            IntPtr tempContext = CreateContext(hDC);
 
             if (tempContext == IntPtr.Zero)
                 throw new InvalidOperationException("Unable to create temporary render context.");
 
-            if (!MakeCurrent(this.hDC, tempContext))
+            if (!MakeCurrent(hDC, tempContext))
                 throw new InvalidOperationException("Unable to make temporary render context current.");
 
             int[] attribs = new int[]
@@ -148,51 +144,48 @@ namespace GLDotNet
 
             IntPtr proc = GetProcAddressWgl("wglCreateContextAttribsARB");
             _CreateContextAttribsARB createContextAttribs = (_CreateContextAttribsARB)Marshal.GetDelegateForFunctionPointer(proc, typeof(_CreateContextAttribsARB));
-            this.hRC = createContextAttribs(this.hDC, IntPtr.Zero, attribs);
+            hRC = createContextAttribs(hDC, IntPtr.Zero, attribs);
 
             MakeCurrent(IntPtr.Zero, IntPtr.Zero);
             DeleteContext(tempContext);
 
-            if (this.hRC == IntPtr.Zero)
+            if (hRC == IntPtr.Zero)
                 throw new InvalidOperationException("Unable to create render context.");
 
-            if (!MakeCurrent(this.hDC, this.hRC))
+            if (!MakeCurrent(hDC, hRC))
                 throw new InvalidOperationException("Unable to make render context current.");
 
-            this.hModule = LoadLibrary(OpenGL32Library);
-
-            this.VersionMajor = versionMajor;
-            this.VersionMinor = versionMinor;
+            hModule = LoadLibrary(OpenGL32Library);
         }
 
-        public void Dispose()
+        public static void wglShutdown()
         {
             MakeCurrent(IntPtr.Zero, IntPtr.Zero);
-            DeleteContext(this.hRC);
+            DeleteContext(hRC);
 
-            ReleaseDC(this.hWnd, this.hDC);
+            ReleaseDC(hWnd, hDC);
         }
 
-        public IntPtr GetProcAddress(string name)
+        public static IntPtr wglGetProcAddress(string name)
         {
             IntPtr procAddress = GetProcAddressWgl(name);
 
             if (procAddress == IntPtr.Zero)
             {
-                procAddress = GetProcAddressWin32(this.hModule, name);
+                procAddress = GetProcAddressWin32(hModule, name);
             }
 
             return procAddress;
         }
 
-        public void MakeCurrent()
+        public static void wglMakeCurrent()
         {
-            MakeCurrent(this.hDC, this.hRC);
+            MakeCurrent(hDC, hRC);
         }
 
-        public void SwapBuffers()
+        public static void wglSwapBuffers()
         {
-            SwapBuffers(this.hDC);
+            SwapBuffers(hDC);
         }
     }
 }
