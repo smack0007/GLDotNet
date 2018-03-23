@@ -3,4 +3,16 @@
     <ProjectReference Include="$(MSBuildThisFileDirectory)..\src\GLDotNet\GLDotNet.csproj" />
     <ProjectReference Include="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.csproj" Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' " />
   </ItemGroup>
+
+    <Target Name="CopyGLFWDlls" AfterTargets="AfterBuild">
+        <PropertyGroup>
+            <GLFWDestination>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\bin\'))\$(Configuration)\$(MSBuildProjectName)\$(TargetFramework)\</GLFWDestination>
+        </PropertyGroup>
+
+        <Copy SourceFiles="$(MSBuildThisFileDirectory)..\ext\GLFWDotNet\x64\glfw3.dll"
+            DestinationFolder="$(GLFWDestination)x64\" />
+
+        <Copy SourceFiles="$(MSBuildThisFileDirectory)..\ext\GLFWDotNet\x86\glfw3.dll"
+            DestinationFolder="$(GLFWDestination)x86\" />
+    </Target>
 </Project>

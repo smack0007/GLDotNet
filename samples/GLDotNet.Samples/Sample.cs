@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using static GLFWDotNet.GLFW;
 using static GLDotNet.GL;
-using static GLDotNet.WGL;
 
 namespace GLDotNet.Samples
 {
@@ -12,11 +12,7 @@ namespace GLDotNet.Samples
         private const int DefaultHeight = 768;
         private const float TimeBetweenFrames = 1000.0f / 60.0f;
 
-        private string title;
-        private int x;
-        private int y;
-        private int width;
-        private int height;
+        private IntPtr window;
 
         private Stopwatch stopwatch;
         private float lastElapsed;
@@ -24,10 +20,9 @@ namespace GLDotNet.Samples
 
         private float fpsElapsed;
 
-        public IntPtr Handle
-        {
-            get { return this.PlatformGetHandle(); }
-        }
+        private GLFWwindowsizefun windowResizeCallback;
+
+        private string title = "GLDotNet Sample";
 
         public string Title
         {
@@ -38,38 +33,12 @@ namespace GLDotNet.Samples
                 if (value != this.title)
                 {
                     this.title = value;
-                    this.PlatformSetTitle(value);
+                    glfwSetWindowTitle(this.window, value);
                 }
             }
         }
 
-        public int X
-        {
-            get { return this.x; }
-
-            set
-            {
-                if (value != this.x)
-                {
-                    this.x = value;
-                    this.PlatformSetPosition(this.x, this.y);
-                }
-            }
-        }
-
-        public int Y
-        {
-            get { return this.y; }
-
-            set
-            {
-                if (value != this.y)
-                {
-                    this.y = value;
-                    this.PlatformSetPosition(this.x, this.y);
-                }
-            }
-        }
+        private int width = 800;
 
         public int Width
         {
@@ -80,10 +49,12 @@ namespace GLDotNet.Samples
                 if (value != this.width)
                 {
                     this.width = value;
-                    this.PlatformSetSize(this.width, this.height);
+                    glfwSetWindowSize(this.window, this.width, this.height);
                 }
             }
         }
+
+        private int height = 600;
 
         public int Height
         {
@@ -94,29 +65,36 @@ namespace GLDotNet.Samples
                 if (value != this.height)
                 {
                     this.height = value;
-                    this.PlatformSetSize(this.width, this.height);
+                    glfwSetWindowSize(this.window, this.width, this.height);
                 }
             }
         }
-
-        public bool IsClosed { get; private set; }
-
-        public event EventHandler<EventArgs> PositionChanged;
-
-        public event EventHandler<EventArgs> SizeChanged;
-
-        public event EventHandler<CancelEventArgs> Closing;
-
-        public event EventHandler<EventArgs> Closed;
 
         public int FramesPerSecond { get; private set; }
 
         public Sample()
         {
-            this.PlatformInitialize();
+            if (glfwInit() == 0)
+                throw new InvalidOperationException("Failed to initialize GLFW.");
 
-            wglInit(this.Handle, 4, 5);
-            glInit(wglGetProcAddress);
+            glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+
+            this.window = glfwCreateWindow(this.width, this.height, this.title, IntPtr.Zero, IntPtr.Zero);
+            if (window == IntPtr.Zero)
+            {
+                glfwTerminate();
+                throw new InvalidOperationException("Failed to create window.");
+            }
+
+            this.windowResizeCallback = this.OnWindowResized;
+            glfwSetWindowSizeCallback(this.window, this.windowResizeCallback);
+
+            glfwMakeContextCurrent(this.window);
+
+            glInit(glfwGetProcAddress);
         }
 
         ~Sample()
@@ -132,83 +110,22 @@ namespace GLDotNet.Samples
 
         protected virtual void Dispose(bool disposing)
         {
-            wglShutdown();
-
-            this.PlatformDispose(disposing);
+            glfwTerminate();
         }
 
-        private bool TriggerClose()
-        {
-            CancelEventArgs cancelEventArgs = new CancelEventArgs();
-            this.OnClosing(cancelEventArgs);
-
-            if (cancelEventArgs.Cancel)
-                return false;
-
-            this.OnClose(EventArgs.Empty);
-
-            return true;
-        }
-
-        private void TriggerPositionChanged(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-
-            this.OnPositionChanged(EventArgs.Empty);
-        }
-
-        private void TriggerSizeChanged(int width, int height)
+        private void OnWindowResized(IntPtr window, int width, int height)
         {
             this.width = width;
             this.height = height;
-
-            this.OnSizeChanged(EventArgs.Empty);
-        }
-
-        protected virtual void OnPositionChanged(EventArgs e)
-        {
-            this.PositionChanged?.Invoke(this, e);
-        }
-
-        protected virtual void OnSizeChanged(EventArgs e)
-        {
-            this.SizeChanged?.Invoke(this, e);
-        }
-
-        protected virtual void OnClosing(CancelEventArgs e)
-        {
-            this.Closing?.Invoke(this, e);
-        }
-
-        protected virtual void OnClose(EventArgs e)
-        {
-            this.IsClosed = true;
-            this.Closed?.Invoke(this, e);
-        }
-
-        public void Show()
-        {
-            this.PlatformShow();
-        }
-
-        public void Hide()
-        {
-            this.PlatformHide();
         }
 
         public void Run()
         {
-            this.Show();
-
             this.stopwatch = Stopwatch.StartNew();
 
-            while (true)
+            while (glfwWindowShouldClose(this.window) == 0)
             {
-                if (this.IsClosed)
-                    break;
-
-                this.PlatformPollEvents();
+                glfwPollEvents();
 
                 this.Tick();
             }
@@ -225,6 +142,7 @@ namespace GLDotNet.Samples
             {
                 this.Update(this.elapsedSinceLastFrame);
                 this.Draw();
+                glfwSwapBuffers(window);
 
                 this.elapsedSinceLastFrame -= TimeBetweenFrames;
                 this.FramesPerSecond++;
