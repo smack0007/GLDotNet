@@ -1,9 +1,0 @@
-version: 1.0.{build}
-image: Visual Studio 2017
-build:
-  project: Source\Build\BuildRelease.proj
-  verbosity: normal
-artifacts:
-- path: bin\*
-  name: Output
-  

@@ -12,8 +12,4 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD2_0;WIN32</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Library\GLDotNet\GLDotNet.csproj" />
-  </ItemGroup>
-
 </Project>

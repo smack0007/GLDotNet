@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildThisFileDirectory)..\src\GLDotNet\GLDotNet.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.csproj" Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' " />
+  </ItemGroup>
+</Project>

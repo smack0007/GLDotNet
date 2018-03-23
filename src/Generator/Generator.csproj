@@ -6,15 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\External\gl.xml" Link="gl.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\External\glcorearb.h" Link="glcorearb.h">
+    <None Include="$(RepositoryRootDirectory)ext\gl.xml" Link="gl.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(RepositoryRootDirectory)ext\glcorearb.h" Link="glcorearb.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>    
   </ItemGroup>
 
 </Project>
