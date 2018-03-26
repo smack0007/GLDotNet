@@ -8,8 +8,6 @@ namespace GLDotNet.Samples
 {
     public partial class Sample : IDisposable
     {
-        private const int DefaultWidth = 1024;
-        private const int DefaultHeight = 768;
         private const float TimeBetweenFrames = 1000.0f / 60.0f;
 
         private IntPtr window;
@@ -38,7 +36,7 @@ namespace GLDotNet.Samples
             }
         }
 
-        private int width = 800;
+        private int width = 1024;
 
         public int Width
         {
@@ -54,7 +52,7 @@ namespace GLDotNet.Samples
             }
         }
 
-        private int height = 600;
+        private int height = 768;
 
         public int Height
         {
