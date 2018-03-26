@@ -14,6 +14,14 @@ namespace GLGenerator
             public int VersionMajor { get; set; }
 
             public int VersionMinor { get; set; }
+
+            public BaseData() { }
+
+            public BaseData(BaseData other)
+            {
+                this.VersionMajor = other.VersionMajor;
+                this.VersionMinor = other.VersionMinor;
+            }
         }
 
         class EnumGroupData
@@ -48,13 +56,10 @@ namespace GLGenerator
 
             public List<FunctionParamData> Params { get; } = new List<FunctionParamData>();
 
-            public bool OutputPublicMethod { get; set; } = true;
-
-            public bool DisableEnumGroupOverload { get; set; } = false;
-
             public FunctionData() { }
 
             public FunctionData(FunctionData functionData)
+                : base(functionData)
             {
                 this.ReturnType = functionData.ReturnType;
                 this.Name = functionData.Name;
@@ -64,9 +69,6 @@ namespace GLGenerator
                 {
                     this.Params.Add(new FunctionParamData(param));
                 }
-
-                this.OutputPublicMethod = functionData.OutputPublicMethod;
-                this.DisableEnumGroupOverload = functionData.DisableEnumGroupOverload;
             }
 
             public override string ToString() => $"{this.ReturnType} {this.Name}({string.Join(", ", this.Params)})";
@@ -122,44 +124,27 @@ namespace GLGenerator
 
             ParseHeaderFile(lines, enums, functions);
             ParseXmlFile(xml, enumGroups, enums, functions);
-                        
-            functions.Single(x => x.Name == "glGetError").OutputPublicMethod = false;
-            functions.Single(x => x.Name == "glGetString").OutputPublicMethod = false;
 
             var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
-            glShaderSource.Params.Single(x => x.Name == "string").OverrideType("ref string");
-            glShaderSource.Params.Single(x => x.Name == "length").OverrideType("ref int");
-            glShaderSource.OutputPublicMethod = false;
+            glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
+            glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
 
             var glGetProgramiv = functions.Single(x => x.Name == "glGetProgramiv");
-            glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("out int");
-            glGetProgramiv.OutputPublicMethod = false;
+            glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
 
             var glGetProgramInfoLog = functions.Single(x => x.Name == "glGetProgramInfoLog");
-            glGetProgramInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
-            glGetProgramInfoLog.OutputPublicMethod = false;
+            glGetProgramInfoLog.Params.Single(x => x.Name == "length").OverrideType("int", "out");
 
             var glGetShaderiv = functions.Single(x => x.Name == "glGetShaderiv");
-            glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("out int");
-            glGetShaderiv.OutputPublicMethod = false;
+            glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
 
             var glGetShaderInfoLog = functions.Single(x => x.Name == "glGetShaderInfoLog");
-            glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("out int");
-            glGetShaderInfoLog.OutputPublicMethod = false;
+            glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("int", "out");
 
             var glUniformMatrix4fv = new FunctionData(functions.Single(x => x.Name == "glUniformMatrix4fv"));
             glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
             glUniformMatrix4fv.Name = glUniformMatrix4fv.Name + "ByRef";
             functions.Add(glUniformMatrix4fv);
-
-            // The following overrides can be reenabled once out parameters are properly implemented.
-            functions.Single(x => x.Name == "glGetActiveAttrib").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glGetActiveUniform").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glGetDebugMessageLog").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glInvalidateNamedFramebufferData").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glInvalidateNamedFramebufferSubData").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glInvalidateSubFramebuffer").DisableEnumGroupOverload = true;
-            functions.Single(x => x.Name == "glNamedFramebufferDrawBuffers").DisableEnumGroupOverload = true;
             
             Write(enumGroups, enums, functions);
         }
@@ -395,7 +380,7 @@ namespace GLGenerator
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
-                sb.AppendLine($"\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; private set; }}");
+                sb.AppendLine($"\t\tprivate static Delegates.{function.Name} _{function.Name};");
                 sb.AppendLine();
             }
 
@@ -432,13 +417,61 @@ namespace GLGenerator
                     glFunctionName = glFunctionName.Remove(glFunctionName.Length - appendedName.Length);
                 }
 
-                sb.AppendLine($"\t\t\t\t{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
+                sb.AppendLine($"\t\t\t\t_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
             }
 
             sb.AppendLine("\t\t\t}");
 
             sb.AppendLine("\t\t}");
             sb.AppendLine();
+
+            foreach (var function in orderedFunctions)
+            {
+                string returnType = GetReturnType(function.ReturnType);
+                string parameters = null;
+                string parameterNames = null;
+
+                parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
+                parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
+
+                sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
+                sb.AppendLine("\t\t{");
+
+                if (returnType != "void")
+                {
+                    sb.AppendLine($"\t\t\treturn _{function.Name}({parameterNames});");
+                }
+                else
+                {
+                    sb.AppendLine($"\t\t\t_{function.Name}({parameterNames});");
+                }
+
+                sb.AppendLine("\t\t}");
+                sb.AppendLine();
+
+                //if (function.Name.StartsWith("glDelete") &&
+                //    function.Name != "glDeleteProgram" &&
+                //    function.Name != "glDeleteShader" &&
+                //    function.Name != "glDeleteSync")
+                //{
+                //    sb.AppendLine($"\t\tpublic void {function.Name.TrimEnd('s')}(uint handle)");
+                //    sb.AppendLine("\t\t{");
+                //    sb.AppendLine($"\t\t\tUintBuffer[0] = handle;");
+                //    sb.AppendLine($"\t\t\t{function.Name}(1, UintBuffer);");
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
+                //else if (function.Name.StartsWith("glGen") &&
+                //         !function.Name.StartsWith("glGenerate"))
+                //{
+                //    sb.AppendLine($"\t\tpublic uint {function.Name.TrimEnd('s')}()");
+                //    sb.AppendLine("\t\t{");
+                //    sb.AppendLine($"\t\t\t{function.Name}(1, UintBuffer);");
+                //    sb.AppendLine($"\t\t\treturn UintBuffer[0];");
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
+            }
 
             sb.AppendLine("\t}");
             sb.AppendLine("}");
