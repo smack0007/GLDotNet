@@ -12,7 +12,10 @@ namespace HelloTriangle
 {
     public class HelloTriangleSample : Sample
     {
-        private const string VertexShader = @"#version 450
+        public override int VersionMajor => 4;
+        public override int VersionMinor => 0;
+
+        private const string VertexShader = @"#version 400
 layout(location = 0) in vec3 vertPosition;
 layout(location = 1) in vec3 vertColor;
 
@@ -24,7 +27,7 @@ void main()
 	gl_Position = vec4(vertPosition, 1.0);
 }";
 
-        private const string FragmentShader = @"#version 450
+        private const string FragmentShader = @"#version 400
 in vec3 fragColor;
 out vec4 outColor;
 

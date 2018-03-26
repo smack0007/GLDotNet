@@ -6,7 +6,7 @@ using static GLDotNet.GL;
 
 namespace GLDotNet.Samples
 {
-    public partial class Sample : IDisposable
+    public abstract class Sample : IDisposable
     {
         private const float TimeBetweenFrames = 1000.0f / 60.0f;
 
@@ -19,6 +19,9 @@ namespace GLDotNet.Samples
         private float fpsElapsed;
 
         private GLFWwindowsizefun windowResizeCallback;
+
+        public abstract int VersionMajor { get; }
+        public abstract int VersionMinor { get; }
 
         private string title = "GLDotNet Sample";
 
@@ -77,8 +80,8 @@ namespace GLDotNet.Samples
 
             glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, this.VersionMajor);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, this.VersionMinor);
 
             this.window = glfwCreateWindow(this.width, this.height, this.title, IntPtr.Zero, IntPtr.Zero);
             if (window == IntPtr.Zero)
@@ -92,7 +95,7 @@ namespace GLDotNet.Samples
 
             glfwMakeContextCurrent(this.window);
 
-            glInit(glfwGetProcAddress);
+            glInit(glfwGetProcAddress, this.VersionMajor, this.VersionMinor);
         }
 
         ~Sample()

@@ -399,13 +399,31 @@ namespace GLGenerator
                 sb.AppendLine();
             }
 
-            sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress)");
+            sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
             sb.AppendLine("\t\t{");
             sb.AppendLine("\t\t\tif (getProcAddress == null) throw new ArgumentNullException(nameof(getProcAddress));");
             sb.AppendLine();
 
-            foreach (var function in orderedFunctions)
+            int versionMajor = -1;
+            int versionMinor = -1;
+
+            foreach (var function in functions)
             {
+                if (versionMajor != function.VersionMajor || versionMinor != function.VersionMinor)
+                {
+                    if (versionMajor != -1)
+                    {
+                        sb.AppendLine("\t\t\t}");
+                        sb.AppendLine();
+                    }
+
+                    versionMajor = function.VersionMajor;
+                    versionMinor = function.VersionMinor;
+
+                    sb.AppendLine($"\t\t\tif (versionMajor > {versionMajor} || (versionMajor == {versionMajor} && versionMinor >= {versionMinor}))");
+                    sb.AppendLine("\t\t\t{");
+                }
+
                 // removes the appended reference name (if it exists) for the generated code pointing to the openGL functions
                 string glFunctionName = function.Name;
                 string appendedName = "ByRef";
@@ -414,8 +432,10 @@ namespace GLGenerator
                     glFunctionName = glFunctionName.Remove(glFunctionName.Length - appendedName.Length);
                 }
 
-                sb.AppendLine($"\t\t\t{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
+                sb.AppendLine($"\t\t\t\t{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
             }
+
+            sb.AppendLine("\t\t\t}");
 
             sb.AppendLine("\t\t}");
             sb.AppendLine();
