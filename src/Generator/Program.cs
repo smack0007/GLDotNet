@@ -24,21 +24,6 @@ namespace GLGenerator
             }
         }
 
-        class EnumGroupData
-        {
-            public string Name { get; set; }
-
-            public string Type { get; set; }
-
-            public List<string> EnumNames { get; } = new List<string>();
-
-            public bool IsInUse { get; set; }
-
-            public bool HasFlagsAttribtue { get; set; }
-
-            public override string ToString() => this.Name;
-        }
-
         class EnumData : BaseData
         {
             public string Name { get; set; }
@@ -88,8 +73,6 @@ namespace GLGenerator
 
             public string Name { get; set; }
 
-            public EnumGroupData EnumGroup { get; set; }
-
             public FunctionParamData() { }
 
             public FunctionParamData(FunctionParamData functionParamData)
@@ -100,8 +83,7 @@ namespace GLGenerator
                 this.TypePrefix = functionParamData.TypePrefix;
                 this.Type = functionParamData.Type;
                 this.Name = functionParamData.Name;
-                this.EnumGroup = functionParamData.EnumGroup;
-        }
+            }
 
             public override string ToString() => $"{this.Type}: {this.Name}";
 
@@ -118,12 +100,10 @@ namespace GLGenerator
             var lines = File.ReadAllLines(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "glcorearb.h"));
             var xml = XDocument.Load(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "gl.xml"));
 
-            var enumGroups = new List<EnumGroupData>();
             var enums = new List<EnumData>();
             var functions = new List<FunctionData>();
 
-            ParseHeaderFile(lines, enums, functions);
-            ParseXmlFile(xml, enumGroups, enums, functions);
+            Parse(lines, enums, functions);
 
             var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
             glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
@@ -146,88 +126,10 @@ namespace GLGenerator
             glUniformMatrix4fv.Name = glUniformMatrix4fv.Name + "ByRef";
             functions.Add(glUniformMatrix4fv);
             
-            Write(enumGroups, enums, functions);
+            Write(enums, functions);
         }
 
-        private static void ParseXmlFile(XDocument xml, List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
-        {
-            foreach (var groupNode in xml.Descendants("group"))
-            {
-                if (groupNode.Attribute("name").Value == "Boolean")
-                    continue;
-
-                var enumGroup = new EnumGroupData()
-                {
-                    Name = groupNode.Attribute("name").Value,
-                    Type = "uint"
-                };
-
-                foreach (var enumNode in groupNode.Elements())
-                {
-                    //if (removedEnums.Contains(enumNode.Attribute("name").Value))
-                    //    continue;
-
-                    var @enum = enums.SingleOrDefault(x => "GL_" + x.Name == enumNode.Attribute("name").Value);
-
-                    if (@enum != null && !enumGroup.EnumNames.Contains(enumNode.Attribute("name").Value))
-                    {
-                        enumGroup.EnumNames.Add(enumNode.Attribute("name").Value);
-                    }
-                }
-
-                if (enumGroup.EnumNames.Any())
-                    enumGroups.Add(enumGroup);
-            }
-
-            foreach (var commandNode in xml.Descendants("command"))
-            {
-                var functionName = commandNode.Element("proto")?.Element("name")?.Value;
-
-                if (functionName == null)
-                    continue;
-
-                var function = functions.SingleOrDefault(x => x.Name == functionName);
-
-                if (function == null)
-                    continue;
-
-                foreach (var paramNode in commandNode.Elements("param").Where(x => x.Attribute("group") != null))
-                {
-                    var enumGroup = enumGroups.SingleOrDefault(x => x.Name == paramNode.Attribute("group").Value);
-
-                    if (enumGroup == null)
-                        continue;
-
-                    var functionParam = function.Params.SingleOrDefault(x => x.Name == paramNode.Element("name").Value);
-
-                    if (functionParam == null)
-                        continue;
-
-                    functionParam.EnumGroup = enumGroup;
-                    enumGroup.IsInUse = true;
-
-                    if (functionParam.Type != "GLenum")
-                    {
-                        if (functionParam.Type == "GLbitfield")
-                        {
-                            enumGroup.HasFlagsAttribtue = true;
-                        }
-                        else if (functionParam.Type == "GLint")
-                        {
-                            enumGroup.Type = "int";
-                        }
-                    }
-                }
-            }
-
-            foreach (var enumGroup in enumGroups.Where(x => !x.IsInUse).ToArray())
-            {
-                Console.WriteLine($"Removing EnumGroup: {enumGroup.Name}.");
-                enumGroups.Remove(enumGroup);
-            }
-        }
-
-        private static void ParseHeaderFile(string[] lines, List<EnumData> enums, List<FunctionData> functions)
+        private static void Parse(string[] lines, List<EnumData> enums, List<FunctionData> functions)
         {
             int versionMajor = 0;
             int versionMinor = 0;
@@ -321,7 +223,7 @@ namespace GLGenerator
             }
         }
 
-        private static void Write(List<EnumGroupData> enumGroups, List<EnumData> enums, List<FunctionData> functions)
+        private static void Write(List<EnumData> enums, List<FunctionData> functions)
         {
             StringBuilder sb = new StringBuilder(1024);
 
@@ -449,28 +351,29 @@ namespace GLGenerator
                 sb.AppendLine("\t\t}");
                 sb.AppendLine();
 
-                //if (function.Name.StartsWith("glDelete") &&
-                //    function.Name != "glDeleteProgram" &&
-                //    function.Name != "glDeleteShader" &&
-                //    function.Name != "glDeleteSync")
-                //{
-                //    sb.AppendLine($"\t\tpublic void {function.Name.TrimEnd('s')}(uint handle)");
-                //    sb.AppendLine("\t\t{");
-                //    sb.AppendLine($"\t\t\tUintBuffer[0] = handle;");
-                //    sb.AppendLine($"\t\t\t{function.Name}(1, UintBuffer);");
-                //    sb.AppendLine("\t\t}");
-                //    sb.AppendLine();
-                //}
-                //else if (function.Name.StartsWith("glGen") &&
-                //         !function.Name.StartsWith("glGenerate"))
-                //{
-                //    sb.AppendLine($"\t\tpublic uint {function.Name.TrimEnd('s')}()");
-                //    sb.AppendLine("\t\t{");
-                //    sb.AppendLine($"\t\t\t{function.Name}(1, UintBuffer);");
-                //    sb.AppendLine($"\t\t\treturn UintBuffer[0];");
-                //    sb.AppendLine("\t\t}");
-                //    sb.AppendLine();
-                //}
+                if (function.Name.StartsWith("glDelete") &&
+                    function.Name != "glDeleteProgram" &&
+                    function.Name != "glDeleteShader" &&
+                    function.Name != "glDeleteSync")
+                {
+                    sb.AppendLine($"\t\tpublic static void {function.Name.TrimEnd('s')}(uint handle)");
+                    sb.AppendLine("\t\t{");
+                    sb.AppendLine("\t\t\tvar temp = new uint[] { handle };");
+                    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
+                else if (function.Name.StartsWith("glGen") &&
+                         !function.Name.StartsWith("glGenerate"))
+                {
+                    sb.AppendLine($"\t\tpublic static uint {function.Name.TrimEnd('s')}()");
+                    sb.AppendLine("\t\t{");
+                    sb.AppendLine($"\t\t\tvar temp = new uint[1];");
+                    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
+                    sb.AppendLine($"\t\t\treturn temp[0];");
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
             }
 
             sb.AppendLine("\t}");
@@ -509,13 +412,8 @@ namespace GLGenerator
             return returnType;
         }
 
-        private static string GetParamType(FunctionParamData param, bool useEnumGroup = false)
+        private static string GetParamType(FunctionParamData param)
         {
-            if (useEnumGroup && param.EnumGroup != null)
-            {
-                return GetEnumGroupName(param.EnumGroup, param.PointerCount > 0);
-            }
-
             string type = param.Type;
 
             if (!param.TypeOverridden)
@@ -649,19 +547,6 @@ namespace GLGenerator
             {
                 name = $"({cast}){name}";
             }
-
-            return name;
-        }
-
-        private static string GetEnumGroupName(EnumGroupData enumGroup, bool asArray = false)
-        {
-            string name = enumGroup.Name;
-
-            if (name.EndsWith("ARB"))
-                name = name.Substring(0, name.Length - "ARB".Length);
-
-            if (asArray)
-                name += "[]";
 
             return name;
         }

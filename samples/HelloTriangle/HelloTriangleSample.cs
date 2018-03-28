@@ -46,17 +46,15 @@ void main()
             float[] points = new float[] { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
             float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
 
-            var pointsBuffer = new uint[1];
-            glGenBuffers(1, pointsBuffer);
-            glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer[0]);
+            var pointsBuffer = glGenBuffer();
+            glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             using (var memory = MemoryBlock.Create(points))
             {
-                glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.Length, memory.DataPointer, GL_STATIC_DRAW);
+                glBufferData(GL_ARRAY_BUFFER, memory.Length, memory.DataPointer, GL_STATIC_DRAW);
             }
 
-            var colorsBuffer = new uint[1];
-            glGenBuffers(1, colorsBuffer);
-            glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer[0]);
+            var colorsBuffer = glGenBuffer();            
+            glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
             using (var memory = MemoryBlock.Create(colors))
             {
                 glBufferData(GL_ARRAY_BUFFER, memory.Length, memory.DataPointer, GL_STATIC_DRAW);
@@ -65,9 +63,9 @@ void main()
             this.vertexArray = new uint[1];
             glGenVertexArrays(1, vertexArray);
             glBindVertexArray(this.vertexArray[0]);
-            glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer[0]);
+            glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, IntPtr.Zero);
-            glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer[0]);
+            glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
             glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, IntPtr.Zero);
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);

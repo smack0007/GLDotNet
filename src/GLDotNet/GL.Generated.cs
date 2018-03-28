@@ -5242,9 +5242,21 @@ namespace GLDotNet
 			_glDeleteBuffers(n, buffers);
 		}
 
+		public static void glDeleteBuffer(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteBuffers(1, temp);
+		}
+
 		public static void glDeleteFramebuffers(int n, uint[] framebuffers)
 		{
 			_glDeleteFramebuffers(n, framebuffers);
+		}
+
+		public static void glDeleteFramebuffer(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteFramebuffers(1, temp);
 		}
 
 		public static void glDeleteProgram(uint program)
@@ -5257,9 +5269,21 @@ namespace GLDotNet
 			_glDeleteProgramPipelines(n, pipelines);
 		}
 
+		public static void glDeleteProgramPipeline(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteProgramPipelines(1, temp);
+		}
+
 		public static void glDeleteQueries(int n, uint[] ids)
 		{
 			_glDeleteQueries(n, ids);
+		}
+
+		public static void glDeleteQuerie(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteQueries(1, temp);
 		}
 
 		public static void glDeleteRenderbuffers(int n, uint[] renderbuffers)
@@ -5267,9 +5291,21 @@ namespace GLDotNet
 			_glDeleteRenderbuffers(n, renderbuffers);
 		}
 
+		public static void glDeleteRenderbuffer(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteRenderbuffers(1, temp);
+		}
+
 		public static void glDeleteSamplers(int count, uint[] samplers)
 		{
 			_glDeleteSamplers(count, samplers);
+		}
+
+		public static void glDeleteSampler(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteSamplers(1, temp);
 		}
 
 		public static void glDeleteShader(uint shader)
@@ -5287,14 +5323,32 @@ namespace GLDotNet
 			_glDeleteTextures(n, textures);
 		}
 
+		public static void glDeleteTexture(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteTextures(1, temp);
+		}
+
 		public static void glDeleteTransformFeedbacks(int n, uint[] ids)
 		{
 			_glDeleteTransformFeedbacks(n, ids);
 		}
 
+		public static void glDeleteTransformFeedback(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteTransformFeedbacks(1, temp);
+		}
+
 		public static void glDeleteVertexArrays(int n, uint[] arrays)
 		{
 			_glDeleteVertexArrays(n, arrays);
+		}
+
+		public static void glDeleteVertexArray(uint handle)
+		{
+			var temp = new uint[] { handle };
+			glDeleteVertexArrays(1, temp);
 		}
 
 		public static void glDepthFunc(uint func)
@@ -5567,6 +5621,13 @@ namespace GLDotNet
 			_glGenBuffers(n, buffers);
 		}
 
+		public static uint glGenBuffer()
+		{
+			var temp = new uint[1];
+			glGenBuffers(1, temp);
+			return temp[0];
+		}
+
 		public static void glGenerateMipmap(uint target)
 		{
 			_glGenerateMipmap(target);
@@ -5582,9 +5643,23 @@ namespace GLDotNet
 			_glGenFramebuffers(n, framebuffers);
 		}
 
+		public static uint glGenFramebuffer()
+		{
+			var temp = new uint[1];
+			glGenFramebuffers(1, temp);
+			return temp[0];
+		}
+
 		public static void glGenProgramPipelines(int n, uint[] pipelines)
 		{
 			_glGenProgramPipelines(n, pipelines);
+		}
+
+		public static uint glGenProgramPipeline()
+		{
+			var temp = new uint[1];
+			glGenProgramPipelines(1, temp);
+			return temp[0];
 		}
 
 		public static void glGenQueries(int n, uint[] ids)
@@ -5592,9 +5667,23 @@ namespace GLDotNet
 			_glGenQueries(n, ids);
 		}
 
+		public static uint glGenQuerie()
+		{
+			var temp = new uint[1];
+			glGenQueries(1, temp);
+			return temp[0];
+		}
+
 		public static void glGenRenderbuffers(int n, uint[] renderbuffers)
 		{
 			_glGenRenderbuffers(n, renderbuffers);
+		}
+
+		public static uint glGenRenderbuffer()
+		{
+			var temp = new uint[1];
+			glGenRenderbuffers(1, temp);
+			return temp[0];
 		}
 
 		public static void glGenSamplers(int count, uint[] samplers)
@@ -5602,9 +5691,23 @@ namespace GLDotNet
 			_glGenSamplers(count, samplers);
 		}
 
+		public static uint glGenSampler()
+		{
+			var temp = new uint[1];
+			glGenSamplers(1, temp);
+			return temp[0];
+		}
+
 		public static void glGenTextures(int n, uint[] textures)
 		{
 			_glGenTextures(n, textures);
+		}
+
+		public static uint glGenTexture()
+		{
+			var temp = new uint[1];
+			glGenTextures(1, temp);
+			return temp[0];
 		}
 
 		public static void glGenTransformFeedbacks(int n, uint[] ids)
@@ -5612,9 +5715,23 @@ namespace GLDotNet
 			_glGenTransformFeedbacks(n, ids);
 		}
 
+		public static uint glGenTransformFeedback()
+		{
+			var temp = new uint[1];
+			glGenTransformFeedbacks(1, temp);
+			return temp[0];
+		}
+
 		public static void glGenVertexArrays(int n, uint[] arrays)
 		{
 			_glGenVertexArrays(n, arrays);
+		}
+
+		public static uint glGenVertexArray()
+		{
+			var temp = new uint[1];
+			glGenVertexArrays(1, temp);
+			return temp[0];
 		}
 
 		public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params)
