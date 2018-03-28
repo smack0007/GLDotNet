@@ -73,6 +73,8 @@ namespace GLGenerator
 
             public string Name { get; set; }
 
+            public bool UseForVoidPointerOverload { get; set; }
+
             public FunctionParamData() { }
 
             public FunctionParamData(FunctionParamData functionParamData)
@@ -98,29 +100,34 @@ namespace GLGenerator
         static void Main(string[] args)
         {            
             var lines = File.ReadAllLines(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "glcorearb.h"));
-            var xml = XDocument.Load(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "gl.xml"));
 
             var enums = new List<EnumData>();
             var functions = new List<FunctionData>();
 
             Parse(lines, enums, functions);
 
-            var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
-            glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
-            glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
+            var glBufferData = functions.Single(x => x.Name == "glBufferData");
+            glBufferData.Params.Single(x => x.Name == "data").UseForVoidPointerOverload = true;
 
-            var glGetProgramiv = functions.Single(x => x.Name == "glGetProgramiv");
-            glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
+            var glBufferSubData = functions.Single(x => x.Name == "glBufferSubData");
+            glBufferSubData.Params.Single(x => x.Name == "data").UseForVoidPointerOverload = true;
 
             var glGetProgramInfoLog = functions.Single(x => x.Name == "glGetProgramInfoLog");
             glGetProgramInfoLog.Params.Single(x => x.Name == "length").OverrideType("int", "out");
 
-            var glGetShaderiv = functions.Single(x => x.Name == "glGetShaderiv");
-            glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
+            var glGetProgramiv = functions.Single(x => x.Name == "glGetProgramiv");
+            glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
 
             var glGetShaderInfoLog = functions.Single(x => x.Name == "glGetShaderInfoLog");
             glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("int", "out");
 
+            var glGetShaderiv = functions.Single(x => x.Name == "glGetShaderiv");
+            glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("int", "out");
+
+            var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
+            glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
+            glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
+            
             var glUniformMatrix4fv = new FunctionData(functions.Single(x => x.Name == "glUniformMatrix4fv"));
             glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
             glUniformMatrix4fv.Name = glUniformMatrix4fv.Name + "ByRef";
@@ -330,12 +337,9 @@ namespace GLGenerator
             foreach (var function in orderedFunctions)
             {
                 string returnType = GetReturnType(function.ReturnType);
-                string parameters = null;
-                string parameterNames = null;
-
-                parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-                parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
-
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
+                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
+                
                 sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
                 sb.AppendLine("\t\t{");
 
@@ -371,6 +375,45 @@ namespace GLGenerator
                     sb.AppendLine($"\t\t\tvar temp = new uint[1];");
                     sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
                     sb.AppendLine($"\t\t\treturn temp[0];");
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
+
+                if (function.Params.Any(x => x.UseForVoidPointerOverload))
+                {
+                    parameters = string.Join(", ", function.Params.Select(x => (x.UseForVoidPointerOverload ? "T[]" : GetParamType(x)) + " " + GetParamName(x.Name)));
+                    parameterNames = string.Join(", ", function.Params.Select(x => x.UseForVoidPointerOverload ? ( x.Name + "Ptr.AddrOfPinnedObject()" ) : GetParamInvoke(x.Name, x.TypePrefix)));
+
+                    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}<T>({parameters})");
+                    sb.AppendLine("\t\t\twhere T: struct");
+                    sb.AppendLine("\t\t{");
+
+                    var pointers = function.Params.Where(x => x.UseForVoidPointerOverload);
+                    foreach (var pointer in pointers)
+                    {
+                        sb.AppendLine($"\t\t\tvar {pointer.Name}Ptr = GCHandle.Alloc({pointer.Name}, GCHandleType.Pinned);");
+                    }
+                    sb.AppendLine();
+
+                    sb.AppendLine("\t\t\ttry");
+                    sb.AppendLine("\t\t\t{");
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\t\treturn _{function.Name}({parameterNames});");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"\t\t\t\t_{function.Name}({parameterNames});");
+                    }
+                    sb.AppendLine("\t\t\t}");
+                    sb.AppendLine("\t\t\tfinally");
+                    sb.AppendLine("\t\t\t{");
+                    foreach (var pointer in pointers)
+                    {
+                        sb.AppendLine($"\t\t\t\t{pointer.Name}Ptr.Free();");
+                    }
+                    sb.AppendLine("\t\t\t}");
+
                     sb.AppendLine("\t\t}");
                     sb.AppendLine();
                 }

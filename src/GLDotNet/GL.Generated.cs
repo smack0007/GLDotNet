@@ -4912,6 +4912,21 @@ namespace GLDotNet
 			_glBufferData(target, size, data, usage);
 		}
 
+		public static void glBufferData<T>(uint target, int size, T[] data, uint usage)
+			where T: struct
+		{
+			var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
+
+			try
+			{
+				_glBufferData(target, size, dataPtr.AddrOfPinnedObject(), usage);
+			}
+			finally
+			{
+				dataPtr.Free();
+			}
+		}
+
 		public static void glBufferStorage(uint target, int size, IntPtr data, uint flags)
 		{
 			_glBufferStorage(target, size, data, flags);
@@ -4920,6 +4935,21 @@ namespace GLDotNet
 		public static void glBufferSubData(uint target, int offset, int size, IntPtr data)
 		{
 			_glBufferSubData(target, offset, size, data);
+		}
+
+		public static void glBufferSubData<T>(uint target, int offset, int size, T[] data)
+			where T: struct
+		{
+			var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
+
+			try
+			{
+				_glBufferSubData(target, offset, size, dataPtr.AddrOfPinnedObject());
+			}
+			finally
+			{
+				dataPtr.Free();
+			}
 		}
 
 		public static uint glCheckFramebufferStatus(uint target)

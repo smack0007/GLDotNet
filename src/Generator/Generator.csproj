@@ -6,9 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(RepositoryRootDirectory)ext\gl.xml" Link="gl.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="$(RepositoryRootDirectory)ext\glcorearb.h" Link="glcorearb.h">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>    

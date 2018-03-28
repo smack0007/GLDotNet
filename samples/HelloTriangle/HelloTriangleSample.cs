@@ -48,17 +48,11 @@ void main()
 
             var pointsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            using (var memory = MemoryBlock.Create(points))
-            {
-                glBufferData(GL_ARRAY_BUFFER, memory.Length, memory.DataPointer, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.Length, points, GL_STATIC_DRAW);
 
             var colorsBuffer = glGenBuffer();            
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            using (var memory = MemoryBlock.Create(colors))
-            {
-                glBufferData(GL_ARRAY_BUFFER, memory.Length, memory.DataPointer, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * colors.Length, colors, GL_STATIC_DRAW);
 
             this.vertexArray = new uint[1];
             glGenVertexArrays(1, vertexArray);
