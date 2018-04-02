@@ -75,6 +75,8 @@ namespace GLGenerator
 
             public bool UseForVoidPointerOverload { get; set; }
 
+            public bool UseForByRefOverload { get; set; }
+
             public FunctionParamData() { }
 
             public FunctionParamData(FunctionParamData functionParamData)
@@ -127,12 +129,15 @@ namespace GLGenerator
             var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
             glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
             glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
-            
-            var glUniformMatrix4fv = new FunctionData(functions.Single(x => x.Name == "glUniformMatrix4fv"));
-            glUniformMatrix4fv.Params.Single(x => x.Name == "value").OverrideType("float", "ref");
-            glUniformMatrix4fv.Name = glUniformMatrix4fv.Name + "ByRef";
-            functions.Add(glUniformMatrix4fv);
-            
+
+            foreach (var function in functions.Where(x =>
+                (x.Name.StartsWith("glUniform") || x.Name.StartsWith("glProgramUniform")) &&
+                x.Name.EndsWith("v") &&
+                x.Params.Any(y => y.Name == "value")))
+            {
+                function.Params.Single(x => x.Name == "value").UseForByRefOverload = true;
+            }
+                      
             Write(enums, functions);
         }
 
@@ -280,6 +285,13 @@ namespace GLGenerator
 
                 sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}({parameters});");
                 sb.AppendLine();
+
+                if (function.Params.Any(x => x.UseForByRefOverload))
+                {
+                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
+                    sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}ByRef({parameters});");
+                    sb.AppendLine();
+                }
             }
 
             sb.AppendLine("\t\t}");
@@ -291,6 +303,12 @@ namespace GLGenerator
 
                 sb.AppendLine($"\t\tprivate static Delegates.{function.Name} _{function.Name};");
                 sb.AppendLine();
+
+                if (function.Params.Any(x => x.UseForByRefOverload))
+                {
+                    sb.AppendLine($"\t\tprivate static Delegates.{function.Name}ByRef _{function.Name}ByRef;");
+                    sb.AppendLine();
+                }
             }
 
             sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
@@ -301,7 +319,7 @@ namespace GLGenerator
             int versionMajor = -1;
             int versionMinor = -1;
 
-            foreach (var function in functions)
+            foreach (var function in functions.OrderBy(x => x.VersionMajor).ThenBy(x => x.VersionMinor).ThenBy(x => x.Name))
             {
                 if (versionMajor != function.VersionMajor || versionMinor != function.VersionMinor)
                 {
@@ -317,16 +335,11 @@ namespace GLGenerator
                     sb.AppendLine($"\t\t\tif (versionMajor > {versionMajor} || (versionMajor == {versionMajor} && versionMinor >= {versionMinor}))");
                     sb.AppendLine("\t\t\t{");
                 }
+                                
+                sb.AppendLine($"\t\t\t\t_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}));");
 
-                // removes the appended reference name (if it exists) for the generated code pointing to the openGL functions
-                string glFunctionName = function.Name;
-                string appendedName = "ByRef";
-                if (glFunctionName.Contains(appendedName))
-                {
-                    glFunctionName = glFunctionName.Remove(glFunctionName.Length - appendedName.Length);
-                }
-
-                sb.AppendLine($"\t\t\t\t_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{glFunctionName}\"), typeof(Delegates.{function.Name}));");
+                if (function.Params.Any(x => x.UseForByRefOverload))
+                    sb.AppendLine($"\t\t\t\t_{function.Name}ByRef = (Delegates.{function.Name}ByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}ByRef));");
             }
 
             sb.AppendLine("\t\t\t}");
@@ -417,6 +430,27 @@ namespace GLGenerator
                     sb.AppendLine("\t\t}");
                     sb.AppendLine();
                 }
+
+                if (function.Params.Any(x => x.UseForByRefOverload))
+                {
+                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
+                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.UseForByRefOverload ? "ref " : "")));
+
+                    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
+                    sb.AppendLine("\t\t{");
+
+                    if (returnType != "void")
+                    {
+                        sb.AppendLine($"\t\t\treturn _{function.Name}ByRef({parameterNames});");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"\t\t\t_{function.Name}ByRef({parameterNames});");
+                    }
+
+                    sb.AppendLine("\t\t}");
+                    sb.AppendLine();
+                }
             }
 
             sb.AppendLine("\t}");
@@ -455,7 +489,7 @@ namespace GLGenerator
             return returnType;
         }
 
-        private static string GetParamType(FunctionParamData param)
+        private static string GetParamType(FunctionParamData param, bool refOverload = false)
         {
             string type = param.Type;
 
@@ -561,6 +595,14 @@ namespace GLGenerator
 
             if (param.TypePrefix != null)
                 type = param.TypePrefix + " " + type;
+
+            if (refOverload && param.UseForByRefOverload)
+            {
+                if (type.EndsWith("[]"))
+                    type = type.Substring(0, type.Length - 2);
+
+                type = "ref " + type;
+            }
 
             return type;
         }
