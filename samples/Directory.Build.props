@@ -1,5 +1,5 @@
 <Project>
-    <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" />
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
   
     <ItemGroup>
         <ProjectReference Include="$(RepositoryRootDirectory)src\GLDotNet\GLDotNet.csproj" />
