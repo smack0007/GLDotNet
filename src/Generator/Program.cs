@@ -274,7 +274,7 @@ namespace GLGenerator
             sb.AppendLine("\t\tpublic delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);");
             sb.AppendLine();
 
-            sb.AppendLine($"\t\tpublic static class Delegates");
+            sb.AppendLine($"\t\tprivate static class Delegates");
             sb.AppendLine("\t\t{");
 
             var orderedFunctions = functions.OrderBy(x => x.Name);
@@ -311,6 +311,14 @@ namespace GLGenerator
                 }
             }
 
+            void AppendLoadDelegate(string indent, FunctionData function)
+            {
+                sb.AppendLine($"{indent}_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}));");
+
+                if (function.Params.Any(x => x.UseForByRefOverload))
+                    sb.AppendLine($"{indent}_{function.Name}ByRef = (Delegates.{function.Name}ByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}ByRef));");
+            }
+
             sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
             sb.AppendLine("\t\t{");
             sb.AppendLine("\t\t\tif (getProcAddress == null) throw new ArgumentNullException(nameof(getProcAddress));");
@@ -335,11 +343,8 @@ namespace GLGenerator
                     sb.AppendLine($"\t\t\tif (versionMajor > {versionMajor} || (versionMajor == {versionMajor} && versionMinor >= {versionMinor}))");
                     sb.AppendLine("\t\t\t{");
                 }
-                                
-                sb.AppendLine($"\t\t\t\t_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}));");
 
-                if (function.Params.Any(x => x.UseForByRefOverload))
-                    sb.AppendLine($"\t\t\t\t_{function.Name}ByRef = (Delegates.{function.Name}ByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}ByRef));");
+                AppendLoadDelegate("\t\t\t\t", function);
             }
 
             sb.AppendLine("\t\t\t}");

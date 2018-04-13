@@ -8,15 +8,6 @@ namespace GLDotNet.Samples
 {
     public static class GLUtility
     {
-        public static void BufferData<T>(uint target, T[] data, uint usage)
-            where T : struct
-        {
-            using (var memory = MemoryBlock.Create(data))
-            {
-                glBufferData(target, memory.Length, memory.DataPointer, usage);
-            }
-        }
-
         public static uint CreateAndCompileShader(uint type, string source)
         {
             var shader = glCreateShader(type);

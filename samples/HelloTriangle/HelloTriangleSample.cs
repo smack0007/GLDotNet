@@ -4,6 +4,7 @@
 ///////////////////////
 
 using System;
+using System.Diagnostics;
 using GLDotNet.Samples;
 using static GLDotNet.GL;
 using static GLDotNet.WGL;
@@ -42,7 +43,12 @@ void main()
         public HelloTriangleSample()
         {
             this.Title = "Hello Triangle";
+        }
 
+        protected override void Init(Func<string, IntPtr> getProcAddress)
+        {
+            glInit(getProcAddress, 4, 0);
+            
             float[] points = new float[] { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
             float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
 
@@ -50,7 +56,7 @@ void main()
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.Length, points, GL_STATIC_DRAW);
 
-            var colorsBuffer = glGenBuffer();            
+            var colorsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
             glBufferData(GL_ARRAY_BUFFER, sizeof(float) * colors.Length, colors, GL_STATIC_DRAW);
 
@@ -86,8 +92,6 @@ void main()
             glUseProgram(this.shaderProgram);
             glBindVertexArray(this.vertexArray[0]);
             glDrawArrays(GL_TRIANGLES, 0, 3);
-
-            wglSwapBuffers();
         }
 
         public static void Main(string[] args)

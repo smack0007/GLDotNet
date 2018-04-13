@@ -1352,7 +1352,7 @@ namespace GLDotNet
 
 		public delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);
 
-		public static class Delegates
+		private static class Delegates
 		{
 			public delegate void glActiveShaderProgram(uint pipeline, uint program);
 
