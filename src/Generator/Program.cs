@@ -237,8 +237,17 @@ namespace GLGenerator
 
         private static void Write(List<EnumData> enums, List<FunctionData> functions)
         {
+            string[] license = File.ReadAllLines(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "License.txt"));
+
             StringBuilder sb = new StringBuilder(1024);
 
+            foreach (var line in license)
+            {
+                sb.Append("// ");
+                sb.AppendLine(line);
+            }
+
+            sb.AppendLine();
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Runtime.InteropServices;");
             sb.AppendLine("using System.Text;");

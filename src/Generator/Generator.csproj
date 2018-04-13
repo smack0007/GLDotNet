@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\..\License.txt" Link="License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="$(RepositoryRootDirectory)ext\glcorearb.h" Link="glcorearb.h">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>    
