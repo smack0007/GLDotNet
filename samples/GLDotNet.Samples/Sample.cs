@@ -95,7 +95,7 @@ namespace GLDotNet.Samples
 
             glfwMakeContextCurrent(this.window);
 
-            this.Init(glfwGetProcAddress);
+            glInit(glfwGetProcAddress, this.VersionMajor, this.VersionMinor);
         }
 
         ~Sample()
@@ -157,8 +157,6 @@ namespace GLDotNet.Samples
                 this.FramesPerSecond = 0;
             }
         }
-
-        protected abstract void Init(Func<string, IntPtr> getProcAddress);
 
         protected virtual void Update(float elapsed)
         {
