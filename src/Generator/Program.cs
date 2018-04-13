@@ -461,7 +461,7 @@ namespace GLGenerator
             sb.AppendLine("\t}");
             sb.AppendLine("}");
 
-            string fullPath = Path.GetFullPath(@"..\..\..\..\src\GLDotNet\GL.Generated.cs");
+            string fullPath = Path.GetFullPath(@"..\..\..\..\src\GLDotNet\GL.cs");
             File.WriteAllText(fullPath, sb.ToString());
         }
 
