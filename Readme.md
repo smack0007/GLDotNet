@@ -7,7 +7,7 @@
 Use one of the following options:
 
 * Compile the GLDotNet assembly using Visual Studio or MSBuild.
-* Include [GL.cs](https://github.com/smack0007/GLDotNet/blob/master/Source/Library/GLDotNet/GL.cs) directly
+* Include [GL.cs](https://github.com/smack0007/GLDotNet/blob/master/src/GLDotNet/GL.cs) directly
   in your project.
   
 Once an OpenGL context has been created and made current call GL.Initialize().
