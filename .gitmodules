@@ -1,0 +1,4 @@
+[submodule "ext/ImageDotNet"]
+	path = ext/ImageDotNet
+	url = https://github.com/smack0007/ImageDotNet.git
+	branch = master
