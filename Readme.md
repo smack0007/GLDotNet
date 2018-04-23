@@ -1,3 +1,5 @@
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
 # GLDotNet
 
 [OpenGL](https://www.opengl.org/) bindings for .NET.
