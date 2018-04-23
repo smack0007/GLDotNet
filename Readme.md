@@ -1,4 +1,5 @@
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+![Build Status](https://smack0007.visualstudio.com/_apis/public/build/definitions/fe242154-6494-46a8-aecf-f6146774ff5b/4/badge)
 
 # GLDotNet
 
