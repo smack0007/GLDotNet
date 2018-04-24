@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj" />
+    <ProjectReference Include="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj" />
   </ItemGroup>
 
 </Project>
