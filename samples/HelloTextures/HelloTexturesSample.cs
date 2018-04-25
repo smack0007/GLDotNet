@@ -112,7 +112,7 @@ void main()
 
             glUseProgram(this.shaderProgram);
             glBindVertexArray(this.vertexArray);
-            glUniform1i(0, 0);
+            glUniform1ui(0, this.texture);
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
 
