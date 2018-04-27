@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using static GLFWDotNet.GLFW;
 using static GLDotNet.GL;
+using System.IO;
 
 namespace GLDotNet.Samples
 {
@@ -96,6 +97,9 @@ namespace GLDotNet.Samples
             glfwMakeContextCurrent(this.window);
 
             glInit(glfwGetProcAddress, this.VersionMajor, this.VersionMinor);
+
+            var basePath = Path.GetDirectoryName(typeof(Sample).Assembly.Location);
+            Directory.SetCurrentDirectory(basePath);
         }
 
         ~Sample()

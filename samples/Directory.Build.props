@@ -7,6 +7,7 @@
         
         <ProjectReference Include="$(RepositoryRootDirectory)src\GLDotNet\GLDotNet.csproj" />
         <ProjectReference Include="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj" />
+        <ProjectReference Include="$(RepositoryRootDirectory)ext\ImageDotNet\src\ImageDotNet\ImageDotNet.csproj" />
     </ItemGroup>
 
     <Target Name="CopyGLFWDlls" AfterTargets="AfterBuild">

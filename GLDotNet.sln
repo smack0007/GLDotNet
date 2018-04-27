@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloTextures", "samples\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLFWDotNet", "ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj", "{77E06E01-7B37-4446-A12E-717786AA7428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprites", "samples\Sprites\Sprites.csproj", "{06654377-BA43-4418-88E6-17DC19C7479A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{77E06E01-7B37-4446-A12E-717786AA7428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77E06E01-7B37-4446-A12E-717786AA7428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77E06E01-7B37-4446-A12E-717786AA7428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06654377-BA43-4418-88E6-17DC19C7479A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06654377-BA43-4418-88E6-17DC19C7479A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06654377-BA43-4418-88E6-17DC19C7479A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06654377-BA43-4418-88E6-17DC19C7479A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{3451D8F4-4166-4E75-8E25-3F4242B61821} = {5F57E6E7-97F3-4B85-9D23-EE2321275644}
 		{F8448AD6-80D1-4AED-AEC9-FA3642B7F9AE} = {8A1E21B2-2D4B-4B1F-AF8B-C1697BD151B4}
 		{77E06E01-7B37-4446-A12E-717786AA7428} = {5F57E6E7-97F3-4B85-9D23-EE2321275644}
+		{06654377-BA43-4418-88E6-17DC19C7479A} = {8A1E21B2-2D4B-4B1F-AF8B-C1697BD151B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {439D4E12-5888-40F6-AB6D-AD61FABA3641}

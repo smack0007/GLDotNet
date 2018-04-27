@@ -47,8 +47,6 @@ void main()
         {
             this.Title = "Hello Textures";
 
-            var basePath = Path.GetDirectoryName(typeof(HelloTriangleSample).Assembly.Location);
-
             float[] points = new float[] { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
             float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
             float[] uv = new float[] { 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f };
@@ -82,7 +80,7 @@ void main()
             glBindTexture(GL_TEXTURE_2D, this.texture);
                         
             // Image is an RGBImage.
-            var image = Image.LoadTga(Path.Combine(basePath, "Texture.tga"));
+            var image = Image.LoadTga("Box.tga");
             using (var data = image.GetDataPointer())
             {
                 glTexImage2D(GL_TEXTURE_2D, 0, (int)GL_RGB, image.Width, image.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.Pointer);

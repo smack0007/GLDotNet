@@ -8,11 +8,21 @@ namespace GLDotNet.Samples
 {
     public static class GLUtility
     {
+        public static void CheckErrors(string functionName)
+        {
+            uint error = glGetError();
+
+            if (error != GL_NO_ERROR)
+                throw new InvalidOperationException($"{functionName} resulted in error: {GetErrorString(error)}");
+        }
+
         public static uint CreateAndCompileShader(uint type, string source)
         {
             var shader = glCreateShader(type);
             ShaderSource(shader, source);
             glCompileShader(shader);
+
+            CheckErrors(nameof(glCompileShader));
 
             glGetShaderiv(shader, GL_COMPILE_STATUS, out var result);
             if (result == GL_FALSE)
@@ -32,6 +42,7 @@ namespace GLDotNet.Samples
                 glAttachShader(program, shader);
 
             glLinkProgram(program);
+            CheckErrors(nameof(glLinkProgram));
 
             glGetProgramiv(program, GL_LINK_STATUS, out var result);
             if (result == GL_FALSE)
@@ -41,6 +52,23 @@ namespace GLDotNet.Samples
             }
 
             return program;
+        }
+
+        public static string GetErrorString(uint error)
+        {
+            switch (error)
+            {
+                case GL_NO_ERROR: return nameof(GL_NO_ERROR);
+                case GL_INVALID_ENUM: return nameof(GL_INVALID_ENUM);
+                case GL_INVALID_VALUE: return nameof(GL_INVALID_VALUE);
+                case GL_INVALID_FRAMEBUFFER_OPERATION: return nameof(GL_INVALID_FRAMEBUFFER_OPERATION);
+                case GL_INVALID_OPERATION: return nameof(GL_INVALID_OPERATION);
+                case GL_OUT_OF_MEMORY: return nameof(GL_OUT_OF_MEMORY);
+                case GL_STACK_OVERFLOW: return nameof(GL_STACK_OVERFLOW);
+                case GL_STACK_UNDERFLOW: return nameof(GL_STACK_UNDERFLOW);
+            }
+
+            return "UNKNOWN";
         }
 
         public static string GetString(uint name)

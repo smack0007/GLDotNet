@@ -1764,7 +1764,11 @@ namespace GLDotNet
 
 			public delegate void glGetBooleani_v(uint target, uint index, bool[] data);
 
+			public delegate void glGetBooleani_vByRef(uint target, uint index, ref bool data);
+
 			public delegate void glGetBooleanv(uint pname, bool[] data);
+
+			public delegate void glGetBooleanvByRef(uint pname, ref bool data);
 
 			public delegate void glGetBufferParameteri64v(uint target, uint pname, long[] @params);
 
@@ -1784,13 +1788,21 @@ namespace GLDotNet
 
 			public delegate void glGetDoublei_v(uint target, uint index, double[] data);
 
+			public delegate void glGetDoublei_vByRef(uint target, uint index, ref double data);
+
 			public delegate void glGetDoublev(uint pname, double[] data);
+
+			public delegate void glGetDoublevByRef(uint pname, ref double data);
 
 			public delegate uint glGetError();
 
 			public delegate void glGetFloati_v(uint target, uint index, float[] data);
 
+			public delegate void glGetFloati_vByRef(uint target, uint index, ref float data);
+
 			public delegate void glGetFloatv(uint pname, float[] data);
+
+			public delegate void glGetFloatvByRef(uint pname, ref float data);
 
 			public delegate int glGetFragDataIndex(uint program, string name);
 
@@ -1804,11 +1816,19 @@ namespace GLDotNet
 
 			public delegate void glGetInteger64i_v(uint target, uint index, long[] data);
 
+			public delegate void glGetInteger64i_vByRef(uint target, uint index, ref long data);
+
 			public delegate void glGetInteger64v(uint pname, long[] data);
+
+			public delegate void glGetInteger64vByRef(uint pname, ref long data);
 
 			public delegate void glGetIntegeri_v(uint target, uint index, int[] data);
 
+			public delegate void glGetIntegeri_vByRef(uint target, uint index, ref int data);
+
 			public delegate void glGetIntegerv(uint pname, int[] data);
+
+			public delegate void glGetIntegervByRef(uint pname, ref int data);
 
 			public delegate void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params);
 
@@ -3208,7 +3228,11 @@ namespace GLDotNet
 
 		private static Delegates.glGetBooleani_v _glGetBooleani_v;
 
+		private static Delegates.glGetBooleani_vByRef _glGetBooleani_vByRef;
+
 		private static Delegates.glGetBooleanv _glGetBooleanv;
+
+		private static Delegates.glGetBooleanvByRef _glGetBooleanvByRef;
 
 		private static Delegates.glGetBufferParameteri64v _glGetBufferParameteri64v;
 
@@ -3228,13 +3252,21 @@ namespace GLDotNet
 
 		private static Delegates.glGetDoublei_v _glGetDoublei_v;
 
+		private static Delegates.glGetDoublei_vByRef _glGetDoublei_vByRef;
+
 		private static Delegates.glGetDoublev _glGetDoublev;
+
+		private static Delegates.glGetDoublevByRef _glGetDoublevByRef;
 
 		private static Delegates.glGetError _glGetError;
 
 		private static Delegates.glGetFloati_v _glGetFloati_v;
 
+		private static Delegates.glGetFloati_vByRef _glGetFloati_vByRef;
+
 		private static Delegates.glGetFloatv _glGetFloatv;
+
+		private static Delegates.glGetFloatvByRef _glGetFloatvByRef;
 
 		private static Delegates.glGetFragDataIndex _glGetFragDataIndex;
 
@@ -3248,11 +3280,19 @@ namespace GLDotNet
 
 		private static Delegates.glGetInteger64i_v _glGetInteger64i_v;
 
+		private static Delegates.glGetInteger64i_vByRef _glGetInteger64i_vByRef;
+
 		private static Delegates.glGetInteger64v _glGetInteger64v;
+
+		private static Delegates.glGetInteger64vByRef _glGetInteger64vByRef;
 
 		private static Delegates.glGetIntegeri_v _glGetIntegeri_v;
 
+		private static Delegates.glGetIntegeri_vByRef _glGetIntegeri_vByRef;
+
 		private static Delegates.glGetIntegerv _glGetIntegerv;
+
+		private static Delegates.glGetIntegervByRef _glGetIntegervByRef;
 
 		private static Delegates.glGetInternalformati64v _glGetInternalformati64v;
 
@@ -4283,10 +4323,14 @@ namespace GLDotNet
 				_glFlush = (Delegates.glFlush)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlush"), typeof(Delegates.glFlush));
 				_glFrontFace = (Delegates.glFrontFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFrontFace"), typeof(Delegates.glFrontFace));
 				_glGetBooleanv = (Delegates.glGetBooleanv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanv));
+				_glGetBooleanvByRef = (Delegates.glGetBooleanvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanvByRef));
 				_glGetDoublev = (Delegates.glGetDoublev)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublev));
+				_glGetDoublevByRef = (Delegates.glGetDoublevByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublevByRef));
 				_glGetError = (Delegates.glGetError)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetError"), typeof(Delegates.glGetError));
 				_glGetFloatv = (Delegates.glGetFloatv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatv));
+				_glGetFloatvByRef = (Delegates.glGetFloatvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatvByRef));
 				_glGetIntegerv = (Delegates.glGetIntegerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegerv));
+				_glGetIntegervByRef = (Delegates.glGetIntegervByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegervByRef));
 				_glGetString = (Delegates.glGetString)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetString"), typeof(Delegates.glGetString));
 				_glGetTexImage = (Delegates.glGetTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexImage"), typeof(Delegates.glGetTexImage));
 				_glGetTexLevelParameterfv = (Delegates.glGetTexLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameterfv"), typeof(Delegates.glGetTexLevelParameterfv));
@@ -4551,9 +4595,11 @@ namespace GLDotNet
 				_glGenRenderbuffers = (Delegates.glGenRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenRenderbuffers"), typeof(Delegates.glGenRenderbuffers));
 				_glGenVertexArrays = (Delegates.glGenVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenVertexArrays"), typeof(Delegates.glGenVertexArrays));
 				_glGetBooleani_v = (Delegates.glGetBooleani_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_v));
+				_glGetBooleani_vByRef = (Delegates.glGetBooleani_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_vByRef));
 				_glGetFragDataLocation = (Delegates.glGetFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataLocation"), typeof(Delegates.glGetFragDataLocation));
 				_glGetFramebufferAttachmentParameteriv = (Delegates.glGetFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferAttachmentParameteriv"), typeof(Delegates.glGetFramebufferAttachmentParameteriv));
 				_glGetIntegeri_v = (Delegates.glGetIntegeri_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_v));
+				_glGetIntegeri_vByRef = (Delegates.glGetIntegeri_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_vByRef));
 				_glGetRenderbufferParameteriv = (Delegates.glGetRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetRenderbufferParameteriv"), typeof(Delegates.glGetRenderbufferParameteriv));
 				_glGetStringi = (Delegates.glGetStringi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetStringi"), typeof(Delegates.glGetStringi));
 				_glGetTexParameterIiv = (Delegates.glGetTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIiv"), typeof(Delegates.glGetTexParameterIiv));
@@ -4634,7 +4680,9 @@ namespace GLDotNet
 				_glFramebufferTexture = (Delegates.glFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture"), typeof(Delegates.glFramebufferTexture));
 				_glGetBufferParameteri64v = (Delegates.glGetBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteri64v"), typeof(Delegates.glGetBufferParameteri64v));
 				_glGetInteger64i_v = (Delegates.glGetInteger64i_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_v));
+				_glGetInteger64i_vByRef = (Delegates.glGetInteger64i_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_vByRef));
 				_glGetInteger64v = (Delegates.glGetInteger64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64v));
+				_glGetInteger64vByRef = (Delegates.glGetInteger64vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64vByRef));
 				_glGetMultisamplefv = (Delegates.glGetMultisamplefv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetMultisamplefv"), typeof(Delegates.glGetMultisamplefv));
 				_glGetSynciv = (Delegates.glGetSynciv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSynciv"), typeof(Delegates.glGetSynciv));
 				_glIsSync = (Delegates.glIsSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSync"), typeof(Delegates.glIsSync));
@@ -4753,7 +4801,9 @@ namespace GLDotNet
 				_glDepthRangeIndexed = (Delegates.glDepthRangeIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeIndexed"), typeof(Delegates.glDepthRangeIndexed));
 				_glGenProgramPipelines = (Delegates.glGenProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenProgramPipelines"), typeof(Delegates.glGenProgramPipelines));
 				_glGetDoublei_v = (Delegates.glGetDoublei_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_v));
+				_glGetDoublei_vByRef = (Delegates.glGetDoublei_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_vByRef));
 				_glGetFloati_v = (Delegates.glGetFloati_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_v));
+				_glGetFloati_vByRef = (Delegates.glGetFloati_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_vByRef));
 				_glGetProgramBinary = (Delegates.glGetProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramBinary"), typeof(Delegates.glGetProgramBinary));
 				_glGetProgramPipelineInfoLog = (Delegates.glGetProgramPipelineInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineInfoLog"), typeof(Delegates.glGetProgramPipelineInfoLog));
 				_glGetProgramPipelineiv = (Delegates.glGetProgramPipelineiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineiv"), typeof(Delegates.glGetProgramPipelineiv));
@@ -6180,9 +6230,19 @@ namespace GLDotNet
 			_glGetBooleani_v(target, index, data);
 		}
 
+		public static void glGetBooleani_v(uint target, uint index, ref bool data)
+		{
+			_glGetBooleani_vByRef( target,  index, ref  data);
+		}
+
 		public static void glGetBooleanv(uint pname, bool[] data)
 		{
 			_glGetBooleanv(pname, data);
+		}
+
+		public static void glGetBooleanv(uint pname, ref bool data)
+		{
+			_glGetBooleanvByRef( pname, ref  data);
 		}
 
 		public static void glGetBufferParameteri64v(uint target, uint pname, long[] @params)
@@ -6230,9 +6290,19 @@ namespace GLDotNet
 			_glGetDoublei_v(target, index, data);
 		}
 
+		public static void glGetDoublei_v(uint target, uint index, ref double data)
+		{
+			_glGetDoublei_vByRef( target,  index, ref  data);
+		}
+
 		public static void glGetDoublev(uint pname, double[] data)
 		{
 			_glGetDoublev(pname, data);
+		}
+
+		public static void glGetDoublev(uint pname, ref double data)
+		{
+			_glGetDoublevByRef( pname, ref  data);
 		}
 
 		public static uint glGetError()
@@ -6245,9 +6315,19 @@ namespace GLDotNet
 			_glGetFloati_v(target, index, data);
 		}
 
+		public static void glGetFloati_v(uint target, uint index, ref float data)
+		{
+			_glGetFloati_vByRef( target,  index, ref  data);
+		}
+
 		public static void glGetFloatv(uint pname, float[] data)
 		{
 			_glGetFloatv(pname, data);
+		}
+
+		public static void glGetFloatv(uint pname, ref float data)
+		{
+			_glGetFloatvByRef( pname, ref  data);
 		}
 
 		public static int glGetFragDataIndex(uint program, string name)
@@ -6280,9 +6360,19 @@ namespace GLDotNet
 			_glGetInteger64i_v(target, index, data);
 		}
 
+		public static void glGetInteger64i_v(uint target, uint index, ref long data)
+		{
+			_glGetInteger64i_vByRef( target,  index, ref  data);
+		}
+
 		public static void glGetInteger64v(uint pname, long[] data)
 		{
 			_glGetInteger64v(pname, data);
+		}
+
+		public static void glGetInteger64v(uint pname, ref long data)
+		{
+			_glGetInteger64vByRef( pname, ref  data);
 		}
 
 		public static void glGetIntegeri_v(uint target, uint index, int[] data)
@@ -6290,9 +6380,19 @@ namespace GLDotNet
 			_glGetIntegeri_v(target, index, data);
 		}
 
+		public static void glGetIntegeri_v(uint target, uint index, ref int data)
+		{
+			_glGetIntegeri_vByRef( target,  index, ref  data);
+		}
+
 		public static void glGetIntegerv(uint pname, int[] data)
 		{
 			_glGetIntegerv(pname, data);
+		}
+
+		public static void glGetIntegerv(uint pname, ref int data)
+		{
+			_glGetIntegervByRef( pname, ref  data);
 		}
 
 		public static void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params)

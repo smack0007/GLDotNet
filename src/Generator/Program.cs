@@ -131,13 +131,21 @@ namespace GLGenerator
             glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
 
             foreach (var function in functions.Where(x =>
+                x.Name.StartsWith("glGet") &&
+                x.Name.EndsWith("v") &&
+                x.Params.Any(y => y.Name == "data")))
+            {
+                function.Params.Single(x => x.Name == "data").UseForByRefOverload = true;
+            }
+
+            foreach (var function in functions.Where(x =>
                 (x.Name.StartsWith("glUniform") || x.Name.StartsWith("glProgramUniform")) &&
                 x.Name.EndsWith("v") &&
                 x.Params.Any(y => y.Name == "value")))
             {
                 function.Params.Single(x => x.Name == "value").UseForByRefOverload = true;
             }
-                      
+
             Write(enums, functions);
         }
 
