@@ -41,7 +41,9 @@ void main()
 
         private uint vertexArray;
         private uint texture;
-        private uint shaderProgram;
+        private uint program;
+
+        private int fragTextureLocation;
 
         public HelloTriangleSample()
         {
@@ -91,7 +93,9 @@ void main()
 
             uint vs = GLUtility.CreateAndCompileShader(GL_VERTEX_SHADER, VertexShader);
             uint fs = GLUtility.CreateAndCompileShader(GL_FRAGMENT_SHADER, FragmentShader);
-            this.shaderProgram = GLUtility.CreateAndLinkProgram(vs, fs);
+            this.program = GLUtility.CreateAndLinkProgram(vs, fs);
+
+            this.fragTextureLocation = glGetUniformLocation(this.program, "fragTexture");
 
             glEnable(GL_DEPTH_TEST);
             glDepthFunc(GL_LESS);
@@ -108,9 +112,13 @@ void main()
 
             glViewport(0, 0, this.Width, this.Height);
 
-            glUseProgram(this.shaderProgram);
+            glUseProgram(this.program);
             glBindVertexArray(this.vertexArray);
-            glUniform1ui(0, this.texture);
+
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, this.texture);
+            glUniform1ui(this.fragTextureLocation, 0); // 0 indicates Texture Unit 0
+
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
 
