@@ -30,7 +30,7 @@ namespace Sprites
             glBindTexture(GL_TEXTURE_2D, this.texture);
 
             // Image is an RGBImage.
-            var image = Image.LoadTga( "Box.tga");
+            var image = Image.LoadTga("Box.tga");
 
             this.textureWidth = image.Width;
             this.textureHeight = image.Height;
@@ -51,16 +51,32 @@ namespace Sprites
             glFrontFace(GL_CW);
         }
 
+        private float rotation = 0.0f;
+
+        protected override void Update(float elapsed)
+        {
+            this.rotation += 0.1f * (1000.0f / elapsed);
+
+            if (this.rotation >= 360.0f)
+                this.rotation -= 360.0f;
+        }
+
         protected override void Draw()
         {
-            glClearColor(1, 0, 0, 0);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             glViewport(0, 0, this.Width, this.Height);
 
             this.renderer.Begin();
 
-            this.renderer.Draw(this.texture, this.textureWidth, this.textureHeight, Vector2.Zero);
+            this.renderer.Draw(
+                this.texture,
+                this.textureWidth,
+                this.textureHeight,
+                new Vector2(300, 300),
+                tint: new Vector4(1, 0, 0, 0),
+                origin: new Vector2(this.textureWidth / 2, this.textureHeight / 2),
+                rotation: (float)(Math.PI * this.rotation / 180.0));
 
             this.renderer.End();
         }

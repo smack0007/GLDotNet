@@ -143,16 +143,21 @@ namespace GLDotNet.Samples
             this.elapsedSinceLastFrame += deltaElapsed;
             this.lastElapsed = currentElapsed;
 
-            if (this.elapsedSinceLastFrame >= TimeBetweenFrames)
+            bool shouldDraw = this.elapsedSinceLastFrame >= TimeBetweenFrames;
+
+            while (this.elapsedSinceLastFrame >= TimeBetweenFrames)
             {
                 this.Update(this.elapsedSinceLastFrame);
-                this.Draw();
-                glfwSwapBuffers(window);
-
                 this.elapsedSinceLastFrame -= TimeBetweenFrames;
-                this.FramesPerSecond++;
             }
 
+            if (shouldDraw)
+            {
+                this.Draw();
+                glfwSwapBuffers(this.window);
+                this.FramesPerSecond++;
+            }
+            
             this.fpsElapsed += deltaElapsed;
 
             if (this.fpsElapsed >= 1000.0f)
