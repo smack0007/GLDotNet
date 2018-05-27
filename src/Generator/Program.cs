@@ -130,6 +130,15 @@ namespace GLGenerator
             glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
             glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
 
+            var glTexImage1D = functions.Single(x => x.Name == "glTexImage1D");
+            glTexImage1D.Params.Single(x => x.Name == "pixels").UseForVoidPointerOverload = true;
+
+            var glTexImage2D = functions.Single(x => x.Name == "glTexImage2D");
+            glTexImage2D.Params.Single(x => x.Name == "pixels").UseForVoidPointerOverload = true;
+
+            var glTexImage3D = functions.Single(x => x.Name == "glTexImage3D");
+            glTexImage3D.Params.Single(x => x.Name == "pixels").UseForVoidPointerOverload = true;
+
             foreach (var function in functions.Where(x =>
                 x.Name.StartsWith("glGet") &&
                 x.Name.EndsWith("v") &&

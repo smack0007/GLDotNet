@@ -7785,9 +7785,39 @@ namespace GLDotNet
 			_glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 		}
 
+		public static void glTexImage1D<T>(uint target, int level, int internalformat, int width, int border, uint format, uint type, T[] pixels)
+			where T: struct
+		{
+			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+
+			try
+			{
+				_glTexImage1D(target, level, internalformat, width, border, format, type, pixelsPtr.AddrOfPinnedObject());
+			}
+			finally
+			{
+				pixelsPtr.Free();
+			}
+		}
+
 		public static void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
 		{
 			_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+		}
+
+		public static void glTexImage2D<T>(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, T[] pixels)
+			where T: struct
+		{
+			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+
+			try
+			{
+				_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixelsPtr.AddrOfPinnedObject());
+			}
+			finally
+			{
+				pixelsPtr.Free();
+			}
 		}
 
 		public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
@@ -7798,6 +7828,21 @@ namespace GLDotNet
 		public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
 		{
 			_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+		}
+
+		public static void glTexImage3D<T>(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, T[] pixels)
+			where T: struct
+		{
+			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+
+			try
+			{
+				_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixelsPtr.AddrOfPinnedObject());
+			}
+			finally
+			{
+				pixelsPtr.Free();
+			}
 		}
 
 		public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
