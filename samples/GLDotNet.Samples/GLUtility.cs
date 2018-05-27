@@ -71,11 +71,6 @@ namespace GLDotNet.Samples
             return "UNKNOWN";
         }
 
-        public static string GetString(uint name)
-        {
-            return Marshal.PtrToStringAnsi(glGetString(name));
-        }
-
         public static string GetProgramInfoLog(uint program)
         {
             glGetProgramiv(program, GL_INFO_LOG_LENGTH, out var infoLogLegth);
