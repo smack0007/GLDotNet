@@ -1,11 +1,12 @@
 <Project>
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
-  
-    <ItemGroup>
-        <ProjectReference Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' "
-                          Include="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.csproj" />
-        
-        <ProjectReference Include="$(RepositoryRootDirectory)src\GLDotNet\GLDotNet.csproj" />
+
+    <Import Project="$(RepositoryRootDirectory)src\GLDotNet\GLDotNet.targets" />
+    
+    <Import Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' "
+            Project="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.targets" />
+    
+    <ItemGroup>        
         <ProjectReference Include="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj" />
         <ProjectReference Include="$(RepositoryRootDirectory)ext\ImageDotNet\src\ImageDotNet\ImageDotNet.csproj" />
     </ItemGroup>
