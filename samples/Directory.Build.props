@@ -6,18 +6,9 @@
     <Import Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' "
             Project="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.targets" />
     
+    <Import Project="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.targets" />
+    
     <ItemGroup>        
-        <ProjectReference Include="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.csproj" />
         <ProjectReference Include="$(RepositoryRootDirectory)ext\ImageDotNet\src\ImageDotNet\ImageDotNet.csproj" />
     </ItemGroup>
-
-    <Target Name="CopyGLFWDlls" AfterTargets="AfterBuild">
-        <Copy SourceFiles="$(RepositoryRootDirectory)ext\GLFWDotNet\ext\GLFW\x64\glfw3.dll"
-              DestinationFolder="$(OutputPath)x64\"
-              SkipUnchangedFiles="true" />
-
-        <Copy SourceFiles="$(RepositoryRootDirectory)ext\GLFWDotNet\ext\GLFW\x86\glfw3.dll"
-              DestinationFolder="$(OutputPath)x86\"
-              SkipUnchangedFiles="true" />
-    </Target>
 </Project>
