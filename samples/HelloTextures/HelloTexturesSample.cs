@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using GLDotNet.Samples;
 using ImageDotNet;
 using static GLDotNet.GL;
