@@ -5,7 +5,7 @@
     
     <Import Project="$(RepositoryRootDirectory)ext\GLFWDotNet\src\GLFWDotNet\GLFWDotNet.targets" />
     
-    <Import Project="$(RepositoryRootDirectory)ext\ImageDotNet\src\ImageDotNet\ImageDotNet.targets" />
+    <Import Project="$(RepositoryRootDirectory)ext\ImageDotNet\src\ImageDotNet\ImageDotNet.imports" />
             
     <Import Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' "
             Project="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.targets" />
