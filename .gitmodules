@@ -2,6 +2,3 @@
 	path = ext/ImageDotNet
 	url = https://github.com/smack0007/ImageDotNet.git
 	branch = master
-[submodule "ext/GLFWDotNet"]
-	path = ext/GLFWDotNet
-	url = https://github.com/smack0007/GLFWDotNet.git
