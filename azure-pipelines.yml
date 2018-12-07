@@ -4,9 +4,6 @@ resources:
 queue:
   name: Hosted VS2017
 
-variables:
-  PatchNumber: '0'
-
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
@@ -19,7 +16,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: src/GLDotNet/GLDotNet.csproj
-    buildProperties: 'Configuration=Release;PatchNumber=$(PatchNumber);BuildNumber=$(Build.BuildNumber)'
+    buildProperties: 'Configuration=Release;BuildNumber=$(Build.BuildNumber)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
