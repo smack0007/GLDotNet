@@ -26,10 +26,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sprites", "samples\Sprites\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GLDotNet", "GLDotNet", "{65D6A4CA-D864-433D-9109-5325B9B46CB2}"
 	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWGL", "samples\HelloWGL\HelloWGL.csproj", "{C492FE6A-18C0-422B-9365-F0B94836A7E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWGL", "samples\HelloWGL\HelloWGL.csproj", "{C492FE6A-18C0-422B-9365-F0B94836A7E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
