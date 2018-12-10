@@ -81,7 +81,7 @@ void main()
             glBindTexture(GL_TEXTURE_2D, this.texture);
                         
             // Image is an RGBImage.
-            var image = Image.LoadTga("Box.tga");
+            var image = Image.LoadTga("Box.tga").To<Rgb24>();
             using (var data = image.GetDataPointer())
             {
                 glTexImage2D(GL_TEXTURE_2D, 0, (int)GL_RGB, image.Width, image.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.Pointer);

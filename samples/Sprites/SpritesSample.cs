@@ -30,7 +30,7 @@ namespace Sprites
             glBindTexture(GL_TEXTURE_2D, this.texture);
 
             // Image is an RGBImage.
-            var image = Image.LoadTga("Box.tga");
+            var image = Image.LoadTga("Box.tga").To<Rgb24>();
 
             this.textureWidth = image.Width;
             this.textureHeight = image.Height;
