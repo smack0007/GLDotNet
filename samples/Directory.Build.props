@@ -2,7 +2,7 @@
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
     <ItemGroup>
-        <PackageReference Include="GLFWDotNet" Version="18.7.0" />
+        <PackageReference Include="GLFWDotNet" Version="18.12.0" />
         
         <PackageReference Include="ImageDotNet" Version="18.7.0" />
         
