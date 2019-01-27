@@ -19,8 +19,8 @@ namespace GLGenerator
 
             public BaseData(BaseData other)
             {
-                this.VersionMajor = other.VersionMajor;
-                this.VersionMinor = other.VersionMinor;
+                VersionMajor = other.VersionMajor;
+                VersionMinor = other.VersionMinor;
             }
         }
 
@@ -30,7 +30,7 @@ namespace GLGenerator
 
             public string Value { get; set; }
 
-            public override string ToString() => $"{this.Name}: {this.Value}";
+            public override string ToString() => $"{Name}: {Value}";
         }
 
         class FunctionData : BaseData
@@ -46,17 +46,17 @@ namespace GLGenerator
             public FunctionData(FunctionData functionData)
                 : base(functionData)
             {
-                this.ReturnType = functionData.ReturnType;
-                this.Name = functionData.Name;
+                ReturnType = functionData.ReturnType;
+                Name = functionData.Name;
 
-                this.Params = new List<FunctionParamData>();
+                Params = new List<FunctionParamData>();
                 foreach (var param in functionData.Params)
                 {
-                    this.Params.Add(new FunctionParamData(param));
+                    Params.Add(new FunctionParamData(param));
                 }
             }
 
-            public override string ToString() => $"{this.ReturnType} {this.Name}({string.Join(", ", this.Params)})";
+            public override string ToString() => $"{ReturnType} {Name}({string.Join(", ", Params)})";
         }
 
         class FunctionParamData
@@ -81,21 +81,21 @@ namespace GLGenerator
 
             public FunctionParamData(FunctionParamData functionParamData)
             {
-                this.IsConst = functionParamData.IsConst;
-                this.PointerCount = functionParamData.PointerCount;
-                this.TypeOverridden = functionParamData.TypeOverridden;
-                this.TypePrefix = functionParamData.TypePrefix;
-                this.Type = functionParamData.Type;
-                this.Name = functionParamData.Name;
+                IsConst = functionParamData.IsConst;
+                PointerCount = functionParamData.PointerCount;
+                TypeOverridden = functionParamData.TypeOverridden;
+                TypePrefix = functionParamData.TypePrefix;
+                Type = functionParamData.Type;
+                Name = functionParamData.Name;
             }
 
-            public override string ToString() => $"{this.Type}: {this.Name}";
+            public override string ToString() => $"{Type}: {Name}";
 
             public void OverrideType(string type, string typePrefix = null)
             {
-                this.TypePrefix = typePrefix;
-                this.Type = type;
-                this.TypeOverridden = true;
+                TypePrefix = typePrefix;
+                Type = type;
+                TypeOverridden = true;
             }
         }
 
