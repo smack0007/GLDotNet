@@ -271,7 +271,7 @@ namespace GLGenerator
             sb.AppendLine();
             sb.AppendLine("namespace GLDotNet");
             sb.AppendLine("{");
-            sb.AppendLine("\tpublic static class GL");
+            sb.AppendLine("\tpublic static partial class GL");
             sb.AppendLine("\t{");
 
             foreach (var @enum in enums.OrderBy(x => x.Name))

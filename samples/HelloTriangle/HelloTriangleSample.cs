@@ -35,26 +35,37 @@ void main()
 	outColor = vec4(fragColor, 1.0);
 }";
 
-        private uint vertexArray;
-        private uint shaderProgram;
+        private readonly uint _vertexArray;
+        private readonly uint _shaderProgram;
+
+        private int _drawOffset = 0;
 
         public HelloTriangleSample()
         {
-            this.Title = "Hello Triangle";
+            Title = "Hello Triangle";
 
-            float[] points = new float[] { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
-            float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
+            float[] points = new float[]
+            {
+                0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f,
+                0.0f, -0.5f, 0.0f, -0.5f, 0.5f, 0.0f, 0.5f, 0.5f, 0.0f
+            };
+
+            float[] colors = new float[]
+            {
+                1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f
+            };
 
             var pointsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.Length, points, GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)points.AsSpan(), GL_STATIC_DRAW);
 
             var colorsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * colors.Length, colors, GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)colors.AsSpan(), GL_STATIC_DRAW);
 
-            this.vertexArray = glGenVertexArray();
-            glBindVertexArray(this.vertexArray);
+            _vertexArray = glGenVertexArray();
+            glBindVertexArray(_vertexArray);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, IntPtr.Zero);
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
@@ -64,7 +75,7 @@ void main()
 
             uint vs = GLUtility.CreateAndCompileShader(GL_VERTEX_SHADER, VertexShader);
             uint fs = GLUtility.CreateAndCompileShader(GL_FRAGMENT_SHADER, FragmentShader);
-            this.shaderProgram = GLUtility.CreateAndLinkProgram(vs, fs);
+            _shaderProgram = GLUtility.CreateAndLinkProgram(vs, fs);
 
             glEnable(GL_DEPTH_TEST);
             glDepthFunc(GL_LESS);
@@ -74,16 +85,25 @@ void main()
             glFrontFace(GL_CW);
         }
 
+        protected override void OnKeyPress(Keys key, KeyMods mods)
+        {
+            _drawOffset += 3;
+            if (_drawOffset >= 6)
+            {
+                _drawOffset = 0;
+            }
+        }
+
         protected override void Draw()
         {
             glClearColor(0, 0, 0, 0);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            glViewport(0, 0, this.Width, this.Height);
+            glViewport(0, 0, Width, Height);
 
-            glUseProgram(this.shaderProgram);
-            glBindVertexArray(this.vertexArray);
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+            glUseProgram(_shaderProgram);
+            glBindVertexArray(_vertexArray);
+            glDrawArrays(GL_TRIANGLES, _drawOffset, 3);
         }
 
         public static void Main(string[] args)

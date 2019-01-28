@@ -11,63 +11,64 @@ namespace GLDotNet.Samples
     {
         private const float TimeBetweenFrames = 1000.0f / 60.0f;
 
-        private IntPtr window;
+        private IntPtr _window;
 
-        private Stopwatch stopwatch;
-        private float lastElapsed;
-        private float elapsedSinceLastFrame;
+        private Stopwatch _stopwatch;
+        private float _lastElapsed;
+        private float _elapsedSinceLastFrame;
 
-        private float fpsElapsed;
+        private float _fpsElapsed;
 
-        private GLFWwindowsizefun windowResizeCallback;
+        private GLFWwindowsizefun _windowResizeCallback;
+        private GLFWkeyfun _keyboardCallback;
 
         public abstract int VersionMajor { get; }
         public abstract int VersionMinor { get; }
 
-        private string title = "GLDotNet Sample";
+        private string _title = "GLDotNet Sample";
 
         public string Title
         {
-            get { return this.title; }
+            get { return _title; }
 
             set
             {
-                if (value != this.title)
+                if (value != _title)
                 {
-                    this.title = value;
-                    glfwSetWindowTitle(this.window, value);
+                    _title = value;
+                    glfwSetWindowTitle(_window, value);
                 }
             }
         }
 
-        private int width = 1024;
+        private int _width = 1024;
 
         public int Width
         {
-            get { return this.width; }
+            get { return _width; }
 
             set
             {
-                if (value != this.width)
+                if (value != _width)
                 {
-                    this.width = value;
-                    glfwSetWindowSize(this.window, this.width, this.height);
+                    _width = value;
+                    glfwSetWindowSize(_window, _width, _height);
                 }
             }
         }
 
-        private int height = 768;
+        private int _height = 768;
 
         public int Height
         {
-            get { return this.height; }
+            get { return _height; }
 
             set
             {
-                if (value != this.height)
+                if (value != _height)
                 {
-                    this.height = value;
-                    glfwSetWindowSize(this.window, this.width, this.height);
+                    _height = value;
+                    glfwSetWindowSize(_window, _width, _height);
                 }
             }
         }
@@ -81,22 +82,25 @@ namespace GLDotNet.Samples
 
             glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, this.VersionMajor);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, this.VersionMinor);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, VersionMajor);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, VersionMinor);
 
-            this.window = glfwCreateWindow(this.width, this.height, this.title, IntPtr.Zero, IntPtr.Zero);
-            if (window == IntPtr.Zero)
+            _window = glfwCreateWindow(_width, _height, _title, IntPtr.Zero, IntPtr.Zero);
+            if (_window == IntPtr.Zero)
             {
                 glfwTerminate();
                 throw new InvalidOperationException("Failed to create window.");
             }
 
-            this.windowResizeCallback = this.OnWindowResized;
-            glfwSetWindowSizeCallback(this.window, this.windowResizeCallback);
+            _windowResizeCallback = OnWindowResized;
+            glfwSetWindowSizeCallback(_window, _windowResizeCallback);
 
-            glfwMakeContextCurrent(this.window);
+            _keyboardCallback = OnKeyboard;
+            glfwSetKeyCallback(_window, _keyboardCallback);
 
-            glInit(glfwGetProcAddress, this.VersionMajor, this.VersionMinor);
+            glfwMakeContextCurrent(_window);
+
+            glInit(glfwGetProcAddress, VersionMajor, VersionMinor);
 
             var basePath = Path.GetDirectoryName(typeof(Sample).Assembly.Location);
             Directory.SetCurrentDirectory(basePath);
@@ -104,12 +108,12 @@ namespace GLDotNet.Samples
 
         ~Sample()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -120,50 +124,62 @@ namespace GLDotNet.Samples
 
         private void OnWindowResized(IntPtr window, int width, int height)
         {
-            this.width = width;
-            this.height = height;
+            _width = width;
+            _height = height;
+        }
+
+        private void OnKeyboard(IntPtr window, int key, int scancode, int action, int mods)
+        {
+            if (action == GLFW_PRESS)
+            {
+                OnKeyPress((Keys)key, (KeyMods)mods);
+            }
+        }
+
+        protected virtual void OnKeyPress(Keys key, KeyMods mods)
+        {
         }
 
         public void Run()
         {
-            this.stopwatch = Stopwatch.StartNew();
+            _stopwatch = Stopwatch.StartNew();
 
-            while (glfwWindowShouldClose(this.window) == 0)
+            while (glfwWindowShouldClose(_window) == 0)
             {
                 glfwPollEvents();
 
-                this.Tick();
+                Tick();
             }
         }
 
         private void Tick()
         {
-            float currentElapsed = (float)stopwatch.Elapsed.TotalMilliseconds;
-            float deltaElapsed = currentElapsed - this.lastElapsed;
-            this.elapsedSinceLastFrame += deltaElapsed;
-            this.lastElapsed = currentElapsed;
+            float currentElapsed = (float)_stopwatch.Elapsed.TotalMilliseconds;
+            float deltaElapsed = currentElapsed - _lastElapsed;
+            _elapsedSinceLastFrame += deltaElapsed;
+            _lastElapsed = currentElapsed;
 
-            bool shouldDraw = this.elapsedSinceLastFrame >= TimeBetweenFrames;
+            bool shouldDraw = _elapsedSinceLastFrame >= TimeBetweenFrames;
 
-            while (this.elapsedSinceLastFrame >= TimeBetweenFrames)
+            while (_elapsedSinceLastFrame >= TimeBetweenFrames)
             {
-                this.Update(this.elapsedSinceLastFrame);
-                this.elapsedSinceLastFrame -= TimeBetweenFrames;
+                Update(_elapsedSinceLastFrame);
+                _elapsedSinceLastFrame -= TimeBetweenFrames;
             }
 
             if (shouldDraw)
             {
-                this.Draw();
-                glfwSwapBuffers(this.window);
-                this.FramesPerSecond++;
+                Draw();
+                glfwSwapBuffers(_window);
+                FramesPerSecond++;
             }
             
-            this.fpsElapsed += deltaElapsed;
+            _fpsElapsed += deltaElapsed;
 
-            if (this.fpsElapsed >= 1000.0f)
+            if (_fpsElapsed >= 1000.0f)
             {
-                this.fpsElapsed -= 1000.0f;
-                this.FramesPerSecond = 0;
+                _fpsElapsed -= 1000.0f;
+                FramesPerSecond = 0;
             }
         }
 

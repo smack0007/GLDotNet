@@ -24,7 +24,7 @@ using System.Text;
 
 namespace GLDotNet
 {
-	public static class GL
+	public static partial class GL
 	{
 		public const uint GL_ACTIVE_ATOMIC_COUNTER_BUFFERS = 0x92D9;
 		public const uint GL_ACTIVE_ATTRIBUTE_MAX_LENGTH = 0x8B8A;
