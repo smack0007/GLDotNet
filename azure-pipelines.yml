@@ -9,7 +9,7 @@ steps:
   displayName: 'dotnet build'
   inputs:
     projects: GLDotNet.sln
-    arguments: '/v:d'
+    arguments: '/v:d /p:Configuration=Release'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
