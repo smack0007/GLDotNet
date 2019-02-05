@@ -10,7 +10,7 @@ namespace GLDotNet
         {
             fixed (void* dataPtr = &MemoryMarshal.GetReference(data))
             {
-                _glBufferData(target, Marshal.SizeOf<T>() * data.Length, (IntPtr)dataPtr, usage);
+                _glBufferData(target, Marshal.SizeOf<T>() * data.Length, dataPtr, usage);
             }
         }
 
@@ -19,7 +19,7 @@ namespace GLDotNet
         {
             fixed (void* dataPtr = &MemoryMarshal.GetReference(data))
             {
-                _glBufferSubData(target, offset, Marshal.SizeOf<T>() * data.Length, (IntPtr)dataPtr);
+                _glBufferSubData(target, offset, Marshal.SizeOf<T>() * data.Length, dataPtr);
             }
         }
     }

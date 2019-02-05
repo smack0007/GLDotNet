@@ -229,6 +229,7 @@ namespace GLGenerator
                             while (parts[j + 1].StartsWith("*"))
                             {
                                 pointerCount++;
+                                parts[j] += "*";
                                 parts[j + 1] = parts[j + 1].Substring("*".Length);
                             }
 
@@ -300,24 +301,24 @@ namespace GLGenerator
             sb.AppendLine("\t\tpublic delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);");
             sb.AppendLine();
 
-            sb.AppendLine($"\t\tprivate static class Delegates");
+            sb.AppendLine($"\t\tprivate static unsafe class Delegates");
             sb.AppendLine("\t\t{");
 
             var orderedFunctions = functions.OrderBy(x => x.Name);
 
             foreach (var function in orderedFunctions)
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamTypeForDelegate(x) + " " + GetParamName(x.Name)));
 
                 sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}({parameters});");
                 sb.AppendLine();
 
-                if (function.Params.Any(x => x.UseForByRefOverload))
-                {
-                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
-                    sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}ByRef({parameters});");
-                    sb.AppendLine();
-                }
+                //if (function.Params.Any(x => x.UseForByRefOverload))
+                //{
+                //    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
+                //    sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}ByRef({parameters});");
+                //    sb.AppendLine();
+                //}
             }
 
             sb.AppendLine("\t\t}");
@@ -330,19 +331,19 @@ namespace GLGenerator
                 sb.AppendLine($"\t\tprivate static Delegates.{function.Name} _{function.Name};");
                 sb.AppendLine();
 
-                if (function.Params.Any(x => x.UseForByRefOverload))
-                {
-                    sb.AppendLine($"\t\tprivate static Delegates.{function.Name}ByRef _{function.Name}ByRef;");
-                    sb.AppendLine();
-                }
+                //if (function.Params.Any(x => x.UseForByRefOverload))
+                //{
+                //    sb.AppendLine($"\t\tprivate static Delegates.{function.Name}ByRef _{function.Name}ByRef;");
+                //    sb.AppendLine();
+                //}
             }
 
             void AppendLoadDelegate(string indent, FunctionData function)
             {
                 sb.AppendLine($"{indent}_{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}));");
 
-                if (function.Params.Any(x => x.UseForByRefOverload))
-                    sb.AppendLine($"{indent}_{function.Name}ByRef = (Delegates.{function.Name}ByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}ByRef));");
+                //if (function.Params.Any(x => x.UseForByRefOverload))
+                //    sb.AppendLine($"{indent}_{function.Name}ByRef = (Delegates.{function.Name}ByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}ByRef));");
             }
 
             sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
@@ -382,10 +383,23 @@ namespace GLGenerator
             {
                 string returnType = GetReturnType(function.ReturnType);
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.TypePrefix)));
-                
-                sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
+                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x)));
+
+                bool isUnsafe = function.Params.Any(x => x.PointerCount > 0);
+
+                sb.AppendLine($"\t\tpublic static {(isUnsafe ? "unsafe " : "")}{returnType} {function.Name}({parameters})");
                 sb.AppendLine("\t\t{");
+
+                bool hasPointers = function.Params.Any(x => ShouldUsePointerForInvoke(x));
+
+                if (hasPointers)
+                {
+                    foreach (var param in function.Params.Where(x => x.PointerCount > 0))
+                        sb.AppendLine($"\t\t\tfixed ({GetParamTypeForDelegate(param)} {GetParamName(param.Name)}Ptr = {GetParamName(param.Name)})");
+
+                    sb.AppendLine("\t\t\t{");
+                    sb.Append("\t");
+                }
 
                 if (returnType != "void")
                 {
@@ -394,6 +408,11 @@ namespace GLGenerator
                 else
                 {
                     sb.AppendLine($"\t\t\t_{function.Name}({parameterNames});");
+                }
+
+                if (hasPointers)
+                {
+                    sb.AppendLine("\t\t\t}");
                 }
 
                 sb.AppendLine("\t\t}");
@@ -423,72 +442,72 @@ namespace GLGenerator
                     sb.AppendLine();
                 }
 
-                if (function.Params.Any(x => x.UseForVoidPointerOverload))
-                {
-                    parameters = string.Join(", ", function.Params.Select(x => (x.UseForVoidPointerOverload ? "T[]" : GetParamType(x)) + " " + GetParamName(x.Name)));
-                    parameterNames = string.Join(", ", function.Params.Select(x => x.UseForVoidPointerOverload ? ( x.Name + "Ptr.AddrOfPinnedObject()" ) : GetParamInvoke(x.Name, x.TypePrefix)));
+                //if (function.Params.Any(x => x.UseForVoidPointerOverload))
+                //{
+                //    parameters = string.Join(", ", function.Params.Select(x => (x.UseForVoidPointerOverload ? "T[]" : GetParamType(x)) + " " + GetParamName(x.Name)));
+                //    parameterNames = string.Join(", ", function.Params.Select(x => x.UseForVoidPointerOverload ? (x.Name + "Ptr.AddrOfPinnedObject()") : GetParamInvoke(x.Name, x.TypePrefix)));
 
-                    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}<T>({parameters})");
-                    sb.AppendLine("\t\t\twhere T: struct");
-                    sb.AppendLine("\t\t{");
+                //    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}<T>({parameters})");
+                //    sb.AppendLine("\t\t\twhere T: struct");
+                //    sb.AppendLine("\t\t{");
 
-                    var pointers = function.Params.Where(x => x.UseForVoidPointerOverload);
-                    foreach (var pointer in pointers)
-                    {
-                        sb.AppendLine($"\t\t\tvar {pointer.Name}Ptr = GCHandle.Alloc({pointer.Name}, GCHandleType.Pinned);");
-                    }
-                    sb.AppendLine();
+                //    var pointers = function.Params.Where(x => x.UseForVoidPointerOverload);
+                //    foreach (var pointer in pointers)
+                //    {
+                //        sb.AppendLine($"\t\t\tvar {pointer.Name}Ptr = GCHandle.Alloc({pointer.Name}, GCHandleType.Pinned);");
+                //    }
+                //    sb.AppendLine();
 
-                    sb.AppendLine("\t\t\ttry");
-                    sb.AppendLine("\t\t\t{");
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\t\treturn _{function.Name}({parameterNames});");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"\t\t\t\t_{function.Name}({parameterNames});");
-                    }
-                    sb.AppendLine("\t\t\t}");
-                    sb.AppendLine("\t\t\tfinally");
-                    sb.AppendLine("\t\t\t{");
-                    foreach (var pointer in pointers)
-                    {
-                        sb.AppendLine($"\t\t\t\t{pointer.Name}Ptr.Free();");
-                    }
-                    sb.AppendLine("\t\t\t}");
+                //    sb.AppendLine("\t\t\ttry");
+                //    sb.AppendLine("\t\t\t{");
+                //    if (returnType != "void")
+                //    {
+                //        sb.AppendLine($"\t\t\t\treturn _{function.Name}({parameterNames});");
+                //    }
+                //    else
+                //    {
+                //        sb.AppendLine($"\t\t\t\t_{function.Name}({parameterNames});");
+                //    }
+                //    sb.AppendLine("\t\t\t}");
+                //    sb.AppendLine("\t\t\tfinally");
+                //    sb.AppendLine("\t\t\t{");
+                //    foreach (var pointer in pointers)
+                //    {
+                //        sb.AppendLine($"\t\t\t\t{pointer.Name}Ptr.Free();");
+                //    }
+                //    sb.AppendLine("\t\t\t}");
 
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
 
-                if (function.Params.Any(x => x.UseForByRefOverload))
-                {
-                    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
-                    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.UseForByRefOverload ? "ref " : "")));
+                //if (function.Params.Any(x => x.UseForByRefOverload))
+                //{
+                //    parameters = string.Join(", ", function.Params.Select(x => GetParamType(x, refOverload: true) + " " + GetParamName(x.Name)));
+                //    parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x.Name, x.UseForByRefOverload ? "ref " : "")));
 
-                    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
-                    sb.AppendLine("\t\t{");
+                //    sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
+                //    sb.AppendLine("\t\t{");
 
-                    if (returnType != "void")
-                    {
-                        sb.AppendLine($"\t\t\treturn _{function.Name}ByRef({parameterNames});");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"\t\t\t_{function.Name}ByRef({parameterNames});");
-                    }
+                //    if (returnType != "void")
+                //    {
+                //        sb.AppendLine($"\t\t\treturn _{function.Name}ByRef({parameterNames});");
+                //    }
+                //    else
+                //    {
+                //        sb.AppendLine($"\t\t\t_{function.Name}ByRef({parameterNames});");
+                //    }
 
-                    sb.AppendLine("\t\t}");
-                    sb.AppendLine();
-                }
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
             }
 
             sb.AppendLine("\t}");
             sb.AppendLine("}");
 
             string fullPath = Path.GetFullPath(@"..\..\..\..\src\GLDotNet\GL.cs");
-            File.WriteAllText(fullPath, sb.ToString());
+            //File.WriteAllText(fullPath, sb.ToString());
         }
 
         private static string GetReturnType(string returnType)
@@ -520,7 +539,7 @@ namespace GLGenerator
             return returnType;
         }
 
-        private static string GetParamType(FunctionParamData param, bool refOverload = false)
+        private static string GetParamTypeForDelegate(FunctionParamData param, bool refOverload = false)
         {
             string type = param.Type;
 
@@ -532,26 +551,31 @@ namespace GLGenerator
                         type = "bool";
                         break;
 
+                    case "GLboolean*":
+                        type = "bool*";
+                        break;
+
                     case "GLubyte":
                         type = "byte";
                         break;
 
-                    case "GLchar":
-                        if (param.PointerCount == 1)
+                    case "GLubyte*":
+                        type = "byte*";
+                        break;
+
+                    case "GLchar*":
+                        if (param.IsConst)
                         {
-                            if (param.IsConst)
-                            {
-                                type = "string";
-                            }
-                            else
-                            {
-                                type = "StringBuilder";
-                            }
+                            type = "string";
                         }
-                        else if (param.PointerCount == 2)
+                        else
                         {
-                            type = "string[]";
+                            type = "StringBuilder";
                         }
+                        break;
+
+                    case "GLchar**":
+                        type = "string[]";
                         break;
 
                     case "GLDEBUGPROC":
@@ -562,8 +586,16 @@ namespace GLGenerator
                         type = "double";
                         break;
 
+                    case "GLdouble*":
+                        type = "double*";
+                        break;
+
                     case "GLfloat":
                         type = "float";
+                        break;
+
+                    case "GLfloat*":
+                        type = "float*";
                         break;
 
                     case "GLint":
@@ -571,6 +603,13 @@ namespace GLGenerator
                     case "GLintptr":
                     case "GLsizeiptr":
                         type = "int";
+                        break;
+
+                    case "GLint*":
+                    case "GLsizei*":
+                    case "GLintptr*":
+                    case "GLsizeiptr*":
+                        type = "int*";
                         break;
 
                     case "GLsync":
@@ -592,11 +631,186 @@ namespace GLGenerator
                         type = "long";
                         break;
 
+                    case "GLint64*":
+                        type = "long*";
+                        break;
+
                     case "GLbyte":
                         type = "sbyte";
                         break;
 
+                    case "GLbyte*":
+                        type = "sbyte*";
+                        break;
+
                     case "GLshort":
+                        type = "short";
+                        break;
+
+                    case "GLshort*":
+                        type = "short*";
+                        break;
+
+                    case "GLbitfield":
+                    case "GLenum":
+                    case "GLuint":
+                        type = "uint";
+                        break;
+
+                    case "GLuint*":
+                    case "GLenum*":
+                        type = "uint*";
+                        break;
+
+                    case "GLuint64":
+                        type = "ulong";
+                        break;
+
+                    case "GLuint64*":
+                        type = "ulong*";
+                        break;
+
+                    case "GLushort":
+                        type = "ushort";
+                        break;
+
+                    case "GLushort*":
+                        type = "ushort*";
+                        break;
+                }
+
+                //if (!type.StartsWith("string") && !type.StartsWith("StringBuilder") && !type.StartsWith("IntPtr"))
+                //{
+                //    if (param.PointerCount > 0)
+                //    {
+                //        type += "[]";
+                //    }
+                //}
+            }
+
+            //if (param.TypePrefix != null)
+            //    type = param.TypePrefix + " " + type;
+
+            //if (refOverload && param.UseForByRefOverload)
+            //{
+            //    if (type.EndsWith("[]"))
+            //        type = type.Substring(0, type.Length - 2);
+
+            //    type = "ref " + type;
+            //}
+
+            return type;
+        }
+
+        private static string GetParamType(FunctionParamData param, bool refOverload = false)
+        {
+            string type = param.Type;
+
+            if (!param.TypeOverridden)
+            {
+                switch (param.Type)
+                {
+                    case "GLboolean":
+                        type = "bool";
+                        break;
+
+                    case "GLboolean*":
+                        type = "bool";
+                        break;
+
+                    case "GLubyte":
+                        type = "byte";
+                        break;
+
+                    case "GLubyte*":
+                        type = "byte";
+                        break;
+
+                    case "GLchar*":
+                        if (param.IsConst)
+                        {
+                            type = "string";
+                        }
+                        else
+                        {
+                            type = "StringBuilder";
+                        }
+                        break;
+
+                    case "GLchar**":
+                        type = "string[]";
+                        break;
+
+                    case "GLDEBUGPROC":
+                        type = "DebugProc";
+                        break;
+
+                    case "GLdouble":
+                        type = "double";
+                        break;
+
+                    case "GLdouble*":
+                        type = "double";
+                        break;
+
+                    case "GLfloat":
+                        type = "float";
+                        break;
+
+                    case "GLfloat*":
+                        type = "float";
+                        break;
+
+                    case "GLint":
+                    case "GLsizei":
+                    case "GLintptr":
+                    case "GLsizeiptr":
+                        type = "int";
+                        break;
+
+                    case "GLint*":
+                    case "GLsizei*":
+                    case "GLintptr*":
+                    case "GLsizeiptr*":
+                        type = "int";
+                        break;
+
+                    case "GLsync":
+                        type = "IntPtr";
+                        break;
+
+                    case "void*":
+                        if (param.PointerCount == 2)
+                        {
+                            type = "IntPtr[]";
+                        }
+                        else
+                        {
+                            type = "IntPtr";
+                        }
+                        break;
+
+                    case "GLint64":
+                        type = "long";
+                        break;
+
+                    case "GLint64*":
+                        type = "long";
+                        break;
+
+                    case "GLbyte":
+                        type = "sbyte";
+                        break;
+
+                    case "GLbyte*":
+                        type = "sbyte";
+                        break;
+
+                    case "GLshort":
+                        type = "short";
+                        break;
+
+                    case "GLshort*":
                         type = "short";
                         break;
 
@@ -606,11 +820,24 @@ namespace GLGenerator
                         type = "uint";
                         break;
 
+                    case "GLuint*":
+                    case "GLenum*":
+                        type = "uint";
+                        break;
+
                     case "GLuint64":
                         type = "ulong";
                         break;
 
+                    case "GLuint64*":
+                        type = "ulong";
+                        break;
+
                     case "GLushort":
+                        type = "ushort";
+                        break;
+
+                    case "GLushort*":
                         type = "ushort";
                         break;
                 }
@@ -624,16 +851,16 @@ namespace GLGenerator
                 }
             }
 
-            if (param.TypePrefix != null)
-                type = param.TypePrefix + " " + type;
+            //if (param.TypePrefix != null)
+            //    type = param.TypePrefix + " " + type;
 
-            if (refOverload && param.UseForByRefOverload)
-            {
-                if (type.EndsWith("[]"))
-                    type = type.Substring(0, type.Length - 2);
+            //if (refOverload && param.UseForByRefOverload)
+            //{
+            //    if (type.EndsWith("[]"))
+            //        type = type.Substring(0, type.Length - 2);
 
-                type = "ref " + type;
-            }
+            //    type = "ref " + type;
+            //}
 
             return type;
         }
@@ -650,18 +877,45 @@ namespace GLGenerator
             return name;
         }
 
-        private static string GetParamInvoke(string name, string prefix, string cast = null)
+        private static bool ShouldUsePointerForInvoke(FunctionParamData param)
         {
-            name = GetParamName(name);
-
-            if (prefix != null)
+            if (param.PointerCount > 0)
             {
-                name = prefix + " " + name;
+                var paramType = GetParamType(param);
+
+                if (paramType != "string" &&
+                    paramType != "StringBuilder" &&
+                    paramType != "IntPtr")
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static string GetParamInvoke(FunctionParamData param, string cast = null)
+        {
+            string name = GetParamName(param.Name);
+
+            if (param.TypePrefix != null)
+            {
+                name = param.TypePrefix + " " + name;
             }
 
             if (cast != null)
             {
                 name = $"({cast}){name}";
+            }
+
+            if (ShouldUsePointerForInvoke(param))
+            {
+                name += "Ptr";
+            }
+
+            if (GetParamType(param) == "IntPtr")
+            {
+                name += ".ToPointer()";
             }
 
             return name;

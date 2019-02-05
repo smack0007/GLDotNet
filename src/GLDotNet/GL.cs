@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018 Zachary Snow
+// Copyright (c) 2017-2019 Zachary Snow
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1372,7 +1372,7 @@ namespace GLDotNet
 
 		public delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);
 
-		private static class Delegates
+		private static unsafe class Delegates
 		{
 			public delegate void glActiveShaderProgram(uint pipeline, uint program);
 
@@ -1396,9 +1396,9 @@ namespace GLDotNet
 
 			public delegate void glBindBufferRange(uint target, uint index, uint buffer, int offset, int size);
 
-			public delegate void glBindBuffersBase(uint target, uint first, int count, uint[] buffers);
+			public delegate void glBindBuffersBase(uint target, uint first, int count, uint* buffers);
 
-			public delegate void glBindBuffersRange(uint target, uint first, int count, uint[] buffers, int[] offsets, int[] sizes);
+			public delegate void glBindBuffersRange(uint target, uint first, int count, uint* buffers, int* offsets, int* sizes);
 
 			public delegate void glBindFragDataLocation(uint program, uint color, string name);
 
@@ -1408,7 +1408,7 @@ namespace GLDotNet
 
 			public delegate void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format);
 
-			public delegate void glBindImageTextures(uint first, int count, uint[] textures);
+			public delegate void glBindImageTextures(uint first, int count, uint* textures);
 
 			public delegate void glBindProgramPipeline(uint pipeline);
 
@@ -1416,11 +1416,11 @@ namespace GLDotNet
 
 			public delegate void glBindSampler(uint unit, uint sampler);
 
-			public delegate void glBindSamplers(uint first, int count, uint[] samplers);
+			public delegate void glBindSamplers(uint first, int count, uint* samplers);
 
 			public delegate void glBindTexture(uint target, uint texture);
 
-			public delegate void glBindTextures(uint first, int count, uint[] textures);
+			public delegate void glBindTextures(uint first, int count, uint* textures);
 
 			public delegate void glBindTextureUnit(uint unit, uint texture);
 
@@ -1430,7 +1430,7 @@ namespace GLDotNet
 
 			public delegate void glBindVertexBuffer(uint bindingindex, uint buffer, int offset, int stride);
 
-			public delegate void glBindVertexBuffers(uint first, int count, uint[] buffers, int[] offsets, int[] strides);
+			public delegate void glBindVertexBuffers(uint first, int count, uint* buffers, int* offsets, int* strides);
 
 			public delegate void glBlendColor(float red, float green, float blue, float alpha);
 
@@ -1454,11 +1454,11 @@ namespace GLDotNet
 
 			public delegate void glBlitNamedFramebuffer(uint readFramebuffer, uint drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter);
 
-			public delegate void glBufferData(uint target, int size, IntPtr data, uint usage);
+			public delegate void glBufferData(uint target, int size, void* data, uint usage);
 
-			public delegate void glBufferStorage(uint target, int size, IntPtr data, uint flags);
+			public delegate void glBufferStorage(uint target, int size, void* data, uint flags);
 
-			public delegate void glBufferSubData(uint target, int offset, int size, IntPtr data);
+			public delegate void glBufferSubData(uint target, int offset, int size, void* data);
 
 			public delegate uint glCheckFramebufferStatus(uint target);
 
@@ -1468,17 +1468,17 @@ namespace GLDotNet
 
 			public delegate void glClear(uint mask);
 
-			public delegate void glClearBufferData(uint target, uint internalformat, uint format, uint type, IntPtr data);
+			public delegate void glClearBufferData(uint target, uint internalformat, uint format, uint type, void* data);
 
 			public delegate void glClearBufferfi(uint buffer, int drawbuffer, float depth, int stencil);
 
-			public delegate void glClearBufferfv(uint buffer, int drawbuffer, float[] value);
+			public delegate void glClearBufferfv(uint buffer, int drawbuffer, float* value);
 
-			public delegate void glClearBufferiv(uint buffer, int drawbuffer, int[] value);
+			public delegate void glClearBufferiv(uint buffer, int drawbuffer, int* value);
 
-			public delegate void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, IntPtr data);
+			public delegate void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, void* data);
 
-			public delegate void glClearBufferuiv(uint buffer, int drawbuffer, uint[] value);
+			public delegate void glClearBufferuiv(uint buffer, int drawbuffer, uint* value);
 
 			public delegate void glClearColor(float red, float green, float blue, float alpha);
 
@@ -1486,23 +1486,23 @@ namespace GLDotNet
 
 			public delegate void glClearDepthf(float d);
 
-			public delegate void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, IntPtr data);
+			public delegate void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, void* data);
 
-			public delegate void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, IntPtr data);
+			public delegate void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, void* data);
 
 			public delegate void glClearNamedFramebufferfi(uint framebuffer, uint buffer, int drawbuffer, float depth, int stencil);
 
-			public delegate void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float[] value);
+			public delegate void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float* value);
 
-			public delegate void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int[] value);
+			public delegate void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int* value);
 
-			public delegate void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint[] value);
+			public delegate void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint* value);
 
 			public delegate void glClearStencil(int s);
 
-			public delegate void glClearTexImage(uint texture, int level, uint format, uint type, IntPtr data);
+			public delegate void glClearTexImage(uint texture, int level, uint format, uint type, void* data);
 
-			public delegate void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr data);
+			public delegate void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* data);
 
 			public delegate uint glClientWaitSync(IntPtr sync, uint flags, ulong timeout);
 
@@ -1514,23 +1514,23 @@ namespace GLDotNet
 
 			public delegate void glCompileShader(uint shader);
 
-			public delegate void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data);
+			public delegate void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, void* data);
 
-			public delegate void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data);
+			public delegate void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, void* data);
 
-			public delegate void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data);
+			public delegate void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, void* data);
 
-			public delegate void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, void* data);
 
-			public delegate void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data);
 
-			public delegate void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data);
 
-			public delegate void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, void* data);
 
-			public delegate void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data);
 
-			public delegate void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data);
+			public delegate void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data);
 
 			public delegate void glCopyBufferSubData(uint readTarget, uint writeTarget, int readOffset, int writeOffset, int size);
 
@@ -1554,61 +1554,61 @@ namespace GLDotNet
 
 			public delegate void glCopyTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
 
-			public delegate void glCreateBuffers(int n, uint[] buffers);
+			public delegate void glCreateBuffers(int n, uint* buffers);
 
-			public delegate void glCreateFramebuffers(int n, uint[] framebuffers);
+			public delegate void glCreateFramebuffers(int n, uint* framebuffers);
 
 			public delegate uint glCreateProgram();
 
-			public delegate void glCreateProgramPipelines(int n, uint[] pipelines);
+			public delegate void glCreateProgramPipelines(int n, uint* pipelines);
 
-			public delegate void glCreateQueries(uint target, int n, uint[] ids);
+			public delegate void glCreateQueries(uint target, int n, uint* ids);
 
-			public delegate void glCreateRenderbuffers(int n, uint[] renderbuffers);
+			public delegate void glCreateRenderbuffers(int n, uint* renderbuffers);
 
-			public delegate void glCreateSamplers(int n, uint[] samplers);
+			public delegate void glCreateSamplers(int n, uint* samplers);
 
 			public delegate uint glCreateShader(uint type);
 
 			public delegate uint glCreateShaderProgramv(uint type, int count, string[] strings);
 
-			public delegate void glCreateTextures(uint target, int n, uint[] textures);
+			public delegate void glCreateTextures(uint target, int n, uint* textures);
 
-			public delegate void glCreateTransformFeedbacks(int n, uint[] ids);
+			public delegate void glCreateTransformFeedbacks(int n, uint* ids);
 
-			public delegate void glCreateVertexArrays(int n, uint[] arrays);
+			public delegate void glCreateVertexArrays(int n, uint* arrays);
 
 			public delegate void glCullFace(uint mode);
 
-			public delegate void glDebugMessageCallback(DebugProc callback, IntPtr userParam);
+			public delegate void glDebugMessageCallback(DebugProc callback, void* userParam);
 
-			public delegate void glDebugMessageControl(uint source, uint type, uint severity, int count, uint[] ids, bool enabled);
+			public delegate void glDebugMessageControl(uint source, uint type, uint severity, int count, uint* ids, bool enabled);
 
 			public delegate void glDebugMessageInsert(uint source, uint type, uint id, uint severity, int length, string buf);
 
-			public delegate void glDeleteBuffers(int n, uint[] buffers);
+			public delegate void glDeleteBuffers(int n, uint* buffers);
 
-			public delegate void glDeleteFramebuffers(int n, uint[] framebuffers);
+			public delegate void glDeleteFramebuffers(int n, uint* framebuffers);
 
 			public delegate void glDeleteProgram(uint program);
 
-			public delegate void glDeleteProgramPipelines(int n, uint[] pipelines);
+			public delegate void glDeleteProgramPipelines(int n, uint* pipelines);
 
-			public delegate void glDeleteQueries(int n, uint[] ids);
+			public delegate void glDeleteQueries(int n, uint* ids);
 
-			public delegate void glDeleteRenderbuffers(int n, uint[] renderbuffers);
+			public delegate void glDeleteRenderbuffers(int n, uint* renderbuffers);
 
-			public delegate void glDeleteSamplers(int count, uint[] samplers);
+			public delegate void glDeleteSamplers(int count, uint* samplers);
 
 			public delegate void glDeleteShader(uint shader);
 
 			public delegate void glDeleteSync(IntPtr sync);
 
-			public delegate void glDeleteTextures(int n, uint[] textures);
+			public delegate void glDeleteTextures(int n, uint* textures);
 
-			public delegate void glDeleteTransformFeedbacks(int n, uint[] ids);
+			public delegate void glDeleteTransformFeedbacks(int n, uint* ids);
 
-			public delegate void glDeleteVertexArrays(int n, uint[] arrays);
+			public delegate void glDeleteVertexArrays(int n, uint* arrays);
 
 			public delegate void glDepthFunc(uint func);
 
@@ -1616,7 +1616,7 @@ namespace GLDotNet
 
 			public delegate void glDepthRange(double near, double far);
 
-			public delegate void glDepthRangeArrayv(uint first, int count, double[] v);
+			public delegate void glDepthRangeArrayv(uint first, int count, double* v);
 
 			public delegate void glDepthRangef(float n, float f);
 
@@ -1638,7 +1638,7 @@ namespace GLDotNet
 
 			public delegate void glDrawArrays(uint mode, int first, int count);
 
-			public delegate void glDrawArraysIndirect(uint mode, IntPtr indirect);
+			public delegate void glDrawArraysIndirect(uint mode, void* indirect);
 
 			public delegate void glDrawArraysInstanced(uint mode, int first, int count, int instancecount);
 
@@ -1646,25 +1646,25 @@ namespace GLDotNet
 
 			public delegate void glDrawBuffer(uint buf);
 
-			public delegate void glDrawBuffers(int n, uint[] bufs);
+			public delegate void glDrawBuffers(int n, uint* bufs);
 
-			public delegate void glDrawElements(uint mode, int count, uint type, IntPtr indices);
+			public delegate void glDrawElements(uint mode, int count, uint type, void* indices);
 
-			public delegate void glDrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex);
+			public delegate void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex);
 
-			public delegate void glDrawElementsIndirect(uint mode, uint type, IntPtr indirect);
+			public delegate void glDrawElementsIndirect(uint mode, uint type, void* indirect);
 
-			public delegate void glDrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount);
+			public delegate void glDrawElementsInstanced(uint mode, int count, uint type, void* indices, int instancecount);
 
-			public delegate void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance);
+			public delegate void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, uint baseinstance);
 
-			public delegate void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex);
+			public delegate void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex);
 
-			public delegate void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance);
+			public delegate void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, int basevertex, uint baseinstance);
 
-			public delegate void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices);
+			public delegate void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, void* indices);
 
-			public delegate void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex);
+			public delegate void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex);
 
 			public delegate void glDrawTransformFeedback(uint mode, uint id);
 
@@ -1716,181 +1716,161 @@ namespace GLDotNet
 
 			public delegate void glFrontFace(uint mode);
 
-			public delegate void glGenBuffers(int n, uint[] buffers);
+			public delegate void glGenBuffers(int n, uint* buffers);
 
 			public delegate void glGenerateMipmap(uint target);
 
 			public delegate void glGenerateTextureMipmap(uint texture);
 
-			public delegate void glGenFramebuffers(int n, uint[] framebuffers);
+			public delegate void glGenFramebuffers(int n, uint* framebuffers);
 
-			public delegate void glGenProgramPipelines(int n, uint[] pipelines);
+			public delegate void glGenProgramPipelines(int n, uint* pipelines);
 
-			public delegate void glGenQueries(int n, uint[] ids);
+			public delegate void glGenQueries(int n, uint* ids);
 
-			public delegate void glGenRenderbuffers(int n, uint[] renderbuffers);
+			public delegate void glGenRenderbuffers(int n, uint* renderbuffers);
 
-			public delegate void glGenSamplers(int count, uint[] samplers);
+			public delegate void glGenSamplers(int count, uint* samplers);
 
-			public delegate void glGenTextures(int n, uint[] textures);
+			public delegate void glGenTextures(int n, uint* textures);
 
-			public delegate void glGenTransformFeedbacks(int n, uint[] ids);
+			public delegate void glGenTransformFeedbacks(int n, uint* ids);
 
-			public delegate void glGenVertexArrays(int n, uint[] arrays);
+			public delegate void glGenVertexArrays(int n, uint* arrays);
 
-			public delegate void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params);
+			public delegate void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params);
 
-			public delegate void glGetActiveAttrib(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name);
+			public delegate void glGetActiveAttrib(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name);
 
-			public delegate void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name);
+			public delegate void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int* length, StringBuilder name);
 
-			public delegate void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int[] values);
+			public delegate void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int* values);
 
-			public delegate void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name);
+			public delegate void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int* length, StringBuilder name);
 
-			public delegate void glGetActiveUniform(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name);
+			public delegate void glGetActiveUniform(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name);
 
-			public delegate void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int[] @params);
+			public delegate void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int* @params);
 
-			public delegate void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int[] length, StringBuilder uniformBlockName);
+			public delegate void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int* length, StringBuilder uniformBlockName);
 
-			public delegate void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int[] length, StringBuilder uniformName);
+			public delegate void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int* length, StringBuilder uniformName);
 
-			public delegate void glGetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, uint pname, int[] @params);
+			public delegate void glGetActiveUniformsiv(uint program, int uniformCount, uint* uniformIndices, uint pname, int* @params);
 
-			public delegate void glGetAttachedShaders(uint program, int maxCount, int[] count, uint[] shaders);
+			public delegate void glGetAttachedShaders(uint program, int maxCount, int* count, uint* shaders);
 
 			public delegate int glGetAttribLocation(uint program, string name);
 
-			public delegate void glGetBooleani_v(uint target, uint index, bool[] data);
+			public delegate void glGetBooleani_v(uint target, uint index, bool* data);
 
-			public delegate void glGetBooleani_vByRef(uint target, uint index, ref bool data);
+			public delegate void glGetBooleanv(uint pname, bool* data);
 
-			public delegate void glGetBooleanv(uint pname, bool[] data);
+			public delegate void glGetBufferParameteri64v(uint target, uint pname, long* @params);
 
-			public delegate void glGetBooleanvByRef(uint pname, ref bool data);
+			public delegate void glGetBufferParameteriv(uint target, uint pname, int* @params);
 
-			public delegate void glGetBufferParameteri64v(uint target, uint pname, long[] @params);
+			public delegate void glGetBufferPointerv(uint target, uint pname, void** @params);
 
-			public delegate void glGetBufferParameteriv(uint target, uint pname, int[] @params);
+			public delegate void glGetBufferSubData(uint target, int offset, int size, void* data);
 
-			public delegate void glGetBufferPointerv(uint target, uint pname, IntPtr[] @params);
+			public delegate void glGetCompressedTexImage(uint target, int level, void* img);
 
-			public delegate void glGetBufferSubData(uint target, int offset, int size, IntPtr data);
+			public delegate void glGetCompressedTextureImage(uint texture, int level, int bufSize, void* pixels);
 
-			public delegate void glGetCompressedTexImage(uint target, int level, IntPtr img);
+			public delegate void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, void* pixels);
 
-			public delegate void glGetCompressedTextureImage(uint texture, int level, int bufSize, IntPtr pixels);
+			public delegate uint glGetDebugMessageLog(uint count, int bufSize, uint* sources, uint* types, uint* ids, uint* severities, int* lengths, StringBuilder messageLog);
 
-			public delegate void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, IntPtr pixels);
+			public delegate void glGetDoublei_v(uint target, uint index, double* data);
 
-			public delegate uint glGetDebugMessageLog(uint count, int bufSize, uint[] sources, uint[] types, uint[] ids, uint[] severities, int[] lengths, StringBuilder messageLog);
-
-			public delegate void glGetDoublei_v(uint target, uint index, double[] data);
-
-			public delegate void glGetDoublei_vByRef(uint target, uint index, ref double data);
-
-			public delegate void glGetDoublev(uint pname, double[] data);
-
-			public delegate void glGetDoublevByRef(uint pname, ref double data);
+			public delegate void glGetDoublev(uint pname, double* data);
 
 			public delegate uint glGetError();
 
-			public delegate void glGetFloati_v(uint target, uint index, float[] data);
+			public delegate void glGetFloati_v(uint target, uint index, float* data);
 
-			public delegate void glGetFloati_vByRef(uint target, uint index, ref float data);
-
-			public delegate void glGetFloatv(uint pname, float[] data);
-
-			public delegate void glGetFloatvByRef(uint pname, ref float data);
+			public delegate void glGetFloatv(uint pname, float* data);
 
 			public delegate int glGetFragDataIndex(uint program, string name);
 
 			public delegate int glGetFragDataLocation(uint program, string name);
 
-			public delegate void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int[] @params);
+			public delegate void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int* @params);
 
-			public delegate void glGetFramebufferParameteriv(uint target, uint pname, int[] @params);
+			public delegate void glGetFramebufferParameteriv(uint target, uint pname, int* @params);
 
 			public delegate uint glGetGraphicsResetStatus();
 
-			public delegate void glGetInteger64i_v(uint target, uint index, long[] data);
+			public delegate void glGetInteger64i_v(uint target, uint index, long* data);
 
-			public delegate void glGetInteger64i_vByRef(uint target, uint index, ref long data);
+			public delegate void glGetInteger64v(uint pname, long* data);
 
-			public delegate void glGetInteger64v(uint pname, long[] data);
+			public delegate void glGetIntegeri_v(uint target, uint index, int* data);
 
-			public delegate void glGetInteger64vByRef(uint pname, ref long data);
+			public delegate void glGetIntegerv(uint pname, int* data);
 
-			public delegate void glGetIntegeri_v(uint target, uint index, int[] data);
+			public delegate void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long* @params);
 
-			public delegate void glGetIntegeri_vByRef(uint target, uint index, ref int data);
+			public delegate void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int* @params);
 
-			public delegate void glGetIntegerv(uint pname, int[] data);
+			public delegate void glGetMultisamplefv(uint pname, uint index, float* val);
 
-			public delegate void glGetIntegervByRef(uint pname, ref int data);
+			public delegate void glGetNamedBufferParameteri64v(uint buffer, uint pname, long* @params);
 
-			public delegate void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params);
+			public delegate void glGetNamedBufferParameteriv(uint buffer, uint pname, int* @params);
 
-			public delegate void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int[] @params);
+			public delegate void glGetNamedBufferPointerv(uint buffer, uint pname, void** @params);
 
-			public delegate void glGetMultisamplefv(uint pname, uint index, float[] val);
+			public delegate void glGetNamedBufferSubData(uint buffer, int offset, int size, void* data);
 
-			public delegate void glGetNamedBufferParameteri64v(uint buffer, uint pname, long[] @params);
+			public delegate void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int* @params);
 
-			public delegate void glGetNamedBufferParameteriv(uint buffer, uint pname, int[] @params);
+			public delegate void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int* param);
 
-			public delegate void glGetNamedBufferPointerv(uint buffer, uint pname, IntPtr[] @params);
+			public delegate void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int* @params);
 
-			public delegate void glGetNamedBufferSubData(uint buffer, int offset, int size, IntPtr data);
+			public delegate void glGetnCompressedTexImage(uint target, int lod, int bufSize, void* pixels);
 
-			public delegate void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int[] @params);
+			public delegate void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, void* pixels);
 
-			public delegate void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int[] param);
+			public delegate void glGetnUniformdv(uint program, int location, int bufSize, double* @params);
 
-			public delegate void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int[] @params);
+			public delegate void glGetnUniformfv(uint program, int location, int bufSize, float* @params);
 
-			public delegate void glGetnCompressedTexImage(uint target, int lod, int bufSize, IntPtr pixels);
+			public delegate void glGetnUniformiv(uint program, int location, int bufSize, int* @params);
 
-			public delegate void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, IntPtr pixels);
+			public delegate void glGetnUniformuiv(uint program, int location, int bufSize, uint* @params);
 
-			public delegate void glGetnUniformdv(uint program, int location, int bufSize, double[] @params);
+			public delegate void glGetObjectLabel(uint identifier, uint name, int bufSize, int* length, StringBuilder label);
 
-			public delegate void glGetnUniformfv(uint program, int location, int bufSize, float[] @params);
+			public delegate void glGetObjectPtrLabel(void* ptr, int bufSize, int* length, StringBuilder label);
 
-			public delegate void glGetnUniformiv(uint program, int location, int bufSize, int[] @params);
+			public delegate void glGetPointerv(uint pname, void** @params);
 
-			public delegate void glGetnUniformuiv(uint program, int location, int bufSize, uint[] @params);
-
-			public delegate void glGetObjectLabel(uint identifier, uint name, int bufSize, int[] length, StringBuilder label);
-
-			public delegate void glGetObjectPtrLabel(IntPtr ptr, int bufSize, int[] length, StringBuilder label);
-
-			public delegate void glGetPointerv(uint pname, IntPtr[] @params);
-
-			public delegate void glGetProgramBinary(uint program, int bufSize, int[] length, uint[] binaryFormat, IntPtr binary);
+			public delegate void glGetProgramBinary(uint program, int bufSize, int* length, uint* binaryFormat, void* binary);
 
 			public delegate void glGetProgramInfoLog(uint program, int bufSize, out int length, StringBuilder infoLog);
 
-			public delegate void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int[] @params);
+			public delegate void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params);
 
 			public delegate void glGetProgramiv(uint program, uint pname, out int @params);
 
-			public delegate void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int[] length, StringBuilder infoLog);
+			public delegate void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, out int length, StringBuilder infoLog);
 
-			public delegate void glGetProgramPipelineiv(uint pipeline, uint pname, int[] @params);
+			public delegate void glGetProgramPipelineiv(uint pipeline, uint pname, int* @params);
 
 			public delegate uint glGetProgramResourceIndex(uint program, uint programInterface, string name);
 
-			public delegate void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params);
+			public delegate void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int bufSize, int* length, int* @params);
 
 			public delegate int glGetProgramResourceLocation(uint program, uint programInterface, string name);
 
 			public delegate int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name);
 
-			public delegate void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int[] length, StringBuilder name);
+			public delegate void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, out int length, StringBuilder name);
 
-			public delegate void glGetProgramStageiv(uint program, uint shadertype, uint pname, int[] values);
+			public delegate void glGetProgramStageiv(uint program, uint shadertype, uint pname, int* values);
 
 			public delegate void glGetQueryBufferObjecti64v(uint id, uint buffer, uint pname, int offset);
 
@@ -1900,35 +1880,35 @@ namespace GLDotNet
 
 			public delegate void glGetQueryBufferObjectuiv(uint id, uint buffer, uint pname, int offset);
 
-			public delegate void glGetQueryIndexediv(uint target, uint index, uint pname, int[] @params);
+			public delegate void glGetQueryIndexediv(uint target, uint index, uint pname, int* @params);
 
-			public delegate void glGetQueryiv(uint target, uint pname, int[] @params);
+			public delegate void glGetQueryiv(uint target, uint pname, int* @params);
 
-			public delegate void glGetQueryObjecti64v(uint id, uint pname, long[] @params);
+			public delegate void glGetQueryObjecti64v(uint id, uint pname, long* @params);
 
-			public delegate void glGetQueryObjectiv(uint id, uint pname, int[] @params);
+			public delegate void glGetQueryObjectiv(uint id, uint pname, int* @params);
 
-			public delegate void glGetQueryObjectui64v(uint id, uint pname, ulong[] @params);
+			public delegate void glGetQueryObjectui64v(uint id, uint pname, ulong* @params);
 
-			public delegate void glGetQueryObjectuiv(uint id, uint pname, uint[] @params);
+			public delegate void glGetQueryObjectuiv(uint id, uint pname, uint* @params);
 
-			public delegate void glGetRenderbufferParameteriv(uint target, uint pname, int[] @params);
+			public delegate void glGetRenderbufferParameteriv(uint target, uint pname, int* @params);
 
-			public delegate void glGetSamplerParameterfv(uint sampler, uint pname, float[] @params);
+			public delegate void glGetSamplerParameterfv(uint sampler, uint pname, float* @params);
 
-			public delegate void glGetSamplerParameterIiv(uint sampler, uint pname, int[] @params);
+			public delegate void glGetSamplerParameterIiv(uint sampler, uint pname, int* @params);
 
-			public delegate void glGetSamplerParameterIuiv(uint sampler, uint pname, uint[] @params);
+			public delegate void glGetSamplerParameterIuiv(uint sampler, uint pname, uint* @params);
 
-			public delegate void glGetSamplerParameteriv(uint sampler, uint pname, int[] @params);
+			public delegate void glGetSamplerParameteriv(uint sampler, uint pname, int* @params);
 
 			public delegate void glGetShaderInfoLog(uint shader, int bufSize, out int length, StringBuilder infoLog);
 
 			public delegate void glGetShaderiv(uint shader, uint pname, out int @params);
 
-			public delegate void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int[] range, int[] precision);
+			public delegate void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int* range, int* precision);
 
-			public delegate void glGetShaderSource(uint shader, int bufSize, int[] length, StringBuilder source);
+			public delegate void glGetShaderSource(uint shader, int bufSize, out int length, StringBuilder source);
 
 			public delegate IntPtr glGetString(uint name);
 
@@ -1938,81 +1918,81 @@ namespace GLDotNet
 
 			public delegate int glGetSubroutineUniformLocation(uint program, uint shadertype, string name);
 
-			public delegate void glGetSynciv(IntPtr sync, uint pname, int bufSize, int[] length, int[] values);
+			public delegate void glGetSynciv(IntPtr sync, uint pname, int bufSize, int* length, int* values);
 
-			public delegate void glGetTexImage(uint target, int level, uint format, uint type, IntPtr pixels);
+			public delegate void glGetTexImage(uint target, int level, uint format, uint type, void* pixels);
 
-			public delegate void glGetTexLevelParameterfv(uint target, int level, uint pname, float[] @params);
+			public delegate void glGetTexLevelParameterfv(uint target, int level, uint pname, float* @params);
 
-			public delegate void glGetTexLevelParameteriv(uint target, int level, uint pname, int[] @params);
+			public delegate void glGetTexLevelParameteriv(uint target, int level, uint pname, int* @params);
 
-			public delegate void glGetTexParameterfv(uint target, uint pname, float[] @params);
+			public delegate void glGetTexParameterfv(uint target, uint pname, float* @params);
 
-			public delegate void glGetTexParameterIiv(uint target, uint pname, int[] @params);
+			public delegate void glGetTexParameterIiv(uint target, uint pname, int* @params);
 
-			public delegate void glGetTexParameterIuiv(uint target, uint pname, uint[] @params);
+			public delegate void glGetTexParameterIuiv(uint target, uint pname, uint* @params);
 
-			public delegate void glGetTexParameteriv(uint target, uint pname, int[] @params);
+			public delegate void glGetTexParameteriv(uint target, uint pname, int* @params);
 
-			public delegate void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, IntPtr pixels);
+			public delegate void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, void* pixels);
 
-			public delegate void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float[] @params);
+			public delegate void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float* @params);
 
-			public delegate void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int[] @params);
+			public delegate void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int* @params);
 
-			public delegate void glGetTextureParameterfv(uint texture, uint pname, float[] @params);
+			public delegate void glGetTextureParameterfv(uint texture, uint pname, float* @params);
 
-			public delegate void glGetTextureParameterIiv(uint texture, uint pname, int[] @params);
+			public delegate void glGetTextureParameterIiv(uint texture, uint pname, int* @params);
 
-			public delegate void glGetTextureParameterIuiv(uint texture, uint pname, uint[] @params);
+			public delegate void glGetTextureParameterIuiv(uint texture, uint pname, uint* @params);
 
-			public delegate void glGetTextureParameteriv(uint texture, uint pname, int[] @params);
+			public delegate void glGetTextureParameteriv(uint texture, uint pname, int* @params);
 
-			public delegate void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, IntPtr pixels);
+			public delegate void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, void* pixels);
 
-			public delegate void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int[] param);
+			public delegate void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int* param);
 
-			public delegate void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long[] param);
+			public delegate void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long* param);
 
-			public delegate void glGetTransformFeedbackiv(uint xfb, uint pname, int[] param);
+			public delegate void glGetTransformFeedbackiv(uint xfb, uint pname, int* param);
 
-			public delegate void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name);
+			public delegate void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name);
 
 			public delegate uint glGetUniformBlockIndex(uint program, string uniformBlockName);
 
-			public delegate void glGetUniformdv(uint program, int location, double[] @params);
+			public delegate void glGetUniformdv(uint program, int location, double* @params);
 
-			public delegate void glGetUniformfv(uint program, int location, float[] @params);
+			public delegate void glGetUniformfv(uint program, int location, float* @params);
 
-			public delegate void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint[] uniformIndices);
+			public delegate void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint* uniformIndices);
 
-			public delegate void glGetUniformiv(uint program, int location, int[] @params);
+			public delegate void glGetUniformiv(uint program, int location, int* @params);
 
 			public delegate int glGetUniformLocation(uint program, string name);
 
-			public delegate void glGetUniformSubroutineuiv(uint shadertype, int location, uint[] @params);
+			public delegate void glGetUniformSubroutineuiv(uint shadertype, int location, uint* @params);
 
-			public delegate void glGetUniformuiv(uint program, int location, uint[] @params);
+			public delegate void glGetUniformuiv(uint program, int location, uint* @params);
 
-			public delegate void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long[] param);
+			public delegate void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long* param);
 
-			public delegate void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int[] param);
+			public delegate void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int* param);
 
-			public delegate void glGetVertexArrayiv(uint vaobj, uint pname, int[] param);
+			public delegate void glGetVertexArrayiv(uint vaobj, uint pname, int* param);
 
-			public delegate void glGetVertexAttribdv(uint index, uint pname, double[] @params);
+			public delegate void glGetVertexAttribdv(uint index, uint pname, double* @params);
 
-			public delegate void glGetVertexAttribfv(uint index, uint pname, float[] @params);
+			public delegate void glGetVertexAttribfv(uint index, uint pname, float* @params);
 
-			public delegate void glGetVertexAttribIiv(uint index, uint pname, int[] @params);
+			public delegate void glGetVertexAttribIiv(uint index, uint pname, int* @params);
 
-			public delegate void glGetVertexAttribIuiv(uint index, uint pname, uint[] @params);
+			public delegate void glGetVertexAttribIuiv(uint index, uint pname, uint* @params);
 
-			public delegate void glGetVertexAttribiv(uint index, uint pname, int[] @params);
+			public delegate void glGetVertexAttribiv(uint index, uint pname, int* @params);
 
-			public delegate void glGetVertexAttribLdv(uint index, uint pname, double[] @params);
+			public delegate void glGetVertexAttribLdv(uint index, uint pname, double* @params);
 
-			public delegate void glGetVertexAttribPointerv(uint index, uint pname, IntPtr[] pointer);
+			public delegate void glGetVertexAttribPointerv(uint index, uint pname, void** pointer);
 
 			public delegate void glHint(uint target, uint mode);
 
@@ -2020,13 +2000,13 @@ namespace GLDotNet
 
 			public delegate void glInvalidateBufferSubData(uint buffer, int offset, int length);
 
-			public delegate void glInvalidateFramebuffer(uint target, int numAttachments, uint[] attachments);
+			public delegate void glInvalidateFramebuffer(uint target, int numAttachments, uint* attachments);
 
-			public delegate void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint[] attachments);
+			public delegate void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint* attachments);
 
-			public delegate void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint[] attachments, int x, int y, int width, int height);
+			public delegate void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint* attachments, int x, int y, int width, int height);
 
-			public delegate void glInvalidateSubFramebuffer(uint target, int numAttachments, uint[] attachments, int x, int y, int width, int height);
+			public delegate void glInvalidateSubFramebuffer(uint target, int numAttachments, uint* attachments, int x, int y, int width, int height);
 
 			public delegate void glInvalidateTexImage(uint texture, int level);
 
@@ -2080,25 +2060,25 @@ namespace GLDotNet
 
 			public delegate void glMinSampleShading(float value);
 
-			public delegate void glMultiDrawArrays(uint mode, int[] first, int[] count, int drawcount);
+			public delegate void glMultiDrawArrays(uint mode, int* first, int* count, int drawcount);
 
-			public delegate void glMultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride);
+			public delegate void glMultiDrawArraysIndirect(uint mode, void* indirect, int drawcount, int stride);
 
-			public delegate void glMultiDrawElements(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount);
+			public delegate void glMultiDrawElements(uint mode, int* count, uint type, void** indices, int drawcount);
 
-			public delegate void glMultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount, int[] basevertex);
+			public delegate void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex);
 
-			public delegate void glMultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride);
+			public delegate void glMultiDrawElementsIndirect(uint mode, uint type, void* indirect, int drawcount, int stride);
 
-			public delegate void glNamedBufferData(uint buffer, int size, IntPtr data, uint usage);
+			public delegate void glNamedBufferData(uint buffer, int size, void* data, uint usage);
 
-			public delegate void glNamedBufferStorage(uint buffer, int size, IntPtr data, uint flags);
+			public delegate void glNamedBufferStorage(uint buffer, int size, void* data, uint flags);
 
-			public delegate void glNamedBufferSubData(uint buffer, int offset, int size, IntPtr data);
+			public delegate void glNamedBufferSubData(uint buffer, int offset, int size, void* data);
 
 			public delegate void glNamedFramebufferDrawBuffer(uint framebuffer, uint buf);
 
-			public delegate void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint[] bufs);
+			public delegate void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint* bufs);
 
 			public delegate void glNamedFramebufferParameteri(uint framebuffer, uint pname, int param);
 
@@ -2116,9 +2096,9 @@ namespace GLDotNet
 
 			public delegate void glObjectLabel(uint identifier, uint name, int length, string label);
 
-			public delegate void glObjectPtrLabel(IntPtr ptr, int length, string label);
+			public delegate void glObjectPtrLabel(void* ptr, int length, string label);
 
-			public delegate void glPatchParameterfv(uint pname, float[] values);
+			public delegate void glPatchParameterfv(uint pname, float* values);
 
 			public delegate void glPatchParameteri(uint pname, int value);
 
@@ -2130,11 +2110,11 @@ namespace GLDotNet
 
 			public delegate void glPointParameterf(uint pname, float param);
 
-			public delegate void glPointParameterfv(uint pname, float[] @params);
+			public delegate void glPointParameterfv(uint pname, float* @params);
 
 			public delegate void glPointParameteri(uint pname, int param);
 
-			public delegate void glPointParameteriv(uint pname, int[] @params);
+			public delegate void glPointParameteriv(uint pname, int* @params);
 
 			public delegate void glPointSize(float size);
 
@@ -2146,177 +2126,109 @@ namespace GLDotNet
 
 			public delegate void glPrimitiveRestartIndex(uint index);
 
-			public delegate void glProgramBinary(uint program, uint binaryFormat, IntPtr binary, int length);
+			public delegate void glProgramBinary(uint program, uint binaryFormat, void* binary, int length);
 
 			public delegate void glProgramParameteri(uint program, uint pname, int value);
 
 			public delegate void glProgramUniform1d(uint program, int location, double v0);
 
-			public delegate void glProgramUniform1dv(uint program, int location, int count, double[] value);
-
-			public delegate void glProgramUniform1dvByRef(uint program, int location, int count, ref double value);
+			public delegate void glProgramUniform1dv(uint program, int location, int count, double* value);
 
 			public delegate void glProgramUniform1f(uint program, int location, float v0);
 
-			public delegate void glProgramUniform1fv(uint program, int location, int count, float[] value);
-
-			public delegate void glProgramUniform1fvByRef(uint program, int location, int count, ref float value);
+			public delegate void glProgramUniform1fv(uint program, int location, int count, float* value);
 
 			public delegate void glProgramUniform1i(uint program, int location, int v0);
 
-			public delegate void glProgramUniform1iv(uint program, int location, int count, int[] value);
-
-			public delegate void glProgramUniform1ivByRef(uint program, int location, int count, ref int value);
+			public delegate void glProgramUniform1iv(uint program, int location, int count, int* value);
 
 			public delegate void glProgramUniform1ui(uint program, int location, uint v0);
 
-			public delegate void glProgramUniform1uiv(uint program, int location, int count, uint[] value);
-
-			public delegate void glProgramUniform1uivByRef(uint program, int location, int count, ref uint value);
+			public delegate void glProgramUniform1uiv(uint program, int location, int count, uint* value);
 
 			public delegate void glProgramUniform2d(uint program, int location, double v0, double v1);
 
-			public delegate void glProgramUniform2dv(uint program, int location, int count, double[] value);
-
-			public delegate void glProgramUniform2dvByRef(uint program, int location, int count, ref double value);
+			public delegate void glProgramUniform2dv(uint program, int location, int count, double* value);
 
 			public delegate void glProgramUniform2f(uint program, int location, float v0, float v1);
 
-			public delegate void glProgramUniform2fv(uint program, int location, int count, float[] value);
-
-			public delegate void glProgramUniform2fvByRef(uint program, int location, int count, ref float value);
+			public delegate void glProgramUniform2fv(uint program, int location, int count, float* value);
 
 			public delegate void glProgramUniform2i(uint program, int location, int v0, int v1);
 
-			public delegate void glProgramUniform2iv(uint program, int location, int count, int[] value);
-
-			public delegate void glProgramUniform2ivByRef(uint program, int location, int count, ref int value);
+			public delegate void glProgramUniform2iv(uint program, int location, int count, int* value);
 
 			public delegate void glProgramUniform2ui(uint program, int location, uint v0, uint v1);
 
-			public delegate void glProgramUniform2uiv(uint program, int location, int count, uint[] value);
-
-			public delegate void glProgramUniform2uivByRef(uint program, int location, int count, ref uint value);
+			public delegate void glProgramUniform2uiv(uint program, int location, int count, uint* value);
 
 			public delegate void glProgramUniform3d(uint program, int location, double v0, double v1, double v2);
 
-			public delegate void glProgramUniform3dv(uint program, int location, int count, double[] value);
-
-			public delegate void glProgramUniform3dvByRef(uint program, int location, int count, ref double value);
+			public delegate void glProgramUniform3dv(uint program, int location, int count, double* value);
 
 			public delegate void glProgramUniform3f(uint program, int location, float v0, float v1, float v2);
 
-			public delegate void glProgramUniform3fv(uint program, int location, int count, float[] value);
-
-			public delegate void glProgramUniform3fvByRef(uint program, int location, int count, ref float value);
+			public delegate void glProgramUniform3fv(uint program, int location, int count, float* value);
 
 			public delegate void glProgramUniform3i(uint program, int location, int v0, int v1, int v2);
 
-			public delegate void glProgramUniform3iv(uint program, int location, int count, int[] value);
-
-			public delegate void glProgramUniform3ivByRef(uint program, int location, int count, ref int value);
+			public delegate void glProgramUniform3iv(uint program, int location, int count, int* value);
 
 			public delegate void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2);
 
-			public delegate void glProgramUniform3uiv(uint program, int location, int count, uint[] value);
-
-			public delegate void glProgramUniform3uivByRef(uint program, int location, int count, ref uint value);
+			public delegate void glProgramUniform3uiv(uint program, int location, int count, uint* value);
 
 			public delegate void glProgramUniform4d(uint program, int location, double v0, double v1, double v2, double v3);
 
-			public delegate void glProgramUniform4dv(uint program, int location, int count, double[] value);
-
-			public delegate void glProgramUniform4dvByRef(uint program, int location, int count, ref double value);
+			public delegate void glProgramUniform4dv(uint program, int location, int count, double* value);
 
 			public delegate void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3);
 
-			public delegate void glProgramUniform4fv(uint program, int location, int count, float[] value);
-
-			public delegate void glProgramUniform4fvByRef(uint program, int location, int count, ref float value);
+			public delegate void glProgramUniform4fv(uint program, int location, int count, float* value);
 
 			public delegate void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3);
 
-			public delegate void glProgramUniform4iv(uint program, int location, int count, int[] value);
-
-			public delegate void glProgramUniform4ivByRef(uint program, int location, int count, ref int value);
+			public delegate void glProgramUniform4iv(uint program, int location, int count, int* value);
 
 			public delegate void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3);
 
-			public delegate void glProgramUniform4uiv(uint program, int location, int count, uint[] value);
+			public delegate void glProgramUniform4uiv(uint program, int location, int count, uint* value);
 
-			public delegate void glProgramUniform4uivByRef(uint program, int location, int count, ref uint value);
+			public delegate void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double[] value);
+			public delegate void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2dvByRef(uint program, int location, int count, bool transpose, ref double value);
+			public delegate void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float[] value);
+			public delegate void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2fvByRef(uint program, int location, int count, bool transpose, ref float value);
+			public delegate void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double[] value);
+			public delegate void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2x3dvByRef(uint program, int location, int count, bool transpose, ref double value);
+			public delegate void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float[] value);
+			public delegate void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2x3fvByRef(uint program, int location, int count, bool transpose, ref float value);
+			public delegate void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double[] value);
+			public delegate void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2x4dvByRef(uint program, int location, int count, bool transpose, ref double value);
+			public delegate void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float[] value);
+			public delegate void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix2x4fvByRef(uint program, int location, int count, bool transpose, ref float value);
+			public delegate void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double[] value);
+			public delegate void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix3dvByRef(uint program, int location, int count, bool transpose, ref double value);
+			public delegate void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float[] value);
+			public delegate void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float* value);
 
-			public delegate void glProgramUniformMatrix3fvByRef(uint program, int location, int count, bool transpose, ref float value);
+			public delegate void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double* value);
 
-			public delegate void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double[] value);
-
-			public delegate void glProgramUniformMatrix3x2dvByRef(uint program, int location, int count, bool transpose, ref double value);
-
-			public delegate void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float[] value);
-
-			public delegate void glProgramUniformMatrix3x2fvByRef(uint program, int location, int count, bool transpose, ref float value);
-
-			public delegate void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double[] value);
-
-			public delegate void glProgramUniformMatrix3x4dvByRef(uint program, int location, int count, bool transpose, ref double value);
-
-			public delegate void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float[] value);
-
-			public delegate void glProgramUniformMatrix3x4fvByRef(uint program, int location, int count, bool transpose, ref float value);
-
-			public delegate void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double[] value);
-
-			public delegate void glProgramUniformMatrix4dvByRef(uint program, int location, int count, bool transpose, ref double value);
-
-			public delegate void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float[] value);
-
-			public delegate void glProgramUniformMatrix4fvByRef(uint program, int location, int count, bool transpose, ref float value);
-
-			public delegate void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double[] value);
-
-			public delegate void glProgramUniformMatrix4x2dvByRef(uint program, int location, int count, bool transpose, ref double value);
-
-			public delegate void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float[] value);
-
-			public delegate void glProgramUniformMatrix4x2fvByRef(uint program, int location, int count, bool transpose, ref float value);
-
-			public delegate void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double[] value);
-
-			public delegate void glProgramUniformMatrix4x3dvByRef(uint program, int location, int count, bool transpose, ref double value);
-
-			public delegate void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float[] value);
-
-			public delegate void glProgramUniformMatrix4x3fvByRef(uint program, int location, int count, bool transpose, ref float value);
+			public delegate void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float* value);
 
 			public delegate void glProvokingVertex(uint mode);
 
@@ -2326,9 +2238,9 @@ namespace GLDotNet
 
 			public delegate void glReadBuffer(uint src);
 
-			public delegate void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, IntPtr data);
+			public delegate void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, void* data);
 
-			public delegate void glReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels);
+			public delegate void glReadPixels(int x, int y, int width, int height, uint format, uint type, void* pixels);
 
 			public delegate void glReleaseShaderCompiler();
 
@@ -2344,25 +2256,25 @@ namespace GLDotNet
 
 			public delegate void glSamplerParameterf(uint sampler, uint pname, float param);
 
-			public delegate void glSamplerParameterfv(uint sampler, uint pname, float[] param);
+			public delegate void glSamplerParameterfv(uint sampler, uint pname, float* param);
 
 			public delegate void glSamplerParameteri(uint sampler, uint pname, int param);
 
-			public delegate void glSamplerParameterIiv(uint sampler, uint pname, int[] param);
+			public delegate void glSamplerParameterIiv(uint sampler, uint pname, int* param);
 
-			public delegate void glSamplerParameterIuiv(uint sampler, uint pname, uint[] param);
+			public delegate void glSamplerParameterIuiv(uint sampler, uint pname, uint* param);
 
-			public delegate void glSamplerParameteriv(uint sampler, uint pname, int[] param);
+			public delegate void glSamplerParameteriv(uint sampler, uint pname, int* param);
 
 			public delegate void glScissor(int x, int y, int width, int height);
 
-			public delegate void glScissorArrayv(uint first, int count, int[] v);
+			public delegate void glScissorArrayv(uint first, int count, int* v);
 
 			public delegate void glScissorIndexed(uint index, int left, int bottom, int width, int height);
 
-			public delegate void glScissorIndexedv(uint index, int[] v);
+			public delegate void glScissorIndexedv(uint index, int* v);
 
-			public delegate void glShaderBinary(int count, uint[] shaders, uint binaryformat, IntPtr binary, int length);
+			public delegate void glShaderBinary(int count, uint* shaders, uint binaryformat, void* binary, int length);
 
 			public delegate void glShaderSource(uint shader, int count, ref string @string, ref int length);
 
@@ -2384,27 +2296,27 @@ namespace GLDotNet
 
 			public delegate void glTexBufferRange(uint target, uint internalformat, uint buffer, int offset, int size);
 
-			public delegate void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels);
+			public delegate void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, void* pixels);
 
-			public delegate void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels);
+			public delegate void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, void* pixels);
 
 			public delegate void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations);
 
-			public delegate void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels);
+			public delegate void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, void* pixels);
 
 			public delegate void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations);
 
 			public delegate void glTexParameterf(uint target, uint pname, float param);
 
-			public delegate void glTexParameterfv(uint target, uint pname, float[] @params);
+			public delegate void glTexParameterfv(uint target, uint pname, float* @params);
 
 			public delegate void glTexParameteri(uint target, uint pname, int param);
 
-			public delegate void glTexParameterIiv(uint target, uint pname, int[] @params);
+			public delegate void glTexParameterIiv(uint target, uint pname, int* @params);
 
-			public delegate void glTexParameterIuiv(uint target, uint pname, uint[] @params);
+			public delegate void glTexParameterIuiv(uint target, uint pname, uint* @params);
 
-			public delegate void glTexParameteriv(uint target, uint pname, int[] @params);
+			public delegate void glTexParameteriv(uint target, uint pname, int* @params);
 
 			public delegate void glTexStorage1D(uint target, int levels, uint internalformat, int width);
 
@@ -2416,11 +2328,11 @@ namespace GLDotNet
 
 			public delegate void glTexStorage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations);
 
-			public delegate void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels);
+			public delegate void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, void* pixels);
 
-			public delegate void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels);
+			public delegate void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels);
 
-			public delegate void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels);
+			public delegate void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels);
 
 			public delegate void glTextureBarrier();
 
@@ -2430,15 +2342,15 @@ namespace GLDotNet
 
 			public delegate void glTextureParameterf(uint texture, uint pname, float param);
 
-			public delegate void glTextureParameterfv(uint texture, uint pname, float[] param);
+			public delegate void glTextureParameterfv(uint texture, uint pname, float* param);
 
 			public delegate void glTextureParameteri(uint texture, uint pname, int param);
 
-			public delegate void glTextureParameterIiv(uint texture, uint pname, int[] @params);
+			public delegate void glTextureParameterIiv(uint texture, uint pname, int* @params);
 
-			public delegate void glTextureParameterIuiv(uint texture, uint pname, uint[] @params);
+			public delegate void glTextureParameterIuiv(uint texture, uint pname, uint* @params);
 
-			public delegate void glTextureParameteriv(uint texture, uint pname, int[] param);
+			public delegate void glTextureParameteriv(uint texture, uint pname, int* param);
 
 			public delegate void glTextureStorage1D(uint texture, int levels, uint internalformat, int width);
 
@@ -2450,11 +2362,11 @@ namespace GLDotNet
 
 			public delegate void glTextureStorage3DMultisample(uint texture, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations);
 
-			public delegate void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, IntPtr pixels);
+			public delegate void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, void* pixels);
 
-			public delegate void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels);
+			public delegate void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels);
 
-			public delegate void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels);
+			public delegate void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels);
 
 			public delegate void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers);
 
@@ -2466,175 +2378,107 @@ namespace GLDotNet
 
 			public delegate void glUniform1d(int location, double x);
 
-			public delegate void glUniform1dv(int location, int count, double[] value);
-
-			public delegate void glUniform1dvByRef(int location, int count, ref double value);
+			public delegate void glUniform1dv(int location, int count, double* value);
 
 			public delegate void glUniform1f(int location, float v0);
 
-			public delegate void glUniform1fv(int location, int count, float[] value);
-
-			public delegate void glUniform1fvByRef(int location, int count, ref float value);
+			public delegate void glUniform1fv(int location, int count, float* value);
 
 			public delegate void glUniform1i(int location, int v0);
 
-			public delegate void glUniform1iv(int location, int count, int[] value);
-
-			public delegate void glUniform1ivByRef(int location, int count, ref int value);
+			public delegate void glUniform1iv(int location, int count, int* value);
 
 			public delegate void glUniform1ui(int location, uint v0);
 
-			public delegate void glUniform1uiv(int location, int count, uint[] value);
-
-			public delegate void glUniform1uivByRef(int location, int count, ref uint value);
+			public delegate void glUniform1uiv(int location, int count, uint* value);
 
 			public delegate void glUniform2d(int location, double x, double y);
 
-			public delegate void glUniform2dv(int location, int count, double[] value);
-
-			public delegate void glUniform2dvByRef(int location, int count, ref double value);
+			public delegate void glUniform2dv(int location, int count, double* value);
 
 			public delegate void glUniform2f(int location, float v0, float v1);
 
-			public delegate void glUniform2fv(int location, int count, float[] value);
-
-			public delegate void glUniform2fvByRef(int location, int count, ref float value);
+			public delegate void glUniform2fv(int location, int count, float* value);
 
 			public delegate void glUniform2i(int location, int v0, int v1);
 
-			public delegate void glUniform2iv(int location, int count, int[] value);
-
-			public delegate void glUniform2ivByRef(int location, int count, ref int value);
+			public delegate void glUniform2iv(int location, int count, int* value);
 
 			public delegate void glUniform2ui(int location, uint v0, uint v1);
 
-			public delegate void glUniform2uiv(int location, int count, uint[] value);
-
-			public delegate void glUniform2uivByRef(int location, int count, ref uint value);
+			public delegate void glUniform2uiv(int location, int count, uint* value);
 
 			public delegate void glUniform3d(int location, double x, double y, double z);
 
-			public delegate void glUniform3dv(int location, int count, double[] value);
-
-			public delegate void glUniform3dvByRef(int location, int count, ref double value);
+			public delegate void glUniform3dv(int location, int count, double* value);
 
 			public delegate void glUniform3f(int location, float v0, float v1, float v2);
 
-			public delegate void glUniform3fv(int location, int count, float[] value);
-
-			public delegate void glUniform3fvByRef(int location, int count, ref float value);
+			public delegate void glUniform3fv(int location, int count, float* value);
 
 			public delegate void glUniform3i(int location, int v0, int v1, int v2);
 
-			public delegate void glUniform3iv(int location, int count, int[] value);
-
-			public delegate void glUniform3ivByRef(int location, int count, ref int value);
+			public delegate void glUniform3iv(int location, int count, int* value);
 
 			public delegate void glUniform3ui(int location, uint v0, uint v1, uint v2);
 
-			public delegate void glUniform3uiv(int location, int count, uint[] value);
-
-			public delegate void glUniform3uivByRef(int location, int count, ref uint value);
+			public delegate void glUniform3uiv(int location, int count, uint* value);
 
 			public delegate void glUniform4d(int location, double x, double y, double z, double w);
 
-			public delegate void glUniform4dv(int location, int count, double[] value);
-
-			public delegate void glUniform4dvByRef(int location, int count, ref double value);
+			public delegate void glUniform4dv(int location, int count, double* value);
 
 			public delegate void glUniform4f(int location, float v0, float v1, float v2, float v3);
 
-			public delegate void glUniform4fv(int location, int count, float[] value);
-
-			public delegate void glUniform4fvByRef(int location, int count, ref float value);
+			public delegate void glUniform4fv(int location, int count, float* value);
 
 			public delegate void glUniform4i(int location, int v0, int v1, int v2, int v3);
 
-			public delegate void glUniform4iv(int location, int count, int[] value);
-
-			public delegate void glUniform4ivByRef(int location, int count, ref int value);
+			public delegate void glUniform4iv(int location, int count, int* value);
 
 			public delegate void glUniform4ui(int location, uint v0, uint v1, uint v2, uint v3);
 
-			public delegate void glUniform4uiv(int location, int count, uint[] value);
-
-			public delegate void glUniform4uivByRef(int location, int count, ref uint value);
+			public delegate void glUniform4uiv(int location, int count, uint* value);
 
 			public delegate void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding);
 
-			public delegate void glUniformMatrix2dv(int location, int count, bool transpose, double[] value);
+			public delegate void glUniformMatrix2dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2dvByRef(int location, int count, bool transpose, ref double value);
+			public delegate void glUniformMatrix2fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix2fv(int location, int count, bool transpose, float[] value);
+			public delegate void glUniformMatrix2x3dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2fvByRef(int location, int count, bool transpose, ref float value);
+			public delegate void glUniformMatrix2x3fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix2x3dv(int location, int count, bool transpose, double[] value);
+			public delegate void glUniformMatrix2x4dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2x3dvByRef(int location, int count, bool transpose, ref double value);
+			public delegate void glUniformMatrix2x4fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix2x3fv(int location, int count, bool transpose, float[] value);
+			public delegate void glUniformMatrix3dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2x3fvByRef(int location, int count, bool transpose, ref float value);
+			public delegate void glUniformMatrix3fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix2x4dv(int location, int count, bool transpose, double[] value);
+			public delegate void glUniformMatrix3x2dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2x4dvByRef(int location, int count, bool transpose, ref double value);
+			public delegate void glUniformMatrix3x2fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix2x4fv(int location, int count, bool transpose, float[] value);
+			public delegate void glUniformMatrix3x4dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix2x4fvByRef(int location, int count, bool transpose, ref float value);
+			public delegate void glUniformMatrix3x4fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix3dv(int location, int count, bool transpose, double[] value);
+			public delegate void glUniformMatrix4dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix3dvByRef(int location, int count, bool transpose, ref double value);
+			public delegate void glUniformMatrix4fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix3fv(int location, int count, bool transpose, float[] value);
+			public delegate void glUniformMatrix4x2dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix3fvByRef(int location, int count, bool transpose, ref float value);
+			public delegate void glUniformMatrix4x2fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix3x2dv(int location, int count, bool transpose, double[] value);
+			public delegate void glUniformMatrix4x3dv(int location, int count, bool transpose, double* value);
 
-			public delegate void glUniformMatrix3x2dvByRef(int location, int count, bool transpose, ref double value);
+			public delegate void glUniformMatrix4x3fv(int location, int count, bool transpose, float* value);
 
-			public delegate void glUniformMatrix3x2fv(int location, int count, bool transpose, float[] value);
-
-			public delegate void glUniformMatrix3x2fvByRef(int location, int count, bool transpose, ref float value);
-
-			public delegate void glUniformMatrix3x4dv(int location, int count, bool transpose, double[] value);
-
-			public delegate void glUniformMatrix3x4dvByRef(int location, int count, bool transpose, ref double value);
-
-			public delegate void glUniformMatrix3x4fv(int location, int count, bool transpose, float[] value);
-
-			public delegate void glUniformMatrix3x4fvByRef(int location, int count, bool transpose, ref float value);
-
-			public delegate void glUniformMatrix4dv(int location, int count, bool transpose, double[] value);
-
-			public delegate void glUniformMatrix4dvByRef(int location, int count, bool transpose, ref double value);
-
-			public delegate void glUniformMatrix4fv(int location, int count, bool transpose, float[] value);
-
-			public delegate void glUniformMatrix4fvByRef(int location, int count, bool transpose, ref float value);
-
-			public delegate void glUniformMatrix4x2dv(int location, int count, bool transpose, double[] value);
-
-			public delegate void glUniformMatrix4x2dvByRef(int location, int count, bool transpose, ref double value);
-
-			public delegate void glUniformMatrix4x2fv(int location, int count, bool transpose, float[] value);
-
-			public delegate void glUniformMatrix4x2fvByRef(int location, int count, bool transpose, ref float value);
-
-			public delegate void glUniformMatrix4x3dv(int location, int count, bool transpose, double[] value);
-
-			public delegate void glUniformMatrix4x3dvByRef(int location, int count, bool transpose, ref double value);
-
-			public delegate void glUniformMatrix4x3fv(int location, int count, bool transpose, float[] value);
-
-			public delegate void glUniformMatrix4x3fvByRef(int location, int count, bool transpose, ref float value);
-
-			public delegate void glUniformSubroutinesuiv(uint shadertype, int count, uint[] indices);
+			public delegate void glUniformSubroutinesuiv(uint shadertype, int count, uint* indices);
 
 			public delegate bool glUnmapBuffer(uint target);
 
@@ -2662,79 +2506,79 @@ namespace GLDotNet
 
 			public delegate void glVertexArrayVertexBuffer(uint vaobj, uint bindingindex, uint buffer, int offset, int stride);
 
-			public delegate void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint[] buffers, int[] offsets, int[] strides);
+			public delegate void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint* buffers, int* offsets, int* strides);
 
 			public delegate void glVertexAttrib1d(uint index, double x);
 
-			public delegate void glVertexAttrib1dv(uint index, double[] v);
+			public delegate void glVertexAttrib1dv(uint index, double* v);
 
 			public delegate void glVertexAttrib1f(uint index, float x);
 
-			public delegate void glVertexAttrib1fv(uint index, float[] v);
+			public delegate void glVertexAttrib1fv(uint index, float* v);
 
 			public delegate void glVertexAttrib1s(uint index, short x);
 
-			public delegate void glVertexAttrib1sv(uint index, short[] v);
+			public delegate void glVertexAttrib1sv(uint index, short* v);
 
 			public delegate void glVertexAttrib2d(uint index, double x, double y);
 
-			public delegate void glVertexAttrib2dv(uint index, double[] v);
+			public delegate void glVertexAttrib2dv(uint index, double* v);
 
 			public delegate void glVertexAttrib2f(uint index, float x, float y);
 
-			public delegate void glVertexAttrib2fv(uint index, float[] v);
+			public delegate void glVertexAttrib2fv(uint index, float* v);
 
 			public delegate void glVertexAttrib2s(uint index, short x, short y);
 
-			public delegate void glVertexAttrib2sv(uint index, short[] v);
+			public delegate void glVertexAttrib2sv(uint index, short* v);
 
 			public delegate void glVertexAttrib3d(uint index, double x, double y, double z);
 
-			public delegate void glVertexAttrib3dv(uint index, double[] v);
+			public delegate void glVertexAttrib3dv(uint index, double* v);
 
 			public delegate void glVertexAttrib3f(uint index, float x, float y, float z);
 
-			public delegate void glVertexAttrib3fv(uint index, float[] v);
+			public delegate void glVertexAttrib3fv(uint index, float* v);
 
 			public delegate void glVertexAttrib3s(uint index, short x, short y, short z);
 
-			public delegate void glVertexAttrib3sv(uint index, short[] v);
+			public delegate void glVertexAttrib3sv(uint index, short* v);
 
-			public delegate void glVertexAttrib4bv(uint index, sbyte[] v);
+			public delegate void glVertexAttrib4bv(uint index, sbyte* v);
 
 			public delegate void glVertexAttrib4d(uint index, double x, double y, double z, double w);
 
-			public delegate void glVertexAttrib4dv(uint index, double[] v);
+			public delegate void glVertexAttrib4dv(uint index, double* v);
 
 			public delegate void glVertexAttrib4f(uint index, float x, float y, float z, float w);
 
-			public delegate void glVertexAttrib4fv(uint index, float[] v);
+			public delegate void glVertexAttrib4fv(uint index, float* v);
 
-			public delegate void glVertexAttrib4iv(uint index, int[] v);
+			public delegate void glVertexAttrib4iv(uint index, int* v);
 
-			public delegate void glVertexAttrib4Nbv(uint index, sbyte[] v);
+			public delegate void glVertexAttrib4Nbv(uint index, sbyte* v);
 
-			public delegate void glVertexAttrib4Niv(uint index, int[] v);
+			public delegate void glVertexAttrib4Niv(uint index, int* v);
 
-			public delegate void glVertexAttrib4Nsv(uint index, short[] v);
+			public delegate void glVertexAttrib4Nsv(uint index, short* v);
 
 			public delegate void glVertexAttrib4Nub(uint index, byte x, byte y, byte z, byte w);
 
-			public delegate void glVertexAttrib4Nubv(uint index, byte[] v);
+			public delegate void glVertexAttrib4Nubv(uint index, byte* v);
 
-			public delegate void glVertexAttrib4Nuiv(uint index, uint[] v);
+			public delegate void glVertexAttrib4Nuiv(uint index, uint* v);
 
-			public delegate void glVertexAttrib4Nusv(uint index, ushort[] v);
+			public delegate void glVertexAttrib4Nusv(uint index, ushort* v);
 
 			public delegate void glVertexAttrib4s(uint index, short x, short y, short z, short w);
 
-			public delegate void glVertexAttrib4sv(uint index, short[] v);
+			public delegate void glVertexAttrib4sv(uint index, short* v);
 
-			public delegate void glVertexAttrib4ubv(uint index, byte[] v);
+			public delegate void glVertexAttrib4ubv(uint index, byte* v);
 
-			public delegate void glVertexAttrib4uiv(uint index, uint[] v);
+			public delegate void glVertexAttrib4uiv(uint index, uint* v);
 
-			public delegate void glVertexAttrib4usv(uint index, ushort[] v);
+			public delegate void glVertexAttrib4usv(uint index, ushort* v);
 
 			public delegate void glVertexAttribBinding(uint attribindex, uint bindingindex);
 
@@ -2744,95 +2588,95 @@ namespace GLDotNet
 
 			public delegate void glVertexAttribI1i(uint index, int x);
 
-			public delegate void glVertexAttribI1iv(uint index, int[] v);
+			public delegate void glVertexAttribI1iv(uint index, int* v);
 
 			public delegate void glVertexAttribI1ui(uint index, uint x);
 
-			public delegate void glVertexAttribI1uiv(uint index, uint[] v);
+			public delegate void glVertexAttribI1uiv(uint index, uint* v);
 
 			public delegate void glVertexAttribI2i(uint index, int x, int y);
 
-			public delegate void glVertexAttribI2iv(uint index, int[] v);
+			public delegate void glVertexAttribI2iv(uint index, int* v);
 
 			public delegate void glVertexAttribI2ui(uint index, uint x, uint y);
 
-			public delegate void glVertexAttribI2uiv(uint index, uint[] v);
+			public delegate void glVertexAttribI2uiv(uint index, uint* v);
 
 			public delegate void glVertexAttribI3i(uint index, int x, int y, int z);
 
-			public delegate void glVertexAttribI3iv(uint index, int[] v);
+			public delegate void glVertexAttribI3iv(uint index, int* v);
 
 			public delegate void glVertexAttribI3ui(uint index, uint x, uint y, uint z);
 
-			public delegate void glVertexAttribI3uiv(uint index, uint[] v);
+			public delegate void glVertexAttribI3uiv(uint index, uint* v);
 
-			public delegate void glVertexAttribI4bv(uint index, sbyte[] v);
+			public delegate void glVertexAttribI4bv(uint index, sbyte* v);
 
 			public delegate void glVertexAttribI4i(uint index, int x, int y, int z, int w);
 
-			public delegate void glVertexAttribI4iv(uint index, int[] v);
+			public delegate void glVertexAttribI4iv(uint index, int* v);
 
-			public delegate void glVertexAttribI4sv(uint index, short[] v);
+			public delegate void glVertexAttribI4sv(uint index, short* v);
 
-			public delegate void glVertexAttribI4ubv(uint index, byte[] v);
+			public delegate void glVertexAttribI4ubv(uint index, byte* v);
 
 			public delegate void glVertexAttribI4ui(uint index, uint x, uint y, uint z, uint w);
 
-			public delegate void glVertexAttribI4uiv(uint index, uint[] v);
+			public delegate void glVertexAttribI4uiv(uint index, uint* v);
 
-			public delegate void glVertexAttribI4usv(uint index, ushort[] v);
+			public delegate void glVertexAttribI4usv(uint index, ushort* v);
 
 			public delegate void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset);
 
-			public delegate void glVertexAttribIPointer(uint index, int size, uint type, int stride, IntPtr pointer);
+			public delegate void glVertexAttribIPointer(uint index, int size, uint type, int stride, void* pointer);
 
 			public delegate void glVertexAttribL1d(uint index, double x);
 
-			public delegate void glVertexAttribL1dv(uint index, double[] v);
+			public delegate void glVertexAttribL1dv(uint index, double* v);
 
 			public delegate void glVertexAttribL2d(uint index, double x, double y);
 
-			public delegate void glVertexAttribL2dv(uint index, double[] v);
+			public delegate void glVertexAttribL2dv(uint index, double* v);
 
 			public delegate void glVertexAttribL3d(uint index, double x, double y, double z);
 
-			public delegate void glVertexAttribL3dv(uint index, double[] v);
+			public delegate void glVertexAttribL3dv(uint index, double* v);
 
 			public delegate void glVertexAttribL4d(uint index, double x, double y, double z, double w);
 
-			public delegate void glVertexAttribL4dv(uint index, double[] v);
+			public delegate void glVertexAttribL4dv(uint index, double* v);
 
 			public delegate void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset);
 
-			public delegate void glVertexAttribLPointer(uint index, int size, uint type, int stride, IntPtr pointer);
+			public delegate void glVertexAttribLPointer(uint index, int size, uint type, int stride, void* pointer);
 
 			public delegate void glVertexAttribP1ui(uint index, uint type, bool normalized, uint value);
 
-			public delegate void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint[] value);
+			public delegate void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint* value);
 
 			public delegate void glVertexAttribP2ui(uint index, uint type, bool normalized, uint value);
 
-			public delegate void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint[] value);
+			public delegate void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint* value);
 
 			public delegate void glVertexAttribP3ui(uint index, uint type, bool normalized, uint value);
 
-			public delegate void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint[] value);
+			public delegate void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint* value);
 
 			public delegate void glVertexAttribP4ui(uint index, uint type, bool normalized, uint value);
 
-			public delegate void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint[] value);
+			public delegate void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint* value);
 
-			public delegate void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, IntPtr pointer);
+			public delegate void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, void* pointer);
 
 			public delegate void glVertexBindingDivisor(uint bindingindex, uint divisor);
 
 			public delegate void glViewport(int x, int y, int width, int height);
 
-			public delegate void glViewportArrayv(uint first, int count, float[] v);
+			public delegate void glViewportArrayv(uint first, int count, float* v);
 
 			public delegate void glViewportIndexedf(uint index, float x, float y, float w, float h);
 
-			public delegate void glViewportIndexedfv(uint index, float[] v);
+			public delegate void glViewportIndexedfv(uint index, float* v);
 
 			public delegate void glWaitSync(IntPtr sync, uint flags, ulong timeout);
 
@@ -3228,11 +3072,7 @@ namespace GLDotNet
 
 		private static Delegates.glGetBooleani_v _glGetBooleani_v;
 
-		private static Delegates.glGetBooleani_vByRef _glGetBooleani_vByRef;
-
 		private static Delegates.glGetBooleanv _glGetBooleanv;
-
-		private static Delegates.glGetBooleanvByRef _glGetBooleanvByRef;
 
 		private static Delegates.glGetBufferParameteri64v _glGetBufferParameteri64v;
 
@@ -3252,21 +3092,13 @@ namespace GLDotNet
 
 		private static Delegates.glGetDoublei_v _glGetDoublei_v;
 
-		private static Delegates.glGetDoublei_vByRef _glGetDoublei_vByRef;
-
 		private static Delegates.glGetDoublev _glGetDoublev;
-
-		private static Delegates.glGetDoublevByRef _glGetDoublevByRef;
 
 		private static Delegates.glGetError _glGetError;
 
 		private static Delegates.glGetFloati_v _glGetFloati_v;
 
-		private static Delegates.glGetFloati_vByRef _glGetFloati_vByRef;
-
 		private static Delegates.glGetFloatv _glGetFloatv;
-
-		private static Delegates.glGetFloatvByRef _glGetFloatvByRef;
 
 		private static Delegates.glGetFragDataIndex _glGetFragDataIndex;
 
@@ -3280,19 +3112,11 @@ namespace GLDotNet
 
 		private static Delegates.glGetInteger64i_v _glGetInteger64i_v;
 
-		private static Delegates.glGetInteger64i_vByRef _glGetInteger64i_vByRef;
-
 		private static Delegates.glGetInteger64v _glGetInteger64v;
-
-		private static Delegates.glGetInteger64vByRef _glGetInteger64vByRef;
 
 		private static Delegates.glGetIntegeri_v _glGetIntegeri_v;
 
-		private static Delegates.glGetIntegeri_vByRef _glGetIntegeri_vByRef;
-
 		private static Delegates.glGetIntegerv _glGetIntegerv;
-
-		private static Delegates.glGetIntegervByRef _glGetIntegervByRef;
 
 		private static Delegates.glGetInternalformati64v _glGetInternalformati64v;
 
@@ -3618,169 +3442,101 @@ namespace GLDotNet
 
 		private static Delegates.glProgramUniform1dv _glProgramUniform1dv;
 
-		private static Delegates.glProgramUniform1dvByRef _glProgramUniform1dvByRef;
-
 		private static Delegates.glProgramUniform1f _glProgramUniform1f;
 
 		private static Delegates.glProgramUniform1fv _glProgramUniform1fv;
-
-		private static Delegates.glProgramUniform1fvByRef _glProgramUniform1fvByRef;
 
 		private static Delegates.glProgramUniform1i _glProgramUniform1i;
 
 		private static Delegates.glProgramUniform1iv _glProgramUniform1iv;
 
-		private static Delegates.glProgramUniform1ivByRef _glProgramUniform1ivByRef;
-
 		private static Delegates.glProgramUniform1ui _glProgramUniform1ui;
 
 		private static Delegates.glProgramUniform1uiv _glProgramUniform1uiv;
-
-		private static Delegates.glProgramUniform1uivByRef _glProgramUniform1uivByRef;
 
 		private static Delegates.glProgramUniform2d _glProgramUniform2d;
 
 		private static Delegates.glProgramUniform2dv _glProgramUniform2dv;
 
-		private static Delegates.glProgramUniform2dvByRef _glProgramUniform2dvByRef;
-
 		private static Delegates.glProgramUniform2f _glProgramUniform2f;
 
 		private static Delegates.glProgramUniform2fv _glProgramUniform2fv;
-
-		private static Delegates.glProgramUniform2fvByRef _glProgramUniform2fvByRef;
 
 		private static Delegates.glProgramUniform2i _glProgramUniform2i;
 
 		private static Delegates.glProgramUniform2iv _glProgramUniform2iv;
 
-		private static Delegates.glProgramUniform2ivByRef _glProgramUniform2ivByRef;
-
 		private static Delegates.glProgramUniform2ui _glProgramUniform2ui;
 
 		private static Delegates.glProgramUniform2uiv _glProgramUniform2uiv;
-
-		private static Delegates.glProgramUniform2uivByRef _glProgramUniform2uivByRef;
 
 		private static Delegates.glProgramUniform3d _glProgramUniform3d;
 
 		private static Delegates.glProgramUniform3dv _glProgramUniform3dv;
 
-		private static Delegates.glProgramUniform3dvByRef _glProgramUniform3dvByRef;
-
 		private static Delegates.glProgramUniform3f _glProgramUniform3f;
 
 		private static Delegates.glProgramUniform3fv _glProgramUniform3fv;
-
-		private static Delegates.glProgramUniform3fvByRef _glProgramUniform3fvByRef;
 
 		private static Delegates.glProgramUniform3i _glProgramUniform3i;
 
 		private static Delegates.glProgramUniform3iv _glProgramUniform3iv;
 
-		private static Delegates.glProgramUniform3ivByRef _glProgramUniform3ivByRef;
-
 		private static Delegates.glProgramUniform3ui _glProgramUniform3ui;
 
 		private static Delegates.glProgramUniform3uiv _glProgramUniform3uiv;
-
-		private static Delegates.glProgramUniform3uivByRef _glProgramUniform3uivByRef;
 
 		private static Delegates.glProgramUniform4d _glProgramUniform4d;
 
 		private static Delegates.glProgramUniform4dv _glProgramUniform4dv;
 
-		private static Delegates.glProgramUniform4dvByRef _glProgramUniform4dvByRef;
-
 		private static Delegates.glProgramUniform4f _glProgramUniform4f;
 
 		private static Delegates.glProgramUniform4fv _glProgramUniform4fv;
-
-		private static Delegates.glProgramUniform4fvByRef _glProgramUniform4fvByRef;
 
 		private static Delegates.glProgramUniform4i _glProgramUniform4i;
 
 		private static Delegates.glProgramUniform4iv _glProgramUniform4iv;
 
-		private static Delegates.glProgramUniform4ivByRef _glProgramUniform4ivByRef;
-
 		private static Delegates.glProgramUniform4ui _glProgramUniform4ui;
 
 		private static Delegates.glProgramUniform4uiv _glProgramUniform4uiv;
 
-		private static Delegates.glProgramUniform4uivByRef _glProgramUniform4uivByRef;
-
 		private static Delegates.glProgramUniformMatrix2dv _glProgramUniformMatrix2dv;
-
-		private static Delegates.glProgramUniformMatrix2dvByRef _glProgramUniformMatrix2dvByRef;
 
 		private static Delegates.glProgramUniformMatrix2fv _glProgramUniformMatrix2fv;
 
-		private static Delegates.glProgramUniformMatrix2fvByRef _glProgramUniformMatrix2fvByRef;
-
 		private static Delegates.glProgramUniformMatrix2x3dv _glProgramUniformMatrix2x3dv;
-
-		private static Delegates.glProgramUniformMatrix2x3dvByRef _glProgramUniformMatrix2x3dvByRef;
 
 		private static Delegates.glProgramUniformMatrix2x3fv _glProgramUniformMatrix2x3fv;
 
-		private static Delegates.glProgramUniformMatrix2x3fvByRef _glProgramUniformMatrix2x3fvByRef;
-
 		private static Delegates.glProgramUniformMatrix2x4dv _glProgramUniformMatrix2x4dv;
-
-		private static Delegates.glProgramUniformMatrix2x4dvByRef _glProgramUniformMatrix2x4dvByRef;
 
 		private static Delegates.glProgramUniformMatrix2x4fv _glProgramUniformMatrix2x4fv;
 
-		private static Delegates.glProgramUniformMatrix2x4fvByRef _glProgramUniformMatrix2x4fvByRef;
-
 		private static Delegates.glProgramUniformMatrix3dv _glProgramUniformMatrix3dv;
-
-		private static Delegates.glProgramUniformMatrix3dvByRef _glProgramUniformMatrix3dvByRef;
 
 		private static Delegates.glProgramUniformMatrix3fv _glProgramUniformMatrix3fv;
 
-		private static Delegates.glProgramUniformMatrix3fvByRef _glProgramUniformMatrix3fvByRef;
-
 		private static Delegates.glProgramUniformMatrix3x2dv _glProgramUniformMatrix3x2dv;
-
-		private static Delegates.glProgramUniformMatrix3x2dvByRef _glProgramUniformMatrix3x2dvByRef;
 
 		private static Delegates.glProgramUniformMatrix3x2fv _glProgramUniformMatrix3x2fv;
 
-		private static Delegates.glProgramUniformMatrix3x2fvByRef _glProgramUniformMatrix3x2fvByRef;
-
 		private static Delegates.glProgramUniformMatrix3x4dv _glProgramUniformMatrix3x4dv;
-
-		private static Delegates.glProgramUniformMatrix3x4dvByRef _glProgramUniformMatrix3x4dvByRef;
 
 		private static Delegates.glProgramUniformMatrix3x4fv _glProgramUniformMatrix3x4fv;
 
-		private static Delegates.glProgramUniformMatrix3x4fvByRef _glProgramUniformMatrix3x4fvByRef;
-
 		private static Delegates.glProgramUniformMatrix4dv _glProgramUniformMatrix4dv;
-
-		private static Delegates.glProgramUniformMatrix4dvByRef _glProgramUniformMatrix4dvByRef;
 
 		private static Delegates.glProgramUniformMatrix4fv _glProgramUniformMatrix4fv;
 
-		private static Delegates.glProgramUniformMatrix4fvByRef _glProgramUniformMatrix4fvByRef;
-
 		private static Delegates.glProgramUniformMatrix4x2dv _glProgramUniformMatrix4x2dv;
-
-		private static Delegates.glProgramUniformMatrix4x2dvByRef _glProgramUniformMatrix4x2dvByRef;
 
 		private static Delegates.glProgramUniformMatrix4x2fv _glProgramUniformMatrix4x2fv;
 
-		private static Delegates.glProgramUniformMatrix4x2fvByRef _glProgramUniformMatrix4x2fvByRef;
-
 		private static Delegates.glProgramUniformMatrix4x3dv _glProgramUniformMatrix4x3dv;
 
-		private static Delegates.glProgramUniformMatrix4x3dvByRef _glProgramUniformMatrix4x3dvByRef;
-
 		private static Delegates.glProgramUniformMatrix4x3fv _glProgramUniformMatrix4x3fv;
-
-		private static Delegates.glProgramUniformMatrix4x3fvByRef _glProgramUniformMatrix4x3fvByRef;
 
 		private static Delegates.glProvokingVertex _glProvokingVertex;
 
@@ -3932,171 +3688,103 @@ namespace GLDotNet
 
 		private static Delegates.glUniform1dv _glUniform1dv;
 
-		private static Delegates.glUniform1dvByRef _glUniform1dvByRef;
-
 		private static Delegates.glUniform1f _glUniform1f;
 
 		private static Delegates.glUniform1fv _glUniform1fv;
-
-		private static Delegates.glUniform1fvByRef _glUniform1fvByRef;
 
 		private static Delegates.glUniform1i _glUniform1i;
 
 		private static Delegates.glUniform1iv _glUniform1iv;
 
-		private static Delegates.glUniform1ivByRef _glUniform1ivByRef;
-
 		private static Delegates.glUniform1ui _glUniform1ui;
 
 		private static Delegates.glUniform1uiv _glUniform1uiv;
-
-		private static Delegates.glUniform1uivByRef _glUniform1uivByRef;
 
 		private static Delegates.glUniform2d _glUniform2d;
 
 		private static Delegates.glUniform2dv _glUniform2dv;
 
-		private static Delegates.glUniform2dvByRef _glUniform2dvByRef;
-
 		private static Delegates.glUniform2f _glUniform2f;
 
 		private static Delegates.glUniform2fv _glUniform2fv;
-
-		private static Delegates.glUniform2fvByRef _glUniform2fvByRef;
 
 		private static Delegates.glUniform2i _glUniform2i;
 
 		private static Delegates.glUniform2iv _glUniform2iv;
 
-		private static Delegates.glUniform2ivByRef _glUniform2ivByRef;
-
 		private static Delegates.glUniform2ui _glUniform2ui;
 
 		private static Delegates.glUniform2uiv _glUniform2uiv;
-
-		private static Delegates.glUniform2uivByRef _glUniform2uivByRef;
 
 		private static Delegates.glUniform3d _glUniform3d;
 
 		private static Delegates.glUniform3dv _glUniform3dv;
 
-		private static Delegates.glUniform3dvByRef _glUniform3dvByRef;
-
 		private static Delegates.glUniform3f _glUniform3f;
 
 		private static Delegates.glUniform3fv _glUniform3fv;
-
-		private static Delegates.glUniform3fvByRef _glUniform3fvByRef;
 
 		private static Delegates.glUniform3i _glUniform3i;
 
 		private static Delegates.glUniform3iv _glUniform3iv;
 
-		private static Delegates.glUniform3ivByRef _glUniform3ivByRef;
-
 		private static Delegates.glUniform3ui _glUniform3ui;
 
 		private static Delegates.glUniform3uiv _glUniform3uiv;
-
-		private static Delegates.glUniform3uivByRef _glUniform3uivByRef;
 
 		private static Delegates.glUniform4d _glUniform4d;
 
 		private static Delegates.glUniform4dv _glUniform4dv;
 
-		private static Delegates.glUniform4dvByRef _glUniform4dvByRef;
-
 		private static Delegates.glUniform4f _glUniform4f;
 
 		private static Delegates.glUniform4fv _glUniform4fv;
-
-		private static Delegates.glUniform4fvByRef _glUniform4fvByRef;
 
 		private static Delegates.glUniform4i _glUniform4i;
 
 		private static Delegates.glUniform4iv _glUniform4iv;
 
-		private static Delegates.glUniform4ivByRef _glUniform4ivByRef;
-
 		private static Delegates.glUniform4ui _glUniform4ui;
 
 		private static Delegates.glUniform4uiv _glUniform4uiv;
-
-		private static Delegates.glUniform4uivByRef _glUniform4uivByRef;
 
 		private static Delegates.glUniformBlockBinding _glUniformBlockBinding;
 
 		private static Delegates.glUniformMatrix2dv _glUniformMatrix2dv;
 
-		private static Delegates.glUniformMatrix2dvByRef _glUniformMatrix2dvByRef;
-
 		private static Delegates.glUniformMatrix2fv _glUniformMatrix2fv;
-
-		private static Delegates.glUniformMatrix2fvByRef _glUniformMatrix2fvByRef;
 
 		private static Delegates.glUniformMatrix2x3dv _glUniformMatrix2x3dv;
 
-		private static Delegates.glUniformMatrix2x3dvByRef _glUniformMatrix2x3dvByRef;
-
 		private static Delegates.glUniformMatrix2x3fv _glUniformMatrix2x3fv;
-
-		private static Delegates.glUniformMatrix2x3fvByRef _glUniformMatrix2x3fvByRef;
 
 		private static Delegates.glUniformMatrix2x4dv _glUniformMatrix2x4dv;
 
-		private static Delegates.glUniformMatrix2x4dvByRef _glUniformMatrix2x4dvByRef;
-
 		private static Delegates.glUniformMatrix2x4fv _glUniformMatrix2x4fv;
-
-		private static Delegates.glUniformMatrix2x4fvByRef _glUniformMatrix2x4fvByRef;
 
 		private static Delegates.glUniformMatrix3dv _glUniformMatrix3dv;
 
-		private static Delegates.glUniformMatrix3dvByRef _glUniformMatrix3dvByRef;
-
 		private static Delegates.glUniformMatrix3fv _glUniformMatrix3fv;
-
-		private static Delegates.glUniformMatrix3fvByRef _glUniformMatrix3fvByRef;
 
 		private static Delegates.glUniformMatrix3x2dv _glUniformMatrix3x2dv;
 
-		private static Delegates.glUniformMatrix3x2dvByRef _glUniformMatrix3x2dvByRef;
-
 		private static Delegates.glUniformMatrix3x2fv _glUniformMatrix3x2fv;
-
-		private static Delegates.glUniformMatrix3x2fvByRef _glUniformMatrix3x2fvByRef;
 
 		private static Delegates.glUniformMatrix3x4dv _glUniformMatrix3x4dv;
 
-		private static Delegates.glUniformMatrix3x4dvByRef _glUniformMatrix3x4dvByRef;
-
 		private static Delegates.glUniformMatrix3x4fv _glUniformMatrix3x4fv;
-
-		private static Delegates.glUniformMatrix3x4fvByRef _glUniformMatrix3x4fvByRef;
 
 		private static Delegates.glUniformMatrix4dv _glUniformMatrix4dv;
 
-		private static Delegates.glUniformMatrix4dvByRef _glUniformMatrix4dvByRef;
-
 		private static Delegates.glUniformMatrix4fv _glUniformMatrix4fv;
-
-		private static Delegates.glUniformMatrix4fvByRef _glUniformMatrix4fvByRef;
 
 		private static Delegates.glUniformMatrix4x2dv _glUniformMatrix4x2dv;
 
-		private static Delegates.glUniformMatrix4x2dvByRef _glUniformMatrix4x2dvByRef;
-
 		private static Delegates.glUniformMatrix4x2fv _glUniformMatrix4x2fv;
-
-		private static Delegates.glUniformMatrix4x2fvByRef _glUniformMatrix4x2fvByRef;
 
 		private static Delegates.glUniformMatrix4x3dv _glUniformMatrix4x3dv;
 
-		private static Delegates.glUniformMatrix4x3dvByRef _glUniformMatrix4x3dvByRef;
-
 		private static Delegates.glUniformMatrix4x3fv _glUniformMatrix4x3fv;
-
-		private static Delegates.glUniformMatrix4x3fvByRef _glUniformMatrix4x3fvByRef;
 
 		private static Delegates.glUniformSubroutinesuiv _glUniformSubroutinesuiv;
 
@@ -4323,14 +4011,10 @@ namespace GLDotNet
 				_glFlush = (Delegates.glFlush)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlush"), typeof(Delegates.glFlush));
 				_glFrontFace = (Delegates.glFrontFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFrontFace"), typeof(Delegates.glFrontFace));
 				_glGetBooleanv = (Delegates.glGetBooleanv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanv));
-				_glGetBooleanvByRef = (Delegates.glGetBooleanvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanvByRef));
 				_glGetDoublev = (Delegates.glGetDoublev)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublev));
-				_glGetDoublevByRef = (Delegates.glGetDoublevByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublevByRef));
 				_glGetError = (Delegates.glGetError)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetError"), typeof(Delegates.glGetError));
 				_glGetFloatv = (Delegates.glGetFloatv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatv));
-				_glGetFloatvByRef = (Delegates.glGetFloatvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatvByRef));
 				_glGetIntegerv = (Delegates.glGetIntegerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegerv));
-				_glGetIntegervByRef = (Delegates.glGetIntegervByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegervByRef));
 				_glGetString = (Delegates.glGetString)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetString"), typeof(Delegates.glGetString));
 				_glGetTexImage = (Delegates.glGetTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexImage"), typeof(Delegates.glGetTexImage));
 				_glGetTexLevelParameterfv = (Delegates.glGetTexLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameterfv"), typeof(Delegates.glGetTexLevelParameterfv));
@@ -4474,34 +4158,23 @@ namespace GLDotNet
 				_glStencilOpSeparate = (Delegates.glStencilOpSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilOpSeparate"), typeof(Delegates.glStencilOpSeparate));
 				_glUniform1f = (Delegates.glUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1f"), typeof(Delegates.glUniform1f));
 				_glUniform1fv = (Delegates.glUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1fv"), typeof(Delegates.glUniform1fv));
-				_glUniform1fvByRef = (Delegates.glUniform1fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1fv"), typeof(Delegates.glUniform1fvByRef));
 				_glUniform1i = (Delegates.glUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1i"), typeof(Delegates.glUniform1i));
 				_glUniform1iv = (Delegates.glUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1iv"), typeof(Delegates.glUniform1iv));
-				_glUniform1ivByRef = (Delegates.glUniform1ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1iv"), typeof(Delegates.glUniform1ivByRef));
 				_glUniform2f = (Delegates.glUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2f"), typeof(Delegates.glUniform2f));
 				_glUniform2fv = (Delegates.glUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2fv"), typeof(Delegates.glUniform2fv));
-				_glUniform2fvByRef = (Delegates.glUniform2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2fv"), typeof(Delegates.glUniform2fvByRef));
 				_glUniform2i = (Delegates.glUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2i"), typeof(Delegates.glUniform2i));
 				_glUniform2iv = (Delegates.glUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2iv"), typeof(Delegates.glUniform2iv));
-				_glUniform2ivByRef = (Delegates.glUniform2ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2iv"), typeof(Delegates.glUniform2ivByRef));
 				_glUniform3f = (Delegates.glUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3f"), typeof(Delegates.glUniform3f));
 				_glUniform3fv = (Delegates.glUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3fv"), typeof(Delegates.glUniform3fv));
-				_glUniform3fvByRef = (Delegates.glUniform3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3fv"), typeof(Delegates.glUniform3fvByRef));
 				_glUniform3i = (Delegates.glUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3i"), typeof(Delegates.glUniform3i));
 				_glUniform3iv = (Delegates.glUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3iv"), typeof(Delegates.glUniform3iv));
-				_glUniform3ivByRef = (Delegates.glUniform3ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3iv"), typeof(Delegates.glUniform3ivByRef));
 				_glUniform4f = (Delegates.glUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4f"), typeof(Delegates.glUniform4f));
 				_glUniform4fv = (Delegates.glUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4fv"), typeof(Delegates.glUniform4fv));
-				_glUniform4fvByRef = (Delegates.glUniform4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4fv"), typeof(Delegates.glUniform4fvByRef));
 				_glUniform4i = (Delegates.glUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4i"), typeof(Delegates.glUniform4i));
 				_glUniform4iv = (Delegates.glUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4iv"), typeof(Delegates.glUniform4iv));
-				_glUniform4ivByRef = (Delegates.glUniform4ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4iv"), typeof(Delegates.glUniform4ivByRef));
 				_glUniformMatrix2fv = (Delegates.glUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2fv"), typeof(Delegates.glUniformMatrix2fv));
-				_glUniformMatrix2fvByRef = (Delegates.glUniformMatrix2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2fv"), typeof(Delegates.glUniformMatrix2fvByRef));
 				_glUniformMatrix3fv = (Delegates.glUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3fv"), typeof(Delegates.glUniformMatrix3fv));
-				_glUniformMatrix3fvByRef = (Delegates.glUniformMatrix3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3fv"), typeof(Delegates.glUniformMatrix3fvByRef));
 				_glUniformMatrix4fv = (Delegates.glUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4fv"), typeof(Delegates.glUniformMatrix4fv));
-				_glUniformMatrix4fvByRef = (Delegates.glUniformMatrix4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4fv"), typeof(Delegates.glUniformMatrix4fvByRef));
 				_glUseProgram = (Delegates.glUseProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUseProgram"), typeof(Delegates.glUseProgram));
 				_glValidateProgram = (Delegates.glValidateProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glValidateProgram"), typeof(Delegates.glValidateProgram));
 				_glVertexAttrib1d = (Delegates.glVertexAttrib1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1d"), typeof(Delegates.glVertexAttrib1d));
@@ -4546,17 +4219,11 @@ namespace GLDotNet
 			if (versionMajor > 2 || (versionMajor == 2 && versionMinor >= 1))
 			{
 				_glUniformMatrix2x3fv = (Delegates.glUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3fv"), typeof(Delegates.glUniformMatrix2x3fv));
-				_glUniformMatrix2x3fvByRef = (Delegates.glUniformMatrix2x3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3fv"), typeof(Delegates.glUniformMatrix2x3fvByRef));
 				_glUniformMatrix2x4fv = (Delegates.glUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4fv"), typeof(Delegates.glUniformMatrix2x4fv));
-				_glUniformMatrix2x4fvByRef = (Delegates.glUniformMatrix2x4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4fv"), typeof(Delegates.glUniformMatrix2x4fvByRef));
 				_glUniformMatrix3x2fv = (Delegates.glUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2fv"), typeof(Delegates.glUniformMatrix3x2fv));
-				_glUniformMatrix3x2fvByRef = (Delegates.glUniformMatrix3x2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2fv"), typeof(Delegates.glUniformMatrix3x2fvByRef));
 				_glUniformMatrix3x4fv = (Delegates.glUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4fv"), typeof(Delegates.glUniformMatrix3x4fv));
-				_glUniformMatrix3x4fvByRef = (Delegates.glUniformMatrix3x4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4fv"), typeof(Delegates.glUniformMatrix3x4fvByRef));
 				_glUniformMatrix4x2fv = (Delegates.glUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2fv"), typeof(Delegates.glUniformMatrix4x2fv));
-				_glUniformMatrix4x2fvByRef = (Delegates.glUniformMatrix4x2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2fv"), typeof(Delegates.glUniformMatrix4x2fvByRef));
 				_glUniformMatrix4x3fv = (Delegates.glUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3fv"), typeof(Delegates.glUniformMatrix4x3fv));
-				_glUniformMatrix4x3fvByRef = (Delegates.glUniformMatrix4x3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3fv"), typeof(Delegates.glUniformMatrix4x3fvByRef));
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 0))
@@ -4595,11 +4262,9 @@ namespace GLDotNet
 				_glGenRenderbuffers = (Delegates.glGenRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenRenderbuffers"), typeof(Delegates.glGenRenderbuffers));
 				_glGenVertexArrays = (Delegates.glGenVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenVertexArrays"), typeof(Delegates.glGenVertexArrays));
 				_glGetBooleani_v = (Delegates.glGetBooleani_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_v));
-				_glGetBooleani_vByRef = (Delegates.glGetBooleani_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_vByRef));
 				_glGetFragDataLocation = (Delegates.glGetFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataLocation"), typeof(Delegates.glGetFragDataLocation));
 				_glGetFramebufferAttachmentParameteriv = (Delegates.glGetFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferAttachmentParameteriv"), typeof(Delegates.glGetFramebufferAttachmentParameteriv));
 				_glGetIntegeri_v = (Delegates.glGetIntegeri_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_v));
-				_glGetIntegeri_vByRef = (Delegates.glGetIntegeri_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_vByRef));
 				_glGetRenderbufferParameteriv = (Delegates.glGetRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetRenderbufferParameteriv"), typeof(Delegates.glGetRenderbufferParameteriv));
 				_glGetStringi = (Delegates.glGetStringi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetStringi"), typeof(Delegates.glGetStringi));
 				_glGetTexParameterIiv = (Delegates.glGetTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIiv"), typeof(Delegates.glGetTexParameterIiv));
@@ -4620,16 +4285,12 @@ namespace GLDotNet
 				_glTransformFeedbackVaryings = (Delegates.glTransformFeedbackVaryings)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackVaryings"), typeof(Delegates.glTransformFeedbackVaryings));
 				_glUniform1ui = (Delegates.glUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1ui"), typeof(Delegates.glUniform1ui));
 				_glUniform1uiv = (Delegates.glUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1uiv"), typeof(Delegates.glUniform1uiv));
-				_glUniform1uivByRef = (Delegates.glUniform1uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1uiv"), typeof(Delegates.glUniform1uivByRef));
 				_glUniform2ui = (Delegates.glUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2ui"), typeof(Delegates.glUniform2ui));
 				_glUniform2uiv = (Delegates.glUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2uiv"), typeof(Delegates.glUniform2uiv));
-				_glUniform2uivByRef = (Delegates.glUniform2uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2uiv"), typeof(Delegates.glUniform2uivByRef));
 				_glUniform3ui = (Delegates.glUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3ui"), typeof(Delegates.glUniform3ui));
 				_glUniform3uiv = (Delegates.glUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3uiv"), typeof(Delegates.glUniform3uiv));
-				_glUniform3uivByRef = (Delegates.glUniform3uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3uiv"), typeof(Delegates.glUniform3uivByRef));
 				_glUniform4ui = (Delegates.glUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4ui"), typeof(Delegates.glUniform4ui));
 				_glUniform4uiv = (Delegates.glUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4uiv"), typeof(Delegates.glUniform4uiv));
-				_glUniform4uivByRef = (Delegates.glUniform4uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4uiv"), typeof(Delegates.glUniform4uivByRef));
 				_glVertexAttribI1i = (Delegates.glVertexAttribI1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1i"), typeof(Delegates.glVertexAttribI1i));
 				_glVertexAttribI1iv = (Delegates.glVertexAttribI1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1iv"), typeof(Delegates.glVertexAttribI1iv));
 				_glVertexAttribI1ui = (Delegates.glVertexAttribI1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1ui"), typeof(Delegates.glVertexAttribI1ui));
@@ -4680,9 +4341,7 @@ namespace GLDotNet
 				_glFramebufferTexture = (Delegates.glFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture"), typeof(Delegates.glFramebufferTexture));
 				_glGetBufferParameteri64v = (Delegates.glGetBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteri64v"), typeof(Delegates.glGetBufferParameteri64v));
 				_glGetInteger64i_v = (Delegates.glGetInteger64i_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_v));
-				_glGetInteger64i_vByRef = (Delegates.glGetInteger64i_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_vByRef));
 				_glGetInteger64v = (Delegates.glGetInteger64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64v));
-				_glGetInteger64vByRef = (Delegates.glGetInteger64vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64vByRef));
 				_glGetMultisamplefv = (Delegates.glGetMultisamplefv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetMultisamplefv"), typeof(Delegates.glGetMultisamplefv));
 				_glGetSynciv = (Delegates.glGetSynciv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSynciv"), typeof(Delegates.glGetSynciv));
 				_glIsSync = (Delegates.glIsSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSync"), typeof(Delegates.glIsSync));
@@ -4758,34 +4417,21 @@ namespace GLDotNet
 				_glResumeTransformFeedback = (Delegates.glResumeTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glResumeTransformFeedback"), typeof(Delegates.glResumeTransformFeedback));
 				_glUniform1d = (Delegates.glUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1d"), typeof(Delegates.glUniform1d));
 				_glUniform1dv = (Delegates.glUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1dv"), typeof(Delegates.glUniform1dv));
-				_glUniform1dvByRef = (Delegates.glUniform1dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1dv"), typeof(Delegates.glUniform1dvByRef));
 				_glUniform2d = (Delegates.glUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2d"), typeof(Delegates.glUniform2d));
 				_glUniform2dv = (Delegates.glUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2dv"), typeof(Delegates.glUniform2dv));
-				_glUniform2dvByRef = (Delegates.glUniform2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2dv"), typeof(Delegates.glUniform2dvByRef));
 				_glUniform3d = (Delegates.glUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3d"), typeof(Delegates.glUniform3d));
 				_glUniform3dv = (Delegates.glUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3dv"), typeof(Delegates.glUniform3dv));
-				_glUniform3dvByRef = (Delegates.glUniform3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3dv"), typeof(Delegates.glUniform3dvByRef));
 				_glUniform4d = (Delegates.glUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4d"), typeof(Delegates.glUniform4d));
 				_glUniform4dv = (Delegates.glUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4dv"), typeof(Delegates.glUniform4dv));
-				_glUniform4dvByRef = (Delegates.glUniform4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4dv"), typeof(Delegates.glUniform4dvByRef));
 				_glUniformMatrix2dv = (Delegates.glUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2dv"), typeof(Delegates.glUniformMatrix2dv));
-				_glUniformMatrix2dvByRef = (Delegates.glUniformMatrix2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2dv"), typeof(Delegates.glUniformMatrix2dvByRef));
 				_glUniformMatrix2x3dv = (Delegates.glUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3dv"), typeof(Delegates.glUniformMatrix2x3dv));
-				_glUniformMatrix2x3dvByRef = (Delegates.glUniformMatrix2x3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3dv"), typeof(Delegates.glUniformMatrix2x3dvByRef));
 				_glUniformMatrix2x4dv = (Delegates.glUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4dv"), typeof(Delegates.glUniformMatrix2x4dv));
-				_glUniformMatrix2x4dvByRef = (Delegates.glUniformMatrix2x4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4dv"), typeof(Delegates.glUniformMatrix2x4dvByRef));
 				_glUniformMatrix3dv = (Delegates.glUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3dv"), typeof(Delegates.glUniformMatrix3dv));
-				_glUniformMatrix3dvByRef = (Delegates.glUniformMatrix3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3dv"), typeof(Delegates.glUniformMatrix3dvByRef));
 				_glUniformMatrix3x2dv = (Delegates.glUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2dv"), typeof(Delegates.glUniformMatrix3x2dv));
-				_glUniformMatrix3x2dvByRef = (Delegates.glUniformMatrix3x2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2dv"), typeof(Delegates.glUniformMatrix3x2dvByRef));
 				_glUniformMatrix3x4dv = (Delegates.glUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4dv"), typeof(Delegates.glUniformMatrix3x4dv));
-				_glUniformMatrix3x4dvByRef = (Delegates.glUniformMatrix3x4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4dv"), typeof(Delegates.glUniformMatrix3x4dvByRef));
 				_glUniformMatrix4dv = (Delegates.glUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4dv"), typeof(Delegates.glUniformMatrix4dv));
-				_glUniformMatrix4dvByRef = (Delegates.glUniformMatrix4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4dv"), typeof(Delegates.glUniformMatrix4dvByRef));
 				_glUniformMatrix4x2dv = (Delegates.glUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2dv"), typeof(Delegates.glUniformMatrix4x2dv));
-				_glUniformMatrix4x2dvByRef = (Delegates.glUniformMatrix4x2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2dv"), typeof(Delegates.glUniformMatrix4x2dvByRef));
 				_glUniformMatrix4x3dv = (Delegates.glUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3dv"), typeof(Delegates.glUniformMatrix4x3dv));
-				_glUniformMatrix4x3dvByRef = (Delegates.glUniformMatrix4x3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3dv"), typeof(Delegates.glUniformMatrix4x3dvByRef));
 				_glUniformSubroutinesuiv = (Delegates.glUniformSubroutinesuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformSubroutinesuiv"), typeof(Delegates.glUniformSubroutinesuiv));
 			}
 
@@ -4801,9 +4447,7 @@ namespace GLDotNet
 				_glDepthRangeIndexed = (Delegates.glDepthRangeIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeIndexed"), typeof(Delegates.glDepthRangeIndexed));
 				_glGenProgramPipelines = (Delegates.glGenProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenProgramPipelines"), typeof(Delegates.glGenProgramPipelines));
 				_glGetDoublei_v = (Delegates.glGetDoublei_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_v));
-				_glGetDoublei_vByRef = (Delegates.glGetDoublei_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_vByRef));
 				_glGetFloati_v = (Delegates.glGetFloati_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_v));
-				_glGetFloati_vByRef = (Delegates.glGetFloati_vByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_vByRef));
 				_glGetProgramBinary = (Delegates.glGetProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramBinary"), typeof(Delegates.glGetProgramBinary));
 				_glGetProgramPipelineInfoLog = (Delegates.glGetProgramPipelineInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineInfoLog"), typeof(Delegates.glGetProgramPipelineInfoLog));
 				_glGetProgramPipelineiv = (Delegates.glGetProgramPipelineiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineiv"), typeof(Delegates.glGetProgramPipelineiv));
@@ -4814,88 +4458,54 @@ namespace GLDotNet
 				_glProgramParameteri = (Delegates.glProgramParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramParameteri"), typeof(Delegates.glProgramParameteri));
 				_glProgramUniform1d = (Delegates.glProgramUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1d"), typeof(Delegates.glProgramUniform1d));
 				_glProgramUniform1dv = (Delegates.glProgramUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1dv"), typeof(Delegates.glProgramUniform1dv));
-				_glProgramUniform1dvByRef = (Delegates.glProgramUniform1dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1dv"), typeof(Delegates.glProgramUniform1dvByRef));
 				_glProgramUniform1f = (Delegates.glProgramUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1f"), typeof(Delegates.glProgramUniform1f));
 				_glProgramUniform1fv = (Delegates.glProgramUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1fv"), typeof(Delegates.glProgramUniform1fv));
-				_glProgramUniform1fvByRef = (Delegates.glProgramUniform1fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1fv"), typeof(Delegates.glProgramUniform1fvByRef));
 				_glProgramUniform1i = (Delegates.glProgramUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1i"), typeof(Delegates.glProgramUniform1i));
 				_glProgramUniform1iv = (Delegates.glProgramUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1iv"), typeof(Delegates.glProgramUniform1iv));
-				_glProgramUniform1ivByRef = (Delegates.glProgramUniform1ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1iv"), typeof(Delegates.glProgramUniform1ivByRef));
 				_glProgramUniform1ui = (Delegates.glProgramUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1ui"), typeof(Delegates.glProgramUniform1ui));
 				_glProgramUniform1uiv = (Delegates.glProgramUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1uiv"), typeof(Delegates.glProgramUniform1uiv));
-				_glProgramUniform1uivByRef = (Delegates.glProgramUniform1uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1uiv"), typeof(Delegates.glProgramUniform1uivByRef));
 				_glProgramUniform2d = (Delegates.glProgramUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2d"), typeof(Delegates.glProgramUniform2d));
 				_glProgramUniform2dv = (Delegates.glProgramUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2dv"), typeof(Delegates.glProgramUniform2dv));
-				_glProgramUniform2dvByRef = (Delegates.glProgramUniform2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2dv"), typeof(Delegates.glProgramUniform2dvByRef));
 				_glProgramUniform2f = (Delegates.glProgramUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2f"), typeof(Delegates.glProgramUniform2f));
 				_glProgramUniform2fv = (Delegates.glProgramUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2fv"), typeof(Delegates.glProgramUniform2fv));
-				_glProgramUniform2fvByRef = (Delegates.glProgramUniform2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2fv"), typeof(Delegates.glProgramUniform2fvByRef));
 				_glProgramUniform2i = (Delegates.glProgramUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2i"), typeof(Delegates.glProgramUniform2i));
 				_glProgramUniform2iv = (Delegates.glProgramUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2iv"), typeof(Delegates.glProgramUniform2iv));
-				_glProgramUniform2ivByRef = (Delegates.glProgramUniform2ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2iv"), typeof(Delegates.glProgramUniform2ivByRef));
 				_glProgramUniform2ui = (Delegates.glProgramUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2ui"), typeof(Delegates.glProgramUniform2ui));
 				_glProgramUniform2uiv = (Delegates.glProgramUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2uiv"), typeof(Delegates.glProgramUniform2uiv));
-				_glProgramUniform2uivByRef = (Delegates.glProgramUniform2uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2uiv"), typeof(Delegates.glProgramUniform2uivByRef));
 				_glProgramUniform3d = (Delegates.glProgramUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3d"), typeof(Delegates.glProgramUniform3d));
 				_glProgramUniform3dv = (Delegates.glProgramUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3dv"), typeof(Delegates.glProgramUniform3dv));
-				_glProgramUniform3dvByRef = (Delegates.glProgramUniform3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3dv"), typeof(Delegates.glProgramUniform3dvByRef));
 				_glProgramUniform3f = (Delegates.glProgramUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3f"), typeof(Delegates.glProgramUniform3f));
 				_glProgramUniform3fv = (Delegates.glProgramUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3fv"), typeof(Delegates.glProgramUniform3fv));
-				_glProgramUniform3fvByRef = (Delegates.glProgramUniform3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3fv"), typeof(Delegates.glProgramUniform3fvByRef));
 				_glProgramUniform3i = (Delegates.glProgramUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3i"), typeof(Delegates.glProgramUniform3i));
 				_glProgramUniform3iv = (Delegates.glProgramUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3iv"), typeof(Delegates.glProgramUniform3iv));
-				_glProgramUniform3ivByRef = (Delegates.glProgramUniform3ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3iv"), typeof(Delegates.glProgramUniform3ivByRef));
 				_glProgramUniform3ui = (Delegates.glProgramUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3ui"), typeof(Delegates.glProgramUniform3ui));
 				_glProgramUniform3uiv = (Delegates.glProgramUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3uiv"), typeof(Delegates.glProgramUniform3uiv));
-				_glProgramUniform3uivByRef = (Delegates.glProgramUniform3uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3uiv"), typeof(Delegates.glProgramUniform3uivByRef));
 				_glProgramUniform4d = (Delegates.glProgramUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4d"), typeof(Delegates.glProgramUniform4d));
 				_glProgramUniform4dv = (Delegates.glProgramUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4dv"), typeof(Delegates.glProgramUniform4dv));
-				_glProgramUniform4dvByRef = (Delegates.glProgramUniform4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4dv"), typeof(Delegates.glProgramUniform4dvByRef));
 				_glProgramUniform4f = (Delegates.glProgramUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4f"), typeof(Delegates.glProgramUniform4f));
 				_glProgramUniform4fv = (Delegates.glProgramUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4fv"), typeof(Delegates.glProgramUniform4fv));
-				_glProgramUniform4fvByRef = (Delegates.glProgramUniform4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4fv"), typeof(Delegates.glProgramUniform4fvByRef));
 				_glProgramUniform4i = (Delegates.glProgramUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4i"), typeof(Delegates.glProgramUniform4i));
 				_glProgramUniform4iv = (Delegates.glProgramUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4iv"), typeof(Delegates.glProgramUniform4iv));
-				_glProgramUniform4ivByRef = (Delegates.glProgramUniform4ivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4iv"), typeof(Delegates.glProgramUniform4ivByRef));
 				_glProgramUniform4ui = (Delegates.glProgramUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4ui"), typeof(Delegates.glProgramUniform4ui));
 				_glProgramUniform4uiv = (Delegates.glProgramUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4uiv"), typeof(Delegates.glProgramUniform4uiv));
-				_glProgramUniform4uivByRef = (Delegates.glProgramUniform4uivByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4uiv"), typeof(Delegates.glProgramUniform4uivByRef));
 				_glProgramUniformMatrix2dv = (Delegates.glProgramUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2dv"), typeof(Delegates.glProgramUniformMatrix2dv));
-				_glProgramUniformMatrix2dvByRef = (Delegates.glProgramUniformMatrix2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2dv"), typeof(Delegates.glProgramUniformMatrix2dvByRef));
 				_glProgramUniformMatrix2fv = (Delegates.glProgramUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2fv"), typeof(Delegates.glProgramUniformMatrix2fv));
-				_glProgramUniformMatrix2fvByRef = (Delegates.glProgramUniformMatrix2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2fv"), typeof(Delegates.glProgramUniformMatrix2fvByRef));
 				_glProgramUniformMatrix2x3dv = (Delegates.glProgramUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3dv"), typeof(Delegates.glProgramUniformMatrix2x3dv));
-				_glProgramUniformMatrix2x3dvByRef = (Delegates.glProgramUniformMatrix2x3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3dv"), typeof(Delegates.glProgramUniformMatrix2x3dvByRef));
 				_glProgramUniformMatrix2x3fv = (Delegates.glProgramUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3fv"), typeof(Delegates.glProgramUniformMatrix2x3fv));
-				_glProgramUniformMatrix2x3fvByRef = (Delegates.glProgramUniformMatrix2x3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3fv"), typeof(Delegates.glProgramUniformMatrix2x3fvByRef));
 				_glProgramUniformMatrix2x4dv = (Delegates.glProgramUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4dv"), typeof(Delegates.glProgramUniformMatrix2x4dv));
-				_glProgramUniformMatrix2x4dvByRef = (Delegates.glProgramUniformMatrix2x4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4dv"), typeof(Delegates.glProgramUniformMatrix2x4dvByRef));
 				_glProgramUniformMatrix2x4fv = (Delegates.glProgramUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4fv"), typeof(Delegates.glProgramUniformMatrix2x4fv));
-				_glProgramUniformMatrix2x4fvByRef = (Delegates.glProgramUniformMatrix2x4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4fv"), typeof(Delegates.glProgramUniformMatrix2x4fvByRef));
 				_glProgramUniformMatrix3dv = (Delegates.glProgramUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3dv"), typeof(Delegates.glProgramUniformMatrix3dv));
-				_glProgramUniformMatrix3dvByRef = (Delegates.glProgramUniformMatrix3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3dv"), typeof(Delegates.glProgramUniformMatrix3dvByRef));
 				_glProgramUniformMatrix3fv = (Delegates.glProgramUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3fv"), typeof(Delegates.glProgramUniformMatrix3fv));
-				_glProgramUniformMatrix3fvByRef = (Delegates.glProgramUniformMatrix3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3fv"), typeof(Delegates.glProgramUniformMatrix3fvByRef));
 				_glProgramUniformMatrix3x2dv = (Delegates.glProgramUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2dv"), typeof(Delegates.glProgramUniformMatrix3x2dv));
-				_glProgramUniformMatrix3x2dvByRef = (Delegates.glProgramUniformMatrix3x2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2dv"), typeof(Delegates.glProgramUniformMatrix3x2dvByRef));
 				_glProgramUniformMatrix3x2fv = (Delegates.glProgramUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2fv"), typeof(Delegates.glProgramUniformMatrix3x2fv));
-				_glProgramUniformMatrix3x2fvByRef = (Delegates.glProgramUniformMatrix3x2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2fv"), typeof(Delegates.glProgramUniformMatrix3x2fvByRef));
 				_glProgramUniformMatrix3x4dv = (Delegates.glProgramUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4dv"), typeof(Delegates.glProgramUniformMatrix3x4dv));
-				_glProgramUniformMatrix3x4dvByRef = (Delegates.glProgramUniformMatrix3x4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4dv"), typeof(Delegates.glProgramUniformMatrix3x4dvByRef));
 				_glProgramUniformMatrix3x4fv = (Delegates.glProgramUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4fv"), typeof(Delegates.glProgramUniformMatrix3x4fv));
-				_glProgramUniformMatrix3x4fvByRef = (Delegates.glProgramUniformMatrix3x4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4fv"), typeof(Delegates.glProgramUniformMatrix3x4fvByRef));
 				_glProgramUniformMatrix4dv = (Delegates.glProgramUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4dv"), typeof(Delegates.glProgramUniformMatrix4dv));
-				_glProgramUniformMatrix4dvByRef = (Delegates.glProgramUniformMatrix4dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4dv"), typeof(Delegates.glProgramUniformMatrix4dvByRef));
 				_glProgramUniformMatrix4fv = (Delegates.glProgramUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4fv"), typeof(Delegates.glProgramUniformMatrix4fv));
-				_glProgramUniformMatrix4fvByRef = (Delegates.glProgramUniformMatrix4fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4fv"), typeof(Delegates.glProgramUniformMatrix4fvByRef));
 				_glProgramUniformMatrix4x2dv = (Delegates.glProgramUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2dv"), typeof(Delegates.glProgramUniformMatrix4x2dv));
-				_glProgramUniformMatrix4x2dvByRef = (Delegates.glProgramUniformMatrix4x2dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2dv"), typeof(Delegates.glProgramUniformMatrix4x2dvByRef));
 				_glProgramUniformMatrix4x2fv = (Delegates.glProgramUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2fv"), typeof(Delegates.glProgramUniformMatrix4x2fv));
-				_glProgramUniformMatrix4x2fvByRef = (Delegates.glProgramUniformMatrix4x2fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2fv"), typeof(Delegates.glProgramUniformMatrix4x2fvByRef));
 				_glProgramUniformMatrix4x3dv = (Delegates.glProgramUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3dv"), typeof(Delegates.glProgramUniformMatrix4x3dv));
-				_glProgramUniformMatrix4x3dvByRef = (Delegates.glProgramUniformMatrix4x3dvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3dv"), typeof(Delegates.glProgramUniformMatrix4x3dvByRef));
 				_glProgramUniformMatrix4x3fv = (Delegates.glProgramUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3fv"), typeof(Delegates.glProgramUniformMatrix4x3fv));
-				_glProgramUniformMatrix4x3fvByRef = (Delegates.glProgramUniformMatrix4x3fvByRef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3fv"), typeof(Delegates.glProgramUniformMatrix4x3fvByRef));
 				_glReleaseShaderCompiler = (Delegates.glReleaseShaderCompiler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReleaseShaderCompiler"), typeof(Delegates.glReleaseShaderCompiler));
 				_glScissorArrayv = (Delegates.glScissorArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorArrayv"), typeof(Delegates.glScissorArrayv));
 				_glScissorIndexed = (Delegates.glScissorIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorIndexed"), typeof(Delegates.glScissorIndexed));
@@ -5143,7 +4753,7 @@ namespace GLDotNet
 			_glBeginTransformFeedback(primitiveMode);
 		}
 
-		public static void glBindAttribLocation(uint program, uint index, string name)
+		public static unsafe void glBindAttribLocation(uint program, uint index, string name)
 		{
 			_glBindAttribLocation(program, index, name);
 		}
@@ -5163,22 +4773,30 @@ namespace GLDotNet
 			_glBindBufferRange(target, index, buffer, offset, size);
 		}
 
-		public static void glBindBuffersBase(uint target, uint first, int count, uint[] buffers)
+		public static unsafe void glBindBuffersBase(uint target, uint first, int count, uint[] buffers)
 		{
-			_glBindBuffersBase(target, first, count, buffers);
+			fixed (uint* buffersPtr = buffers)
+			{
+				_glBindBuffersBase(target, first, count, buffersPtr);
+			}
 		}
 
-		public static void glBindBuffersRange(uint target, uint first, int count, uint[] buffers, int[] offsets, int[] sizes)
+		public static unsafe void glBindBuffersRange(uint target, uint first, int count, uint[] buffers, int[] offsets, int[] sizes)
 		{
-			_glBindBuffersRange(target, first, count, buffers, offsets, sizes);
+			fixed (uint* buffersPtr = buffers)
+			fixed (int* offsetsPtr = offsets)
+			fixed (int* sizesPtr = sizes)
+			{
+				_glBindBuffersRange(target, first, count, buffersPtr, offsetsPtr, sizesPtr);
+			}
 		}
 
-		public static void glBindFragDataLocation(uint program, uint color, string name)
+		public static unsafe void glBindFragDataLocation(uint program, uint color, string name)
 		{
 			_glBindFragDataLocation(program, color, name);
 		}
 
-		public static void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, string name)
+		public static unsafe void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, string name)
 		{
 			_glBindFragDataLocationIndexed(program, colorNumber, index, name);
 		}
@@ -5193,9 +4811,12 @@ namespace GLDotNet
 			_glBindImageTexture(unit, texture, level, layered, layer, access, format);
 		}
 
-		public static void glBindImageTextures(uint first, int count, uint[] textures)
+		public static unsafe void glBindImageTextures(uint first, int count, uint[] textures)
 		{
-			_glBindImageTextures(first, count, textures);
+			fixed (uint* texturesPtr = textures)
+			{
+				_glBindImageTextures(first, count, texturesPtr);
+			}
 		}
 
 		public static void glBindProgramPipeline(uint pipeline)
@@ -5213,9 +4834,12 @@ namespace GLDotNet
 			_glBindSampler(unit, sampler);
 		}
 
-		public static void glBindSamplers(uint first, int count, uint[] samplers)
+		public static unsafe void glBindSamplers(uint first, int count, uint[] samplers)
 		{
-			_glBindSamplers(first, count, samplers);
+			fixed (uint* samplersPtr = samplers)
+			{
+				_glBindSamplers(first, count, samplersPtr);
+			}
 		}
 
 		public static void glBindTexture(uint target, uint texture)
@@ -5223,9 +4847,12 @@ namespace GLDotNet
 			_glBindTexture(target, texture);
 		}
 
-		public static void glBindTextures(uint first, int count, uint[] textures)
+		public static unsafe void glBindTextures(uint first, int count, uint[] textures)
 		{
-			_glBindTextures(first, count, textures);
+			fixed (uint* texturesPtr = textures)
+			{
+				_glBindTextures(first, count, texturesPtr);
+			}
 		}
 
 		public static void glBindTextureUnit(uint unit, uint texture)
@@ -5248,9 +4875,14 @@ namespace GLDotNet
 			_glBindVertexBuffer(bindingindex, buffer, offset, stride);
 		}
 
-		public static void glBindVertexBuffers(uint first, int count, uint[] buffers, int[] offsets, int[] strides)
+		public static unsafe void glBindVertexBuffers(uint first, int count, uint[] buffers, int[] offsets, int[] strides)
 		{
-			_glBindVertexBuffers(first, count, buffers, offsets, strides);
+			fixed (uint* buffersPtr = buffers)
+			fixed (int* offsetsPtr = offsets)
+			fixed (int* stridesPtr = strides)
+			{
+				_glBindVertexBuffers(first, count, buffersPtr, offsetsPtr, stridesPtr);
+			}
 		}
 
 		public static void glBlendColor(float red, float green, float blue, float alpha)
@@ -5308,52 +4940,52 @@ namespace GLDotNet
 			_glBlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 		}
 
-		public static void glBufferData(uint target, int size, IntPtr data, uint usage)
+		public static unsafe void glBufferData(uint target, int size, IntPtr data, uint usage)
 		{
-			_glBufferData(target, size, data, usage);
+			_glBufferData(target, size, data.ToPointer(), usage);
 		}
 
-		public static void glBufferData<T>(uint target, int size, T[] data, uint usage)
-			where T: struct
-		{
-			var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
+        public static unsafe void glBufferData<T>(uint target, int size, T[] data, uint usage)
+            where T: struct
+        {
+            var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
 
-			try
-			{
-				_glBufferData(target, size, dataPtr.AddrOfPinnedObject(), usage);
-			}
-			finally
-			{
-				dataPtr.Free();
-			}
+            try
+            {
+                _glBufferData(target, size, dataPtr.AddrOfPinnedObject().ToPointer(), usage);
+            }
+            finally
+            {
+                dataPtr.Free();
+            }
+        }
+
+        public static unsafe void glBufferStorage(uint target, int size, IntPtr data, uint flags)
+		{
+			_glBufferStorage(target, size, data.ToPointer(), flags);
 		}
 
-		public static void glBufferStorage(uint target, int size, IntPtr data, uint flags)
+		public static unsafe void glBufferSubData(uint target, int offset, int size, IntPtr data)
 		{
-			_glBufferStorage(target, size, data, flags);
+			_glBufferSubData(target, offset, size, data.ToPointer());
 		}
 
-		public static void glBufferSubData(uint target, int offset, int size, IntPtr data)
-		{
-			_glBufferSubData(target, offset, size, data);
-		}
+        public static unsafe void glBufferSubData<T>(uint target, int offset, int size, T[] data)
+            where T : struct
+        {
+            var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
 
-		public static void glBufferSubData<T>(uint target, int offset, int size, T[] data)
-			where T: struct
-		{
-			var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                _glBufferSubData(target, offset, size, dataPtr.AddrOfPinnedObject().ToPointer());
+            }
+            finally
+            {
+                dataPtr.Free();
+            }
+        }
 
-			try
-			{
-				_glBufferSubData(target, offset, size, dataPtr.AddrOfPinnedObject());
-			}
-			finally
-			{
-				dataPtr.Free();
-			}
-		}
-
-		public static uint glCheckFramebufferStatus(uint target)
+        public static uint glCheckFramebufferStatus(uint target)
 		{
 			return _glCheckFramebufferStatus(target);
 		}
@@ -5373,9 +5005,9 @@ namespace GLDotNet
 			_glClear(mask);
 		}
 
-		public static void glClearBufferData(uint target, uint internalformat, uint format, uint type, IntPtr data)
+		public static unsafe void glClearBufferData(uint target, uint internalformat, uint format, uint type, IntPtr data)
 		{
-			_glClearBufferData(target, internalformat, format, type, data);
+			_glClearBufferData(target, internalformat, format, type, data.ToPointer());
 		}
 
 		public static void glClearBufferfi(uint buffer, int drawbuffer, float depth, int stencil)
@@ -5383,24 +5015,33 @@ namespace GLDotNet
 			_glClearBufferfi(buffer, drawbuffer, depth, stencil);
 		}
 
-		public static void glClearBufferfv(uint buffer, int drawbuffer, float[] value)
+		public static unsafe void glClearBufferfv(uint buffer, int drawbuffer, float[] value)
 		{
-			_glClearBufferfv(buffer, drawbuffer, value);
+			fixed (float* valuePtr = value)
+			{
+				_glClearBufferfv(buffer, drawbuffer, valuePtr);
+			}
 		}
 
-		public static void glClearBufferiv(uint buffer, int drawbuffer, int[] value)
+		public static unsafe void glClearBufferiv(uint buffer, int drawbuffer, int[] value)
 		{
-			_glClearBufferiv(buffer, drawbuffer, value);
+			fixed (int* valuePtr = value)
+			{
+				_glClearBufferiv(buffer, drawbuffer, valuePtr);
+			}
 		}
 
-		public static void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
+		public static unsafe void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
 		{
-			_glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+			_glClearBufferSubData(target, internalformat, offset, size, format, type, data.ToPointer());
 		}
 
-		public static void glClearBufferuiv(uint buffer, int drawbuffer, uint[] value)
+		public static unsafe void glClearBufferuiv(uint buffer, int drawbuffer, uint[] value)
 		{
-			_glClearBufferuiv(buffer, drawbuffer, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glClearBufferuiv(buffer, drawbuffer, valuePtr);
+			}
 		}
 
 		public static void glClearColor(float red, float green, float blue, float alpha)
@@ -5418,14 +5059,14 @@ namespace GLDotNet
 			_glClearDepthf(d);
 		}
 
-		public static void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, IntPtr data)
+		public static unsafe void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, IntPtr data)
 		{
-			_glClearNamedBufferData(buffer, internalformat, format, type, data);
+			_glClearNamedBufferData(buffer, internalformat, format, type, data.ToPointer());
 		}
 
-		public static void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
+		public static unsafe void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
 		{
-			_glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
+			_glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data.ToPointer());
 		}
 
 		public static void glClearNamedFramebufferfi(uint framebuffer, uint buffer, int drawbuffer, float depth, int stencil)
@@ -5433,19 +5074,28 @@ namespace GLDotNet
 			_glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
 		}
 
-		public static void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float[] value)
+		public static unsafe void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float[] value)
 		{
-			_glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value);
+			fixed (float* valuePtr = value)
+			{
+				_glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, valuePtr);
+			}
 		}
 
-		public static void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int[] value)
+		public static unsafe void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int[] value)
 		{
-			_glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
+			fixed (int* valuePtr = value)
+			{
+				_glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, valuePtr);
+			}
 		}
 
-		public static void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint[] value)
+		public static unsafe void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint[] value)
 		{
-			_glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, valuePtr);
+			}
 		}
 
 		public static void glClearStencil(int s)
@@ -5453,14 +5103,14 @@ namespace GLDotNet
 			_glClearStencil(s);
 		}
 
-		public static void glClearTexImage(uint texture, int level, uint format, uint type, IntPtr data)
+		public static unsafe void glClearTexImage(uint texture, int level, uint format, uint type, IntPtr data)
 		{
-			_glClearTexImage(texture, level, format, type, data);
+			_glClearTexImage(texture, level, format, type, data.ToPointer());
 		}
 
-		public static void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr data)
+		public static unsafe void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr data)
 		{
-			_glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+			_glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data.ToPointer());
 		}
 
 		public static uint glClientWaitSync(IntPtr sync, uint flags, ulong timeout)
@@ -5488,49 +5138,49 @@ namespace GLDotNet
 			_glCompileShader(shader);
 		}
 
-		public static void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
 		{
-			_glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+			_glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
 		{
-			_glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+			_glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
 		{
-			_glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+			_glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+			_glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+			_glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+			_glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
+			_glCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
+			_glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data.ToPointer());
 		}
 
-		public static void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
+		public static unsafe void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
 		{
-			_glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+			_glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data.ToPointer());
 		}
 
 		public static void glCopyBufferSubData(uint readTarget, uint writeTarget, int readOffset, int writeOffset, int size)
@@ -5588,14 +5238,20 @@ namespace GLDotNet
 			_glCopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
 		}
 
-		public static void glCreateBuffers(int n, uint[] buffers)
+		public static unsafe void glCreateBuffers(int n, uint[] buffers)
 		{
-			_glCreateBuffers(n, buffers);
+			fixed (uint* buffersPtr = buffers)
+			{
+				_glCreateBuffers(n, buffersPtr);
+			}
 		}
 
-		public static void glCreateFramebuffers(int n, uint[] framebuffers)
+		public static unsafe void glCreateFramebuffers(int n, uint[] framebuffers)
 		{
-			_glCreateFramebuffers(n, framebuffers);
+			fixed (uint* framebuffersPtr = framebuffers)
+			{
+				_glCreateFramebuffers(n, framebuffersPtr);
+			}
 		}
 
 		public static uint glCreateProgram()
@@ -5603,24 +5259,36 @@ namespace GLDotNet
 			return _glCreateProgram();
 		}
 
-		public static void glCreateProgramPipelines(int n, uint[] pipelines)
+		public static unsafe void glCreateProgramPipelines(int n, uint[] pipelines)
 		{
-			_glCreateProgramPipelines(n, pipelines);
+			fixed (uint* pipelinesPtr = pipelines)
+			{
+				_glCreateProgramPipelines(n, pipelinesPtr);
+			}
 		}
 
-		public static void glCreateQueries(uint target, int n, uint[] ids)
+		public static unsafe void glCreateQueries(uint target, int n, uint[] ids)
 		{
-			_glCreateQueries(target, n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glCreateQueries(target, n, idsPtr);
+			}
 		}
 
-		public static void glCreateRenderbuffers(int n, uint[] renderbuffers)
+		public static unsafe void glCreateRenderbuffers(int n, uint[] renderbuffers)
 		{
-			_glCreateRenderbuffers(n, renderbuffers);
+			fixed (uint* renderbuffersPtr = renderbuffers)
+			{
+				_glCreateRenderbuffers(n, renderbuffersPtr);
+			}
 		}
 
-		public static void glCreateSamplers(int n, uint[] samplers)
+		public static unsafe void glCreateSamplers(int n, uint[] samplers)
 		{
-			_glCreateSamplers(n, samplers);
+			fixed (uint* samplersPtr = samplers)
+			{
+				_glCreateSamplers(n, samplersPtr);
+			}
 		}
 
 		public static uint glCreateShader(uint type)
@@ -5628,24 +5296,33 @@ namespace GLDotNet
 			return _glCreateShader(type);
 		}
 
-		public static uint glCreateShaderProgramv(uint type, int count, string[] strings)
+		public static unsafe uint glCreateShaderProgramv(uint type, int count, string[] strings)
 		{
-			return _glCreateShaderProgramv(type, count, strings);
+            return _glCreateShaderProgramv(type, count, strings);			
 		}
 
-		public static void glCreateTextures(uint target, int n, uint[] textures)
+		public static unsafe void glCreateTextures(uint target, int n, uint[] textures)
 		{
-			_glCreateTextures(target, n, textures);
+			fixed (uint* texturesPtr = textures)
+			{
+				_glCreateTextures(target, n, texturesPtr);
+			}
 		}
 
-		public static void glCreateTransformFeedbacks(int n, uint[] ids)
+		public static unsafe void glCreateTransformFeedbacks(int n, uint[] ids)
 		{
-			_glCreateTransformFeedbacks(n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glCreateTransformFeedbacks(n, idsPtr);
+			}
 		}
 
-		public static void glCreateVertexArrays(int n, uint[] arrays)
+		public static unsafe void glCreateVertexArrays(int n, uint[] arrays)
 		{
-			_glCreateVertexArrays(n, arrays);
+			fixed (uint* arraysPtr = arrays)
+			{
+				_glCreateVertexArrays(n, arraysPtr);
+			}
 		}
 
 		public static void glCullFace(uint mode)
@@ -5653,24 +5330,30 @@ namespace GLDotNet
 			_glCullFace(mode);
 		}
 
-		public static void glDebugMessageCallback(DebugProc callback, IntPtr userParam)
+		public static unsafe void glDebugMessageCallback(DebugProc callback, IntPtr userParam)
 		{
-			_glDebugMessageCallback(callback, userParam);
+			_glDebugMessageCallback(callback, userParam.ToPointer());
 		}
 
-		public static void glDebugMessageControl(uint source, uint type, uint severity, int count, uint[] ids, bool enabled)
+		public static unsafe void glDebugMessageControl(uint source, uint type, uint severity, int count, uint[] ids, bool enabled)
 		{
-			_glDebugMessageControl(source, type, severity, count, ids, enabled);
+			fixed (uint* idsPtr = ids)
+			{
+				_glDebugMessageControl(source, type, severity, count, idsPtr, enabled);
+			}
 		}
 
-		public static void glDebugMessageInsert(uint source, uint type, uint id, uint severity, int length, string buf)
+		public static unsafe void glDebugMessageInsert(uint source, uint type, uint id, uint severity, int length, string buf)
 		{
 			_glDebugMessageInsert(source, type, id, severity, length, buf);
 		}
 
-		public static void glDeleteBuffers(int n, uint[] buffers)
+		public static unsafe void glDeleteBuffers(int n, uint[] buffers)
 		{
-			_glDeleteBuffers(n, buffers);
+			fixed (uint* buffersPtr = buffers)
+			{
+				_glDeleteBuffers(n, buffersPtr);
+			}
 		}
 
 		public static void glDeleteBuffer(uint handle)
@@ -5679,9 +5362,12 @@ namespace GLDotNet
 			glDeleteBuffers(1, temp);
 		}
 
-		public static void glDeleteFramebuffers(int n, uint[] framebuffers)
+		public static unsafe void glDeleteFramebuffers(int n, uint[] framebuffers)
 		{
-			_glDeleteFramebuffers(n, framebuffers);
+			fixed (uint* framebuffersPtr = framebuffers)
+			{
+				_glDeleteFramebuffers(n, framebuffersPtr);
+			}
 		}
 
 		public static void glDeleteFramebuffer(uint handle)
@@ -5695,9 +5381,12 @@ namespace GLDotNet
 			_glDeleteProgram(program);
 		}
 
-		public static void glDeleteProgramPipelines(int n, uint[] pipelines)
+		public static unsafe void glDeleteProgramPipelines(int n, uint[] pipelines)
 		{
-			_glDeleteProgramPipelines(n, pipelines);
+			fixed (uint* pipelinesPtr = pipelines)
+			{
+				_glDeleteProgramPipelines(n, pipelinesPtr);
+			}
 		}
 
 		public static void glDeleteProgramPipeline(uint handle)
@@ -5706,9 +5395,12 @@ namespace GLDotNet
 			glDeleteProgramPipelines(1, temp);
 		}
 
-		public static void glDeleteQueries(int n, uint[] ids)
+		public static unsafe void glDeleteQueries(int n, uint[] ids)
 		{
-			_glDeleteQueries(n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glDeleteQueries(n, idsPtr);
+			}
 		}
 
 		public static void glDeleteQuerie(uint handle)
@@ -5717,9 +5409,12 @@ namespace GLDotNet
 			glDeleteQueries(1, temp);
 		}
 
-		public static void glDeleteRenderbuffers(int n, uint[] renderbuffers)
+		public static unsafe void glDeleteRenderbuffers(int n, uint[] renderbuffers)
 		{
-			_glDeleteRenderbuffers(n, renderbuffers);
+			fixed (uint* renderbuffersPtr = renderbuffers)
+			{
+				_glDeleteRenderbuffers(n, renderbuffersPtr);
+			}
 		}
 
 		public static void glDeleteRenderbuffer(uint handle)
@@ -5728,9 +5423,12 @@ namespace GLDotNet
 			glDeleteRenderbuffers(1, temp);
 		}
 
-		public static void glDeleteSamplers(int count, uint[] samplers)
+		public static unsafe void glDeleteSamplers(int count, uint[] samplers)
 		{
-			_glDeleteSamplers(count, samplers);
+			fixed (uint* samplersPtr = samplers)
+			{
+				_glDeleteSamplers(count, samplersPtr);
+			}
 		}
 
 		public static void glDeleteSampler(uint handle)
@@ -5749,9 +5447,12 @@ namespace GLDotNet
 			_glDeleteSync(sync);
 		}
 
-		public static void glDeleteTextures(int n, uint[] textures)
+		public static unsafe void glDeleteTextures(int n, uint[] textures)
 		{
-			_glDeleteTextures(n, textures);
+			fixed (uint* texturesPtr = textures)
+			{
+				_glDeleteTextures(n, texturesPtr);
+			}
 		}
 
 		public static void glDeleteTexture(uint handle)
@@ -5760,9 +5461,12 @@ namespace GLDotNet
 			glDeleteTextures(1, temp);
 		}
 
-		public static void glDeleteTransformFeedbacks(int n, uint[] ids)
+		public static unsafe void glDeleteTransformFeedbacks(int n, uint[] ids)
 		{
-			_glDeleteTransformFeedbacks(n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glDeleteTransformFeedbacks(n, idsPtr);
+			}
 		}
 
 		public static void glDeleteTransformFeedback(uint handle)
@@ -5771,9 +5475,12 @@ namespace GLDotNet
 			glDeleteTransformFeedbacks(1, temp);
 		}
 
-		public static void glDeleteVertexArrays(int n, uint[] arrays)
+		public static unsafe void glDeleteVertexArrays(int n, uint[] arrays)
 		{
-			_glDeleteVertexArrays(n, arrays);
+			fixed (uint* arraysPtr = arrays)
+			{
+				_glDeleteVertexArrays(n, arraysPtr);
+			}
 		}
 
 		public static void glDeleteVertexArray(uint handle)
@@ -5797,9 +5504,12 @@ namespace GLDotNet
 			_glDepthRange(near, far);
 		}
 
-		public static void glDepthRangeArrayv(uint first, int count, double[] v)
+		public static unsafe void glDepthRangeArrayv(uint first, int count, double[] v)
 		{
-			_glDepthRangeArrayv(first, count, v);
+			fixed (double* vPtr = v)
+			{
+				_glDepthRangeArrayv(first, count, vPtr);
+			}
 		}
 
 		public static void glDepthRangef(float n, float f)
@@ -5852,9 +5562,9 @@ namespace GLDotNet
 			_glDrawArrays(mode, first, count);
 		}
 
-		public static void glDrawArraysIndirect(uint mode, IntPtr indirect)
+		public static unsafe void glDrawArraysIndirect(uint mode, IntPtr indirect)
 		{
-			_glDrawArraysIndirect(mode, indirect);
+			_glDrawArraysIndirect(mode, indirect.ToPointer());
 		}
 
 		public static void glDrawArraysInstanced(uint mode, int first, int count, int instancecount)
@@ -5872,54 +5582,57 @@ namespace GLDotNet
 			_glDrawBuffer(buf);
 		}
 
-		public static void glDrawBuffers(int n, uint[] bufs)
+		public static unsafe void glDrawBuffers(int n, uint[] bufs)
 		{
-			_glDrawBuffers(n, bufs);
+			fixed (uint* bufsPtr = bufs)
+			{
+				_glDrawBuffers(n, bufsPtr);
+			}
 		}
 
-		public static void glDrawElements(uint mode, int count, uint type, IntPtr indices)
+		public static unsafe void glDrawElements(uint mode, int count, uint type, IntPtr indices)
 		{
-			_glDrawElements(mode, count, type, indices);
+			_glDrawElements(mode, count, type, indices.ToPointer());
 		}
 
-		public static void glDrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex)
+		public static unsafe void glDrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex)
 		{
-			_glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+			_glDrawElementsBaseVertex(mode, count, type, indices.ToPointer(), basevertex);
 		}
 
-		public static void glDrawElementsIndirect(uint mode, uint type, IntPtr indirect)
+		public static unsafe void glDrawElementsIndirect(uint mode, uint type, IntPtr indirect)
 		{
-			_glDrawElementsIndirect(mode, type, indirect);
+			_glDrawElementsIndirect(mode, type, indirect.ToPointer());
 		}
 
-		public static void glDrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount)
+		public static unsafe void glDrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount)
 		{
-			_glDrawElementsInstanced(mode, count, type, indices, instancecount);
+			_glDrawElementsInstanced(mode, count, type, indices.ToPointer(), instancecount);
 		}
 
-		public static void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
+		public static unsafe void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
 		{
-			_glDrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance);
+			_glDrawElementsInstancedBaseInstance(mode, count, type, indices.ToPointer(), instancecount, baseinstance);
 		}
 
-		public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex)
+		public static unsafe void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex)
 		{
-			_glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+			_glDrawElementsInstancedBaseVertex(mode, count, type, indices.ToPointer(), instancecount, basevertex);
 		}
 
-		public static void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
+		public static unsafe void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
 		{
-			_glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance);
+			_glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices.ToPointer(), instancecount, basevertex, baseinstance);
 		}
 
-		public static void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices)
+		public static unsafe void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices)
 		{
-			_glDrawRangeElements(mode, start, end, count, type, indices);
+			_glDrawRangeElements(mode, start, end, count, type, indices.ToPointer());
 		}
 
-		public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex)
+		public static unsafe void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex)
 		{
-			_glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+			_glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices.ToPointer(), basevertex);
 		}
 
 		public static void glDrawTransformFeedback(uint mode, uint id)
@@ -6047,9 +5760,12 @@ namespace GLDotNet
 			_glFrontFace(mode);
 		}
 
-		public static void glGenBuffers(int n, uint[] buffers)
+		public static unsafe void glGenBuffers(int n, uint[] buffers)
 		{
-			_glGenBuffers(n, buffers);
+			fixed (uint* buffersPtr = buffers)
+			{
+				_glGenBuffers(n, buffersPtr);
+			}
 		}
 
 		public static uint glGenBuffer()
@@ -6069,9 +5785,12 @@ namespace GLDotNet
 			_glGenerateTextureMipmap(texture);
 		}
 
-		public static void glGenFramebuffers(int n, uint[] framebuffers)
+		public static unsafe void glGenFramebuffers(int n, uint[] framebuffers)
 		{
-			_glGenFramebuffers(n, framebuffers);
+			fixed (uint* framebuffersPtr = framebuffers)
+			{
+				_glGenFramebuffers(n, framebuffersPtr);
+			}
 		}
 
 		public static uint glGenFramebuffer()
@@ -6081,9 +5800,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenProgramPipelines(int n, uint[] pipelines)
+		public static unsafe void glGenProgramPipelines(int n, uint[] pipelines)
 		{
-			_glGenProgramPipelines(n, pipelines);
+			fixed (uint* pipelinesPtr = pipelines)
+			{
+				_glGenProgramPipelines(n, pipelinesPtr);
+			}
 		}
 
 		public static uint glGenProgramPipeline()
@@ -6093,9 +5815,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenQueries(int n, uint[] ids)
+		public static unsafe void glGenQueries(int n, uint[] ids)
 		{
-			_glGenQueries(n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glGenQueries(n, idsPtr);
+			}
 		}
 
 		public static uint glGenQuerie()
@@ -6105,9 +5830,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenRenderbuffers(int n, uint[] renderbuffers)
+		public static unsafe void glGenRenderbuffers(int n, uint[] renderbuffers)
 		{
-			_glGenRenderbuffers(n, renderbuffers);
+			fixed (uint* renderbuffersPtr = renderbuffers)
+			{
+				_glGenRenderbuffers(n, renderbuffersPtr);
+			}
 		}
 
 		public static uint glGenRenderbuffer()
@@ -6117,9 +5845,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenSamplers(int count, uint[] samplers)
+		public static unsafe void glGenSamplers(int count, uint[] samplers)
 		{
-			_glGenSamplers(count, samplers);
+			fixed (uint* samplersPtr = samplers)
+			{
+				_glGenSamplers(count, samplersPtr);
+			}
 		}
 
 		public static uint glGenSampler()
@@ -6129,9 +5860,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenTextures(int n, uint[] textures)
+		public static unsafe void glGenTextures(int n, uint[] textures)
 		{
-			_glGenTextures(n, textures);
+			fixed (uint* texturesPtr = textures)
+			{
+				_glGenTextures(n, texturesPtr);
+			}
 		}
 
 		public static uint glGenTexture()
@@ -6141,9 +5875,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenTransformFeedbacks(int n, uint[] ids)
+		public static unsafe void glGenTransformFeedbacks(int n, uint[] ids)
 		{
-			_glGenTransformFeedbacks(n, ids);
+			fixed (uint* idsPtr = ids)
+			{
+				_glGenTransformFeedbacks(n, idsPtr);
+			}
 		}
 
 		public static uint glGenTransformFeedback()
@@ -6153,9 +5890,12 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGenVertexArrays(int n, uint[] arrays)
+		public static unsafe void glGenVertexArrays(int n, uint[] arrays)
 		{
-			_glGenVertexArrays(n, arrays);
+			fixed (uint* arraysPtr = arrays)
+			{
+				_glGenVertexArrays(n, arraysPtr);
+			}
 		}
 
 		public static uint glGenVertexArray()
@@ -6165,144 +5905,191 @@ namespace GLDotNet
 			return temp[0];
 		}
 
-		public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params)
+		public static unsafe void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params)
 		{
-			_glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetActiveAttrib(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
+		public static unsafe void glGetActiveAttrib(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
 		{
-			_glGetActiveAttrib(program, index, bufSize, length, size, type, name);
+			fixed (int* lengthPtr = length)
+			fixed (int* sizePtr = size)
+			fixed (uint* typePtr = type)
+			{
+				_glGetActiveAttrib(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
+			}
 		}
 
-		public static void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
+		public static unsafe void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
 		{
-			_glGetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetActiveSubroutineName(program, shadertype, index, bufsize, lengthPtr, name);
+			}
 		}
 
-		public static void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int[] values)
+		public static unsafe void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int[] values)
 		{
-			_glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
+			fixed (int* valuesPtr = values)
+			{
+				_glGetActiveSubroutineUniformiv(program, shadertype, index, pname, valuesPtr);
+			}
 		}
 
-		public static void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
+		public static unsafe void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
 		{
-			_glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, lengthPtr, name);
+			}
 		}
 
-		public static void glGetActiveUniform(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
+		public static unsafe void glGetActiveUniform(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
 		{
-			_glGetActiveUniform(program, index, bufSize, length, size, type, name);
+			fixed (int* lengthPtr = length)
+			fixed (int* sizePtr = size)
+			fixed (uint* typePtr = type)
+			{
+				_glGetActiveUniform(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
+			}
 		}
 
-		public static void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int[] @params)
+		public static unsafe void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int[] @params)
 		{
-			_glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int[] length, StringBuilder uniformBlockName)
+		public static unsafe void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int[] length, StringBuilder uniformBlockName)
 		{
-			_glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, lengthPtr, uniformBlockName);
+			}
 		}
 
-		public static void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int[] length, StringBuilder uniformName)
+		public static unsafe void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int[] length, StringBuilder uniformName)
 		{
-			_glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetActiveUniformName(program, uniformIndex, bufSize, lengthPtr, uniformName);
+			}
 		}
 
-		public static void glGetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, uint pname, int[] @params)
+		public static unsafe void glGetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, uint pname, int[] @params)
 		{
-			_glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, @params);
+			fixed (uint* uniformIndicesPtr = uniformIndices)
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetActiveUniformsiv(program, uniformCount, uniformIndicesPtr, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetAttachedShaders(uint program, int maxCount, int[] count, uint[] shaders)
+		public static unsafe void glGetAttachedShaders(uint program, int maxCount, int[] count, uint[] shaders)
 		{
-			_glGetAttachedShaders(program, maxCount, count, shaders);
+			fixed (int* countPtr = count)
+			fixed (uint* shadersPtr = shaders)
+			{
+				_glGetAttachedShaders(program, maxCount, countPtr, shadersPtr);
+			}
 		}
 
-		public static int glGetAttribLocation(uint program, string name)
+		public static unsafe int glGetAttribLocation(uint program, string name)
 		{
 			return _glGetAttribLocation(program, name);
 		}
 
-		public static void glGetBooleani_v(uint target, uint index, bool[] data)
+		public static unsafe void glGetBooleani_v(uint target, uint index, bool[] data)
 		{
-			_glGetBooleani_v(target, index, data);
+			fixed (bool* dataPtr = data)
+			{
+				_glGetBooleani_v(target, index, dataPtr);
+			}
 		}
 
-		public static void glGetBooleani_v(uint target, uint index, ref bool data)
+		public static unsafe void glGetBooleanv(uint pname, bool[] data)
 		{
-			_glGetBooleani_vByRef( target,  index, ref  data);
+			fixed (bool* dataPtr = data)
+			{
+				_glGetBooleanv(pname, dataPtr);
+			}
 		}
 
-		public static void glGetBooleanv(uint pname, bool[] data)
+		public static unsafe void glGetBufferParameteri64v(uint target, uint pname, long[] @params)
 		{
-			_glGetBooleanv(pname, data);
+			fixed (long* @paramsPtr = @params)
+			{
+				_glGetBufferParameteri64v(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetBooleanv(uint pname, ref bool data)
+		public static unsafe void glGetBufferParameteriv(uint target, uint pname, int[] @params)
 		{
-			_glGetBooleanvByRef( pname, ref  data);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetBufferParameteriv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetBufferParameteri64v(uint target, uint pname, long[] @params)
+		//public static unsafe void glGetBufferPointerv(uint target, uint pname, IntPtr[] @params)
+		//{
+		//	fixed (void** @paramsPtr = @params)
+		//	{
+		//		_glGetBufferPointerv(target, pname, @paramsPtr);
+		//	}
+		//}
+
+		public static unsafe void glGetBufferSubData(uint target, int offset, int size, IntPtr data)
 		{
-			_glGetBufferParameteri64v(target, pname, @params);
+			_glGetBufferSubData(target, offset, size, data.ToPointer());
 		}
 
-		public static void glGetBufferParameteriv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetCompressedTexImage(uint target, int level, IntPtr img)
 		{
-			_glGetBufferParameteriv(target, pname, @params);
+			_glGetCompressedTexImage(target, level, img.ToPointer());
 		}
 
-		public static void glGetBufferPointerv(uint target, uint pname, IntPtr[] @params)
+		public static unsafe void glGetCompressedTextureImage(uint texture, int level, int bufSize, IntPtr pixels)
 		{
-			_glGetBufferPointerv(target, pname, @params);
+			_glGetCompressedTextureImage(texture, level, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetBufferSubData(uint target, int offset, int size, IntPtr data)
+		public static unsafe void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, IntPtr pixels)
 		{
-			_glGetBufferSubData(target, offset, size, data);
+			_glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetCompressedTexImage(uint target, int level, IntPtr img)
+		public static unsafe uint glGetDebugMessageLog(uint count, int bufSize, uint[] sources, uint[] types, uint[] ids, uint[] severities, int[] lengths, StringBuilder messageLog)
 		{
-			_glGetCompressedTexImage(target, level, img);
+			fixed (uint* sourcesPtr = sources)
+			fixed (uint* typesPtr = types)
+			fixed (uint* idsPtr = ids)
+			fixed (uint* severitiesPtr = severities)
+			fixed (int* lengthsPtr = lengths)
+			{
+				return _glGetDebugMessageLog(count, bufSize, sourcesPtr, typesPtr, idsPtr, severitiesPtr, lengthsPtr, messageLog);
+			}
 		}
 
-		public static void glGetCompressedTextureImage(uint texture, int level, int bufSize, IntPtr pixels)
+		public static unsafe void glGetDoublei_v(uint target, uint index, double[] data)
 		{
-			_glGetCompressedTextureImage(texture, level, bufSize, pixels);
+			fixed (double* dataPtr = data)
+			{
+				_glGetDoublei_v(target, index, dataPtr);
+			}
 		}
 
-		public static void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, IntPtr pixels)
+		public static unsafe void glGetDoublev(uint pname, double[] data)
 		{
-			_glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
-		}
-
-		public static uint glGetDebugMessageLog(uint count, int bufSize, uint[] sources, uint[] types, uint[] ids, uint[] severities, int[] lengths, StringBuilder messageLog)
-		{
-			return _glGetDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog);
-		}
-
-		public static void glGetDoublei_v(uint target, uint index, double[] data)
-		{
-			_glGetDoublei_v(target, index, data);
-		}
-
-		public static void glGetDoublei_v(uint target, uint index, ref double data)
-		{
-			_glGetDoublei_vByRef( target,  index, ref  data);
-		}
-
-		public static void glGetDoublev(uint pname, double[] data)
-		{
-			_glGetDoublev(pname, data);
-		}
-
-		public static void glGetDoublev(uint pname, ref double data)
-		{
-			_glGetDoublevByRef( pname, ref  data);
+			fixed (double* dataPtr = data)
+			{
+				_glGetDoublev(pname, dataPtr);
+			}
 		}
 
 		public static uint glGetError()
@@ -6310,44 +6097,46 @@ namespace GLDotNet
 			return _glGetError();
 		}
 
-		public static void glGetFloati_v(uint target, uint index, float[] data)
+		public static unsafe void glGetFloati_v(uint target, uint index, float[] data)
 		{
-			_glGetFloati_v(target, index, data);
+			fixed (float* dataPtr = data)
+			{
+				_glGetFloati_v(target, index, dataPtr);
+			}
 		}
 
-		public static void glGetFloati_v(uint target, uint index, ref float data)
+		public static unsafe void glGetFloatv(uint pname, float[] data)
 		{
-			_glGetFloati_vByRef( target,  index, ref  data);
+			fixed (float* dataPtr = data)
+			{
+				_glGetFloatv(pname, dataPtr);
+			}
 		}
 
-		public static void glGetFloatv(uint pname, float[] data)
-		{
-			_glGetFloatv(pname, data);
-		}
-
-		public static void glGetFloatv(uint pname, ref float data)
-		{
-			_glGetFloatvByRef( pname, ref  data);
-		}
-
-		public static int glGetFragDataIndex(uint program, string name)
+		public static unsafe int glGetFragDataIndex(uint program, string name)
 		{
 			return _glGetFragDataIndex(program, name);
 		}
 
-		public static int glGetFragDataLocation(uint program, string name)
+		public static unsafe int glGetFragDataLocation(uint program, string name)
 		{
 			return _glGetFragDataLocation(program, name);
 		}
 
-		public static void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int[] @params)
+		public static unsafe void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int[] @params)
 		{
-			_glGetFramebufferAttachmentParameteriv(target, attachment, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetFramebufferAttachmentParameteriv(target, attachment, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetFramebufferParameteriv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetFramebufferParameteriv(uint target, uint pname, int[] @params)
 		{
-			_glGetFramebufferParameteriv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetFramebufferParameteriv(target, pname, @paramsPtr);
+			}
 		}
 
 		public static uint glGetGraphicsResetStatus()
@@ -6355,154 +6144,217 @@ namespace GLDotNet
 			return _glGetGraphicsResetStatus();
 		}
 
-		public static void glGetInteger64i_v(uint target, uint index, long[] data)
+		public static unsafe void glGetInteger64i_v(uint target, uint index, long[] data)
 		{
-			_glGetInteger64i_v(target, index, data);
+			fixed (long* dataPtr = data)
+			{
+				_glGetInteger64i_v(target, index, dataPtr);
+			}
 		}
 
-		public static void glGetInteger64i_v(uint target, uint index, ref long data)
+		public static unsafe void glGetInteger64v(uint pname, long[] data)
 		{
-			_glGetInteger64i_vByRef( target,  index, ref  data);
+			fixed (long* dataPtr = data)
+			{
+				_glGetInteger64v(pname, dataPtr);
+			}
 		}
 
-		public static void glGetInteger64v(uint pname, long[] data)
+        public static unsafe void glGetInteger64v(uint pname, ref long data)
+        {
+            fixed (long* dataPtr = &data)
+            {
+                _glGetInteger64v(pname, dataPtr);
+            }
+        }
+
+        public static unsafe void glGetIntegeri_v(uint target, uint index, int[] data)
 		{
-			_glGetInteger64v(pname, data);
+			fixed (int* dataPtr = data)
+			{
+				_glGetIntegeri_v(target, index, dataPtr);
+			}
 		}
 
-		public static void glGetInteger64v(uint pname, ref long data)
+		public static unsafe void glGetIntegerv(uint pname, int[] data)
 		{
-			_glGetInteger64vByRef( pname, ref  data);
+			fixed (int* dataPtr = data)
+			{
+				_glGetIntegerv(pname, dataPtr);
+			}
 		}
 
-		public static void glGetIntegeri_v(uint target, uint index, int[] data)
+        public static unsafe void glGetIntegerv(uint pname, ref int data)
+        {
+            fixed (int* dataPtr = &data)
+            {
+                _glGetIntegerv(pname, dataPtr);
+            }
+        }
+
+        public static unsafe void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params)
 		{
-			_glGetIntegeri_v(target, index, data);
+			fixed (long* @paramsPtr = @params)
+			{
+				_glGetInternalformati64v(target, internalformat, pname, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetIntegeri_v(uint target, uint index, ref int data)
+		public static unsafe void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int[] @params)
 		{
-			_glGetIntegeri_vByRef( target,  index, ref  data);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetInternalformativ(target, internalformat, pname, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetIntegerv(uint pname, int[] data)
+		public static unsafe void glGetMultisamplefv(uint pname, uint index, float[] val)
 		{
-			_glGetIntegerv(pname, data);
+			fixed (float* valPtr = val)
+			{
+				_glGetMultisamplefv(pname, index, valPtr);
+			}
 		}
 
-		public static void glGetIntegerv(uint pname, ref int data)
+		public static unsafe void glGetNamedBufferParameteri64v(uint buffer, uint pname, long[] @params)
 		{
-			_glGetIntegervByRef( pname, ref  data);
+			fixed (long* @paramsPtr = @params)
+			{
+				_glGetNamedBufferParameteri64v(buffer, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params)
+		public static unsafe void glGetNamedBufferParameteriv(uint buffer, uint pname, int[] @params)
 		{
-			_glGetInternalformati64v(target, internalformat, pname, bufSize, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetNamedBufferParameteriv(buffer, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int[] @params)
+		//public static unsafe void glGetNamedBufferPointerv(uint buffer, uint pname, IntPtr[] @params)
+		//{
+		//	fixed (void** @paramsPtr = @params)
+		//	{
+		//		_glGetNamedBufferPointerv(buffer, pname, @paramsPtr);
+		//	}
+		//}
+
+		public static unsafe void glGetNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
 		{
-			_glGetInternalformativ(target, internalformat, pname, bufSize, @params);
+			_glGetNamedBufferSubData(buffer, offset, size, data.ToPointer());
 		}
 
-		public static void glGetMultisamplefv(uint pname, uint index, float[] val)
+		public static unsafe void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int[] @params)
 		{
-			_glGetMultisamplefv(pname, index, val);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetNamedBufferParameteri64v(uint buffer, uint pname, long[] @params)
+		public static unsafe void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int[] param)
 		{
-			_glGetNamedBufferParameteri64v(buffer, pname, @params);
+			fixed (int* paramPtr = param)
+			{
+				_glGetNamedFramebufferParameteriv(framebuffer, pname, paramPtr);
+			}
 		}
 
-		public static void glGetNamedBufferParameteriv(uint buffer, uint pname, int[] @params)
+		public static unsafe void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int[] @params)
 		{
-			_glGetNamedBufferParameteriv(buffer, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetNamedRenderbufferParameteriv(renderbuffer, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetNamedBufferPointerv(uint buffer, uint pname, IntPtr[] @params)
+		public static unsafe void glGetnCompressedTexImage(uint target, int lod, int bufSize, IntPtr pixels)
 		{
-			_glGetNamedBufferPointerv(buffer, pname, @params);
+			_glGetnCompressedTexImage(target, lod, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
+		public static unsafe void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, IntPtr pixels)
 		{
-			_glGetNamedBufferSubData(buffer, offset, size, data);
+			_glGetnTexImage(target, level, format, type, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int[] @params)
+		public static unsafe void glGetnUniformdv(uint program, int location, int bufSize, double[] @params)
 		{
-			_glGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, @params);
+			fixed (double* @paramsPtr = @params)
+			{
+				_glGetnUniformdv(program, location, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int[] param)
+		public static unsafe void glGetnUniformfv(uint program, int location, int bufSize, float[] @params)
 		{
-			_glGetNamedFramebufferParameteriv(framebuffer, pname, param);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetnUniformfv(program, location, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int[] @params)
+		public static unsafe void glGetnUniformiv(uint program, int location, int bufSize, int[] @params)
 		{
-			_glGetNamedRenderbufferParameteriv(renderbuffer, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetnUniformiv(program, location, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetnCompressedTexImage(uint target, int lod, int bufSize, IntPtr pixels)
+		public static unsafe void glGetnUniformuiv(uint program, int location, int bufSize, uint[] @params)
 		{
-			_glGetnCompressedTexImage(target, lod, bufSize, pixels);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetnUniformuiv(program, location, bufSize, @paramsPtr);
+			}
 		}
 
-		public static void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, IntPtr pixels)
+		public static unsafe void glGetObjectLabel(uint identifier, uint name, int bufSize, int[] length, StringBuilder label)
 		{
-			_glGetnTexImage(target, level, format, type, bufSize, pixels);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetObjectLabel(identifier, name, bufSize, lengthPtr, label);
+			}
 		}
 
-		public static void glGetnUniformdv(uint program, int location, int bufSize, double[] @params)
+		public static unsafe void glGetObjectPtrLabel(IntPtr ptr, int bufSize, int[] length, StringBuilder label)
 		{
-			_glGetnUniformdv(program, location, bufSize, @params);
+			fixed (int* lengthPtr = length)
+			{
+				_glGetObjectPtrLabel(ptr.ToPointer(), bufSize, lengthPtr, label);
+			}
 		}
 
-		public static void glGetnUniformfv(uint program, int location, int bufSize, float[] @params)
-		{
-			_glGetnUniformfv(program, location, bufSize, @params);
-		}
+		//public static unsafe void glGetPointerv(uint pname, IntPtr[] @params)
+		//{
+		//	fixed (void** @paramsPtr = @params)
+		//	{
+		//		_glGetPointerv(pname, @paramsPtr);
+		//	}
+		//}
 
-		public static void glGetnUniformiv(uint program, int location, int bufSize, int[] @params)
+		public static unsafe void glGetProgramBinary(uint program, int bufSize, int[] length, uint[] binaryFormat, IntPtr binary)
 		{
-			_glGetnUniformiv(program, location, bufSize, @params);
-		}
-
-		public static void glGetnUniformuiv(uint program, int location, int bufSize, uint[] @params)
-		{
-			_glGetnUniformuiv(program, location, bufSize, @params);
-		}
-
-		public static void glGetObjectLabel(uint identifier, uint name, int bufSize, int[] length, StringBuilder label)
-		{
-			_glGetObjectLabel(identifier, name, bufSize, length, label);
-		}
-
-		public static void glGetObjectPtrLabel(IntPtr ptr, int bufSize, int[] length, StringBuilder label)
-		{
-			_glGetObjectPtrLabel(ptr, bufSize, length, label);
-		}
-
-		public static void glGetPointerv(uint pname, IntPtr[] @params)
-		{
-			_glGetPointerv(pname, @params);
-		}
-
-		public static void glGetProgramBinary(uint program, int bufSize, int[] length, uint[] binaryFormat, IntPtr binary)
-		{
-			_glGetProgramBinary(program, bufSize, length, binaryFormat, binary);
+			fixed (int* lengthPtr = length)
+			fixed (uint* binaryFormatPtr = binaryFormat)
+			{
+				_glGetProgramBinary(program, bufSize, lengthPtr, binaryFormatPtr, binary.ToPointer());
+			}
 		}
 
 		public static void glGetProgramInfoLog(uint program, int bufSize, out int length, StringBuilder infoLog)
 		{
-			_glGetProgramInfoLog(program, bufSize, out length, infoLog);
+			_glGetProgramInfoLog(program, bufSize, out length, infoLog);			
 		}
 
-		public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int[] @params)
+		public static unsafe void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int[] @params)
 		{
-			_glGetProgramInterfaceiv(program, programInterface, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetProgramInterfaceiv(program, programInterface, pname, @paramsPtr);
+			}
 		}
 
 		public static void glGetProgramiv(uint program, uint pname, out int @params)
@@ -6510,44 +6362,56 @@ namespace GLDotNet
 			_glGetProgramiv(program, pname, out @params);
 		}
 
-		public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int[] length, StringBuilder infoLog)
+		public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, out int length, StringBuilder infoLog)
 		{
-			_glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog);
+			
+			_glGetProgramPipelineInfoLog(pipeline, bufSize, out length, infoLog);
 		}
 
-		public static void glGetProgramPipelineiv(uint pipeline, uint pname, int[] @params)
+		public static unsafe void glGetProgramPipelineiv(uint pipeline, uint pname, int[] @params)
 		{
-			_glGetProgramPipelineiv(pipeline, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetProgramPipelineiv(pipeline, pname, @paramsPtr);
+			}
 		}
 
-		public static uint glGetProgramResourceIndex(uint program, uint programInterface, string name)
+		public static unsafe uint glGetProgramResourceIndex(uint program, uint programInterface, string name)
 		{
 			return _glGetProgramResourceIndex(program, programInterface, name);
 		}
 
-		public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params)
+		public static unsafe void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params)
 		{
-			_glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, @params);
+			fixed (uint* propsPtr = props)
+			fixed (int* lengthPtr = length)
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetProgramResourceiv(program, programInterface, index, propCount, propsPtr, bufSize, lengthPtr, @paramsPtr);
+			}
 		}
 
-		public static int glGetProgramResourceLocation(uint program, uint programInterface, string name)
+		public static unsafe int glGetProgramResourceLocation(uint program, uint programInterface, string name)
 		{
 			return _glGetProgramResourceLocation(program, programInterface, name);
 		}
 
-		public static int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name)
+		public static unsafe int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name)
 		{
 			return _glGetProgramResourceLocationIndex(program, programInterface, name);
 		}
 
-		public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int[] length, StringBuilder name)
+		public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, out int length, StringBuilder name)
 		{
-			_glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+			_glGetProgramResourceName(program, programInterface, index, bufSize, out length, name);
 		}
 
-		public static void glGetProgramStageiv(uint program, uint shadertype, uint pname, int[] values)
+		public static unsafe void glGetProgramStageiv(uint program, uint shadertype, uint pname, int[] values)
 		{
-			_glGetProgramStageiv(program, shadertype, pname, values);
+			fixed (int* valuesPtr = values)
+			{
+				_glGetProgramStageiv(program, shadertype, pname, valuesPtr);
+			}
 		}
 
 		public static void glGetQueryBufferObjecti64v(uint id, uint buffer, uint pname, int offset)
@@ -6570,59 +6434,92 @@ namespace GLDotNet
 			_glGetQueryBufferObjectuiv(id, buffer, pname, offset);
 		}
 
-		public static void glGetQueryIndexediv(uint target, uint index, uint pname, int[] @params)
+		public static unsafe void glGetQueryIndexediv(uint target, uint index, uint pname, int[] @params)
 		{
-			_glGetQueryIndexediv(target, index, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetQueryIndexediv(target, index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetQueryiv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetQueryiv(uint target, uint pname, int[] @params)
 		{
-			_glGetQueryiv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetQueryiv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetQueryObjecti64v(uint id, uint pname, long[] @params)
+		public static unsafe void glGetQueryObjecti64v(uint id, uint pname, long[] @params)
 		{
-			_glGetQueryObjecti64v(id, pname, @params);
+			fixed (long* @paramsPtr = @params)
+			{
+				_glGetQueryObjecti64v(id, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetQueryObjectiv(uint id, uint pname, int[] @params)
+		public static unsafe void glGetQueryObjectiv(uint id, uint pname, int[] @params)
 		{
-			_glGetQueryObjectiv(id, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetQueryObjectiv(id, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetQueryObjectui64v(uint id, uint pname, ulong[] @params)
+		public static unsafe void glGetQueryObjectui64v(uint id, uint pname, ulong[] @params)
 		{
-			_glGetQueryObjectui64v(id, pname, @params);
+			fixed (ulong* @paramsPtr = @params)
+			{
+				_glGetQueryObjectui64v(id, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetQueryObjectuiv(uint id, uint pname, uint[] @params)
+		public static unsafe void glGetQueryObjectuiv(uint id, uint pname, uint[] @params)
 		{
-			_glGetQueryObjectuiv(id, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetQueryObjectuiv(id, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetRenderbufferParameteriv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetRenderbufferParameteriv(uint target, uint pname, int[] @params)
 		{
-			_glGetRenderbufferParameteriv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetRenderbufferParameteriv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetSamplerParameterfv(uint sampler, uint pname, float[] @params)
+		public static unsafe void glGetSamplerParameterfv(uint sampler, uint pname, float[] @params)
 		{
-			_glGetSamplerParameterfv(sampler, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetSamplerParameterfv(sampler, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetSamplerParameterIiv(uint sampler, uint pname, int[] @params)
+		public static unsafe void glGetSamplerParameterIiv(uint sampler, uint pname, int[] @params)
 		{
-			_glGetSamplerParameterIiv(sampler, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetSamplerParameterIiv(sampler, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetSamplerParameterIuiv(uint sampler, uint pname, uint[] @params)
+		public static unsafe void glGetSamplerParameterIuiv(uint sampler, uint pname, uint[] @params)
 		{
-			_glGetSamplerParameterIuiv(sampler, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetSamplerParameterIuiv(sampler, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetSamplerParameteriv(uint sampler, uint pname, int[] @params)
+		public static unsafe void glGetSamplerParameteriv(uint sampler, uint pname, int[] @params)
 		{
-			_glGetSamplerParameteriv(sampler, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetSamplerParameteriv(sampler, pname, @paramsPtr);
+			}
 		}
 
 		public static void glGetShaderInfoLog(uint shader, int bufSize, out int length, StringBuilder infoLog)
@@ -6630,19 +6527,23 @@ namespace GLDotNet
 			_glGetShaderInfoLog(shader, bufSize, out length, infoLog);
 		}
 
-		public static void glGetShaderiv(uint shader, uint pname, out int @params)
+		public static unsafe void glGetShaderiv(uint shader, uint pname, out int @params)
 		{
-			_glGetShaderiv(shader, pname, out @params);
+			_glGetShaderiv(shader, pname, out @params);			
 		}
 
-		public static void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int[] range, int[] precision)
+		public static unsafe void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int[] range, int[] precision)
 		{
-			_glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision);
+			fixed (int* rangePtr = range)
+			fixed (int* precisionPtr = precision)
+			{
+				_glGetShaderPrecisionFormat(shadertype, precisiontype, rangePtr, precisionPtr);
+			}
 		}
 
-		public static void glGetShaderSource(uint shader, int bufSize, int[] length, StringBuilder source)
+		public static void glGetShaderSource(uint shader, int bufSize, out int length, StringBuilder source)
 		{
-			_glGetShaderSource(shader, bufSize, length, source);
+			_glGetShaderSource(shader, bufSize, out length, source);
 		}
 
 		public static IntPtr glGetString(uint name)
@@ -6655,204 +6556,303 @@ namespace GLDotNet
 			return _glGetStringi(name, index);
 		}
 
-		public static uint glGetSubroutineIndex(uint program, uint shadertype, string name)
+		public static unsafe uint glGetSubroutineIndex(uint program, uint shadertype, string name)
 		{
 			return _glGetSubroutineIndex(program, shadertype, name);
 		}
 
-		public static int glGetSubroutineUniformLocation(uint program, uint shadertype, string name)
+		public static unsafe int glGetSubroutineUniformLocation(uint program, uint shadertype, string name)
 		{
 			return _glGetSubroutineUniformLocation(program, shadertype, name);
 		}
 
-		public static void glGetSynciv(IntPtr sync, uint pname, int bufSize, int[] length, int[] values)
+		public static unsafe void glGetSynciv(IntPtr sync, uint pname, int bufSize, int[] length, int[] values)
 		{
-			_glGetSynciv(sync, pname, bufSize, length, values);
+			fixed (int* lengthPtr = length)
+			fixed (int* valuesPtr = values)
+			{
+				_glGetSynciv(sync, pname, bufSize, lengthPtr, valuesPtr);
+			}
 		}
 
-		public static void glGetTexImage(uint target, int level, uint format, uint type, IntPtr pixels)
+		public static unsafe void glGetTexImage(uint target, int level, uint format, uint type, IntPtr pixels)
 		{
-			_glGetTexImage(target, level, format, type, pixels);
+			_glGetTexImage(target, level, format, type, pixels.ToPointer());
 		}
 
-		public static void glGetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
+		public static unsafe void glGetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
 		{
-			_glGetTexLevelParameterfv(target, level, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetTexLevelParameterfv(target, level, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
+		public static unsafe void glGetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
 		{
-			_glGetTexLevelParameteriv(target, level, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTexLevelParameteriv(target, level, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTexParameterfv(uint target, uint pname, float[] @params)
+		public static unsafe void glGetTexParameterfv(uint target, uint pname, float[] @params)
 		{
-			_glGetTexParameterfv(target, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetTexParameterfv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTexParameterIiv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetTexParameterIiv(uint target, uint pname, int[] @params)
 		{
-			_glGetTexParameterIiv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTexParameterIiv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTexParameterIuiv(uint target, uint pname, uint[] @params)
+		public static unsafe void glGetTexParameterIuiv(uint target, uint pname, uint[] @params)
 		{
-			_glGetTexParameterIuiv(target, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetTexParameterIuiv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTexParameteriv(uint target, uint pname, int[] @params)
+		public static unsafe void glGetTexParameteriv(uint target, uint pname, int[] @params)
 		{
-			_glGetTexParameteriv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTexParameteriv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, IntPtr pixels)
+		public static unsafe void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, IntPtr pixels)
 		{
-			_glGetTextureImage(texture, level, format, type, bufSize, pixels);
+			_glGetTextureImage(texture, level, format, type, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float[] @params)
+		public static unsafe void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float[] @params)
 		{
-			_glGetTextureLevelParameterfv(texture, level, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetTextureLevelParameterfv(texture, level, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int[] @params)
+		public static unsafe void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int[] @params)
 		{
-			_glGetTextureLevelParameteriv(texture, level, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTextureLevelParameteriv(texture, level, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureParameterfv(uint texture, uint pname, float[] @params)
+		public static unsafe void glGetTextureParameterfv(uint texture, uint pname, float[] @params)
 		{
-			_glGetTextureParameterfv(texture, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetTextureParameterfv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureParameterIiv(uint texture, uint pname, int[] @params)
+		public static unsafe void glGetTextureParameterIiv(uint texture, uint pname, int[] @params)
 		{
-			_glGetTextureParameterIiv(texture, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTextureParameterIiv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureParameterIuiv(uint texture, uint pname, uint[] @params)
+		public static unsafe void glGetTextureParameterIuiv(uint texture, uint pname, uint[] @params)
 		{
-			_glGetTextureParameterIuiv(texture, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetTextureParameterIuiv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureParameteriv(uint texture, uint pname, int[] @params)
+		public static unsafe void glGetTextureParameteriv(uint texture, uint pname, int[] @params)
 		{
-			_glGetTextureParameteriv(texture, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetTextureParameteriv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, IntPtr pixels)
+		public static unsafe void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, IntPtr pixels)
 		{
-			_glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
+			_glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels.ToPointer());
 		}
 
-		public static void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int[] param)
+		public static unsafe void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int[] param)
 		{
-			_glGetTransformFeedbacki_v(xfb, pname, index, param);
+			fixed (int* paramPtr = param)
+			{
+				_glGetTransformFeedbacki_v(xfb, pname, index, paramPtr);
+			}
 		}
 
-		public static void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long[] param)
+		public static unsafe void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long[] param)
 		{
-			_glGetTransformFeedbacki64_v(xfb, pname, index, param);
+			fixed (long* paramPtr = param)
+			{
+				_glGetTransformFeedbacki64_v(xfb, pname, index, paramPtr);
+			}
 		}
 
-		public static void glGetTransformFeedbackiv(uint xfb, uint pname, int[] param)
+		public static unsafe void glGetTransformFeedbackiv(uint xfb, uint pname, int[] param)
 		{
-			_glGetTransformFeedbackiv(xfb, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glGetTransformFeedbackiv(xfb, pname, paramPtr);
+			}
 		}
 
-		public static void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
+		public static unsafe void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
 		{
-			_glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
+			fixed (int* lengthPtr = length)
+			fixed (int* sizePtr = size)
+			fixed (uint* typePtr = type)
+			{
+				_glGetTransformFeedbackVarying(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
+			}
 		}
 
-		public static uint glGetUniformBlockIndex(uint program, string uniformBlockName)
+		public static unsafe uint glGetUniformBlockIndex(uint program, string uniformBlockName)
 		{
 			return _glGetUniformBlockIndex(program, uniformBlockName);
 		}
 
-		public static void glGetUniformdv(uint program, int location, double[] @params)
+		public static unsafe void glGetUniformdv(uint program, int location, double[] @params)
 		{
-			_glGetUniformdv(program, location, @params);
+			fixed (double* @paramsPtr = @params)
+			{
+				_glGetUniformdv(program, location, @paramsPtr);
+			}
 		}
 
-		public static void glGetUniformfv(uint program, int location, float[] @params)
+		public static unsafe void glGetUniformfv(uint program, int location, float[] @params)
 		{
-			_glGetUniformfv(program, location, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetUniformfv(program, location, @paramsPtr);
+			}
 		}
 
-		public static void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint[] uniformIndices)
+		public static unsafe void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint[] uniformIndices)
 		{
-			_glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
+			fixed (uint* uniformIndicesPtr = uniformIndices)
+			{
+				_glGetUniformIndices(program, uniformCount, uniformNames, uniformIndicesPtr);
+			}
 		}
 
-		public static void glGetUniformiv(uint program, int location, int[] @params)
+		public static unsafe void glGetUniformiv(uint program, int location, int[] @params)
 		{
-			_glGetUniformiv(program, location, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetUniformiv(program, location, @paramsPtr);
+			}
 		}
 
-		public static int glGetUniformLocation(uint program, string name)
+		public static unsafe int glGetUniformLocation(uint program, string name)
 		{
 			return _glGetUniformLocation(program, name);
 		}
 
-		public static void glGetUniformSubroutineuiv(uint shadertype, int location, uint[] @params)
+		public static unsafe void glGetUniformSubroutineuiv(uint shadertype, int location, uint[] @params)
 		{
-			_glGetUniformSubroutineuiv(shadertype, location, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetUniformSubroutineuiv(shadertype, location, @paramsPtr);
+			}
 		}
 
-		public static void glGetUniformuiv(uint program, int location, uint[] @params)
+		public static unsafe void glGetUniformuiv(uint program, int location, uint[] @params)
 		{
-			_glGetUniformuiv(program, location, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetUniformuiv(program, location, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long[] param)
+		public static unsafe void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long[] param)
 		{
-			_glGetVertexArrayIndexed64iv(vaobj, index, pname, param);
+			fixed (long* paramPtr = param)
+			{
+				_glGetVertexArrayIndexed64iv(vaobj, index, pname, paramPtr);
+			}
 		}
 
-		public static void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int[] param)
+		public static unsafe void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int[] param)
 		{
-			_glGetVertexArrayIndexediv(vaobj, index, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glGetVertexArrayIndexediv(vaobj, index, pname, paramPtr);
+			}
 		}
 
-		public static void glGetVertexArrayiv(uint vaobj, uint pname, int[] param)
+		public static unsafe void glGetVertexArrayiv(uint vaobj, uint pname, int[] param)
 		{
-			_glGetVertexArrayiv(vaobj, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glGetVertexArrayiv(vaobj, pname, paramPtr);
+			}
 		}
 
-		public static void glGetVertexAttribdv(uint index, uint pname, double[] @params)
+		public static unsafe void glGetVertexAttribdv(uint index, uint pname, double[] @params)
 		{
-			_glGetVertexAttribdv(index, pname, @params);
+			fixed (double* @paramsPtr = @params)
+			{
+				_glGetVertexAttribdv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribfv(uint index, uint pname, float[] @params)
+		public static unsafe void glGetVertexAttribfv(uint index, uint pname, float[] @params)
 		{
-			_glGetVertexAttribfv(index, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glGetVertexAttribfv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribIiv(uint index, uint pname, int[] @params)
+		public static unsafe void glGetVertexAttribIiv(uint index, uint pname, int[] @params)
 		{
-			_glGetVertexAttribIiv(index, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetVertexAttribIiv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribIuiv(uint index, uint pname, uint[] @params)
+		public static unsafe void glGetVertexAttribIuiv(uint index, uint pname, uint[] @params)
 		{
-			_glGetVertexAttribIuiv(index, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glGetVertexAttribIuiv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribiv(uint index, uint pname, int[] @params)
+		public static unsafe void glGetVertexAttribiv(uint index, uint pname, int[] @params)
 		{
-			_glGetVertexAttribiv(index, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glGetVertexAttribiv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribLdv(uint index, uint pname, double[] @params)
+		public static unsafe void glGetVertexAttribLdv(uint index, uint pname, double[] @params)
 		{
-			_glGetVertexAttribLdv(index, pname, @params);
+			fixed (double* @paramsPtr = @params)
+			{
+				_glGetVertexAttribLdv(index, pname, @paramsPtr);
+			}
 		}
 
-		public static void glGetVertexAttribPointerv(uint index, uint pname, IntPtr[] pointer)
+		public static unsafe void glGetVertexAttribPointerv(uint index, uint pname, IntPtr pointer)
 		{
-			_glGetVertexAttribPointerv(index, pname, pointer);
+			_glGetVertexAttribPointerv(index, pname, (void**)pointer.ToPointer());			
 		}
 
 		public static void glHint(uint target, uint mode)
@@ -6870,24 +6870,36 @@ namespace GLDotNet
 			_glInvalidateBufferSubData(buffer, offset, length);
 		}
 
-		public static void glInvalidateFramebuffer(uint target, int numAttachments, uint[] attachments)
+		public static unsafe void glInvalidateFramebuffer(uint target, int numAttachments, uint[] attachments)
 		{
-			_glInvalidateFramebuffer(target, numAttachments, attachments);
+			fixed (uint* attachmentsPtr = attachments)
+			{
+				_glInvalidateFramebuffer(target, numAttachments, attachmentsPtr);
+			}
 		}
 
-		public static void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint[] attachments)
+		public static unsafe void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint[] attachments)
 		{
-			_glInvalidateNamedFramebufferData(framebuffer, numAttachments, attachments);
+			fixed (uint* attachmentsPtr = attachments)
+			{
+				_glInvalidateNamedFramebufferData(framebuffer, numAttachments, attachmentsPtr);
+			}
 		}
 
-		public static void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint[] attachments, int x, int y, int width, int height)
+		public static unsafe void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint[] attachments, int x, int y, int width, int height)
 		{
-			_glInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height);
+			fixed (uint* attachmentsPtr = attachments)
+			{
+				_glInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachmentsPtr, x, y, width, height);
+			}
 		}
 
-		public static void glInvalidateSubFramebuffer(uint target, int numAttachments, uint[] attachments, int x, int y, int width, int height)
+		public static unsafe void glInvalidateSubFramebuffer(uint target, int numAttachments, uint[] attachments, int x, int y, int width, int height)
 		{
-			_glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+			fixed (uint* attachmentsPtr = attachments)
+			{
+				_glInvalidateSubFramebuffer(target, numAttachments, attachmentsPtr, x, y, width, height);
+			}
 		}
 
 		public static void glInvalidateTexImage(uint texture, int level)
@@ -7020,44 +7032,55 @@ namespace GLDotNet
 			_glMinSampleShading(value);
 		}
 
-		public static void glMultiDrawArrays(uint mode, int[] first, int[] count, int drawcount)
+		public static unsafe void glMultiDrawArrays(uint mode, int[] first, int[] count, int drawcount)
 		{
-			_glMultiDrawArrays(mode, first, count, drawcount);
+			fixed (int* firstPtr = first)
+			fixed (int* countPtr = count)
+			{
+				_glMultiDrawArrays(mode, firstPtr, countPtr, drawcount);
+			}
 		}
 
-		public static void glMultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride)
+		public static unsafe void glMultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride)
 		{
-			_glMultiDrawArraysIndirect(mode, indirect, drawcount, stride);
+			_glMultiDrawArraysIndirect(mode, indirect.ToPointer(), drawcount, stride);
 		}
 
-		public static void glMultiDrawElements(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount)
+		public static unsafe void glMultiDrawElements(uint mode, int[] count, uint type, IntPtr indices, int drawcount)
 		{
-			_glMultiDrawElements(mode, count, type, indices, drawcount);
+			fixed (int* countPtr = count)
+			{
+				_glMultiDrawElements(mode, countPtr, type, (void**)indices.ToPointer(), drawcount);
+			}
 		}
 
-		public static void glMultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr[] indices, int drawcount, int[] basevertex)
+		public static unsafe void glMultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr indices, int drawcount, int[] basevertex)
 		{
-			_glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+			fixed (int* countPtr = count)
+			fixed (int* basevertexPtr = basevertex)
+			{
+				_glMultiDrawElementsBaseVertex(mode, countPtr, type, (void**)indices.ToPointer(), drawcount, basevertexPtr);
+			}
 		}
 
-		public static void glMultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride)
+		public static unsafe void glMultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride)
 		{
-			_glMultiDrawElementsIndirect(mode, type, indirect, drawcount, stride);
+			_glMultiDrawElementsIndirect(mode, type, indirect.ToPointer(), drawcount, stride);
 		}
 
-		public static void glNamedBufferData(uint buffer, int size, IntPtr data, uint usage)
+		public static unsafe void glNamedBufferData(uint buffer, int size, IntPtr data, uint usage)
 		{
-			_glNamedBufferData(buffer, size, data, usage);
+			_glNamedBufferData(buffer, size, data.ToPointer(), usage);
 		}
 
-		public static void glNamedBufferStorage(uint buffer, int size, IntPtr data, uint flags)
+		public static unsafe void glNamedBufferStorage(uint buffer, int size, IntPtr data, uint flags)
 		{
-			_glNamedBufferStorage(buffer, size, data, flags);
+			_glNamedBufferStorage(buffer, size, data.ToPointer(), flags);
 		}
 
-		public static void glNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
+		public static unsafe void glNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
 		{
-			_glNamedBufferSubData(buffer, offset, size, data);
+			_glNamedBufferSubData(buffer, offset, size, data.ToPointer());
 		}
 
 		public static void glNamedFramebufferDrawBuffer(uint framebuffer, uint buf)
@@ -7065,9 +7088,12 @@ namespace GLDotNet
 			_glNamedFramebufferDrawBuffer(framebuffer, buf);
 		}
 
-		public static void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint[] bufs)
+		public static unsafe void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint[] bufs)
 		{
-			_glNamedFramebufferDrawBuffers(framebuffer, n, bufs);
+			fixed (uint* bufsPtr = bufs)
+			{
+				_glNamedFramebufferDrawBuffers(framebuffer, n, bufsPtr);
+			}
 		}
 
 		public static void glNamedFramebufferParameteri(uint framebuffer, uint pname, int param)
@@ -7105,19 +7131,22 @@ namespace GLDotNet
 			_glNamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
 		}
 
-		public static void glObjectLabel(uint identifier, uint name, int length, string label)
+		public static unsafe void glObjectLabel(uint identifier, uint name, int length, string label)
 		{
 			_glObjectLabel(identifier, name, length, label);
 		}
 
-		public static void glObjectPtrLabel(IntPtr ptr, int length, string label)
+		public static unsafe void glObjectPtrLabel(IntPtr ptr, int length, string label)
 		{
-			_glObjectPtrLabel(ptr, length, label);
+			_glObjectPtrLabel(ptr.ToPointer(), length, label);
 		}
 
-		public static void glPatchParameterfv(uint pname, float[] values)
+		public static unsafe void glPatchParameterfv(uint pname, float[] values)
 		{
-			_glPatchParameterfv(pname, values);
+			fixed (float* valuesPtr = values)
+			{
+				_glPatchParameterfv(pname, valuesPtr);
+			}
 		}
 
 		public static void glPatchParameteri(uint pname, int value)
@@ -7145,9 +7174,12 @@ namespace GLDotNet
 			_glPointParameterf(pname, param);
 		}
 
-		public static void glPointParameterfv(uint pname, float[] @params)
+		public static unsafe void glPointParameterfv(uint pname, float[] @params)
 		{
-			_glPointParameterfv(pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glPointParameterfv(pname, @paramsPtr);
+			}
 		}
 
 		public static void glPointParameteri(uint pname, int param)
@@ -7155,9 +7187,12 @@ namespace GLDotNet
 			_glPointParameteri(pname, param);
 		}
 
-		public static void glPointParameteriv(uint pname, int[] @params)
+		public static unsafe void glPointParameteriv(uint pname, int[] @params)
 		{
-			_glPointParameteriv(pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glPointParameteriv(pname, @paramsPtr);
+			}
 		}
 
 		public static void glPointSize(float size)
@@ -7185,9 +7220,9 @@ namespace GLDotNet
 			_glPrimitiveRestartIndex(index);
 		}
 
-		public static void glProgramBinary(uint program, uint binaryFormat, IntPtr binary, int length)
+		public static unsafe void glProgramBinary(uint program, uint binaryFormat, IntPtr binary, int length)
 		{
-			_glProgramBinary(program, binaryFormat, binary, length);
+			_glProgramBinary(program, binaryFormat, binary.ToPointer(), length);
 		}
 
 		public static void glProgramParameteri(uint program, uint pname, int value)
@@ -7200,14 +7235,12 @@ namespace GLDotNet
 			_glProgramUniform1d(program, location, v0);
 		}
 
-		public static void glProgramUniform1dv(uint program, int location, int count, double[] value)
+		public static unsafe void glProgramUniform1dv(uint program, int location, int count, double[] value)
 		{
-			_glProgramUniform1dv(program, location, count, value);
-		}
-
-		public static void glProgramUniform1dv(uint program, int location, int count, ref double value)
-		{
-			_glProgramUniform1dvByRef( program,  location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniform1dv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform1f(uint program, int location, float v0)
@@ -7215,14 +7248,12 @@ namespace GLDotNet
 			_glProgramUniform1f(program, location, v0);
 		}
 
-		public static void glProgramUniform1fv(uint program, int location, int count, float[] value)
+		public static unsafe void glProgramUniform1fv(uint program, int location, int count, float[] value)
 		{
-			_glProgramUniform1fv(program, location, count, value);
-		}
-
-		public static void glProgramUniform1fv(uint program, int location, int count, ref float value)
-		{
-			_glProgramUniform1fvByRef( program,  location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniform1fv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform1i(uint program, int location, int v0)
@@ -7230,14 +7261,12 @@ namespace GLDotNet
 			_glProgramUniform1i(program, location, v0);
 		}
 
-		public static void glProgramUniform1iv(uint program, int location, int count, int[] value)
+		public static unsafe void glProgramUniform1iv(uint program, int location, int count, int[] value)
 		{
-			_glProgramUniform1iv(program, location, count, value);
-		}
-
-		public static void glProgramUniform1iv(uint program, int location, int count, ref int value)
-		{
-			_glProgramUniform1ivByRef( program,  location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glProgramUniform1iv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform1ui(uint program, int location, uint v0)
@@ -7245,14 +7274,12 @@ namespace GLDotNet
 			_glProgramUniform1ui(program, location, v0);
 		}
 
-		public static void glProgramUniform1uiv(uint program, int location, int count, uint[] value)
+		public static unsafe void glProgramUniform1uiv(uint program, int location, int count, uint[] value)
 		{
-			_glProgramUniform1uiv(program, location, count, value);
-		}
-
-		public static void glProgramUniform1uiv(uint program, int location, int count, ref uint value)
-		{
-			_glProgramUniform1uivByRef( program,  location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glProgramUniform1uiv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform2d(uint program, int location, double v0, double v1)
@@ -7260,14 +7287,12 @@ namespace GLDotNet
 			_glProgramUniform2d(program, location, v0, v1);
 		}
 
-		public static void glProgramUniform2dv(uint program, int location, int count, double[] value)
+		public static unsafe void glProgramUniform2dv(uint program, int location, int count, double[] value)
 		{
-			_glProgramUniform2dv(program, location, count, value);
-		}
-
-		public static void glProgramUniform2dv(uint program, int location, int count, ref double value)
-		{
-			_glProgramUniform2dvByRef( program,  location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniform2dv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform2f(uint program, int location, float v0, float v1)
@@ -7275,14 +7300,12 @@ namespace GLDotNet
 			_glProgramUniform2f(program, location, v0, v1);
 		}
 
-		public static void glProgramUniform2fv(uint program, int location, int count, float[] value)
+		public static unsafe void glProgramUniform2fv(uint program, int location, int count, float[] value)
 		{
-			_glProgramUniform2fv(program, location, count, value);
-		}
-
-		public static void glProgramUniform2fv(uint program, int location, int count, ref float value)
-		{
-			_glProgramUniform2fvByRef( program,  location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniform2fv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform2i(uint program, int location, int v0, int v1)
@@ -7290,14 +7313,12 @@ namespace GLDotNet
 			_glProgramUniform2i(program, location, v0, v1);
 		}
 
-		public static void glProgramUniform2iv(uint program, int location, int count, int[] value)
+		public static unsafe void glProgramUniform2iv(uint program, int location, int count, int[] value)
 		{
-			_glProgramUniform2iv(program, location, count, value);
-		}
-
-		public static void glProgramUniform2iv(uint program, int location, int count, ref int value)
-		{
-			_glProgramUniform2ivByRef( program,  location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glProgramUniform2iv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform2ui(uint program, int location, uint v0, uint v1)
@@ -7305,14 +7326,12 @@ namespace GLDotNet
 			_glProgramUniform2ui(program, location, v0, v1);
 		}
 
-		public static void glProgramUniform2uiv(uint program, int location, int count, uint[] value)
+		public static unsafe void glProgramUniform2uiv(uint program, int location, int count, uint[] value)
 		{
-			_glProgramUniform2uiv(program, location, count, value);
-		}
-
-		public static void glProgramUniform2uiv(uint program, int location, int count, ref uint value)
-		{
-			_glProgramUniform2uivByRef( program,  location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glProgramUniform2uiv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform3d(uint program, int location, double v0, double v1, double v2)
@@ -7320,14 +7339,12 @@ namespace GLDotNet
 			_glProgramUniform3d(program, location, v0, v1, v2);
 		}
 
-		public static void glProgramUniform3dv(uint program, int location, int count, double[] value)
+		public static unsafe void glProgramUniform3dv(uint program, int location, int count, double[] value)
 		{
-			_glProgramUniform3dv(program, location, count, value);
-		}
-
-		public static void glProgramUniform3dv(uint program, int location, int count, ref double value)
-		{
-			_glProgramUniform3dvByRef( program,  location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniform3dv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform3f(uint program, int location, float v0, float v1, float v2)
@@ -7335,14 +7352,12 @@ namespace GLDotNet
 			_glProgramUniform3f(program, location, v0, v1, v2);
 		}
 
-		public static void glProgramUniform3fv(uint program, int location, int count, float[] value)
+		public static unsafe void glProgramUniform3fv(uint program, int location, int count, float[] value)
 		{
-			_glProgramUniform3fv(program, location, count, value);
-		}
-
-		public static void glProgramUniform3fv(uint program, int location, int count, ref float value)
-		{
-			_glProgramUniform3fvByRef( program,  location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniform3fv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform3i(uint program, int location, int v0, int v1, int v2)
@@ -7350,14 +7365,12 @@ namespace GLDotNet
 			_glProgramUniform3i(program, location, v0, v1, v2);
 		}
 
-		public static void glProgramUniform3iv(uint program, int location, int count, int[] value)
+		public static unsafe void glProgramUniform3iv(uint program, int location, int count, int[] value)
 		{
-			_glProgramUniform3iv(program, location, count, value);
-		}
-
-		public static void glProgramUniform3iv(uint program, int location, int count, ref int value)
-		{
-			_glProgramUniform3ivByRef( program,  location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glProgramUniform3iv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2)
@@ -7365,14 +7378,12 @@ namespace GLDotNet
 			_glProgramUniform3ui(program, location, v0, v1, v2);
 		}
 
-		public static void glProgramUniform3uiv(uint program, int location, int count, uint[] value)
+		public static unsafe void glProgramUniform3uiv(uint program, int location, int count, uint[] value)
 		{
-			_glProgramUniform3uiv(program, location, count, value);
-		}
-
-		public static void glProgramUniform3uiv(uint program, int location, int count, ref uint value)
-		{
-			_glProgramUniform3uivByRef( program,  location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glProgramUniform3uiv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform4d(uint program, int location, double v0, double v1, double v2, double v3)
@@ -7380,14 +7391,12 @@ namespace GLDotNet
 			_glProgramUniform4d(program, location, v0, v1, v2, v3);
 		}
 
-		public static void glProgramUniform4dv(uint program, int location, int count, double[] value)
+		public static unsafe void glProgramUniform4dv(uint program, int location, int count, double[] value)
 		{
-			_glProgramUniform4dv(program, location, count, value);
-		}
-
-		public static void glProgramUniform4dv(uint program, int location, int count, ref double value)
-		{
-			_glProgramUniform4dvByRef( program,  location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniform4dv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3)
@@ -7395,14 +7404,12 @@ namespace GLDotNet
 			_glProgramUniform4f(program, location, v0, v1, v2, v3);
 		}
 
-		public static void glProgramUniform4fv(uint program, int location, int count, float[] value)
+		public static unsafe void glProgramUniform4fv(uint program, int location, int count, float[] value)
 		{
-			_glProgramUniform4fv(program, location, count, value);
-		}
-
-		public static void glProgramUniform4fv(uint program, int location, int count, ref float value)
-		{
-			_glProgramUniform4fvByRef( program,  location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniform4fv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3)
@@ -7410,14 +7417,12 @@ namespace GLDotNet
 			_glProgramUniform4i(program, location, v0, v1, v2, v3);
 		}
 
-		public static void glProgramUniform4iv(uint program, int location, int count, int[] value)
+		public static unsafe void glProgramUniform4iv(uint program, int location, int count, int[] value)
 		{
-			_glProgramUniform4iv(program, location, count, value);
-		}
-
-		public static void glProgramUniform4iv(uint program, int location, int count, ref int value)
-		{
-			_glProgramUniform4ivByRef( program,  location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glProgramUniform4iv(program, location, count, valuePtr);
+			}
 		}
 
 		public static void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3)
@@ -7425,194 +7430,156 @@ namespace GLDotNet
 			_glProgramUniform4ui(program, location, v0, v1, v2, v3);
 		}
 
-		public static void glProgramUniform4uiv(uint program, int location, int count, uint[] value)
+		public static unsafe void glProgramUniform4uiv(uint program, int location, int count, uint[] value)
 		{
-			_glProgramUniform4uiv(program, location, count, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glProgramUniform4uiv(program, location, count, valuePtr);
+			}
 		}
 
-		public static void glProgramUniform4uiv(uint program, int location, int count, ref uint value)
+		public static unsafe void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniform4uivByRef( program,  location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix2dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double[] value)
+		public static unsafe void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2dv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix2fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, ref double value)
+		public static unsafe void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2dvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix2x3dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float[] value)
+		public static unsafe void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2fv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix2x3fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, ref float value)
+		public static unsafe void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2fvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix2x4dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double[] value)
+		public static unsafe void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2x3dv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix2x4fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, ref double value)
+		public static unsafe void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2x3dvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix3dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float[] value)
+		public static unsafe void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2x3fv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix3fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, ref float value)
+		public static unsafe void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2x3fvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix3x2dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double[] value)
+		public static unsafe void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2x4dv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix3x2fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, ref double value)
+		public static unsafe void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2x4dvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix3x4dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float[] value)
+		public static unsafe void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix2x4fv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix3x4fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, ref float value)
+		public static unsafe void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix2x4fvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix4dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double[] value)
+		public static unsafe void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix3dv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix4fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, ref double value)
+		public static unsafe void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix3dvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix4x2dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float[] value)
+		public static unsafe void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix3fv(program, location, count, transpose, value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix4x2fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, ref float value)
+		public static unsafe void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double[] value)
 		{
-			_glProgramUniformMatrix3fvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glProgramUniformMatrix4x3dv(program, location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double[] value)
+		public static unsafe void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float[] value)
 		{
-			_glProgramUniformMatrix3x2dv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, ref double value)
-		{
-			_glProgramUniformMatrix3x2dvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			_glProgramUniformMatrix3x2fv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, ref float value)
-		{
-			_glProgramUniformMatrix3x2fvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			_glProgramUniformMatrix3x4dv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, ref double value)
-		{
-			_glProgramUniformMatrix3x4dvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			_glProgramUniformMatrix3x4fv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, ref float value)
-		{
-			_glProgramUniformMatrix3x4fvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			_glProgramUniformMatrix4dv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, ref double value)
-		{
-			_glProgramUniformMatrix4dvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			_glProgramUniformMatrix4fv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, ref float value)
-		{
-			_glProgramUniformMatrix4fvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			_glProgramUniformMatrix4x2dv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, ref double value)
-		{
-			_glProgramUniformMatrix4x2dvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			_glProgramUniformMatrix4x2fv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, ref float value)
-		{
-			_glProgramUniformMatrix4x2fvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			_glProgramUniformMatrix4x3dv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, ref double value)
-		{
-			_glProgramUniformMatrix4x3dvByRef( program,  location,  count,  transpose, ref  value);
-		}
-
-		public static void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			_glProgramUniformMatrix4x3fv(program, location, count, transpose, value);
-		}
-
-		public static void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, ref float value)
-		{
-			_glProgramUniformMatrix4x3fvByRef( program,  location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glProgramUniformMatrix4x3fv(program, location, count, transpose, valuePtr);
+			}
 		}
 
 		public static void glProvokingVertex(uint mode)
@@ -7620,7 +7587,7 @@ namespace GLDotNet
 			_glProvokingVertex(mode);
 		}
 
-		public static void glPushDebugGroup(uint source, uint id, int length, string message)
+		public static unsafe void glPushDebugGroup(uint source, uint id, int length, string message)
 		{
 			_glPushDebugGroup(source, id, length, message);
 		}
@@ -7635,14 +7602,14 @@ namespace GLDotNet
 			_glReadBuffer(src);
 		}
 
-		public static void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, IntPtr data)
+		public static unsafe void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, IntPtr data)
 		{
-			_glReadnPixels(x, y, width, height, format, type, bufSize, data);
+			_glReadnPixels(x, y, width, height, format, type, bufSize, data.ToPointer());
 		}
 
-		public static void glReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels)
+		public static unsafe void glReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels)
 		{
-			_glReadPixels(x, y, width, height, format, type, pixels);
+			_glReadPixels(x, y, width, height, format, type, pixels.ToPointer());
 		}
 
 		public static void glReleaseShaderCompiler()
@@ -7680,9 +7647,12 @@ namespace GLDotNet
 			_glSamplerParameterf(sampler, pname, param);
 		}
 
-		public static void glSamplerParameterfv(uint sampler, uint pname, float[] param)
+		public static unsafe void glSamplerParameterfv(uint sampler, uint pname, float[] param)
 		{
-			_glSamplerParameterfv(sampler, pname, param);
+			fixed (float* paramPtr = param)
+			{
+				_glSamplerParameterfv(sampler, pname, paramPtr);
+			}
 		}
 
 		public static void glSamplerParameteri(uint sampler, uint pname, int param)
@@ -7690,19 +7660,28 @@ namespace GLDotNet
 			_glSamplerParameteri(sampler, pname, param);
 		}
 
-		public static void glSamplerParameterIiv(uint sampler, uint pname, int[] param)
+		public static unsafe void glSamplerParameterIiv(uint sampler, uint pname, int[] param)
 		{
-			_glSamplerParameterIiv(sampler, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glSamplerParameterIiv(sampler, pname, paramPtr);
+			}
 		}
 
-		public static void glSamplerParameterIuiv(uint sampler, uint pname, uint[] param)
+		public static unsafe void glSamplerParameterIuiv(uint sampler, uint pname, uint[] param)
 		{
-			_glSamplerParameterIuiv(sampler, pname, param);
+			fixed (uint* paramPtr = param)
+			{
+				_glSamplerParameterIuiv(sampler, pname, paramPtr);
+			}
 		}
 
-		public static void glSamplerParameteriv(uint sampler, uint pname, int[] param)
+		public static unsafe void glSamplerParameteriv(uint sampler, uint pname, int[] param)
 		{
-			_glSamplerParameteriv(sampler, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glSamplerParameteriv(sampler, pname, paramPtr);
+			}
 		}
 
 		public static void glScissor(int x, int y, int width, int height)
@@ -7710,9 +7689,12 @@ namespace GLDotNet
 			_glScissor(x, y, width, height);
 		}
 
-		public static void glScissorArrayv(uint first, int count, int[] v)
+		public static unsafe void glScissorArrayv(uint first, int count, int[] v)
 		{
-			_glScissorArrayv(first, count, v);
+			fixed (int* vPtr = v)
+			{
+				_glScissorArrayv(first, count, vPtr);
+			}
 		}
 
 		public static void glScissorIndexed(uint index, int left, int bottom, int width, int height)
@@ -7720,19 +7702,25 @@ namespace GLDotNet
 			_glScissorIndexed(index, left, bottom, width, height);
 		}
 
-		public static void glScissorIndexedv(uint index, int[] v)
+		public static unsafe void glScissorIndexedv(uint index, int[] v)
 		{
-			_glScissorIndexedv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glScissorIndexedv(index, vPtr);
+			}
 		}
 
-		public static void glShaderBinary(int count, uint[] shaders, uint binaryformat, IntPtr binary, int length)
+		public static unsafe void glShaderBinary(int count, uint[] shaders, uint binaryformat, IntPtr binary, int length)
 		{
-			_glShaderBinary(count, shaders, binaryformat, binary, length);
+			fixed (uint* shadersPtr = shaders)
+			{
+				_glShaderBinary(count, shadersPtr, binaryformat, binary.ToPointer(), length);
+			}
 		}
 
 		public static void glShaderSource(uint shader, int count, ref string @string, ref int length)
 		{
-			_glShaderSource(shader, count, ref @string, ref length);
+			_glShaderSource(shader, count, ref @string, ref length);			
 		}
 
 		public static void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding)
@@ -7780,44 +7768,14 @@ namespace GLDotNet
 			_glTexBufferRange(target, internalformat, buffer, offset, size);
 		}
 
-		public static void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels)
 		{
-			_glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+			_glTexImage1D(target, level, internalformat, width, border, format, type, pixels.ToPointer());
 		}
 
-		public static void glTexImage1D<T>(uint target, int level, int internalformat, int width, int border, uint format, uint type, T[] pixels)
-			where T: struct
+		public static unsafe void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
 		{
-			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-
-			try
-			{
-				_glTexImage1D(target, level, internalformat, width, border, format, type, pixelsPtr.AddrOfPinnedObject());
-			}
-			finally
-			{
-				pixelsPtr.Free();
-			}
-		}
-
-		public static void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
-		{
-			_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
-		}
-
-		public static void glTexImage2D<T>(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, T[] pixels)
-			where T: struct
-		{
-			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-
-			try
-			{
-				_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixelsPtr.AddrOfPinnedObject());
-			}
-			finally
-			{
-				pixelsPtr.Free();
-			}
+			_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels.ToPointer());
 		}
 
 		public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
@@ -7825,24 +7783,9 @@ namespace GLDotNet
 			_glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 		}
 
-		public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
 		{
-			_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
-		}
-
-		public static void glTexImage3D<T>(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, T[] pixels)
-			where T: struct
-		{
-			var pixelsPtr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-
-			try
-			{
-				_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixelsPtr.AddrOfPinnedObject());
-			}
-			finally
-			{
-				pixelsPtr.Free();
-			}
+			_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels.ToPointer());
 		}
 
 		public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
@@ -7855,9 +7798,12 @@ namespace GLDotNet
 			_glTexParameterf(target, pname, param);
 		}
 
-		public static void glTexParameterfv(uint target, uint pname, float[] @params)
+		public static unsafe void glTexParameterfv(uint target, uint pname, float[] @params)
 		{
-			_glTexParameterfv(target, pname, @params);
+			fixed (float* @paramsPtr = @params)
+			{
+				_glTexParameterfv(target, pname, @paramsPtr);
+			}
 		}
 
 		public static void glTexParameteri(uint target, uint pname, int param)
@@ -7865,19 +7811,28 @@ namespace GLDotNet
 			_glTexParameteri(target, pname, param);
 		}
 
-		public static void glTexParameterIiv(uint target, uint pname, int[] @params)
+		public static unsafe void glTexParameterIiv(uint target, uint pname, int[] @params)
 		{
-			_glTexParameterIiv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glTexParameterIiv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glTexParameterIuiv(uint target, uint pname, uint[] @params)
+		public static unsafe void glTexParameterIuiv(uint target, uint pname, uint[] @params)
 		{
-			_glTexParameterIuiv(target, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glTexParameterIuiv(target, pname, @paramsPtr);
+			}
 		}
 
-		public static void glTexParameteriv(uint target, uint pname, int[] @params)
+		public static unsafe void glTexParameteriv(uint target, uint pname, int[] @params)
 		{
-			_glTexParameteriv(target, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glTexParameteriv(target, pname, @paramsPtr);
+			}
 		}
 
 		public static void glTexStorage1D(uint target, int levels, uint internalformat, int width)
@@ -7905,19 +7860,19 @@ namespace GLDotNet
 			_glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 		}
 
-		public static void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
 		{
-			_glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
+			_glTexSubImage1D(target, level, xoffset, width, format, type, pixels.ToPointer());
 		}
 
-		public static void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
 		{
-			_glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+			_glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels.ToPointer());
 		}
 
-		public static void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
 		{
-			_glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+			_glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.ToPointer());
 		}
 
 		public static void glTextureBarrier()
@@ -7940,9 +7895,12 @@ namespace GLDotNet
 			_glTextureParameterf(texture, pname, param);
 		}
 
-		public static void glTextureParameterfv(uint texture, uint pname, float[] param)
+		public static unsafe void glTextureParameterfv(uint texture, uint pname, float[] param)
 		{
-			_glTextureParameterfv(texture, pname, param);
+			fixed (float* paramPtr = param)
+			{
+				_glTextureParameterfv(texture, pname, paramPtr);
+			}
 		}
 
 		public static void glTextureParameteri(uint texture, uint pname, int param)
@@ -7950,19 +7908,28 @@ namespace GLDotNet
 			_glTextureParameteri(texture, pname, param);
 		}
 
-		public static void glTextureParameterIiv(uint texture, uint pname, int[] @params)
+		public static unsafe void glTextureParameterIiv(uint texture, uint pname, int[] @params)
 		{
-			_glTextureParameterIiv(texture, pname, @params);
+			fixed (int* @paramsPtr = @params)
+			{
+				_glTextureParameterIiv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glTextureParameterIuiv(uint texture, uint pname, uint[] @params)
+		public static unsafe void glTextureParameterIuiv(uint texture, uint pname, uint[] @params)
 		{
-			_glTextureParameterIuiv(texture, pname, @params);
+			fixed (uint* @paramsPtr = @params)
+			{
+				_glTextureParameterIuiv(texture, pname, @paramsPtr);
+			}
 		}
 
-		public static void glTextureParameteriv(uint texture, uint pname, int[] param)
+		public static unsafe void glTextureParameteriv(uint texture, uint pname, int[] param)
 		{
-			_glTextureParameteriv(texture, pname, param);
+			fixed (int* paramPtr = param)
+			{
+				_glTextureParameteriv(texture, pname, paramPtr);
+			}
 		}
 
 		public static void glTextureStorage1D(uint texture, int levels, uint internalformat, int width)
@@ -7990,19 +7957,19 @@ namespace GLDotNet
 			_glTextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
 		}
 
-		public static void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
 		{
-			_glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels);
+			_glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels.ToPointer());
 		}
 
-		public static void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
 		{
-			_glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
+			_glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels.ToPointer());
 		}
 
-		public static void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
+		public static unsafe void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
 		{
-			_glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+			_glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.ToPointer());
 		}
 
 		public static void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers)
@@ -8022,7 +7989,7 @@ namespace GLDotNet
 
 		public static void glTransformFeedbackVaryings(uint program, int count, string[] varyings, uint bufferMode)
 		{
-			_glTransformFeedbackVaryings(program, count, varyings, bufferMode);
+			_glTransformFeedbackVaryings(program, count, varyings, bufferMode);			
 		}
 
 		public static void glUniform1d(int location, double x)
@@ -8030,14 +7997,12 @@ namespace GLDotNet
 			_glUniform1d(location, x);
 		}
 
-		public static void glUniform1dv(int location, int count, double[] value)
+		public static unsafe void glUniform1dv(int location, int count, double[] value)
 		{
-			_glUniform1dv(location, count, value);
-		}
-
-		public static void glUniform1dv(int location, int count, ref double value)
-		{
-			_glUniform1dvByRef( location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniform1dv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform1f(int location, float v0)
@@ -8045,14 +8010,12 @@ namespace GLDotNet
 			_glUniform1f(location, v0);
 		}
 
-		public static void glUniform1fv(int location, int count, float[] value)
+		public static unsafe void glUniform1fv(int location, int count, float[] value)
 		{
-			_glUniform1fv(location, count, value);
-		}
-
-		public static void glUniform1fv(int location, int count, ref float value)
-		{
-			_glUniform1fvByRef( location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniform1fv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform1i(int location, int v0)
@@ -8060,14 +8023,12 @@ namespace GLDotNet
 			_glUniform1i(location, v0);
 		}
 
-		public static void glUniform1iv(int location, int count, int[] value)
+		public static unsafe void glUniform1iv(int location, int count, int[] value)
 		{
-			_glUniform1iv(location, count, value);
-		}
-
-		public static void glUniform1iv(int location, int count, ref int value)
-		{
-			_glUniform1ivByRef( location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glUniform1iv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform1ui(int location, uint v0)
@@ -8075,14 +8036,12 @@ namespace GLDotNet
 			_glUniform1ui(location, v0);
 		}
 
-		public static void glUniform1uiv(int location, int count, uint[] value)
+		public static unsafe void glUniform1uiv(int location, int count, uint[] value)
 		{
-			_glUniform1uiv(location, count, value);
-		}
-
-		public static void glUniform1uiv(int location, int count, ref uint value)
-		{
-			_glUniform1uivByRef( location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glUniform1uiv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform2d(int location, double x, double y)
@@ -8090,14 +8049,12 @@ namespace GLDotNet
 			_glUniform2d(location, x, y);
 		}
 
-		public static void glUniform2dv(int location, int count, double[] value)
+		public static unsafe void glUniform2dv(int location, int count, double[] value)
 		{
-			_glUniform2dv(location, count, value);
-		}
-
-		public static void glUniform2dv(int location, int count, ref double value)
-		{
-			_glUniform2dvByRef( location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniform2dv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform2f(int location, float v0, float v1)
@@ -8105,14 +8062,12 @@ namespace GLDotNet
 			_glUniform2f(location, v0, v1);
 		}
 
-		public static void glUniform2fv(int location, int count, float[] value)
+		public static unsafe void glUniform2fv(int location, int count, float[] value)
 		{
-			_glUniform2fv(location, count, value);
-		}
-
-		public static void glUniform2fv(int location, int count, ref float value)
-		{
-			_glUniform2fvByRef( location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniform2fv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform2i(int location, int v0, int v1)
@@ -8120,14 +8075,12 @@ namespace GLDotNet
 			_glUniform2i(location, v0, v1);
 		}
 
-		public static void glUniform2iv(int location, int count, int[] value)
+		public static unsafe void glUniform2iv(int location, int count, int[] value)
 		{
-			_glUniform2iv(location, count, value);
-		}
-
-		public static void glUniform2iv(int location, int count, ref int value)
-		{
-			_glUniform2ivByRef( location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glUniform2iv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform2ui(int location, uint v0, uint v1)
@@ -8135,14 +8088,12 @@ namespace GLDotNet
 			_glUniform2ui(location, v0, v1);
 		}
 
-		public static void glUniform2uiv(int location, int count, uint[] value)
+		public static unsafe void glUniform2uiv(int location, int count, uint[] value)
 		{
-			_glUniform2uiv(location, count, value);
-		}
-
-		public static void glUniform2uiv(int location, int count, ref uint value)
-		{
-			_glUniform2uivByRef( location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glUniform2uiv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform3d(int location, double x, double y, double z)
@@ -8150,14 +8101,12 @@ namespace GLDotNet
 			_glUniform3d(location, x, y, z);
 		}
 
-		public static void glUniform3dv(int location, int count, double[] value)
+		public static unsafe void glUniform3dv(int location, int count, double[] value)
 		{
-			_glUniform3dv(location, count, value);
-		}
-
-		public static void glUniform3dv(int location, int count, ref double value)
-		{
-			_glUniform3dvByRef( location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniform3dv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform3f(int location, float v0, float v1, float v2)
@@ -8165,14 +8114,12 @@ namespace GLDotNet
 			_glUniform3f(location, v0, v1, v2);
 		}
 
-		public static void glUniform3fv(int location, int count, float[] value)
+		public static unsafe void glUniform3fv(int location, int count, float[] value)
 		{
-			_glUniform3fv(location, count, value);
-		}
-
-		public static void glUniform3fv(int location, int count, ref float value)
-		{
-			_glUniform3fvByRef( location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniform3fv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform3i(int location, int v0, int v1, int v2)
@@ -8180,14 +8127,12 @@ namespace GLDotNet
 			_glUniform3i(location, v0, v1, v2);
 		}
 
-		public static void glUniform3iv(int location, int count, int[] value)
+		public static unsafe void glUniform3iv(int location, int count, int[] value)
 		{
-			_glUniform3iv(location, count, value);
-		}
-
-		public static void glUniform3iv(int location, int count, ref int value)
-		{
-			_glUniform3ivByRef( location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glUniform3iv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform3ui(int location, uint v0, uint v1, uint v2)
@@ -8195,14 +8140,12 @@ namespace GLDotNet
 			_glUniform3ui(location, v0, v1, v2);
 		}
 
-		public static void glUniform3uiv(int location, int count, uint[] value)
+		public static unsafe void glUniform3uiv(int location, int count, uint[] value)
 		{
-			_glUniform3uiv(location, count, value);
-		}
-
-		public static void glUniform3uiv(int location, int count, ref uint value)
-		{
-			_glUniform3uivByRef( location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glUniform3uiv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform4d(int location, double x, double y, double z, double w)
@@ -8210,14 +8153,12 @@ namespace GLDotNet
 			_glUniform4d(location, x, y, z, w);
 		}
 
-		public static void glUniform4dv(int location, int count, double[] value)
+		public static unsafe void glUniform4dv(int location, int count, double[] value)
 		{
-			_glUniform4dv(location, count, value);
-		}
-
-		public static void glUniform4dv(int location, int count, ref double value)
-		{
-			_glUniform4dvByRef( location,  count, ref  value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniform4dv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform4f(int location, float v0, float v1, float v2, float v3)
@@ -8225,14 +8166,12 @@ namespace GLDotNet
 			_glUniform4f(location, v0, v1, v2, v3);
 		}
 
-		public static void glUniform4fv(int location, int count, float[] value)
+		public static unsafe void glUniform4fv(int location, int count, float[] value)
 		{
-			_glUniform4fv(location, count, value);
-		}
-
-		public static void glUniform4fv(int location, int count, ref float value)
-		{
-			_glUniform4fvByRef( location,  count, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniform4fv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform4i(int location, int v0, int v1, int v2, int v3)
@@ -8240,14 +8179,12 @@ namespace GLDotNet
 			_glUniform4i(location, v0, v1, v2, v3);
 		}
 
-		public static void glUniform4iv(int location, int count, int[] value)
+		public static unsafe void glUniform4iv(int location, int count, int[] value)
 		{
-			_glUniform4iv(location, count, value);
-		}
-
-		public static void glUniform4iv(int location, int count, ref int value)
-		{
-			_glUniform4ivByRef( location,  count, ref  value);
+			fixed (int* valuePtr = value)
+			{
+				_glUniform4iv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniform4ui(int location, uint v0, uint v1, uint v2, uint v3)
@@ -8255,14 +8192,12 @@ namespace GLDotNet
 			_glUniform4ui(location, v0, v1, v2, v3);
 		}
 
-		public static void glUniform4uiv(int location, int count, uint[] value)
+		public static unsafe void glUniform4uiv(int location, int count, uint[] value)
 		{
-			_glUniform4uiv(location, count, value);
-		}
-
-		public static void glUniform4uiv(int location, int count, ref uint value)
-		{
-			_glUniform4uivByRef( location,  count, ref  value);
+			fixed (uint* valuePtr = value)
+			{
+				_glUniform4uiv(location, count, valuePtr);
+			}
 		}
 
 		public static void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding)
@@ -8270,189 +8205,300 @@ namespace GLDotNet
 			_glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
 		}
 
-		public static void glUniformMatrix2dv(int location, int count, bool transpose, double[] value)
+		public static unsafe void glUniformMatrix2dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2dv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix2dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2dv(int location, int count, bool transpose, ref double value)
+        public static unsafe void glUniformMatrix2dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix2dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix2fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2dvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix2fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2fv(int location, int count, bool transpose, float[] value)
+        public static unsafe void glUniformMatrix2fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix2fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix2x3dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2fv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix2x3dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2fv(int location, int count, bool transpose, ref float value)
+        public static unsafe void glUniformMatrix2x3dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix2x3dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix2x3fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2fvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix2x3fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x3dv(int location, int count, bool transpose, double[] value)
+        public static unsafe void glUniformMatrix2x3fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix2x3fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix2x4dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2x3dv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix2x4dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x3dv(int location, int count, bool transpose, ref double value)
+        public static unsafe void glUniformMatrix2x4dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix2x4dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix2x4fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2x3dvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix2x4fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x3fv(int location, int count, bool transpose, float[] value)
+        public static unsafe void glUniformMatrix2x4fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix2x4fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2x3fv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix3dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x3fv(int location, int count, bool transpose, ref float value)
+        public static unsafe void glUniformMatrix3dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix3dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2x3fvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix3fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x4dv(int location, int count, bool transpose, double[] value)
+        public static unsafe void glUniformMatrix3fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix3fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3x2dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2x4dv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix3x2dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x4dv(int location, int count, bool transpose, ref double value)
+        public static unsafe void glUniformMatrix3x2dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix3x2dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3x2fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2x4dvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix3x2fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x4fv(int location, int count, bool transpose, float[] value)
+        public static unsafe void glUniformMatrix3x2fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix3x2fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3x4dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix2x4fv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix3x4dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix2x4fv(int location, int count, bool transpose, ref float value)
+        public static unsafe void glUniformMatrix3x4dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix3x4dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix3x4fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix2x4fvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix3x4fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3dv(int location, int count, bool transpose, double[] value)
+        public static unsafe void glUniformMatrix3x4fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix3x4fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix3dv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix4dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3dv(int location, int count, bool transpose, ref double value)
+        public static unsafe void glUniformMatrix4dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix4dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix3dvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix4fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3fv(int location, int count, bool transpose, float[] value)
+        public static unsafe void glUniformMatrix4fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix4fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4x2dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix3fv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix4x2dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3fv(int location, int count, bool transpose, ref float value)
+        public static unsafe void glUniformMatrix4x2dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix4x2dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4x2fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix3fvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix4x2fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3x2dv(int location, int count, bool transpose, double[] value)
+        public static unsafe void glUniformMatrix4x2fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix4x2fv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4x3dv(int location, int count, bool transpose, double[] value)
 		{
-			_glUniformMatrix3x2dv(location, count, transpose, value);
+			fixed (double* valuePtr = value)
+			{
+				_glUniformMatrix4x3dv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3x2dv(int location, int count, bool transpose, ref double value)
+        public static unsafe void glUniformMatrix4x3dv(int location, int count, bool transpose, ref double value)
+        {
+            fixed (double* valuePtr = &value)
+            {
+                _glUniformMatrix4x3dv(location, count, transpose, valuePtr);
+            }
+        }
+
+        public static unsafe void glUniformMatrix4x3fv(int location, int count, bool transpose, float[] value)
 		{
-			_glUniformMatrix3x2dvByRef( location,  count,  transpose, ref  value);
+			fixed (float* valuePtr = value)
+			{
+				_glUniformMatrix4x3fv(location, count, transpose, valuePtr);
+			}
 		}
 
-		public static void glUniformMatrix3x2fv(int location, int count, bool transpose, float[] value)
-		{
-			_glUniformMatrix3x2fv(location, count, transpose, value);
-		}
+        public static unsafe void glUniformMatrix4x3fv(int location, int count, bool transpose, ref float value)
+        {
+            fixed (float* valuePtr = &value)
+            {
+                _glUniformMatrix4x3fv(location, count, transpose, valuePtr);
+            }
+        }
 
-		public static void glUniformMatrix3x2fv(int location, int count, bool transpose, ref float value)
+        public static unsafe void glUniformSubroutinesuiv(uint shadertype, int count, uint[] indices)
 		{
-			_glUniformMatrix3x2fvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix3x4dv(int location, int count, bool transpose, double[] value)
-		{
-			_glUniformMatrix3x4dv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix3x4dv(int location, int count, bool transpose, ref double value)
-		{
-			_glUniformMatrix3x4dvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix3x4fv(int location, int count, bool transpose, float[] value)
-		{
-			_glUniformMatrix3x4fv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix3x4fv(int location, int count, bool transpose, ref float value)
-		{
-			_glUniformMatrix3x4fvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4dv(int location, int count, bool transpose, double[] value)
-		{
-			_glUniformMatrix4dv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4dv(int location, int count, bool transpose, ref double value)
-		{
-			_glUniformMatrix4dvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4fv(int location, int count, bool transpose, float[] value)
-		{
-			_glUniformMatrix4fv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4fv(int location, int count, bool transpose, ref float value)
-		{
-			_glUniformMatrix4fvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4x2dv(int location, int count, bool transpose, double[] value)
-		{
-			_glUniformMatrix4x2dv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4x2dv(int location, int count, bool transpose, ref double value)
-		{
-			_glUniformMatrix4x2dvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4x2fv(int location, int count, bool transpose, float[] value)
-		{
-			_glUniformMatrix4x2fv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4x2fv(int location, int count, bool transpose, ref float value)
-		{
-			_glUniformMatrix4x2fvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4x3dv(int location, int count, bool transpose, double[] value)
-		{
-			_glUniformMatrix4x3dv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4x3dv(int location, int count, bool transpose, ref double value)
-		{
-			_glUniformMatrix4x3dvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformMatrix4x3fv(int location, int count, bool transpose, float[] value)
-		{
-			_glUniformMatrix4x3fv(location, count, transpose, value);
-		}
-
-		public static void glUniformMatrix4x3fv(int location, int count, bool transpose, ref float value)
-		{
-			_glUniformMatrix4x3fvByRef( location,  count,  transpose, ref  value);
-		}
-
-		public static void glUniformSubroutinesuiv(uint shadertype, int count, uint[] indices)
-		{
-			_glUniformSubroutinesuiv(shadertype, count, indices);
+			fixed (uint* indicesPtr = indices)
+			{
+				_glUniformSubroutinesuiv(shadertype, count, indicesPtr);
+			}
 		}
 
 		public static bool glUnmapBuffer(uint target)
@@ -8520,9 +8566,14 @@ namespace GLDotNet
 			_glVertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride);
 		}
 
-		public static void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint[] buffers, int[] offsets, int[] strides)
+		public static unsafe void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint[] buffers, int[] offsets, int[] strides)
 		{
-			_glVertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides);
+			fixed (uint* buffersPtr = buffers)
+			fixed (int* offsetsPtr = offsets)
+			fixed (int* stridesPtr = strides)
+			{
+				_glVertexArrayVertexBuffers(vaobj, first, count, buffersPtr, offsetsPtr, stridesPtr);
+			}
 		}
 
 		public static void glVertexAttrib1d(uint index, double x)
@@ -8530,9 +8581,12 @@ namespace GLDotNet
 			_glVertexAttrib1d(index, x);
 		}
 
-		public static void glVertexAttrib1dv(uint index, double[] v)
+		public static unsafe void glVertexAttrib1dv(uint index, double[] v)
 		{
-			_glVertexAttrib1dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttrib1dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib1f(uint index, float x)
@@ -8540,9 +8594,12 @@ namespace GLDotNet
 			_glVertexAttrib1f(index, x);
 		}
 
-		public static void glVertexAttrib1fv(uint index, float[] v)
+		public static unsafe void glVertexAttrib1fv(uint index, float[] v)
 		{
-			_glVertexAttrib1fv(index, v);
+			fixed (float* vPtr = v)
+			{
+				_glVertexAttrib1fv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib1s(uint index, short x)
@@ -8550,9 +8607,12 @@ namespace GLDotNet
 			_glVertexAttrib1s(index, x);
 		}
 
-		public static void glVertexAttrib1sv(uint index, short[] v)
+		public static unsafe void glVertexAttrib1sv(uint index, short[] v)
 		{
-			_glVertexAttrib1sv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttrib1sv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib2d(uint index, double x, double y)
@@ -8560,9 +8620,12 @@ namespace GLDotNet
 			_glVertexAttrib2d(index, x, y);
 		}
 
-		public static void glVertexAttrib2dv(uint index, double[] v)
+		public static unsafe void glVertexAttrib2dv(uint index, double[] v)
 		{
-			_glVertexAttrib2dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttrib2dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib2f(uint index, float x, float y)
@@ -8570,9 +8633,12 @@ namespace GLDotNet
 			_glVertexAttrib2f(index, x, y);
 		}
 
-		public static void glVertexAttrib2fv(uint index, float[] v)
+		public static unsafe void glVertexAttrib2fv(uint index, float[] v)
 		{
-			_glVertexAttrib2fv(index, v);
+			fixed (float* vPtr = v)
+			{
+				_glVertexAttrib2fv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib2s(uint index, short x, short y)
@@ -8580,9 +8646,12 @@ namespace GLDotNet
 			_glVertexAttrib2s(index, x, y);
 		}
 
-		public static void glVertexAttrib2sv(uint index, short[] v)
+		public static unsafe void glVertexAttrib2sv(uint index, short[] v)
 		{
-			_glVertexAttrib2sv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttrib2sv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib3d(uint index, double x, double y, double z)
@@ -8590,9 +8659,12 @@ namespace GLDotNet
 			_glVertexAttrib3d(index, x, y, z);
 		}
 
-		public static void glVertexAttrib3dv(uint index, double[] v)
+		public static unsafe void glVertexAttrib3dv(uint index, double[] v)
 		{
-			_glVertexAttrib3dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttrib3dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib3f(uint index, float x, float y, float z)
@@ -8600,9 +8672,12 @@ namespace GLDotNet
 			_glVertexAttrib3f(index, x, y, z);
 		}
 
-		public static void glVertexAttrib3fv(uint index, float[] v)
+		public static unsafe void glVertexAttrib3fv(uint index, float[] v)
 		{
-			_glVertexAttrib3fv(index, v);
+			fixed (float* vPtr = v)
+			{
+				_glVertexAttrib3fv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib3s(uint index, short x, short y, short z)
@@ -8610,14 +8685,20 @@ namespace GLDotNet
 			_glVertexAttrib3s(index, x, y, z);
 		}
 
-		public static void glVertexAttrib3sv(uint index, short[] v)
+		public static unsafe void glVertexAttrib3sv(uint index, short[] v)
 		{
-			_glVertexAttrib3sv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttrib3sv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4bv(uint index, sbyte[] v)
+		public static unsafe void glVertexAttrib4bv(uint index, sbyte[] v)
 		{
-			_glVertexAttrib4bv(index, v);
+			fixed (sbyte* vPtr = v)
+			{
+				_glVertexAttrib4bv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib4d(uint index, double x, double y, double z, double w)
@@ -8625,9 +8706,12 @@ namespace GLDotNet
 			_glVertexAttrib4d(index, x, y, z, w);
 		}
 
-		public static void glVertexAttrib4dv(uint index, double[] v)
+		public static unsafe void glVertexAttrib4dv(uint index, double[] v)
 		{
-			_glVertexAttrib4dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttrib4dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib4f(uint index, float x, float y, float z, float w)
@@ -8635,29 +8719,44 @@ namespace GLDotNet
 			_glVertexAttrib4f(index, x, y, z, w);
 		}
 
-		public static void glVertexAttrib4fv(uint index, float[] v)
+		public static unsafe void glVertexAttrib4fv(uint index, float[] v)
 		{
-			_glVertexAttrib4fv(index, v);
+			fixed (float* vPtr = v)
+			{
+				_glVertexAttrib4fv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4iv(uint index, int[] v)
+		public static unsafe void glVertexAttrib4iv(uint index, int[] v)
 		{
-			_glVertexAttrib4iv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttrib4iv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4Nbv(uint index, sbyte[] v)
+		public static unsafe void glVertexAttrib4Nbv(uint index, sbyte[] v)
 		{
-			_glVertexAttrib4Nbv(index, v);
+			fixed (sbyte* vPtr = v)
+			{
+				_glVertexAttrib4Nbv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4Niv(uint index, int[] v)
+		public static unsafe void glVertexAttrib4Niv(uint index, int[] v)
 		{
-			_glVertexAttrib4Niv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttrib4Niv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4Nsv(uint index, short[] v)
+		public static unsafe void glVertexAttrib4Nsv(uint index, short[] v)
 		{
-			_glVertexAttrib4Nsv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttrib4Nsv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib4Nub(uint index, byte x, byte y, byte z, byte w)
@@ -8665,19 +8764,28 @@ namespace GLDotNet
 			_glVertexAttrib4Nub(index, x, y, z, w);
 		}
 
-		public static void glVertexAttrib4Nubv(uint index, byte[] v)
+		public static unsafe void glVertexAttrib4Nubv(uint index, byte[] v)
 		{
-			_glVertexAttrib4Nubv(index, v);
+			fixed (byte* vPtr = v)
+			{
+				_glVertexAttrib4Nubv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4Nuiv(uint index, uint[] v)
+		public static unsafe void glVertexAttrib4Nuiv(uint index, uint[] v)
 		{
-			_glVertexAttrib4Nuiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttrib4Nuiv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4Nusv(uint index, ushort[] v)
+		public static unsafe void glVertexAttrib4Nusv(uint index, ushort[] v)
 		{
-			_glVertexAttrib4Nusv(index, v);
+			fixed (ushort* vPtr = v)
+			{
+				_glVertexAttrib4Nusv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttrib4s(uint index, short x, short y, short z, short w)
@@ -8685,24 +8793,36 @@ namespace GLDotNet
 			_glVertexAttrib4s(index, x, y, z, w);
 		}
 
-		public static void glVertexAttrib4sv(uint index, short[] v)
+		public static unsafe void glVertexAttrib4sv(uint index, short[] v)
 		{
-			_glVertexAttrib4sv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttrib4sv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4ubv(uint index, byte[] v)
+		public static unsafe void glVertexAttrib4ubv(uint index, byte[] v)
 		{
-			_glVertexAttrib4ubv(index, v);
+			fixed (byte* vPtr = v)
+			{
+				_glVertexAttrib4ubv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4uiv(uint index, uint[] v)
+		public static unsafe void glVertexAttrib4uiv(uint index, uint[] v)
 		{
-			_glVertexAttrib4uiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttrib4uiv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttrib4usv(uint index, ushort[] v)
+		public static unsafe void glVertexAttrib4usv(uint index, ushort[] v)
 		{
-			_glVertexAttrib4usv(index, v);
+			fixed (ushort* vPtr = v)
+			{
+				_glVertexAttrib4usv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribBinding(uint attribindex, uint bindingindex)
@@ -8725,9 +8845,12 @@ namespace GLDotNet
 			_glVertexAttribI1i(index, x);
 		}
 
-		public static void glVertexAttribI1iv(uint index, int[] v)
+		public static unsafe void glVertexAttribI1iv(uint index, int[] v)
 		{
-			_glVertexAttribI1iv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttribI1iv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI1ui(uint index, uint x)
@@ -8735,9 +8858,12 @@ namespace GLDotNet
 			_glVertexAttribI1ui(index, x);
 		}
 
-		public static void glVertexAttribI1uiv(uint index, uint[] v)
+		public static unsafe void glVertexAttribI1uiv(uint index, uint[] v)
 		{
-			_glVertexAttribI1uiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttribI1uiv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI2i(uint index, int x, int y)
@@ -8745,9 +8871,12 @@ namespace GLDotNet
 			_glVertexAttribI2i(index, x, y);
 		}
 
-		public static void glVertexAttribI2iv(uint index, int[] v)
+		public static unsafe void glVertexAttribI2iv(uint index, int[] v)
 		{
-			_glVertexAttribI2iv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttribI2iv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI2ui(uint index, uint x, uint y)
@@ -8755,9 +8884,12 @@ namespace GLDotNet
 			_glVertexAttribI2ui(index, x, y);
 		}
 
-		public static void glVertexAttribI2uiv(uint index, uint[] v)
+		public static unsafe void glVertexAttribI2uiv(uint index, uint[] v)
 		{
-			_glVertexAttribI2uiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttribI2uiv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI3i(uint index, int x, int y, int z)
@@ -8765,9 +8897,12 @@ namespace GLDotNet
 			_glVertexAttribI3i(index, x, y, z);
 		}
 
-		public static void glVertexAttribI3iv(uint index, int[] v)
+		public static unsafe void glVertexAttribI3iv(uint index, int[] v)
 		{
-			_glVertexAttribI3iv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttribI3iv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI3ui(uint index, uint x, uint y, uint z)
@@ -8775,14 +8910,20 @@ namespace GLDotNet
 			_glVertexAttribI3ui(index, x, y, z);
 		}
 
-		public static void glVertexAttribI3uiv(uint index, uint[] v)
+		public static unsafe void glVertexAttribI3uiv(uint index, uint[] v)
 		{
-			_glVertexAttribI3uiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttribI3uiv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttribI4bv(uint index, sbyte[] v)
+		public static unsafe void glVertexAttribI4bv(uint index, sbyte[] v)
 		{
-			_glVertexAttribI4bv(index, v);
+			fixed (sbyte* vPtr = v)
+			{
+				_glVertexAttribI4bv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI4i(uint index, int x, int y, int z, int w)
@@ -8790,19 +8931,28 @@ namespace GLDotNet
 			_glVertexAttribI4i(index, x, y, z, w);
 		}
 
-		public static void glVertexAttribI4iv(uint index, int[] v)
+		public static unsafe void glVertexAttribI4iv(uint index, int[] v)
 		{
-			_glVertexAttribI4iv(index, v);
+			fixed (int* vPtr = v)
+			{
+				_glVertexAttribI4iv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttribI4sv(uint index, short[] v)
+		public static unsafe void glVertexAttribI4sv(uint index, short[] v)
 		{
-			_glVertexAttribI4sv(index, v);
+			fixed (short* vPtr = v)
+			{
+				_glVertexAttribI4sv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttribI4ubv(uint index, byte[] v)
+		public static unsafe void glVertexAttribI4ubv(uint index, byte[] v)
 		{
-			_glVertexAttribI4ubv(index, v);
+			fixed (byte* vPtr = v)
+			{
+				_glVertexAttribI4ubv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribI4ui(uint index, uint x, uint y, uint z, uint w)
@@ -8810,14 +8960,20 @@ namespace GLDotNet
 			_glVertexAttribI4ui(index, x, y, z, w);
 		}
 
-		public static void glVertexAttribI4uiv(uint index, uint[] v)
+		public static unsafe void glVertexAttribI4uiv(uint index, uint[] v)
 		{
-			_glVertexAttribI4uiv(index, v);
+			fixed (uint* vPtr = v)
+			{
+				_glVertexAttribI4uiv(index, vPtr);
+			}
 		}
 
-		public static void glVertexAttribI4usv(uint index, ushort[] v)
+		public static unsafe void glVertexAttribI4usv(uint index, ushort[] v)
 		{
-			_glVertexAttribI4usv(index, v);
+			fixed (ushort* vPtr = v)
+			{
+				_glVertexAttribI4usv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset)
@@ -8825,9 +8981,9 @@ namespace GLDotNet
 			_glVertexAttribIFormat(attribindex, size, type, relativeoffset);
 		}
 
-		public static void glVertexAttribIPointer(uint index, int size, uint type, int stride, IntPtr pointer)
+		public static unsafe void glVertexAttribIPointer(uint index, int size, uint type, int stride, IntPtr pointer)
 		{
-			_glVertexAttribIPointer(index, size, type, stride, pointer);
+			_glVertexAttribIPointer(index, size, type, stride, pointer.ToPointer());
 		}
 
 		public static void glVertexAttribL1d(uint index, double x)
@@ -8835,9 +8991,12 @@ namespace GLDotNet
 			_glVertexAttribL1d(index, x);
 		}
 
-		public static void glVertexAttribL1dv(uint index, double[] v)
+		public static unsafe void glVertexAttribL1dv(uint index, double[] v)
 		{
-			_glVertexAttribL1dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttribL1dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribL2d(uint index, double x, double y)
@@ -8845,9 +9004,12 @@ namespace GLDotNet
 			_glVertexAttribL2d(index, x, y);
 		}
 
-		public static void glVertexAttribL2dv(uint index, double[] v)
+		public static unsafe void glVertexAttribL2dv(uint index, double[] v)
 		{
-			_glVertexAttribL2dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttribL2dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribL3d(uint index, double x, double y, double z)
@@ -8855,9 +9017,12 @@ namespace GLDotNet
 			_glVertexAttribL3d(index, x, y, z);
 		}
 
-		public static void glVertexAttribL3dv(uint index, double[] v)
+		public static unsafe void glVertexAttribL3dv(uint index, double[] v)
 		{
-			_glVertexAttribL3dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttribL3dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribL4d(uint index, double x, double y, double z, double w)
@@ -8865,9 +9030,12 @@ namespace GLDotNet
 			_glVertexAttribL4d(index, x, y, z, w);
 		}
 
-		public static void glVertexAttribL4dv(uint index, double[] v)
+		public static unsafe void glVertexAttribL4dv(uint index, double[] v)
 		{
-			_glVertexAttribL4dv(index, v);
+			fixed (double* vPtr = v)
+			{
+				_glVertexAttribL4dv(index, vPtr);
+			}
 		}
 
 		public static void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset)
@@ -8875,9 +9043,9 @@ namespace GLDotNet
 			_glVertexAttribLFormat(attribindex, size, type, relativeoffset);
 		}
 
-		public static void glVertexAttribLPointer(uint index, int size, uint type, int stride, IntPtr pointer)
+		public static unsafe void glVertexAttribLPointer(uint index, int size, uint type, int stride, IntPtr pointer)
 		{
-			_glVertexAttribLPointer(index, size, type, stride, pointer);
+			_glVertexAttribLPointer(index, size, type, stride, pointer.ToPointer());
 		}
 
 		public static void glVertexAttribP1ui(uint index, uint type, bool normalized, uint value)
@@ -8885,9 +9053,12 @@ namespace GLDotNet
 			_glVertexAttribP1ui(index, type, normalized, value);
 		}
 
-		public static void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint[] value)
+		public static unsafe void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint[] value)
 		{
-			_glVertexAttribP1uiv(index, type, normalized, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glVertexAttribP1uiv(index, type, normalized, valuePtr);
+			}
 		}
 
 		public static void glVertexAttribP2ui(uint index, uint type, bool normalized, uint value)
@@ -8895,9 +9066,12 @@ namespace GLDotNet
 			_glVertexAttribP2ui(index, type, normalized, value);
 		}
 
-		public static void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint[] value)
+		public static unsafe void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint[] value)
 		{
-			_glVertexAttribP2uiv(index, type, normalized, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glVertexAttribP2uiv(index, type, normalized, valuePtr);
+			}
 		}
 
 		public static void glVertexAttribP3ui(uint index, uint type, bool normalized, uint value)
@@ -8905,9 +9079,12 @@ namespace GLDotNet
 			_glVertexAttribP3ui(index, type, normalized, value);
 		}
 
-		public static void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint[] value)
+		public static unsafe void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint[] value)
 		{
-			_glVertexAttribP3uiv(index, type, normalized, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glVertexAttribP3uiv(index, type, normalized, valuePtr);
+			}
 		}
 
 		public static void glVertexAttribP4ui(uint index, uint type, bool normalized, uint value)
@@ -8915,14 +9092,17 @@ namespace GLDotNet
 			_glVertexAttribP4ui(index, type, normalized, value);
 		}
 
-		public static void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint[] value)
+		public static unsafe void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint[] value)
 		{
-			_glVertexAttribP4uiv(index, type, normalized, value);
+			fixed (uint* valuePtr = value)
+			{
+				_glVertexAttribP4uiv(index, type, normalized, valuePtr);
+			}
 		}
 
-		public static void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, IntPtr pointer)
+		public static unsafe void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, IntPtr pointer)
 		{
-			_glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+			_glVertexAttribPointer(index, size, type, normalized, stride, pointer.ToPointer());
 		}
 
 		public static void glVertexBindingDivisor(uint bindingindex, uint divisor)
@@ -8935,9 +9115,12 @@ namespace GLDotNet
 			_glViewport(x, y, width, height);
 		}
 
-		public static void glViewportArrayv(uint first, int count, float[] v)
+		public static unsafe void glViewportArrayv(uint first, int count, float[] v)
 		{
-			_glViewportArrayv(first, count, v);
+			fixed (float* vPtr = v)
+			{
+				_glViewportArrayv(first, count, vPtr);
+			}
 		}
 
 		public static void glViewportIndexedf(uint index, float x, float y, float w, float h)
@@ -8945,9 +9128,12 @@ namespace GLDotNet
 			_glViewportIndexedf(index, x, y, w, h);
 		}
 
-		public static void glViewportIndexedfv(uint index, float[] v)
+		public static unsafe void glViewportIndexedfv(uint index, float[] v)
 		{
-			_glViewportIndexedfv(index, v);
+			fixed (float* vPtr = v)
+			{
+				_glViewportIndexedfv(index, vPtr);
+			}
 		}
 
 		public static void glWaitSync(IntPtr sync, uint flags, ulong timeout)
