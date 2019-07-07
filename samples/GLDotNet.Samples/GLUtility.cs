@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text;
 using static GLDotNet.GL;
 
 namespace GLDotNet.Samples
 {
-    public static class GLUtility
+    public static unsafe class GLUtility
     {
         public static void CheckErrors(string functionName)
         {
@@ -24,7 +22,8 @@ namespace GLDotNet.Samples
 
             CheckErrors(nameof(glCompileShader));
 
-            glGetShaderiv(shader, GL_COMPILE_STATUS, out var result);
+            int result;
+            glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
             if (result == GL_FALSE)
             {
                 string infoLog = GetShaderInfoLog(shader);
@@ -44,7 +43,8 @@ namespace GLDotNet.Samples
             glLinkProgram(program);
             CheckErrors(nameof(glLinkProgram));
 
-            glGetProgramiv(program, GL_LINK_STATUS, out var result);
+            int result;
+            glGetProgramiv(program, GL_LINK_STATUS, &result);
             if (result == GL_FALSE)
             {
                 string infoLog = GetProgramInfoLog(program);
@@ -73,26 +73,34 @@ namespace GLDotNet.Samples
 
         public static string GetProgramInfoLog(uint program)
         {
-            glGetProgramiv(program, GL_INFO_LOG_LENGTH, out var infoLogLegth);
+            int infoLogLength;
+            glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
 
-            StringBuilder infoLog = new StringBuilder(infoLogLegth);
-            glGetProgramInfoLog(program, infoLog.Capacity, out int length, infoLog);
+            var infoLog = new StringBuilder(infoLogLength);
+
+            int length;
+            glGetProgramInfoLog(program, infoLog.Capacity, &length, infoLog);
+
             return infoLog.ToString();
         }
 
         public static string GetShaderInfoLog(uint shader)
         {
-            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, out var infoLogLength);
+            int infoLogLength;
+            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
 
-            StringBuilder infoLog = new StringBuilder(infoLogLength);
-            glGetShaderInfoLog(shader, infoLog.Capacity, out int length, infoLog);
+            var infoLog = new StringBuilder(infoLogLength);
+
+            int length;
+            glGetShaderInfoLog(shader, infoLog.Capacity, &length, infoLog);
+
             return infoLog.ToString();
         }
 
         public static void ShaderSource(uint shader, string source)
         {
             int length = source.Length;
-            glShaderSource(shader, 1, ref source, ref length);
+            glShaderSource(shader, 1, new string[] { source }, &length);
         }
     }
 }

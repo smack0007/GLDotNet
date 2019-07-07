@@ -4,12 +4,13 @@
 ///////////////////////
 
 using System;
+using System.Runtime.InteropServices;
 using GLDotNet.Samples;
 using static GLDotNet.GL;
 
 namespace HelloTriangle
 {
-    public class HelloTriangleSample : Sample
+    public unsafe class HelloTriangleSample : Sample
     {
         public override int VersionMajor => 4;
         public override int VersionMinor => 0;
@@ -56,20 +57,31 @@ void main()
                 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f
             };
 
-            var pointsBuffer = glGenBuffer();
+            uint pointsBuffer = 0;
+            glGenBuffers(1, &pointsBuffer);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)points.AsSpan(), GL_STATIC_DRAW);
+            fixed (float* pointsPtr = points)
+            {
+                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * points.Length, pointsPtr, GL_STATIC_DRAW);
+            }
 
-            var colorsBuffer = glGenBuffer();
+            uint colorsBuffer = 0;
+            glGenBuffers(1, &colorsBuffer);
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)colors.AsSpan(), GL_STATIC_DRAW);
+            fixed (float* colorsPtr = colors)
+            {
+                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * colors.Length, colorsPtr, GL_STATIC_DRAW);
+            }
 
-            _vertexArray = glGenVertexArray();
+            fixed (uint* vertexArrayPtr = &_vertexArray)
+            {
+                glGenVertexArrays(1, vertexArrayPtr);
+            }
             glBindVertexArray(_vertexArray);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, IntPtr.Zero);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, null);
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, IntPtr.Zero);
+            glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, null);
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
 

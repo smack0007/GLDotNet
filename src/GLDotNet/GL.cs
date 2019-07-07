@@ -24,7 +24,7 @@ using System.Text;
 
 namespace GLDotNet
 {
-	public static partial class GL
+	public static unsafe partial class GL
 	{
 		public const uint GL_ACTIVE_ATOMIC_COUNTER_BUFFERS = 0x92D9;
 		public const uint GL_ACTIVE_ATTRIBUTE_MAX_LENGTH = 0x8B8A;
@@ -82,9 +82,11 @@ namespace GLDotNet
 		public const uint GL_BGRA = 0x80E1;
 		public const uint GL_BGRA_INTEGER = 0x8D9B;
 		public const uint GL_BLEND = 0x0BE2;
+		public const uint GL_BLEND_COLOR = 0x8005;
 		public const uint GL_BLEND_DST = 0x0BE0;
 		public const uint GL_BLEND_DST_ALPHA = 0x80CA;
 		public const uint GL_BLEND_DST_RGB = 0x80C8;
+		public const uint GL_BLEND_EQUATION = 0x8009;
 		public const uint GL_BLEND_EQUATION_ALPHA = 0x883D;
 		public const uint GL_BLEND_EQUATION_RGB = 0x8009;
 		public const uint GL_BLEND_SRC = 0x0BE1;
@@ -133,6 +135,8 @@ namespace GLDotNet
 		public const uint GL_CLIP_DISTANCE6 = 0x3006;
 		public const uint GL_CLIP_DISTANCE7 = 0x3007;
 		public const uint GL_CLIP_ORIGIN = 0x935C;
+		public const uint GL_CLIPPING_INPUT_PRIMITIVES = 0x82F6;
+		public const uint GL_CLIPPING_OUTPUT_PRIMITIVES = 0x82F7;
 		public const uint GL_COLOR = 0x1800;
 		public const uint GL_COLOR_ATTACHMENT0 = 0x8CE0;
 		public const uint GL_COLOR_ATTACHMENT1 = 0x8CE1;
@@ -204,6 +208,7 @@ namespace GLDotNet
 		public const uint GL_COMPRESSED_TEXTURE_FORMATS = 0x86A3;
 		public const uint GL_COMPUTE_SHADER = 0x91B9;
 		public const uint GL_COMPUTE_SHADER_BIT = 0x00000020;
+		public const uint GL_COMPUTE_SHADER_INVOCATIONS = 0x82F5;
 		public const uint GL_COMPUTE_SUBROUTINE = 0x92ED;
 		public const uint GL_COMPUTE_SUBROUTINE_UNIFORM = 0x92F3;
 		public const uint GL_COMPUTE_TEXTURE = 0x82A0;
@@ -215,6 +220,7 @@ namespace GLDotNet
 		public const uint GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001;
 		public const uint GL_CONTEXT_FLAG_DEBUG_BIT = 0x00000002;
 		public const uint GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001;
+		public const uint GL_CONTEXT_FLAG_NO_ERROR_BIT = 0x00000008;
 		public const uint GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004;
 		public const uint GL_CONTEXT_FLAGS = 0x821E;
 		public const uint GL_CONTEXT_LOST = 0x0507;
@@ -361,6 +367,7 @@ namespace GLDotNet
 		public const uint GL_FRAGMENT_SHADER = 0x8B30;
 		public const uint GL_FRAGMENT_SHADER_BIT = 0x00000002;
 		public const uint GL_FRAGMENT_SHADER_DERIVATIVE_HINT = 0x8B8B;
+		public const uint GL_FRAGMENT_SHADER_INVOCATIONS = 0x82F4;
 		public const uint GL_FRAGMENT_SUBROUTINE = 0x92EC;
 		public const uint GL_FRAGMENT_SUBROUTINE_UNIFORM = 0x92F2;
 		public const uint GL_FRAGMENT_TEXTURE = 0x829F;
@@ -414,6 +421,7 @@ namespace GLDotNet
 		public const uint GL_GEOMETRY_SHADER = 0x8DD9;
 		public const uint GL_GEOMETRY_SHADER_BIT = 0x00000004;
 		public const uint GL_GEOMETRY_SHADER_INVOCATIONS = 0x887F;
+		public const uint GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED = 0x82F3;
 		public const uint GL_GEOMETRY_SUBROUTINE = 0x92EB;
 		public const uint GL_GEOMETRY_SUBROUTINE_UNIFORM = 0x92F1;
 		public const uint GL_GEOMETRY_TEXTURE = 0x829E;
@@ -678,6 +686,7 @@ namespace GLDotNet
 		public const uint GL_MAX_TEXTURE_BUFFER_SIZE = 0x8C2B;
 		public const uint GL_MAX_TEXTURE_IMAGE_UNITS = 0x8872;
 		public const uint GL_MAX_TEXTURE_LOD_BIAS = 0x84FD;
+		public const uint GL_MAX_TEXTURE_MAX_ANISOTROPY = 0x84FF;
 		public const uint GL_MAX_TEXTURE_SIZE = 0x0D33;
 		public const uint GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
 		public const uint GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS = 0x8C8A;
@@ -741,6 +750,7 @@ namespace GLDotNet
 		public const uint GL_NUM_SAMPLE_COUNTS = 0x9380;
 		public const uint GL_NUM_SHADER_BINARY_FORMATS = 0x8DF9;
 		public const uint GL_NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9;
+		public const uint GL_NUM_SPIR_V_EXTENSIONS = 0x9554;
 		public const uint GL_OBJECT_TYPE = 0x9112;
 		public const uint GL_OFFSET = 0x92FC;
 		public const uint GL_ONE = 1;
@@ -768,6 +778,8 @@ namespace GLDotNet
 		public const uint GL_PACK_SKIP_PIXELS = 0x0D04;
 		public const uint GL_PACK_SKIP_ROWS = 0x0D03;
 		public const uint GL_PACK_SWAP_BYTES = 0x0D00;
+		public const uint GL_PARAMETER_BUFFER = 0x80EE;
+		public const uint GL_PARAMETER_BUFFER_BINDING = 0x80EF;
 		public const uint GL_PATCH_DEFAULT_INNER_LEVEL = 0x8E73;
 		public const uint GL_PATCH_DEFAULT_OUTER_LEVEL = 0x8E74;
 		public const uint GL_PATCH_VERTICES = 0x8E72;
@@ -785,6 +797,7 @@ namespace GLDotNet
 		public const uint GL_POINT_SPRITE_COORD_ORIGIN = 0x8CA0;
 		public const uint GL_POINTS = 0x0000;
 		public const uint GL_POLYGON_MODE = 0x0B40;
+		public const uint GL_POLYGON_OFFSET_CLAMP = 0x8E1B;
 		public const uint GL_POLYGON_OFFSET_FACTOR = 0x8038;
 		public const uint GL_POLYGON_OFFSET_FILL = 0x8037;
 		public const uint GL_POLYGON_OFFSET_LINE = 0x2A02;
@@ -797,6 +810,7 @@ namespace GLDotNet
 		public const uint GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221;
 		public const uint GL_PRIMITIVE_RESTART_INDEX = 0x8F9E;
 		public const uint GL_PRIMITIVES_GENERATED = 0x8C87;
+		public const uint GL_PRIMITIVES_SUBMITTED = 0x82EF;
 		public const uint GL_PROGRAM = 0x82E2;
 		public const uint GL_PROGRAM_BINARY_FORMATS = 0x87FF;
 		public const uint GL_PROGRAM_BINARY_LENGTH = 0x8741;
@@ -976,6 +990,7 @@ namespace GLDotNet
 		public const uint GL_SEPARATE_ATTRIBS = 0x8C8D;
 		public const uint GL_SET = 0x150F;
 		public const uint GL_SHADER = 0x82E1;
+		public const uint GL_SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
 		public const uint GL_SHADER_BINARY_FORMATS = 0x8DF8;
 		public const uint GL_SHADER_COMPILER = 0x8DFA;
 		public const uint GL_SHADER_IMAGE_ACCESS_BARRIER_BIT = 0x00000020;
@@ -1003,6 +1018,8 @@ namespace GLDotNet
 		public const uint GL_SMOOTH_LINE_WIDTH_RANGE = 0x0B22;
 		public const uint GL_SMOOTH_POINT_SIZE_GRANULARITY = 0x0B13;
 		public const uint GL_SMOOTH_POINT_SIZE_RANGE = 0x0B12;
+		public const uint GL_SPIR_V_BINARY = 0x9552;
+		public const uint GL_SPIR_V_EXTENSIONS = 0x9553;
 		public const uint GL_SRC_ALPHA = 0x0302;
 		public const uint GL_SRC_ALPHA_SATURATE = 0x0308;
 		public const uint GL_SRC_COLOR = 0x0300;
@@ -1059,11 +1076,13 @@ namespace GLDotNet
 		public const uint GL_TESS_CONTROL_OUTPUT_VERTICES = 0x8E75;
 		public const uint GL_TESS_CONTROL_SHADER = 0x8E88;
 		public const uint GL_TESS_CONTROL_SHADER_BIT = 0x00000008;
+		public const uint GL_TESS_CONTROL_SHADER_PATCHES = 0x82F1;
 		public const uint GL_TESS_CONTROL_SUBROUTINE = 0x92E9;
 		public const uint GL_TESS_CONTROL_SUBROUTINE_UNIFORM = 0x92EF;
 		public const uint GL_TESS_CONTROL_TEXTURE = 0x829C;
 		public const uint GL_TESS_EVALUATION_SHADER = 0x8E87;
 		public const uint GL_TESS_EVALUATION_SHADER_BIT = 0x00000010;
+		public const uint GL_TESS_EVALUATION_SHADER_INVOCATIONS = 0x82F2;
 		public const uint GL_TESS_EVALUATION_SUBROUTINE = 0x92EA;
 		public const uint GL_TESS_EVALUATION_SUBROUTINE_UNIFORM = 0x92F0;
 		public const uint GL_TESS_EVALUATION_TEXTURE = 0x829D;
@@ -1136,6 +1155,7 @@ namespace GLDotNet
 		public const uint GL_TEXTURE_INTERNAL_FORMAT = 0x1003;
 		public const uint GL_TEXTURE_LOD_BIAS = 0x8501;
 		public const uint GL_TEXTURE_MAG_FILTER = 0x2800;
+		public const uint GL_TEXTURE_MAX_ANISOTROPY = 0x84FE;
 		public const uint GL_TEXTURE_MAX_LEVEL = 0x813D;
 		public const uint GL_TEXTURE_MAX_LOD = 0x813B;
 		public const uint GL_TEXTURE_MIN_FILTER = 0x2801;
@@ -1214,8 +1234,10 @@ namespace GLDotNet
 		public const uint GL_TRANSFORM_FEEDBACK_BUFFER_SIZE = 0x8C85;
 		public const uint GL_TRANSFORM_FEEDBACK_BUFFER_START = 0x8C84;
 		public const uint GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C;
+		public const uint GL_TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
 		public const uint GL_TRANSFORM_FEEDBACK_PAUSED = 0x8E23;
 		public const uint GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN = 0x8C88;
+		public const uint GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
 		public const uint GL_TRANSFORM_FEEDBACK_VARYING = 0x92F4;
 		public const uint GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH = 0x8C76;
 		public const uint GL_TRANSFORM_FEEDBACK_VARYINGS = 0x8C83;
@@ -1340,9 +1362,11 @@ namespace GLDotNet
 		public const uint GL_VERTEX_PROGRAM_POINT_SIZE = 0x8642;
 		public const uint GL_VERTEX_SHADER = 0x8B31;
 		public const uint GL_VERTEX_SHADER_BIT = 0x00000001;
+		public const uint GL_VERTEX_SHADER_INVOCATIONS = 0x82F0;
 		public const uint GL_VERTEX_SUBROUTINE = 0x92E8;
 		public const uint GL_VERTEX_SUBROUTINE_UNIFORM = 0x92EE;
 		public const uint GL_VERTEX_TEXTURE = 0x829B;
+		public const uint GL_VERTICES_SUBMITTED = 0x82EE;
 		public const uint GL_VIEW_CLASS_128_BITS = 0x82C4;
 		public const uint GL_VIEW_CLASS_16_BITS = 0x82CA;
 		public const uint GL_VIEW_CLASS_24_BITS = 0x82C9;
@@ -1372,7 +1396,7 @@ namespace GLDotNet
 
 		public delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);
 
-		private static unsafe class Delegates
+		public static class Delegates
 		{
 			public delegate void glActiveShaderProgram(uint pipeline, uint program);
 
@@ -1614,7 +1638,7 @@ namespace GLDotNet
 
 			public delegate void glDepthMask(bool flag);
 
-			public delegate void glDepthRange(double near, double far);
+			public delegate void glDepthRange(double n, double f);
 
 			public delegate void glDepthRangeArrayv(uint first, int count, double* v);
 
@@ -1850,13 +1874,13 @@ namespace GLDotNet
 
 			public delegate void glGetProgramBinary(uint program, int bufSize, int* length, uint* binaryFormat, void* binary);
 
-			public delegate void glGetProgramInfoLog(uint program, int bufSize, out int length, StringBuilder infoLog);
+			public delegate void glGetProgramInfoLog(uint program, int bufSize, int* length, StringBuilder infoLog);
 
 			public delegate void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params);
 
-			public delegate void glGetProgramiv(uint program, uint pname, out int @params);
+			public delegate void glGetProgramiv(uint program, uint pname, int* @params);
 
-			public delegate void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, out int length, StringBuilder infoLog);
+			public delegate void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int* length, StringBuilder infoLog);
 
 			public delegate void glGetProgramPipelineiv(uint pipeline, uint pname, int* @params);
 
@@ -1868,7 +1892,7 @@ namespace GLDotNet
 
 			public delegate int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name);
 
-			public delegate void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, out int length, StringBuilder name);
+			public delegate void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, StringBuilder name);
 
 			public delegate void glGetProgramStageiv(uint program, uint shadertype, uint pname, int* values);
 
@@ -1902,13 +1926,13 @@ namespace GLDotNet
 
 			public delegate void glGetSamplerParameteriv(uint sampler, uint pname, int* @params);
 
-			public delegate void glGetShaderInfoLog(uint shader, int bufSize, out int length, StringBuilder infoLog);
+			public delegate void glGetShaderInfoLog(uint shader, int bufSize, int* length, StringBuilder infoLog);
 
-			public delegate void glGetShaderiv(uint shader, uint pname, out int @params);
+			public delegate void glGetShaderiv(uint shader, uint pname, int* @params);
 
 			public delegate void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int* range, int* precision);
 
-			public delegate void glGetShaderSource(uint shader, int bufSize, out int length, StringBuilder source);
+			public delegate void glGetShaderSource(uint shader, int bufSize, int* length, StringBuilder source);
 
 			public delegate IntPtr glGetString(uint name);
 
@@ -2064,11 +2088,15 @@ namespace GLDotNet
 
 			public delegate void glMultiDrawArraysIndirect(uint mode, void* indirect, int drawcount, int stride);
 
+			public delegate void glMultiDrawArraysIndirectCount(uint mode, void* indirect, int drawcount, int maxdrawcount, int stride);
+
 			public delegate void glMultiDrawElements(uint mode, int* count, uint type, void** indices, int drawcount);
 
 			public delegate void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex);
 
 			public delegate void glMultiDrawElementsIndirect(uint mode, uint type, void* indirect, int drawcount, int stride);
+
+			public delegate void glMultiDrawElementsIndirectCount(uint mode, uint type, void* indirect, int drawcount, int maxdrawcount, int stride);
 
 			public delegate void glNamedBufferData(uint buffer, int size, void* data, uint usage);
 
@@ -2121,6 +2149,8 @@ namespace GLDotNet
 			public delegate void glPolygonMode(uint face, uint mode);
 
 			public delegate void glPolygonOffset(float factor, float units);
+
+			public delegate void glPolygonOffsetClamp(float factor, float units, float clamp);
 
 			public delegate void glPopDebugGroup();
 
@@ -2276,9 +2306,11 @@ namespace GLDotNet
 
 			public delegate void glShaderBinary(int count, uint* shaders, uint binaryformat, void* binary, int length);
 
-			public delegate void glShaderSource(uint shader, int count, ref string @string, ref int length);
+			public delegate void glShaderSource(uint shader, int count, string[] @string, int* length);
 
 			public delegate void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding);
+
+			public delegate void glSpecializeShader(uint shader, string pEntryPoint, uint numSpecializationConstants, uint* pConstantIndex, uint* pConstantValue);
 
 			public delegate void glStencilFunc(uint func, int @ref, uint mask);
 
@@ -2682,1311 +2714,1319 @@ namespace GLDotNet
 
 		}
 
-		private static Delegates.glActiveShaderProgram _glActiveShaderProgram;
+		public static Delegates.glActiveShaderProgram glActiveShaderProgram { get; private set; }
 
-		private static Delegates.glActiveTexture _glActiveTexture;
+		public static Delegates.glActiveTexture glActiveTexture { get; private set; }
 
-		private static Delegates.glAttachShader _glAttachShader;
+		public static Delegates.glAttachShader glAttachShader { get; private set; }
 
-		private static Delegates.glBeginConditionalRender _glBeginConditionalRender;
+		public static Delegates.glBeginConditionalRender glBeginConditionalRender { get; private set; }
 
-		private static Delegates.glBeginQuery _glBeginQuery;
+		public static Delegates.glBeginQuery glBeginQuery { get; private set; }
 
-		private static Delegates.glBeginQueryIndexed _glBeginQueryIndexed;
+		public static Delegates.glBeginQueryIndexed glBeginQueryIndexed { get; private set; }
 
-		private static Delegates.glBeginTransformFeedback _glBeginTransformFeedback;
+		public static Delegates.glBeginTransformFeedback glBeginTransformFeedback { get; private set; }
 
-		private static Delegates.glBindAttribLocation _glBindAttribLocation;
+		public static Delegates.glBindAttribLocation glBindAttribLocation { get; private set; }
 
-		private static Delegates.glBindBuffer _glBindBuffer;
+		public static Delegates.glBindBuffer glBindBuffer { get; private set; }
 
-		private static Delegates.glBindBufferBase _glBindBufferBase;
+		public static Delegates.glBindBufferBase glBindBufferBase { get; private set; }
 
-		private static Delegates.glBindBufferRange _glBindBufferRange;
+		public static Delegates.glBindBufferRange glBindBufferRange { get; private set; }
 
-		private static Delegates.glBindBuffersBase _glBindBuffersBase;
+		public static Delegates.glBindBuffersBase glBindBuffersBase { get; private set; }
 
-		private static Delegates.glBindBuffersRange _glBindBuffersRange;
+		public static Delegates.glBindBuffersRange glBindBuffersRange { get; private set; }
 
-		private static Delegates.glBindFragDataLocation _glBindFragDataLocation;
+		public static Delegates.glBindFragDataLocation glBindFragDataLocation { get; private set; }
 
-		private static Delegates.glBindFragDataLocationIndexed _glBindFragDataLocationIndexed;
+		public static Delegates.glBindFragDataLocationIndexed glBindFragDataLocationIndexed { get; private set; }
 
-		private static Delegates.glBindFramebuffer _glBindFramebuffer;
+		public static Delegates.glBindFramebuffer glBindFramebuffer { get; private set; }
 
-		private static Delegates.glBindImageTexture _glBindImageTexture;
+		public static Delegates.glBindImageTexture glBindImageTexture { get; private set; }
 
-		private static Delegates.glBindImageTextures _glBindImageTextures;
+		public static Delegates.glBindImageTextures glBindImageTextures { get; private set; }
 
-		private static Delegates.glBindProgramPipeline _glBindProgramPipeline;
+		public static Delegates.glBindProgramPipeline glBindProgramPipeline { get; private set; }
 
-		private static Delegates.glBindRenderbuffer _glBindRenderbuffer;
+		public static Delegates.glBindRenderbuffer glBindRenderbuffer { get; private set; }
 
-		private static Delegates.glBindSampler _glBindSampler;
+		public static Delegates.glBindSampler glBindSampler { get; private set; }
 
-		private static Delegates.glBindSamplers _glBindSamplers;
+		public static Delegates.glBindSamplers glBindSamplers { get; private set; }
 
-		private static Delegates.glBindTexture _glBindTexture;
+		public static Delegates.glBindTexture glBindTexture { get; private set; }
 
-		private static Delegates.glBindTextures _glBindTextures;
+		public static Delegates.glBindTextures glBindTextures { get; private set; }
 
-		private static Delegates.glBindTextureUnit _glBindTextureUnit;
+		public static Delegates.glBindTextureUnit glBindTextureUnit { get; private set; }
 
-		private static Delegates.glBindTransformFeedback _glBindTransformFeedback;
+		public static Delegates.glBindTransformFeedback glBindTransformFeedback { get; private set; }
 
-		private static Delegates.glBindVertexArray _glBindVertexArray;
+		public static Delegates.glBindVertexArray glBindVertexArray { get; private set; }
 
-		private static Delegates.glBindVertexBuffer _glBindVertexBuffer;
+		public static Delegates.glBindVertexBuffer glBindVertexBuffer { get; private set; }
 
-		private static Delegates.glBindVertexBuffers _glBindVertexBuffers;
+		public static Delegates.glBindVertexBuffers glBindVertexBuffers { get; private set; }
 
-		private static Delegates.glBlendColor _glBlendColor;
+		public static Delegates.glBlendColor glBlendColor { get; private set; }
 
-		private static Delegates.glBlendEquation _glBlendEquation;
+		public static Delegates.glBlendEquation glBlendEquation { get; private set; }
 
-		private static Delegates.glBlendEquationi _glBlendEquationi;
+		public static Delegates.glBlendEquationi glBlendEquationi { get; private set; }
 
-		private static Delegates.glBlendEquationSeparate _glBlendEquationSeparate;
+		public static Delegates.glBlendEquationSeparate glBlendEquationSeparate { get; private set; }
 
-		private static Delegates.glBlendEquationSeparatei _glBlendEquationSeparatei;
+		public static Delegates.glBlendEquationSeparatei glBlendEquationSeparatei { get; private set; }
 
-		private static Delegates.glBlendFunc _glBlendFunc;
+		public static Delegates.glBlendFunc glBlendFunc { get; private set; }
 
-		private static Delegates.glBlendFunci _glBlendFunci;
+		public static Delegates.glBlendFunci glBlendFunci { get; private set; }
 
-		private static Delegates.glBlendFuncSeparate _glBlendFuncSeparate;
+		public static Delegates.glBlendFuncSeparate glBlendFuncSeparate { get; private set; }
 
-		private static Delegates.glBlendFuncSeparatei _glBlendFuncSeparatei;
+		public static Delegates.glBlendFuncSeparatei glBlendFuncSeparatei { get; private set; }
 
-		private static Delegates.glBlitFramebuffer _glBlitFramebuffer;
+		public static Delegates.glBlitFramebuffer glBlitFramebuffer { get; private set; }
 
-		private static Delegates.glBlitNamedFramebuffer _glBlitNamedFramebuffer;
+		public static Delegates.glBlitNamedFramebuffer glBlitNamedFramebuffer { get; private set; }
 
-		private static Delegates.glBufferData _glBufferData;
+		public static Delegates.glBufferData glBufferData { get; private set; }
 
-		private static Delegates.glBufferStorage _glBufferStorage;
+		public static Delegates.glBufferStorage glBufferStorage { get; private set; }
 
-		private static Delegates.glBufferSubData _glBufferSubData;
+		public static Delegates.glBufferSubData glBufferSubData { get; private set; }
 
-		private static Delegates.glCheckFramebufferStatus _glCheckFramebufferStatus;
+		public static Delegates.glCheckFramebufferStatus glCheckFramebufferStatus { get; private set; }
 
-		private static Delegates.glCheckNamedFramebufferStatus _glCheckNamedFramebufferStatus;
+		public static Delegates.glCheckNamedFramebufferStatus glCheckNamedFramebufferStatus { get; private set; }
 
-		private static Delegates.glClampColor _glClampColor;
+		public static Delegates.glClampColor glClampColor { get; private set; }
 
-		private static Delegates.glClear _glClear;
+		public static Delegates.glClear glClear { get; private set; }
 
-		private static Delegates.glClearBufferData _glClearBufferData;
+		public static Delegates.glClearBufferData glClearBufferData { get; private set; }
 
-		private static Delegates.glClearBufferfi _glClearBufferfi;
+		public static Delegates.glClearBufferfi glClearBufferfi { get; private set; }
 
-		private static Delegates.glClearBufferfv _glClearBufferfv;
+		public static Delegates.glClearBufferfv glClearBufferfv { get; private set; }
 
-		private static Delegates.glClearBufferiv _glClearBufferiv;
+		public static Delegates.glClearBufferiv glClearBufferiv { get; private set; }
 
-		private static Delegates.glClearBufferSubData _glClearBufferSubData;
+		public static Delegates.glClearBufferSubData glClearBufferSubData { get; private set; }
 
-		private static Delegates.glClearBufferuiv _glClearBufferuiv;
+		public static Delegates.glClearBufferuiv glClearBufferuiv { get; private set; }
 
-		private static Delegates.glClearColor _glClearColor;
+		public static Delegates.glClearColor glClearColor { get; private set; }
 
-		private static Delegates.glClearDepth _glClearDepth;
+		public static Delegates.glClearDepth glClearDepth { get; private set; }
 
-		private static Delegates.glClearDepthf _glClearDepthf;
+		public static Delegates.glClearDepthf glClearDepthf { get; private set; }
 
-		private static Delegates.glClearNamedBufferData _glClearNamedBufferData;
+		public static Delegates.glClearNamedBufferData glClearNamedBufferData { get; private set; }
 
-		private static Delegates.glClearNamedBufferSubData _glClearNamedBufferSubData;
+		public static Delegates.glClearNamedBufferSubData glClearNamedBufferSubData { get; private set; }
 
-		private static Delegates.glClearNamedFramebufferfi _glClearNamedFramebufferfi;
+		public static Delegates.glClearNamedFramebufferfi glClearNamedFramebufferfi { get; private set; }
 
-		private static Delegates.glClearNamedFramebufferfv _glClearNamedFramebufferfv;
+		public static Delegates.glClearNamedFramebufferfv glClearNamedFramebufferfv { get; private set; }
 
-		private static Delegates.glClearNamedFramebufferiv _glClearNamedFramebufferiv;
+		public static Delegates.glClearNamedFramebufferiv glClearNamedFramebufferiv { get; private set; }
 
-		private static Delegates.glClearNamedFramebufferuiv _glClearNamedFramebufferuiv;
+		public static Delegates.glClearNamedFramebufferuiv glClearNamedFramebufferuiv { get; private set; }
 
-		private static Delegates.glClearStencil _glClearStencil;
+		public static Delegates.glClearStencil glClearStencil { get; private set; }
 
-		private static Delegates.glClearTexImage _glClearTexImage;
+		public static Delegates.glClearTexImage glClearTexImage { get; private set; }
 
-		private static Delegates.glClearTexSubImage _glClearTexSubImage;
+		public static Delegates.glClearTexSubImage glClearTexSubImage { get; private set; }
 
-		private static Delegates.glClientWaitSync _glClientWaitSync;
+		public static Delegates.glClientWaitSync glClientWaitSync { get; private set; }
 
-		private static Delegates.glClipControl _glClipControl;
+		public static Delegates.glClipControl glClipControl { get; private set; }
 
-		private static Delegates.glColorMask _glColorMask;
+		public static Delegates.glColorMask glColorMask { get; private set; }
 
-		private static Delegates.glColorMaski _glColorMaski;
+		public static Delegates.glColorMaski glColorMaski { get; private set; }
 
-		private static Delegates.glCompileShader _glCompileShader;
+		public static Delegates.glCompileShader glCompileShader { get; private set; }
 
-		private static Delegates.glCompressedTexImage1D _glCompressedTexImage1D;
+		public static Delegates.glCompressedTexImage1D glCompressedTexImage1D { get; private set; }
 
-		private static Delegates.glCompressedTexImage2D _glCompressedTexImage2D;
+		public static Delegates.glCompressedTexImage2D glCompressedTexImage2D { get; private set; }
 
-		private static Delegates.glCompressedTexImage3D _glCompressedTexImage3D;
+		public static Delegates.glCompressedTexImage3D glCompressedTexImage3D { get; private set; }
 
-		private static Delegates.glCompressedTexSubImage1D _glCompressedTexSubImage1D;
+		public static Delegates.glCompressedTexSubImage1D glCompressedTexSubImage1D { get; private set; }
 
-		private static Delegates.glCompressedTexSubImage2D _glCompressedTexSubImage2D;
+		public static Delegates.glCompressedTexSubImage2D glCompressedTexSubImage2D { get; private set; }
 
-		private static Delegates.glCompressedTexSubImage3D _glCompressedTexSubImage3D;
+		public static Delegates.glCompressedTexSubImage3D glCompressedTexSubImage3D { get; private set; }
 
-		private static Delegates.glCompressedTextureSubImage1D _glCompressedTextureSubImage1D;
+		public static Delegates.glCompressedTextureSubImage1D glCompressedTextureSubImage1D { get; private set; }
 
-		private static Delegates.glCompressedTextureSubImage2D _glCompressedTextureSubImage2D;
+		public static Delegates.glCompressedTextureSubImage2D glCompressedTextureSubImage2D { get; private set; }
 
-		private static Delegates.glCompressedTextureSubImage3D _glCompressedTextureSubImage3D;
+		public static Delegates.glCompressedTextureSubImage3D glCompressedTextureSubImage3D { get; private set; }
 
-		private static Delegates.glCopyBufferSubData _glCopyBufferSubData;
+		public static Delegates.glCopyBufferSubData glCopyBufferSubData { get; private set; }
 
-		private static Delegates.glCopyImageSubData _glCopyImageSubData;
+		public static Delegates.glCopyImageSubData glCopyImageSubData { get; private set; }
 
-		private static Delegates.glCopyNamedBufferSubData _glCopyNamedBufferSubData;
+		public static Delegates.glCopyNamedBufferSubData glCopyNamedBufferSubData { get; private set; }
 
-		private static Delegates.glCopyTexImage1D _glCopyTexImage1D;
+		public static Delegates.glCopyTexImage1D glCopyTexImage1D { get; private set; }
 
-		private static Delegates.glCopyTexImage2D _glCopyTexImage2D;
+		public static Delegates.glCopyTexImage2D glCopyTexImage2D { get; private set; }
 
-		private static Delegates.glCopyTexSubImage1D _glCopyTexSubImage1D;
+		public static Delegates.glCopyTexSubImage1D glCopyTexSubImage1D { get; private set; }
 
-		private static Delegates.glCopyTexSubImage2D _glCopyTexSubImage2D;
+		public static Delegates.glCopyTexSubImage2D glCopyTexSubImage2D { get; private set; }
 
-		private static Delegates.glCopyTexSubImage3D _glCopyTexSubImage3D;
+		public static Delegates.glCopyTexSubImage3D glCopyTexSubImage3D { get; private set; }
 
-		private static Delegates.glCopyTextureSubImage1D _glCopyTextureSubImage1D;
+		public static Delegates.glCopyTextureSubImage1D glCopyTextureSubImage1D { get; private set; }
 
-		private static Delegates.glCopyTextureSubImage2D _glCopyTextureSubImage2D;
+		public static Delegates.glCopyTextureSubImage2D glCopyTextureSubImage2D { get; private set; }
 
-		private static Delegates.glCopyTextureSubImage3D _glCopyTextureSubImage3D;
+		public static Delegates.glCopyTextureSubImage3D glCopyTextureSubImage3D { get; private set; }
 
-		private static Delegates.glCreateBuffers _glCreateBuffers;
+		public static Delegates.glCreateBuffers glCreateBuffers { get; private set; }
 
-		private static Delegates.glCreateFramebuffers _glCreateFramebuffers;
+		public static Delegates.glCreateFramebuffers glCreateFramebuffers { get; private set; }
 
-		private static Delegates.glCreateProgram _glCreateProgram;
+		public static Delegates.glCreateProgram glCreateProgram { get; private set; }
 
-		private static Delegates.glCreateProgramPipelines _glCreateProgramPipelines;
+		public static Delegates.glCreateProgramPipelines glCreateProgramPipelines { get; private set; }
 
-		private static Delegates.glCreateQueries _glCreateQueries;
+		public static Delegates.glCreateQueries glCreateQueries { get; private set; }
 
-		private static Delegates.glCreateRenderbuffers _glCreateRenderbuffers;
+		public static Delegates.glCreateRenderbuffers glCreateRenderbuffers { get; private set; }
 
-		private static Delegates.glCreateSamplers _glCreateSamplers;
+		public static Delegates.glCreateSamplers glCreateSamplers { get; private set; }
 
-		private static Delegates.glCreateShader _glCreateShader;
+		public static Delegates.glCreateShader glCreateShader { get; private set; }
 
-		private static Delegates.glCreateShaderProgramv _glCreateShaderProgramv;
+		public static Delegates.glCreateShaderProgramv glCreateShaderProgramv { get; private set; }
 
-		private static Delegates.glCreateTextures _glCreateTextures;
+		public static Delegates.glCreateTextures glCreateTextures { get; private set; }
 
-		private static Delegates.glCreateTransformFeedbacks _glCreateTransformFeedbacks;
+		public static Delegates.glCreateTransformFeedbacks glCreateTransformFeedbacks { get; private set; }
 
-		private static Delegates.glCreateVertexArrays _glCreateVertexArrays;
+		public static Delegates.glCreateVertexArrays glCreateVertexArrays { get; private set; }
 
-		private static Delegates.glCullFace _glCullFace;
+		public static Delegates.glCullFace glCullFace { get; private set; }
 
-		private static Delegates.glDebugMessageCallback _glDebugMessageCallback;
+		public static Delegates.glDebugMessageCallback glDebugMessageCallback { get; private set; }
 
-		private static Delegates.glDebugMessageControl _glDebugMessageControl;
+		public static Delegates.glDebugMessageControl glDebugMessageControl { get; private set; }
 
-		private static Delegates.glDebugMessageInsert _glDebugMessageInsert;
+		public static Delegates.glDebugMessageInsert glDebugMessageInsert { get; private set; }
 
-		private static Delegates.glDeleteBuffers _glDeleteBuffers;
+		public static Delegates.glDeleteBuffers glDeleteBuffers { get; private set; }
 
-		private static Delegates.glDeleteFramebuffers _glDeleteFramebuffers;
+		public static Delegates.glDeleteFramebuffers glDeleteFramebuffers { get; private set; }
 
-		private static Delegates.glDeleteProgram _glDeleteProgram;
+		public static Delegates.glDeleteProgram glDeleteProgram { get; private set; }
 
-		private static Delegates.glDeleteProgramPipelines _glDeleteProgramPipelines;
+		public static Delegates.glDeleteProgramPipelines glDeleteProgramPipelines { get; private set; }
 
-		private static Delegates.glDeleteQueries _glDeleteQueries;
+		public static Delegates.glDeleteQueries glDeleteQueries { get; private set; }
 
-		private static Delegates.glDeleteRenderbuffers _glDeleteRenderbuffers;
+		public static Delegates.glDeleteRenderbuffers glDeleteRenderbuffers { get; private set; }
 
-		private static Delegates.glDeleteSamplers _glDeleteSamplers;
+		public static Delegates.glDeleteSamplers glDeleteSamplers { get; private set; }
 
-		private static Delegates.glDeleteShader _glDeleteShader;
+		public static Delegates.glDeleteShader glDeleteShader { get; private set; }
 
-		private static Delegates.glDeleteSync _glDeleteSync;
+		public static Delegates.glDeleteSync glDeleteSync { get; private set; }
 
-		private static Delegates.glDeleteTextures _glDeleteTextures;
+		public static Delegates.glDeleteTextures glDeleteTextures { get; private set; }
 
-		private static Delegates.glDeleteTransformFeedbacks _glDeleteTransformFeedbacks;
+		public static Delegates.glDeleteTransformFeedbacks glDeleteTransformFeedbacks { get; private set; }
 
-		private static Delegates.glDeleteVertexArrays _glDeleteVertexArrays;
+		public static Delegates.glDeleteVertexArrays glDeleteVertexArrays { get; private set; }
 
-		private static Delegates.glDepthFunc _glDepthFunc;
+		public static Delegates.glDepthFunc glDepthFunc { get; private set; }
 
-		private static Delegates.glDepthMask _glDepthMask;
+		public static Delegates.glDepthMask glDepthMask { get; private set; }
 
-		private static Delegates.glDepthRange _glDepthRange;
+		public static Delegates.glDepthRange glDepthRange { get; private set; }
 
-		private static Delegates.glDepthRangeArrayv _glDepthRangeArrayv;
+		public static Delegates.glDepthRangeArrayv glDepthRangeArrayv { get; private set; }
 
-		private static Delegates.glDepthRangef _glDepthRangef;
+		public static Delegates.glDepthRangef glDepthRangef { get; private set; }
 
-		private static Delegates.glDepthRangeIndexed _glDepthRangeIndexed;
+		public static Delegates.glDepthRangeIndexed glDepthRangeIndexed { get; private set; }
 
-		private static Delegates.glDetachShader _glDetachShader;
+		public static Delegates.glDetachShader glDetachShader { get; private set; }
 
-		private static Delegates.glDisable _glDisable;
+		public static Delegates.glDisable glDisable { get; private set; }
 
-		private static Delegates.glDisablei _glDisablei;
+		public static Delegates.glDisablei glDisablei { get; private set; }
 
-		private static Delegates.glDisableVertexArrayAttrib _glDisableVertexArrayAttrib;
+		public static Delegates.glDisableVertexArrayAttrib glDisableVertexArrayAttrib { get; private set; }
 
-		private static Delegates.glDisableVertexAttribArray _glDisableVertexAttribArray;
+		public static Delegates.glDisableVertexAttribArray glDisableVertexAttribArray { get; private set; }
 
-		private static Delegates.glDispatchCompute _glDispatchCompute;
+		public static Delegates.glDispatchCompute glDispatchCompute { get; private set; }
 
-		private static Delegates.glDispatchComputeIndirect _glDispatchComputeIndirect;
+		public static Delegates.glDispatchComputeIndirect glDispatchComputeIndirect { get; private set; }
 
-		private static Delegates.glDrawArrays _glDrawArrays;
+		public static Delegates.glDrawArrays glDrawArrays { get; private set; }
 
-		private static Delegates.glDrawArraysIndirect _glDrawArraysIndirect;
+		public static Delegates.glDrawArraysIndirect glDrawArraysIndirect { get; private set; }
 
-		private static Delegates.glDrawArraysInstanced _glDrawArraysInstanced;
+		public static Delegates.glDrawArraysInstanced glDrawArraysInstanced { get; private set; }
 
-		private static Delegates.glDrawArraysInstancedBaseInstance _glDrawArraysInstancedBaseInstance;
+		public static Delegates.glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance { get; private set; }
 
-		private static Delegates.glDrawBuffer _glDrawBuffer;
+		public static Delegates.glDrawBuffer glDrawBuffer { get; private set; }
 
-		private static Delegates.glDrawBuffers _glDrawBuffers;
+		public static Delegates.glDrawBuffers glDrawBuffers { get; private set; }
 
-		private static Delegates.glDrawElements _glDrawElements;
+		public static Delegates.glDrawElements glDrawElements { get; private set; }
 
-		private static Delegates.glDrawElementsBaseVertex _glDrawElementsBaseVertex;
+		public static Delegates.glDrawElementsBaseVertex glDrawElementsBaseVertex { get; private set; }
 
-		private static Delegates.glDrawElementsIndirect _glDrawElementsIndirect;
+		public static Delegates.glDrawElementsIndirect glDrawElementsIndirect { get; private set; }
 
-		private static Delegates.glDrawElementsInstanced _glDrawElementsInstanced;
+		public static Delegates.glDrawElementsInstanced glDrawElementsInstanced { get; private set; }
 
-		private static Delegates.glDrawElementsInstancedBaseInstance _glDrawElementsInstancedBaseInstance;
+		public static Delegates.glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance { get; private set; }
 
-		private static Delegates.glDrawElementsInstancedBaseVertex _glDrawElementsInstancedBaseVertex;
+		public static Delegates.glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex { get; private set; }
 
-		private static Delegates.glDrawElementsInstancedBaseVertexBaseInstance _glDrawElementsInstancedBaseVertexBaseInstance;
+		public static Delegates.glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance { get; private set; }
 
-		private static Delegates.glDrawRangeElements _glDrawRangeElements;
+		public static Delegates.glDrawRangeElements glDrawRangeElements { get; private set; }
 
-		private static Delegates.glDrawRangeElementsBaseVertex _glDrawRangeElementsBaseVertex;
+		public static Delegates.glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex { get; private set; }
 
-		private static Delegates.glDrawTransformFeedback _glDrawTransformFeedback;
+		public static Delegates.glDrawTransformFeedback glDrawTransformFeedback { get; private set; }
 
-		private static Delegates.glDrawTransformFeedbackInstanced _glDrawTransformFeedbackInstanced;
+		public static Delegates.glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced { get; private set; }
 
-		private static Delegates.glDrawTransformFeedbackStream _glDrawTransformFeedbackStream;
+		public static Delegates.glDrawTransformFeedbackStream glDrawTransformFeedbackStream { get; private set; }
 
-		private static Delegates.glDrawTransformFeedbackStreamInstanced _glDrawTransformFeedbackStreamInstanced;
+		public static Delegates.glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced { get; private set; }
 
-		private static Delegates.glEnable _glEnable;
+		public static Delegates.glEnable glEnable { get; private set; }
 
-		private static Delegates.glEnablei _glEnablei;
+		public static Delegates.glEnablei glEnablei { get; private set; }
 
-		private static Delegates.glEnableVertexArrayAttrib _glEnableVertexArrayAttrib;
+		public static Delegates.glEnableVertexArrayAttrib glEnableVertexArrayAttrib { get; private set; }
 
-		private static Delegates.glEnableVertexAttribArray _glEnableVertexAttribArray;
+		public static Delegates.glEnableVertexAttribArray glEnableVertexAttribArray { get; private set; }
 
-		private static Delegates.glEndConditionalRender _glEndConditionalRender;
+		public static Delegates.glEndConditionalRender glEndConditionalRender { get; private set; }
 
-		private static Delegates.glEndQuery _glEndQuery;
+		public static Delegates.glEndQuery glEndQuery { get; private set; }
 
-		private static Delegates.glEndQueryIndexed _glEndQueryIndexed;
+		public static Delegates.glEndQueryIndexed glEndQueryIndexed { get; private set; }
 
-		private static Delegates.glEndTransformFeedback _glEndTransformFeedback;
+		public static Delegates.glEndTransformFeedback glEndTransformFeedback { get; private set; }
 
-		private static Delegates.glFenceSync _glFenceSync;
+		public static Delegates.glFenceSync glFenceSync { get; private set; }
 
-		private static Delegates.glFinish _glFinish;
+		public static Delegates.glFinish glFinish { get; private set; }
 
-		private static Delegates.glFlush _glFlush;
+		public static Delegates.glFlush glFlush { get; private set; }
 
-		private static Delegates.glFlushMappedBufferRange _glFlushMappedBufferRange;
+		public static Delegates.glFlushMappedBufferRange glFlushMappedBufferRange { get; private set; }
 
-		private static Delegates.glFlushMappedNamedBufferRange _glFlushMappedNamedBufferRange;
+		public static Delegates.glFlushMappedNamedBufferRange glFlushMappedNamedBufferRange { get; private set; }
 
-		private static Delegates.glFramebufferParameteri _glFramebufferParameteri;
+		public static Delegates.glFramebufferParameteri glFramebufferParameteri { get; private set; }
 
-		private static Delegates.glFramebufferRenderbuffer _glFramebufferRenderbuffer;
+		public static Delegates.glFramebufferRenderbuffer glFramebufferRenderbuffer { get; private set; }
 
-		private static Delegates.glFramebufferTexture _glFramebufferTexture;
+		public static Delegates.glFramebufferTexture glFramebufferTexture { get; private set; }
 
-		private static Delegates.glFramebufferTexture1D _glFramebufferTexture1D;
+		public static Delegates.glFramebufferTexture1D glFramebufferTexture1D { get; private set; }
 
-		private static Delegates.glFramebufferTexture2D _glFramebufferTexture2D;
+		public static Delegates.glFramebufferTexture2D glFramebufferTexture2D { get; private set; }
 
-		private static Delegates.glFramebufferTexture3D _glFramebufferTexture3D;
+		public static Delegates.glFramebufferTexture3D glFramebufferTexture3D { get; private set; }
 
-		private static Delegates.glFramebufferTextureLayer _glFramebufferTextureLayer;
+		public static Delegates.glFramebufferTextureLayer glFramebufferTextureLayer { get; private set; }
 
-		private static Delegates.glFrontFace _glFrontFace;
+		public static Delegates.glFrontFace glFrontFace { get; private set; }
 
-		private static Delegates.glGenBuffers _glGenBuffers;
+		public static Delegates.glGenBuffers glGenBuffers { get; private set; }
 
-		private static Delegates.glGenerateMipmap _glGenerateMipmap;
+		public static Delegates.glGenerateMipmap glGenerateMipmap { get; private set; }
 
-		private static Delegates.glGenerateTextureMipmap _glGenerateTextureMipmap;
+		public static Delegates.glGenerateTextureMipmap glGenerateTextureMipmap { get; private set; }
 
-		private static Delegates.glGenFramebuffers _glGenFramebuffers;
+		public static Delegates.glGenFramebuffers glGenFramebuffers { get; private set; }
 
-		private static Delegates.glGenProgramPipelines _glGenProgramPipelines;
+		public static Delegates.glGenProgramPipelines glGenProgramPipelines { get; private set; }
 
-		private static Delegates.glGenQueries _glGenQueries;
+		public static Delegates.glGenQueries glGenQueries { get; private set; }
 
-		private static Delegates.glGenRenderbuffers _glGenRenderbuffers;
+		public static Delegates.glGenRenderbuffers glGenRenderbuffers { get; private set; }
 
-		private static Delegates.glGenSamplers _glGenSamplers;
+		public static Delegates.glGenSamplers glGenSamplers { get; private set; }
 
-		private static Delegates.glGenTextures _glGenTextures;
+		public static Delegates.glGenTextures glGenTextures { get; private set; }
 
-		private static Delegates.glGenTransformFeedbacks _glGenTransformFeedbacks;
+		public static Delegates.glGenTransformFeedbacks glGenTransformFeedbacks { get; private set; }
 
-		private static Delegates.glGenVertexArrays _glGenVertexArrays;
+		public static Delegates.glGenVertexArrays glGenVertexArrays { get; private set; }
 
-		private static Delegates.glGetActiveAtomicCounterBufferiv _glGetActiveAtomicCounterBufferiv;
+		public static Delegates.glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv { get; private set; }
 
-		private static Delegates.glGetActiveAttrib _glGetActiveAttrib;
+		public static Delegates.glGetActiveAttrib glGetActiveAttrib { get; private set; }
 
-		private static Delegates.glGetActiveSubroutineName _glGetActiveSubroutineName;
+		public static Delegates.glGetActiveSubroutineName glGetActiveSubroutineName { get; private set; }
 
-		private static Delegates.glGetActiveSubroutineUniformiv _glGetActiveSubroutineUniformiv;
+		public static Delegates.glGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv { get; private set; }
 
-		private static Delegates.glGetActiveSubroutineUniformName _glGetActiveSubroutineUniformName;
+		public static Delegates.glGetActiveSubroutineUniformName glGetActiveSubroutineUniformName { get; private set; }
 
-		private static Delegates.glGetActiveUniform _glGetActiveUniform;
+		public static Delegates.glGetActiveUniform glGetActiveUniform { get; private set; }
 
-		private static Delegates.glGetActiveUniformBlockiv _glGetActiveUniformBlockiv;
+		public static Delegates.glGetActiveUniformBlockiv glGetActiveUniformBlockiv { get; private set; }
 
-		private static Delegates.glGetActiveUniformBlockName _glGetActiveUniformBlockName;
+		public static Delegates.glGetActiveUniformBlockName glGetActiveUniformBlockName { get; private set; }
 
-		private static Delegates.glGetActiveUniformName _glGetActiveUniformName;
+		public static Delegates.glGetActiveUniformName glGetActiveUniformName { get; private set; }
 
-		private static Delegates.glGetActiveUniformsiv _glGetActiveUniformsiv;
+		public static Delegates.glGetActiveUniformsiv glGetActiveUniformsiv { get; private set; }
 
-		private static Delegates.glGetAttachedShaders _glGetAttachedShaders;
+		public static Delegates.glGetAttachedShaders glGetAttachedShaders { get; private set; }
 
-		private static Delegates.glGetAttribLocation _glGetAttribLocation;
+		public static Delegates.glGetAttribLocation glGetAttribLocation { get; private set; }
 
-		private static Delegates.glGetBooleani_v _glGetBooleani_v;
+		public static Delegates.glGetBooleani_v glGetBooleani_v { get; private set; }
 
-		private static Delegates.glGetBooleanv _glGetBooleanv;
+		public static Delegates.glGetBooleanv glGetBooleanv { get; private set; }
 
-		private static Delegates.glGetBufferParameteri64v _glGetBufferParameteri64v;
+		public static Delegates.glGetBufferParameteri64v glGetBufferParameteri64v { get; private set; }
 
-		private static Delegates.glGetBufferParameteriv _glGetBufferParameteriv;
+		public static Delegates.glGetBufferParameteriv glGetBufferParameteriv { get; private set; }
 
-		private static Delegates.glGetBufferPointerv _glGetBufferPointerv;
+		public static Delegates.glGetBufferPointerv glGetBufferPointerv { get; private set; }
 
-		private static Delegates.glGetBufferSubData _glGetBufferSubData;
+		public static Delegates.glGetBufferSubData glGetBufferSubData { get; private set; }
 
-		private static Delegates.glGetCompressedTexImage _glGetCompressedTexImage;
+		public static Delegates.glGetCompressedTexImage glGetCompressedTexImage { get; private set; }
 
-		private static Delegates.glGetCompressedTextureImage _glGetCompressedTextureImage;
+		public static Delegates.glGetCompressedTextureImage glGetCompressedTextureImage { get; private set; }
 
-		private static Delegates.glGetCompressedTextureSubImage _glGetCompressedTextureSubImage;
+		public static Delegates.glGetCompressedTextureSubImage glGetCompressedTextureSubImage { get; private set; }
 
-		private static Delegates.glGetDebugMessageLog _glGetDebugMessageLog;
+		public static Delegates.glGetDebugMessageLog glGetDebugMessageLog { get; private set; }
 
-		private static Delegates.glGetDoublei_v _glGetDoublei_v;
+		public static Delegates.glGetDoublei_v glGetDoublei_v { get; private set; }
 
-		private static Delegates.glGetDoublev _glGetDoublev;
+		public static Delegates.glGetDoublev glGetDoublev { get; private set; }
 
-		private static Delegates.glGetError _glGetError;
+		public static Delegates.glGetError glGetError { get; private set; }
 
-		private static Delegates.glGetFloati_v _glGetFloati_v;
+		public static Delegates.glGetFloati_v glGetFloati_v { get; private set; }
 
-		private static Delegates.glGetFloatv _glGetFloatv;
+		public static Delegates.glGetFloatv glGetFloatv { get; private set; }
 
-		private static Delegates.glGetFragDataIndex _glGetFragDataIndex;
+		public static Delegates.glGetFragDataIndex glGetFragDataIndex { get; private set; }
 
-		private static Delegates.glGetFragDataLocation _glGetFragDataLocation;
+		public static Delegates.glGetFragDataLocation glGetFragDataLocation { get; private set; }
 
-		private static Delegates.glGetFramebufferAttachmentParameteriv _glGetFramebufferAttachmentParameteriv;
+		public static Delegates.glGetFramebufferAttachmentParameteriv glGetFramebufferAttachmentParameteriv { get; private set; }
 
-		private static Delegates.glGetFramebufferParameteriv _glGetFramebufferParameteriv;
+		public static Delegates.glGetFramebufferParameteriv glGetFramebufferParameteriv { get; private set; }
 
-		private static Delegates.glGetGraphicsResetStatus _glGetGraphicsResetStatus;
+		public static Delegates.glGetGraphicsResetStatus glGetGraphicsResetStatus { get; private set; }
 
-		private static Delegates.glGetInteger64i_v _glGetInteger64i_v;
+		public static Delegates.glGetInteger64i_v glGetInteger64i_v { get; private set; }
 
-		private static Delegates.glGetInteger64v _glGetInteger64v;
+		public static Delegates.glGetInteger64v glGetInteger64v { get; private set; }
 
-		private static Delegates.glGetIntegeri_v _glGetIntegeri_v;
+		public static Delegates.glGetIntegeri_v glGetIntegeri_v { get; private set; }
 
-		private static Delegates.glGetIntegerv _glGetIntegerv;
+		public static Delegates.glGetIntegerv glGetIntegerv { get; private set; }
 
-		private static Delegates.glGetInternalformati64v _glGetInternalformati64v;
+		public static Delegates.glGetInternalformati64v glGetInternalformati64v { get; private set; }
 
-		private static Delegates.glGetInternalformativ _glGetInternalformativ;
+		public static Delegates.glGetInternalformativ glGetInternalformativ { get; private set; }
 
-		private static Delegates.glGetMultisamplefv _glGetMultisamplefv;
+		public static Delegates.glGetMultisamplefv glGetMultisamplefv { get; private set; }
 
-		private static Delegates.glGetNamedBufferParameteri64v _glGetNamedBufferParameteri64v;
+		public static Delegates.glGetNamedBufferParameteri64v glGetNamedBufferParameteri64v { get; private set; }
 
-		private static Delegates.glGetNamedBufferParameteriv _glGetNamedBufferParameteriv;
+		public static Delegates.glGetNamedBufferParameteriv glGetNamedBufferParameteriv { get; private set; }
 
-		private static Delegates.glGetNamedBufferPointerv _glGetNamedBufferPointerv;
+		public static Delegates.glGetNamedBufferPointerv glGetNamedBufferPointerv { get; private set; }
 
-		private static Delegates.glGetNamedBufferSubData _glGetNamedBufferSubData;
+		public static Delegates.glGetNamedBufferSubData glGetNamedBufferSubData { get; private set; }
 
-		private static Delegates.glGetNamedFramebufferAttachmentParameteriv _glGetNamedFramebufferAttachmentParameteriv;
+		public static Delegates.glGetNamedFramebufferAttachmentParameteriv glGetNamedFramebufferAttachmentParameteriv { get; private set; }
 
-		private static Delegates.glGetNamedFramebufferParameteriv _glGetNamedFramebufferParameteriv;
+		public static Delegates.glGetNamedFramebufferParameteriv glGetNamedFramebufferParameteriv { get; private set; }
 
-		private static Delegates.glGetNamedRenderbufferParameteriv _glGetNamedRenderbufferParameteriv;
+		public static Delegates.glGetNamedRenderbufferParameteriv glGetNamedRenderbufferParameteriv { get; private set; }
 
-		private static Delegates.glGetnCompressedTexImage _glGetnCompressedTexImage;
+		public static Delegates.glGetnCompressedTexImage glGetnCompressedTexImage { get; private set; }
 
-		private static Delegates.glGetnTexImage _glGetnTexImage;
+		public static Delegates.glGetnTexImage glGetnTexImage { get; private set; }
 
-		private static Delegates.glGetnUniformdv _glGetnUniformdv;
+		public static Delegates.glGetnUniformdv glGetnUniformdv { get; private set; }
 
-		private static Delegates.glGetnUniformfv _glGetnUniformfv;
+		public static Delegates.glGetnUniformfv glGetnUniformfv { get; private set; }
 
-		private static Delegates.glGetnUniformiv _glGetnUniformiv;
+		public static Delegates.glGetnUniformiv glGetnUniformiv { get; private set; }
 
-		private static Delegates.glGetnUniformuiv _glGetnUniformuiv;
+		public static Delegates.glGetnUniformuiv glGetnUniformuiv { get; private set; }
 
-		private static Delegates.glGetObjectLabel _glGetObjectLabel;
+		public static Delegates.glGetObjectLabel glGetObjectLabel { get; private set; }
 
-		private static Delegates.glGetObjectPtrLabel _glGetObjectPtrLabel;
+		public static Delegates.glGetObjectPtrLabel glGetObjectPtrLabel { get; private set; }
 
-		private static Delegates.glGetPointerv _glGetPointerv;
+		public static Delegates.glGetPointerv glGetPointerv { get; private set; }
 
-		private static Delegates.glGetProgramBinary _glGetProgramBinary;
+		public static Delegates.glGetProgramBinary glGetProgramBinary { get; private set; }
 
-		private static Delegates.glGetProgramInfoLog _glGetProgramInfoLog;
+		public static Delegates.glGetProgramInfoLog glGetProgramInfoLog { get; private set; }
 
-		private static Delegates.glGetProgramInterfaceiv _glGetProgramInterfaceiv;
+		public static Delegates.glGetProgramInterfaceiv glGetProgramInterfaceiv { get; private set; }
 
-		private static Delegates.glGetProgramiv _glGetProgramiv;
+		public static Delegates.glGetProgramiv glGetProgramiv { get; private set; }
 
-		private static Delegates.glGetProgramPipelineInfoLog _glGetProgramPipelineInfoLog;
+		public static Delegates.glGetProgramPipelineInfoLog glGetProgramPipelineInfoLog { get; private set; }
 
-		private static Delegates.glGetProgramPipelineiv _glGetProgramPipelineiv;
+		public static Delegates.glGetProgramPipelineiv glGetProgramPipelineiv { get; private set; }
 
-		private static Delegates.glGetProgramResourceIndex _glGetProgramResourceIndex;
+		public static Delegates.glGetProgramResourceIndex glGetProgramResourceIndex { get; private set; }
 
-		private static Delegates.glGetProgramResourceiv _glGetProgramResourceiv;
+		public static Delegates.glGetProgramResourceiv glGetProgramResourceiv { get; private set; }
 
-		private static Delegates.glGetProgramResourceLocation _glGetProgramResourceLocation;
+		public static Delegates.glGetProgramResourceLocation glGetProgramResourceLocation { get; private set; }
 
-		private static Delegates.glGetProgramResourceLocationIndex _glGetProgramResourceLocationIndex;
+		public static Delegates.glGetProgramResourceLocationIndex glGetProgramResourceLocationIndex { get; private set; }
 
-		private static Delegates.glGetProgramResourceName _glGetProgramResourceName;
+		public static Delegates.glGetProgramResourceName glGetProgramResourceName { get; private set; }
 
-		private static Delegates.glGetProgramStageiv _glGetProgramStageiv;
+		public static Delegates.glGetProgramStageiv glGetProgramStageiv { get; private set; }
 
-		private static Delegates.glGetQueryBufferObjecti64v _glGetQueryBufferObjecti64v;
+		public static Delegates.glGetQueryBufferObjecti64v glGetQueryBufferObjecti64v { get; private set; }
 
-		private static Delegates.glGetQueryBufferObjectiv _glGetQueryBufferObjectiv;
+		public static Delegates.glGetQueryBufferObjectiv glGetQueryBufferObjectiv { get; private set; }
 
-		private static Delegates.glGetQueryBufferObjectui64v _glGetQueryBufferObjectui64v;
+		public static Delegates.glGetQueryBufferObjectui64v glGetQueryBufferObjectui64v { get; private set; }
 
-		private static Delegates.glGetQueryBufferObjectuiv _glGetQueryBufferObjectuiv;
+		public static Delegates.glGetQueryBufferObjectuiv glGetQueryBufferObjectuiv { get; private set; }
 
-		private static Delegates.glGetQueryIndexediv _glGetQueryIndexediv;
+		public static Delegates.glGetQueryIndexediv glGetQueryIndexediv { get; private set; }
 
-		private static Delegates.glGetQueryiv _glGetQueryiv;
+		public static Delegates.glGetQueryiv glGetQueryiv { get; private set; }
 
-		private static Delegates.glGetQueryObjecti64v _glGetQueryObjecti64v;
+		public static Delegates.glGetQueryObjecti64v glGetQueryObjecti64v { get; private set; }
 
-		private static Delegates.glGetQueryObjectiv _glGetQueryObjectiv;
+		public static Delegates.glGetQueryObjectiv glGetQueryObjectiv { get; private set; }
 
-		private static Delegates.glGetQueryObjectui64v _glGetQueryObjectui64v;
+		public static Delegates.glGetQueryObjectui64v glGetQueryObjectui64v { get; private set; }
 
-		private static Delegates.glGetQueryObjectuiv _glGetQueryObjectuiv;
+		public static Delegates.glGetQueryObjectuiv glGetQueryObjectuiv { get; private set; }
 
-		private static Delegates.glGetRenderbufferParameteriv _glGetRenderbufferParameteriv;
+		public static Delegates.glGetRenderbufferParameteriv glGetRenderbufferParameteriv { get; private set; }
 
-		private static Delegates.glGetSamplerParameterfv _glGetSamplerParameterfv;
+		public static Delegates.glGetSamplerParameterfv glGetSamplerParameterfv { get; private set; }
 
-		private static Delegates.glGetSamplerParameterIiv _glGetSamplerParameterIiv;
+		public static Delegates.glGetSamplerParameterIiv glGetSamplerParameterIiv { get; private set; }
 
-		private static Delegates.glGetSamplerParameterIuiv _glGetSamplerParameterIuiv;
+		public static Delegates.glGetSamplerParameterIuiv glGetSamplerParameterIuiv { get; private set; }
 
-		private static Delegates.glGetSamplerParameteriv _glGetSamplerParameteriv;
+		public static Delegates.glGetSamplerParameteriv glGetSamplerParameteriv { get; private set; }
 
-		private static Delegates.glGetShaderInfoLog _glGetShaderInfoLog;
+		public static Delegates.glGetShaderInfoLog glGetShaderInfoLog { get; private set; }
 
-		private static Delegates.glGetShaderiv _glGetShaderiv;
+		public static Delegates.glGetShaderiv glGetShaderiv { get; private set; }
 
-		private static Delegates.glGetShaderPrecisionFormat _glGetShaderPrecisionFormat;
+		public static Delegates.glGetShaderPrecisionFormat glGetShaderPrecisionFormat { get; private set; }
 
-		private static Delegates.glGetShaderSource _glGetShaderSource;
+		public static Delegates.glGetShaderSource glGetShaderSource { get; private set; }
 
-		private static Delegates.glGetString _glGetString;
+		public static Delegates.glGetString glGetString { get; private set; }
 
-		private static Delegates.glGetStringi _glGetStringi;
+		public static Delegates.glGetStringi glGetStringi { get; private set; }
 
-		private static Delegates.glGetSubroutineIndex _glGetSubroutineIndex;
+		public static Delegates.glGetSubroutineIndex glGetSubroutineIndex { get; private set; }
 
-		private static Delegates.glGetSubroutineUniformLocation _glGetSubroutineUniformLocation;
+		public static Delegates.glGetSubroutineUniformLocation glGetSubroutineUniformLocation { get; private set; }
 
-		private static Delegates.glGetSynciv _glGetSynciv;
+		public static Delegates.glGetSynciv glGetSynciv { get; private set; }
 
-		private static Delegates.glGetTexImage _glGetTexImage;
+		public static Delegates.glGetTexImage glGetTexImage { get; private set; }
 
-		private static Delegates.glGetTexLevelParameterfv _glGetTexLevelParameterfv;
+		public static Delegates.glGetTexLevelParameterfv glGetTexLevelParameterfv { get; private set; }
 
-		private static Delegates.glGetTexLevelParameteriv _glGetTexLevelParameteriv;
+		public static Delegates.glGetTexLevelParameteriv glGetTexLevelParameteriv { get; private set; }
 
-		private static Delegates.glGetTexParameterfv _glGetTexParameterfv;
+		public static Delegates.glGetTexParameterfv glGetTexParameterfv { get; private set; }
 
-		private static Delegates.glGetTexParameterIiv _glGetTexParameterIiv;
+		public static Delegates.glGetTexParameterIiv glGetTexParameterIiv { get; private set; }
 
-		private static Delegates.glGetTexParameterIuiv _glGetTexParameterIuiv;
+		public static Delegates.glGetTexParameterIuiv glGetTexParameterIuiv { get; private set; }
 
-		private static Delegates.glGetTexParameteriv _glGetTexParameteriv;
+		public static Delegates.glGetTexParameteriv glGetTexParameteriv { get; private set; }
 
-		private static Delegates.glGetTextureImage _glGetTextureImage;
+		public static Delegates.glGetTextureImage glGetTextureImage { get; private set; }
 
-		private static Delegates.glGetTextureLevelParameterfv _glGetTextureLevelParameterfv;
+		public static Delegates.glGetTextureLevelParameterfv glGetTextureLevelParameterfv { get; private set; }
 
-		private static Delegates.glGetTextureLevelParameteriv _glGetTextureLevelParameteriv;
+		public static Delegates.glGetTextureLevelParameteriv glGetTextureLevelParameteriv { get; private set; }
 
-		private static Delegates.glGetTextureParameterfv _glGetTextureParameterfv;
+		public static Delegates.glGetTextureParameterfv glGetTextureParameterfv { get; private set; }
 
-		private static Delegates.glGetTextureParameterIiv _glGetTextureParameterIiv;
+		public static Delegates.glGetTextureParameterIiv glGetTextureParameterIiv { get; private set; }
 
-		private static Delegates.glGetTextureParameterIuiv _glGetTextureParameterIuiv;
+		public static Delegates.glGetTextureParameterIuiv glGetTextureParameterIuiv { get; private set; }
 
-		private static Delegates.glGetTextureParameteriv _glGetTextureParameteriv;
+		public static Delegates.glGetTextureParameteriv glGetTextureParameteriv { get; private set; }
 
-		private static Delegates.glGetTextureSubImage _glGetTextureSubImage;
+		public static Delegates.glGetTextureSubImage glGetTextureSubImage { get; private set; }
 
-		private static Delegates.glGetTransformFeedbacki_v _glGetTransformFeedbacki_v;
+		public static Delegates.glGetTransformFeedbacki_v glGetTransformFeedbacki_v { get; private set; }
 
-		private static Delegates.glGetTransformFeedbacki64_v _glGetTransformFeedbacki64_v;
+		public static Delegates.glGetTransformFeedbacki64_v glGetTransformFeedbacki64_v { get; private set; }
 
-		private static Delegates.glGetTransformFeedbackiv _glGetTransformFeedbackiv;
+		public static Delegates.glGetTransformFeedbackiv glGetTransformFeedbackiv { get; private set; }
 
-		private static Delegates.glGetTransformFeedbackVarying _glGetTransformFeedbackVarying;
+		public static Delegates.glGetTransformFeedbackVarying glGetTransformFeedbackVarying { get; private set; }
 
-		private static Delegates.glGetUniformBlockIndex _glGetUniformBlockIndex;
+		public static Delegates.glGetUniformBlockIndex glGetUniformBlockIndex { get; private set; }
 
-		private static Delegates.glGetUniformdv _glGetUniformdv;
+		public static Delegates.glGetUniformdv glGetUniformdv { get; private set; }
 
-		private static Delegates.glGetUniformfv _glGetUniformfv;
+		public static Delegates.glGetUniformfv glGetUniformfv { get; private set; }
 
-		private static Delegates.glGetUniformIndices _glGetUniformIndices;
+		public static Delegates.glGetUniformIndices glGetUniformIndices { get; private set; }
 
-		private static Delegates.glGetUniformiv _glGetUniformiv;
+		public static Delegates.glGetUniformiv glGetUniformiv { get; private set; }
 
-		private static Delegates.glGetUniformLocation _glGetUniformLocation;
+		public static Delegates.glGetUniformLocation glGetUniformLocation { get; private set; }
 
-		private static Delegates.glGetUniformSubroutineuiv _glGetUniformSubroutineuiv;
+		public static Delegates.glGetUniformSubroutineuiv glGetUniformSubroutineuiv { get; private set; }
 
-		private static Delegates.glGetUniformuiv _glGetUniformuiv;
+		public static Delegates.glGetUniformuiv glGetUniformuiv { get; private set; }
 
-		private static Delegates.glGetVertexArrayIndexed64iv _glGetVertexArrayIndexed64iv;
+		public static Delegates.glGetVertexArrayIndexed64iv glGetVertexArrayIndexed64iv { get; private set; }
 
-		private static Delegates.glGetVertexArrayIndexediv _glGetVertexArrayIndexediv;
+		public static Delegates.glGetVertexArrayIndexediv glGetVertexArrayIndexediv { get; private set; }
 
-		private static Delegates.glGetVertexArrayiv _glGetVertexArrayiv;
+		public static Delegates.glGetVertexArrayiv glGetVertexArrayiv { get; private set; }
 
-		private static Delegates.glGetVertexAttribdv _glGetVertexAttribdv;
+		public static Delegates.glGetVertexAttribdv glGetVertexAttribdv { get; private set; }
 
-		private static Delegates.glGetVertexAttribfv _glGetVertexAttribfv;
+		public static Delegates.glGetVertexAttribfv glGetVertexAttribfv { get; private set; }
 
-		private static Delegates.glGetVertexAttribIiv _glGetVertexAttribIiv;
+		public static Delegates.glGetVertexAttribIiv glGetVertexAttribIiv { get; private set; }
 
-		private static Delegates.glGetVertexAttribIuiv _glGetVertexAttribIuiv;
+		public static Delegates.glGetVertexAttribIuiv glGetVertexAttribIuiv { get; private set; }
 
-		private static Delegates.glGetVertexAttribiv _glGetVertexAttribiv;
+		public static Delegates.glGetVertexAttribiv glGetVertexAttribiv { get; private set; }
 
-		private static Delegates.glGetVertexAttribLdv _glGetVertexAttribLdv;
+		public static Delegates.glGetVertexAttribLdv glGetVertexAttribLdv { get; private set; }
 
-		private static Delegates.glGetVertexAttribPointerv _glGetVertexAttribPointerv;
+		public static Delegates.glGetVertexAttribPointerv glGetVertexAttribPointerv { get; private set; }
 
-		private static Delegates.glHint _glHint;
+		public static Delegates.glHint glHint { get; private set; }
 
-		private static Delegates.glInvalidateBufferData _glInvalidateBufferData;
+		public static Delegates.glInvalidateBufferData glInvalidateBufferData { get; private set; }
 
-		private static Delegates.glInvalidateBufferSubData _glInvalidateBufferSubData;
+		public static Delegates.glInvalidateBufferSubData glInvalidateBufferSubData { get; private set; }
 
-		private static Delegates.glInvalidateFramebuffer _glInvalidateFramebuffer;
+		public static Delegates.glInvalidateFramebuffer glInvalidateFramebuffer { get; private set; }
 
-		private static Delegates.glInvalidateNamedFramebufferData _glInvalidateNamedFramebufferData;
+		public static Delegates.glInvalidateNamedFramebufferData glInvalidateNamedFramebufferData { get; private set; }
 
-		private static Delegates.glInvalidateNamedFramebufferSubData _glInvalidateNamedFramebufferSubData;
+		public static Delegates.glInvalidateNamedFramebufferSubData glInvalidateNamedFramebufferSubData { get; private set; }
 
-		private static Delegates.glInvalidateSubFramebuffer _glInvalidateSubFramebuffer;
+		public static Delegates.glInvalidateSubFramebuffer glInvalidateSubFramebuffer { get; private set; }
 
-		private static Delegates.glInvalidateTexImage _glInvalidateTexImage;
+		public static Delegates.glInvalidateTexImage glInvalidateTexImage { get; private set; }
 
-		private static Delegates.glInvalidateTexSubImage _glInvalidateTexSubImage;
+		public static Delegates.glInvalidateTexSubImage glInvalidateTexSubImage { get; private set; }
 
-		private static Delegates.glIsBuffer _glIsBuffer;
+		public static Delegates.glIsBuffer glIsBuffer { get; private set; }
 
-		private static Delegates.glIsEnabled _glIsEnabled;
+		public static Delegates.glIsEnabled glIsEnabled { get; private set; }
 
-		private static Delegates.glIsEnabledi _glIsEnabledi;
+		public static Delegates.glIsEnabledi glIsEnabledi { get; private set; }
 
-		private static Delegates.glIsFramebuffer _glIsFramebuffer;
+		public static Delegates.glIsFramebuffer glIsFramebuffer { get; private set; }
 
-		private static Delegates.glIsProgram _glIsProgram;
+		public static Delegates.glIsProgram glIsProgram { get; private set; }
 
-		private static Delegates.glIsProgramPipeline _glIsProgramPipeline;
+		public static Delegates.glIsProgramPipeline glIsProgramPipeline { get; private set; }
 
-		private static Delegates.glIsQuery _glIsQuery;
+		public static Delegates.glIsQuery glIsQuery { get; private set; }
 
-		private static Delegates.glIsRenderbuffer _glIsRenderbuffer;
+		public static Delegates.glIsRenderbuffer glIsRenderbuffer { get; private set; }
 
-		private static Delegates.glIsSampler _glIsSampler;
+		public static Delegates.glIsSampler glIsSampler { get; private set; }
 
-		private static Delegates.glIsShader _glIsShader;
+		public static Delegates.glIsShader glIsShader { get; private set; }
 
-		private static Delegates.glIsSync _glIsSync;
+		public static Delegates.glIsSync glIsSync { get; private set; }
 
-		private static Delegates.glIsTexture _glIsTexture;
+		public static Delegates.glIsTexture glIsTexture { get; private set; }
 
-		private static Delegates.glIsTransformFeedback _glIsTransformFeedback;
+		public static Delegates.glIsTransformFeedback glIsTransformFeedback { get; private set; }
 
-		private static Delegates.glIsVertexArray _glIsVertexArray;
+		public static Delegates.glIsVertexArray glIsVertexArray { get; private set; }
 
-		private static Delegates.glLineWidth _glLineWidth;
+		public static Delegates.glLineWidth glLineWidth { get; private set; }
 
-		private static Delegates.glLinkProgram _glLinkProgram;
+		public static Delegates.glLinkProgram glLinkProgram { get; private set; }
 
-		private static Delegates.glLogicOp _glLogicOp;
+		public static Delegates.glLogicOp glLogicOp { get; private set; }
 
-		private static Delegates.glMapBuffer _glMapBuffer;
+		public static Delegates.glMapBuffer glMapBuffer { get; private set; }
 
-		private static Delegates.glMapBufferRange _glMapBufferRange;
+		public static Delegates.glMapBufferRange glMapBufferRange { get; private set; }
 
-		private static Delegates.glMapNamedBuffer _glMapNamedBuffer;
+		public static Delegates.glMapNamedBuffer glMapNamedBuffer { get; private set; }
 
-		private static Delegates.glMapNamedBufferRange _glMapNamedBufferRange;
+		public static Delegates.glMapNamedBufferRange glMapNamedBufferRange { get; private set; }
 
-		private static Delegates.glMemoryBarrier _glMemoryBarrier;
+		public static Delegates.glMemoryBarrier glMemoryBarrier { get; private set; }
 
-		private static Delegates.glMemoryBarrierByRegion _glMemoryBarrierByRegion;
+		public static Delegates.glMemoryBarrierByRegion glMemoryBarrierByRegion { get; private set; }
 
-		private static Delegates.glMinSampleShading _glMinSampleShading;
+		public static Delegates.glMinSampleShading glMinSampleShading { get; private set; }
 
-		private static Delegates.glMultiDrawArrays _glMultiDrawArrays;
+		public static Delegates.glMultiDrawArrays glMultiDrawArrays { get; private set; }
 
-		private static Delegates.glMultiDrawArraysIndirect _glMultiDrawArraysIndirect;
+		public static Delegates.glMultiDrawArraysIndirect glMultiDrawArraysIndirect { get; private set; }
 
-		private static Delegates.glMultiDrawElements _glMultiDrawElements;
+		public static Delegates.glMultiDrawArraysIndirectCount glMultiDrawArraysIndirectCount { get; private set; }
 
-		private static Delegates.glMultiDrawElementsBaseVertex _glMultiDrawElementsBaseVertex;
+		public static Delegates.glMultiDrawElements glMultiDrawElements { get; private set; }
 
-		private static Delegates.glMultiDrawElementsIndirect _glMultiDrawElementsIndirect;
+		public static Delegates.glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex { get; private set; }
 
-		private static Delegates.glNamedBufferData _glNamedBufferData;
+		public static Delegates.glMultiDrawElementsIndirect glMultiDrawElementsIndirect { get; private set; }
 
-		private static Delegates.glNamedBufferStorage _glNamedBufferStorage;
+		public static Delegates.glMultiDrawElementsIndirectCount glMultiDrawElementsIndirectCount { get; private set; }
 
-		private static Delegates.glNamedBufferSubData _glNamedBufferSubData;
+		public static Delegates.glNamedBufferData glNamedBufferData { get; private set; }
 
-		private static Delegates.glNamedFramebufferDrawBuffer _glNamedFramebufferDrawBuffer;
+		public static Delegates.glNamedBufferStorage glNamedBufferStorage { get; private set; }
 
-		private static Delegates.glNamedFramebufferDrawBuffers _glNamedFramebufferDrawBuffers;
+		public static Delegates.glNamedBufferSubData glNamedBufferSubData { get; private set; }
 
-		private static Delegates.glNamedFramebufferParameteri _glNamedFramebufferParameteri;
+		public static Delegates.glNamedFramebufferDrawBuffer glNamedFramebufferDrawBuffer { get; private set; }
 
-		private static Delegates.glNamedFramebufferReadBuffer _glNamedFramebufferReadBuffer;
+		public static Delegates.glNamedFramebufferDrawBuffers glNamedFramebufferDrawBuffers { get; private set; }
 
-		private static Delegates.glNamedFramebufferRenderbuffer _glNamedFramebufferRenderbuffer;
+		public static Delegates.glNamedFramebufferParameteri glNamedFramebufferParameteri { get; private set; }
 
-		private static Delegates.glNamedFramebufferTexture _glNamedFramebufferTexture;
+		public static Delegates.glNamedFramebufferReadBuffer glNamedFramebufferReadBuffer { get; private set; }
 
-		private static Delegates.glNamedFramebufferTextureLayer _glNamedFramebufferTextureLayer;
+		public static Delegates.glNamedFramebufferRenderbuffer glNamedFramebufferRenderbuffer { get; private set; }
 
-		private static Delegates.glNamedRenderbufferStorage _glNamedRenderbufferStorage;
+		public static Delegates.glNamedFramebufferTexture glNamedFramebufferTexture { get; private set; }
 
-		private static Delegates.glNamedRenderbufferStorageMultisample _glNamedRenderbufferStorageMultisample;
+		public static Delegates.glNamedFramebufferTextureLayer glNamedFramebufferTextureLayer { get; private set; }
 
-		private static Delegates.glObjectLabel _glObjectLabel;
+		public static Delegates.glNamedRenderbufferStorage glNamedRenderbufferStorage { get; private set; }
 
-		private static Delegates.glObjectPtrLabel _glObjectPtrLabel;
+		public static Delegates.glNamedRenderbufferStorageMultisample glNamedRenderbufferStorageMultisample { get; private set; }
 
-		private static Delegates.glPatchParameterfv _glPatchParameterfv;
+		public static Delegates.glObjectLabel glObjectLabel { get; private set; }
 
-		private static Delegates.glPatchParameteri _glPatchParameteri;
+		public static Delegates.glObjectPtrLabel glObjectPtrLabel { get; private set; }
 
-		private static Delegates.glPauseTransformFeedback _glPauseTransformFeedback;
+		public static Delegates.glPatchParameterfv glPatchParameterfv { get; private set; }
 
-		private static Delegates.glPixelStoref _glPixelStoref;
+		public static Delegates.glPatchParameteri glPatchParameteri { get; private set; }
 
-		private static Delegates.glPixelStorei _glPixelStorei;
+		public static Delegates.glPauseTransformFeedback glPauseTransformFeedback { get; private set; }
 
-		private static Delegates.glPointParameterf _glPointParameterf;
+		public static Delegates.glPixelStoref glPixelStoref { get; private set; }
 
-		private static Delegates.glPointParameterfv _glPointParameterfv;
+		public static Delegates.glPixelStorei glPixelStorei { get; private set; }
 
-		private static Delegates.glPointParameteri _glPointParameteri;
+		public static Delegates.glPointParameterf glPointParameterf { get; private set; }
 
-		private static Delegates.glPointParameteriv _glPointParameteriv;
+		public static Delegates.glPointParameterfv glPointParameterfv { get; private set; }
 
-		private static Delegates.glPointSize _glPointSize;
+		public static Delegates.glPointParameteri glPointParameteri { get; private set; }
 
-		private static Delegates.glPolygonMode _glPolygonMode;
+		public static Delegates.glPointParameteriv glPointParameteriv { get; private set; }
 
-		private static Delegates.glPolygonOffset _glPolygonOffset;
+		public static Delegates.glPointSize glPointSize { get; private set; }
 
-		private static Delegates.glPopDebugGroup _glPopDebugGroup;
+		public static Delegates.glPolygonMode glPolygonMode { get; private set; }
 
-		private static Delegates.glPrimitiveRestartIndex _glPrimitiveRestartIndex;
+		public static Delegates.glPolygonOffset glPolygonOffset { get; private set; }
 
-		private static Delegates.glProgramBinary _glProgramBinary;
+		public static Delegates.glPolygonOffsetClamp glPolygonOffsetClamp { get; private set; }
 
-		private static Delegates.glProgramParameteri _glProgramParameteri;
+		public static Delegates.glPopDebugGroup glPopDebugGroup { get; private set; }
 
-		private static Delegates.glProgramUniform1d _glProgramUniform1d;
+		public static Delegates.glPrimitiveRestartIndex glPrimitiveRestartIndex { get; private set; }
 
-		private static Delegates.glProgramUniform1dv _glProgramUniform1dv;
+		public static Delegates.glProgramBinary glProgramBinary { get; private set; }
 
-		private static Delegates.glProgramUniform1f _glProgramUniform1f;
+		public static Delegates.glProgramParameteri glProgramParameteri { get; private set; }
 
-		private static Delegates.glProgramUniform1fv _glProgramUniform1fv;
+		public static Delegates.glProgramUniform1d glProgramUniform1d { get; private set; }
 
-		private static Delegates.glProgramUniform1i _glProgramUniform1i;
+		public static Delegates.glProgramUniform1dv glProgramUniform1dv { get; private set; }
 
-		private static Delegates.glProgramUniform1iv _glProgramUniform1iv;
+		public static Delegates.glProgramUniform1f glProgramUniform1f { get; private set; }
 
-		private static Delegates.glProgramUniform1ui _glProgramUniform1ui;
+		public static Delegates.glProgramUniform1fv glProgramUniform1fv { get; private set; }
 
-		private static Delegates.glProgramUniform1uiv _glProgramUniform1uiv;
+		public static Delegates.glProgramUniform1i glProgramUniform1i { get; private set; }
 
-		private static Delegates.glProgramUniform2d _glProgramUniform2d;
+		public static Delegates.glProgramUniform1iv glProgramUniform1iv { get; private set; }
 
-		private static Delegates.glProgramUniform2dv _glProgramUniform2dv;
+		public static Delegates.glProgramUniform1ui glProgramUniform1ui { get; private set; }
 
-		private static Delegates.glProgramUniform2f _glProgramUniform2f;
+		public static Delegates.glProgramUniform1uiv glProgramUniform1uiv { get; private set; }
 
-		private static Delegates.glProgramUniform2fv _glProgramUniform2fv;
+		public static Delegates.glProgramUniform2d glProgramUniform2d { get; private set; }
 
-		private static Delegates.glProgramUniform2i _glProgramUniform2i;
+		public static Delegates.glProgramUniform2dv glProgramUniform2dv { get; private set; }
 
-		private static Delegates.glProgramUniform2iv _glProgramUniform2iv;
+		public static Delegates.glProgramUniform2f glProgramUniform2f { get; private set; }
 
-		private static Delegates.glProgramUniform2ui _glProgramUniform2ui;
+		public static Delegates.glProgramUniform2fv glProgramUniform2fv { get; private set; }
 
-		private static Delegates.glProgramUniform2uiv _glProgramUniform2uiv;
+		public static Delegates.glProgramUniform2i glProgramUniform2i { get; private set; }
 
-		private static Delegates.glProgramUniform3d _glProgramUniform3d;
+		public static Delegates.glProgramUniform2iv glProgramUniform2iv { get; private set; }
 
-		private static Delegates.glProgramUniform3dv _glProgramUniform3dv;
+		public static Delegates.glProgramUniform2ui glProgramUniform2ui { get; private set; }
 
-		private static Delegates.glProgramUniform3f _glProgramUniform3f;
+		public static Delegates.glProgramUniform2uiv glProgramUniform2uiv { get; private set; }
 
-		private static Delegates.glProgramUniform3fv _glProgramUniform3fv;
+		public static Delegates.glProgramUniform3d glProgramUniform3d { get; private set; }
 
-		private static Delegates.glProgramUniform3i _glProgramUniform3i;
+		public static Delegates.glProgramUniform3dv glProgramUniform3dv { get; private set; }
 
-		private static Delegates.glProgramUniform3iv _glProgramUniform3iv;
+		public static Delegates.glProgramUniform3f glProgramUniform3f { get; private set; }
 
-		private static Delegates.glProgramUniform3ui _glProgramUniform3ui;
+		public static Delegates.glProgramUniform3fv glProgramUniform3fv { get; private set; }
 
-		private static Delegates.glProgramUniform3uiv _glProgramUniform3uiv;
+		public static Delegates.glProgramUniform3i glProgramUniform3i { get; private set; }
 
-		private static Delegates.glProgramUniform4d _glProgramUniform4d;
+		public static Delegates.glProgramUniform3iv glProgramUniform3iv { get; private set; }
 
-		private static Delegates.glProgramUniform4dv _glProgramUniform4dv;
+		public static Delegates.glProgramUniform3ui glProgramUniform3ui { get; private set; }
 
-		private static Delegates.glProgramUniform4f _glProgramUniform4f;
+		public static Delegates.glProgramUniform3uiv glProgramUniform3uiv { get; private set; }
 
-		private static Delegates.glProgramUniform4fv _glProgramUniform4fv;
+		public static Delegates.glProgramUniform4d glProgramUniform4d { get; private set; }
 
-		private static Delegates.glProgramUniform4i _glProgramUniform4i;
+		public static Delegates.glProgramUniform4dv glProgramUniform4dv { get; private set; }
 
-		private static Delegates.glProgramUniform4iv _glProgramUniform4iv;
+		public static Delegates.glProgramUniform4f glProgramUniform4f { get; private set; }
 
-		private static Delegates.glProgramUniform4ui _glProgramUniform4ui;
+		public static Delegates.glProgramUniform4fv glProgramUniform4fv { get; private set; }
 
-		private static Delegates.glProgramUniform4uiv _glProgramUniform4uiv;
+		public static Delegates.glProgramUniform4i glProgramUniform4i { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2dv _glProgramUniformMatrix2dv;
+		public static Delegates.glProgramUniform4iv glProgramUniform4iv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2fv _glProgramUniformMatrix2fv;
+		public static Delegates.glProgramUniform4ui glProgramUniform4ui { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2x3dv _glProgramUniformMatrix2x3dv;
+		public static Delegates.glProgramUniform4uiv glProgramUniform4uiv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2x3fv _glProgramUniformMatrix2x3fv;
+		public static Delegates.glProgramUniformMatrix2dv glProgramUniformMatrix2dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2x4dv _glProgramUniformMatrix2x4dv;
+		public static Delegates.glProgramUniformMatrix2fv glProgramUniformMatrix2fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix2x4fv _glProgramUniformMatrix2x4fv;
+		public static Delegates.glProgramUniformMatrix2x3dv glProgramUniformMatrix2x3dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3dv _glProgramUniformMatrix3dv;
+		public static Delegates.glProgramUniformMatrix2x3fv glProgramUniformMatrix2x3fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3fv _glProgramUniformMatrix3fv;
+		public static Delegates.glProgramUniformMatrix2x4dv glProgramUniformMatrix2x4dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3x2dv _glProgramUniformMatrix3x2dv;
+		public static Delegates.glProgramUniformMatrix2x4fv glProgramUniformMatrix2x4fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3x2fv _glProgramUniformMatrix3x2fv;
+		public static Delegates.glProgramUniformMatrix3dv glProgramUniformMatrix3dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3x4dv _glProgramUniformMatrix3x4dv;
+		public static Delegates.glProgramUniformMatrix3fv glProgramUniformMatrix3fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix3x4fv _glProgramUniformMatrix3x4fv;
+		public static Delegates.glProgramUniformMatrix3x2dv glProgramUniformMatrix3x2dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4dv _glProgramUniformMatrix4dv;
+		public static Delegates.glProgramUniformMatrix3x2fv glProgramUniformMatrix3x2fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4fv _glProgramUniformMatrix4fv;
+		public static Delegates.glProgramUniformMatrix3x4dv glProgramUniformMatrix3x4dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4x2dv _glProgramUniformMatrix4x2dv;
+		public static Delegates.glProgramUniformMatrix3x4fv glProgramUniformMatrix3x4fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4x2fv _glProgramUniformMatrix4x2fv;
+		public static Delegates.glProgramUniformMatrix4dv glProgramUniformMatrix4dv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4x3dv _glProgramUniformMatrix4x3dv;
+		public static Delegates.glProgramUniformMatrix4fv glProgramUniformMatrix4fv { get; private set; }
 
-		private static Delegates.glProgramUniformMatrix4x3fv _glProgramUniformMatrix4x3fv;
+		public static Delegates.glProgramUniformMatrix4x2dv glProgramUniformMatrix4x2dv { get; private set; }
 
-		private static Delegates.glProvokingVertex _glProvokingVertex;
+		public static Delegates.glProgramUniformMatrix4x2fv glProgramUniformMatrix4x2fv { get; private set; }
 
-		private static Delegates.glPushDebugGroup _glPushDebugGroup;
+		public static Delegates.glProgramUniformMatrix4x3dv glProgramUniformMatrix4x3dv { get; private set; }
 
-		private static Delegates.glQueryCounter _glQueryCounter;
+		public static Delegates.glProgramUniformMatrix4x3fv glProgramUniformMatrix4x3fv { get; private set; }
 
-		private static Delegates.glReadBuffer _glReadBuffer;
+		public static Delegates.glProvokingVertex glProvokingVertex { get; private set; }
 
-		private static Delegates.glReadnPixels _glReadnPixels;
+		public static Delegates.glPushDebugGroup glPushDebugGroup { get; private set; }
 
-		private static Delegates.glReadPixels _glReadPixels;
+		public static Delegates.glQueryCounter glQueryCounter { get; private set; }
 
-		private static Delegates.glReleaseShaderCompiler _glReleaseShaderCompiler;
+		public static Delegates.glReadBuffer glReadBuffer { get; private set; }
 
-		private static Delegates.glRenderbufferStorage _glRenderbufferStorage;
+		public static Delegates.glReadnPixels glReadnPixels { get; private set; }
 
-		private static Delegates.glRenderbufferStorageMultisample _glRenderbufferStorageMultisample;
+		public static Delegates.glReadPixels glReadPixels { get; private set; }
 
-		private static Delegates.glResumeTransformFeedback _glResumeTransformFeedback;
+		public static Delegates.glReleaseShaderCompiler glReleaseShaderCompiler { get; private set; }
 
-		private static Delegates.glSampleCoverage _glSampleCoverage;
+		public static Delegates.glRenderbufferStorage glRenderbufferStorage { get; private set; }
 
-		private static Delegates.glSampleMaski _glSampleMaski;
+		public static Delegates.glRenderbufferStorageMultisample glRenderbufferStorageMultisample { get; private set; }
 
-		private static Delegates.glSamplerParameterf _glSamplerParameterf;
+		public static Delegates.glResumeTransformFeedback glResumeTransformFeedback { get; private set; }
 
-		private static Delegates.glSamplerParameterfv _glSamplerParameterfv;
+		public static Delegates.glSampleCoverage glSampleCoverage { get; private set; }
 
-		private static Delegates.glSamplerParameteri _glSamplerParameteri;
+		public static Delegates.glSampleMaski glSampleMaski { get; private set; }
 
-		private static Delegates.glSamplerParameterIiv _glSamplerParameterIiv;
+		public static Delegates.glSamplerParameterf glSamplerParameterf { get; private set; }
 
-		private static Delegates.glSamplerParameterIuiv _glSamplerParameterIuiv;
+		public static Delegates.glSamplerParameterfv glSamplerParameterfv { get; private set; }
 
-		private static Delegates.glSamplerParameteriv _glSamplerParameteriv;
+		public static Delegates.glSamplerParameteri glSamplerParameteri { get; private set; }
 
-		private static Delegates.glScissor _glScissor;
+		public static Delegates.glSamplerParameterIiv glSamplerParameterIiv { get; private set; }
 
-		private static Delegates.glScissorArrayv _glScissorArrayv;
+		public static Delegates.glSamplerParameterIuiv glSamplerParameterIuiv { get; private set; }
 
-		private static Delegates.glScissorIndexed _glScissorIndexed;
+		public static Delegates.glSamplerParameteriv glSamplerParameteriv { get; private set; }
 
-		private static Delegates.glScissorIndexedv _glScissorIndexedv;
+		public static Delegates.glScissor glScissor { get; private set; }
 
-		private static Delegates.glShaderBinary _glShaderBinary;
+		public static Delegates.glScissorArrayv glScissorArrayv { get; private set; }
 
-		private static Delegates.glShaderSource _glShaderSource;
+		public static Delegates.glScissorIndexed glScissorIndexed { get; private set; }
 
-		private static Delegates.glShaderStorageBlockBinding _glShaderStorageBlockBinding;
+		public static Delegates.glScissorIndexedv glScissorIndexedv { get; private set; }
 
-		private static Delegates.glStencilFunc _glStencilFunc;
+		public static Delegates.glShaderBinary glShaderBinary { get; private set; }
 
-		private static Delegates.glStencilFuncSeparate _glStencilFuncSeparate;
+		public static Delegates.glShaderSource glShaderSource { get; private set; }
 
-		private static Delegates.glStencilMask _glStencilMask;
+		public static Delegates.glShaderStorageBlockBinding glShaderStorageBlockBinding { get; private set; }
 
-		private static Delegates.glStencilMaskSeparate _glStencilMaskSeparate;
+		public static Delegates.glSpecializeShader glSpecializeShader { get; private set; }
 
-		private static Delegates.glStencilOp _glStencilOp;
+		public static Delegates.glStencilFunc glStencilFunc { get; private set; }
 
-		private static Delegates.glStencilOpSeparate _glStencilOpSeparate;
+		public static Delegates.glStencilFuncSeparate glStencilFuncSeparate { get; private set; }
 
-		private static Delegates.glTexBuffer _glTexBuffer;
+		public static Delegates.glStencilMask glStencilMask { get; private set; }
 
-		private static Delegates.glTexBufferRange _glTexBufferRange;
+		public static Delegates.glStencilMaskSeparate glStencilMaskSeparate { get; private set; }
 
-		private static Delegates.glTexImage1D _glTexImage1D;
+		public static Delegates.glStencilOp glStencilOp { get; private set; }
 
-		private static Delegates.glTexImage2D _glTexImage2D;
+		public static Delegates.glStencilOpSeparate glStencilOpSeparate { get; private set; }
 
-		private static Delegates.glTexImage2DMultisample _glTexImage2DMultisample;
+		public static Delegates.glTexBuffer glTexBuffer { get; private set; }
 
-		private static Delegates.glTexImage3D _glTexImage3D;
+		public static Delegates.glTexBufferRange glTexBufferRange { get; private set; }
 
-		private static Delegates.glTexImage3DMultisample _glTexImage3DMultisample;
+		public static Delegates.glTexImage1D glTexImage1D { get; private set; }
 
-		private static Delegates.glTexParameterf _glTexParameterf;
+		public static Delegates.glTexImage2D glTexImage2D { get; private set; }
 
-		private static Delegates.glTexParameterfv _glTexParameterfv;
+		public static Delegates.glTexImage2DMultisample glTexImage2DMultisample { get; private set; }
 
-		private static Delegates.glTexParameteri _glTexParameteri;
+		public static Delegates.glTexImage3D glTexImage3D { get; private set; }
 
-		private static Delegates.glTexParameterIiv _glTexParameterIiv;
+		public static Delegates.glTexImage3DMultisample glTexImage3DMultisample { get; private set; }
 
-		private static Delegates.glTexParameterIuiv _glTexParameterIuiv;
+		public static Delegates.glTexParameterf glTexParameterf { get; private set; }
 
-		private static Delegates.glTexParameteriv _glTexParameteriv;
+		public static Delegates.glTexParameterfv glTexParameterfv { get; private set; }
 
-		private static Delegates.glTexStorage1D _glTexStorage1D;
+		public static Delegates.glTexParameteri glTexParameteri { get; private set; }
 
-		private static Delegates.glTexStorage2D _glTexStorage2D;
+		public static Delegates.glTexParameterIiv glTexParameterIiv { get; private set; }
 
-		private static Delegates.glTexStorage2DMultisample _glTexStorage2DMultisample;
+		public static Delegates.glTexParameterIuiv glTexParameterIuiv { get; private set; }
 
-		private static Delegates.glTexStorage3D _glTexStorage3D;
+		public static Delegates.glTexParameteriv glTexParameteriv { get; private set; }
 
-		private static Delegates.glTexStorage3DMultisample _glTexStorage3DMultisample;
+		public static Delegates.glTexStorage1D glTexStorage1D { get; private set; }
 
-		private static Delegates.glTexSubImage1D _glTexSubImage1D;
+		public static Delegates.glTexStorage2D glTexStorage2D { get; private set; }
 
-		private static Delegates.glTexSubImage2D _glTexSubImage2D;
+		public static Delegates.glTexStorage2DMultisample glTexStorage2DMultisample { get; private set; }
 
-		private static Delegates.glTexSubImage3D _glTexSubImage3D;
+		public static Delegates.glTexStorage3D glTexStorage3D { get; private set; }
 
-		private static Delegates.glTextureBarrier _glTextureBarrier;
+		public static Delegates.glTexStorage3DMultisample glTexStorage3DMultisample { get; private set; }
 
-		private static Delegates.glTextureBuffer _glTextureBuffer;
+		public static Delegates.glTexSubImage1D glTexSubImage1D { get; private set; }
 
-		private static Delegates.glTextureBufferRange _glTextureBufferRange;
+		public static Delegates.glTexSubImage2D glTexSubImage2D { get; private set; }
 
-		private static Delegates.glTextureParameterf _glTextureParameterf;
+		public static Delegates.glTexSubImage3D glTexSubImage3D { get; private set; }
 
-		private static Delegates.glTextureParameterfv _glTextureParameterfv;
+		public static Delegates.glTextureBarrier glTextureBarrier { get; private set; }
 
-		private static Delegates.glTextureParameteri _glTextureParameteri;
+		public static Delegates.glTextureBuffer glTextureBuffer { get; private set; }
 
-		private static Delegates.glTextureParameterIiv _glTextureParameterIiv;
+		public static Delegates.glTextureBufferRange glTextureBufferRange { get; private set; }
 
-		private static Delegates.glTextureParameterIuiv _glTextureParameterIuiv;
+		public static Delegates.glTextureParameterf glTextureParameterf { get; private set; }
 
-		private static Delegates.glTextureParameteriv _glTextureParameteriv;
+		public static Delegates.glTextureParameterfv glTextureParameterfv { get; private set; }
 
-		private static Delegates.glTextureStorage1D _glTextureStorage1D;
+		public static Delegates.glTextureParameteri glTextureParameteri { get; private set; }
 
-		private static Delegates.glTextureStorage2D _glTextureStorage2D;
+		public static Delegates.glTextureParameterIiv glTextureParameterIiv { get; private set; }
 
-		private static Delegates.glTextureStorage2DMultisample _glTextureStorage2DMultisample;
+		public static Delegates.glTextureParameterIuiv glTextureParameterIuiv { get; private set; }
 
-		private static Delegates.glTextureStorage3D _glTextureStorage3D;
+		public static Delegates.glTextureParameteriv glTextureParameteriv { get; private set; }
 
-		private static Delegates.glTextureStorage3DMultisample _glTextureStorage3DMultisample;
+		public static Delegates.glTextureStorage1D glTextureStorage1D { get; private set; }
 
-		private static Delegates.glTextureSubImage1D _glTextureSubImage1D;
+		public static Delegates.glTextureStorage2D glTextureStorage2D { get; private set; }
 
-		private static Delegates.glTextureSubImage2D _glTextureSubImage2D;
+		public static Delegates.glTextureStorage2DMultisample glTextureStorage2DMultisample { get; private set; }
 
-		private static Delegates.glTextureSubImage3D _glTextureSubImage3D;
+		public static Delegates.glTextureStorage3D glTextureStorage3D { get; private set; }
 
-		private static Delegates.glTextureView _glTextureView;
+		public static Delegates.glTextureStorage3DMultisample glTextureStorage3DMultisample { get; private set; }
 
-		private static Delegates.glTransformFeedbackBufferBase _glTransformFeedbackBufferBase;
+		public static Delegates.glTextureSubImage1D glTextureSubImage1D { get; private set; }
 
-		private static Delegates.glTransformFeedbackBufferRange _glTransformFeedbackBufferRange;
+		public static Delegates.glTextureSubImage2D glTextureSubImage2D { get; private set; }
 
-		private static Delegates.glTransformFeedbackVaryings _glTransformFeedbackVaryings;
+		public static Delegates.glTextureSubImage3D glTextureSubImage3D { get; private set; }
 
-		private static Delegates.glUniform1d _glUniform1d;
+		public static Delegates.glTextureView glTextureView { get; private set; }
 
-		private static Delegates.glUniform1dv _glUniform1dv;
+		public static Delegates.glTransformFeedbackBufferBase glTransformFeedbackBufferBase { get; private set; }
 
-		private static Delegates.glUniform1f _glUniform1f;
+		public static Delegates.glTransformFeedbackBufferRange glTransformFeedbackBufferRange { get; private set; }
 
-		private static Delegates.glUniform1fv _glUniform1fv;
+		public static Delegates.glTransformFeedbackVaryings glTransformFeedbackVaryings { get; private set; }
 
-		private static Delegates.glUniform1i _glUniform1i;
+		public static Delegates.glUniform1d glUniform1d { get; private set; }
 
-		private static Delegates.glUniform1iv _glUniform1iv;
+		public static Delegates.glUniform1dv glUniform1dv { get; private set; }
 
-		private static Delegates.glUniform1ui _glUniform1ui;
+		public static Delegates.glUniform1f glUniform1f { get; private set; }
 
-		private static Delegates.glUniform1uiv _glUniform1uiv;
+		public static Delegates.glUniform1fv glUniform1fv { get; private set; }
 
-		private static Delegates.glUniform2d _glUniform2d;
+		public static Delegates.glUniform1i glUniform1i { get; private set; }
 
-		private static Delegates.glUniform2dv _glUniform2dv;
+		public static Delegates.glUniform1iv glUniform1iv { get; private set; }
 
-		private static Delegates.glUniform2f _glUniform2f;
+		public static Delegates.glUniform1ui glUniform1ui { get; private set; }
 
-		private static Delegates.glUniform2fv _glUniform2fv;
+		public static Delegates.glUniform1uiv glUniform1uiv { get; private set; }
 
-		private static Delegates.glUniform2i _glUniform2i;
+		public static Delegates.glUniform2d glUniform2d { get; private set; }
 
-		private static Delegates.glUniform2iv _glUniform2iv;
+		public static Delegates.glUniform2dv glUniform2dv { get; private set; }
 
-		private static Delegates.glUniform2ui _glUniform2ui;
+		public static Delegates.glUniform2f glUniform2f { get; private set; }
 
-		private static Delegates.glUniform2uiv _glUniform2uiv;
+		public static Delegates.glUniform2fv glUniform2fv { get; private set; }
 
-		private static Delegates.glUniform3d _glUniform3d;
+		public static Delegates.glUniform2i glUniform2i { get; private set; }
 
-		private static Delegates.glUniform3dv _glUniform3dv;
+		public static Delegates.glUniform2iv glUniform2iv { get; private set; }
 
-		private static Delegates.glUniform3f _glUniform3f;
+		public static Delegates.glUniform2ui glUniform2ui { get; private set; }
 
-		private static Delegates.glUniform3fv _glUniform3fv;
+		public static Delegates.glUniform2uiv glUniform2uiv { get; private set; }
 
-		private static Delegates.glUniform3i _glUniform3i;
+		public static Delegates.glUniform3d glUniform3d { get; private set; }
 
-		private static Delegates.glUniform3iv _glUniform3iv;
+		public static Delegates.glUniform3dv glUniform3dv { get; private set; }
 
-		private static Delegates.glUniform3ui _glUniform3ui;
+		public static Delegates.glUniform3f glUniform3f { get; private set; }
 
-		private static Delegates.glUniform3uiv _glUniform3uiv;
+		public static Delegates.glUniform3fv glUniform3fv { get; private set; }
 
-		private static Delegates.glUniform4d _glUniform4d;
+		public static Delegates.glUniform3i glUniform3i { get; private set; }
 
-		private static Delegates.glUniform4dv _glUniform4dv;
+		public static Delegates.glUniform3iv glUniform3iv { get; private set; }
 
-		private static Delegates.glUniform4f _glUniform4f;
+		public static Delegates.glUniform3ui glUniform3ui { get; private set; }
 
-		private static Delegates.glUniform4fv _glUniform4fv;
+		public static Delegates.glUniform3uiv glUniform3uiv { get; private set; }
 
-		private static Delegates.glUniform4i _glUniform4i;
+		public static Delegates.glUniform4d glUniform4d { get; private set; }
 
-		private static Delegates.glUniform4iv _glUniform4iv;
+		public static Delegates.glUniform4dv glUniform4dv { get; private set; }
 
-		private static Delegates.glUniform4ui _glUniform4ui;
+		public static Delegates.glUniform4f glUniform4f { get; private set; }
 
-		private static Delegates.glUniform4uiv _glUniform4uiv;
+		public static Delegates.glUniform4fv glUniform4fv { get; private set; }
 
-		private static Delegates.glUniformBlockBinding _glUniformBlockBinding;
+		public static Delegates.glUniform4i glUniform4i { get; private set; }
 
-		private static Delegates.glUniformMatrix2dv _glUniformMatrix2dv;
+		public static Delegates.glUniform4iv glUniform4iv { get; private set; }
 
-		private static Delegates.glUniformMatrix2fv _glUniformMatrix2fv;
+		public static Delegates.glUniform4ui glUniform4ui { get; private set; }
 
-		private static Delegates.glUniformMatrix2x3dv _glUniformMatrix2x3dv;
+		public static Delegates.glUniform4uiv glUniform4uiv { get; private set; }
 
-		private static Delegates.glUniformMatrix2x3fv _glUniformMatrix2x3fv;
+		public static Delegates.glUniformBlockBinding glUniformBlockBinding { get; private set; }
 
-		private static Delegates.glUniformMatrix2x4dv _glUniformMatrix2x4dv;
+		public static Delegates.glUniformMatrix2dv glUniformMatrix2dv { get; private set; }
 
-		private static Delegates.glUniformMatrix2x4fv _glUniformMatrix2x4fv;
+		public static Delegates.glUniformMatrix2fv glUniformMatrix2fv { get; private set; }
 
-		private static Delegates.glUniformMatrix3dv _glUniformMatrix3dv;
+		public static Delegates.glUniformMatrix2x3dv glUniformMatrix2x3dv { get; private set; }
 
-		private static Delegates.glUniformMatrix3fv _glUniformMatrix3fv;
+		public static Delegates.glUniformMatrix2x3fv glUniformMatrix2x3fv { get; private set; }
 
-		private static Delegates.glUniformMatrix3x2dv _glUniformMatrix3x2dv;
+		public static Delegates.glUniformMatrix2x4dv glUniformMatrix2x4dv { get; private set; }
 
-		private static Delegates.glUniformMatrix3x2fv _glUniformMatrix3x2fv;
+		public static Delegates.glUniformMatrix2x4fv glUniformMatrix2x4fv { get; private set; }
 
-		private static Delegates.glUniformMatrix3x4dv _glUniformMatrix3x4dv;
+		public static Delegates.glUniformMatrix3dv glUniformMatrix3dv { get; private set; }
 
-		private static Delegates.glUniformMatrix3x4fv _glUniformMatrix3x4fv;
+		public static Delegates.glUniformMatrix3fv glUniformMatrix3fv { get; private set; }
 
-		private static Delegates.glUniformMatrix4dv _glUniformMatrix4dv;
+		public static Delegates.glUniformMatrix3x2dv glUniformMatrix3x2dv { get; private set; }
 
-		private static Delegates.glUniformMatrix4fv _glUniformMatrix4fv;
+		public static Delegates.glUniformMatrix3x2fv glUniformMatrix3x2fv { get; private set; }
 
-		private static Delegates.glUniformMatrix4x2dv _glUniformMatrix4x2dv;
+		public static Delegates.glUniformMatrix3x4dv glUniformMatrix3x4dv { get; private set; }
 
-		private static Delegates.glUniformMatrix4x2fv _glUniformMatrix4x2fv;
+		public static Delegates.glUniformMatrix3x4fv glUniformMatrix3x4fv { get; private set; }
 
-		private static Delegates.glUniformMatrix4x3dv _glUniformMatrix4x3dv;
+		public static Delegates.glUniformMatrix4dv glUniformMatrix4dv { get; private set; }
 
-		private static Delegates.glUniformMatrix4x3fv _glUniformMatrix4x3fv;
+		public static Delegates.glUniformMatrix4fv glUniformMatrix4fv { get; private set; }
 
-		private static Delegates.glUniformSubroutinesuiv _glUniformSubroutinesuiv;
+		public static Delegates.glUniformMatrix4x2dv glUniformMatrix4x2dv { get; private set; }
 
-		private static Delegates.glUnmapBuffer _glUnmapBuffer;
+		public static Delegates.glUniformMatrix4x2fv glUniformMatrix4x2fv { get; private set; }
 
-		private static Delegates.glUnmapNamedBuffer _glUnmapNamedBuffer;
+		public static Delegates.glUniformMatrix4x3dv glUniformMatrix4x3dv { get; private set; }
 
-		private static Delegates.glUseProgram _glUseProgram;
+		public static Delegates.glUniformMatrix4x3fv glUniformMatrix4x3fv { get; private set; }
 
-		private static Delegates.glUseProgramStages _glUseProgramStages;
+		public static Delegates.glUniformSubroutinesuiv glUniformSubroutinesuiv { get; private set; }
 
-		private static Delegates.glValidateProgram _glValidateProgram;
+		public static Delegates.glUnmapBuffer glUnmapBuffer { get; private set; }
 
-		private static Delegates.glValidateProgramPipeline _glValidateProgramPipeline;
+		public static Delegates.glUnmapNamedBuffer glUnmapNamedBuffer { get; private set; }
 
-		private static Delegates.glVertexArrayAttribBinding _glVertexArrayAttribBinding;
+		public static Delegates.glUseProgram glUseProgram { get; private set; }
 
-		private static Delegates.glVertexArrayAttribFormat _glVertexArrayAttribFormat;
+		public static Delegates.glUseProgramStages glUseProgramStages { get; private set; }
 
-		private static Delegates.glVertexArrayAttribIFormat _glVertexArrayAttribIFormat;
+		public static Delegates.glValidateProgram glValidateProgram { get; private set; }
 
-		private static Delegates.glVertexArrayAttribLFormat _glVertexArrayAttribLFormat;
+		public static Delegates.glValidateProgramPipeline glValidateProgramPipeline { get; private set; }
 
-		private static Delegates.glVertexArrayBindingDivisor _glVertexArrayBindingDivisor;
+		public static Delegates.glVertexArrayAttribBinding glVertexArrayAttribBinding { get; private set; }
 
-		private static Delegates.glVertexArrayElementBuffer _glVertexArrayElementBuffer;
+		public static Delegates.glVertexArrayAttribFormat glVertexArrayAttribFormat { get; private set; }
 
-		private static Delegates.glVertexArrayVertexBuffer _glVertexArrayVertexBuffer;
+		public static Delegates.glVertexArrayAttribIFormat glVertexArrayAttribIFormat { get; private set; }
 
-		private static Delegates.glVertexArrayVertexBuffers _glVertexArrayVertexBuffers;
+		public static Delegates.glVertexArrayAttribLFormat glVertexArrayAttribLFormat { get; private set; }
 
-		private static Delegates.glVertexAttrib1d _glVertexAttrib1d;
+		public static Delegates.glVertexArrayBindingDivisor glVertexArrayBindingDivisor { get; private set; }
 
-		private static Delegates.glVertexAttrib1dv _glVertexAttrib1dv;
+		public static Delegates.glVertexArrayElementBuffer glVertexArrayElementBuffer { get; private set; }
 
-		private static Delegates.glVertexAttrib1f _glVertexAttrib1f;
+		public static Delegates.glVertexArrayVertexBuffer glVertexArrayVertexBuffer { get; private set; }
 
-		private static Delegates.glVertexAttrib1fv _glVertexAttrib1fv;
+		public static Delegates.glVertexArrayVertexBuffers glVertexArrayVertexBuffers { get; private set; }
 
-		private static Delegates.glVertexAttrib1s _glVertexAttrib1s;
+		public static Delegates.glVertexAttrib1d glVertexAttrib1d { get; private set; }
 
-		private static Delegates.glVertexAttrib1sv _glVertexAttrib1sv;
+		public static Delegates.glVertexAttrib1dv glVertexAttrib1dv { get; private set; }
 
-		private static Delegates.glVertexAttrib2d _glVertexAttrib2d;
+		public static Delegates.glVertexAttrib1f glVertexAttrib1f { get; private set; }
 
-		private static Delegates.glVertexAttrib2dv _glVertexAttrib2dv;
+		public static Delegates.glVertexAttrib1fv glVertexAttrib1fv { get; private set; }
 
-		private static Delegates.glVertexAttrib2f _glVertexAttrib2f;
+		public static Delegates.glVertexAttrib1s glVertexAttrib1s { get; private set; }
 
-		private static Delegates.glVertexAttrib2fv _glVertexAttrib2fv;
+		public static Delegates.glVertexAttrib1sv glVertexAttrib1sv { get; private set; }
 
-		private static Delegates.glVertexAttrib2s _glVertexAttrib2s;
+		public static Delegates.glVertexAttrib2d glVertexAttrib2d { get; private set; }
 
-		private static Delegates.glVertexAttrib2sv _glVertexAttrib2sv;
+		public static Delegates.glVertexAttrib2dv glVertexAttrib2dv { get; private set; }
 
-		private static Delegates.glVertexAttrib3d _glVertexAttrib3d;
+		public static Delegates.glVertexAttrib2f glVertexAttrib2f { get; private set; }
 
-		private static Delegates.glVertexAttrib3dv _glVertexAttrib3dv;
+		public static Delegates.glVertexAttrib2fv glVertexAttrib2fv { get; private set; }
 
-		private static Delegates.glVertexAttrib3f _glVertexAttrib3f;
+		public static Delegates.glVertexAttrib2s glVertexAttrib2s { get; private set; }
 
-		private static Delegates.glVertexAttrib3fv _glVertexAttrib3fv;
+		public static Delegates.glVertexAttrib2sv glVertexAttrib2sv { get; private set; }
 
-		private static Delegates.glVertexAttrib3s _glVertexAttrib3s;
+		public static Delegates.glVertexAttrib3d glVertexAttrib3d { get; private set; }
 
-		private static Delegates.glVertexAttrib3sv _glVertexAttrib3sv;
+		public static Delegates.glVertexAttrib3dv glVertexAttrib3dv { get; private set; }
 
-		private static Delegates.glVertexAttrib4bv _glVertexAttrib4bv;
+		public static Delegates.glVertexAttrib3f glVertexAttrib3f { get; private set; }
 
-		private static Delegates.glVertexAttrib4d _glVertexAttrib4d;
+		public static Delegates.glVertexAttrib3fv glVertexAttrib3fv { get; private set; }
 
-		private static Delegates.glVertexAttrib4dv _glVertexAttrib4dv;
+		public static Delegates.glVertexAttrib3s glVertexAttrib3s { get; private set; }
 
-		private static Delegates.glVertexAttrib4f _glVertexAttrib4f;
+		public static Delegates.glVertexAttrib3sv glVertexAttrib3sv { get; private set; }
 
-		private static Delegates.glVertexAttrib4fv _glVertexAttrib4fv;
+		public static Delegates.glVertexAttrib4bv glVertexAttrib4bv { get; private set; }
 
-		private static Delegates.glVertexAttrib4iv _glVertexAttrib4iv;
+		public static Delegates.glVertexAttrib4d glVertexAttrib4d { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nbv _glVertexAttrib4Nbv;
+		public static Delegates.glVertexAttrib4dv glVertexAttrib4dv { get; private set; }
 
-		private static Delegates.glVertexAttrib4Niv _glVertexAttrib4Niv;
+		public static Delegates.glVertexAttrib4f glVertexAttrib4f { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nsv _glVertexAttrib4Nsv;
+		public static Delegates.glVertexAttrib4fv glVertexAttrib4fv { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nub _glVertexAttrib4Nub;
+		public static Delegates.glVertexAttrib4iv glVertexAttrib4iv { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nubv _glVertexAttrib4Nubv;
+		public static Delegates.glVertexAttrib4Nbv glVertexAttrib4Nbv { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nuiv _glVertexAttrib4Nuiv;
+		public static Delegates.glVertexAttrib4Niv glVertexAttrib4Niv { get; private set; }
 
-		private static Delegates.glVertexAttrib4Nusv _glVertexAttrib4Nusv;
+		public static Delegates.glVertexAttrib4Nsv glVertexAttrib4Nsv { get; private set; }
 
-		private static Delegates.glVertexAttrib4s _glVertexAttrib4s;
+		public static Delegates.glVertexAttrib4Nub glVertexAttrib4Nub { get; private set; }
 
-		private static Delegates.glVertexAttrib4sv _glVertexAttrib4sv;
+		public static Delegates.glVertexAttrib4Nubv glVertexAttrib4Nubv { get; private set; }
 
-		private static Delegates.glVertexAttrib4ubv _glVertexAttrib4ubv;
+		public static Delegates.glVertexAttrib4Nuiv glVertexAttrib4Nuiv { get; private set; }
 
-		private static Delegates.glVertexAttrib4uiv _glVertexAttrib4uiv;
+		public static Delegates.glVertexAttrib4Nusv glVertexAttrib4Nusv { get; private set; }
 
-		private static Delegates.glVertexAttrib4usv _glVertexAttrib4usv;
+		public static Delegates.glVertexAttrib4s glVertexAttrib4s { get; private set; }
 
-		private static Delegates.glVertexAttribBinding _glVertexAttribBinding;
+		public static Delegates.glVertexAttrib4sv glVertexAttrib4sv { get; private set; }
 
-		private static Delegates.glVertexAttribDivisor _glVertexAttribDivisor;
+		public static Delegates.glVertexAttrib4ubv glVertexAttrib4ubv { get; private set; }
 
-		private static Delegates.glVertexAttribFormat _glVertexAttribFormat;
+		public static Delegates.glVertexAttrib4uiv glVertexAttrib4uiv { get; private set; }
 
-		private static Delegates.glVertexAttribI1i _glVertexAttribI1i;
+		public static Delegates.glVertexAttrib4usv glVertexAttrib4usv { get; private set; }
 
-		private static Delegates.glVertexAttribI1iv _glVertexAttribI1iv;
+		public static Delegates.glVertexAttribBinding glVertexAttribBinding { get; private set; }
 
-		private static Delegates.glVertexAttribI1ui _glVertexAttribI1ui;
+		public static Delegates.glVertexAttribDivisor glVertexAttribDivisor { get; private set; }
 
-		private static Delegates.glVertexAttribI1uiv _glVertexAttribI1uiv;
+		public static Delegates.glVertexAttribFormat glVertexAttribFormat { get; private set; }
 
-		private static Delegates.glVertexAttribI2i _glVertexAttribI2i;
+		public static Delegates.glVertexAttribI1i glVertexAttribI1i { get; private set; }
 
-		private static Delegates.glVertexAttribI2iv _glVertexAttribI2iv;
+		public static Delegates.glVertexAttribI1iv glVertexAttribI1iv { get; private set; }
 
-		private static Delegates.glVertexAttribI2ui _glVertexAttribI2ui;
+		public static Delegates.glVertexAttribI1ui glVertexAttribI1ui { get; private set; }
 
-		private static Delegates.glVertexAttribI2uiv _glVertexAttribI2uiv;
+		public static Delegates.glVertexAttribI1uiv glVertexAttribI1uiv { get; private set; }
 
-		private static Delegates.glVertexAttribI3i _glVertexAttribI3i;
+		public static Delegates.glVertexAttribI2i glVertexAttribI2i { get; private set; }
 
-		private static Delegates.glVertexAttribI3iv _glVertexAttribI3iv;
+		public static Delegates.glVertexAttribI2iv glVertexAttribI2iv { get; private set; }
 
-		private static Delegates.glVertexAttribI3ui _glVertexAttribI3ui;
+		public static Delegates.glVertexAttribI2ui glVertexAttribI2ui { get; private set; }
 
-		private static Delegates.glVertexAttribI3uiv _glVertexAttribI3uiv;
+		public static Delegates.glVertexAttribI2uiv glVertexAttribI2uiv { get; private set; }
 
-		private static Delegates.glVertexAttribI4bv _glVertexAttribI4bv;
+		public static Delegates.glVertexAttribI3i glVertexAttribI3i { get; private set; }
 
-		private static Delegates.glVertexAttribI4i _glVertexAttribI4i;
+		public static Delegates.glVertexAttribI3iv glVertexAttribI3iv { get; private set; }
 
-		private static Delegates.glVertexAttribI4iv _glVertexAttribI4iv;
+		public static Delegates.glVertexAttribI3ui glVertexAttribI3ui { get; private set; }
 
-		private static Delegates.glVertexAttribI4sv _glVertexAttribI4sv;
+		public static Delegates.glVertexAttribI3uiv glVertexAttribI3uiv { get; private set; }
 
-		private static Delegates.glVertexAttribI4ubv _glVertexAttribI4ubv;
+		public static Delegates.glVertexAttribI4bv glVertexAttribI4bv { get; private set; }
 
-		private static Delegates.glVertexAttribI4ui _glVertexAttribI4ui;
+		public static Delegates.glVertexAttribI4i glVertexAttribI4i { get; private set; }
 
-		private static Delegates.glVertexAttribI4uiv _glVertexAttribI4uiv;
+		public static Delegates.glVertexAttribI4iv glVertexAttribI4iv { get; private set; }
 
-		private static Delegates.glVertexAttribI4usv _glVertexAttribI4usv;
+		public static Delegates.glVertexAttribI4sv glVertexAttribI4sv { get; private set; }
 
-		private static Delegates.glVertexAttribIFormat _glVertexAttribIFormat;
+		public static Delegates.glVertexAttribI4ubv glVertexAttribI4ubv { get; private set; }
 
-		private static Delegates.glVertexAttribIPointer _glVertexAttribIPointer;
+		public static Delegates.glVertexAttribI4ui glVertexAttribI4ui { get; private set; }
 
-		private static Delegates.glVertexAttribL1d _glVertexAttribL1d;
+		public static Delegates.glVertexAttribI4uiv glVertexAttribI4uiv { get; private set; }
 
-		private static Delegates.glVertexAttribL1dv _glVertexAttribL1dv;
+		public static Delegates.glVertexAttribI4usv glVertexAttribI4usv { get; private set; }
 
-		private static Delegates.glVertexAttribL2d _glVertexAttribL2d;
+		public static Delegates.glVertexAttribIFormat glVertexAttribIFormat { get; private set; }
 
-		private static Delegates.glVertexAttribL2dv _glVertexAttribL2dv;
+		public static Delegates.glVertexAttribIPointer glVertexAttribIPointer { get; private set; }
 
-		private static Delegates.glVertexAttribL3d _glVertexAttribL3d;
+		public static Delegates.glVertexAttribL1d glVertexAttribL1d { get; private set; }
 
-		private static Delegates.glVertexAttribL3dv _glVertexAttribL3dv;
+		public static Delegates.glVertexAttribL1dv glVertexAttribL1dv { get; private set; }
 
-		private static Delegates.glVertexAttribL4d _glVertexAttribL4d;
+		public static Delegates.glVertexAttribL2d glVertexAttribL2d { get; private set; }
 
-		private static Delegates.glVertexAttribL4dv _glVertexAttribL4dv;
+		public static Delegates.glVertexAttribL2dv glVertexAttribL2dv { get; private set; }
 
-		private static Delegates.glVertexAttribLFormat _glVertexAttribLFormat;
+		public static Delegates.glVertexAttribL3d glVertexAttribL3d { get; private set; }
 
-		private static Delegates.glVertexAttribLPointer _glVertexAttribLPointer;
+		public static Delegates.glVertexAttribL3dv glVertexAttribL3dv { get; private set; }
 
-		private static Delegates.glVertexAttribP1ui _glVertexAttribP1ui;
+		public static Delegates.glVertexAttribL4d glVertexAttribL4d { get; private set; }
 
-		private static Delegates.glVertexAttribP1uiv _glVertexAttribP1uiv;
+		public static Delegates.glVertexAttribL4dv glVertexAttribL4dv { get; private set; }
 
-		private static Delegates.glVertexAttribP2ui _glVertexAttribP2ui;
+		public static Delegates.glVertexAttribLFormat glVertexAttribLFormat { get; private set; }
 
-		private static Delegates.glVertexAttribP2uiv _glVertexAttribP2uiv;
+		public static Delegates.glVertexAttribLPointer glVertexAttribLPointer { get; private set; }
 
-		private static Delegates.glVertexAttribP3ui _glVertexAttribP3ui;
+		public static Delegates.glVertexAttribP1ui glVertexAttribP1ui { get; private set; }
 
-		private static Delegates.glVertexAttribP3uiv _glVertexAttribP3uiv;
+		public static Delegates.glVertexAttribP1uiv glVertexAttribP1uiv { get; private set; }
 
-		private static Delegates.glVertexAttribP4ui _glVertexAttribP4ui;
+		public static Delegates.glVertexAttribP2ui glVertexAttribP2ui { get; private set; }
 
-		private static Delegates.glVertexAttribP4uiv _glVertexAttribP4uiv;
+		public static Delegates.glVertexAttribP2uiv glVertexAttribP2uiv { get; private set; }
 
-		private static Delegates.glVertexAttribPointer _glVertexAttribPointer;
+		public static Delegates.glVertexAttribP3ui glVertexAttribP3ui { get; private set; }
 
-		private static Delegates.glVertexBindingDivisor _glVertexBindingDivisor;
+		public static Delegates.glVertexAttribP3uiv glVertexAttribP3uiv { get; private set; }
 
-		private static Delegates.glViewport _glViewport;
+		public static Delegates.glVertexAttribP4ui glVertexAttribP4ui { get; private set; }
 
-		private static Delegates.glViewportArrayv _glViewportArrayv;
+		public static Delegates.glVertexAttribP4uiv glVertexAttribP4uiv { get; private set; }
 
-		private static Delegates.glViewportIndexedf _glViewportIndexedf;
+		public static Delegates.glVertexAttribPointer glVertexAttribPointer { get; private set; }
 
-		private static Delegates.glViewportIndexedfv _glViewportIndexedfv;
+		public static Delegates.glVertexBindingDivisor glVertexBindingDivisor { get; private set; }
 
-		private static Delegates.glWaitSync _glWaitSync;
+		public static Delegates.glViewport glViewport { get; private set; }
+
+		public static Delegates.glViewportArrayv glViewportArrayv { get; private set; }
+
+		public static Delegates.glViewportIndexedf glViewportIndexedf { get; private set; }
+
+		public static Delegates.glViewportIndexedfv glViewportIndexedfv { get; private set; }
+
+		public static Delegates.glWaitSync glWaitSync { get; private set; }
 
 		public static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)
 		{
@@ -3994,5152 +4034,736 @@ namespace GLDotNet
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 0))
 			{
-				_glBlendFunc = (Delegates.glBlendFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFunc"), typeof(Delegates.glBlendFunc));
-				_glClear = (Delegates.glClear)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClear"), typeof(Delegates.glClear));
-				_glClearColor = (Delegates.glClearColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearColor"), typeof(Delegates.glClearColor));
-				_glClearDepth = (Delegates.glClearDepth)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearDepth"), typeof(Delegates.glClearDepth));
-				_glClearStencil = (Delegates.glClearStencil)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearStencil"), typeof(Delegates.glClearStencil));
-				_glColorMask = (Delegates.glColorMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glColorMask"), typeof(Delegates.glColorMask));
-				_glCullFace = (Delegates.glCullFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCullFace"), typeof(Delegates.glCullFace));
-				_glDepthFunc = (Delegates.glDepthFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthFunc"), typeof(Delegates.glDepthFunc));
-				_glDepthMask = (Delegates.glDepthMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthMask"), typeof(Delegates.glDepthMask));
-				_glDepthRange = (Delegates.glDepthRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRange"), typeof(Delegates.glDepthRange));
-				_glDisable = (Delegates.glDisable)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisable"), typeof(Delegates.glDisable));
-				_glDrawBuffer = (Delegates.glDrawBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawBuffer"), typeof(Delegates.glDrawBuffer));
-				_glEnable = (Delegates.glEnable)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnable"), typeof(Delegates.glEnable));
-				_glFinish = (Delegates.glFinish)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFinish"), typeof(Delegates.glFinish));
-				_glFlush = (Delegates.glFlush)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlush"), typeof(Delegates.glFlush));
-				_glFrontFace = (Delegates.glFrontFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFrontFace"), typeof(Delegates.glFrontFace));
-				_glGetBooleanv = (Delegates.glGetBooleanv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanv));
-				_glGetDoublev = (Delegates.glGetDoublev)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublev));
-				_glGetError = (Delegates.glGetError)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetError"), typeof(Delegates.glGetError));
-				_glGetFloatv = (Delegates.glGetFloatv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatv));
-				_glGetIntegerv = (Delegates.glGetIntegerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegerv));
-				_glGetString = (Delegates.glGetString)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetString"), typeof(Delegates.glGetString));
-				_glGetTexImage = (Delegates.glGetTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexImage"), typeof(Delegates.glGetTexImage));
-				_glGetTexLevelParameterfv = (Delegates.glGetTexLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameterfv"), typeof(Delegates.glGetTexLevelParameterfv));
-				_glGetTexLevelParameteriv = (Delegates.glGetTexLevelParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameteriv"), typeof(Delegates.glGetTexLevelParameteriv));
-				_glGetTexParameterfv = (Delegates.glGetTexParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterfv"), typeof(Delegates.glGetTexParameterfv));
-				_glGetTexParameteriv = (Delegates.glGetTexParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameteriv"), typeof(Delegates.glGetTexParameteriv));
-				_glHint = (Delegates.glHint)Marshal.GetDelegateForFunctionPointer(getProcAddress("glHint"), typeof(Delegates.glHint));
-				_glIsEnabled = (Delegates.glIsEnabled)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsEnabled"), typeof(Delegates.glIsEnabled));
-				_glLineWidth = (Delegates.glLineWidth)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLineWidth"), typeof(Delegates.glLineWidth));
-				_glLogicOp = (Delegates.glLogicOp)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLogicOp"), typeof(Delegates.glLogicOp));
-				_glPixelStoref = (Delegates.glPixelStoref)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPixelStoref"), typeof(Delegates.glPixelStoref));
-				_glPixelStorei = (Delegates.glPixelStorei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPixelStorei"), typeof(Delegates.glPixelStorei));
-				_glPointSize = (Delegates.glPointSize)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointSize"), typeof(Delegates.glPointSize));
-				_glPolygonMode = (Delegates.glPolygonMode)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPolygonMode"), typeof(Delegates.glPolygonMode));
-				_glReadBuffer = (Delegates.glReadBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadBuffer"), typeof(Delegates.glReadBuffer));
-				_glReadPixels = (Delegates.glReadPixels)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadPixels"), typeof(Delegates.glReadPixels));
-				_glScissor = (Delegates.glScissor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissor"), typeof(Delegates.glScissor));
-				_glStencilFunc = (Delegates.glStencilFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilFunc"), typeof(Delegates.glStencilFunc));
-				_glStencilMask = (Delegates.glStencilMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilMask"), typeof(Delegates.glStencilMask));
-				_glStencilOp = (Delegates.glStencilOp)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilOp"), typeof(Delegates.glStencilOp));
-				_glTexImage1D = (Delegates.glTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage1D"), typeof(Delegates.glTexImage1D));
-				_glTexImage2D = (Delegates.glTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage2D"), typeof(Delegates.glTexImage2D));
-				_glTexParameterf = (Delegates.glTexParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterf"), typeof(Delegates.glTexParameterf));
-				_glTexParameterfv = (Delegates.glTexParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterfv"), typeof(Delegates.glTexParameterfv));
-				_glTexParameteri = (Delegates.glTexParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameteri"), typeof(Delegates.glTexParameteri));
-				_glTexParameteriv = (Delegates.glTexParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameteriv"), typeof(Delegates.glTexParameteriv));
-				_glViewport = (Delegates.glViewport)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewport"), typeof(Delegates.glViewport));
+				glBlendFunc = (Delegates.glBlendFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFunc"), typeof(Delegates.glBlendFunc));
+				glClear = (Delegates.glClear)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClear"), typeof(Delegates.glClear));
+				glClearColor = (Delegates.glClearColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearColor"), typeof(Delegates.glClearColor));
+				glClearDepth = (Delegates.glClearDepth)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearDepth"), typeof(Delegates.glClearDepth));
+				glClearStencil = (Delegates.glClearStencil)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearStencil"), typeof(Delegates.glClearStencil));
+				glColorMask = (Delegates.glColorMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glColorMask"), typeof(Delegates.glColorMask));
+				glCullFace = (Delegates.glCullFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCullFace"), typeof(Delegates.glCullFace));
+				glDepthFunc = (Delegates.glDepthFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthFunc"), typeof(Delegates.glDepthFunc));
+				glDepthMask = (Delegates.glDepthMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthMask"), typeof(Delegates.glDepthMask));
+				glDepthRange = (Delegates.glDepthRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRange"), typeof(Delegates.glDepthRange));
+				glDisable = (Delegates.glDisable)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisable"), typeof(Delegates.glDisable));
+				glDrawBuffer = (Delegates.glDrawBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawBuffer"), typeof(Delegates.glDrawBuffer));
+				glEnable = (Delegates.glEnable)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnable"), typeof(Delegates.glEnable));
+				glFinish = (Delegates.glFinish)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFinish"), typeof(Delegates.glFinish));
+				glFlush = (Delegates.glFlush)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlush"), typeof(Delegates.glFlush));
+				glFrontFace = (Delegates.glFrontFace)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFrontFace"), typeof(Delegates.glFrontFace));
+				glGetBooleanv = (Delegates.glGetBooleanv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleanv"), typeof(Delegates.glGetBooleanv));
+				glGetDoublev = (Delegates.glGetDoublev)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublev"), typeof(Delegates.glGetDoublev));
+				glGetError = (Delegates.glGetError)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetError"), typeof(Delegates.glGetError));
+				glGetFloatv = (Delegates.glGetFloatv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloatv"), typeof(Delegates.glGetFloatv));
+				glGetIntegerv = (Delegates.glGetIntegerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegerv"), typeof(Delegates.glGetIntegerv));
+				glGetString = (Delegates.glGetString)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetString"), typeof(Delegates.glGetString));
+				glGetTexImage = (Delegates.glGetTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexImage"), typeof(Delegates.glGetTexImage));
+				glGetTexLevelParameterfv = (Delegates.glGetTexLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameterfv"), typeof(Delegates.glGetTexLevelParameterfv));
+				glGetTexLevelParameteriv = (Delegates.glGetTexLevelParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexLevelParameteriv"), typeof(Delegates.glGetTexLevelParameteriv));
+				glGetTexParameterfv = (Delegates.glGetTexParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterfv"), typeof(Delegates.glGetTexParameterfv));
+				glGetTexParameteriv = (Delegates.glGetTexParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameteriv"), typeof(Delegates.glGetTexParameteriv));
+				glHint = (Delegates.glHint)Marshal.GetDelegateForFunctionPointer(getProcAddress("glHint"), typeof(Delegates.glHint));
+				glIsEnabled = (Delegates.glIsEnabled)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsEnabled"), typeof(Delegates.glIsEnabled));
+				glLineWidth = (Delegates.glLineWidth)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLineWidth"), typeof(Delegates.glLineWidth));
+				glLogicOp = (Delegates.glLogicOp)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLogicOp"), typeof(Delegates.glLogicOp));
+				glPixelStoref = (Delegates.glPixelStoref)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPixelStoref"), typeof(Delegates.glPixelStoref));
+				glPixelStorei = (Delegates.glPixelStorei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPixelStorei"), typeof(Delegates.glPixelStorei));
+				glPointSize = (Delegates.glPointSize)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointSize"), typeof(Delegates.glPointSize));
+				glPolygonMode = (Delegates.glPolygonMode)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPolygonMode"), typeof(Delegates.glPolygonMode));
+				glReadBuffer = (Delegates.glReadBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadBuffer"), typeof(Delegates.glReadBuffer));
+				glReadPixels = (Delegates.glReadPixels)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadPixels"), typeof(Delegates.glReadPixels));
+				glScissor = (Delegates.glScissor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissor"), typeof(Delegates.glScissor));
+				glStencilFunc = (Delegates.glStencilFunc)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilFunc"), typeof(Delegates.glStencilFunc));
+				glStencilMask = (Delegates.glStencilMask)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilMask"), typeof(Delegates.glStencilMask));
+				glStencilOp = (Delegates.glStencilOp)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilOp"), typeof(Delegates.glStencilOp));
+				glTexImage1D = (Delegates.glTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage1D"), typeof(Delegates.glTexImage1D));
+				glTexImage2D = (Delegates.glTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage2D"), typeof(Delegates.glTexImage2D));
+				glTexParameterf = (Delegates.glTexParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterf"), typeof(Delegates.glTexParameterf));
+				glTexParameterfv = (Delegates.glTexParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterfv"), typeof(Delegates.glTexParameterfv));
+				glTexParameteri = (Delegates.glTexParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameteri"), typeof(Delegates.glTexParameteri));
+				glTexParameteriv = (Delegates.glTexParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameteriv"), typeof(Delegates.glTexParameteriv));
+				glViewport = (Delegates.glViewport)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewport"), typeof(Delegates.glViewport));
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 1))
 			{
-				_glBindTexture = (Delegates.glBindTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTexture"), typeof(Delegates.glBindTexture));
-				_glCopyTexImage1D = (Delegates.glCopyTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexImage1D"), typeof(Delegates.glCopyTexImage1D));
-				_glCopyTexImage2D = (Delegates.glCopyTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexImage2D"), typeof(Delegates.glCopyTexImage2D));
-				_glCopyTexSubImage1D = (Delegates.glCopyTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage1D"), typeof(Delegates.glCopyTexSubImage1D));
-				_glCopyTexSubImage2D = (Delegates.glCopyTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage2D"), typeof(Delegates.glCopyTexSubImage2D));
-				_glDeleteTextures = (Delegates.glDeleteTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteTextures"), typeof(Delegates.glDeleteTextures));
-				_glDrawArrays = (Delegates.glDrawArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArrays"), typeof(Delegates.glDrawArrays));
-				_glDrawElements = (Delegates.glDrawElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElements"), typeof(Delegates.glDrawElements));
-				_glGenTextures = (Delegates.glGenTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenTextures"), typeof(Delegates.glGenTextures));
-				_glGetPointerv = (Delegates.glGetPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetPointerv"), typeof(Delegates.glGetPointerv));
-				_glIsTexture = (Delegates.glIsTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsTexture"), typeof(Delegates.glIsTexture));
-				_glPolygonOffset = (Delegates.glPolygonOffset)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPolygonOffset"), typeof(Delegates.glPolygonOffset));
-				_glTexSubImage1D = (Delegates.glTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage1D"), typeof(Delegates.glTexSubImage1D));
-				_glTexSubImage2D = (Delegates.glTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage2D"), typeof(Delegates.glTexSubImage2D));
+				glBindTexture = (Delegates.glBindTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTexture"), typeof(Delegates.glBindTexture));
+				glCopyTexImage1D = (Delegates.glCopyTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexImage1D"), typeof(Delegates.glCopyTexImage1D));
+				glCopyTexImage2D = (Delegates.glCopyTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexImage2D"), typeof(Delegates.glCopyTexImage2D));
+				glCopyTexSubImage1D = (Delegates.glCopyTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage1D"), typeof(Delegates.glCopyTexSubImage1D));
+				glCopyTexSubImage2D = (Delegates.glCopyTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage2D"), typeof(Delegates.glCopyTexSubImage2D));
+				glDeleteTextures = (Delegates.glDeleteTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteTextures"), typeof(Delegates.glDeleteTextures));
+				glDrawArrays = (Delegates.glDrawArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArrays"), typeof(Delegates.glDrawArrays));
+				glDrawElements = (Delegates.glDrawElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElements"), typeof(Delegates.glDrawElements));
+				glGenTextures = (Delegates.glGenTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenTextures"), typeof(Delegates.glGenTextures));
+				glGetPointerv = (Delegates.glGetPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetPointerv"), typeof(Delegates.glGetPointerv));
+				glIsTexture = (Delegates.glIsTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsTexture"), typeof(Delegates.glIsTexture));
+				glPolygonOffset = (Delegates.glPolygonOffset)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPolygonOffset"), typeof(Delegates.glPolygonOffset));
+				glTexSubImage1D = (Delegates.glTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage1D"), typeof(Delegates.glTexSubImage1D));
+				glTexSubImage2D = (Delegates.glTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage2D"), typeof(Delegates.glTexSubImage2D));
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 2))
 			{
-				_glCopyTexSubImage3D = (Delegates.glCopyTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage3D"), typeof(Delegates.glCopyTexSubImage3D));
-				_glDrawRangeElements = (Delegates.glDrawRangeElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawRangeElements"), typeof(Delegates.glDrawRangeElements));
-				_glTexImage3D = (Delegates.glTexImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage3D"), typeof(Delegates.glTexImage3D));
-				_glTexSubImage3D = (Delegates.glTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage3D"), typeof(Delegates.glTexSubImage3D));
+				glCopyTexSubImage3D = (Delegates.glCopyTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTexSubImage3D"), typeof(Delegates.glCopyTexSubImage3D));
+				glDrawRangeElements = (Delegates.glDrawRangeElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawRangeElements"), typeof(Delegates.glDrawRangeElements));
+				glTexImage3D = (Delegates.glTexImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage3D"), typeof(Delegates.glTexImage3D));
+				glTexSubImage3D = (Delegates.glTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexSubImage3D"), typeof(Delegates.glTexSubImage3D));
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 3))
 			{
-				_glActiveTexture = (Delegates.glActiveTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glActiveTexture"), typeof(Delegates.glActiveTexture));
-				_glCompressedTexImage1D = (Delegates.glCompressedTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage1D"), typeof(Delegates.glCompressedTexImage1D));
-				_glCompressedTexImage2D = (Delegates.glCompressedTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage2D"), typeof(Delegates.glCompressedTexImage2D));
-				_glCompressedTexImage3D = (Delegates.glCompressedTexImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage3D"), typeof(Delegates.glCompressedTexImage3D));
-				_glCompressedTexSubImage1D = (Delegates.glCompressedTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage1D"), typeof(Delegates.glCompressedTexSubImage1D));
-				_glCompressedTexSubImage2D = (Delegates.glCompressedTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage2D"), typeof(Delegates.glCompressedTexSubImage2D));
-				_glCompressedTexSubImage3D = (Delegates.glCompressedTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage3D"), typeof(Delegates.glCompressedTexSubImage3D));
-				_glGetCompressedTexImage = (Delegates.glGetCompressedTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTexImage"), typeof(Delegates.glGetCompressedTexImage));
-				_glSampleCoverage = (Delegates.glSampleCoverage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSampleCoverage"), typeof(Delegates.glSampleCoverage));
+				glActiveTexture = (Delegates.glActiveTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glActiveTexture"), typeof(Delegates.glActiveTexture));
+				glCompressedTexImage1D = (Delegates.glCompressedTexImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage1D"), typeof(Delegates.glCompressedTexImage1D));
+				glCompressedTexImage2D = (Delegates.glCompressedTexImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage2D"), typeof(Delegates.glCompressedTexImage2D));
+				glCompressedTexImage3D = (Delegates.glCompressedTexImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexImage3D"), typeof(Delegates.glCompressedTexImage3D));
+				glCompressedTexSubImage1D = (Delegates.glCompressedTexSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage1D"), typeof(Delegates.glCompressedTexSubImage1D));
+				glCompressedTexSubImage2D = (Delegates.glCompressedTexSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage2D"), typeof(Delegates.glCompressedTexSubImage2D));
+				glCompressedTexSubImage3D = (Delegates.glCompressedTexSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTexSubImage3D"), typeof(Delegates.glCompressedTexSubImage3D));
+				glGetCompressedTexImage = (Delegates.glGetCompressedTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTexImage"), typeof(Delegates.glGetCompressedTexImage));
+				glSampleCoverage = (Delegates.glSampleCoverage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSampleCoverage"), typeof(Delegates.glSampleCoverage));
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 4))
 			{
-				_glBlendColor = (Delegates.glBlendColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendColor"), typeof(Delegates.glBlendColor));
-				_glBlendEquation = (Delegates.glBlendEquation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquation"), typeof(Delegates.glBlendEquation));
-				_glBlendFuncSeparate = (Delegates.glBlendFuncSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFuncSeparate"), typeof(Delegates.glBlendFuncSeparate));
-				_glMultiDrawArrays = (Delegates.glMultiDrawArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawArrays"), typeof(Delegates.glMultiDrawArrays));
-				_glMultiDrawElements = (Delegates.glMultiDrawElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElements"), typeof(Delegates.glMultiDrawElements));
-				_glPointParameterf = (Delegates.glPointParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameterf"), typeof(Delegates.glPointParameterf));
-				_glPointParameterfv = (Delegates.glPointParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameterfv"), typeof(Delegates.glPointParameterfv));
-				_glPointParameteri = (Delegates.glPointParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameteri"), typeof(Delegates.glPointParameteri));
-				_glPointParameteriv = (Delegates.glPointParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameteriv"), typeof(Delegates.glPointParameteriv));
+				glBlendColor = (Delegates.glBlendColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendColor"), typeof(Delegates.glBlendColor));
+				glBlendEquation = (Delegates.glBlendEquation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquation"), typeof(Delegates.glBlendEquation));
+				glBlendFuncSeparate = (Delegates.glBlendFuncSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFuncSeparate"), typeof(Delegates.glBlendFuncSeparate));
+				glMultiDrawArrays = (Delegates.glMultiDrawArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawArrays"), typeof(Delegates.glMultiDrawArrays));
+				glMultiDrawElements = (Delegates.glMultiDrawElements)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElements"), typeof(Delegates.glMultiDrawElements));
+				glPointParameterf = (Delegates.glPointParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameterf"), typeof(Delegates.glPointParameterf));
+				glPointParameterfv = (Delegates.glPointParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameterfv"), typeof(Delegates.glPointParameterfv));
+				glPointParameteri = (Delegates.glPointParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameteri"), typeof(Delegates.glPointParameteri));
+				glPointParameteriv = (Delegates.glPointParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPointParameteriv"), typeof(Delegates.glPointParameteriv));
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 5))
 			{
-				_glBeginQuery = (Delegates.glBeginQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginQuery"), typeof(Delegates.glBeginQuery));
-				_glBindBuffer = (Delegates.glBindBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffer"), typeof(Delegates.glBindBuffer));
-				_glBufferData = (Delegates.glBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferData"), typeof(Delegates.glBufferData));
-				_glBufferSubData = (Delegates.glBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferSubData"), typeof(Delegates.glBufferSubData));
-				_glDeleteBuffers = (Delegates.glDeleteBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteBuffers"), typeof(Delegates.glDeleteBuffers));
-				_glDeleteQueries = (Delegates.glDeleteQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteQueries"), typeof(Delegates.glDeleteQueries));
-				_glEndQuery = (Delegates.glEndQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndQuery"), typeof(Delegates.glEndQuery));
-				_glGenBuffers = (Delegates.glGenBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenBuffers"), typeof(Delegates.glGenBuffers));
-				_glGenQueries = (Delegates.glGenQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenQueries"), typeof(Delegates.glGenQueries));
-				_glGetBufferParameteriv = (Delegates.glGetBufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteriv"), typeof(Delegates.glGetBufferParameteriv));
-				_glGetBufferPointerv = (Delegates.glGetBufferPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferPointerv"), typeof(Delegates.glGetBufferPointerv));
-				_glGetBufferSubData = (Delegates.glGetBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferSubData"), typeof(Delegates.glGetBufferSubData));
-				_glGetQueryiv = (Delegates.glGetQueryiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryiv"), typeof(Delegates.glGetQueryiv));
-				_glGetQueryObjectiv = (Delegates.glGetQueryObjectiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectiv"), typeof(Delegates.glGetQueryObjectiv));
-				_glGetQueryObjectuiv = (Delegates.glGetQueryObjectuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectuiv"), typeof(Delegates.glGetQueryObjectuiv));
-				_glIsBuffer = (Delegates.glIsBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsBuffer"), typeof(Delegates.glIsBuffer));
-				_glIsQuery = (Delegates.glIsQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsQuery"), typeof(Delegates.glIsQuery));
-				_glMapBuffer = (Delegates.glMapBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapBuffer"), typeof(Delegates.glMapBuffer));
-				_glUnmapBuffer = (Delegates.glUnmapBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUnmapBuffer"), typeof(Delegates.glUnmapBuffer));
+				glBeginQuery = (Delegates.glBeginQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginQuery"), typeof(Delegates.glBeginQuery));
+				glBindBuffer = (Delegates.glBindBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffer"), typeof(Delegates.glBindBuffer));
+				glBufferData = (Delegates.glBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferData"), typeof(Delegates.glBufferData));
+				glBufferSubData = (Delegates.glBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferSubData"), typeof(Delegates.glBufferSubData));
+				glDeleteBuffers = (Delegates.glDeleteBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteBuffers"), typeof(Delegates.glDeleteBuffers));
+				glDeleteQueries = (Delegates.glDeleteQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteQueries"), typeof(Delegates.glDeleteQueries));
+				glEndQuery = (Delegates.glEndQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndQuery"), typeof(Delegates.glEndQuery));
+				glGenBuffers = (Delegates.glGenBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenBuffers"), typeof(Delegates.glGenBuffers));
+				glGenQueries = (Delegates.glGenQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenQueries"), typeof(Delegates.glGenQueries));
+				glGetBufferParameteriv = (Delegates.glGetBufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteriv"), typeof(Delegates.glGetBufferParameteriv));
+				glGetBufferPointerv = (Delegates.glGetBufferPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferPointerv"), typeof(Delegates.glGetBufferPointerv));
+				glGetBufferSubData = (Delegates.glGetBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferSubData"), typeof(Delegates.glGetBufferSubData));
+				glGetQueryiv = (Delegates.glGetQueryiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryiv"), typeof(Delegates.glGetQueryiv));
+				glGetQueryObjectiv = (Delegates.glGetQueryObjectiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectiv"), typeof(Delegates.glGetQueryObjectiv));
+				glGetQueryObjectuiv = (Delegates.glGetQueryObjectuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectuiv"), typeof(Delegates.glGetQueryObjectuiv));
+				glIsBuffer = (Delegates.glIsBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsBuffer"), typeof(Delegates.glIsBuffer));
+				glIsQuery = (Delegates.glIsQuery)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsQuery"), typeof(Delegates.glIsQuery));
+				glMapBuffer = (Delegates.glMapBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapBuffer"), typeof(Delegates.glMapBuffer));
+				glUnmapBuffer = (Delegates.glUnmapBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUnmapBuffer"), typeof(Delegates.glUnmapBuffer));
 			}
 
 			if (versionMajor > 2 || (versionMajor == 2 && versionMinor >= 0))
 			{
-				_glAttachShader = (Delegates.glAttachShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glAttachShader"), typeof(Delegates.glAttachShader));
-				_glBindAttribLocation = (Delegates.glBindAttribLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindAttribLocation"), typeof(Delegates.glBindAttribLocation));
-				_glBlendEquationSeparate = (Delegates.glBlendEquationSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationSeparate"), typeof(Delegates.glBlendEquationSeparate));
-				_glCompileShader = (Delegates.glCompileShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompileShader"), typeof(Delegates.glCompileShader));
-				_glCreateProgram = (Delegates.glCreateProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateProgram"), typeof(Delegates.glCreateProgram));
-				_glCreateShader = (Delegates.glCreateShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateShader"), typeof(Delegates.glCreateShader));
-				_glDeleteProgram = (Delegates.glDeleteProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteProgram"), typeof(Delegates.glDeleteProgram));
-				_glDeleteShader = (Delegates.glDeleteShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteShader"), typeof(Delegates.glDeleteShader));
-				_glDetachShader = (Delegates.glDetachShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDetachShader"), typeof(Delegates.glDetachShader));
-				_glDisableVertexAttribArray = (Delegates.glDisableVertexAttribArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisableVertexAttribArray"), typeof(Delegates.glDisableVertexAttribArray));
-				_glDrawBuffers = (Delegates.glDrawBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawBuffers"), typeof(Delegates.glDrawBuffers));
-				_glEnableVertexAttribArray = (Delegates.glEnableVertexAttribArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnableVertexAttribArray"), typeof(Delegates.glEnableVertexAttribArray));
-				_glGetActiveAttrib = (Delegates.glGetActiveAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveAttrib"), typeof(Delegates.glGetActiveAttrib));
-				_glGetActiveUniform = (Delegates.glGetActiveUniform)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniform"), typeof(Delegates.glGetActiveUniform));
-				_glGetAttachedShaders = (Delegates.glGetAttachedShaders)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetAttachedShaders"), typeof(Delegates.glGetAttachedShaders));
-				_glGetAttribLocation = (Delegates.glGetAttribLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetAttribLocation"), typeof(Delegates.glGetAttribLocation));
-				_glGetProgramInfoLog = (Delegates.glGetProgramInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramInfoLog"), typeof(Delegates.glGetProgramInfoLog));
-				_glGetProgramiv = (Delegates.glGetProgramiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramiv"), typeof(Delegates.glGetProgramiv));
-				_glGetShaderInfoLog = (Delegates.glGetShaderInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderInfoLog"), typeof(Delegates.glGetShaderInfoLog));
-				_glGetShaderiv = (Delegates.glGetShaderiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderiv"), typeof(Delegates.glGetShaderiv));
-				_glGetShaderSource = (Delegates.glGetShaderSource)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderSource"), typeof(Delegates.glGetShaderSource));
-				_glGetUniformfv = (Delegates.glGetUniformfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformfv"), typeof(Delegates.glGetUniformfv));
-				_glGetUniformiv = (Delegates.glGetUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformiv"), typeof(Delegates.glGetUniformiv));
-				_glGetUniformLocation = (Delegates.glGetUniformLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformLocation"), typeof(Delegates.glGetUniformLocation));
-				_glGetVertexAttribdv = (Delegates.glGetVertexAttribdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribdv"), typeof(Delegates.glGetVertexAttribdv));
-				_glGetVertexAttribfv = (Delegates.glGetVertexAttribfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribfv"), typeof(Delegates.glGetVertexAttribfv));
-				_glGetVertexAttribiv = (Delegates.glGetVertexAttribiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribiv"), typeof(Delegates.glGetVertexAttribiv));
-				_glGetVertexAttribPointerv = (Delegates.glGetVertexAttribPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribPointerv"), typeof(Delegates.glGetVertexAttribPointerv));
-				_glIsProgram = (Delegates.glIsProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsProgram"), typeof(Delegates.glIsProgram));
-				_glIsShader = (Delegates.glIsShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsShader"), typeof(Delegates.glIsShader));
-				_glLinkProgram = (Delegates.glLinkProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLinkProgram"), typeof(Delegates.glLinkProgram));
-				_glShaderSource = (Delegates.glShaderSource)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderSource"), typeof(Delegates.glShaderSource));
-				_glStencilFuncSeparate = (Delegates.glStencilFuncSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilFuncSeparate"), typeof(Delegates.glStencilFuncSeparate));
-				_glStencilMaskSeparate = (Delegates.glStencilMaskSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilMaskSeparate"), typeof(Delegates.glStencilMaskSeparate));
-				_glStencilOpSeparate = (Delegates.glStencilOpSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilOpSeparate"), typeof(Delegates.glStencilOpSeparate));
-				_glUniform1f = (Delegates.glUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1f"), typeof(Delegates.glUniform1f));
-				_glUniform1fv = (Delegates.glUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1fv"), typeof(Delegates.glUniform1fv));
-				_glUniform1i = (Delegates.glUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1i"), typeof(Delegates.glUniform1i));
-				_glUniform1iv = (Delegates.glUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1iv"), typeof(Delegates.glUniform1iv));
-				_glUniform2f = (Delegates.glUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2f"), typeof(Delegates.glUniform2f));
-				_glUniform2fv = (Delegates.glUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2fv"), typeof(Delegates.glUniform2fv));
-				_glUniform2i = (Delegates.glUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2i"), typeof(Delegates.glUniform2i));
-				_glUniform2iv = (Delegates.glUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2iv"), typeof(Delegates.glUniform2iv));
-				_glUniform3f = (Delegates.glUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3f"), typeof(Delegates.glUniform3f));
-				_glUniform3fv = (Delegates.glUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3fv"), typeof(Delegates.glUniform3fv));
-				_glUniform3i = (Delegates.glUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3i"), typeof(Delegates.glUniform3i));
-				_glUniform3iv = (Delegates.glUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3iv"), typeof(Delegates.glUniform3iv));
-				_glUniform4f = (Delegates.glUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4f"), typeof(Delegates.glUniform4f));
-				_glUniform4fv = (Delegates.glUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4fv"), typeof(Delegates.glUniform4fv));
-				_glUniform4i = (Delegates.glUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4i"), typeof(Delegates.glUniform4i));
-				_glUniform4iv = (Delegates.glUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4iv"), typeof(Delegates.glUniform4iv));
-				_glUniformMatrix2fv = (Delegates.glUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2fv"), typeof(Delegates.glUniformMatrix2fv));
-				_glUniformMatrix3fv = (Delegates.glUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3fv"), typeof(Delegates.glUniformMatrix3fv));
-				_glUniformMatrix4fv = (Delegates.glUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4fv"), typeof(Delegates.glUniformMatrix4fv));
-				_glUseProgram = (Delegates.glUseProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUseProgram"), typeof(Delegates.glUseProgram));
-				_glValidateProgram = (Delegates.glValidateProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glValidateProgram"), typeof(Delegates.glValidateProgram));
-				_glVertexAttrib1d = (Delegates.glVertexAttrib1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1d"), typeof(Delegates.glVertexAttrib1d));
-				_glVertexAttrib1dv = (Delegates.glVertexAttrib1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1dv"), typeof(Delegates.glVertexAttrib1dv));
-				_glVertexAttrib1f = (Delegates.glVertexAttrib1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1f"), typeof(Delegates.glVertexAttrib1f));
-				_glVertexAttrib1fv = (Delegates.glVertexAttrib1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1fv"), typeof(Delegates.glVertexAttrib1fv));
-				_glVertexAttrib1s = (Delegates.glVertexAttrib1s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1s"), typeof(Delegates.glVertexAttrib1s));
-				_glVertexAttrib1sv = (Delegates.glVertexAttrib1sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1sv"), typeof(Delegates.glVertexAttrib1sv));
-				_glVertexAttrib2d = (Delegates.glVertexAttrib2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2d"), typeof(Delegates.glVertexAttrib2d));
-				_glVertexAttrib2dv = (Delegates.glVertexAttrib2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2dv"), typeof(Delegates.glVertexAttrib2dv));
-				_glVertexAttrib2f = (Delegates.glVertexAttrib2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2f"), typeof(Delegates.glVertexAttrib2f));
-				_glVertexAttrib2fv = (Delegates.glVertexAttrib2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2fv"), typeof(Delegates.glVertexAttrib2fv));
-				_glVertexAttrib2s = (Delegates.glVertexAttrib2s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2s"), typeof(Delegates.glVertexAttrib2s));
-				_glVertexAttrib2sv = (Delegates.glVertexAttrib2sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2sv"), typeof(Delegates.glVertexAttrib2sv));
-				_glVertexAttrib3d = (Delegates.glVertexAttrib3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3d"), typeof(Delegates.glVertexAttrib3d));
-				_glVertexAttrib3dv = (Delegates.glVertexAttrib3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3dv"), typeof(Delegates.glVertexAttrib3dv));
-				_glVertexAttrib3f = (Delegates.glVertexAttrib3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3f"), typeof(Delegates.glVertexAttrib3f));
-				_glVertexAttrib3fv = (Delegates.glVertexAttrib3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3fv"), typeof(Delegates.glVertexAttrib3fv));
-				_glVertexAttrib3s = (Delegates.glVertexAttrib3s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3s"), typeof(Delegates.glVertexAttrib3s));
-				_glVertexAttrib3sv = (Delegates.glVertexAttrib3sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3sv"), typeof(Delegates.glVertexAttrib3sv));
-				_glVertexAttrib4bv = (Delegates.glVertexAttrib4bv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4bv"), typeof(Delegates.glVertexAttrib4bv));
-				_glVertexAttrib4d = (Delegates.glVertexAttrib4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4d"), typeof(Delegates.glVertexAttrib4d));
-				_glVertexAttrib4dv = (Delegates.glVertexAttrib4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4dv"), typeof(Delegates.glVertexAttrib4dv));
-				_glVertexAttrib4f = (Delegates.glVertexAttrib4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4f"), typeof(Delegates.glVertexAttrib4f));
-				_glVertexAttrib4fv = (Delegates.glVertexAttrib4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4fv"), typeof(Delegates.glVertexAttrib4fv));
-				_glVertexAttrib4iv = (Delegates.glVertexAttrib4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4iv"), typeof(Delegates.glVertexAttrib4iv));
-				_glVertexAttrib4Nbv = (Delegates.glVertexAttrib4Nbv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nbv"), typeof(Delegates.glVertexAttrib4Nbv));
-				_glVertexAttrib4Niv = (Delegates.glVertexAttrib4Niv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Niv"), typeof(Delegates.glVertexAttrib4Niv));
-				_glVertexAttrib4Nsv = (Delegates.glVertexAttrib4Nsv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nsv"), typeof(Delegates.glVertexAttrib4Nsv));
-				_glVertexAttrib4Nub = (Delegates.glVertexAttrib4Nub)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nub"), typeof(Delegates.glVertexAttrib4Nub));
-				_glVertexAttrib4Nubv = (Delegates.glVertexAttrib4Nubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nubv"), typeof(Delegates.glVertexAttrib4Nubv));
-				_glVertexAttrib4Nuiv = (Delegates.glVertexAttrib4Nuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nuiv"), typeof(Delegates.glVertexAttrib4Nuiv));
-				_glVertexAttrib4Nusv = (Delegates.glVertexAttrib4Nusv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nusv"), typeof(Delegates.glVertexAttrib4Nusv));
-				_glVertexAttrib4s = (Delegates.glVertexAttrib4s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4s"), typeof(Delegates.glVertexAttrib4s));
-				_glVertexAttrib4sv = (Delegates.glVertexAttrib4sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4sv"), typeof(Delegates.glVertexAttrib4sv));
-				_glVertexAttrib4ubv = (Delegates.glVertexAttrib4ubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4ubv"), typeof(Delegates.glVertexAttrib4ubv));
-				_glVertexAttrib4uiv = (Delegates.glVertexAttrib4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4uiv"), typeof(Delegates.glVertexAttrib4uiv));
-				_glVertexAttrib4usv = (Delegates.glVertexAttrib4usv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4usv"), typeof(Delegates.glVertexAttrib4usv));
-				_glVertexAttribPointer = (Delegates.glVertexAttribPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribPointer"), typeof(Delegates.glVertexAttribPointer));
+				glAttachShader = (Delegates.glAttachShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glAttachShader"), typeof(Delegates.glAttachShader));
+				glBindAttribLocation = (Delegates.glBindAttribLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindAttribLocation"), typeof(Delegates.glBindAttribLocation));
+				glBlendEquationSeparate = (Delegates.glBlendEquationSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationSeparate"), typeof(Delegates.glBlendEquationSeparate));
+				glCompileShader = (Delegates.glCompileShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompileShader"), typeof(Delegates.glCompileShader));
+				glCreateProgram = (Delegates.glCreateProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateProgram"), typeof(Delegates.glCreateProgram));
+				glCreateShader = (Delegates.glCreateShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateShader"), typeof(Delegates.glCreateShader));
+				glDeleteProgram = (Delegates.glDeleteProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteProgram"), typeof(Delegates.glDeleteProgram));
+				glDeleteShader = (Delegates.glDeleteShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteShader"), typeof(Delegates.glDeleteShader));
+				glDetachShader = (Delegates.glDetachShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDetachShader"), typeof(Delegates.glDetachShader));
+				glDisableVertexAttribArray = (Delegates.glDisableVertexAttribArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisableVertexAttribArray"), typeof(Delegates.glDisableVertexAttribArray));
+				glDrawBuffers = (Delegates.glDrawBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawBuffers"), typeof(Delegates.glDrawBuffers));
+				glEnableVertexAttribArray = (Delegates.glEnableVertexAttribArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnableVertexAttribArray"), typeof(Delegates.glEnableVertexAttribArray));
+				glGetActiveAttrib = (Delegates.glGetActiveAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveAttrib"), typeof(Delegates.glGetActiveAttrib));
+				glGetActiveUniform = (Delegates.glGetActiveUniform)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniform"), typeof(Delegates.glGetActiveUniform));
+				glGetAttachedShaders = (Delegates.glGetAttachedShaders)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetAttachedShaders"), typeof(Delegates.glGetAttachedShaders));
+				glGetAttribLocation = (Delegates.glGetAttribLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetAttribLocation"), typeof(Delegates.glGetAttribLocation));
+				glGetProgramInfoLog = (Delegates.glGetProgramInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramInfoLog"), typeof(Delegates.glGetProgramInfoLog));
+				glGetProgramiv = (Delegates.glGetProgramiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramiv"), typeof(Delegates.glGetProgramiv));
+				glGetShaderInfoLog = (Delegates.glGetShaderInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderInfoLog"), typeof(Delegates.glGetShaderInfoLog));
+				glGetShaderiv = (Delegates.glGetShaderiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderiv"), typeof(Delegates.glGetShaderiv));
+				glGetShaderSource = (Delegates.glGetShaderSource)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderSource"), typeof(Delegates.glGetShaderSource));
+				glGetUniformfv = (Delegates.glGetUniformfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformfv"), typeof(Delegates.glGetUniformfv));
+				glGetUniformiv = (Delegates.glGetUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformiv"), typeof(Delegates.glGetUniformiv));
+				glGetUniformLocation = (Delegates.glGetUniformLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformLocation"), typeof(Delegates.glGetUniformLocation));
+				glGetVertexAttribdv = (Delegates.glGetVertexAttribdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribdv"), typeof(Delegates.glGetVertexAttribdv));
+				glGetVertexAttribfv = (Delegates.glGetVertexAttribfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribfv"), typeof(Delegates.glGetVertexAttribfv));
+				glGetVertexAttribiv = (Delegates.glGetVertexAttribiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribiv"), typeof(Delegates.glGetVertexAttribiv));
+				glGetVertexAttribPointerv = (Delegates.glGetVertexAttribPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribPointerv"), typeof(Delegates.glGetVertexAttribPointerv));
+				glIsProgram = (Delegates.glIsProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsProgram"), typeof(Delegates.glIsProgram));
+				glIsShader = (Delegates.glIsShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsShader"), typeof(Delegates.glIsShader));
+				glLinkProgram = (Delegates.glLinkProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glLinkProgram"), typeof(Delegates.glLinkProgram));
+				glShaderSource = (Delegates.glShaderSource)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderSource"), typeof(Delegates.glShaderSource));
+				glStencilFuncSeparate = (Delegates.glStencilFuncSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilFuncSeparate"), typeof(Delegates.glStencilFuncSeparate));
+				glStencilMaskSeparate = (Delegates.glStencilMaskSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilMaskSeparate"), typeof(Delegates.glStencilMaskSeparate));
+				glStencilOpSeparate = (Delegates.glStencilOpSeparate)Marshal.GetDelegateForFunctionPointer(getProcAddress("glStencilOpSeparate"), typeof(Delegates.glStencilOpSeparate));
+				glUniform1f = (Delegates.glUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1f"), typeof(Delegates.glUniform1f));
+				glUniform1fv = (Delegates.glUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1fv"), typeof(Delegates.glUniform1fv));
+				glUniform1i = (Delegates.glUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1i"), typeof(Delegates.glUniform1i));
+				glUniform1iv = (Delegates.glUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1iv"), typeof(Delegates.glUniform1iv));
+				glUniform2f = (Delegates.glUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2f"), typeof(Delegates.glUniform2f));
+				glUniform2fv = (Delegates.glUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2fv"), typeof(Delegates.glUniform2fv));
+				glUniform2i = (Delegates.glUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2i"), typeof(Delegates.glUniform2i));
+				glUniform2iv = (Delegates.glUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2iv"), typeof(Delegates.glUniform2iv));
+				glUniform3f = (Delegates.glUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3f"), typeof(Delegates.glUniform3f));
+				glUniform3fv = (Delegates.glUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3fv"), typeof(Delegates.glUniform3fv));
+				glUniform3i = (Delegates.glUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3i"), typeof(Delegates.glUniform3i));
+				glUniform3iv = (Delegates.glUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3iv"), typeof(Delegates.glUniform3iv));
+				glUniform4f = (Delegates.glUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4f"), typeof(Delegates.glUniform4f));
+				glUniform4fv = (Delegates.glUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4fv"), typeof(Delegates.glUniform4fv));
+				glUniform4i = (Delegates.glUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4i"), typeof(Delegates.glUniform4i));
+				glUniform4iv = (Delegates.glUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4iv"), typeof(Delegates.glUniform4iv));
+				glUniformMatrix2fv = (Delegates.glUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2fv"), typeof(Delegates.glUniformMatrix2fv));
+				glUniformMatrix3fv = (Delegates.glUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3fv"), typeof(Delegates.glUniformMatrix3fv));
+				glUniformMatrix4fv = (Delegates.glUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4fv"), typeof(Delegates.glUniformMatrix4fv));
+				glUseProgram = (Delegates.glUseProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUseProgram"), typeof(Delegates.glUseProgram));
+				glValidateProgram = (Delegates.glValidateProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glValidateProgram"), typeof(Delegates.glValidateProgram));
+				glVertexAttrib1d = (Delegates.glVertexAttrib1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1d"), typeof(Delegates.glVertexAttrib1d));
+				glVertexAttrib1dv = (Delegates.glVertexAttrib1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1dv"), typeof(Delegates.glVertexAttrib1dv));
+				glVertexAttrib1f = (Delegates.glVertexAttrib1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1f"), typeof(Delegates.glVertexAttrib1f));
+				glVertexAttrib1fv = (Delegates.glVertexAttrib1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1fv"), typeof(Delegates.glVertexAttrib1fv));
+				glVertexAttrib1s = (Delegates.glVertexAttrib1s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1s"), typeof(Delegates.glVertexAttrib1s));
+				glVertexAttrib1sv = (Delegates.glVertexAttrib1sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib1sv"), typeof(Delegates.glVertexAttrib1sv));
+				glVertexAttrib2d = (Delegates.glVertexAttrib2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2d"), typeof(Delegates.glVertexAttrib2d));
+				glVertexAttrib2dv = (Delegates.glVertexAttrib2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2dv"), typeof(Delegates.glVertexAttrib2dv));
+				glVertexAttrib2f = (Delegates.glVertexAttrib2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2f"), typeof(Delegates.glVertexAttrib2f));
+				glVertexAttrib2fv = (Delegates.glVertexAttrib2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2fv"), typeof(Delegates.glVertexAttrib2fv));
+				glVertexAttrib2s = (Delegates.glVertexAttrib2s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2s"), typeof(Delegates.glVertexAttrib2s));
+				glVertexAttrib2sv = (Delegates.glVertexAttrib2sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib2sv"), typeof(Delegates.glVertexAttrib2sv));
+				glVertexAttrib3d = (Delegates.glVertexAttrib3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3d"), typeof(Delegates.glVertexAttrib3d));
+				glVertexAttrib3dv = (Delegates.glVertexAttrib3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3dv"), typeof(Delegates.glVertexAttrib3dv));
+				glVertexAttrib3f = (Delegates.glVertexAttrib3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3f"), typeof(Delegates.glVertexAttrib3f));
+				glVertexAttrib3fv = (Delegates.glVertexAttrib3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3fv"), typeof(Delegates.glVertexAttrib3fv));
+				glVertexAttrib3s = (Delegates.glVertexAttrib3s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3s"), typeof(Delegates.glVertexAttrib3s));
+				glVertexAttrib3sv = (Delegates.glVertexAttrib3sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib3sv"), typeof(Delegates.glVertexAttrib3sv));
+				glVertexAttrib4bv = (Delegates.glVertexAttrib4bv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4bv"), typeof(Delegates.glVertexAttrib4bv));
+				glVertexAttrib4d = (Delegates.glVertexAttrib4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4d"), typeof(Delegates.glVertexAttrib4d));
+				glVertexAttrib4dv = (Delegates.glVertexAttrib4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4dv"), typeof(Delegates.glVertexAttrib4dv));
+				glVertexAttrib4f = (Delegates.glVertexAttrib4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4f"), typeof(Delegates.glVertexAttrib4f));
+				glVertexAttrib4fv = (Delegates.glVertexAttrib4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4fv"), typeof(Delegates.glVertexAttrib4fv));
+				glVertexAttrib4iv = (Delegates.glVertexAttrib4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4iv"), typeof(Delegates.glVertexAttrib4iv));
+				glVertexAttrib4Nbv = (Delegates.glVertexAttrib4Nbv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nbv"), typeof(Delegates.glVertexAttrib4Nbv));
+				glVertexAttrib4Niv = (Delegates.glVertexAttrib4Niv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Niv"), typeof(Delegates.glVertexAttrib4Niv));
+				glVertexAttrib4Nsv = (Delegates.glVertexAttrib4Nsv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nsv"), typeof(Delegates.glVertexAttrib4Nsv));
+				glVertexAttrib4Nub = (Delegates.glVertexAttrib4Nub)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nub"), typeof(Delegates.glVertexAttrib4Nub));
+				glVertexAttrib4Nubv = (Delegates.glVertexAttrib4Nubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nubv"), typeof(Delegates.glVertexAttrib4Nubv));
+				glVertexAttrib4Nuiv = (Delegates.glVertexAttrib4Nuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nuiv"), typeof(Delegates.glVertexAttrib4Nuiv));
+				glVertexAttrib4Nusv = (Delegates.glVertexAttrib4Nusv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4Nusv"), typeof(Delegates.glVertexAttrib4Nusv));
+				glVertexAttrib4s = (Delegates.glVertexAttrib4s)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4s"), typeof(Delegates.glVertexAttrib4s));
+				glVertexAttrib4sv = (Delegates.glVertexAttrib4sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4sv"), typeof(Delegates.glVertexAttrib4sv));
+				glVertexAttrib4ubv = (Delegates.glVertexAttrib4ubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4ubv"), typeof(Delegates.glVertexAttrib4ubv));
+				glVertexAttrib4uiv = (Delegates.glVertexAttrib4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4uiv"), typeof(Delegates.glVertexAttrib4uiv));
+				glVertexAttrib4usv = (Delegates.glVertexAttrib4usv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttrib4usv"), typeof(Delegates.glVertexAttrib4usv));
+				glVertexAttribPointer = (Delegates.glVertexAttribPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribPointer"), typeof(Delegates.glVertexAttribPointer));
 			}
 
 			if (versionMajor > 2 || (versionMajor == 2 && versionMinor >= 1))
 			{
-				_glUniformMatrix2x3fv = (Delegates.glUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3fv"), typeof(Delegates.glUniformMatrix2x3fv));
-				_glUniformMatrix2x4fv = (Delegates.glUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4fv"), typeof(Delegates.glUniformMatrix2x4fv));
-				_glUniformMatrix3x2fv = (Delegates.glUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2fv"), typeof(Delegates.glUniformMatrix3x2fv));
-				_glUniformMatrix3x4fv = (Delegates.glUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4fv"), typeof(Delegates.glUniformMatrix3x4fv));
-				_glUniformMatrix4x2fv = (Delegates.glUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2fv"), typeof(Delegates.glUniformMatrix4x2fv));
-				_glUniformMatrix4x3fv = (Delegates.glUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3fv"), typeof(Delegates.glUniformMatrix4x3fv));
+				glUniformMatrix2x3fv = (Delegates.glUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3fv"), typeof(Delegates.glUniformMatrix2x3fv));
+				glUniformMatrix2x4fv = (Delegates.glUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4fv"), typeof(Delegates.glUniformMatrix2x4fv));
+				glUniformMatrix3x2fv = (Delegates.glUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2fv"), typeof(Delegates.glUniformMatrix3x2fv));
+				glUniformMatrix3x4fv = (Delegates.glUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4fv"), typeof(Delegates.glUniformMatrix3x4fv));
+				glUniformMatrix4x2fv = (Delegates.glUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2fv"), typeof(Delegates.glUniformMatrix4x2fv));
+				glUniformMatrix4x3fv = (Delegates.glUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3fv"), typeof(Delegates.glUniformMatrix4x3fv));
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 0))
 			{
-				_glBeginConditionalRender = (Delegates.glBeginConditionalRender)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginConditionalRender"), typeof(Delegates.glBeginConditionalRender));
-				_glBeginTransformFeedback = (Delegates.glBeginTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginTransformFeedback"), typeof(Delegates.glBeginTransformFeedback));
-				_glBindBufferBase = (Delegates.glBindBufferBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBufferBase"), typeof(Delegates.glBindBufferBase));
-				_glBindBufferRange = (Delegates.glBindBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBufferRange"), typeof(Delegates.glBindBufferRange));
-				_glBindFragDataLocation = (Delegates.glBindFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFragDataLocation"), typeof(Delegates.glBindFragDataLocation));
-				_glBindFramebuffer = (Delegates.glBindFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFramebuffer"), typeof(Delegates.glBindFramebuffer));
-				_glBindRenderbuffer = (Delegates.glBindRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindRenderbuffer"), typeof(Delegates.glBindRenderbuffer));
-				_glBindVertexArray = (Delegates.glBindVertexArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexArray"), typeof(Delegates.glBindVertexArray));
-				_glBlitFramebuffer = (Delegates.glBlitFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlitFramebuffer"), typeof(Delegates.glBlitFramebuffer));
-				_glCheckFramebufferStatus = (Delegates.glCheckFramebufferStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCheckFramebufferStatus"), typeof(Delegates.glCheckFramebufferStatus));
-				_glClampColor = (Delegates.glClampColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClampColor"), typeof(Delegates.glClampColor));
-				_glClearBufferfi = (Delegates.glClearBufferfi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferfi"), typeof(Delegates.glClearBufferfi));
-				_glClearBufferfv = (Delegates.glClearBufferfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferfv"), typeof(Delegates.glClearBufferfv));
-				_glClearBufferiv = (Delegates.glClearBufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferiv"), typeof(Delegates.glClearBufferiv));
-				_glClearBufferuiv = (Delegates.glClearBufferuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferuiv"), typeof(Delegates.glClearBufferuiv));
-				_glColorMaski = (Delegates.glColorMaski)Marshal.GetDelegateForFunctionPointer(getProcAddress("glColorMaski"), typeof(Delegates.glColorMaski));
-				_glDeleteFramebuffers = (Delegates.glDeleteFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteFramebuffers"), typeof(Delegates.glDeleteFramebuffers));
-				_glDeleteRenderbuffers = (Delegates.glDeleteRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteRenderbuffers"), typeof(Delegates.glDeleteRenderbuffers));
-				_glDeleteVertexArrays = (Delegates.glDeleteVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteVertexArrays"), typeof(Delegates.glDeleteVertexArrays));
-				_glDisablei = (Delegates.glDisablei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisablei"), typeof(Delegates.glDisablei));
-				_glEnablei = (Delegates.glEnablei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnablei"), typeof(Delegates.glEnablei));
-				_glEndConditionalRender = (Delegates.glEndConditionalRender)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndConditionalRender"), typeof(Delegates.glEndConditionalRender));
-				_glEndTransformFeedback = (Delegates.glEndTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndTransformFeedback"), typeof(Delegates.glEndTransformFeedback));
-				_glFlushMappedBufferRange = (Delegates.glFlushMappedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlushMappedBufferRange"), typeof(Delegates.glFlushMappedBufferRange));
-				_glFramebufferRenderbuffer = (Delegates.glFramebufferRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferRenderbuffer"), typeof(Delegates.glFramebufferRenderbuffer));
-				_glFramebufferTexture1D = (Delegates.glFramebufferTexture1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture1D"), typeof(Delegates.glFramebufferTexture1D));
-				_glFramebufferTexture2D = (Delegates.glFramebufferTexture2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture2D"), typeof(Delegates.glFramebufferTexture2D));
-				_glFramebufferTexture3D = (Delegates.glFramebufferTexture3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture3D"), typeof(Delegates.glFramebufferTexture3D));
-				_glFramebufferTextureLayer = (Delegates.glFramebufferTextureLayer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTextureLayer"), typeof(Delegates.glFramebufferTextureLayer));
-				_glGenerateMipmap = (Delegates.glGenerateMipmap)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenerateMipmap"), typeof(Delegates.glGenerateMipmap));
-				_glGenFramebuffers = (Delegates.glGenFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenFramebuffers"), typeof(Delegates.glGenFramebuffers));
-				_glGenRenderbuffers = (Delegates.glGenRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenRenderbuffers"), typeof(Delegates.glGenRenderbuffers));
-				_glGenVertexArrays = (Delegates.glGenVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenVertexArrays"), typeof(Delegates.glGenVertexArrays));
-				_glGetBooleani_v = (Delegates.glGetBooleani_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_v));
-				_glGetFragDataLocation = (Delegates.glGetFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataLocation"), typeof(Delegates.glGetFragDataLocation));
-				_glGetFramebufferAttachmentParameteriv = (Delegates.glGetFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferAttachmentParameteriv"), typeof(Delegates.glGetFramebufferAttachmentParameteriv));
-				_glGetIntegeri_v = (Delegates.glGetIntegeri_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_v));
-				_glGetRenderbufferParameteriv = (Delegates.glGetRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetRenderbufferParameteriv"), typeof(Delegates.glGetRenderbufferParameteriv));
-				_glGetStringi = (Delegates.glGetStringi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetStringi"), typeof(Delegates.glGetStringi));
-				_glGetTexParameterIiv = (Delegates.glGetTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIiv"), typeof(Delegates.glGetTexParameterIiv));
-				_glGetTexParameterIuiv = (Delegates.glGetTexParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIuiv"), typeof(Delegates.glGetTexParameterIuiv));
-				_glGetTransformFeedbackVarying = (Delegates.glGetTransformFeedbackVarying)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbackVarying"), typeof(Delegates.glGetTransformFeedbackVarying));
-				_glGetUniformuiv = (Delegates.glGetUniformuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformuiv"), typeof(Delegates.glGetUniformuiv));
-				_glGetVertexAttribIiv = (Delegates.glGetVertexAttribIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribIiv"), typeof(Delegates.glGetVertexAttribIiv));
-				_glGetVertexAttribIuiv = (Delegates.glGetVertexAttribIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribIuiv"), typeof(Delegates.glGetVertexAttribIuiv));
-				_glIsEnabledi = (Delegates.glIsEnabledi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsEnabledi"), typeof(Delegates.glIsEnabledi));
-				_glIsFramebuffer = (Delegates.glIsFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsFramebuffer"), typeof(Delegates.glIsFramebuffer));
-				_glIsRenderbuffer = (Delegates.glIsRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsRenderbuffer"), typeof(Delegates.glIsRenderbuffer));
-				_glIsVertexArray = (Delegates.glIsVertexArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsVertexArray"), typeof(Delegates.glIsVertexArray));
-				_glMapBufferRange = (Delegates.glMapBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapBufferRange"), typeof(Delegates.glMapBufferRange));
-				_glRenderbufferStorage = (Delegates.glRenderbufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glRenderbufferStorage"), typeof(Delegates.glRenderbufferStorage));
-				_glRenderbufferStorageMultisample = (Delegates.glRenderbufferStorageMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glRenderbufferStorageMultisample"), typeof(Delegates.glRenderbufferStorageMultisample));
-				_glTexParameterIiv = (Delegates.glTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterIiv"), typeof(Delegates.glTexParameterIiv));
-				_glTexParameterIuiv = (Delegates.glTexParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterIuiv"), typeof(Delegates.glTexParameterIuiv));
-				_glTransformFeedbackVaryings = (Delegates.glTransformFeedbackVaryings)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackVaryings"), typeof(Delegates.glTransformFeedbackVaryings));
-				_glUniform1ui = (Delegates.glUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1ui"), typeof(Delegates.glUniform1ui));
-				_glUniform1uiv = (Delegates.glUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1uiv"), typeof(Delegates.glUniform1uiv));
-				_glUniform2ui = (Delegates.glUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2ui"), typeof(Delegates.glUniform2ui));
-				_glUniform2uiv = (Delegates.glUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2uiv"), typeof(Delegates.glUniform2uiv));
-				_glUniform3ui = (Delegates.glUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3ui"), typeof(Delegates.glUniform3ui));
-				_glUniform3uiv = (Delegates.glUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3uiv"), typeof(Delegates.glUniform3uiv));
-				_glUniform4ui = (Delegates.glUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4ui"), typeof(Delegates.glUniform4ui));
-				_glUniform4uiv = (Delegates.glUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4uiv"), typeof(Delegates.glUniform4uiv));
-				_glVertexAttribI1i = (Delegates.glVertexAttribI1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1i"), typeof(Delegates.glVertexAttribI1i));
-				_glVertexAttribI1iv = (Delegates.glVertexAttribI1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1iv"), typeof(Delegates.glVertexAttribI1iv));
-				_glVertexAttribI1ui = (Delegates.glVertexAttribI1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1ui"), typeof(Delegates.glVertexAttribI1ui));
-				_glVertexAttribI1uiv = (Delegates.glVertexAttribI1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1uiv"), typeof(Delegates.glVertexAttribI1uiv));
-				_glVertexAttribI2i = (Delegates.glVertexAttribI2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2i"), typeof(Delegates.glVertexAttribI2i));
-				_glVertexAttribI2iv = (Delegates.glVertexAttribI2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2iv"), typeof(Delegates.glVertexAttribI2iv));
-				_glVertexAttribI2ui = (Delegates.glVertexAttribI2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2ui"), typeof(Delegates.glVertexAttribI2ui));
-				_glVertexAttribI2uiv = (Delegates.glVertexAttribI2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2uiv"), typeof(Delegates.glVertexAttribI2uiv));
-				_glVertexAttribI3i = (Delegates.glVertexAttribI3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3i"), typeof(Delegates.glVertexAttribI3i));
-				_glVertexAttribI3iv = (Delegates.glVertexAttribI3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3iv"), typeof(Delegates.glVertexAttribI3iv));
-				_glVertexAttribI3ui = (Delegates.glVertexAttribI3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3ui"), typeof(Delegates.glVertexAttribI3ui));
-				_glVertexAttribI3uiv = (Delegates.glVertexAttribI3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3uiv"), typeof(Delegates.glVertexAttribI3uiv));
-				_glVertexAttribI4bv = (Delegates.glVertexAttribI4bv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4bv"), typeof(Delegates.glVertexAttribI4bv));
-				_glVertexAttribI4i = (Delegates.glVertexAttribI4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4i"), typeof(Delegates.glVertexAttribI4i));
-				_glVertexAttribI4iv = (Delegates.glVertexAttribI4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4iv"), typeof(Delegates.glVertexAttribI4iv));
-				_glVertexAttribI4sv = (Delegates.glVertexAttribI4sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4sv"), typeof(Delegates.glVertexAttribI4sv));
-				_glVertexAttribI4ubv = (Delegates.glVertexAttribI4ubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4ubv"), typeof(Delegates.glVertexAttribI4ubv));
-				_glVertexAttribI4ui = (Delegates.glVertexAttribI4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4ui"), typeof(Delegates.glVertexAttribI4ui));
-				_glVertexAttribI4uiv = (Delegates.glVertexAttribI4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4uiv"), typeof(Delegates.glVertexAttribI4uiv));
-				_glVertexAttribI4usv = (Delegates.glVertexAttribI4usv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4usv"), typeof(Delegates.glVertexAttribI4usv));
-				_glVertexAttribIPointer = (Delegates.glVertexAttribIPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribIPointer"), typeof(Delegates.glVertexAttribIPointer));
+				glBeginConditionalRender = (Delegates.glBeginConditionalRender)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginConditionalRender"), typeof(Delegates.glBeginConditionalRender));
+				glBeginTransformFeedback = (Delegates.glBeginTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginTransformFeedback"), typeof(Delegates.glBeginTransformFeedback));
+				glBindBufferBase = (Delegates.glBindBufferBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBufferBase"), typeof(Delegates.glBindBufferBase));
+				glBindBufferRange = (Delegates.glBindBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBufferRange"), typeof(Delegates.glBindBufferRange));
+				glBindFragDataLocation = (Delegates.glBindFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFragDataLocation"), typeof(Delegates.glBindFragDataLocation));
+				glBindFramebuffer = (Delegates.glBindFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFramebuffer"), typeof(Delegates.glBindFramebuffer));
+				glBindRenderbuffer = (Delegates.glBindRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindRenderbuffer"), typeof(Delegates.glBindRenderbuffer));
+				glBindVertexArray = (Delegates.glBindVertexArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexArray"), typeof(Delegates.glBindVertexArray));
+				glBlitFramebuffer = (Delegates.glBlitFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlitFramebuffer"), typeof(Delegates.glBlitFramebuffer));
+				glCheckFramebufferStatus = (Delegates.glCheckFramebufferStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCheckFramebufferStatus"), typeof(Delegates.glCheckFramebufferStatus));
+				glClampColor = (Delegates.glClampColor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClampColor"), typeof(Delegates.glClampColor));
+				glClearBufferfi = (Delegates.glClearBufferfi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferfi"), typeof(Delegates.glClearBufferfi));
+				glClearBufferfv = (Delegates.glClearBufferfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferfv"), typeof(Delegates.glClearBufferfv));
+				glClearBufferiv = (Delegates.glClearBufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferiv"), typeof(Delegates.glClearBufferiv));
+				glClearBufferuiv = (Delegates.glClearBufferuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferuiv"), typeof(Delegates.glClearBufferuiv));
+				glColorMaski = (Delegates.glColorMaski)Marshal.GetDelegateForFunctionPointer(getProcAddress("glColorMaski"), typeof(Delegates.glColorMaski));
+				glDeleteFramebuffers = (Delegates.glDeleteFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteFramebuffers"), typeof(Delegates.glDeleteFramebuffers));
+				glDeleteRenderbuffers = (Delegates.glDeleteRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteRenderbuffers"), typeof(Delegates.glDeleteRenderbuffers));
+				glDeleteVertexArrays = (Delegates.glDeleteVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteVertexArrays"), typeof(Delegates.glDeleteVertexArrays));
+				glDisablei = (Delegates.glDisablei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisablei"), typeof(Delegates.glDisablei));
+				glEnablei = (Delegates.glEnablei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnablei"), typeof(Delegates.glEnablei));
+				glEndConditionalRender = (Delegates.glEndConditionalRender)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndConditionalRender"), typeof(Delegates.glEndConditionalRender));
+				glEndTransformFeedback = (Delegates.glEndTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndTransformFeedback"), typeof(Delegates.glEndTransformFeedback));
+				glFlushMappedBufferRange = (Delegates.glFlushMappedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlushMappedBufferRange"), typeof(Delegates.glFlushMappedBufferRange));
+				glFramebufferRenderbuffer = (Delegates.glFramebufferRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferRenderbuffer"), typeof(Delegates.glFramebufferRenderbuffer));
+				glFramebufferTexture1D = (Delegates.glFramebufferTexture1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture1D"), typeof(Delegates.glFramebufferTexture1D));
+				glFramebufferTexture2D = (Delegates.glFramebufferTexture2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture2D"), typeof(Delegates.glFramebufferTexture2D));
+				glFramebufferTexture3D = (Delegates.glFramebufferTexture3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture3D"), typeof(Delegates.glFramebufferTexture3D));
+				glFramebufferTextureLayer = (Delegates.glFramebufferTextureLayer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTextureLayer"), typeof(Delegates.glFramebufferTextureLayer));
+				glGenerateMipmap = (Delegates.glGenerateMipmap)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenerateMipmap"), typeof(Delegates.glGenerateMipmap));
+				glGenFramebuffers = (Delegates.glGenFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenFramebuffers"), typeof(Delegates.glGenFramebuffers));
+				glGenRenderbuffers = (Delegates.glGenRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenRenderbuffers"), typeof(Delegates.glGenRenderbuffers));
+				glGenVertexArrays = (Delegates.glGenVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenVertexArrays"), typeof(Delegates.glGenVertexArrays));
+				glGetBooleani_v = (Delegates.glGetBooleani_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBooleani_v"), typeof(Delegates.glGetBooleani_v));
+				glGetFragDataLocation = (Delegates.glGetFragDataLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataLocation"), typeof(Delegates.glGetFragDataLocation));
+				glGetFramebufferAttachmentParameteriv = (Delegates.glGetFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferAttachmentParameteriv"), typeof(Delegates.glGetFramebufferAttachmentParameteriv));
+				glGetIntegeri_v = (Delegates.glGetIntegeri_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetIntegeri_v"), typeof(Delegates.glGetIntegeri_v));
+				glGetRenderbufferParameteriv = (Delegates.glGetRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetRenderbufferParameteriv"), typeof(Delegates.glGetRenderbufferParameteriv));
+				glGetStringi = (Delegates.glGetStringi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetStringi"), typeof(Delegates.glGetStringi));
+				glGetTexParameterIiv = (Delegates.glGetTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIiv"), typeof(Delegates.glGetTexParameterIiv));
+				glGetTexParameterIuiv = (Delegates.glGetTexParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTexParameterIuiv"), typeof(Delegates.glGetTexParameterIuiv));
+				glGetTransformFeedbackVarying = (Delegates.glGetTransformFeedbackVarying)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbackVarying"), typeof(Delegates.glGetTransformFeedbackVarying));
+				glGetUniformuiv = (Delegates.glGetUniformuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformuiv"), typeof(Delegates.glGetUniformuiv));
+				glGetVertexAttribIiv = (Delegates.glGetVertexAttribIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribIiv"), typeof(Delegates.glGetVertexAttribIiv));
+				glGetVertexAttribIuiv = (Delegates.glGetVertexAttribIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribIuiv"), typeof(Delegates.glGetVertexAttribIuiv));
+				glIsEnabledi = (Delegates.glIsEnabledi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsEnabledi"), typeof(Delegates.glIsEnabledi));
+				glIsFramebuffer = (Delegates.glIsFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsFramebuffer"), typeof(Delegates.glIsFramebuffer));
+				glIsRenderbuffer = (Delegates.glIsRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsRenderbuffer"), typeof(Delegates.glIsRenderbuffer));
+				glIsVertexArray = (Delegates.glIsVertexArray)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsVertexArray"), typeof(Delegates.glIsVertexArray));
+				glMapBufferRange = (Delegates.glMapBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapBufferRange"), typeof(Delegates.glMapBufferRange));
+				glRenderbufferStorage = (Delegates.glRenderbufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glRenderbufferStorage"), typeof(Delegates.glRenderbufferStorage));
+				glRenderbufferStorageMultisample = (Delegates.glRenderbufferStorageMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glRenderbufferStorageMultisample"), typeof(Delegates.glRenderbufferStorageMultisample));
+				glTexParameterIiv = (Delegates.glTexParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterIiv"), typeof(Delegates.glTexParameterIiv));
+				glTexParameterIuiv = (Delegates.glTexParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexParameterIuiv"), typeof(Delegates.glTexParameterIuiv));
+				glTransformFeedbackVaryings = (Delegates.glTransformFeedbackVaryings)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackVaryings"), typeof(Delegates.glTransformFeedbackVaryings));
+				glUniform1ui = (Delegates.glUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1ui"), typeof(Delegates.glUniform1ui));
+				glUniform1uiv = (Delegates.glUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1uiv"), typeof(Delegates.glUniform1uiv));
+				glUniform2ui = (Delegates.glUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2ui"), typeof(Delegates.glUniform2ui));
+				glUniform2uiv = (Delegates.glUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2uiv"), typeof(Delegates.glUniform2uiv));
+				glUniform3ui = (Delegates.glUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3ui"), typeof(Delegates.glUniform3ui));
+				glUniform3uiv = (Delegates.glUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3uiv"), typeof(Delegates.glUniform3uiv));
+				glUniform4ui = (Delegates.glUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4ui"), typeof(Delegates.glUniform4ui));
+				glUniform4uiv = (Delegates.glUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4uiv"), typeof(Delegates.glUniform4uiv));
+				glVertexAttribI1i = (Delegates.glVertexAttribI1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1i"), typeof(Delegates.glVertexAttribI1i));
+				glVertexAttribI1iv = (Delegates.glVertexAttribI1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1iv"), typeof(Delegates.glVertexAttribI1iv));
+				glVertexAttribI1ui = (Delegates.glVertexAttribI1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1ui"), typeof(Delegates.glVertexAttribI1ui));
+				glVertexAttribI1uiv = (Delegates.glVertexAttribI1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI1uiv"), typeof(Delegates.glVertexAttribI1uiv));
+				glVertexAttribI2i = (Delegates.glVertexAttribI2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2i"), typeof(Delegates.glVertexAttribI2i));
+				glVertexAttribI2iv = (Delegates.glVertexAttribI2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2iv"), typeof(Delegates.glVertexAttribI2iv));
+				glVertexAttribI2ui = (Delegates.glVertexAttribI2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2ui"), typeof(Delegates.glVertexAttribI2ui));
+				glVertexAttribI2uiv = (Delegates.glVertexAttribI2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI2uiv"), typeof(Delegates.glVertexAttribI2uiv));
+				glVertexAttribI3i = (Delegates.glVertexAttribI3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3i"), typeof(Delegates.glVertexAttribI3i));
+				glVertexAttribI3iv = (Delegates.glVertexAttribI3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3iv"), typeof(Delegates.glVertexAttribI3iv));
+				glVertexAttribI3ui = (Delegates.glVertexAttribI3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3ui"), typeof(Delegates.glVertexAttribI3ui));
+				glVertexAttribI3uiv = (Delegates.glVertexAttribI3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI3uiv"), typeof(Delegates.glVertexAttribI3uiv));
+				glVertexAttribI4bv = (Delegates.glVertexAttribI4bv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4bv"), typeof(Delegates.glVertexAttribI4bv));
+				glVertexAttribI4i = (Delegates.glVertexAttribI4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4i"), typeof(Delegates.glVertexAttribI4i));
+				glVertexAttribI4iv = (Delegates.glVertexAttribI4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4iv"), typeof(Delegates.glVertexAttribI4iv));
+				glVertexAttribI4sv = (Delegates.glVertexAttribI4sv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4sv"), typeof(Delegates.glVertexAttribI4sv));
+				glVertexAttribI4ubv = (Delegates.glVertexAttribI4ubv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4ubv"), typeof(Delegates.glVertexAttribI4ubv));
+				glVertexAttribI4ui = (Delegates.glVertexAttribI4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4ui"), typeof(Delegates.glVertexAttribI4ui));
+				glVertexAttribI4uiv = (Delegates.glVertexAttribI4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4uiv"), typeof(Delegates.glVertexAttribI4uiv));
+				glVertexAttribI4usv = (Delegates.glVertexAttribI4usv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribI4usv"), typeof(Delegates.glVertexAttribI4usv));
+				glVertexAttribIPointer = (Delegates.glVertexAttribIPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribIPointer"), typeof(Delegates.glVertexAttribIPointer));
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 1))
 			{
-				_glCopyBufferSubData = (Delegates.glCopyBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyBufferSubData"), typeof(Delegates.glCopyBufferSubData));
-				_glDrawArraysInstanced = (Delegates.glDrawArraysInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysInstanced"), typeof(Delegates.glDrawArraysInstanced));
-				_glDrawElementsInstanced = (Delegates.glDrawElementsInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstanced"), typeof(Delegates.glDrawElementsInstanced));
-				_glGetActiveUniformBlockiv = (Delegates.glGetActiveUniformBlockiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformBlockiv"), typeof(Delegates.glGetActiveUniformBlockiv));
-				_glGetActiveUniformBlockName = (Delegates.glGetActiveUniformBlockName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformBlockName"), typeof(Delegates.glGetActiveUniformBlockName));
-				_glGetActiveUniformName = (Delegates.glGetActiveUniformName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformName"), typeof(Delegates.glGetActiveUniformName));
-				_glGetActiveUniformsiv = (Delegates.glGetActiveUniformsiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformsiv"), typeof(Delegates.glGetActiveUniformsiv));
-				_glGetUniformBlockIndex = (Delegates.glGetUniformBlockIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformBlockIndex"), typeof(Delegates.glGetUniformBlockIndex));
-				_glGetUniformIndices = (Delegates.glGetUniformIndices)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformIndices"), typeof(Delegates.glGetUniformIndices));
-				_glPrimitiveRestartIndex = (Delegates.glPrimitiveRestartIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPrimitiveRestartIndex"), typeof(Delegates.glPrimitiveRestartIndex));
-				_glTexBuffer = (Delegates.glTexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexBuffer"), typeof(Delegates.glTexBuffer));
-				_glUniformBlockBinding = (Delegates.glUniformBlockBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformBlockBinding"), typeof(Delegates.glUniformBlockBinding));
+				glCopyBufferSubData = (Delegates.glCopyBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyBufferSubData"), typeof(Delegates.glCopyBufferSubData));
+				glDrawArraysInstanced = (Delegates.glDrawArraysInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysInstanced"), typeof(Delegates.glDrawArraysInstanced));
+				glDrawElementsInstanced = (Delegates.glDrawElementsInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstanced"), typeof(Delegates.glDrawElementsInstanced));
+				glGetActiveUniformBlockiv = (Delegates.glGetActiveUniformBlockiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformBlockiv"), typeof(Delegates.glGetActiveUniformBlockiv));
+				glGetActiveUniformBlockName = (Delegates.glGetActiveUniformBlockName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformBlockName"), typeof(Delegates.glGetActiveUniformBlockName));
+				glGetActiveUniformName = (Delegates.glGetActiveUniformName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformName"), typeof(Delegates.glGetActiveUniformName));
+				glGetActiveUniformsiv = (Delegates.glGetActiveUniformsiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveUniformsiv"), typeof(Delegates.glGetActiveUniformsiv));
+				glGetUniformBlockIndex = (Delegates.glGetUniformBlockIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformBlockIndex"), typeof(Delegates.glGetUniformBlockIndex));
+				glGetUniformIndices = (Delegates.glGetUniformIndices)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformIndices"), typeof(Delegates.glGetUniformIndices));
+				glPrimitiveRestartIndex = (Delegates.glPrimitiveRestartIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPrimitiveRestartIndex"), typeof(Delegates.glPrimitiveRestartIndex));
+				glTexBuffer = (Delegates.glTexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexBuffer"), typeof(Delegates.glTexBuffer));
+				glUniformBlockBinding = (Delegates.glUniformBlockBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformBlockBinding"), typeof(Delegates.glUniformBlockBinding));
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 2))
 			{
-				_glClientWaitSync = (Delegates.glClientWaitSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClientWaitSync"), typeof(Delegates.glClientWaitSync));
-				_glDeleteSync = (Delegates.glDeleteSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteSync"), typeof(Delegates.glDeleteSync));
-				_glDrawElementsBaseVertex = (Delegates.glDrawElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsBaseVertex"), typeof(Delegates.glDrawElementsBaseVertex));
-				_glDrawElementsInstancedBaseVertex = (Delegates.glDrawElementsInstancedBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseVertex"), typeof(Delegates.glDrawElementsInstancedBaseVertex));
-				_glDrawRangeElementsBaseVertex = (Delegates.glDrawRangeElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawRangeElementsBaseVertex"), typeof(Delegates.glDrawRangeElementsBaseVertex));
-				_glFenceSync = (Delegates.glFenceSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFenceSync"), typeof(Delegates.glFenceSync));
-				_glFramebufferTexture = (Delegates.glFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture"), typeof(Delegates.glFramebufferTexture));
-				_glGetBufferParameteri64v = (Delegates.glGetBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteri64v"), typeof(Delegates.glGetBufferParameteri64v));
-				_glGetInteger64i_v = (Delegates.glGetInteger64i_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_v));
-				_glGetInteger64v = (Delegates.glGetInteger64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64v));
-				_glGetMultisamplefv = (Delegates.glGetMultisamplefv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetMultisamplefv"), typeof(Delegates.glGetMultisamplefv));
-				_glGetSynciv = (Delegates.glGetSynciv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSynciv"), typeof(Delegates.glGetSynciv));
-				_glIsSync = (Delegates.glIsSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSync"), typeof(Delegates.glIsSync));
-				_glMultiDrawElementsBaseVertex = (Delegates.glMultiDrawElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElementsBaseVertex"), typeof(Delegates.glMultiDrawElementsBaseVertex));
-				_glProvokingVertex = (Delegates.glProvokingVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProvokingVertex"), typeof(Delegates.glProvokingVertex));
-				_glSampleMaski = (Delegates.glSampleMaski)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSampleMaski"), typeof(Delegates.glSampleMaski));
-				_glTexImage2DMultisample = (Delegates.glTexImage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage2DMultisample"), typeof(Delegates.glTexImage2DMultisample));
-				_glTexImage3DMultisample = (Delegates.glTexImage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage3DMultisample"), typeof(Delegates.glTexImage3DMultisample));
-				_glWaitSync = (Delegates.glWaitSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glWaitSync"), typeof(Delegates.glWaitSync));
+				glClientWaitSync = (Delegates.glClientWaitSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClientWaitSync"), typeof(Delegates.glClientWaitSync));
+				glDeleteSync = (Delegates.glDeleteSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteSync"), typeof(Delegates.glDeleteSync));
+				glDrawElementsBaseVertex = (Delegates.glDrawElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsBaseVertex"), typeof(Delegates.glDrawElementsBaseVertex));
+				glDrawElementsInstancedBaseVertex = (Delegates.glDrawElementsInstancedBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseVertex"), typeof(Delegates.glDrawElementsInstancedBaseVertex));
+				glDrawRangeElementsBaseVertex = (Delegates.glDrawRangeElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawRangeElementsBaseVertex"), typeof(Delegates.glDrawRangeElementsBaseVertex));
+				glFenceSync = (Delegates.glFenceSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFenceSync"), typeof(Delegates.glFenceSync));
+				glFramebufferTexture = (Delegates.glFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferTexture"), typeof(Delegates.glFramebufferTexture));
+				glGetBufferParameteri64v = (Delegates.glGetBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetBufferParameteri64v"), typeof(Delegates.glGetBufferParameteri64v));
+				glGetInteger64i_v = (Delegates.glGetInteger64i_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64i_v"), typeof(Delegates.glGetInteger64i_v));
+				glGetInteger64v = (Delegates.glGetInteger64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInteger64v"), typeof(Delegates.glGetInteger64v));
+				glGetMultisamplefv = (Delegates.glGetMultisamplefv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetMultisamplefv"), typeof(Delegates.glGetMultisamplefv));
+				glGetSynciv = (Delegates.glGetSynciv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSynciv"), typeof(Delegates.glGetSynciv));
+				glIsSync = (Delegates.glIsSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSync"), typeof(Delegates.glIsSync));
+				glMultiDrawElementsBaseVertex = (Delegates.glMultiDrawElementsBaseVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElementsBaseVertex"), typeof(Delegates.glMultiDrawElementsBaseVertex));
+				glProvokingVertex = (Delegates.glProvokingVertex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProvokingVertex"), typeof(Delegates.glProvokingVertex));
+				glSampleMaski = (Delegates.glSampleMaski)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSampleMaski"), typeof(Delegates.glSampleMaski));
+				glTexImage2DMultisample = (Delegates.glTexImage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage2DMultisample"), typeof(Delegates.glTexImage2DMultisample));
+				glTexImage3DMultisample = (Delegates.glTexImage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexImage3DMultisample"), typeof(Delegates.glTexImage3DMultisample));
+				glWaitSync = (Delegates.glWaitSync)Marshal.GetDelegateForFunctionPointer(getProcAddress("glWaitSync"), typeof(Delegates.glWaitSync));
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 3))
 			{
-				_glBindFragDataLocationIndexed = (Delegates.glBindFragDataLocationIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFragDataLocationIndexed"), typeof(Delegates.glBindFragDataLocationIndexed));
-				_glBindSampler = (Delegates.glBindSampler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindSampler"), typeof(Delegates.glBindSampler));
-				_glDeleteSamplers = (Delegates.glDeleteSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteSamplers"), typeof(Delegates.glDeleteSamplers));
-				_glGenSamplers = (Delegates.glGenSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenSamplers"), typeof(Delegates.glGenSamplers));
-				_glGetFragDataIndex = (Delegates.glGetFragDataIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataIndex"), typeof(Delegates.glGetFragDataIndex));
-				_glGetQueryObjecti64v = (Delegates.glGetQueryObjecti64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjecti64v"), typeof(Delegates.glGetQueryObjecti64v));
-				_glGetQueryObjectui64v = (Delegates.glGetQueryObjectui64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectui64v"), typeof(Delegates.glGetQueryObjectui64v));
-				_glGetSamplerParameterfv = (Delegates.glGetSamplerParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterfv"), typeof(Delegates.glGetSamplerParameterfv));
-				_glGetSamplerParameterIiv = (Delegates.glGetSamplerParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterIiv"), typeof(Delegates.glGetSamplerParameterIiv));
-				_glGetSamplerParameterIuiv = (Delegates.glGetSamplerParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterIuiv"), typeof(Delegates.glGetSamplerParameterIuiv));
-				_glGetSamplerParameteriv = (Delegates.glGetSamplerParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameteriv"), typeof(Delegates.glGetSamplerParameteriv));
-				_glIsSampler = (Delegates.glIsSampler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSampler"), typeof(Delegates.glIsSampler));
-				_glQueryCounter = (Delegates.glQueryCounter)Marshal.GetDelegateForFunctionPointer(getProcAddress("glQueryCounter"), typeof(Delegates.glQueryCounter));
-				_glSamplerParameterf = (Delegates.glSamplerParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterf"), typeof(Delegates.glSamplerParameterf));
-				_glSamplerParameterfv = (Delegates.glSamplerParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterfv"), typeof(Delegates.glSamplerParameterfv));
-				_glSamplerParameteri = (Delegates.glSamplerParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameteri"), typeof(Delegates.glSamplerParameteri));
-				_glSamplerParameterIiv = (Delegates.glSamplerParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterIiv"), typeof(Delegates.glSamplerParameterIiv));
-				_glSamplerParameterIuiv = (Delegates.glSamplerParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterIuiv"), typeof(Delegates.glSamplerParameterIuiv));
-				_glSamplerParameteriv = (Delegates.glSamplerParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameteriv"), typeof(Delegates.glSamplerParameteriv));
-				_glVertexAttribDivisor = (Delegates.glVertexAttribDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribDivisor"), typeof(Delegates.glVertexAttribDivisor));
-				_glVertexAttribP1ui = (Delegates.glVertexAttribP1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP1ui"), typeof(Delegates.glVertexAttribP1ui));
-				_glVertexAttribP1uiv = (Delegates.glVertexAttribP1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP1uiv"), typeof(Delegates.glVertexAttribP1uiv));
-				_glVertexAttribP2ui = (Delegates.glVertexAttribP2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP2ui"), typeof(Delegates.glVertexAttribP2ui));
-				_glVertexAttribP2uiv = (Delegates.glVertexAttribP2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP2uiv"), typeof(Delegates.glVertexAttribP2uiv));
-				_glVertexAttribP3ui = (Delegates.glVertexAttribP3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP3ui"), typeof(Delegates.glVertexAttribP3ui));
-				_glVertexAttribP3uiv = (Delegates.glVertexAttribP3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP3uiv"), typeof(Delegates.glVertexAttribP3uiv));
-				_glVertexAttribP4ui = (Delegates.glVertexAttribP4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP4ui"), typeof(Delegates.glVertexAttribP4ui));
-				_glVertexAttribP4uiv = (Delegates.glVertexAttribP4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP4uiv"), typeof(Delegates.glVertexAttribP4uiv));
+				glBindFragDataLocationIndexed = (Delegates.glBindFragDataLocationIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindFragDataLocationIndexed"), typeof(Delegates.glBindFragDataLocationIndexed));
+				glBindSampler = (Delegates.glBindSampler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindSampler"), typeof(Delegates.glBindSampler));
+				glDeleteSamplers = (Delegates.glDeleteSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteSamplers"), typeof(Delegates.glDeleteSamplers));
+				glGenSamplers = (Delegates.glGenSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenSamplers"), typeof(Delegates.glGenSamplers));
+				glGetFragDataIndex = (Delegates.glGetFragDataIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFragDataIndex"), typeof(Delegates.glGetFragDataIndex));
+				glGetQueryObjecti64v = (Delegates.glGetQueryObjecti64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjecti64v"), typeof(Delegates.glGetQueryObjecti64v));
+				glGetQueryObjectui64v = (Delegates.glGetQueryObjectui64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryObjectui64v"), typeof(Delegates.glGetQueryObjectui64v));
+				glGetSamplerParameterfv = (Delegates.glGetSamplerParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterfv"), typeof(Delegates.glGetSamplerParameterfv));
+				glGetSamplerParameterIiv = (Delegates.glGetSamplerParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterIiv"), typeof(Delegates.glGetSamplerParameterIiv));
+				glGetSamplerParameterIuiv = (Delegates.glGetSamplerParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameterIuiv"), typeof(Delegates.glGetSamplerParameterIuiv));
+				glGetSamplerParameteriv = (Delegates.glGetSamplerParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSamplerParameteriv"), typeof(Delegates.glGetSamplerParameteriv));
+				glIsSampler = (Delegates.glIsSampler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsSampler"), typeof(Delegates.glIsSampler));
+				glQueryCounter = (Delegates.glQueryCounter)Marshal.GetDelegateForFunctionPointer(getProcAddress("glQueryCounter"), typeof(Delegates.glQueryCounter));
+				glSamplerParameterf = (Delegates.glSamplerParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterf"), typeof(Delegates.glSamplerParameterf));
+				glSamplerParameterfv = (Delegates.glSamplerParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterfv"), typeof(Delegates.glSamplerParameterfv));
+				glSamplerParameteri = (Delegates.glSamplerParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameteri"), typeof(Delegates.glSamplerParameteri));
+				glSamplerParameterIiv = (Delegates.glSamplerParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterIiv"), typeof(Delegates.glSamplerParameterIiv));
+				glSamplerParameterIuiv = (Delegates.glSamplerParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameterIuiv"), typeof(Delegates.glSamplerParameterIuiv));
+				glSamplerParameteriv = (Delegates.glSamplerParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSamplerParameteriv"), typeof(Delegates.glSamplerParameteriv));
+				glVertexAttribDivisor = (Delegates.glVertexAttribDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribDivisor"), typeof(Delegates.glVertexAttribDivisor));
+				glVertexAttribP1ui = (Delegates.glVertexAttribP1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP1ui"), typeof(Delegates.glVertexAttribP1ui));
+				glVertexAttribP1uiv = (Delegates.glVertexAttribP1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP1uiv"), typeof(Delegates.glVertexAttribP1uiv));
+				glVertexAttribP2ui = (Delegates.glVertexAttribP2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP2ui"), typeof(Delegates.glVertexAttribP2ui));
+				glVertexAttribP2uiv = (Delegates.glVertexAttribP2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP2uiv"), typeof(Delegates.glVertexAttribP2uiv));
+				glVertexAttribP3ui = (Delegates.glVertexAttribP3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP3ui"), typeof(Delegates.glVertexAttribP3ui));
+				glVertexAttribP3uiv = (Delegates.glVertexAttribP3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP3uiv"), typeof(Delegates.glVertexAttribP3uiv));
+				glVertexAttribP4ui = (Delegates.glVertexAttribP4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP4ui"), typeof(Delegates.glVertexAttribP4ui));
+				glVertexAttribP4uiv = (Delegates.glVertexAttribP4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribP4uiv"), typeof(Delegates.glVertexAttribP4uiv));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 0))
 			{
-				_glBeginQueryIndexed = (Delegates.glBeginQueryIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginQueryIndexed"), typeof(Delegates.glBeginQueryIndexed));
-				_glBindTransformFeedback = (Delegates.glBindTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTransformFeedback"), typeof(Delegates.glBindTransformFeedback));
-				_glBlendEquationi = (Delegates.glBlendEquationi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationi"), typeof(Delegates.glBlendEquationi));
-				_glBlendEquationSeparatei = (Delegates.glBlendEquationSeparatei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationSeparatei"), typeof(Delegates.glBlendEquationSeparatei));
-				_glBlendFunci = (Delegates.glBlendFunci)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFunci"), typeof(Delegates.glBlendFunci));
-				_glBlendFuncSeparatei = (Delegates.glBlendFuncSeparatei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFuncSeparatei"), typeof(Delegates.glBlendFuncSeparatei));
-				_glDeleteTransformFeedbacks = (Delegates.glDeleteTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteTransformFeedbacks"), typeof(Delegates.glDeleteTransformFeedbacks));
-				_glDrawArraysIndirect = (Delegates.glDrawArraysIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysIndirect"), typeof(Delegates.glDrawArraysIndirect));
-				_glDrawElementsIndirect = (Delegates.glDrawElementsIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsIndirect"), typeof(Delegates.glDrawElementsIndirect));
-				_glDrawTransformFeedback = (Delegates.glDrawTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedback"), typeof(Delegates.glDrawTransformFeedback));
-				_glDrawTransformFeedbackStream = (Delegates.glDrawTransformFeedbackStream)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackStream"), typeof(Delegates.glDrawTransformFeedbackStream));
-				_glEndQueryIndexed = (Delegates.glEndQueryIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndQueryIndexed"), typeof(Delegates.glEndQueryIndexed));
-				_glGenTransformFeedbacks = (Delegates.glGenTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenTransformFeedbacks"), typeof(Delegates.glGenTransformFeedbacks));
-				_glGetActiveSubroutineName = (Delegates.glGetActiveSubroutineName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineName"), typeof(Delegates.glGetActiveSubroutineName));
-				_glGetActiveSubroutineUniformiv = (Delegates.glGetActiveSubroutineUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineUniformiv"), typeof(Delegates.glGetActiveSubroutineUniformiv));
-				_glGetActiveSubroutineUniformName = (Delegates.glGetActiveSubroutineUniformName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineUniformName"), typeof(Delegates.glGetActiveSubroutineUniformName));
-				_glGetProgramStageiv = (Delegates.glGetProgramStageiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramStageiv"), typeof(Delegates.glGetProgramStageiv));
-				_glGetQueryIndexediv = (Delegates.glGetQueryIndexediv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryIndexediv"), typeof(Delegates.glGetQueryIndexediv));
-				_glGetSubroutineIndex = (Delegates.glGetSubroutineIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSubroutineIndex"), typeof(Delegates.glGetSubroutineIndex));
-				_glGetSubroutineUniformLocation = (Delegates.glGetSubroutineUniformLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSubroutineUniformLocation"), typeof(Delegates.glGetSubroutineUniformLocation));
-				_glGetUniformdv = (Delegates.glGetUniformdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformdv"), typeof(Delegates.glGetUniformdv));
-				_glGetUniformSubroutineuiv = (Delegates.glGetUniformSubroutineuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformSubroutineuiv"), typeof(Delegates.glGetUniformSubroutineuiv));
-				_glIsTransformFeedback = (Delegates.glIsTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsTransformFeedback"), typeof(Delegates.glIsTransformFeedback));
-				_glMinSampleShading = (Delegates.glMinSampleShading)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMinSampleShading"), typeof(Delegates.glMinSampleShading));
-				_glPatchParameterfv = (Delegates.glPatchParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPatchParameterfv"), typeof(Delegates.glPatchParameterfv));
-				_glPatchParameteri = (Delegates.glPatchParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPatchParameteri"), typeof(Delegates.glPatchParameteri));
-				_glPauseTransformFeedback = (Delegates.glPauseTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPauseTransformFeedback"), typeof(Delegates.glPauseTransformFeedback));
-				_glResumeTransformFeedback = (Delegates.glResumeTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glResumeTransformFeedback"), typeof(Delegates.glResumeTransformFeedback));
-				_glUniform1d = (Delegates.glUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1d"), typeof(Delegates.glUniform1d));
-				_glUniform1dv = (Delegates.glUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1dv"), typeof(Delegates.glUniform1dv));
-				_glUniform2d = (Delegates.glUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2d"), typeof(Delegates.glUniform2d));
-				_glUniform2dv = (Delegates.glUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2dv"), typeof(Delegates.glUniform2dv));
-				_glUniform3d = (Delegates.glUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3d"), typeof(Delegates.glUniform3d));
-				_glUniform3dv = (Delegates.glUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3dv"), typeof(Delegates.glUniform3dv));
-				_glUniform4d = (Delegates.glUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4d"), typeof(Delegates.glUniform4d));
-				_glUniform4dv = (Delegates.glUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4dv"), typeof(Delegates.glUniform4dv));
-				_glUniformMatrix2dv = (Delegates.glUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2dv"), typeof(Delegates.glUniformMatrix2dv));
-				_glUniformMatrix2x3dv = (Delegates.glUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3dv"), typeof(Delegates.glUniformMatrix2x3dv));
-				_glUniformMatrix2x4dv = (Delegates.glUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4dv"), typeof(Delegates.glUniformMatrix2x4dv));
-				_glUniformMatrix3dv = (Delegates.glUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3dv"), typeof(Delegates.glUniformMatrix3dv));
-				_glUniformMatrix3x2dv = (Delegates.glUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2dv"), typeof(Delegates.glUniformMatrix3x2dv));
-				_glUniformMatrix3x4dv = (Delegates.glUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4dv"), typeof(Delegates.glUniformMatrix3x4dv));
-				_glUniformMatrix4dv = (Delegates.glUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4dv"), typeof(Delegates.glUniformMatrix4dv));
-				_glUniformMatrix4x2dv = (Delegates.glUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2dv"), typeof(Delegates.glUniformMatrix4x2dv));
-				_glUniformMatrix4x3dv = (Delegates.glUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3dv"), typeof(Delegates.glUniformMatrix4x3dv));
-				_glUniformSubroutinesuiv = (Delegates.glUniformSubroutinesuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformSubroutinesuiv"), typeof(Delegates.glUniformSubroutinesuiv));
+				glBeginQueryIndexed = (Delegates.glBeginQueryIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBeginQueryIndexed"), typeof(Delegates.glBeginQueryIndexed));
+				glBindTransformFeedback = (Delegates.glBindTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTransformFeedback"), typeof(Delegates.glBindTransformFeedback));
+				glBlendEquationi = (Delegates.glBlendEquationi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationi"), typeof(Delegates.glBlendEquationi));
+				glBlendEquationSeparatei = (Delegates.glBlendEquationSeparatei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendEquationSeparatei"), typeof(Delegates.glBlendEquationSeparatei));
+				glBlendFunci = (Delegates.glBlendFunci)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFunci"), typeof(Delegates.glBlendFunci));
+				glBlendFuncSeparatei = (Delegates.glBlendFuncSeparatei)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlendFuncSeparatei"), typeof(Delegates.glBlendFuncSeparatei));
+				glDeleteTransformFeedbacks = (Delegates.glDeleteTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteTransformFeedbacks"), typeof(Delegates.glDeleteTransformFeedbacks));
+				glDrawArraysIndirect = (Delegates.glDrawArraysIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysIndirect"), typeof(Delegates.glDrawArraysIndirect));
+				glDrawElementsIndirect = (Delegates.glDrawElementsIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsIndirect"), typeof(Delegates.glDrawElementsIndirect));
+				glDrawTransformFeedback = (Delegates.glDrawTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedback"), typeof(Delegates.glDrawTransformFeedback));
+				glDrawTransformFeedbackStream = (Delegates.glDrawTransformFeedbackStream)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackStream"), typeof(Delegates.glDrawTransformFeedbackStream));
+				glEndQueryIndexed = (Delegates.glEndQueryIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEndQueryIndexed"), typeof(Delegates.glEndQueryIndexed));
+				glGenTransformFeedbacks = (Delegates.glGenTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenTransformFeedbacks"), typeof(Delegates.glGenTransformFeedbacks));
+				glGetActiveSubroutineName = (Delegates.glGetActiveSubroutineName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineName"), typeof(Delegates.glGetActiveSubroutineName));
+				glGetActiveSubroutineUniformiv = (Delegates.glGetActiveSubroutineUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineUniformiv"), typeof(Delegates.glGetActiveSubroutineUniformiv));
+				glGetActiveSubroutineUniformName = (Delegates.glGetActiveSubroutineUniformName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveSubroutineUniformName"), typeof(Delegates.glGetActiveSubroutineUniformName));
+				glGetProgramStageiv = (Delegates.glGetProgramStageiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramStageiv"), typeof(Delegates.glGetProgramStageiv));
+				glGetQueryIndexediv = (Delegates.glGetQueryIndexediv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryIndexediv"), typeof(Delegates.glGetQueryIndexediv));
+				glGetSubroutineIndex = (Delegates.glGetSubroutineIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSubroutineIndex"), typeof(Delegates.glGetSubroutineIndex));
+				glGetSubroutineUniformLocation = (Delegates.glGetSubroutineUniformLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetSubroutineUniformLocation"), typeof(Delegates.glGetSubroutineUniformLocation));
+				glGetUniformdv = (Delegates.glGetUniformdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformdv"), typeof(Delegates.glGetUniformdv));
+				glGetUniformSubroutineuiv = (Delegates.glGetUniformSubroutineuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetUniformSubroutineuiv"), typeof(Delegates.glGetUniformSubroutineuiv));
+				glIsTransformFeedback = (Delegates.glIsTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsTransformFeedback"), typeof(Delegates.glIsTransformFeedback));
+				glMinSampleShading = (Delegates.glMinSampleShading)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMinSampleShading"), typeof(Delegates.glMinSampleShading));
+				glPatchParameterfv = (Delegates.glPatchParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPatchParameterfv"), typeof(Delegates.glPatchParameterfv));
+				glPatchParameteri = (Delegates.glPatchParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPatchParameteri"), typeof(Delegates.glPatchParameteri));
+				glPauseTransformFeedback = (Delegates.glPauseTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPauseTransformFeedback"), typeof(Delegates.glPauseTransformFeedback));
+				glResumeTransformFeedback = (Delegates.glResumeTransformFeedback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glResumeTransformFeedback"), typeof(Delegates.glResumeTransformFeedback));
+				glUniform1d = (Delegates.glUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1d"), typeof(Delegates.glUniform1d));
+				glUniform1dv = (Delegates.glUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform1dv"), typeof(Delegates.glUniform1dv));
+				glUniform2d = (Delegates.glUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2d"), typeof(Delegates.glUniform2d));
+				glUniform2dv = (Delegates.glUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform2dv"), typeof(Delegates.glUniform2dv));
+				glUniform3d = (Delegates.glUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3d"), typeof(Delegates.glUniform3d));
+				glUniform3dv = (Delegates.glUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform3dv"), typeof(Delegates.glUniform3dv));
+				glUniform4d = (Delegates.glUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4d"), typeof(Delegates.glUniform4d));
+				glUniform4dv = (Delegates.glUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniform4dv"), typeof(Delegates.glUniform4dv));
+				glUniformMatrix2dv = (Delegates.glUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2dv"), typeof(Delegates.glUniformMatrix2dv));
+				glUniformMatrix2x3dv = (Delegates.glUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x3dv"), typeof(Delegates.glUniformMatrix2x3dv));
+				glUniformMatrix2x4dv = (Delegates.glUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix2x4dv"), typeof(Delegates.glUniformMatrix2x4dv));
+				glUniformMatrix3dv = (Delegates.glUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3dv"), typeof(Delegates.glUniformMatrix3dv));
+				glUniformMatrix3x2dv = (Delegates.glUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x2dv"), typeof(Delegates.glUniformMatrix3x2dv));
+				glUniformMatrix3x4dv = (Delegates.glUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix3x4dv"), typeof(Delegates.glUniformMatrix3x4dv));
+				glUniformMatrix4dv = (Delegates.glUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4dv"), typeof(Delegates.glUniformMatrix4dv));
+				glUniformMatrix4x2dv = (Delegates.glUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x2dv"), typeof(Delegates.glUniformMatrix4x2dv));
+				glUniformMatrix4x3dv = (Delegates.glUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformMatrix4x3dv"), typeof(Delegates.glUniformMatrix4x3dv));
+				glUniformSubroutinesuiv = (Delegates.glUniformSubroutinesuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUniformSubroutinesuiv"), typeof(Delegates.glUniformSubroutinesuiv));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 1))
 			{
-				_glActiveShaderProgram = (Delegates.glActiveShaderProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glActiveShaderProgram"), typeof(Delegates.glActiveShaderProgram));
-				_glBindProgramPipeline = (Delegates.glBindProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindProgramPipeline"), typeof(Delegates.glBindProgramPipeline));
-				_glClearDepthf = (Delegates.glClearDepthf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearDepthf"), typeof(Delegates.glClearDepthf));
-				_glCreateShaderProgramv = (Delegates.glCreateShaderProgramv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateShaderProgramv"), typeof(Delegates.glCreateShaderProgramv));
-				_glDeleteProgramPipelines = (Delegates.glDeleteProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteProgramPipelines"), typeof(Delegates.glDeleteProgramPipelines));
-				_glDepthRangeArrayv = (Delegates.glDepthRangeArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeArrayv"), typeof(Delegates.glDepthRangeArrayv));
-				_glDepthRangef = (Delegates.glDepthRangef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangef"), typeof(Delegates.glDepthRangef));
-				_glDepthRangeIndexed = (Delegates.glDepthRangeIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeIndexed"), typeof(Delegates.glDepthRangeIndexed));
-				_glGenProgramPipelines = (Delegates.glGenProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenProgramPipelines"), typeof(Delegates.glGenProgramPipelines));
-				_glGetDoublei_v = (Delegates.glGetDoublei_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_v));
-				_glGetFloati_v = (Delegates.glGetFloati_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_v));
-				_glGetProgramBinary = (Delegates.glGetProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramBinary"), typeof(Delegates.glGetProgramBinary));
-				_glGetProgramPipelineInfoLog = (Delegates.glGetProgramPipelineInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineInfoLog"), typeof(Delegates.glGetProgramPipelineInfoLog));
-				_glGetProgramPipelineiv = (Delegates.glGetProgramPipelineiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineiv"), typeof(Delegates.glGetProgramPipelineiv));
-				_glGetShaderPrecisionFormat = (Delegates.glGetShaderPrecisionFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderPrecisionFormat"), typeof(Delegates.glGetShaderPrecisionFormat));
-				_glGetVertexAttribLdv = (Delegates.glGetVertexAttribLdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribLdv"), typeof(Delegates.glGetVertexAttribLdv));
-				_glIsProgramPipeline = (Delegates.glIsProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsProgramPipeline"), typeof(Delegates.glIsProgramPipeline));
-				_glProgramBinary = (Delegates.glProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramBinary"), typeof(Delegates.glProgramBinary));
-				_glProgramParameteri = (Delegates.glProgramParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramParameteri"), typeof(Delegates.glProgramParameteri));
-				_glProgramUniform1d = (Delegates.glProgramUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1d"), typeof(Delegates.glProgramUniform1d));
-				_glProgramUniform1dv = (Delegates.glProgramUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1dv"), typeof(Delegates.glProgramUniform1dv));
-				_glProgramUniform1f = (Delegates.glProgramUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1f"), typeof(Delegates.glProgramUniform1f));
-				_glProgramUniform1fv = (Delegates.glProgramUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1fv"), typeof(Delegates.glProgramUniform1fv));
-				_glProgramUniform1i = (Delegates.glProgramUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1i"), typeof(Delegates.glProgramUniform1i));
-				_glProgramUniform1iv = (Delegates.glProgramUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1iv"), typeof(Delegates.glProgramUniform1iv));
-				_glProgramUniform1ui = (Delegates.glProgramUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1ui"), typeof(Delegates.glProgramUniform1ui));
-				_glProgramUniform1uiv = (Delegates.glProgramUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1uiv"), typeof(Delegates.glProgramUniform1uiv));
-				_glProgramUniform2d = (Delegates.glProgramUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2d"), typeof(Delegates.glProgramUniform2d));
-				_glProgramUniform2dv = (Delegates.glProgramUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2dv"), typeof(Delegates.glProgramUniform2dv));
-				_glProgramUniform2f = (Delegates.glProgramUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2f"), typeof(Delegates.glProgramUniform2f));
-				_glProgramUniform2fv = (Delegates.glProgramUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2fv"), typeof(Delegates.glProgramUniform2fv));
-				_glProgramUniform2i = (Delegates.glProgramUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2i"), typeof(Delegates.glProgramUniform2i));
-				_glProgramUniform2iv = (Delegates.glProgramUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2iv"), typeof(Delegates.glProgramUniform2iv));
-				_glProgramUniform2ui = (Delegates.glProgramUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2ui"), typeof(Delegates.glProgramUniform2ui));
-				_glProgramUniform2uiv = (Delegates.glProgramUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2uiv"), typeof(Delegates.glProgramUniform2uiv));
-				_glProgramUniform3d = (Delegates.glProgramUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3d"), typeof(Delegates.glProgramUniform3d));
-				_glProgramUniform3dv = (Delegates.glProgramUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3dv"), typeof(Delegates.glProgramUniform3dv));
-				_glProgramUniform3f = (Delegates.glProgramUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3f"), typeof(Delegates.glProgramUniform3f));
-				_glProgramUniform3fv = (Delegates.glProgramUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3fv"), typeof(Delegates.glProgramUniform3fv));
-				_glProgramUniform3i = (Delegates.glProgramUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3i"), typeof(Delegates.glProgramUniform3i));
-				_glProgramUniform3iv = (Delegates.glProgramUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3iv"), typeof(Delegates.glProgramUniform3iv));
-				_glProgramUniform3ui = (Delegates.glProgramUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3ui"), typeof(Delegates.glProgramUniform3ui));
-				_glProgramUniform3uiv = (Delegates.glProgramUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3uiv"), typeof(Delegates.glProgramUniform3uiv));
-				_glProgramUniform4d = (Delegates.glProgramUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4d"), typeof(Delegates.glProgramUniform4d));
-				_glProgramUniform4dv = (Delegates.glProgramUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4dv"), typeof(Delegates.glProgramUniform4dv));
-				_glProgramUniform4f = (Delegates.glProgramUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4f"), typeof(Delegates.glProgramUniform4f));
-				_glProgramUniform4fv = (Delegates.glProgramUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4fv"), typeof(Delegates.glProgramUniform4fv));
-				_glProgramUniform4i = (Delegates.glProgramUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4i"), typeof(Delegates.glProgramUniform4i));
-				_glProgramUniform4iv = (Delegates.glProgramUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4iv"), typeof(Delegates.glProgramUniform4iv));
-				_glProgramUniform4ui = (Delegates.glProgramUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4ui"), typeof(Delegates.glProgramUniform4ui));
-				_glProgramUniform4uiv = (Delegates.glProgramUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4uiv"), typeof(Delegates.glProgramUniform4uiv));
-				_glProgramUniformMatrix2dv = (Delegates.glProgramUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2dv"), typeof(Delegates.glProgramUniformMatrix2dv));
-				_glProgramUniformMatrix2fv = (Delegates.glProgramUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2fv"), typeof(Delegates.glProgramUniformMatrix2fv));
-				_glProgramUniformMatrix2x3dv = (Delegates.glProgramUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3dv"), typeof(Delegates.glProgramUniformMatrix2x3dv));
-				_glProgramUniformMatrix2x3fv = (Delegates.glProgramUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3fv"), typeof(Delegates.glProgramUniformMatrix2x3fv));
-				_glProgramUniformMatrix2x4dv = (Delegates.glProgramUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4dv"), typeof(Delegates.glProgramUniformMatrix2x4dv));
-				_glProgramUniformMatrix2x4fv = (Delegates.glProgramUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4fv"), typeof(Delegates.glProgramUniformMatrix2x4fv));
-				_glProgramUniformMatrix3dv = (Delegates.glProgramUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3dv"), typeof(Delegates.glProgramUniformMatrix3dv));
-				_glProgramUniformMatrix3fv = (Delegates.glProgramUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3fv"), typeof(Delegates.glProgramUniformMatrix3fv));
-				_glProgramUniformMatrix3x2dv = (Delegates.glProgramUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2dv"), typeof(Delegates.glProgramUniformMatrix3x2dv));
-				_glProgramUniformMatrix3x2fv = (Delegates.glProgramUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2fv"), typeof(Delegates.glProgramUniformMatrix3x2fv));
-				_glProgramUniformMatrix3x4dv = (Delegates.glProgramUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4dv"), typeof(Delegates.glProgramUniformMatrix3x4dv));
-				_glProgramUniformMatrix3x4fv = (Delegates.glProgramUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4fv"), typeof(Delegates.glProgramUniformMatrix3x4fv));
-				_glProgramUniformMatrix4dv = (Delegates.glProgramUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4dv"), typeof(Delegates.glProgramUniformMatrix4dv));
-				_glProgramUniformMatrix4fv = (Delegates.glProgramUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4fv"), typeof(Delegates.glProgramUniformMatrix4fv));
-				_glProgramUniformMatrix4x2dv = (Delegates.glProgramUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2dv"), typeof(Delegates.glProgramUniformMatrix4x2dv));
-				_glProgramUniformMatrix4x2fv = (Delegates.glProgramUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2fv"), typeof(Delegates.glProgramUniformMatrix4x2fv));
-				_glProgramUniformMatrix4x3dv = (Delegates.glProgramUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3dv"), typeof(Delegates.glProgramUniformMatrix4x3dv));
-				_glProgramUniformMatrix4x3fv = (Delegates.glProgramUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3fv"), typeof(Delegates.glProgramUniformMatrix4x3fv));
-				_glReleaseShaderCompiler = (Delegates.glReleaseShaderCompiler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReleaseShaderCompiler"), typeof(Delegates.glReleaseShaderCompiler));
-				_glScissorArrayv = (Delegates.glScissorArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorArrayv"), typeof(Delegates.glScissorArrayv));
-				_glScissorIndexed = (Delegates.glScissorIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorIndexed"), typeof(Delegates.glScissorIndexed));
-				_glScissorIndexedv = (Delegates.glScissorIndexedv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorIndexedv"), typeof(Delegates.glScissorIndexedv));
-				_glShaderBinary = (Delegates.glShaderBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderBinary"), typeof(Delegates.glShaderBinary));
-				_glUseProgramStages = (Delegates.glUseProgramStages)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUseProgramStages"), typeof(Delegates.glUseProgramStages));
-				_glValidateProgramPipeline = (Delegates.glValidateProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glValidateProgramPipeline"), typeof(Delegates.glValidateProgramPipeline));
-				_glVertexAttribL1d = (Delegates.glVertexAttribL1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL1d"), typeof(Delegates.glVertexAttribL1d));
-				_glVertexAttribL1dv = (Delegates.glVertexAttribL1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL1dv"), typeof(Delegates.glVertexAttribL1dv));
-				_glVertexAttribL2d = (Delegates.glVertexAttribL2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL2d"), typeof(Delegates.glVertexAttribL2d));
-				_glVertexAttribL2dv = (Delegates.glVertexAttribL2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL2dv"), typeof(Delegates.glVertexAttribL2dv));
-				_glVertexAttribL3d = (Delegates.glVertexAttribL3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL3d"), typeof(Delegates.glVertexAttribL3d));
-				_glVertexAttribL3dv = (Delegates.glVertexAttribL3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL3dv"), typeof(Delegates.glVertexAttribL3dv));
-				_glVertexAttribL4d = (Delegates.glVertexAttribL4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL4d"), typeof(Delegates.glVertexAttribL4d));
-				_glVertexAttribL4dv = (Delegates.glVertexAttribL4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL4dv"), typeof(Delegates.glVertexAttribL4dv));
-				_glVertexAttribLPointer = (Delegates.glVertexAttribLPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribLPointer"), typeof(Delegates.glVertexAttribLPointer));
-				_glViewportArrayv = (Delegates.glViewportArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportArrayv"), typeof(Delegates.glViewportArrayv));
-				_glViewportIndexedf = (Delegates.glViewportIndexedf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportIndexedf"), typeof(Delegates.glViewportIndexedf));
-				_glViewportIndexedfv = (Delegates.glViewportIndexedfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportIndexedfv"), typeof(Delegates.glViewportIndexedfv));
+				glActiveShaderProgram = (Delegates.glActiveShaderProgram)Marshal.GetDelegateForFunctionPointer(getProcAddress("glActiveShaderProgram"), typeof(Delegates.glActiveShaderProgram));
+				glBindProgramPipeline = (Delegates.glBindProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindProgramPipeline"), typeof(Delegates.glBindProgramPipeline));
+				glClearDepthf = (Delegates.glClearDepthf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearDepthf"), typeof(Delegates.glClearDepthf));
+				glCreateShaderProgramv = (Delegates.glCreateShaderProgramv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateShaderProgramv"), typeof(Delegates.glCreateShaderProgramv));
+				glDeleteProgramPipelines = (Delegates.glDeleteProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDeleteProgramPipelines"), typeof(Delegates.glDeleteProgramPipelines));
+				glDepthRangeArrayv = (Delegates.glDepthRangeArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeArrayv"), typeof(Delegates.glDepthRangeArrayv));
+				glDepthRangef = (Delegates.glDepthRangef)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangef"), typeof(Delegates.glDepthRangef));
+				glDepthRangeIndexed = (Delegates.glDepthRangeIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDepthRangeIndexed"), typeof(Delegates.glDepthRangeIndexed));
+				glGenProgramPipelines = (Delegates.glGenProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenProgramPipelines"), typeof(Delegates.glGenProgramPipelines));
+				glGetDoublei_v = (Delegates.glGetDoublei_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDoublei_v"), typeof(Delegates.glGetDoublei_v));
+				glGetFloati_v = (Delegates.glGetFloati_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFloati_v"), typeof(Delegates.glGetFloati_v));
+				glGetProgramBinary = (Delegates.glGetProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramBinary"), typeof(Delegates.glGetProgramBinary));
+				glGetProgramPipelineInfoLog = (Delegates.glGetProgramPipelineInfoLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineInfoLog"), typeof(Delegates.glGetProgramPipelineInfoLog));
+				glGetProgramPipelineiv = (Delegates.glGetProgramPipelineiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramPipelineiv"), typeof(Delegates.glGetProgramPipelineiv));
+				glGetShaderPrecisionFormat = (Delegates.glGetShaderPrecisionFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetShaderPrecisionFormat"), typeof(Delegates.glGetShaderPrecisionFormat));
+				glGetVertexAttribLdv = (Delegates.glGetVertexAttribLdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexAttribLdv"), typeof(Delegates.glGetVertexAttribLdv));
+				glIsProgramPipeline = (Delegates.glIsProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glIsProgramPipeline"), typeof(Delegates.glIsProgramPipeline));
+				glProgramBinary = (Delegates.glProgramBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramBinary"), typeof(Delegates.glProgramBinary));
+				glProgramParameteri = (Delegates.glProgramParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramParameteri"), typeof(Delegates.glProgramParameteri));
+				glProgramUniform1d = (Delegates.glProgramUniform1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1d"), typeof(Delegates.glProgramUniform1d));
+				glProgramUniform1dv = (Delegates.glProgramUniform1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1dv"), typeof(Delegates.glProgramUniform1dv));
+				glProgramUniform1f = (Delegates.glProgramUniform1f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1f"), typeof(Delegates.glProgramUniform1f));
+				glProgramUniform1fv = (Delegates.glProgramUniform1fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1fv"), typeof(Delegates.glProgramUniform1fv));
+				glProgramUniform1i = (Delegates.glProgramUniform1i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1i"), typeof(Delegates.glProgramUniform1i));
+				glProgramUniform1iv = (Delegates.glProgramUniform1iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1iv"), typeof(Delegates.glProgramUniform1iv));
+				glProgramUniform1ui = (Delegates.glProgramUniform1ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1ui"), typeof(Delegates.glProgramUniform1ui));
+				glProgramUniform1uiv = (Delegates.glProgramUniform1uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform1uiv"), typeof(Delegates.glProgramUniform1uiv));
+				glProgramUniform2d = (Delegates.glProgramUniform2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2d"), typeof(Delegates.glProgramUniform2d));
+				glProgramUniform2dv = (Delegates.glProgramUniform2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2dv"), typeof(Delegates.glProgramUniform2dv));
+				glProgramUniform2f = (Delegates.glProgramUniform2f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2f"), typeof(Delegates.glProgramUniform2f));
+				glProgramUniform2fv = (Delegates.glProgramUniform2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2fv"), typeof(Delegates.glProgramUniform2fv));
+				glProgramUniform2i = (Delegates.glProgramUniform2i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2i"), typeof(Delegates.glProgramUniform2i));
+				glProgramUniform2iv = (Delegates.glProgramUniform2iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2iv"), typeof(Delegates.glProgramUniform2iv));
+				glProgramUniform2ui = (Delegates.glProgramUniform2ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2ui"), typeof(Delegates.glProgramUniform2ui));
+				glProgramUniform2uiv = (Delegates.glProgramUniform2uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform2uiv"), typeof(Delegates.glProgramUniform2uiv));
+				glProgramUniform3d = (Delegates.glProgramUniform3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3d"), typeof(Delegates.glProgramUniform3d));
+				glProgramUniform3dv = (Delegates.glProgramUniform3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3dv"), typeof(Delegates.glProgramUniform3dv));
+				glProgramUniform3f = (Delegates.glProgramUniform3f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3f"), typeof(Delegates.glProgramUniform3f));
+				glProgramUniform3fv = (Delegates.glProgramUniform3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3fv"), typeof(Delegates.glProgramUniform3fv));
+				glProgramUniform3i = (Delegates.glProgramUniform3i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3i"), typeof(Delegates.glProgramUniform3i));
+				glProgramUniform3iv = (Delegates.glProgramUniform3iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3iv"), typeof(Delegates.glProgramUniform3iv));
+				glProgramUniform3ui = (Delegates.glProgramUniform3ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3ui"), typeof(Delegates.glProgramUniform3ui));
+				glProgramUniform3uiv = (Delegates.glProgramUniform3uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform3uiv"), typeof(Delegates.glProgramUniform3uiv));
+				glProgramUniform4d = (Delegates.glProgramUniform4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4d"), typeof(Delegates.glProgramUniform4d));
+				glProgramUniform4dv = (Delegates.glProgramUniform4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4dv"), typeof(Delegates.glProgramUniform4dv));
+				glProgramUniform4f = (Delegates.glProgramUniform4f)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4f"), typeof(Delegates.glProgramUniform4f));
+				glProgramUniform4fv = (Delegates.glProgramUniform4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4fv"), typeof(Delegates.glProgramUniform4fv));
+				glProgramUniform4i = (Delegates.glProgramUniform4i)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4i"), typeof(Delegates.glProgramUniform4i));
+				glProgramUniform4iv = (Delegates.glProgramUniform4iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4iv"), typeof(Delegates.glProgramUniform4iv));
+				glProgramUniform4ui = (Delegates.glProgramUniform4ui)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4ui"), typeof(Delegates.glProgramUniform4ui));
+				glProgramUniform4uiv = (Delegates.glProgramUniform4uiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniform4uiv"), typeof(Delegates.glProgramUniform4uiv));
+				glProgramUniformMatrix2dv = (Delegates.glProgramUniformMatrix2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2dv"), typeof(Delegates.glProgramUniformMatrix2dv));
+				glProgramUniformMatrix2fv = (Delegates.glProgramUniformMatrix2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2fv"), typeof(Delegates.glProgramUniformMatrix2fv));
+				glProgramUniformMatrix2x3dv = (Delegates.glProgramUniformMatrix2x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3dv"), typeof(Delegates.glProgramUniformMatrix2x3dv));
+				glProgramUniformMatrix2x3fv = (Delegates.glProgramUniformMatrix2x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x3fv"), typeof(Delegates.glProgramUniformMatrix2x3fv));
+				glProgramUniformMatrix2x4dv = (Delegates.glProgramUniformMatrix2x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4dv"), typeof(Delegates.glProgramUniformMatrix2x4dv));
+				glProgramUniformMatrix2x4fv = (Delegates.glProgramUniformMatrix2x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix2x4fv"), typeof(Delegates.glProgramUniformMatrix2x4fv));
+				glProgramUniformMatrix3dv = (Delegates.glProgramUniformMatrix3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3dv"), typeof(Delegates.glProgramUniformMatrix3dv));
+				glProgramUniformMatrix3fv = (Delegates.glProgramUniformMatrix3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3fv"), typeof(Delegates.glProgramUniformMatrix3fv));
+				glProgramUniformMatrix3x2dv = (Delegates.glProgramUniformMatrix3x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2dv"), typeof(Delegates.glProgramUniformMatrix3x2dv));
+				glProgramUniformMatrix3x2fv = (Delegates.glProgramUniformMatrix3x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x2fv"), typeof(Delegates.glProgramUniformMatrix3x2fv));
+				glProgramUniformMatrix3x4dv = (Delegates.glProgramUniformMatrix3x4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4dv"), typeof(Delegates.glProgramUniformMatrix3x4dv));
+				glProgramUniformMatrix3x4fv = (Delegates.glProgramUniformMatrix3x4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix3x4fv"), typeof(Delegates.glProgramUniformMatrix3x4fv));
+				glProgramUniformMatrix4dv = (Delegates.glProgramUniformMatrix4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4dv"), typeof(Delegates.glProgramUniformMatrix4dv));
+				glProgramUniformMatrix4fv = (Delegates.glProgramUniformMatrix4fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4fv"), typeof(Delegates.glProgramUniformMatrix4fv));
+				glProgramUniformMatrix4x2dv = (Delegates.glProgramUniformMatrix4x2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2dv"), typeof(Delegates.glProgramUniformMatrix4x2dv));
+				glProgramUniformMatrix4x2fv = (Delegates.glProgramUniformMatrix4x2fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x2fv"), typeof(Delegates.glProgramUniformMatrix4x2fv));
+				glProgramUniformMatrix4x3dv = (Delegates.glProgramUniformMatrix4x3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3dv"), typeof(Delegates.glProgramUniformMatrix4x3dv));
+				glProgramUniformMatrix4x3fv = (Delegates.glProgramUniformMatrix4x3fv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glProgramUniformMatrix4x3fv"), typeof(Delegates.glProgramUniformMatrix4x3fv));
+				glReleaseShaderCompiler = (Delegates.glReleaseShaderCompiler)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReleaseShaderCompiler"), typeof(Delegates.glReleaseShaderCompiler));
+				glScissorArrayv = (Delegates.glScissorArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorArrayv"), typeof(Delegates.glScissorArrayv));
+				glScissorIndexed = (Delegates.glScissorIndexed)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorIndexed"), typeof(Delegates.glScissorIndexed));
+				glScissorIndexedv = (Delegates.glScissorIndexedv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glScissorIndexedv"), typeof(Delegates.glScissorIndexedv));
+				glShaderBinary = (Delegates.glShaderBinary)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderBinary"), typeof(Delegates.glShaderBinary));
+				glUseProgramStages = (Delegates.glUseProgramStages)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUseProgramStages"), typeof(Delegates.glUseProgramStages));
+				glValidateProgramPipeline = (Delegates.glValidateProgramPipeline)Marshal.GetDelegateForFunctionPointer(getProcAddress("glValidateProgramPipeline"), typeof(Delegates.glValidateProgramPipeline));
+				glVertexAttribL1d = (Delegates.glVertexAttribL1d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL1d"), typeof(Delegates.glVertexAttribL1d));
+				glVertexAttribL1dv = (Delegates.glVertexAttribL1dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL1dv"), typeof(Delegates.glVertexAttribL1dv));
+				glVertexAttribL2d = (Delegates.glVertexAttribL2d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL2d"), typeof(Delegates.glVertexAttribL2d));
+				glVertexAttribL2dv = (Delegates.glVertexAttribL2dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL2dv"), typeof(Delegates.glVertexAttribL2dv));
+				glVertexAttribL3d = (Delegates.glVertexAttribL3d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL3d"), typeof(Delegates.glVertexAttribL3d));
+				glVertexAttribL3dv = (Delegates.glVertexAttribL3dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL3dv"), typeof(Delegates.glVertexAttribL3dv));
+				glVertexAttribL4d = (Delegates.glVertexAttribL4d)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL4d"), typeof(Delegates.glVertexAttribL4d));
+				glVertexAttribL4dv = (Delegates.glVertexAttribL4dv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribL4dv"), typeof(Delegates.glVertexAttribL4dv));
+				glVertexAttribLPointer = (Delegates.glVertexAttribLPointer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribLPointer"), typeof(Delegates.glVertexAttribLPointer));
+				glViewportArrayv = (Delegates.glViewportArrayv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportArrayv"), typeof(Delegates.glViewportArrayv));
+				glViewportIndexedf = (Delegates.glViewportIndexedf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportIndexedf"), typeof(Delegates.glViewportIndexedf));
+				glViewportIndexedfv = (Delegates.glViewportIndexedfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glViewportIndexedfv"), typeof(Delegates.glViewportIndexedfv));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 2))
 			{
-				_glBindImageTexture = (Delegates.glBindImageTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindImageTexture"), typeof(Delegates.glBindImageTexture));
-				_glDrawArraysInstancedBaseInstance = (Delegates.glDrawArraysInstancedBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysInstancedBaseInstance"), typeof(Delegates.glDrawArraysInstancedBaseInstance));
-				_glDrawElementsInstancedBaseInstance = (Delegates.glDrawElementsInstancedBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseInstance"), typeof(Delegates.glDrawElementsInstancedBaseInstance));
-				_glDrawElementsInstancedBaseVertexBaseInstance = (Delegates.glDrawElementsInstancedBaseVertexBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseVertexBaseInstance"), typeof(Delegates.glDrawElementsInstancedBaseVertexBaseInstance));
-				_glDrawTransformFeedbackInstanced = (Delegates.glDrawTransformFeedbackInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackInstanced"), typeof(Delegates.glDrawTransformFeedbackInstanced));
-				_glDrawTransformFeedbackStreamInstanced = (Delegates.glDrawTransformFeedbackStreamInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackStreamInstanced"), typeof(Delegates.glDrawTransformFeedbackStreamInstanced));
-				_glGetActiveAtomicCounterBufferiv = (Delegates.glGetActiveAtomicCounterBufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveAtomicCounterBufferiv"), typeof(Delegates.glGetActiveAtomicCounterBufferiv));
-				_glGetInternalformativ = (Delegates.glGetInternalformativ)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInternalformativ"), typeof(Delegates.glGetInternalformativ));
-				_glMemoryBarrier = (Delegates.glMemoryBarrier)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMemoryBarrier"), typeof(Delegates.glMemoryBarrier));
-				_glTexStorage1D = (Delegates.glTexStorage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage1D"), typeof(Delegates.glTexStorage1D));
-				_glTexStorage2D = (Delegates.glTexStorage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage2D"), typeof(Delegates.glTexStorage2D));
-				_glTexStorage3D = (Delegates.glTexStorage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage3D"), typeof(Delegates.glTexStorage3D));
+				glBindImageTexture = (Delegates.glBindImageTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindImageTexture"), typeof(Delegates.glBindImageTexture));
+				glDrawArraysInstancedBaseInstance = (Delegates.glDrawArraysInstancedBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawArraysInstancedBaseInstance"), typeof(Delegates.glDrawArraysInstancedBaseInstance));
+				glDrawElementsInstancedBaseInstance = (Delegates.glDrawElementsInstancedBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseInstance"), typeof(Delegates.glDrawElementsInstancedBaseInstance));
+				glDrawElementsInstancedBaseVertexBaseInstance = (Delegates.glDrawElementsInstancedBaseVertexBaseInstance)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawElementsInstancedBaseVertexBaseInstance"), typeof(Delegates.glDrawElementsInstancedBaseVertexBaseInstance));
+				glDrawTransformFeedbackInstanced = (Delegates.glDrawTransformFeedbackInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackInstanced"), typeof(Delegates.glDrawTransformFeedbackInstanced));
+				glDrawTransformFeedbackStreamInstanced = (Delegates.glDrawTransformFeedbackStreamInstanced)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDrawTransformFeedbackStreamInstanced"), typeof(Delegates.glDrawTransformFeedbackStreamInstanced));
+				glGetActiveAtomicCounterBufferiv = (Delegates.glGetActiveAtomicCounterBufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetActiveAtomicCounterBufferiv"), typeof(Delegates.glGetActiveAtomicCounterBufferiv));
+				glGetInternalformativ = (Delegates.glGetInternalformativ)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInternalformativ"), typeof(Delegates.glGetInternalformativ));
+				glMemoryBarrier = (Delegates.glMemoryBarrier)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMemoryBarrier"), typeof(Delegates.glMemoryBarrier));
+				glTexStorage1D = (Delegates.glTexStorage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage1D"), typeof(Delegates.glTexStorage1D));
+				glTexStorage2D = (Delegates.glTexStorage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage2D"), typeof(Delegates.glTexStorage2D));
+				glTexStorage3D = (Delegates.glTexStorage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage3D"), typeof(Delegates.glTexStorage3D));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 3))
 			{
-				_glBindVertexBuffer = (Delegates.glBindVertexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexBuffer"), typeof(Delegates.glBindVertexBuffer));
-				_glClearBufferData = (Delegates.glClearBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferData"), typeof(Delegates.glClearBufferData));
-				_glClearBufferSubData = (Delegates.glClearBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferSubData"), typeof(Delegates.glClearBufferSubData));
-				_glCopyImageSubData = (Delegates.glCopyImageSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyImageSubData"), typeof(Delegates.glCopyImageSubData));
-				_glDebugMessageCallback = (Delegates.glDebugMessageCallback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageCallback"), typeof(Delegates.glDebugMessageCallback));
-				_glDebugMessageControl = (Delegates.glDebugMessageControl)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageControl"), typeof(Delegates.glDebugMessageControl));
-				_glDebugMessageInsert = (Delegates.glDebugMessageInsert)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageInsert"), typeof(Delegates.glDebugMessageInsert));
-				_glDispatchCompute = (Delegates.glDispatchCompute)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDispatchCompute"), typeof(Delegates.glDispatchCompute));
-				_glDispatchComputeIndirect = (Delegates.glDispatchComputeIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDispatchComputeIndirect"), typeof(Delegates.glDispatchComputeIndirect));
-				_glFramebufferParameteri = (Delegates.glFramebufferParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferParameteri"), typeof(Delegates.glFramebufferParameteri));
-				_glGetDebugMessageLog = (Delegates.glGetDebugMessageLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDebugMessageLog"), typeof(Delegates.glGetDebugMessageLog));
-				_glGetFramebufferParameteriv = (Delegates.glGetFramebufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferParameteriv"), typeof(Delegates.glGetFramebufferParameteriv));
-				_glGetInternalformati64v = (Delegates.glGetInternalformati64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInternalformati64v"), typeof(Delegates.glGetInternalformati64v));
-				_glGetObjectLabel = (Delegates.glGetObjectLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetObjectLabel"), typeof(Delegates.glGetObjectLabel));
-				_glGetObjectPtrLabel = (Delegates.glGetObjectPtrLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetObjectPtrLabel"), typeof(Delegates.glGetObjectPtrLabel));
-				_glGetProgramInterfaceiv = (Delegates.glGetProgramInterfaceiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramInterfaceiv"), typeof(Delegates.glGetProgramInterfaceiv));
-				_glGetProgramResourceIndex = (Delegates.glGetProgramResourceIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceIndex"), typeof(Delegates.glGetProgramResourceIndex));
-				_glGetProgramResourceiv = (Delegates.glGetProgramResourceiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceiv"), typeof(Delegates.glGetProgramResourceiv));
-				_glGetProgramResourceLocation = (Delegates.glGetProgramResourceLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceLocation"), typeof(Delegates.glGetProgramResourceLocation));
-				_glGetProgramResourceLocationIndex = (Delegates.glGetProgramResourceLocationIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceLocationIndex"), typeof(Delegates.glGetProgramResourceLocationIndex));
-				_glGetProgramResourceName = (Delegates.glGetProgramResourceName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceName"), typeof(Delegates.glGetProgramResourceName));
-				_glInvalidateBufferData = (Delegates.glInvalidateBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateBufferData"), typeof(Delegates.glInvalidateBufferData));
-				_glInvalidateBufferSubData = (Delegates.glInvalidateBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateBufferSubData"), typeof(Delegates.glInvalidateBufferSubData));
-				_glInvalidateFramebuffer = (Delegates.glInvalidateFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateFramebuffer"), typeof(Delegates.glInvalidateFramebuffer));
-				_glInvalidateSubFramebuffer = (Delegates.glInvalidateSubFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateSubFramebuffer"), typeof(Delegates.glInvalidateSubFramebuffer));
-				_glInvalidateTexImage = (Delegates.glInvalidateTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateTexImage"), typeof(Delegates.glInvalidateTexImage));
-				_glInvalidateTexSubImage = (Delegates.glInvalidateTexSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateTexSubImage"), typeof(Delegates.glInvalidateTexSubImage));
-				_glMultiDrawArraysIndirect = (Delegates.glMultiDrawArraysIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawArraysIndirect"), typeof(Delegates.glMultiDrawArraysIndirect));
-				_glMultiDrawElementsIndirect = (Delegates.glMultiDrawElementsIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElementsIndirect"), typeof(Delegates.glMultiDrawElementsIndirect));
-				_glObjectLabel = (Delegates.glObjectLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glObjectLabel"), typeof(Delegates.glObjectLabel));
-				_glObjectPtrLabel = (Delegates.glObjectPtrLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glObjectPtrLabel"), typeof(Delegates.glObjectPtrLabel));
-				_glPopDebugGroup = (Delegates.glPopDebugGroup)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPopDebugGroup"), typeof(Delegates.glPopDebugGroup));
-				_glPushDebugGroup = (Delegates.glPushDebugGroup)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPushDebugGroup"), typeof(Delegates.glPushDebugGroup));
-				_glShaderStorageBlockBinding = (Delegates.glShaderStorageBlockBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderStorageBlockBinding"), typeof(Delegates.glShaderStorageBlockBinding));
-				_glTexBufferRange = (Delegates.glTexBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexBufferRange"), typeof(Delegates.glTexBufferRange));
-				_glTexStorage2DMultisample = (Delegates.glTexStorage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage2DMultisample"), typeof(Delegates.glTexStorage2DMultisample));
-				_glTexStorage3DMultisample = (Delegates.glTexStorage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage3DMultisample"), typeof(Delegates.glTexStorage3DMultisample));
-				_glTextureView = (Delegates.glTextureView)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureView"), typeof(Delegates.glTextureView));
-				_glVertexAttribBinding = (Delegates.glVertexAttribBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribBinding"), typeof(Delegates.glVertexAttribBinding));
-				_glVertexAttribFormat = (Delegates.glVertexAttribFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribFormat"), typeof(Delegates.glVertexAttribFormat));
-				_glVertexAttribIFormat = (Delegates.glVertexAttribIFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribIFormat"), typeof(Delegates.glVertexAttribIFormat));
-				_glVertexAttribLFormat = (Delegates.glVertexAttribLFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribLFormat"), typeof(Delegates.glVertexAttribLFormat));
-				_glVertexBindingDivisor = (Delegates.glVertexBindingDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexBindingDivisor"), typeof(Delegates.glVertexBindingDivisor));
+				glBindVertexBuffer = (Delegates.glBindVertexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexBuffer"), typeof(Delegates.glBindVertexBuffer));
+				glClearBufferData = (Delegates.glClearBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferData"), typeof(Delegates.glClearBufferData));
+				glClearBufferSubData = (Delegates.glClearBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearBufferSubData"), typeof(Delegates.glClearBufferSubData));
+				glCopyImageSubData = (Delegates.glCopyImageSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyImageSubData"), typeof(Delegates.glCopyImageSubData));
+				glDebugMessageCallback = (Delegates.glDebugMessageCallback)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageCallback"), typeof(Delegates.glDebugMessageCallback));
+				glDebugMessageControl = (Delegates.glDebugMessageControl)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageControl"), typeof(Delegates.glDebugMessageControl));
+				glDebugMessageInsert = (Delegates.glDebugMessageInsert)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDebugMessageInsert"), typeof(Delegates.glDebugMessageInsert));
+				glDispatchCompute = (Delegates.glDispatchCompute)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDispatchCompute"), typeof(Delegates.glDispatchCompute));
+				glDispatchComputeIndirect = (Delegates.glDispatchComputeIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDispatchComputeIndirect"), typeof(Delegates.glDispatchComputeIndirect));
+				glFramebufferParameteri = (Delegates.glFramebufferParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFramebufferParameteri"), typeof(Delegates.glFramebufferParameteri));
+				glGetDebugMessageLog = (Delegates.glGetDebugMessageLog)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetDebugMessageLog"), typeof(Delegates.glGetDebugMessageLog));
+				glGetFramebufferParameteriv = (Delegates.glGetFramebufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetFramebufferParameteriv"), typeof(Delegates.glGetFramebufferParameteriv));
+				glGetInternalformati64v = (Delegates.glGetInternalformati64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetInternalformati64v"), typeof(Delegates.glGetInternalformati64v));
+				glGetObjectLabel = (Delegates.glGetObjectLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetObjectLabel"), typeof(Delegates.glGetObjectLabel));
+				glGetObjectPtrLabel = (Delegates.glGetObjectPtrLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetObjectPtrLabel"), typeof(Delegates.glGetObjectPtrLabel));
+				glGetProgramInterfaceiv = (Delegates.glGetProgramInterfaceiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramInterfaceiv"), typeof(Delegates.glGetProgramInterfaceiv));
+				glGetProgramResourceIndex = (Delegates.glGetProgramResourceIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceIndex"), typeof(Delegates.glGetProgramResourceIndex));
+				glGetProgramResourceiv = (Delegates.glGetProgramResourceiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceiv"), typeof(Delegates.glGetProgramResourceiv));
+				glGetProgramResourceLocation = (Delegates.glGetProgramResourceLocation)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceLocation"), typeof(Delegates.glGetProgramResourceLocation));
+				glGetProgramResourceLocationIndex = (Delegates.glGetProgramResourceLocationIndex)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceLocationIndex"), typeof(Delegates.glGetProgramResourceLocationIndex));
+				glGetProgramResourceName = (Delegates.glGetProgramResourceName)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetProgramResourceName"), typeof(Delegates.glGetProgramResourceName));
+				glInvalidateBufferData = (Delegates.glInvalidateBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateBufferData"), typeof(Delegates.glInvalidateBufferData));
+				glInvalidateBufferSubData = (Delegates.glInvalidateBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateBufferSubData"), typeof(Delegates.glInvalidateBufferSubData));
+				glInvalidateFramebuffer = (Delegates.glInvalidateFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateFramebuffer"), typeof(Delegates.glInvalidateFramebuffer));
+				glInvalidateSubFramebuffer = (Delegates.glInvalidateSubFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateSubFramebuffer"), typeof(Delegates.glInvalidateSubFramebuffer));
+				glInvalidateTexImage = (Delegates.glInvalidateTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateTexImage"), typeof(Delegates.glInvalidateTexImage));
+				glInvalidateTexSubImage = (Delegates.glInvalidateTexSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateTexSubImage"), typeof(Delegates.glInvalidateTexSubImage));
+				glMultiDrawArraysIndirect = (Delegates.glMultiDrawArraysIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawArraysIndirect"), typeof(Delegates.glMultiDrawArraysIndirect));
+				glMultiDrawElementsIndirect = (Delegates.glMultiDrawElementsIndirect)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElementsIndirect"), typeof(Delegates.glMultiDrawElementsIndirect));
+				glObjectLabel = (Delegates.glObjectLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glObjectLabel"), typeof(Delegates.glObjectLabel));
+				glObjectPtrLabel = (Delegates.glObjectPtrLabel)Marshal.GetDelegateForFunctionPointer(getProcAddress("glObjectPtrLabel"), typeof(Delegates.glObjectPtrLabel));
+				glPopDebugGroup = (Delegates.glPopDebugGroup)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPopDebugGroup"), typeof(Delegates.glPopDebugGroup));
+				glPushDebugGroup = (Delegates.glPushDebugGroup)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPushDebugGroup"), typeof(Delegates.glPushDebugGroup));
+				glShaderStorageBlockBinding = (Delegates.glShaderStorageBlockBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glShaderStorageBlockBinding"), typeof(Delegates.glShaderStorageBlockBinding));
+				glTexBufferRange = (Delegates.glTexBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexBufferRange"), typeof(Delegates.glTexBufferRange));
+				glTexStorage2DMultisample = (Delegates.glTexStorage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage2DMultisample"), typeof(Delegates.glTexStorage2DMultisample));
+				glTexStorage3DMultisample = (Delegates.glTexStorage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTexStorage3DMultisample"), typeof(Delegates.glTexStorage3DMultisample));
+				glTextureView = (Delegates.glTextureView)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureView"), typeof(Delegates.glTextureView));
+				glVertexAttribBinding = (Delegates.glVertexAttribBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribBinding"), typeof(Delegates.glVertexAttribBinding));
+				glVertexAttribFormat = (Delegates.glVertexAttribFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribFormat"), typeof(Delegates.glVertexAttribFormat));
+				glVertexAttribIFormat = (Delegates.glVertexAttribIFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribIFormat"), typeof(Delegates.glVertexAttribIFormat));
+				glVertexAttribLFormat = (Delegates.glVertexAttribLFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexAttribLFormat"), typeof(Delegates.glVertexAttribLFormat));
+				glVertexBindingDivisor = (Delegates.glVertexBindingDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexBindingDivisor"), typeof(Delegates.glVertexBindingDivisor));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 4))
 			{
-				_glBindBuffersBase = (Delegates.glBindBuffersBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffersBase"), typeof(Delegates.glBindBuffersBase));
-				_glBindBuffersRange = (Delegates.glBindBuffersRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffersRange"), typeof(Delegates.glBindBuffersRange));
-				_glBindImageTextures = (Delegates.glBindImageTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindImageTextures"), typeof(Delegates.glBindImageTextures));
-				_glBindSamplers = (Delegates.glBindSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindSamplers"), typeof(Delegates.glBindSamplers));
-				_glBindTextures = (Delegates.glBindTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTextures"), typeof(Delegates.glBindTextures));
-				_glBindVertexBuffers = (Delegates.glBindVertexBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexBuffers"), typeof(Delegates.glBindVertexBuffers));
-				_glBufferStorage = (Delegates.glBufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferStorage"), typeof(Delegates.glBufferStorage));
-				_glClearTexImage = (Delegates.glClearTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearTexImage"), typeof(Delegates.glClearTexImage));
-				_glClearTexSubImage = (Delegates.glClearTexSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearTexSubImage"), typeof(Delegates.glClearTexSubImage));
+				glBindBuffersBase = (Delegates.glBindBuffersBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffersBase"), typeof(Delegates.glBindBuffersBase));
+				glBindBuffersRange = (Delegates.glBindBuffersRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindBuffersRange"), typeof(Delegates.glBindBuffersRange));
+				glBindImageTextures = (Delegates.glBindImageTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindImageTextures"), typeof(Delegates.glBindImageTextures));
+				glBindSamplers = (Delegates.glBindSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindSamplers"), typeof(Delegates.glBindSamplers));
+				glBindTextures = (Delegates.glBindTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTextures"), typeof(Delegates.glBindTextures));
+				glBindVertexBuffers = (Delegates.glBindVertexBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindVertexBuffers"), typeof(Delegates.glBindVertexBuffers));
+				glBufferStorage = (Delegates.glBufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBufferStorage"), typeof(Delegates.glBufferStorage));
+				glClearTexImage = (Delegates.glClearTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearTexImage"), typeof(Delegates.glClearTexImage));
+				glClearTexSubImage = (Delegates.glClearTexSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearTexSubImage"), typeof(Delegates.glClearTexSubImage));
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5))
 			{
-				_glBindTextureUnit = (Delegates.glBindTextureUnit)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTextureUnit"), typeof(Delegates.glBindTextureUnit));
-				_glBlitNamedFramebuffer = (Delegates.glBlitNamedFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlitNamedFramebuffer"), typeof(Delegates.glBlitNamedFramebuffer));
-				_glCheckNamedFramebufferStatus = (Delegates.glCheckNamedFramebufferStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCheckNamedFramebufferStatus"), typeof(Delegates.glCheckNamedFramebufferStatus));
-				_glClearNamedBufferData = (Delegates.glClearNamedBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedBufferData"), typeof(Delegates.glClearNamedBufferData));
-				_glClearNamedBufferSubData = (Delegates.glClearNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedBufferSubData"), typeof(Delegates.glClearNamedBufferSubData));
-				_glClearNamedFramebufferfi = (Delegates.glClearNamedFramebufferfi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferfi"), typeof(Delegates.glClearNamedFramebufferfi));
-				_glClearNamedFramebufferfv = (Delegates.glClearNamedFramebufferfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferfv"), typeof(Delegates.glClearNamedFramebufferfv));
-				_glClearNamedFramebufferiv = (Delegates.glClearNamedFramebufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferiv"), typeof(Delegates.glClearNamedFramebufferiv));
-				_glClearNamedFramebufferuiv = (Delegates.glClearNamedFramebufferuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferuiv"), typeof(Delegates.glClearNamedFramebufferuiv));
-				_glClipControl = (Delegates.glClipControl)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClipControl"), typeof(Delegates.glClipControl));
-				_glCompressedTextureSubImage1D = (Delegates.glCompressedTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage1D"), typeof(Delegates.glCompressedTextureSubImage1D));
-				_glCompressedTextureSubImage2D = (Delegates.glCompressedTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage2D"), typeof(Delegates.glCompressedTextureSubImage2D));
-				_glCompressedTextureSubImage3D = (Delegates.glCompressedTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage3D"), typeof(Delegates.glCompressedTextureSubImage3D));
-				_glCopyNamedBufferSubData = (Delegates.glCopyNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyNamedBufferSubData"), typeof(Delegates.glCopyNamedBufferSubData));
-				_glCopyTextureSubImage1D = (Delegates.glCopyTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage1D"), typeof(Delegates.glCopyTextureSubImage1D));
-				_glCopyTextureSubImage2D = (Delegates.glCopyTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage2D"), typeof(Delegates.glCopyTextureSubImage2D));
-				_glCopyTextureSubImage3D = (Delegates.glCopyTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage3D"), typeof(Delegates.glCopyTextureSubImage3D));
-				_glCreateBuffers = (Delegates.glCreateBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateBuffers"), typeof(Delegates.glCreateBuffers));
-				_glCreateFramebuffers = (Delegates.glCreateFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateFramebuffers"), typeof(Delegates.glCreateFramebuffers));
-				_glCreateProgramPipelines = (Delegates.glCreateProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateProgramPipelines"), typeof(Delegates.glCreateProgramPipelines));
-				_glCreateQueries = (Delegates.glCreateQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateQueries"), typeof(Delegates.glCreateQueries));
-				_glCreateRenderbuffers = (Delegates.glCreateRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateRenderbuffers"), typeof(Delegates.glCreateRenderbuffers));
-				_glCreateSamplers = (Delegates.glCreateSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateSamplers"), typeof(Delegates.glCreateSamplers));
-				_glCreateTextures = (Delegates.glCreateTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateTextures"), typeof(Delegates.glCreateTextures));
-				_glCreateTransformFeedbacks = (Delegates.glCreateTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateTransformFeedbacks"), typeof(Delegates.glCreateTransformFeedbacks));
-				_glCreateVertexArrays = (Delegates.glCreateVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateVertexArrays"), typeof(Delegates.glCreateVertexArrays));
-				_glDisableVertexArrayAttrib = (Delegates.glDisableVertexArrayAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisableVertexArrayAttrib"), typeof(Delegates.glDisableVertexArrayAttrib));
-				_glEnableVertexArrayAttrib = (Delegates.glEnableVertexArrayAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnableVertexArrayAttrib"), typeof(Delegates.glEnableVertexArrayAttrib));
-				_glFlushMappedNamedBufferRange = (Delegates.glFlushMappedNamedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlushMappedNamedBufferRange"), typeof(Delegates.glFlushMappedNamedBufferRange));
-				_glGenerateTextureMipmap = (Delegates.glGenerateTextureMipmap)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenerateTextureMipmap"), typeof(Delegates.glGenerateTextureMipmap));
-				_glGetCompressedTextureImage = (Delegates.glGetCompressedTextureImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTextureImage"), typeof(Delegates.glGetCompressedTextureImage));
-				_glGetCompressedTextureSubImage = (Delegates.glGetCompressedTextureSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTextureSubImage"), typeof(Delegates.glGetCompressedTextureSubImage));
-				_glGetGraphicsResetStatus = (Delegates.glGetGraphicsResetStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetGraphicsResetStatus"), typeof(Delegates.glGetGraphicsResetStatus));
-				_glGetNamedBufferParameteri64v = (Delegates.glGetNamedBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferParameteri64v"), typeof(Delegates.glGetNamedBufferParameteri64v));
-				_glGetNamedBufferParameteriv = (Delegates.glGetNamedBufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferParameteriv"), typeof(Delegates.glGetNamedBufferParameteriv));
-				_glGetNamedBufferPointerv = (Delegates.glGetNamedBufferPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferPointerv"), typeof(Delegates.glGetNamedBufferPointerv));
-				_glGetNamedBufferSubData = (Delegates.glGetNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferSubData"), typeof(Delegates.glGetNamedBufferSubData));
-				_glGetNamedFramebufferAttachmentParameteriv = (Delegates.glGetNamedFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedFramebufferAttachmentParameteriv"), typeof(Delegates.glGetNamedFramebufferAttachmentParameteriv));
-				_glGetNamedFramebufferParameteriv = (Delegates.glGetNamedFramebufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedFramebufferParameteriv"), typeof(Delegates.glGetNamedFramebufferParameteriv));
-				_glGetNamedRenderbufferParameteriv = (Delegates.glGetNamedRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedRenderbufferParameteriv"), typeof(Delegates.glGetNamedRenderbufferParameteriv));
-				_glGetnCompressedTexImage = (Delegates.glGetnCompressedTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnCompressedTexImage"), typeof(Delegates.glGetnCompressedTexImage));
-				_glGetnTexImage = (Delegates.glGetnTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnTexImage"), typeof(Delegates.glGetnTexImage));
-				_glGetnUniformdv = (Delegates.glGetnUniformdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformdv"), typeof(Delegates.glGetnUniformdv));
-				_glGetnUniformfv = (Delegates.glGetnUniformfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformfv"), typeof(Delegates.glGetnUniformfv));
-				_glGetnUniformiv = (Delegates.glGetnUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformiv"), typeof(Delegates.glGetnUniformiv));
-				_glGetnUniformuiv = (Delegates.glGetnUniformuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformuiv"), typeof(Delegates.glGetnUniformuiv));
-				_glGetQueryBufferObjecti64v = (Delegates.glGetQueryBufferObjecti64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjecti64v"), typeof(Delegates.glGetQueryBufferObjecti64v));
-				_glGetQueryBufferObjectiv = (Delegates.glGetQueryBufferObjectiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectiv"), typeof(Delegates.glGetQueryBufferObjectiv));
-				_glGetQueryBufferObjectui64v = (Delegates.glGetQueryBufferObjectui64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectui64v"), typeof(Delegates.glGetQueryBufferObjectui64v));
-				_glGetQueryBufferObjectuiv = (Delegates.glGetQueryBufferObjectuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectuiv"), typeof(Delegates.glGetQueryBufferObjectuiv));
-				_glGetTextureImage = (Delegates.glGetTextureImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureImage"), typeof(Delegates.glGetTextureImage));
-				_glGetTextureLevelParameterfv = (Delegates.glGetTextureLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureLevelParameterfv"), typeof(Delegates.glGetTextureLevelParameterfv));
-				_glGetTextureLevelParameteriv = (Delegates.glGetTextureLevelParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureLevelParameteriv"), typeof(Delegates.glGetTextureLevelParameteriv));
-				_glGetTextureParameterfv = (Delegates.glGetTextureParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterfv"), typeof(Delegates.glGetTextureParameterfv));
-				_glGetTextureParameterIiv = (Delegates.glGetTextureParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterIiv"), typeof(Delegates.glGetTextureParameterIiv));
-				_glGetTextureParameterIuiv = (Delegates.glGetTextureParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterIuiv"), typeof(Delegates.glGetTextureParameterIuiv));
-				_glGetTextureParameteriv = (Delegates.glGetTextureParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameteriv"), typeof(Delegates.glGetTextureParameteriv));
-				_glGetTextureSubImage = (Delegates.glGetTextureSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureSubImage"), typeof(Delegates.glGetTextureSubImage));
-				_glGetTransformFeedbacki_v = (Delegates.glGetTransformFeedbacki_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbacki_v"), typeof(Delegates.glGetTransformFeedbacki_v));
-				_glGetTransformFeedbacki64_v = (Delegates.glGetTransformFeedbacki64_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbacki64_v"), typeof(Delegates.glGetTransformFeedbacki64_v));
-				_glGetTransformFeedbackiv = (Delegates.glGetTransformFeedbackiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbackiv"), typeof(Delegates.glGetTransformFeedbackiv));
-				_glGetVertexArrayIndexed64iv = (Delegates.glGetVertexArrayIndexed64iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayIndexed64iv"), typeof(Delegates.glGetVertexArrayIndexed64iv));
-				_glGetVertexArrayIndexediv = (Delegates.glGetVertexArrayIndexediv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayIndexediv"), typeof(Delegates.glGetVertexArrayIndexediv));
-				_glGetVertexArrayiv = (Delegates.glGetVertexArrayiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayiv"), typeof(Delegates.glGetVertexArrayiv));
-				_glInvalidateNamedFramebufferData = (Delegates.glInvalidateNamedFramebufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateNamedFramebufferData"), typeof(Delegates.glInvalidateNamedFramebufferData));
-				_glInvalidateNamedFramebufferSubData = (Delegates.glInvalidateNamedFramebufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateNamedFramebufferSubData"), typeof(Delegates.glInvalidateNamedFramebufferSubData));
-				_glMapNamedBuffer = (Delegates.glMapNamedBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapNamedBuffer"), typeof(Delegates.glMapNamedBuffer));
-				_glMapNamedBufferRange = (Delegates.glMapNamedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapNamedBufferRange"), typeof(Delegates.glMapNamedBufferRange));
-				_glMemoryBarrierByRegion = (Delegates.glMemoryBarrierByRegion)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMemoryBarrierByRegion"), typeof(Delegates.glMemoryBarrierByRegion));
-				_glNamedBufferData = (Delegates.glNamedBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferData"), typeof(Delegates.glNamedBufferData));
-				_glNamedBufferStorage = (Delegates.glNamedBufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferStorage"), typeof(Delegates.glNamedBufferStorage));
-				_glNamedBufferSubData = (Delegates.glNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferSubData"), typeof(Delegates.glNamedBufferSubData));
-				_glNamedFramebufferDrawBuffer = (Delegates.glNamedFramebufferDrawBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferDrawBuffer"), typeof(Delegates.glNamedFramebufferDrawBuffer));
-				_glNamedFramebufferDrawBuffers = (Delegates.glNamedFramebufferDrawBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferDrawBuffers"), typeof(Delegates.glNamedFramebufferDrawBuffers));
-				_glNamedFramebufferParameteri = (Delegates.glNamedFramebufferParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferParameteri"), typeof(Delegates.glNamedFramebufferParameteri));
-				_glNamedFramebufferReadBuffer = (Delegates.glNamedFramebufferReadBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferReadBuffer"), typeof(Delegates.glNamedFramebufferReadBuffer));
-				_glNamedFramebufferRenderbuffer = (Delegates.glNamedFramebufferRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferRenderbuffer"), typeof(Delegates.glNamedFramebufferRenderbuffer));
-				_glNamedFramebufferTexture = (Delegates.glNamedFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferTexture"), typeof(Delegates.glNamedFramebufferTexture));
-				_glNamedFramebufferTextureLayer = (Delegates.glNamedFramebufferTextureLayer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferTextureLayer"), typeof(Delegates.glNamedFramebufferTextureLayer));
-				_glNamedRenderbufferStorage = (Delegates.glNamedRenderbufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedRenderbufferStorage"), typeof(Delegates.glNamedRenderbufferStorage));
-				_glNamedRenderbufferStorageMultisample = (Delegates.glNamedRenderbufferStorageMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedRenderbufferStorageMultisample"), typeof(Delegates.glNamedRenderbufferStorageMultisample));
-				_glReadnPixels = (Delegates.glReadnPixels)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadnPixels"), typeof(Delegates.glReadnPixels));
-				_glTextureBarrier = (Delegates.glTextureBarrier)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBarrier"), typeof(Delegates.glTextureBarrier));
-				_glTextureBuffer = (Delegates.glTextureBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBuffer"), typeof(Delegates.glTextureBuffer));
-				_glTextureBufferRange = (Delegates.glTextureBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBufferRange"), typeof(Delegates.glTextureBufferRange));
-				_glTextureParameterf = (Delegates.glTextureParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterf"), typeof(Delegates.glTextureParameterf));
-				_glTextureParameterfv = (Delegates.glTextureParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterfv"), typeof(Delegates.glTextureParameterfv));
-				_glTextureParameteri = (Delegates.glTextureParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameteri"), typeof(Delegates.glTextureParameteri));
-				_glTextureParameterIiv = (Delegates.glTextureParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterIiv"), typeof(Delegates.glTextureParameterIiv));
-				_glTextureParameterIuiv = (Delegates.glTextureParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterIuiv"), typeof(Delegates.glTextureParameterIuiv));
-				_glTextureParameteriv = (Delegates.glTextureParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameteriv"), typeof(Delegates.glTextureParameteriv));
-				_glTextureStorage1D = (Delegates.glTextureStorage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage1D"), typeof(Delegates.glTextureStorage1D));
-				_glTextureStorage2D = (Delegates.glTextureStorage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage2D"), typeof(Delegates.glTextureStorage2D));
-				_glTextureStorage2DMultisample = (Delegates.glTextureStorage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage2DMultisample"), typeof(Delegates.glTextureStorage2DMultisample));
-				_glTextureStorage3D = (Delegates.glTextureStorage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage3D"), typeof(Delegates.glTextureStorage3D));
-				_glTextureStorage3DMultisample = (Delegates.glTextureStorage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage3DMultisample"), typeof(Delegates.glTextureStorage3DMultisample));
-				_glTextureSubImage1D = (Delegates.glTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage1D"), typeof(Delegates.glTextureSubImage1D));
-				_glTextureSubImage2D = (Delegates.glTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage2D"), typeof(Delegates.glTextureSubImage2D));
-				_glTextureSubImage3D = (Delegates.glTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage3D"), typeof(Delegates.glTextureSubImage3D));
-				_glTransformFeedbackBufferBase = (Delegates.glTransformFeedbackBufferBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackBufferBase"), typeof(Delegates.glTransformFeedbackBufferBase));
-				_glTransformFeedbackBufferRange = (Delegates.glTransformFeedbackBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackBufferRange"), typeof(Delegates.glTransformFeedbackBufferRange));
-				_glUnmapNamedBuffer = (Delegates.glUnmapNamedBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUnmapNamedBuffer"), typeof(Delegates.glUnmapNamedBuffer));
-				_glVertexArrayAttribBinding = (Delegates.glVertexArrayAttribBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribBinding"), typeof(Delegates.glVertexArrayAttribBinding));
-				_glVertexArrayAttribFormat = (Delegates.glVertexArrayAttribFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribFormat"), typeof(Delegates.glVertexArrayAttribFormat));
-				_glVertexArrayAttribIFormat = (Delegates.glVertexArrayAttribIFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribIFormat"), typeof(Delegates.glVertexArrayAttribIFormat));
-				_glVertexArrayAttribLFormat = (Delegates.glVertexArrayAttribLFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribLFormat"), typeof(Delegates.glVertexArrayAttribLFormat));
-				_glVertexArrayBindingDivisor = (Delegates.glVertexArrayBindingDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayBindingDivisor"), typeof(Delegates.glVertexArrayBindingDivisor));
-				_glVertexArrayElementBuffer = (Delegates.glVertexArrayElementBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayElementBuffer"), typeof(Delegates.glVertexArrayElementBuffer));
-				_glVertexArrayVertexBuffer = (Delegates.glVertexArrayVertexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayVertexBuffer"), typeof(Delegates.glVertexArrayVertexBuffer));
-				_glVertexArrayVertexBuffers = (Delegates.glVertexArrayVertexBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayVertexBuffers"), typeof(Delegates.glVertexArrayVertexBuffers));
+				glBindTextureUnit = (Delegates.glBindTextureUnit)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBindTextureUnit"), typeof(Delegates.glBindTextureUnit));
+				glBlitNamedFramebuffer = (Delegates.glBlitNamedFramebuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glBlitNamedFramebuffer"), typeof(Delegates.glBlitNamedFramebuffer));
+				glCheckNamedFramebufferStatus = (Delegates.glCheckNamedFramebufferStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCheckNamedFramebufferStatus"), typeof(Delegates.glCheckNamedFramebufferStatus));
+				glClearNamedBufferData = (Delegates.glClearNamedBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedBufferData"), typeof(Delegates.glClearNamedBufferData));
+				glClearNamedBufferSubData = (Delegates.glClearNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedBufferSubData"), typeof(Delegates.glClearNamedBufferSubData));
+				glClearNamedFramebufferfi = (Delegates.glClearNamedFramebufferfi)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferfi"), typeof(Delegates.glClearNamedFramebufferfi));
+				glClearNamedFramebufferfv = (Delegates.glClearNamedFramebufferfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferfv"), typeof(Delegates.glClearNamedFramebufferfv));
+				glClearNamedFramebufferiv = (Delegates.glClearNamedFramebufferiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferiv"), typeof(Delegates.glClearNamedFramebufferiv));
+				glClearNamedFramebufferuiv = (Delegates.glClearNamedFramebufferuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClearNamedFramebufferuiv"), typeof(Delegates.glClearNamedFramebufferuiv));
+				glClipControl = (Delegates.glClipControl)Marshal.GetDelegateForFunctionPointer(getProcAddress("glClipControl"), typeof(Delegates.glClipControl));
+				glCompressedTextureSubImage1D = (Delegates.glCompressedTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage1D"), typeof(Delegates.glCompressedTextureSubImage1D));
+				glCompressedTextureSubImage2D = (Delegates.glCompressedTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage2D"), typeof(Delegates.glCompressedTextureSubImage2D));
+				glCompressedTextureSubImage3D = (Delegates.glCompressedTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCompressedTextureSubImage3D"), typeof(Delegates.glCompressedTextureSubImage3D));
+				glCopyNamedBufferSubData = (Delegates.glCopyNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyNamedBufferSubData"), typeof(Delegates.glCopyNamedBufferSubData));
+				glCopyTextureSubImage1D = (Delegates.glCopyTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage1D"), typeof(Delegates.glCopyTextureSubImage1D));
+				glCopyTextureSubImage2D = (Delegates.glCopyTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage2D"), typeof(Delegates.glCopyTextureSubImage2D));
+				glCopyTextureSubImage3D = (Delegates.glCopyTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCopyTextureSubImage3D"), typeof(Delegates.glCopyTextureSubImage3D));
+				glCreateBuffers = (Delegates.glCreateBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateBuffers"), typeof(Delegates.glCreateBuffers));
+				glCreateFramebuffers = (Delegates.glCreateFramebuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateFramebuffers"), typeof(Delegates.glCreateFramebuffers));
+				glCreateProgramPipelines = (Delegates.glCreateProgramPipelines)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateProgramPipelines"), typeof(Delegates.glCreateProgramPipelines));
+				glCreateQueries = (Delegates.glCreateQueries)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateQueries"), typeof(Delegates.glCreateQueries));
+				glCreateRenderbuffers = (Delegates.glCreateRenderbuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateRenderbuffers"), typeof(Delegates.glCreateRenderbuffers));
+				glCreateSamplers = (Delegates.glCreateSamplers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateSamplers"), typeof(Delegates.glCreateSamplers));
+				glCreateTextures = (Delegates.glCreateTextures)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateTextures"), typeof(Delegates.glCreateTextures));
+				glCreateTransformFeedbacks = (Delegates.glCreateTransformFeedbacks)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateTransformFeedbacks"), typeof(Delegates.glCreateTransformFeedbacks));
+				glCreateVertexArrays = (Delegates.glCreateVertexArrays)Marshal.GetDelegateForFunctionPointer(getProcAddress("glCreateVertexArrays"), typeof(Delegates.glCreateVertexArrays));
+				glDisableVertexArrayAttrib = (Delegates.glDisableVertexArrayAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glDisableVertexArrayAttrib"), typeof(Delegates.glDisableVertexArrayAttrib));
+				glEnableVertexArrayAttrib = (Delegates.glEnableVertexArrayAttrib)Marshal.GetDelegateForFunctionPointer(getProcAddress("glEnableVertexArrayAttrib"), typeof(Delegates.glEnableVertexArrayAttrib));
+				glFlushMappedNamedBufferRange = (Delegates.glFlushMappedNamedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glFlushMappedNamedBufferRange"), typeof(Delegates.glFlushMappedNamedBufferRange));
+				glGenerateTextureMipmap = (Delegates.glGenerateTextureMipmap)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGenerateTextureMipmap"), typeof(Delegates.glGenerateTextureMipmap));
+				glGetCompressedTextureImage = (Delegates.glGetCompressedTextureImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTextureImage"), typeof(Delegates.glGetCompressedTextureImage));
+				glGetCompressedTextureSubImage = (Delegates.glGetCompressedTextureSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetCompressedTextureSubImage"), typeof(Delegates.glGetCompressedTextureSubImage));
+				glGetGraphicsResetStatus = (Delegates.glGetGraphicsResetStatus)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetGraphicsResetStatus"), typeof(Delegates.glGetGraphicsResetStatus));
+				glGetNamedBufferParameteri64v = (Delegates.glGetNamedBufferParameteri64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferParameteri64v"), typeof(Delegates.glGetNamedBufferParameteri64v));
+				glGetNamedBufferParameteriv = (Delegates.glGetNamedBufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferParameteriv"), typeof(Delegates.glGetNamedBufferParameteriv));
+				glGetNamedBufferPointerv = (Delegates.glGetNamedBufferPointerv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferPointerv"), typeof(Delegates.glGetNamedBufferPointerv));
+				glGetNamedBufferSubData = (Delegates.glGetNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedBufferSubData"), typeof(Delegates.glGetNamedBufferSubData));
+				glGetNamedFramebufferAttachmentParameteriv = (Delegates.glGetNamedFramebufferAttachmentParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedFramebufferAttachmentParameteriv"), typeof(Delegates.glGetNamedFramebufferAttachmentParameteriv));
+				glGetNamedFramebufferParameteriv = (Delegates.glGetNamedFramebufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedFramebufferParameteriv"), typeof(Delegates.glGetNamedFramebufferParameteriv));
+				glGetNamedRenderbufferParameteriv = (Delegates.glGetNamedRenderbufferParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetNamedRenderbufferParameteriv"), typeof(Delegates.glGetNamedRenderbufferParameteriv));
+				glGetnCompressedTexImage = (Delegates.glGetnCompressedTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnCompressedTexImage"), typeof(Delegates.glGetnCompressedTexImage));
+				glGetnTexImage = (Delegates.glGetnTexImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnTexImage"), typeof(Delegates.glGetnTexImage));
+				glGetnUniformdv = (Delegates.glGetnUniformdv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformdv"), typeof(Delegates.glGetnUniformdv));
+				glGetnUniformfv = (Delegates.glGetnUniformfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformfv"), typeof(Delegates.glGetnUniformfv));
+				glGetnUniformiv = (Delegates.glGetnUniformiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformiv"), typeof(Delegates.glGetnUniformiv));
+				glGetnUniformuiv = (Delegates.glGetnUniformuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetnUniformuiv"), typeof(Delegates.glGetnUniformuiv));
+				glGetQueryBufferObjecti64v = (Delegates.glGetQueryBufferObjecti64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjecti64v"), typeof(Delegates.glGetQueryBufferObjecti64v));
+				glGetQueryBufferObjectiv = (Delegates.glGetQueryBufferObjectiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectiv"), typeof(Delegates.glGetQueryBufferObjectiv));
+				glGetQueryBufferObjectui64v = (Delegates.glGetQueryBufferObjectui64v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectui64v"), typeof(Delegates.glGetQueryBufferObjectui64v));
+				glGetQueryBufferObjectuiv = (Delegates.glGetQueryBufferObjectuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetQueryBufferObjectuiv"), typeof(Delegates.glGetQueryBufferObjectuiv));
+				glGetTextureImage = (Delegates.glGetTextureImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureImage"), typeof(Delegates.glGetTextureImage));
+				glGetTextureLevelParameterfv = (Delegates.glGetTextureLevelParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureLevelParameterfv"), typeof(Delegates.glGetTextureLevelParameterfv));
+				glGetTextureLevelParameteriv = (Delegates.glGetTextureLevelParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureLevelParameteriv"), typeof(Delegates.glGetTextureLevelParameteriv));
+				glGetTextureParameterfv = (Delegates.glGetTextureParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterfv"), typeof(Delegates.glGetTextureParameterfv));
+				glGetTextureParameterIiv = (Delegates.glGetTextureParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterIiv"), typeof(Delegates.glGetTextureParameterIiv));
+				glGetTextureParameterIuiv = (Delegates.glGetTextureParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameterIuiv"), typeof(Delegates.glGetTextureParameterIuiv));
+				glGetTextureParameteriv = (Delegates.glGetTextureParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureParameteriv"), typeof(Delegates.glGetTextureParameteriv));
+				glGetTextureSubImage = (Delegates.glGetTextureSubImage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTextureSubImage"), typeof(Delegates.glGetTextureSubImage));
+				glGetTransformFeedbacki_v = (Delegates.glGetTransformFeedbacki_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbacki_v"), typeof(Delegates.glGetTransformFeedbacki_v));
+				glGetTransformFeedbacki64_v = (Delegates.glGetTransformFeedbacki64_v)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbacki64_v"), typeof(Delegates.glGetTransformFeedbacki64_v));
+				glGetTransformFeedbackiv = (Delegates.glGetTransformFeedbackiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetTransformFeedbackiv"), typeof(Delegates.glGetTransformFeedbackiv));
+				glGetVertexArrayIndexed64iv = (Delegates.glGetVertexArrayIndexed64iv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayIndexed64iv"), typeof(Delegates.glGetVertexArrayIndexed64iv));
+				glGetVertexArrayIndexediv = (Delegates.glGetVertexArrayIndexediv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayIndexediv"), typeof(Delegates.glGetVertexArrayIndexediv));
+				glGetVertexArrayiv = (Delegates.glGetVertexArrayiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glGetVertexArrayiv"), typeof(Delegates.glGetVertexArrayiv));
+				glInvalidateNamedFramebufferData = (Delegates.glInvalidateNamedFramebufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateNamedFramebufferData"), typeof(Delegates.glInvalidateNamedFramebufferData));
+				glInvalidateNamedFramebufferSubData = (Delegates.glInvalidateNamedFramebufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glInvalidateNamedFramebufferSubData"), typeof(Delegates.glInvalidateNamedFramebufferSubData));
+				glMapNamedBuffer = (Delegates.glMapNamedBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapNamedBuffer"), typeof(Delegates.glMapNamedBuffer));
+				glMapNamedBufferRange = (Delegates.glMapNamedBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMapNamedBufferRange"), typeof(Delegates.glMapNamedBufferRange));
+				glMemoryBarrierByRegion = (Delegates.glMemoryBarrierByRegion)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMemoryBarrierByRegion"), typeof(Delegates.glMemoryBarrierByRegion));
+				glNamedBufferData = (Delegates.glNamedBufferData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferData"), typeof(Delegates.glNamedBufferData));
+				glNamedBufferStorage = (Delegates.glNamedBufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferStorage"), typeof(Delegates.glNamedBufferStorage));
+				glNamedBufferSubData = (Delegates.glNamedBufferSubData)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedBufferSubData"), typeof(Delegates.glNamedBufferSubData));
+				glNamedFramebufferDrawBuffer = (Delegates.glNamedFramebufferDrawBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferDrawBuffer"), typeof(Delegates.glNamedFramebufferDrawBuffer));
+				glNamedFramebufferDrawBuffers = (Delegates.glNamedFramebufferDrawBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferDrawBuffers"), typeof(Delegates.glNamedFramebufferDrawBuffers));
+				glNamedFramebufferParameteri = (Delegates.glNamedFramebufferParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferParameteri"), typeof(Delegates.glNamedFramebufferParameteri));
+				glNamedFramebufferReadBuffer = (Delegates.glNamedFramebufferReadBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferReadBuffer"), typeof(Delegates.glNamedFramebufferReadBuffer));
+				glNamedFramebufferRenderbuffer = (Delegates.glNamedFramebufferRenderbuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferRenderbuffer"), typeof(Delegates.glNamedFramebufferRenderbuffer));
+				glNamedFramebufferTexture = (Delegates.glNamedFramebufferTexture)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferTexture"), typeof(Delegates.glNamedFramebufferTexture));
+				glNamedFramebufferTextureLayer = (Delegates.glNamedFramebufferTextureLayer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedFramebufferTextureLayer"), typeof(Delegates.glNamedFramebufferTextureLayer));
+				glNamedRenderbufferStorage = (Delegates.glNamedRenderbufferStorage)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedRenderbufferStorage"), typeof(Delegates.glNamedRenderbufferStorage));
+				glNamedRenderbufferStorageMultisample = (Delegates.glNamedRenderbufferStorageMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glNamedRenderbufferStorageMultisample"), typeof(Delegates.glNamedRenderbufferStorageMultisample));
+				glReadnPixels = (Delegates.glReadnPixels)Marshal.GetDelegateForFunctionPointer(getProcAddress("glReadnPixels"), typeof(Delegates.glReadnPixels));
+				glTextureBarrier = (Delegates.glTextureBarrier)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBarrier"), typeof(Delegates.glTextureBarrier));
+				glTextureBuffer = (Delegates.glTextureBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBuffer"), typeof(Delegates.glTextureBuffer));
+				glTextureBufferRange = (Delegates.glTextureBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureBufferRange"), typeof(Delegates.glTextureBufferRange));
+				glTextureParameterf = (Delegates.glTextureParameterf)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterf"), typeof(Delegates.glTextureParameterf));
+				glTextureParameterfv = (Delegates.glTextureParameterfv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterfv"), typeof(Delegates.glTextureParameterfv));
+				glTextureParameteri = (Delegates.glTextureParameteri)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameteri"), typeof(Delegates.glTextureParameteri));
+				glTextureParameterIiv = (Delegates.glTextureParameterIiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterIiv"), typeof(Delegates.glTextureParameterIiv));
+				glTextureParameterIuiv = (Delegates.glTextureParameterIuiv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameterIuiv"), typeof(Delegates.glTextureParameterIuiv));
+				glTextureParameteriv = (Delegates.glTextureParameteriv)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureParameteriv"), typeof(Delegates.glTextureParameteriv));
+				glTextureStorage1D = (Delegates.glTextureStorage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage1D"), typeof(Delegates.glTextureStorage1D));
+				glTextureStorage2D = (Delegates.glTextureStorage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage2D"), typeof(Delegates.glTextureStorage2D));
+				glTextureStorage2DMultisample = (Delegates.glTextureStorage2DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage2DMultisample"), typeof(Delegates.glTextureStorage2DMultisample));
+				glTextureStorage3D = (Delegates.glTextureStorage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage3D"), typeof(Delegates.glTextureStorage3D));
+				glTextureStorage3DMultisample = (Delegates.glTextureStorage3DMultisample)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureStorage3DMultisample"), typeof(Delegates.glTextureStorage3DMultisample));
+				glTextureSubImage1D = (Delegates.glTextureSubImage1D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage1D"), typeof(Delegates.glTextureSubImage1D));
+				glTextureSubImage2D = (Delegates.glTextureSubImage2D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage2D"), typeof(Delegates.glTextureSubImage2D));
+				glTextureSubImage3D = (Delegates.glTextureSubImage3D)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTextureSubImage3D"), typeof(Delegates.glTextureSubImage3D));
+				glTransformFeedbackBufferBase = (Delegates.glTransformFeedbackBufferBase)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackBufferBase"), typeof(Delegates.glTransformFeedbackBufferBase));
+				glTransformFeedbackBufferRange = (Delegates.glTransformFeedbackBufferRange)Marshal.GetDelegateForFunctionPointer(getProcAddress("glTransformFeedbackBufferRange"), typeof(Delegates.glTransformFeedbackBufferRange));
+				glUnmapNamedBuffer = (Delegates.glUnmapNamedBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glUnmapNamedBuffer"), typeof(Delegates.glUnmapNamedBuffer));
+				glVertexArrayAttribBinding = (Delegates.glVertexArrayAttribBinding)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribBinding"), typeof(Delegates.glVertexArrayAttribBinding));
+				glVertexArrayAttribFormat = (Delegates.glVertexArrayAttribFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribFormat"), typeof(Delegates.glVertexArrayAttribFormat));
+				glVertexArrayAttribIFormat = (Delegates.glVertexArrayAttribIFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribIFormat"), typeof(Delegates.glVertexArrayAttribIFormat));
+				glVertexArrayAttribLFormat = (Delegates.glVertexArrayAttribLFormat)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayAttribLFormat"), typeof(Delegates.glVertexArrayAttribLFormat));
+				glVertexArrayBindingDivisor = (Delegates.glVertexArrayBindingDivisor)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayBindingDivisor"), typeof(Delegates.glVertexArrayBindingDivisor));
+				glVertexArrayElementBuffer = (Delegates.glVertexArrayElementBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayElementBuffer"), typeof(Delegates.glVertexArrayElementBuffer));
+				glVertexArrayVertexBuffer = (Delegates.glVertexArrayVertexBuffer)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayVertexBuffer"), typeof(Delegates.glVertexArrayVertexBuffer));
+				glVertexArrayVertexBuffers = (Delegates.glVertexArrayVertexBuffers)Marshal.GetDelegateForFunctionPointer(getProcAddress("glVertexArrayVertexBuffers"), typeof(Delegates.glVertexArrayVertexBuffers));
 			}
-		}
-
-		public static void glActiveShaderProgram(uint pipeline, uint program)
-		{
-			_glActiveShaderProgram(pipeline, program);
-		}
-
-		public static void glActiveTexture(uint texture)
-		{
-			_glActiveTexture(texture);
-		}
-
-		public static void glAttachShader(uint program, uint shader)
-		{
-			_glAttachShader(program, shader);
-		}
-
-		public static void glBeginConditionalRender(uint id, uint mode)
-		{
-			_glBeginConditionalRender(id, mode);
-		}
-
-		public static void glBeginQuery(uint target, uint id)
-		{
-			_glBeginQuery(target, id);
-		}
-
-		public static void glBeginQueryIndexed(uint target, uint index, uint id)
-		{
-			_glBeginQueryIndexed(target, index, id);
-		}
-
-		public static void glBeginTransformFeedback(uint primitiveMode)
-		{
-			_glBeginTransformFeedback(primitiveMode);
-		}
-
-		public static unsafe void glBindAttribLocation(uint program, uint index, string name)
-		{
-			_glBindAttribLocation(program, index, name);
-		}
-
-		public static void glBindBuffer(uint target, uint buffer)
-		{
-			_glBindBuffer(target, buffer);
-		}
-
-		public static void glBindBufferBase(uint target, uint index, uint buffer)
-		{
-			_glBindBufferBase(target, index, buffer);
-		}
-
-		public static void glBindBufferRange(uint target, uint index, uint buffer, int offset, int size)
-		{
-			_glBindBufferRange(target, index, buffer, offset, size);
-		}
-
-		public static unsafe void glBindBuffersBase(uint target, uint first, int count, uint[] buffers)
-		{
-			fixed (uint* buffersPtr = buffers)
-			{
-				_glBindBuffersBase(target, first, count, buffersPtr);
-			}
-		}
-
-		public static unsafe void glBindBuffersRange(uint target, uint first, int count, uint[] buffers, int[] offsets, int[] sizes)
-		{
-			fixed (uint* buffersPtr = buffers)
-			fixed (int* offsetsPtr = offsets)
-			fixed (int* sizesPtr = sizes)
-			{
-				_glBindBuffersRange(target, first, count, buffersPtr, offsetsPtr, sizesPtr);
-			}
-		}
-
-		public static unsafe void glBindFragDataLocation(uint program, uint color, string name)
-		{
-			_glBindFragDataLocation(program, color, name);
-		}
-
-		public static unsafe void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, string name)
-		{
-			_glBindFragDataLocationIndexed(program, colorNumber, index, name);
-		}
-
-		public static void glBindFramebuffer(uint target, uint framebuffer)
-		{
-			_glBindFramebuffer(target, framebuffer);
-		}
-
-		public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format)
-		{
-			_glBindImageTexture(unit, texture, level, layered, layer, access, format);
-		}
-
-		public static unsafe void glBindImageTextures(uint first, int count, uint[] textures)
-		{
-			fixed (uint* texturesPtr = textures)
-			{
-				_glBindImageTextures(first, count, texturesPtr);
-			}
-		}
-
-		public static void glBindProgramPipeline(uint pipeline)
-		{
-			_glBindProgramPipeline(pipeline);
-		}
-
-		public static void glBindRenderbuffer(uint target, uint renderbuffer)
-		{
-			_glBindRenderbuffer(target, renderbuffer);
-		}
-
-		public static void glBindSampler(uint unit, uint sampler)
-		{
-			_glBindSampler(unit, sampler);
-		}
-
-		public static unsafe void glBindSamplers(uint first, int count, uint[] samplers)
-		{
-			fixed (uint* samplersPtr = samplers)
-			{
-				_glBindSamplers(first, count, samplersPtr);
-			}
-		}
-
-		public static void glBindTexture(uint target, uint texture)
-		{
-			_glBindTexture(target, texture);
-		}
-
-		public static unsafe void glBindTextures(uint first, int count, uint[] textures)
-		{
-			fixed (uint* texturesPtr = textures)
-			{
-				_glBindTextures(first, count, texturesPtr);
-			}
-		}
-
-		public static void glBindTextureUnit(uint unit, uint texture)
-		{
-			_glBindTextureUnit(unit, texture);
-		}
-
-		public static void glBindTransformFeedback(uint target, uint id)
-		{
-			_glBindTransformFeedback(target, id);
-		}
-
-		public static void glBindVertexArray(uint array)
-		{
-			_glBindVertexArray(array);
-		}
-
-		public static void glBindVertexBuffer(uint bindingindex, uint buffer, int offset, int stride)
-		{
-			_glBindVertexBuffer(bindingindex, buffer, offset, stride);
-		}
-
-		public static unsafe void glBindVertexBuffers(uint first, int count, uint[] buffers, int[] offsets, int[] strides)
-		{
-			fixed (uint* buffersPtr = buffers)
-			fixed (int* offsetsPtr = offsets)
-			fixed (int* stridesPtr = strides)
-			{
-				_glBindVertexBuffers(first, count, buffersPtr, offsetsPtr, stridesPtr);
-			}
-		}
-
-		public static void glBlendColor(float red, float green, float blue, float alpha)
-		{
-			_glBlendColor(red, green, blue, alpha);
-		}
-
-		public static void glBlendEquation(uint mode)
-		{
-			_glBlendEquation(mode);
-		}
-
-		public static void glBlendEquationi(uint buf, uint mode)
-		{
-			_glBlendEquationi(buf, mode);
-		}
-
-		public static void glBlendEquationSeparate(uint modeRGB, uint modeAlpha)
-		{
-			_glBlendEquationSeparate(modeRGB, modeAlpha);
-		}
-
-		public static void glBlendEquationSeparatei(uint buf, uint modeRGB, uint modeAlpha)
-		{
-			_glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
-		}
-
-		public static void glBlendFunc(uint sfactor, uint dfactor)
-		{
-			_glBlendFunc(sfactor, dfactor);
-		}
-
-		public static void glBlendFunci(uint buf, uint src, uint dst)
-		{
-			_glBlendFunci(buf, src, dst);
-		}
-
-		public static void glBlendFuncSeparate(uint sfactorRGB, uint dfactorRGB, uint sfactorAlpha, uint dfactorAlpha)
-		{
-			_glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
-		}
-
-		public static void glBlendFuncSeparatei(uint buf, uint srcRGB, uint dstRGB, uint srcAlpha, uint dstAlpha)
-		{
-			_glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
-		}
-
-		public static void glBlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
-		{
-			_glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-		}
-
-		public static void glBlitNamedFramebuffer(uint readFramebuffer, uint drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
-		{
-			_glBlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-		}
-
-		public static unsafe void glBufferData(uint target, int size, IntPtr data, uint usage)
-		{
-			_glBufferData(target, size, data.ToPointer(), usage);
-		}
-
-        public static unsafe void glBufferData<T>(uint target, int size, T[] data, uint usage)
-            where T: struct
-        {
-            var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
-
-            try
-            {
-                _glBufferData(target, size, dataPtr.AddrOfPinnedObject().ToPointer(), usage);
-            }
-            finally
-            {
-                dataPtr.Free();
-            }
-        }
-
-        public static unsafe void glBufferStorage(uint target, int size, IntPtr data, uint flags)
-		{
-			_glBufferStorage(target, size, data.ToPointer(), flags);
-		}
-
-		public static unsafe void glBufferSubData(uint target, int offset, int size, IntPtr data)
-		{
-			_glBufferSubData(target, offset, size, data.ToPointer());
-		}
-
-        public static unsafe void glBufferSubData<T>(uint target, int offset, int size, T[] data)
-            where T : struct
-        {
-            var dataPtr = GCHandle.Alloc(data, GCHandleType.Pinned);
-
-            try
-            {
-                _glBufferSubData(target, offset, size, dataPtr.AddrOfPinnedObject().ToPointer());
-            }
-            finally
-            {
-                dataPtr.Free();
-            }
-        }
-
-        public static uint glCheckFramebufferStatus(uint target)
-		{
-			return _glCheckFramebufferStatus(target);
-		}
-
-		public static uint glCheckNamedFramebufferStatus(uint framebuffer, uint target)
-		{
-			return _glCheckNamedFramebufferStatus(framebuffer, target);
-		}
-
-		public static void glClampColor(uint target, uint clamp)
-		{
-			_glClampColor(target, clamp);
-		}
-
-		public static void glClear(uint mask)
-		{
-			_glClear(mask);
-		}
-
-		public static unsafe void glClearBufferData(uint target, uint internalformat, uint format, uint type, IntPtr data)
-		{
-			_glClearBufferData(target, internalformat, format, type, data.ToPointer());
-		}
-
-		public static void glClearBufferfi(uint buffer, int drawbuffer, float depth, int stencil)
-		{
-			_glClearBufferfi(buffer, drawbuffer, depth, stencil);
-		}
-
-		public static unsafe void glClearBufferfv(uint buffer, int drawbuffer, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glClearBufferfv(buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static unsafe void glClearBufferiv(uint buffer, int drawbuffer, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glClearBufferiv(buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static unsafe void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
-		{
-			_glClearBufferSubData(target, internalformat, offset, size, format, type, data.ToPointer());
-		}
-
-		public static unsafe void glClearBufferuiv(uint buffer, int drawbuffer, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glClearBufferuiv(buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static void glClearColor(float red, float green, float blue, float alpha)
-		{
-			_glClearColor(red, green, blue, alpha);
-		}
-
-		public static void glClearDepth(double depth)
-		{
-			_glClearDepth(depth);
-		}
-
-		public static void glClearDepthf(float d)
-		{
-			_glClearDepthf(d);
-		}
-
-		public static unsafe void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, IntPtr data)
-		{
-			_glClearNamedBufferData(buffer, internalformat, format, type, data.ToPointer());
-		}
-
-		public static unsafe void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, IntPtr data)
-		{
-			_glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data.ToPointer());
-		}
-
-		public static void glClearNamedFramebufferfi(uint framebuffer, uint buffer, int drawbuffer, float depth, int stencil)
-		{
-			_glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
-		}
-
-		public static unsafe void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static unsafe void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static unsafe void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, valuePtr);
-			}
-		}
-
-		public static void glClearStencil(int s)
-		{
-			_glClearStencil(s);
-		}
-
-		public static unsafe void glClearTexImage(uint texture, int level, uint format, uint type, IntPtr data)
-		{
-			_glClearTexImage(texture, level, format, type, data.ToPointer());
-		}
-
-		public static unsafe void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr data)
-		{
-			_glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data.ToPointer());
-		}
-
-		public static uint glClientWaitSync(IntPtr sync, uint flags, ulong timeout)
-		{
-			return _glClientWaitSync(sync, flags, timeout);
-		}
-
-		public static void glClipControl(uint origin, uint depth)
-		{
-			_glClipControl(origin, depth);
-		}
-
-		public static void glColorMask(bool red, bool green, bool blue, bool alpha)
-		{
-			_glColorMask(red, green, blue, alpha);
-		}
-
-		public static void glColorMaski(uint index, bool r, bool g, bool b, bool a)
-		{
-			_glColorMaski(index, r, g, b, a);
-		}
-
-		public static void glCompileShader(uint shader)
-		{
-			_glCompileShader(shader);
-		}
-
-		public static unsafe void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, IntPtr data)
-		{
-			_glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, IntPtr data)
-		{
-			_glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, IntPtr data)
-		{
-			_glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data.ToPointer());
-		}
-
-		public static unsafe void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, IntPtr data)
-		{
-			_glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data.ToPointer());
-		}
-
-		public static void glCopyBufferSubData(uint readTarget, uint writeTarget, int readOffset, int writeOffset, int size)
-		{
-			_glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
-		}
-
-		public static void glCopyImageSubData(uint srcName, uint srcTarget, int srcLevel, int srcX, int srcY, int srcZ, uint dstName, uint dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth)
-		{
-			_glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
-		}
-
-		public static void glCopyNamedBufferSubData(uint readBuffer, uint writeBuffer, int readOffset, int writeOffset, int size)
-		{
-			_glCopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size);
-		}
-
-		public static void glCopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border)
-		{
-			_glCopyTexImage1D(target, level, internalformat, x, y, width, border);
-		}
-
-		public static void glCopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border)
-		{
-			_glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
-		}
-
-		public static void glCopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width)
-		{
-			_glCopyTexSubImage1D(target, level, xoffset, x, y, width);
-		}
-
-		public static void glCopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height)
-		{
-			_glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
-		}
-
-		public static void glCopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
-		{
-			_glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
-		}
-
-		public static void glCopyTextureSubImage1D(uint texture, int level, int xoffset, int x, int y, int width)
-		{
-			_glCopyTextureSubImage1D(texture, level, xoffset, x, y, width);
-		}
-
-		public static void glCopyTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int x, int y, int width, int height)
-		{
-			_glCopyTextureSubImage2D(texture, level, xoffset, yoffset, x, y, width, height);
-		}
-
-		public static void glCopyTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
-		{
-			_glCopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
-		}
-
-		public static unsafe void glCreateBuffers(int n, uint[] buffers)
-		{
-			fixed (uint* buffersPtr = buffers)
-			{
-				_glCreateBuffers(n, buffersPtr);
-			}
-		}
-
-		public static unsafe void glCreateFramebuffers(int n, uint[] framebuffers)
-		{
-			fixed (uint* framebuffersPtr = framebuffers)
-			{
-				_glCreateFramebuffers(n, framebuffersPtr);
-			}
-		}
-
-		public static uint glCreateProgram()
-		{
-			return _glCreateProgram();
-		}
-
-		public static unsafe void glCreateProgramPipelines(int n, uint[] pipelines)
-		{
-			fixed (uint* pipelinesPtr = pipelines)
-			{
-				_glCreateProgramPipelines(n, pipelinesPtr);
-			}
-		}
-
-		public static unsafe void glCreateQueries(uint target, int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glCreateQueries(target, n, idsPtr);
-			}
-		}
-
-		public static unsafe void glCreateRenderbuffers(int n, uint[] renderbuffers)
-		{
-			fixed (uint* renderbuffersPtr = renderbuffers)
-			{
-				_glCreateRenderbuffers(n, renderbuffersPtr);
-			}
-		}
-
-		public static unsafe void glCreateSamplers(int n, uint[] samplers)
-		{
-			fixed (uint* samplersPtr = samplers)
-			{
-				_glCreateSamplers(n, samplersPtr);
-			}
-		}
-
-		public static uint glCreateShader(uint type)
-		{
-			return _glCreateShader(type);
-		}
-
-		public static unsafe uint glCreateShaderProgramv(uint type, int count, string[] strings)
-		{
-            return _glCreateShaderProgramv(type, count, strings);			
-		}
-
-		public static unsafe void glCreateTextures(uint target, int n, uint[] textures)
-		{
-			fixed (uint* texturesPtr = textures)
-			{
-				_glCreateTextures(target, n, texturesPtr);
-			}
-		}
-
-		public static unsafe void glCreateTransformFeedbacks(int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glCreateTransformFeedbacks(n, idsPtr);
-			}
-		}
-
-		public static unsafe void glCreateVertexArrays(int n, uint[] arrays)
-		{
-			fixed (uint* arraysPtr = arrays)
-			{
-				_glCreateVertexArrays(n, arraysPtr);
-			}
-		}
-
-		public static void glCullFace(uint mode)
-		{
-			_glCullFace(mode);
-		}
-
-		public static unsafe void glDebugMessageCallback(DebugProc callback, IntPtr userParam)
-		{
-			_glDebugMessageCallback(callback, userParam.ToPointer());
-		}
-
-		public static unsafe void glDebugMessageControl(uint source, uint type, uint severity, int count, uint[] ids, bool enabled)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glDebugMessageControl(source, type, severity, count, idsPtr, enabled);
-			}
-		}
-
-		public static unsafe void glDebugMessageInsert(uint source, uint type, uint id, uint severity, int length, string buf)
-		{
-			_glDebugMessageInsert(source, type, id, severity, length, buf);
-		}
-
-		public static unsafe void glDeleteBuffers(int n, uint[] buffers)
-		{
-			fixed (uint* buffersPtr = buffers)
-			{
-				_glDeleteBuffers(n, buffersPtr);
-			}
-		}
-
-		public static void glDeleteBuffer(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteBuffers(1, temp);
-		}
-
-		public static unsafe void glDeleteFramebuffers(int n, uint[] framebuffers)
-		{
-			fixed (uint* framebuffersPtr = framebuffers)
-			{
-				_glDeleteFramebuffers(n, framebuffersPtr);
-			}
-		}
-
-		public static void glDeleteFramebuffer(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteFramebuffers(1, temp);
-		}
-
-		public static void glDeleteProgram(uint program)
-		{
-			_glDeleteProgram(program);
-		}
-
-		public static unsafe void glDeleteProgramPipelines(int n, uint[] pipelines)
-		{
-			fixed (uint* pipelinesPtr = pipelines)
-			{
-				_glDeleteProgramPipelines(n, pipelinesPtr);
-			}
-		}
-
-		public static void glDeleteProgramPipeline(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteProgramPipelines(1, temp);
-		}
-
-		public static unsafe void glDeleteQueries(int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glDeleteQueries(n, idsPtr);
-			}
-		}
-
-		public static void glDeleteQuerie(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteQueries(1, temp);
-		}
-
-		public static unsafe void glDeleteRenderbuffers(int n, uint[] renderbuffers)
-		{
-			fixed (uint* renderbuffersPtr = renderbuffers)
-			{
-				_glDeleteRenderbuffers(n, renderbuffersPtr);
-			}
-		}
-
-		public static void glDeleteRenderbuffer(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteRenderbuffers(1, temp);
-		}
-
-		public static unsafe void glDeleteSamplers(int count, uint[] samplers)
-		{
-			fixed (uint* samplersPtr = samplers)
-			{
-				_glDeleteSamplers(count, samplersPtr);
-			}
-		}
-
-		public static void glDeleteSampler(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteSamplers(1, temp);
-		}
-
-		public static void glDeleteShader(uint shader)
-		{
-			_glDeleteShader(shader);
-		}
-
-		public static void glDeleteSync(IntPtr sync)
-		{
-			_glDeleteSync(sync);
-		}
-
-		public static unsafe void glDeleteTextures(int n, uint[] textures)
-		{
-			fixed (uint* texturesPtr = textures)
-			{
-				_glDeleteTextures(n, texturesPtr);
-			}
-		}
-
-		public static void glDeleteTexture(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteTextures(1, temp);
-		}
-
-		public static unsafe void glDeleteTransformFeedbacks(int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glDeleteTransformFeedbacks(n, idsPtr);
-			}
-		}
-
-		public static void glDeleteTransformFeedback(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteTransformFeedbacks(1, temp);
-		}
-
-		public static unsafe void glDeleteVertexArrays(int n, uint[] arrays)
-		{
-			fixed (uint* arraysPtr = arrays)
-			{
-				_glDeleteVertexArrays(n, arraysPtr);
-			}
-		}
-
-		public static void glDeleteVertexArray(uint handle)
-		{
-			var temp = new uint[] { handle };
-			glDeleteVertexArrays(1, temp);
-		}
-
-		public static void glDepthFunc(uint func)
-		{
-			_glDepthFunc(func);
-		}
-
-		public static void glDepthMask(bool flag)
-		{
-			_glDepthMask(flag);
-		}
-
-		public static void glDepthRange(double near, double far)
-		{
-			_glDepthRange(near, far);
-		}
-
-		public static unsafe void glDepthRangeArrayv(uint first, int count, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glDepthRangeArrayv(first, count, vPtr);
-			}
-		}
-
-		public static void glDepthRangef(float n, float f)
-		{
-			_glDepthRangef(n, f);
-		}
-
-		public static void glDepthRangeIndexed(uint index, double n, double f)
-		{
-			_glDepthRangeIndexed(index, n, f);
-		}
-
-		public static void glDetachShader(uint program, uint shader)
-		{
-			_glDetachShader(program, shader);
-		}
-
-		public static void glDisable(uint cap)
-		{
-			_glDisable(cap);
-		}
-
-		public static void glDisablei(uint target, uint index)
-		{
-			_glDisablei(target, index);
-		}
-
-		public static void glDisableVertexArrayAttrib(uint vaobj, uint index)
-		{
-			_glDisableVertexArrayAttrib(vaobj, index);
-		}
-
-		public static void glDisableVertexAttribArray(uint index)
-		{
-			_glDisableVertexAttribArray(index);
-		}
-
-		public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z)
-		{
-			_glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
-		}
-
-		public static void glDispatchComputeIndirect(int indirect)
-		{
-			_glDispatchComputeIndirect(indirect);
-		}
-
-		public static void glDrawArrays(uint mode, int first, int count)
-		{
-			_glDrawArrays(mode, first, count);
-		}
-
-		public static unsafe void glDrawArraysIndirect(uint mode, IntPtr indirect)
-		{
-			_glDrawArraysIndirect(mode, indirect.ToPointer());
-		}
-
-		public static void glDrawArraysInstanced(uint mode, int first, int count, int instancecount)
-		{
-			_glDrawArraysInstanced(mode, first, count, instancecount);
-		}
-
-		public static void glDrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance)
-		{
-			_glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
-		}
-
-		public static void glDrawBuffer(uint buf)
-		{
-			_glDrawBuffer(buf);
-		}
-
-		public static unsafe void glDrawBuffers(int n, uint[] bufs)
-		{
-			fixed (uint* bufsPtr = bufs)
-			{
-				_glDrawBuffers(n, bufsPtr);
-			}
-		}
-
-		public static unsafe void glDrawElements(uint mode, int count, uint type, IntPtr indices)
-		{
-			_glDrawElements(mode, count, type, indices.ToPointer());
-		}
-
-		public static unsafe void glDrawElementsBaseVertex(uint mode, int count, uint type, IntPtr indices, int basevertex)
-		{
-			_glDrawElementsBaseVertex(mode, count, type, indices.ToPointer(), basevertex);
-		}
-
-		public static unsafe void glDrawElementsIndirect(uint mode, uint type, IntPtr indirect)
-		{
-			_glDrawElementsIndirect(mode, type, indirect.ToPointer());
-		}
-
-		public static unsafe void glDrawElementsInstanced(uint mode, int count, uint type, IntPtr indices, int instancecount)
-		{
-			_glDrawElementsInstanced(mode, count, type, indices.ToPointer(), instancecount);
-		}
-
-		public static unsafe void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, uint baseinstance)
-		{
-			_glDrawElementsInstancedBaseInstance(mode, count, type, indices.ToPointer(), instancecount, baseinstance);
-		}
-
-		public static unsafe void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex)
-		{
-			_glDrawElementsInstancedBaseVertex(mode, count, type, indices.ToPointer(), instancecount, basevertex);
-		}
-
-		public static unsafe void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, IntPtr indices, int instancecount, int basevertex, uint baseinstance)
-		{
-			_glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices.ToPointer(), instancecount, basevertex, baseinstance);
-		}
-
-		public static unsafe void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, IntPtr indices)
-		{
-			_glDrawRangeElements(mode, start, end, count, type, indices.ToPointer());
-		}
-
-		public static unsafe void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, IntPtr indices, int basevertex)
-		{
-			_glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices.ToPointer(), basevertex);
-		}
-
-		public static void glDrawTransformFeedback(uint mode, uint id)
-		{
-			_glDrawTransformFeedback(mode, id);
-		}
-
-		public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount)
-		{
-			_glDrawTransformFeedbackInstanced(mode, id, instancecount);
-		}
-
-		public static void glDrawTransformFeedbackStream(uint mode, uint id, uint stream)
-		{
-			_glDrawTransformFeedbackStream(mode, id, stream);
-		}
-
-		public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount)
-		{
-			_glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
-		}
-
-		public static void glEnable(uint cap)
-		{
-			_glEnable(cap);
-		}
-
-		public static void glEnablei(uint target, uint index)
-		{
-			_glEnablei(target, index);
-		}
-
-		public static void glEnableVertexArrayAttrib(uint vaobj, uint index)
-		{
-			_glEnableVertexArrayAttrib(vaobj, index);
-		}
-
-		public static void glEnableVertexAttribArray(uint index)
-		{
-			_glEnableVertexAttribArray(index);
-		}
-
-		public static void glEndConditionalRender()
-		{
-			_glEndConditionalRender();
-		}
-
-		public static void glEndQuery(uint target)
-		{
-			_glEndQuery(target);
-		}
-
-		public static void glEndQueryIndexed(uint target, uint index)
-		{
-			_glEndQueryIndexed(target, index);
-		}
-
-		public static void glEndTransformFeedback()
-		{
-			_glEndTransformFeedback();
-		}
-
-		public static IntPtr glFenceSync(uint condition, uint flags)
-		{
-			return _glFenceSync(condition, flags);
-		}
-
-		public static void glFinish()
-		{
-			_glFinish();
-		}
-
-		public static void glFlush()
-		{
-			_glFlush();
-		}
-
-		public static void glFlushMappedBufferRange(uint target, int offset, int length)
-		{
-			_glFlushMappedBufferRange(target, offset, length);
-		}
-
-		public static void glFlushMappedNamedBufferRange(uint buffer, int offset, int length)
-		{
-			_glFlushMappedNamedBufferRange(buffer, offset, length);
-		}
-
-		public static void glFramebufferParameteri(uint target, uint pname, int param)
-		{
-			_glFramebufferParameteri(target, pname, param);
-		}
-
-		public static void glFramebufferRenderbuffer(uint target, uint attachment, uint renderbuffertarget, uint renderbuffer)
-		{
-			_glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
-		}
-
-		public static void glFramebufferTexture(uint target, uint attachment, uint texture, int level)
-		{
-			_glFramebufferTexture(target, attachment, texture, level);
-		}
-
-		public static void glFramebufferTexture1D(uint target, uint attachment, uint textarget, uint texture, int level)
-		{
-			_glFramebufferTexture1D(target, attachment, textarget, texture, level);
-		}
-
-		public static void glFramebufferTexture2D(uint target, uint attachment, uint textarget, uint texture, int level)
-		{
-			_glFramebufferTexture2D(target, attachment, textarget, texture, level);
-		}
-
-		public static void glFramebufferTexture3D(uint target, uint attachment, uint textarget, uint texture, int level, int zoffset)
-		{
-			_glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
-		}
-
-		public static void glFramebufferTextureLayer(uint target, uint attachment, uint texture, int level, int layer)
-		{
-			_glFramebufferTextureLayer(target, attachment, texture, level, layer);
-		}
-
-		public static void glFrontFace(uint mode)
-		{
-			_glFrontFace(mode);
-		}
-
-		public static unsafe void glGenBuffers(int n, uint[] buffers)
-		{
-			fixed (uint* buffersPtr = buffers)
-			{
-				_glGenBuffers(n, buffersPtr);
-			}
-		}
-
-		public static uint glGenBuffer()
-		{
-			var temp = new uint[1];
-			glGenBuffers(1, temp);
-			return temp[0];
-		}
-
-		public static void glGenerateMipmap(uint target)
-		{
-			_glGenerateMipmap(target);
-		}
-
-		public static void glGenerateTextureMipmap(uint texture)
-		{
-			_glGenerateTextureMipmap(texture);
-		}
-
-		public static unsafe void glGenFramebuffers(int n, uint[] framebuffers)
-		{
-			fixed (uint* framebuffersPtr = framebuffers)
-			{
-				_glGenFramebuffers(n, framebuffersPtr);
-			}
-		}
-
-		public static uint glGenFramebuffer()
-		{
-			var temp = new uint[1];
-			glGenFramebuffers(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenProgramPipelines(int n, uint[] pipelines)
-		{
-			fixed (uint* pipelinesPtr = pipelines)
-			{
-				_glGenProgramPipelines(n, pipelinesPtr);
-			}
-		}
-
-		public static uint glGenProgramPipeline()
-		{
-			var temp = new uint[1];
-			glGenProgramPipelines(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenQueries(int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glGenQueries(n, idsPtr);
-			}
-		}
-
-		public static uint glGenQuerie()
-		{
-			var temp = new uint[1];
-			glGenQueries(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenRenderbuffers(int n, uint[] renderbuffers)
-		{
-			fixed (uint* renderbuffersPtr = renderbuffers)
-			{
-				_glGenRenderbuffers(n, renderbuffersPtr);
-			}
-		}
-
-		public static uint glGenRenderbuffer()
-		{
-			var temp = new uint[1];
-			glGenRenderbuffers(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenSamplers(int count, uint[] samplers)
-		{
-			fixed (uint* samplersPtr = samplers)
-			{
-				_glGenSamplers(count, samplersPtr);
-			}
-		}
-
-		public static uint glGenSampler()
-		{
-			var temp = new uint[1];
-			glGenSamplers(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenTextures(int n, uint[] textures)
-		{
-			fixed (uint* texturesPtr = textures)
-			{
-				_glGenTextures(n, texturesPtr);
-			}
-		}
-
-		public static uint glGenTexture()
-		{
-			var temp = new uint[1];
-			glGenTextures(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenTransformFeedbacks(int n, uint[] ids)
-		{
-			fixed (uint* idsPtr = ids)
-			{
-				_glGenTransformFeedbacks(n, idsPtr);
-			}
-		}
-
-		public static uint glGenTransformFeedback()
-		{
-			var temp = new uint[1];
-			glGenTransformFeedbacks(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGenVertexArrays(int n, uint[] arrays)
-		{
-			fixed (uint* arraysPtr = arrays)
-			{
-				_glGenVertexArrays(n, arraysPtr);
-			}
-		}
-
-		public static uint glGenVertexArray()
-		{
-			var temp = new uint[1];
-			glGenVertexArrays(1, temp);
-			return temp[0];
-		}
-
-		public static unsafe void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetActiveAttrib(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
-		{
-			fixed (int* lengthPtr = length)
-			fixed (int* sizePtr = size)
-			fixed (uint* typePtr = type)
-			{
-				_glGetActiveAttrib(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
-			}
-		}
-
-		public static unsafe void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetActiveSubroutineName(program, shadertype, index, bufsize, lengthPtr, name);
-			}
-		}
-
-		public static unsafe void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int[] values)
-		{
-			fixed (int* valuesPtr = values)
-			{
-				_glGetActiveSubroutineUniformiv(program, shadertype, index, pname, valuesPtr);
-			}
-		}
-
-		public static unsafe void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int[] length, StringBuilder name)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, lengthPtr, name);
-			}
-		}
-
-		public static unsafe void glGetActiveUniform(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
-		{
-			fixed (int* lengthPtr = length)
-			fixed (int* sizePtr = size)
-			fixed (uint* typePtr = type)
-			{
-				_glGetActiveUniform(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
-			}
-		}
-
-		public static unsafe void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int[] length, StringBuilder uniformBlockName)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, lengthPtr, uniformBlockName);
-			}
-		}
-
-		public static unsafe void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int[] length, StringBuilder uniformName)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetActiveUniformName(program, uniformIndex, bufSize, lengthPtr, uniformName);
-			}
-		}
-
-		public static unsafe void glGetActiveUniformsiv(uint program, int uniformCount, uint[] uniformIndices, uint pname, int[] @params)
-		{
-			fixed (uint* uniformIndicesPtr = uniformIndices)
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetActiveUniformsiv(program, uniformCount, uniformIndicesPtr, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetAttachedShaders(uint program, int maxCount, int[] count, uint[] shaders)
-		{
-			fixed (int* countPtr = count)
-			fixed (uint* shadersPtr = shaders)
-			{
-				_glGetAttachedShaders(program, maxCount, countPtr, shadersPtr);
-			}
-		}
-
-		public static unsafe int glGetAttribLocation(uint program, string name)
-		{
-			return _glGetAttribLocation(program, name);
-		}
-
-		public static unsafe void glGetBooleani_v(uint target, uint index, bool[] data)
-		{
-			fixed (bool* dataPtr = data)
-			{
-				_glGetBooleani_v(target, index, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetBooleanv(uint pname, bool[] data)
-		{
-			fixed (bool* dataPtr = data)
-			{
-				_glGetBooleanv(pname, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetBufferParameteri64v(uint target, uint pname, long[] @params)
-		{
-			fixed (long* @paramsPtr = @params)
-			{
-				_glGetBufferParameteri64v(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetBufferParameteriv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetBufferParameteriv(target, pname, @paramsPtr);
-			}
-		}
-
-		//public static unsafe void glGetBufferPointerv(uint target, uint pname, IntPtr[] @params)
-		//{
-		//	fixed (void** @paramsPtr = @params)
-		//	{
-		//		_glGetBufferPointerv(target, pname, @paramsPtr);
-		//	}
-		//}
-
-		public static unsafe void glGetBufferSubData(uint target, int offset, int size, IntPtr data)
-		{
-			_glGetBufferSubData(target, offset, size, data.ToPointer());
-		}
-
-		public static unsafe void glGetCompressedTexImage(uint target, int level, IntPtr img)
-		{
-			_glGetCompressedTexImage(target, level, img.ToPointer());
-		}
-
-		public static unsafe void glGetCompressedTextureImage(uint texture, int level, int bufSize, IntPtr pixels)
-		{
-			_glGetCompressedTextureImage(texture, level, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, IntPtr pixels)
-		{
-			_glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe uint glGetDebugMessageLog(uint count, int bufSize, uint[] sources, uint[] types, uint[] ids, uint[] severities, int[] lengths, StringBuilder messageLog)
-		{
-			fixed (uint* sourcesPtr = sources)
-			fixed (uint* typesPtr = types)
-			fixed (uint* idsPtr = ids)
-			fixed (uint* severitiesPtr = severities)
-			fixed (int* lengthsPtr = lengths)
-			{
-				return _glGetDebugMessageLog(count, bufSize, sourcesPtr, typesPtr, idsPtr, severitiesPtr, lengthsPtr, messageLog);
-			}
-		}
-
-		public static unsafe void glGetDoublei_v(uint target, uint index, double[] data)
-		{
-			fixed (double* dataPtr = data)
-			{
-				_glGetDoublei_v(target, index, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetDoublev(uint pname, double[] data)
-		{
-			fixed (double* dataPtr = data)
-			{
-				_glGetDoublev(pname, dataPtr);
-			}
-		}
-
-		public static uint glGetError()
-		{
-			return _glGetError();
-		}
-
-		public static unsafe void glGetFloati_v(uint target, uint index, float[] data)
-		{
-			fixed (float* dataPtr = data)
-			{
-				_glGetFloati_v(target, index, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetFloatv(uint pname, float[] data)
-		{
-			fixed (float* dataPtr = data)
-			{
-				_glGetFloatv(pname, dataPtr);
-			}
-		}
-
-		public static unsafe int glGetFragDataIndex(uint program, string name)
-		{
-			return _glGetFragDataIndex(program, name);
-		}
-
-		public static unsafe int glGetFragDataLocation(uint program, string name)
-		{
-			return _glGetFragDataLocation(program, name);
-		}
-
-		public static unsafe void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetFramebufferAttachmentParameteriv(target, attachment, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetFramebufferParameteriv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetFramebufferParameteriv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static uint glGetGraphicsResetStatus()
-		{
-			return _glGetGraphicsResetStatus();
-		}
-
-		public static unsafe void glGetInteger64i_v(uint target, uint index, long[] data)
-		{
-			fixed (long* dataPtr = data)
-			{
-				_glGetInteger64i_v(target, index, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetInteger64v(uint pname, long[] data)
-		{
-			fixed (long* dataPtr = data)
-			{
-				_glGetInteger64v(pname, dataPtr);
-			}
-		}
-
-        public static unsafe void glGetInteger64v(uint pname, ref long data)
-        {
-            fixed (long* dataPtr = &data)
-            {
-                _glGetInteger64v(pname, dataPtr);
-            }
-        }
-
-        public static unsafe void glGetIntegeri_v(uint target, uint index, int[] data)
-		{
-			fixed (int* dataPtr = data)
-			{
-				_glGetIntegeri_v(target, index, dataPtr);
-			}
-		}
-
-		public static unsafe void glGetIntegerv(uint pname, int[] data)
-		{
-			fixed (int* dataPtr = data)
-			{
-				_glGetIntegerv(pname, dataPtr);
-			}
-		}
-
-        public static unsafe void glGetIntegerv(uint pname, ref int data)
-        {
-            fixed (int* dataPtr = &data)
-            {
-                _glGetIntegerv(pname, dataPtr);
-            }
-        }
-
-        public static unsafe void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long[] @params)
-		{
-			fixed (long* @paramsPtr = @params)
-			{
-				_glGetInternalformati64v(target, internalformat, pname, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetInternalformativ(target, internalformat, pname, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetMultisamplefv(uint pname, uint index, float[] val)
-		{
-			fixed (float* valPtr = val)
-			{
-				_glGetMultisamplefv(pname, index, valPtr);
-			}
-		}
-
-		public static unsafe void glGetNamedBufferParameteri64v(uint buffer, uint pname, long[] @params)
-		{
-			fixed (long* @paramsPtr = @params)
-			{
-				_glGetNamedBufferParameteri64v(buffer, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetNamedBufferParameteriv(uint buffer, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetNamedBufferParameteriv(buffer, pname, @paramsPtr);
-			}
-		}
-
-		//public static unsafe void glGetNamedBufferPointerv(uint buffer, uint pname, IntPtr[] @params)
-		//{
-		//	fixed (void** @paramsPtr = @params)
-		//	{
-		//		_glGetNamedBufferPointerv(buffer, pname, @paramsPtr);
-		//	}
-		//}
-
-		public static unsafe void glGetNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
-		{
-			_glGetNamedBufferSubData(buffer, offset, size, data.ToPointer());
-		}
-
-		public static unsafe void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glGetNamedFramebufferParameteriv(framebuffer, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetNamedRenderbufferParameteriv(renderbuffer, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetnCompressedTexImage(uint target, int lod, int bufSize, IntPtr pixels)
-		{
-			_glGetnCompressedTexImage(target, lod, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, IntPtr pixels)
-		{
-			_glGetnTexImage(target, level, format, type, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetnUniformdv(uint program, int location, int bufSize, double[] @params)
-		{
-			fixed (double* @paramsPtr = @params)
-			{
-				_glGetnUniformdv(program, location, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetnUniformfv(uint program, int location, int bufSize, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetnUniformfv(program, location, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetnUniformiv(uint program, int location, int bufSize, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetnUniformiv(program, location, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetnUniformuiv(uint program, int location, int bufSize, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetnUniformuiv(program, location, bufSize, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetObjectLabel(uint identifier, uint name, int bufSize, int[] length, StringBuilder label)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetObjectLabel(identifier, name, bufSize, lengthPtr, label);
-			}
-		}
-
-		public static unsafe void glGetObjectPtrLabel(IntPtr ptr, int bufSize, int[] length, StringBuilder label)
-		{
-			fixed (int* lengthPtr = length)
-			{
-				_glGetObjectPtrLabel(ptr.ToPointer(), bufSize, lengthPtr, label);
-			}
-		}
-
-		//public static unsafe void glGetPointerv(uint pname, IntPtr[] @params)
-		//{
-		//	fixed (void** @paramsPtr = @params)
-		//	{
-		//		_glGetPointerv(pname, @paramsPtr);
-		//	}
-		//}
-
-		public static unsafe void glGetProgramBinary(uint program, int bufSize, int[] length, uint[] binaryFormat, IntPtr binary)
-		{
-			fixed (int* lengthPtr = length)
-			fixed (uint* binaryFormatPtr = binaryFormat)
-			{
-				_glGetProgramBinary(program, bufSize, lengthPtr, binaryFormatPtr, binary.ToPointer());
-			}
-		}
-
-		public static void glGetProgramInfoLog(uint program, int bufSize, out int length, StringBuilder infoLog)
-		{
-			_glGetProgramInfoLog(program, bufSize, out length, infoLog);			
-		}
-
-		public static unsafe void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetProgramInterfaceiv(program, programInterface, pname, @paramsPtr);
-			}
-		}
-
-		public static void glGetProgramiv(uint program, uint pname, out int @params)
-		{
-			_glGetProgramiv(program, pname, out @params);
-		}
-
-		public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, out int length, StringBuilder infoLog)
-		{
-			
-			_glGetProgramPipelineInfoLog(pipeline, bufSize, out length, infoLog);
-		}
-
-		public static unsafe void glGetProgramPipelineiv(uint pipeline, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetProgramPipelineiv(pipeline, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe uint glGetProgramResourceIndex(uint program, uint programInterface, string name)
-		{
-			return _glGetProgramResourceIndex(program, programInterface, name);
-		}
-
-		public static unsafe void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint[] props, int bufSize, int[] length, int[] @params)
-		{
-			fixed (uint* propsPtr = props)
-			fixed (int* lengthPtr = length)
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetProgramResourceiv(program, programInterface, index, propCount, propsPtr, bufSize, lengthPtr, @paramsPtr);
-			}
-		}
-
-		public static unsafe int glGetProgramResourceLocation(uint program, uint programInterface, string name)
-		{
-			return _glGetProgramResourceLocation(program, programInterface, name);
-		}
-
-		public static unsafe int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name)
-		{
-			return _glGetProgramResourceLocationIndex(program, programInterface, name);
-		}
-
-		public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, out int length, StringBuilder name)
-		{
-			_glGetProgramResourceName(program, programInterface, index, bufSize, out length, name);
-		}
-
-		public static unsafe void glGetProgramStageiv(uint program, uint shadertype, uint pname, int[] values)
-		{
-			fixed (int* valuesPtr = values)
-			{
-				_glGetProgramStageiv(program, shadertype, pname, valuesPtr);
-			}
-		}
-
-		public static void glGetQueryBufferObjecti64v(uint id, uint buffer, uint pname, int offset)
-		{
-			_glGetQueryBufferObjecti64v(id, buffer, pname, offset);
-		}
-
-		public static void glGetQueryBufferObjectiv(uint id, uint buffer, uint pname, int offset)
-		{
-			_glGetQueryBufferObjectiv(id, buffer, pname, offset);
-		}
-
-		public static void glGetQueryBufferObjectui64v(uint id, uint buffer, uint pname, int offset)
-		{
-			_glGetQueryBufferObjectui64v(id, buffer, pname, offset);
-		}
-
-		public static void glGetQueryBufferObjectuiv(uint id, uint buffer, uint pname, int offset)
-		{
-			_glGetQueryBufferObjectuiv(id, buffer, pname, offset);
-		}
-
-		public static unsafe void glGetQueryIndexediv(uint target, uint index, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetQueryIndexediv(target, index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetQueryiv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetQueryiv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetQueryObjecti64v(uint id, uint pname, long[] @params)
-		{
-			fixed (long* @paramsPtr = @params)
-			{
-				_glGetQueryObjecti64v(id, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetQueryObjectiv(uint id, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetQueryObjectiv(id, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetQueryObjectui64v(uint id, uint pname, ulong[] @params)
-		{
-			fixed (ulong* @paramsPtr = @params)
-			{
-				_glGetQueryObjectui64v(id, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetQueryObjectuiv(uint id, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetQueryObjectuiv(id, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetRenderbufferParameteriv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetRenderbufferParameteriv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetSamplerParameterfv(uint sampler, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetSamplerParameterfv(sampler, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetSamplerParameterIiv(uint sampler, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetSamplerParameterIiv(sampler, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetSamplerParameterIuiv(uint sampler, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetSamplerParameterIuiv(sampler, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetSamplerParameteriv(uint sampler, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetSamplerParameteriv(sampler, pname, @paramsPtr);
-			}
-		}
-
-		public static void glGetShaderInfoLog(uint shader, int bufSize, out int length, StringBuilder infoLog)
-		{
-			_glGetShaderInfoLog(shader, bufSize, out length, infoLog);
-		}
-
-		public static unsafe void glGetShaderiv(uint shader, uint pname, out int @params)
-		{
-			_glGetShaderiv(shader, pname, out @params);			
-		}
-
-		public static unsafe void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int[] range, int[] precision)
-		{
-			fixed (int* rangePtr = range)
-			fixed (int* precisionPtr = precision)
-			{
-				_glGetShaderPrecisionFormat(shadertype, precisiontype, rangePtr, precisionPtr);
-			}
-		}
-
-		public static void glGetShaderSource(uint shader, int bufSize, out int length, StringBuilder source)
-		{
-			_glGetShaderSource(shader, bufSize, out length, source);
-		}
-
-		public static IntPtr glGetString(uint name)
-		{
-			return _glGetString(name);
-		}
-
-		public static IntPtr glGetStringi(uint name, uint index)
-		{
-			return _glGetStringi(name, index);
-		}
-
-		public static unsafe uint glGetSubroutineIndex(uint program, uint shadertype, string name)
-		{
-			return _glGetSubroutineIndex(program, shadertype, name);
-		}
-
-		public static unsafe int glGetSubroutineUniformLocation(uint program, uint shadertype, string name)
-		{
-			return _glGetSubroutineUniformLocation(program, shadertype, name);
-		}
-
-		public static unsafe void glGetSynciv(IntPtr sync, uint pname, int bufSize, int[] length, int[] values)
-		{
-			fixed (int* lengthPtr = length)
-			fixed (int* valuesPtr = values)
-			{
-				_glGetSynciv(sync, pname, bufSize, lengthPtr, valuesPtr);
-			}
-		}
-
-		public static unsafe void glGetTexImage(uint target, int level, uint format, uint type, IntPtr pixels)
-		{
-			_glGetTexImage(target, level, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetTexLevelParameterfv(target, level, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTexLevelParameteriv(target, level, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTexParameterfv(uint target, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetTexParameterfv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTexParameterIiv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTexParameterIiv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTexParameterIuiv(uint target, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetTexParameterIuiv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTexParameteriv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTexParameteriv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, IntPtr pixels)
-		{
-			_glGetTextureImage(texture, level, format, type, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetTextureLevelParameterfv(texture, level, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTextureLevelParameteriv(texture, level, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureParameterfv(uint texture, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetTextureParameterfv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureParameterIiv(uint texture, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTextureParameterIiv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureParameterIuiv(uint texture, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetTextureParameterIuiv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureParameteriv(uint texture, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetTextureParameteriv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, IntPtr pixels)
-		{
-			_glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels.ToPointer());
-		}
-
-		public static unsafe void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glGetTransformFeedbacki_v(xfb, pname, index, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long[] param)
-		{
-			fixed (long* paramPtr = param)
-			{
-				_glGetTransformFeedbacki64_v(xfb, pname, index, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetTransformFeedbackiv(uint xfb, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glGetTransformFeedbackiv(xfb, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int[] length, int[] size, uint[] type, StringBuilder name)
-		{
-			fixed (int* lengthPtr = length)
-			fixed (int* sizePtr = size)
-			fixed (uint* typePtr = type)
-			{
-				_glGetTransformFeedbackVarying(program, index, bufSize, lengthPtr, sizePtr, typePtr, name);
-			}
-		}
-
-		public static unsafe uint glGetUniformBlockIndex(uint program, string uniformBlockName)
-		{
-			return _glGetUniformBlockIndex(program, uniformBlockName);
-		}
-
-		public static unsafe void glGetUniformdv(uint program, int location, double[] @params)
-		{
-			fixed (double* @paramsPtr = @params)
-			{
-				_glGetUniformdv(program, location, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetUniformfv(uint program, int location, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetUniformfv(program, location, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint[] uniformIndices)
-		{
-			fixed (uint* uniformIndicesPtr = uniformIndices)
-			{
-				_glGetUniformIndices(program, uniformCount, uniformNames, uniformIndicesPtr);
-			}
-		}
-
-		public static unsafe void glGetUniformiv(uint program, int location, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetUniformiv(program, location, @paramsPtr);
-			}
-		}
-
-		public static unsafe int glGetUniformLocation(uint program, string name)
-		{
-			return _glGetUniformLocation(program, name);
-		}
-
-		public static unsafe void glGetUniformSubroutineuiv(uint shadertype, int location, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetUniformSubroutineuiv(shadertype, location, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetUniformuiv(uint program, int location, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetUniformuiv(program, location, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long[] param)
-		{
-			fixed (long* paramPtr = param)
-			{
-				_glGetVertexArrayIndexed64iv(vaobj, index, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glGetVertexArrayIndexediv(vaobj, index, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexArrayiv(uint vaobj, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glGetVertexArrayiv(vaobj, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribdv(uint index, uint pname, double[] @params)
-		{
-			fixed (double* @paramsPtr = @params)
-			{
-				_glGetVertexAttribdv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribfv(uint index, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glGetVertexAttribfv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribIiv(uint index, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetVertexAttribIiv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribIuiv(uint index, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glGetVertexAttribIuiv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribiv(uint index, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glGetVertexAttribiv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribLdv(uint index, uint pname, double[] @params)
-		{
-			fixed (double* @paramsPtr = @params)
-			{
-				_glGetVertexAttribLdv(index, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glGetVertexAttribPointerv(uint index, uint pname, IntPtr pointer)
-		{
-			_glGetVertexAttribPointerv(index, pname, (void**)pointer.ToPointer());			
-		}
-
-		public static void glHint(uint target, uint mode)
-		{
-			_glHint(target, mode);
-		}
-
-		public static void glInvalidateBufferData(uint buffer)
-		{
-			_glInvalidateBufferData(buffer);
-		}
-
-		public static void glInvalidateBufferSubData(uint buffer, int offset, int length)
-		{
-			_glInvalidateBufferSubData(buffer, offset, length);
-		}
-
-		public static unsafe void glInvalidateFramebuffer(uint target, int numAttachments, uint[] attachments)
-		{
-			fixed (uint* attachmentsPtr = attachments)
-			{
-				_glInvalidateFramebuffer(target, numAttachments, attachmentsPtr);
-			}
-		}
-
-		public static unsafe void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint[] attachments)
-		{
-			fixed (uint* attachmentsPtr = attachments)
-			{
-				_glInvalidateNamedFramebufferData(framebuffer, numAttachments, attachmentsPtr);
-			}
-		}
-
-		public static unsafe void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint[] attachments, int x, int y, int width, int height)
-		{
-			fixed (uint* attachmentsPtr = attachments)
-			{
-				_glInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachmentsPtr, x, y, width, height);
-			}
-		}
-
-		public static unsafe void glInvalidateSubFramebuffer(uint target, int numAttachments, uint[] attachments, int x, int y, int width, int height)
-		{
-			fixed (uint* attachmentsPtr = attachments)
-			{
-				_glInvalidateSubFramebuffer(target, numAttachments, attachmentsPtr, x, y, width, height);
-			}
-		}
-
-		public static void glInvalidateTexImage(uint texture, int level)
-		{
-			_glInvalidateTexImage(texture, level);
-		}
-
-		public static void glInvalidateTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth)
-		{
-			_glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
-		}
-
-		public static bool glIsBuffer(uint buffer)
-		{
-			return _glIsBuffer(buffer);
-		}
-
-		public static bool glIsEnabled(uint cap)
-		{
-			return _glIsEnabled(cap);
-		}
-
-		public static bool glIsEnabledi(uint target, uint index)
-		{
-			return _glIsEnabledi(target, index);
-		}
-
-		public static bool glIsFramebuffer(uint framebuffer)
-		{
-			return _glIsFramebuffer(framebuffer);
-		}
-
-		public static bool glIsProgram(uint program)
-		{
-			return _glIsProgram(program);
-		}
-
-		public static bool glIsProgramPipeline(uint pipeline)
-		{
-			return _glIsProgramPipeline(pipeline);
-		}
-
-		public static bool glIsQuery(uint id)
-		{
-			return _glIsQuery(id);
-		}
-
-		public static bool glIsRenderbuffer(uint renderbuffer)
-		{
-			return _glIsRenderbuffer(renderbuffer);
-		}
-
-		public static bool glIsSampler(uint sampler)
-		{
-			return _glIsSampler(sampler);
-		}
-
-		public static bool glIsShader(uint shader)
-		{
-			return _glIsShader(shader);
-		}
-
-		public static bool glIsSync(IntPtr sync)
-		{
-			return _glIsSync(sync);
-		}
-
-		public static bool glIsTexture(uint texture)
-		{
-			return _glIsTexture(texture);
-		}
-
-		public static bool glIsTransformFeedback(uint id)
-		{
-			return _glIsTransformFeedback(id);
-		}
-
-		public static bool glIsVertexArray(uint array)
-		{
-			return _glIsVertexArray(array);
-		}
-
-		public static void glLineWidth(float width)
-		{
-			_glLineWidth(width);
-		}
-
-		public static void glLinkProgram(uint program)
-		{
-			_glLinkProgram(program);
-		}
-
-		public static void glLogicOp(uint opcode)
-		{
-			_glLogicOp(opcode);
-		}
-
-		public static IntPtr glMapBuffer(uint target, uint access)
-		{
-			return _glMapBuffer(target, access);
-		}
-
-		public static IntPtr glMapBufferRange(uint target, int offset, int length, uint access)
-		{
-			return _glMapBufferRange(target, offset, length, access);
-		}
-
-		public static IntPtr glMapNamedBuffer(uint buffer, uint access)
-		{
-			return _glMapNamedBuffer(buffer, access);
-		}
-
-		public static IntPtr glMapNamedBufferRange(uint buffer, int offset, int length, uint access)
-		{
-			return _glMapNamedBufferRange(buffer, offset, length, access);
-		}
-
-		public static void glMemoryBarrier(uint barriers)
-		{
-			_glMemoryBarrier(barriers);
-		}
-
-		public static void glMemoryBarrierByRegion(uint barriers)
-		{
-			_glMemoryBarrierByRegion(barriers);
-		}
-
-		public static void glMinSampleShading(float value)
-		{
-			_glMinSampleShading(value);
-		}
-
-		public static unsafe void glMultiDrawArrays(uint mode, int[] first, int[] count, int drawcount)
-		{
-			fixed (int* firstPtr = first)
-			fixed (int* countPtr = count)
-			{
-				_glMultiDrawArrays(mode, firstPtr, countPtr, drawcount);
-			}
-		}
-
-		public static unsafe void glMultiDrawArraysIndirect(uint mode, IntPtr indirect, int drawcount, int stride)
-		{
-			_glMultiDrawArraysIndirect(mode, indirect.ToPointer(), drawcount, stride);
-		}
-
-		public static unsafe void glMultiDrawElements(uint mode, int[] count, uint type, IntPtr indices, int drawcount)
-		{
-			fixed (int* countPtr = count)
-			{
-				_glMultiDrawElements(mode, countPtr, type, (void**)indices.ToPointer(), drawcount);
-			}
-		}
-
-		public static unsafe void glMultiDrawElementsBaseVertex(uint mode, int[] count, uint type, IntPtr indices, int drawcount, int[] basevertex)
-		{
-			fixed (int* countPtr = count)
-			fixed (int* basevertexPtr = basevertex)
-			{
-				_glMultiDrawElementsBaseVertex(mode, countPtr, type, (void**)indices.ToPointer(), drawcount, basevertexPtr);
-			}
-		}
-
-		public static unsafe void glMultiDrawElementsIndirect(uint mode, uint type, IntPtr indirect, int drawcount, int stride)
-		{
-			_glMultiDrawElementsIndirect(mode, type, indirect.ToPointer(), drawcount, stride);
-		}
-
-		public static unsafe void glNamedBufferData(uint buffer, int size, IntPtr data, uint usage)
-		{
-			_glNamedBufferData(buffer, size, data.ToPointer(), usage);
-		}
-
-		public static unsafe void glNamedBufferStorage(uint buffer, int size, IntPtr data, uint flags)
-		{
-			_glNamedBufferStorage(buffer, size, data.ToPointer(), flags);
-		}
-
-		public static unsafe void glNamedBufferSubData(uint buffer, int offset, int size, IntPtr data)
-		{
-			_glNamedBufferSubData(buffer, offset, size, data.ToPointer());
-		}
-
-		public static void glNamedFramebufferDrawBuffer(uint framebuffer, uint buf)
-		{
-			_glNamedFramebufferDrawBuffer(framebuffer, buf);
-		}
-
-		public static unsafe void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint[] bufs)
-		{
-			fixed (uint* bufsPtr = bufs)
-			{
-				_glNamedFramebufferDrawBuffers(framebuffer, n, bufsPtr);
-			}
-		}
-
-		public static void glNamedFramebufferParameteri(uint framebuffer, uint pname, int param)
-		{
-			_glNamedFramebufferParameteri(framebuffer, pname, param);
-		}
-
-		public static void glNamedFramebufferReadBuffer(uint framebuffer, uint src)
-		{
-			_glNamedFramebufferReadBuffer(framebuffer, src);
-		}
-
-		public static void glNamedFramebufferRenderbuffer(uint framebuffer, uint attachment, uint renderbuffertarget, uint renderbuffer)
-		{
-			_glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer);
-		}
-
-		public static void glNamedFramebufferTexture(uint framebuffer, uint attachment, uint texture, int level)
-		{
-			_glNamedFramebufferTexture(framebuffer, attachment, texture, level);
-		}
-
-		public static void glNamedFramebufferTextureLayer(uint framebuffer, uint attachment, uint texture, int level, int layer)
-		{
-			_glNamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer);
-		}
-
-		public static void glNamedRenderbufferStorage(uint renderbuffer, uint internalformat, int width, int height)
-		{
-			_glNamedRenderbufferStorage(renderbuffer, internalformat, width, height);
-		}
-
-		public static void glNamedRenderbufferStorageMultisample(uint renderbuffer, int samples, uint internalformat, int width, int height)
-		{
-			_glNamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
-		}
-
-		public static unsafe void glObjectLabel(uint identifier, uint name, int length, string label)
-		{
-			_glObjectLabel(identifier, name, length, label);
-		}
-
-		public static unsafe void glObjectPtrLabel(IntPtr ptr, int length, string label)
-		{
-			_glObjectPtrLabel(ptr.ToPointer(), length, label);
-		}
-
-		public static unsafe void glPatchParameterfv(uint pname, float[] values)
-		{
-			fixed (float* valuesPtr = values)
-			{
-				_glPatchParameterfv(pname, valuesPtr);
-			}
-		}
-
-		public static void glPatchParameteri(uint pname, int value)
-		{
-			_glPatchParameteri(pname, value);
-		}
-
-		public static void glPauseTransformFeedback()
-		{
-			_glPauseTransformFeedback();
-		}
-
-		public static void glPixelStoref(uint pname, float param)
-		{
-			_glPixelStoref(pname, param);
-		}
-
-		public static void glPixelStorei(uint pname, int param)
-		{
-			_glPixelStorei(pname, param);
-		}
-
-		public static void glPointParameterf(uint pname, float param)
-		{
-			_glPointParameterf(pname, param);
-		}
-
-		public static unsafe void glPointParameterfv(uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glPointParameterfv(pname, @paramsPtr);
-			}
-		}
-
-		public static void glPointParameteri(uint pname, int param)
-		{
-			_glPointParameteri(pname, param);
-		}
-
-		public static unsafe void glPointParameteriv(uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glPointParameteriv(pname, @paramsPtr);
-			}
-		}
-
-		public static void glPointSize(float size)
-		{
-			_glPointSize(size);
-		}
-
-		public static void glPolygonMode(uint face, uint mode)
-		{
-			_glPolygonMode(face, mode);
-		}
-
-		public static void glPolygonOffset(float factor, float units)
-		{
-			_glPolygonOffset(factor, units);
-		}
-
-		public static void glPopDebugGroup()
-		{
-			_glPopDebugGroup();
-		}
-
-		public static void glPrimitiveRestartIndex(uint index)
-		{
-			_glPrimitiveRestartIndex(index);
-		}
-
-		public static unsafe void glProgramBinary(uint program, uint binaryFormat, IntPtr binary, int length)
-		{
-			_glProgramBinary(program, binaryFormat, binary.ToPointer(), length);
-		}
-
-		public static void glProgramParameteri(uint program, uint pname, int value)
-		{
-			_glProgramParameteri(program, pname, value);
-		}
-
-		public static void glProgramUniform1d(uint program, int location, double v0)
-		{
-			_glProgramUniform1d(program, location, v0);
-		}
-
-		public static unsafe void glProgramUniform1dv(uint program, int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniform1dv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform1f(uint program, int location, float v0)
-		{
-			_glProgramUniform1f(program, location, v0);
-		}
-
-		public static unsafe void glProgramUniform1fv(uint program, int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniform1fv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform1i(uint program, int location, int v0)
-		{
-			_glProgramUniform1i(program, location, v0);
-		}
-
-		public static unsafe void glProgramUniform1iv(uint program, int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glProgramUniform1iv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform1ui(uint program, int location, uint v0)
-		{
-			_glProgramUniform1ui(program, location, v0);
-		}
-
-		public static unsafe void glProgramUniform1uiv(uint program, int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glProgramUniform1uiv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform2d(uint program, int location, double v0, double v1)
-		{
-			_glProgramUniform2d(program, location, v0, v1);
-		}
-
-		public static unsafe void glProgramUniform2dv(uint program, int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniform2dv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform2f(uint program, int location, float v0, float v1)
-		{
-			_glProgramUniform2f(program, location, v0, v1);
-		}
-
-		public static unsafe void glProgramUniform2fv(uint program, int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniform2fv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform2i(uint program, int location, int v0, int v1)
-		{
-			_glProgramUniform2i(program, location, v0, v1);
-		}
-
-		public static unsafe void glProgramUniform2iv(uint program, int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glProgramUniform2iv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform2ui(uint program, int location, uint v0, uint v1)
-		{
-			_glProgramUniform2ui(program, location, v0, v1);
-		}
-
-		public static unsafe void glProgramUniform2uiv(uint program, int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glProgramUniform2uiv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform3d(uint program, int location, double v0, double v1, double v2)
-		{
-			_glProgramUniform3d(program, location, v0, v1, v2);
-		}
-
-		public static unsafe void glProgramUniform3dv(uint program, int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniform3dv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform3f(uint program, int location, float v0, float v1, float v2)
-		{
-			_glProgramUniform3f(program, location, v0, v1, v2);
-		}
-
-		public static unsafe void glProgramUniform3fv(uint program, int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniform3fv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform3i(uint program, int location, int v0, int v1, int v2)
-		{
-			_glProgramUniform3i(program, location, v0, v1, v2);
-		}
-
-		public static unsafe void glProgramUniform3iv(uint program, int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glProgramUniform3iv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2)
-		{
-			_glProgramUniform3ui(program, location, v0, v1, v2);
-		}
-
-		public static unsafe void glProgramUniform3uiv(uint program, int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glProgramUniform3uiv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform4d(uint program, int location, double v0, double v1, double v2, double v3)
-		{
-			_glProgramUniform4d(program, location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glProgramUniform4dv(uint program, int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniform4dv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3)
-		{
-			_glProgramUniform4f(program, location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glProgramUniform4fv(uint program, int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniform4fv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3)
-		{
-			_glProgramUniform4i(program, location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glProgramUniform4iv(uint program, int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glProgramUniform4iv(program, location, count, valuePtr);
-			}
-		}
-
-		public static void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3)
-		{
-			_glProgramUniform4ui(program, location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glProgramUniform4uiv(uint program, int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glProgramUniform4uiv(program, location, count, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix2dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix2fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix2x3dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix2x3fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix2x4dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix2x4fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix3dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix3fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix3x2dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix3x2fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix3x4dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix3x4fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix4dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix4fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix4x2dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix4x2fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glProgramUniformMatrix4x3dv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static unsafe void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glProgramUniformMatrix4x3fv(program, location, count, transpose, valuePtr);
-			}
-		}
-
-		public static void glProvokingVertex(uint mode)
-		{
-			_glProvokingVertex(mode);
-		}
-
-		public static unsafe void glPushDebugGroup(uint source, uint id, int length, string message)
-		{
-			_glPushDebugGroup(source, id, length, message);
-		}
-
-		public static void glQueryCounter(uint id, uint target)
-		{
-			_glQueryCounter(id, target);
-		}
-
-		public static void glReadBuffer(uint src)
-		{
-			_glReadBuffer(src);
-		}
-
-		public static unsafe void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, IntPtr data)
-		{
-			_glReadnPixels(x, y, width, height, format, type, bufSize, data.ToPointer());
-		}
-
-		public static unsafe void glReadPixels(int x, int y, int width, int height, uint format, uint type, IntPtr pixels)
-		{
-			_glReadPixels(x, y, width, height, format, type, pixels.ToPointer());
-		}
-
-		public static void glReleaseShaderCompiler()
-		{
-			_glReleaseShaderCompiler();
-		}
-
-		public static void glRenderbufferStorage(uint target, uint internalformat, int width, int height)
-		{
-			_glRenderbufferStorage(target, internalformat, width, height);
-		}
-
-		public static void glRenderbufferStorageMultisample(uint target, int samples, uint internalformat, int width, int height)
-		{
-			_glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
-		}
-
-		public static void glResumeTransformFeedback()
-		{
-			_glResumeTransformFeedback();
-		}
-
-		public static void glSampleCoverage(float value, bool invert)
-		{
-			_glSampleCoverage(value, invert);
-		}
-
-		public static void glSampleMaski(uint maskNumber, uint mask)
-		{
-			_glSampleMaski(maskNumber, mask);
-		}
-
-		public static void glSamplerParameterf(uint sampler, uint pname, float param)
-		{
-			_glSamplerParameterf(sampler, pname, param);
-		}
-
-		public static unsafe void glSamplerParameterfv(uint sampler, uint pname, float[] param)
-		{
-			fixed (float* paramPtr = param)
-			{
-				_glSamplerParameterfv(sampler, pname, paramPtr);
-			}
-		}
-
-		public static void glSamplerParameteri(uint sampler, uint pname, int param)
-		{
-			_glSamplerParameteri(sampler, pname, param);
-		}
-
-		public static unsafe void glSamplerParameterIiv(uint sampler, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glSamplerParameterIiv(sampler, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glSamplerParameterIuiv(uint sampler, uint pname, uint[] param)
-		{
-			fixed (uint* paramPtr = param)
-			{
-				_glSamplerParameterIuiv(sampler, pname, paramPtr);
-			}
-		}
-
-		public static unsafe void glSamplerParameteriv(uint sampler, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glSamplerParameteriv(sampler, pname, paramPtr);
-			}
-		}
-
-		public static void glScissor(int x, int y, int width, int height)
-		{
-			_glScissor(x, y, width, height);
-		}
-
-		public static unsafe void glScissorArrayv(uint first, int count, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glScissorArrayv(first, count, vPtr);
-			}
-		}
-
-		public static void glScissorIndexed(uint index, int left, int bottom, int width, int height)
-		{
-			_glScissorIndexed(index, left, bottom, width, height);
-		}
-
-		public static unsafe void glScissorIndexedv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glScissorIndexedv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glShaderBinary(int count, uint[] shaders, uint binaryformat, IntPtr binary, int length)
-		{
-			fixed (uint* shadersPtr = shaders)
-			{
-				_glShaderBinary(count, shadersPtr, binaryformat, binary.ToPointer(), length);
-			}
-		}
-
-		public static void glShaderSource(uint shader, int count, ref string @string, ref int length)
-		{
-			_glShaderSource(shader, count, ref @string, ref length);			
-		}
-
-		public static void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding)
-		{
-			_glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
-		}
-
-		public static void glStencilFunc(uint func, int @ref, uint mask)
-		{
-			_glStencilFunc(func, @ref, mask);
-		}
-
-		public static void glStencilFuncSeparate(uint face, uint func, int @ref, uint mask)
-		{
-			_glStencilFuncSeparate(face, func, @ref, mask);
-		}
-
-		public static void glStencilMask(uint mask)
-		{
-			_glStencilMask(mask);
-		}
-
-		public static void glStencilMaskSeparate(uint face, uint mask)
-		{
-			_glStencilMaskSeparate(face, mask);
-		}
-
-		public static void glStencilOp(uint fail, uint zfail, uint zpass)
-		{
-			_glStencilOp(fail, zfail, zpass);
-		}
-
-		public static void glStencilOpSeparate(uint face, uint sfail, uint dpfail, uint dppass)
-		{
-			_glStencilOpSeparate(face, sfail, dpfail, dppass);
-		}
-
-		public static void glTexBuffer(uint target, uint internalformat, uint buffer)
-		{
-			_glTexBuffer(target, internalformat, buffer);
-		}
-
-		public static void glTexBufferRange(uint target, uint internalformat, uint buffer, int offset, int size)
-		{
-			_glTexBufferRange(target, internalformat, buffer, offset, size);
-		}
-
-		public static unsafe void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, IntPtr pixels)
-		{
-			_glTexImage1D(target, level, internalformat, width, border, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
-		{
-			_glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels.ToPointer());
-		}
-
-		public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
-		{
-			_glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
-		}
-
-		public static unsafe void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, IntPtr pixels)
-		{
-			_glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels.ToPointer());
-		}
-
-		public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
-		{
-			_glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
-		}
-
-		public static void glTexParameterf(uint target, uint pname, float param)
-		{
-			_glTexParameterf(target, pname, param);
-		}
-
-		public static unsafe void glTexParameterfv(uint target, uint pname, float[] @params)
-		{
-			fixed (float* @paramsPtr = @params)
-			{
-				_glTexParameterfv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static void glTexParameteri(uint target, uint pname, int param)
-		{
-			_glTexParameteri(target, pname, param);
-		}
-
-		public static unsafe void glTexParameterIiv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glTexParameterIiv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glTexParameterIuiv(uint target, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glTexParameterIuiv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glTexParameteriv(uint target, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glTexParameteriv(target, pname, @paramsPtr);
-			}
-		}
-
-		public static void glTexStorage1D(uint target, int levels, uint internalformat, int width)
-		{
-			_glTexStorage1D(target, levels, internalformat, width);
-		}
-
-		public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height)
-		{
-			_glTexStorage2D(target, levels, internalformat, width, height);
-		}
-
-		public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
-		{
-			_glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
-		}
-
-		public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth)
-		{
-			_glTexStorage3D(target, levels, internalformat, width, height, depth);
-		}
-
-		public static void glTexStorage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
-		{
-			_glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
-		}
-
-		public static unsafe void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
-		{
-			_glTexSubImage1D(target, level, xoffset, width, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
-		{
-			_glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
-		{
-			_glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.ToPointer());
-		}
-
-		public static void glTextureBarrier()
-		{
-			_glTextureBarrier();
-		}
-
-		public static void glTextureBuffer(uint texture, uint internalformat, uint buffer)
-		{
-			_glTextureBuffer(texture, internalformat, buffer);
-		}
-
-		public static void glTextureBufferRange(uint texture, uint internalformat, uint buffer, int offset, int size)
-		{
-			_glTextureBufferRange(texture, internalformat, buffer, offset, size);
-		}
-
-		public static void glTextureParameterf(uint texture, uint pname, float param)
-		{
-			_glTextureParameterf(texture, pname, param);
-		}
-
-		public static unsafe void glTextureParameterfv(uint texture, uint pname, float[] param)
-		{
-			fixed (float* paramPtr = param)
-			{
-				_glTextureParameterfv(texture, pname, paramPtr);
-			}
-		}
-
-		public static void glTextureParameteri(uint texture, uint pname, int param)
-		{
-			_glTextureParameteri(texture, pname, param);
-		}
-
-		public static unsafe void glTextureParameterIiv(uint texture, uint pname, int[] @params)
-		{
-			fixed (int* @paramsPtr = @params)
-			{
-				_glTextureParameterIiv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glTextureParameterIuiv(uint texture, uint pname, uint[] @params)
-		{
-			fixed (uint* @paramsPtr = @params)
-			{
-				_glTextureParameterIuiv(texture, pname, @paramsPtr);
-			}
-		}
-
-		public static unsafe void glTextureParameteriv(uint texture, uint pname, int[] param)
-		{
-			fixed (int* paramPtr = param)
-			{
-				_glTextureParameteriv(texture, pname, paramPtr);
-			}
-		}
-
-		public static void glTextureStorage1D(uint texture, int levels, uint internalformat, int width)
-		{
-			_glTextureStorage1D(texture, levels, internalformat, width);
-		}
-
-		public static void glTextureStorage2D(uint texture, int levels, uint internalformat, int width, int height)
-		{
-			_glTextureStorage2D(texture, levels, internalformat, width, height);
-		}
-
-		public static void glTextureStorage2DMultisample(uint texture, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
-		{
-			_glTextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations);
-		}
-
-		public static void glTextureStorage3D(uint texture, int levels, uint internalformat, int width, int height, int depth)
-		{
-			_glTextureStorage3D(texture, levels, internalformat, width, height, depth);
-		}
-
-		public static void glTextureStorage3DMultisample(uint texture, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
-		{
-			_glTextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
-		}
-
-		public static unsafe void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, IntPtr pixels)
-		{
-			_glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, IntPtr pixels)
-		{
-			_glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels.ToPointer());
-		}
-
-		public static unsafe void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, IntPtr pixels)
-		{
-			_glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.ToPointer());
-		}
-
-		public static void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers)
-		{
-			_glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
-		}
-
-		public static void glTransformFeedbackBufferBase(uint xfb, uint index, uint buffer)
-		{
-			_glTransformFeedbackBufferBase(xfb, index, buffer);
-		}
-
-		public static void glTransformFeedbackBufferRange(uint xfb, uint index, uint buffer, int offset, int size)
-		{
-			_glTransformFeedbackBufferRange(xfb, index, buffer, offset, size);
-		}
-
-		public static void glTransformFeedbackVaryings(uint program, int count, string[] varyings, uint bufferMode)
-		{
-			_glTransformFeedbackVaryings(program, count, varyings, bufferMode);			
-		}
-
-		public static void glUniform1d(int location, double x)
-		{
-			_glUniform1d(location, x);
-		}
-
-		public static unsafe void glUniform1dv(int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniform1dv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform1f(int location, float v0)
-		{
-			_glUniform1f(location, v0);
-		}
-
-		public static unsafe void glUniform1fv(int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniform1fv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform1i(int location, int v0)
-		{
-			_glUniform1i(location, v0);
-		}
-
-		public static unsafe void glUniform1iv(int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glUniform1iv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform1ui(int location, uint v0)
-		{
-			_glUniform1ui(location, v0);
-		}
-
-		public static unsafe void glUniform1uiv(int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glUniform1uiv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform2d(int location, double x, double y)
-		{
-			_glUniform2d(location, x, y);
-		}
-
-		public static unsafe void glUniform2dv(int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniform2dv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform2f(int location, float v0, float v1)
-		{
-			_glUniform2f(location, v0, v1);
-		}
-
-		public static unsafe void glUniform2fv(int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniform2fv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform2i(int location, int v0, int v1)
-		{
-			_glUniform2i(location, v0, v1);
-		}
-
-		public static unsafe void glUniform2iv(int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glUniform2iv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform2ui(int location, uint v0, uint v1)
-		{
-			_glUniform2ui(location, v0, v1);
-		}
-
-		public static unsafe void glUniform2uiv(int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glUniform2uiv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform3d(int location, double x, double y, double z)
-		{
-			_glUniform3d(location, x, y, z);
-		}
-
-		public static unsafe void glUniform3dv(int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniform3dv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform3f(int location, float v0, float v1, float v2)
-		{
-			_glUniform3f(location, v0, v1, v2);
-		}
-
-		public static unsafe void glUniform3fv(int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniform3fv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform3i(int location, int v0, int v1, int v2)
-		{
-			_glUniform3i(location, v0, v1, v2);
-		}
-
-		public static unsafe void glUniform3iv(int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glUniform3iv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform3ui(int location, uint v0, uint v1, uint v2)
-		{
-			_glUniform3ui(location, v0, v1, v2);
-		}
-
-		public static unsafe void glUniform3uiv(int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glUniform3uiv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform4d(int location, double x, double y, double z, double w)
-		{
-			_glUniform4d(location, x, y, z, w);
-		}
-
-		public static unsafe void glUniform4dv(int location, int count, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniform4dv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform4f(int location, float v0, float v1, float v2, float v3)
-		{
-			_glUniform4f(location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glUniform4fv(int location, int count, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniform4fv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform4i(int location, int v0, int v1, int v2, int v3)
-		{
-			_glUniform4i(location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glUniform4iv(int location, int count, int[] value)
-		{
-			fixed (int* valuePtr = value)
-			{
-				_glUniform4iv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniform4ui(int location, uint v0, uint v1, uint v2, uint v3)
-		{
-			_glUniform4ui(location, v0, v1, v2, v3);
-		}
-
-		public static unsafe void glUniform4uiv(int location, int count, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glUniform4uiv(location, count, valuePtr);
-			}
-		}
-
-		public static void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding)
-		{
-			_glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
-		}
-
-		public static unsafe void glUniformMatrix2dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix2dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix2dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix2fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix2fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix2fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix2x3dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix2x3dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2x3dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix2x3dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix2x3fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix2x3fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2x3fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix2x3fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix2x4dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix2x4dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2x4dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix2x4dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix2x4fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix2x4fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix2x4fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix2x4fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix3dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix3dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix3fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix3fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3x2dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix3x2dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3x2dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix3x2dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3x2fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix3x2fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3x2fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix3x2fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3x4dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix3x4dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3x4dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix3x4dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix3x4fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix3x4fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix3x4fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix3x4fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix4dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix4dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix4fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix4fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4x2dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix4x2dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4x2dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix4x2dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4x2fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix4x2fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4x2fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix4x2fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4x3dv(int location, int count, bool transpose, double[] value)
-		{
-			fixed (double* valuePtr = value)
-			{
-				_glUniformMatrix4x3dv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4x3dv(int location, int count, bool transpose, ref double value)
-        {
-            fixed (double* valuePtr = &value)
-            {
-                _glUniformMatrix4x3dv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformMatrix4x3fv(int location, int count, bool transpose, float[] value)
-		{
-			fixed (float* valuePtr = value)
-			{
-				_glUniformMatrix4x3fv(location, count, transpose, valuePtr);
-			}
-		}
-
-        public static unsafe void glUniformMatrix4x3fv(int location, int count, bool transpose, ref float value)
-        {
-            fixed (float* valuePtr = &value)
-            {
-                _glUniformMatrix4x3fv(location, count, transpose, valuePtr);
-            }
-        }
-
-        public static unsafe void glUniformSubroutinesuiv(uint shadertype, int count, uint[] indices)
-		{
-			fixed (uint* indicesPtr = indices)
-			{
-				_glUniformSubroutinesuiv(shadertype, count, indicesPtr);
-			}
-		}
-
-		public static bool glUnmapBuffer(uint target)
-		{
-			return _glUnmapBuffer(target);
-		}
-
-		public static bool glUnmapNamedBuffer(uint buffer)
-		{
-			return _glUnmapNamedBuffer(buffer);
-		}
-
-		public static void glUseProgram(uint program)
-		{
-			_glUseProgram(program);
-		}
-
-		public static void glUseProgramStages(uint pipeline, uint stages, uint program)
-		{
-			_glUseProgramStages(pipeline, stages, program);
-		}
-
-		public static void glValidateProgram(uint program)
-		{
-			_glValidateProgram(program);
-		}
-
-		public static void glValidateProgramPipeline(uint pipeline)
-		{
-			_glValidateProgramPipeline(pipeline);
-		}
-
-		public static void glVertexArrayAttribBinding(uint vaobj, uint attribindex, uint bindingindex)
-		{
-			_glVertexArrayAttribBinding(vaobj, attribindex, bindingindex);
-		}
-
-		public static void glVertexArrayAttribFormat(uint vaobj, uint attribindex, int size, uint type, bool normalized, uint relativeoffset)
-		{
-			_glVertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset);
-		}
-
-		public static void glVertexArrayAttribIFormat(uint vaobj, uint attribindex, int size, uint type, uint relativeoffset)
-		{
-			_glVertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset);
-		}
-
-		public static void glVertexArrayAttribLFormat(uint vaobj, uint attribindex, int size, uint type, uint relativeoffset)
-		{
-			_glVertexArrayAttribLFormat(vaobj, attribindex, size, type, relativeoffset);
-		}
-
-		public static void glVertexArrayBindingDivisor(uint vaobj, uint bindingindex, uint divisor)
-		{
-			_glVertexArrayBindingDivisor(vaobj, bindingindex, divisor);
-		}
-
-		public static void glVertexArrayElementBuffer(uint vaobj, uint buffer)
-		{
-			_glVertexArrayElementBuffer(vaobj, buffer);
-		}
-
-		public static void glVertexArrayVertexBuffer(uint vaobj, uint bindingindex, uint buffer, int offset, int stride)
-		{
-			_glVertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride);
-		}
-
-		public static unsafe void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint[] buffers, int[] offsets, int[] strides)
-		{
-			fixed (uint* buffersPtr = buffers)
-			fixed (int* offsetsPtr = offsets)
-			fixed (int* stridesPtr = strides)
-			{
-				_glVertexArrayVertexBuffers(vaobj, first, count, buffersPtr, offsetsPtr, stridesPtr);
-			}
-		}
-
-		public static void glVertexAttrib1d(uint index, double x)
-		{
-			_glVertexAttrib1d(index, x);
-		}
 
-		public static unsafe void glVertexAttrib1dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
+			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 6))
 			{
-				_glVertexAttrib1dv(index, vPtr);
+				glMultiDrawArraysIndirectCount = (Delegates.glMultiDrawArraysIndirectCount)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawArraysIndirectCount"), typeof(Delegates.glMultiDrawArraysIndirectCount));
+				glMultiDrawElementsIndirectCount = (Delegates.glMultiDrawElementsIndirectCount)Marshal.GetDelegateForFunctionPointer(getProcAddress("glMultiDrawElementsIndirectCount"), typeof(Delegates.glMultiDrawElementsIndirectCount));
+				glPolygonOffsetClamp = (Delegates.glPolygonOffsetClamp)Marshal.GetDelegateForFunctionPointer(getProcAddress("glPolygonOffsetClamp"), typeof(Delegates.glPolygonOffsetClamp));
+				glSpecializeShader = (Delegates.glSpecializeShader)Marshal.GetDelegateForFunctionPointer(getProcAddress("glSpecializeShader"), typeof(Delegates.glSpecializeShader));
 			}
 		}
-
-		public static void glVertexAttrib1f(uint index, float x)
-		{
-			_glVertexAttrib1f(index, x);
-		}
-
-		public static unsafe void glVertexAttrib1fv(uint index, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glVertexAttrib1fv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib1s(uint index, short x)
-		{
-			_glVertexAttrib1s(index, x);
-		}
-
-		public static unsafe void glVertexAttrib1sv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttrib1sv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib2d(uint index, double x, double y)
-		{
-			_glVertexAttrib2d(index, x, y);
-		}
-
-		public static unsafe void glVertexAttrib2dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttrib2dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib2f(uint index, float x, float y)
-		{
-			_glVertexAttrib2f(index, x, y);
-		}
-
-		public static unsafe void glVertexAttrib2fv(uint index, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glVertexAttrib2fv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib2s(uint index, short x, short y)
-		{
-			_glVertexAttrib2s(index, x, y);
-		}
-
-		public static unsafe void glVertexAttrib2sv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttrib2sv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib3d(uint index, double x, double y, double z)
-		{
-			_glVertexAttrib3d(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttrib3dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttrib3dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib3f(uint index, float x, float y, float z)
-		{
-			_glVertexAttrib3f(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttrib3fv(uint index, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glVertexAttrib3fv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib3s(uint index, short x, short y, short z)
-		{
-			_glVertexAttrib3s(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttrib3sv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttrib3sv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4bv(uint index, sbyte[] v)
-		{
-			fixed (sbyte* vPtr = v)
-			{
-				_glVertexAttrib4bv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib4d(uint index, double x, double y, double z, double w)
-		{
-			_glVertexAttrib4d(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttrib4dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttrib4dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib4f(uint index, float x, float y, float z, float w)
-		{
-			_glVertexAttrib4f(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttrib4fv(uint index, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glVertexAttrib4fv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4iv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttrib4iv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4Nbv(uint index, sbyte[] v)
-		{
-			fixed (sbyte* vPtr = v)
-			{
-				_glVertexAttrib4Nbv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4Niv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttrib4Niv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4Nsv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttrib4Nsv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib4Nub(uint index, byte x, byte y, byte z, byte w)
-		{
-			_glVertexAttrib4Nub(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttrib4Nubv(uint index, byte[] v)
-		{
-			fixed (byte* vPtr = v)
-			{
-				_glVertexAttrib4Nubv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4Nuiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttrib4Nuiv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4Nusv(uint index, ushort[] v)
-		{
-			fixed (ushort* vPtr = v)
-			{
-				_glVertexAttrib4Nusv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttrib4s(uint index, short x, short y, short z, short w)
-		{
-			_glVertexAttrib4s(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttrib4sv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttrib4sv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4ubv(uint index, byte[] v)
-		{
-			fixed (byte* vPtr = v)
-			{
-				_glVertexAttrib4ubv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4uiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttrib4uiv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttrib4usv(uint index, ushort[] v)
-		{
-			fixed (ushort* vPtr = v)
-			{
-				_glVertexAttrib4usv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribBinding(uint attribindex, uint bindingindex)
-		{
-			_glVertexAttribBinding(attribindex, bindingindex);
-		}
-
-		public static void glVertexAttribDivisor(uint index, uint divisor)
-		{
-			_glVertexAttribDivisor(index, divisor);
-		}
-
-		public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset)
-		{
-			_glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
-		}
-
-		public static void glVertexAttribI1i(uint index, int x)
-		{
-			_glVertexAttribI1i(index, x);
-		}
-
-		public static unsafe void glVertexAttribI1iv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttribI1iv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI1ui(uint index, uint x)
-		{
-			_glVertexAttribI1ui(index, x);
-		}
-
-		public static unsafe void glVertexAttribI1uiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttribI1uiv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI2i(uint index, int x, int y)
-		{
-			_glVertexAttribI2i(index, x, y);
-		}
-
-		public static unsafe void glVertexAttribI2iv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttribI2iv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI2ui(uint index, uint x, uint y)
-		{
-			_glVertexAttribI2ui(index, x, y);
-		}
-
-		public static unsafe void glVertexAttribI2uiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttribI2uiv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI3i(uint index, int x, int y, int z)
-		{
-			_glVertexAttribI3i(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttribI3iv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttribI3iv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI3ui(uint index, uint x, uint y, uint z)
-		{
-			_glVertexAttribI3ui(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttribI3uiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttribI3uiv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttribI4bv(uint index, sbyte[] v)
-		{
-			fixed (sbyte* vPtr = v)
-			{
-				_glVertexAttribI4bv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI4i(uint index, int x, int y, int z, int w)
-		{
-			_glVertexAttribI4i(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttribI4iv(uint index, int[] v)
-		{
-			fixed (int* vPtr = v)
-			{
-				_glVertexAttribI4iv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttribI4sv(uint index, short[] v)
-		{
-			fixed (short* vPtr = v)
-			{
-				_glVertexAttribI4sv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttribI4ubv(uint index, byte[] v)
-		{
-			fixed (byte* vPtr = v)
-			{
-				_glVertexAttribI4ubv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribI4ui(uint index, uint x, uint y, uint z, uint w)
-		{
-			_glVertexAttribI4ui(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttribI4uiv(uint index, uint[] v)
-		{
-			fixed (uint* vPtr = v)
-			{
-				_glVertexAttribI4uiv(index, vPtr);
-			}
-		}
-
-		public static unsafe void glVertexAttribI4usv(uint index, ushort[] v)
-		{
-			fixed (ushort* vPtr = v)
-			{
-				_glVertexAttribI4usv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset)
-		{
-			_glVertexAttribIFormat(attribindex, size, type, relativeoffset);
-		}
-
-		public static unsafe void glVertexAttribIPointer(uint index, int size, uint type, int stride, IntPtr pointer)
-		{
-			_glVertexAttribIPointer(index, size, type, stride, pointer.ToPointer());
-		}
-
-		public static void glVertexAttribL1d(uint index, double x)
-		{
-			_glVertexAttribL1d(index, x);
-		}
-
-		public static unsafe void glVertexAttribL1dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttribL1dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribL2d(uint index, double x, double y)
-		{
-			_glVertexAttribL2d(index, x, y);
-		}
-
-		public static unsafe void glVertexAttribL2dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttribL2dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribL3d(uint index, double x, double y, double z)
-		{
-			_glVertexAttribL3d(index, x, y, z);
-		}
-
-		public static unsafe void glVertexAttribL3dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttribL3dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribL4d(uint index, double x, double y, double z, double w)
-		{
-			_glVertexAttribL4d(index, x, y, z, w);
-		}
-
-		public static unsafe void glVertexAttribL4dv(uint index, double[] v)
-		{
-			fixed (double* vPtr = v)
-			{
-				_glVertexAttribL4dv(index, vPtr);
-			}
-		}
-
-		public static void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset)
-		{
-			_glVertexAttribLFormat(attribindex, size, type, relativeoffset);
-		}
-
-		public static unsafe void glVertexAttribLPointer(uint index, int size, uint type, int stride, IntPtr pointer)
-		{
-			_glVertexAttribLPointer(index, size, type, stride, pointer.ToPointer());
-		}
-
-		public static void glVertexAttribP1ui(uint index, uint type, bool normalized, uint value)
-		{
-			_glVertexAttribP1ui(index, type, normalized, value);
-		}
-
-		public static unsafe void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glVertexAttribP1uiv(index, type, normalized, valuePtr);
-			}
-		}
-
-		public static void glVertexAttribP2ui(uint index, uint type, bool normalized, uint value)
-		{
-			_glVertexAttribP2ui(index, type, normalized, value);
-		}
-
-		public static unsafe void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glVertexAttribP2uiv(index, type, normalized, valuePtr);
-			}
-		}
-
-		public static void glVertexAttribP3ui(uint index, uint type, bool normalized, uint value)
-		{
-			_glVertexAttribP3ui(index, type, normalized, value);
-		}
-
-		public static unsafe void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glVertexAttribP3uiv(index, type, normalized, valuePtr);
-			}
-		}
-
-		public static void glVertexAttribP4ui(uint index, uint type, bool normalized, uint value)
-		{
-			_glVertexAttribP4ui(index, type, normalized, value);
-		}
-
-		public static unsafe void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint[] value)
-		{
-			fixed (uint* valuePtr = value)
-			{
-				_glVertexAttribP4uiv(index, type, normalized, valuePtr);
-			}
-		}
-
-		public static unsafe void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, IntPtr pointer)
-		{
-			_glVertexAttribPointer(index, size, type, normalized, stride, pointer.ToPointer());
-		}
-
-		public static void glVertexBindingDivisor(uint bindingindex, uint divisor)
-		{
-			_glVertexBindingDivisor(bindingindex, divisor);
-		}
-
-		public static void glViewport(int x, int y, int width, int height)
-		{
-			_glViewport(x, y, width, height);
-		}
-
-		public static unsafe void glViewportArrayv(uint first, int count, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glViewportArrayv(first, count, vPtr);
-			}
-		}
-
-		public static void glViewportIndexedf(uint index, float x, float y, float w, float h)
-		{
-			_glViewportIndexedf(index, x, y, w, h);
-		}
-
-		public static unsafe void glViewportIndexedfv(uint index, float[] v)
-		{
-			fixed (float* vPtr = v)
-			{
-				_glViewportIndexedfv(index, vPtr);
-			}
-		}
-
-		public static void glWaitSync(IntPtr sync, uint flags, ulong timeout)
-		{
-			_glWaitSync(sync, flags, timeout);
-		}
-
 	}
 }
