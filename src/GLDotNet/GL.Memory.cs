@@ -22,5 +22,32 @@ namespace GLDotNet
                 _glBufferSubData(target, offset, Marshal.SizeOf<T>() * data.Length, dataPtr);
             }
         }
+
+        public static unsafe void glTexImage1D<T>(uint target, int level, int internalformat, int width, int border, uint format, uint type, ReadOnlySpan<T> pixels)
+            where T : unmanaged
+        {
+            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixels))
+            {
+                _glTexImage1D(target, level, internalformat, width, border, format, type, dataPtr);
+            }
+        }
+
+        public static unsafe void glTexImage2D<T>(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, ReadOnlySpan<T> pixels)
+            where T : unmanaged
+        {
+            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixels))
+            {
+                _glTexImage2D(target, level, internalformat, width, height, border, format, type, dataPtr);
+            }
+        }
+
+        public static unsafe void glTexImage3D<T>(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, ReadOnlySpan<T> pixels)
+            where T : unmanaged
+        {
+            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixels))
+            {
+                _glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, dataPtr);
+            }
+        }
     }
 }
