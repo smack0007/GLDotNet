@@ -321,19 +321,22 @@ namespace GLGenerator
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
-                sb.AppendLine($"\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; private set; }}");
+                sb.AppendLine($"\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; set; }}");
                 sb.AppendLine();
             }
 
-            void AppendLoadDelegate(string indent, FunctionData function)
-            {
-                sb.AppendLine($"{indent}{function.Name} = (Delegates.{function.Name})Marshal.GetDelegateForFunctionPointer(getProcAddress(\"{function.Name}\"), typeof(Delegates.{function.Name}));");
-            }
-
+            sb.AppendLine("#if !GLDOTNET_EXCLUDE_GLINIT");
             sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
             sb.AppendLine("\t\t{");
             sb.AppendLine("\t\t\tif (getProcAddress == null) throw new ArgumentNullException(nameof(getProcAddress));");
             sb.AppendLine();
+            sb.AppendLine("\t\t\tT getProc<T>(string name) => Marshal.GetDelegateForFunctionPointer<T>(getProcAddress(name));");
+            sb.AppendLine();
+
+            void AppendLoadDelegate(string indent, FunctionData function)
+            {
+                sb.AppendLine($"{indent}{function.Name} = getProc<Delegates.{function.Name}>(\"{function.Name}\");");
+            }
 
             int versionMajor = -1;
             int versionMinor = -1;
@@ -359,8 +362,8 @@ namespace GLGenerator
             }
 
             sb.AppendLine("\t\t\t}");
-
             sb.AppendLine("\t\t}");
+            sb.AppendLine("#endif");
             //sb.AppendLine();
 
             //foreach (var function in orderedFunctions)
