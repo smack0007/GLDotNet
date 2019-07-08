@@ -6,7 +6,7 @@ using static GLDotNet.GL;
 
 namespace Sprites
 {
-    public sealed class SpriteRenderer : IDisposable
+    public unsafe sealed class SpriteRenderer : IDisposable
     {
         [StructLayout(LayoutKind.Sequential)]
         struct Vertex
@@ -18,24 +18,24 @@ namespace Sprites
             public Vector2 UV;
         }
 
-        private Vertex[] vertices;
-        private int vertexCount;
+        private Vertex[] _vertices;
+        private int _vertexCount;
 
-        private uint texture;
-        private int textureWidth;
-        private int textureHeight;
+        private uint _texture;
+        private int _textureWidth;
+        private int _textureHeight;
 
-        private uint vertexBuffer;
-        private uint indexBuffer;
-        private uint vertexArray;
+        private uint _vertexBuffer;
+        private uint _indexBuffer;
+        private uint _vertexArray;
 
-        private uint program;
-        private int vertTranformLocation;
-        private int fragSamplerLocation;
+        private uint _program;
+        private int _vertTranformLocation;
+        private int _fragSamplerLocation;
 
-        bool drawInProgress;
+        bool _drawInProgress;
 
-        Matrix4x4 transform = new Matrix4x4()
+        Matrix4x4 _transform = new Matrix4x4()
         {
             M33 = 1.0f,
             M44 = 1.0f,
@@ -53,20 +53,26 @@ namespace Sprites
             if (maxSprites <= 0)
                 throw new ArgumentOutOfRangeException(nameof(maxSprites), $"{nameof(maxSprites)} must be >= 1.");
 
-            this.vertices = new Vertex[maxSprites * 4];
+            _vertices = new Vertex[maxSprites * 4];
 
-            this.vertexBuffer = glGenBuffer();
-            glBindBuffer(GL_ARRAY_BUFFER, this.vertexBuffer);
-            glBufferData(GL_ARRAY_BUFFER, Vertex.SizeInBytes * this.vertices.Length, IntPtr.Zero, GL_DYNAMIC_DRAW);
+            fixed (uint* vertexBufferPtr = &_vertexBuffer)
+            {
+                glGenBuffers(1, vertexBufferPtr);
+            }
+            glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+            glBufferData(GL_ARRAY_BUFFER, Vertex.SizeInBytes * _vertices.Length, null, GL_DYNAMIC_DRAW);
             GLUtility.CheckErrors(nameof(glBufferData));
 
-            this.vertexArray = glGenVertexArray();
-            glBindVertexArray(this.vertexArray);
-            glVertexAttribPointer(0, 3, GL_FLOAT, false, Vertex.SizeInBytes, IntPtr.Zero);
+            fixed (uint* vertexArrayPtr = &_vertexArray)
+            {
+                glGenVertexArrays(1, vertexArrayPtr);
+            }
+            glBindVertexArray(_vertexArray);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, Vertex.SizeInBytes, (void*)0);
             GLUtility.CheckErrors(nameof(glVertexAttribPointer));
-            glVertexAttribPointer(1, 4, GL_FLOAT, false, Vertex.SizeInBytes, (IntPtr)Marshal.SizeOf<Vector3>());
+            glVertexAttribPointer(1, 4, GL_FLOAT, false, Vertex.SizeInBytes, (void*)Marshal.SizeOf<Vector3>());
             GLUtility.CheckErrors(nameof(glVertexAttribPointer));
-            glVertexAttribPointer(2, 2, GL_FLOAT, false, Vertex.SizeInBytes, (IntPtr)(Marshal.SizeOf<Vector3>() + Marshal.SizeOf<Vector4>()));
+            glVertexAttribPointer(2, 2, GL_FLOAT, false, Vertex.SizeInBytes, (void*)(Marshal.SizeOf<Vector3>() + Marshal.SizeOf<Vector4>()));
             GLUtility.CheckErrors(nameof(glVertexAttribPointer));
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
@@ -83,46 +89,63 @@ namespace Sprites
                 indices[i + 5] = (ushort)(vertex + 3);
             }
 
-            this.indexBuffer = glGenBuffer();
-            glBindBuffer(GL_ARRAY_BUFFER, this.indexBuffer);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(ushort) * indices.Length, indices, GL_STATIC_DRAW);
+            fixed (uint* indexBufferPtr = &_indexBuffer)
+            {
+                glGenBuffers(1, indexBufferPtr);
+            }
+            glBindBuffer(GL_ARRAY_BUFFER, _indexBuffer);
+            fixed (ushort* indicesPtr = indices)
+            {
+                glBufferData(GL_ARRAY_BUFFER, sizeof(ushort) * indices.Length, indicesPtr, GL_STATIC_DRAW);
+            }
             GLUtility.CheckErrors(nameof(glBufferData));
 
             uint vertexShader = GLUtility.CreateAndCompileShader(GL_VERTEX_SHADER, VertexShaderCode);
             uint fragmentShader = GLUtility.CreateAndCompileShader(GL_FRAGMENT_SHADER, FragmentShaderCode);
-            this.program = GLUtility.CreateAndLinkProgram(vertexShader, fragmentShader);
+            _program = GLUtility.CreateAndLinkProgram(vertexShader, fragmentShader);
 
-            this.vertTranformLocation = glGetUniformLocation(this.program, "vertTransform");
-            this.fragSamplerLocation = glGetUniformLocation(this.program, "fragSampler");
+            _vertTranformLocation = glGetUniformLocation(_program, "vertTransform");
+            _fragSamplerLocation = glGetUniformLocation(_program, "fragSampler");
         }
 
         ~SpriteRenderer()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
         private void Dispose(bool disposing)
         {
-            glDeleteBuffer(this.vertexBuffer);
-            glDeleteBuffer(this.indexBuffer);
-            glDeleteVertexArray(this.vertexArray);
+            fixed (uint* vertexBufferPtr = &_vertexBuffer)
+            {
+                glDeleteBuffers(1, vertexBufferPtr);
+            }
+
+            fixed (uint* indexBufferPtr = &_indexBuffer)
+            {
+                glDeleteBuffers(1, indexBufferPtr);
+            }
+
+            fixed (uint* vertexArrayPtr = &_vertexArray)
+            {
+                glDeleteVertexArrays(1, vertexArrayPtr);
+            }
         }
 
         private void EnsureDrawInProgress()
         {
-            if (!this.drawInProgress)
+            if (!_drawInProgress)
                 throw new InvalidOperationException("Draw not currently in progress.");
         }
 
         public void Begin()
         {
-            if (this.drawInProgress)
+            if (_drawInProgress)
                 throw new InvalidOperationException("Draw already in progress.");
 
             //this.graphics.BlendEnabled = true;
@@ -132,24 +155,24 @@ namespace Sprites
             //this.graphics.DepthBufferEnabled = true;
             //this.graphics.DepthFunction = DepthFunction.LessThanOrEqual;
 
-            this.drawInProgress = true;
+            _drawInProgress = true;
         }
 
         public void End()
         {
-            this.EnsureDrawInProgress();
+            EnsureDrawInProgress();
 
-            this.Flush();
+            Flush();
 
-            this.drawInProgress = false;
+            _drawInProgress = false;
         }
 
         private void CalculateUV(float x, float y, ref Vector2 uv)
         {
-            if (this.textureWidth != 1 || this.textureHeight != 1)
+            if (_textureWidth != 1 || _textureHeight != 1)
             {
-                uv.X = x / this.textureWidth;
-                uv.Y = y / this.textureHeight;
+                uv.X = x / _textureWidth;
+                uv.Y = y / _textureHeight;
             }
             else
             {
@@ -167,26 +190,26 @@ namespace Sprites
             Vector4 color,
             float layerDepth)
         {
-            if (this.vertexCount == this.vertices.Length)
-                this.Flush();
+            if (_vertexCount == _vertices.Length)
+                Flush();
 
-            this.vertices[this.vertexCount].Position = new Vector3(topLeft, layerDepth);
-            this.CalculateUV(source.Left, source.Top, ref this.vertices[this.vertexCount].UV);
-            this.vertices[this.vertexCount].Color = color;
+            _vertices[_vertexCount].Position = new Vector3(topLeft, layerDepth);
+            CalculateUV(source.Left, source.Top, ref _vertices[_vertexCount].UV);
+            _vertices[_vertexCount].Color = color;
 
-            this.vertices[this.vertexCount + 1].Position = new Vector3(topRight, layerDepth);
-            this.CalculateUV(source.Right, source.Top, ref this.vertices[this.vertexCount + 1].UV);
-            this.vertices[this.vertexCount + 1].Color = color;
+            _vertices[_vertexCount + 1].Position = new Vector3(topRight, layerDepth);
+            CalculateUV(source.Right, source.Top, ref _vertices[_vertexCount + 1].UV);
+            _vertices[_vertexCount + 1].Color = color;
 
-            this.vertices[this.vertexCount + 2].Position = new Vector3(bottomRight, layerDepth);
-            this.CalculateUV(source.Right, source.Bottom, ref this.vertices[this.vertexCount + 2].UV);
-            this.vertices[this.vertexCount + 2].Color = color;
+            _vertices[_vertexCount + 2].Position = new Vector3(bottomRight, layerDepth);
+            CalculateUV(source.Right, source.Bottom, ref _vertices[_vertexCount + 2].UV);
+            _vertices[_vertexCount + 2].Color = color;
 
-            this.vertices[this.vertexCount + 3].Position = new Vector3(bottomLeft, layerDepth);
-            this.CalculateUV(source.Left, source.Bottom, ref this.vertices[this.vertexCount + 3].UV);            
-            this.vertices[this.vertexCount + 3].Color = color;
+            _vertices[_vertexCount + 3].Position = new Vector3(bottomLeft, layerDepth);
+            CalculateUV(source.Left, source.Bottom, ref _vertices[_vertexCount + 3].UV);            
+            _vertices[_vertexCount + 3].Color = color;
 
-            this.vertexCount += 4;
+            _vertexCount += 4;
         }
 
         public void Draw(
@@ -201,7 +224,7 @@ namespace Sprites
             float rotation = 0.0f,
             float layerDepth = 0.0f)
         {
-            this.DrawInternal(
+            DrawInternal(
                 texture,
                 textureWidth,
                 textureHeight,
@@ -281,14 +304,14 @@ namespace Sprites
             float rotation,
             float layerDepth)
         {
-            this.EnsureDrawInProgress();
+            EnsureDrawInProgress();
 
-            if (texture != this.texture)
-                this.Flush();
+            if (texture != _texture)
+                Flush();
 
-            this.texture = texture;
-            this.textureWidth = textureWidth;
-            this.textureHeight = textureHeight;
+            _texture = texture;
+            _textureWidth = textureWidth;
+            _textureHeight = textureHeight;
 
             if (source == null)
                 source = new Rectangle(0, 0, textureWidth, textureHeight);
@@ -318,7 +341,7 @@ namespace Sprites
             bottomRight = Vector2.Transform(bottomRight, transform);
             bottomLeft = Vector2.Transform(bottomLeft, transform);
             
-            this.AddQuad(
+            AddQuad(
                 ref topLeft,
                 ref topRight,
                 ref bottomRight,
@@ -434,34 +457,40 @@ namespace Sprites
 
         private void Flush()
         {
-            if (this.vertexCount > 0)
+            if (_vertexCount > 0)
             {
                 Rectangle viewport = new Rectangle();
-                glGetIntegerv(GL_VIEWPORT, ref viewport.X);
-                this.transform.M11 = 2f / viewport.Width;
-                this.transform.M22 = -2f / viewport.Height;
+                glGetIntegerv(GL_VIEWPORT, &viewport.X);
+                _transform.M11 = 2f / viewport.Width;
+                _transform.M22 = -2f / viewport.Height;
 
-                glBindBuffer(GL_ARRAY_BUFFER, this.vertexBuffer);
-                glBufferData(GL_ARRAY_BUFFER, Vertex.SizeInBytes * this.vertexCount, this.vertices, GL_DYNAMIC_DRAW);
+                glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+                fixed (void* verticesPtr = _vertices)
+                {
+                    glBufferData(GL_ARRAY_BUFFER, Vertex.SizeInBytes * _vertexCount, verticesPtr, GL_DYNAMIC_DRAW);
+                }
                 GLUtility.CheckErrors(nameof(glBufferData));
 
-                glBindVertexArray(this.vertexArray);
+                glBindVertexArray(_vertexArray);
 
-                glUseProgram(this.program);
+                glUseProgram(_program);
 
-                glUniformMatrix4fv(this.vertTranformLocation, 1, false, ref this.transform.M11);
+                fixed (float* transformPtr = &_transform.M11)
+                {
+                    glUniformMatrix4fv(_vertTranformLocation, 1, false, transformPtr);
+                }
                 GLUtility.CheckErrors(nameof(glUniformMatrix4fv));
                 
                 glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, this.texture);
-                glUniform1i(this.fragSamplerLocation, 0);
+                glBindTexture(GL_TEXTURE_2D, _texture);
+                glUniform1i(_fragSamplerLocation, 0);
                 GLUtility.CheckErrors(nameof(glUniform1ui));
 
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this.indexBuffer);
-                glDrawElements(GL_TRIANGLES, (this.vertexCount / 4) * 6, GL_UNSIGNED_SHORT, IntPtr.Zero);
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+                glDrawElements(GL_TRIANGLES, (_vertexCount / 4) * 6, GL_UNSIGNED_SHORT, null);
                 GLUtility.CheckErrors(nameof(glDrawElements));
 
-                this.vertexCount = 0;
+                _vertexCount = 0;
             }
         }
 
