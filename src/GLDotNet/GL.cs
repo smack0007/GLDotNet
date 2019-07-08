@@ -1394,7 +1394,7 @@ namespace GLDotNet
 		public const uint GL_ZERO = 0;
 		public const uint GL_ZERO_TO_ONE = 0x935F;
 
-		public delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);
+		public delegate void glDebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);
 
 		public static class Delegates
 		{
@@ -1604,7 +1604,7 @@ namespace GLDotNet
 
 			public delegate void glCullFace(uint mode);
 
-			public delegate void glDebugMessageCallback(DebugProc callback, void* userParam);
+			public delegate void glDebugMessageCallback(glDebugProc callback, void* userParam);
 
 			public delegate void glDebugMessageControl(uint source, uint type, uint severity, int count, uint* ids, bool enabled);
 
@@ -2714,1319 +2714,1323 @@ namespace GLDotNet
 
 		}
 
-		public static Delegates.glActiveShaderProgram glActiveShaderProgram { get; set; }
+		public static class Functions
+		{
+			public static Delegates.glActiveShaderProgram glActiveShaderProgram { get; set; }
 
-		public static Delegates.glActiveTexture glActiveTexture { get; set; }
+			public static Delegates.glActiveTexture glActiveTexture { get; set; }
 
-		public static Delegates.glAttachShader glAttachShader { get; set; }
+			public static Delegates.glAttachShader glAttachShader { get; set; }
 
-		public static Delegates.glBeginConditionalRender glBeginConditionalRender { get; set; }
+			public static Delegates.glBeginConditionalRender glBeginConditionalRender { get; set; }
 
-		public static Delegates.glBeginQuery glBeginQuery { get; set; }
+			public static Delegates.glBeginQuery glBeginQuery { get; set; }
 
-		public static Delegates.glBeginQueryIndexed glBeginQueryIndexed { get; set; }
+			public static Delegates.glBeginQueryIndexed glBeginQueryIndexed { get; set; }
 
-		public static Delegates.glBeginTransformFeedback glBeginTransformFeedback { get; set; }
+			public static Delegates.glBeginTransformFeedback glBeginTransformFeedback { get; set; }
 
-		public static Delegates.glBindAttribLocation glBindAttribLocation { get; set; }
+			public static Delegates.glBindAttribLocation glBindAttribLocation { get; set; }
 
-		public static Delegates.glBindBuffer glBindBuffer { get; set; }
+			public static Delegates.glBindBuffer glBindBuffer { get; set; }
 
-		public static Delegates.glBindBufferBase glBindBufferBase { get; set; }
+			public static Delegates.glBindBufferBase glBindBufferBase { get; set; }
 
-		public static Delegates.glBindBufferRange glBindBufferRange { get; set; }
+			public static Delegates.glBindBufferRange glBindBufferRange { get; set; }
 
-		public static Delegates.glBindBuffersBase glBindBuffersBase { get; set; }
+			public static Delegates.glBindBuffersBase glBindBuffersBase { get; set; }
 
-		public static Delegates.glBindBuffersRange glBindBuffersRange { get; set; }
+			public static Delegates.glBindBuffersRange glBindBuffersRange { get; set; }
 
-		public static Delegates.glBindFragDataLocation glBindFragDataLocation { get; set; }
+			public static Delegates.glBindFragDataLocation glBindFragDataLocation { get; set; }
 
-		public static Delegates.glBindFragDataLocationIndexed glBindFragDataLocationIndexed { get; set; }
+			public static Delegates.glBindFragDataLocationIndexed glBindFragDataLocationIndexed { get; set; }
 
-		public static Delegates.glBindFramebuffer glBindFramebuffer { get; set; }
+			public static Delegates.glBindFramebuffer glBindFramebuffer { get; set; }
 
-		public static Delegates.glBindImageTexture glBindImageTexture { get; set; }
+			public static Delegates.glBindImageTexture glBindImageTexture { get; set; }
 
-		public static Delegates.glBindImageTextures glBindImageTextures { get; set; }
+			public static Delegates.glBindImageTextures glBindImageTextures { get; set; }
 
-		public static Delegates.glBindProgramPipeline glBindProgramPipeline { get; set; }
+			public static Delegates.glBindProgramPipeline glBindProgramPipeline { get; set; }
 
-		public static Delegates.glBindRenderbuffer glBindRenderbuffer { get; set; }
+			public static Delegates.glBindRenderbuffer glBindRenderbuffer { get; set; }
 
-		public static Delegates.glBindSampler glBindSampler { get; set; }
+			public static Delegates.glBindSampler glBindSampler { get; set; }
 
-		public static Delegates.glBindSamplers glBindSamplers { get; set; }
+			public static Delegates.glBindSamplers glBindSamplers { get; set; }
 
-		public static Delegates.glBindTexture glBindTexture { get; set; }
+			public static Delegates.glBindTexture glBindTexture { get; set; }
 
-		public static Delegates.glBindTextures glBindTextures { get; set; }
+			public static Delegates.glBindTextures glBindTextures { get; set; }
 
-		public static Delegates.glBindTextureUnit glBindTextureUnit { get; set; }
+			public static Delegates.glBindTextureUnit glBindTextureUnit { get; set; }
 
-		public static Delegates.glBindTransformFeedback glBindTransformFeedback { get; set; }
+			public static Delegates.glBindTransformFeedback glBindTransformFeedback { get; set; }
 
-		public static Delegates.glBindVertexArray glBindVertexArray { get; set; }
+			public static Delegates.glBindVertexArray glBindVertexArray { get; set; }
 
-		public static Delegates.glBindVertexBuffer glBindVertexBuffer { get; set; }
+			public static Delegates.glBindVertexBuffer glBindVertexBuffer { get; set; }
 
-		public static Delegates.glBindVertexBuffers glBindVertexBuffers { get; set; }
+			public static Delegates.glBindVertexBuffers glBindVertexBuffers { get; set; }
 
-		public static Delegates.glBlendColor glBlendColor { get; set; }
+			public static Delegates.glBlendColor glBlendColor { get; set; }
 
-		public static Delegates.glBlendEquation glBlendEquation { get; set; }
+			public static Delegates.glBlendEquation glBlendEquation { get; set; }
 
-		public static Delegates.glBlendEquationi glBlendEquationi { get; set; }
+			public static Delegates.glBlendEquationi glBlendEquationi { get; set; }
 
-		public static Delegates.glBlendEquationSeparate glBlendEquationSeparate { get; set; }
+			public static Delegates.glBlendEquationSeparate glBlendEquationSeparate { get; set; }
 
-		public static Delegates.glBlendEquationSeparatei glBlendEquationSeparatei { get; set; }
+			public static Delegates.glBlendEquationSeparatei glBlendEquationSeparatei { get; set; }
 
-		public static Delegates.glBlendFunc glBlendFunc { get; set; }
+			public static Delegates.glBlendFunc glBlendFunc { get; set; }
 
-		public static Delegates.glBlendFunci glBlendFunci { get; set; }
+			public static Delegates.glBlendFunci glBlendFunci { get; set; }
 
-		public static Delegates.glBlendFuncSeparate glBlendFuncSeparate { get; set; }
+			public static Delegates.glBlendFuncSeparate glBlendFuncSeparate { get; set; }
 
-		public static Delegates.glBlendFuncSeparatei glBlendFuncSeparatei { get; set; }
+			public static Delegates.glBlendFuncSeparatei glBlendFuncSeparatei { get; set; }
 
-		public static Delegates.glBlitFramebuffer glBlitFramebuffer { get; set; }
+			public static Delegates.glBlitFramebuffer glBlitFramebuffer { get; set; }
 
-		public static Delegates.glBlitNamedFramebuffer glBlitNamedFramebuffer { get; set; }
+			public static Delegates.glBlitNamedFramebuffer glBlitNamedFramebuffer { get; set; }
 
-		public static Delegates.glBufferData glBufferData { get; set; }
+			public static Delegates.glBufferData glBufferData { get; set; }
 
-		public static Delegates.glBufferStorage glBufferStorage { get; set; }
+			public static Delegates.glBufferStorage glBufferStorage { get; set; }
 
-		public static Delegates.glBufferSubData glBufferSubData { get; set; }
+			public static Delegates.glBufferSubData glBufferSubData { get; set; }
 
-		public static Delegates.glCheckFramebufferStatus glCheckFramebufferStatus { get; set; }
+			public static Delegates.glCheckFramebufferStatus glCheckFramebufferStatus { get; set; }
 
-		public static Delegates.glCheckNamedFramebufferStatus glCheckNamedFramebufferStatus { get; set; }
+			public static Delegates.glCheckNamedFramebufferStatus glCheckNamedFramebufferStatus { get; set; }
 
-		public static Delegates.glClampColor glClampColor { get; set; }
+			public static Delegates.glClampColor glClampColor { get; set; }
 
-		public static Delegates.glClear glClear { get; set; }
+			public static Delegates.glClear glClear { get; set; }
 
-		public static Delegates.glClearBufferData glClearBufferData { get; set; }
+			public static Delegates.glClearBufferData glClearBufferData { get; set; }
 
-		public static Delegates.glClearBufferfi glClearBufferfi { get; set; }
+			public static Delegates.glClearBufferfi glClearBufferfi { get; set; }
 
-		public static Delegates.glClearBufferfv glClearBufferfv { get; set; }
+			public static Delegates.glClearBufferfv glClearBufferfv { get; set; }
 
-		public static Delegates.glClearBufferiv glClearBufferiv { get; set; }
+			public static Delegates.glClearBufferiv glClearBufferiv { get; set; }
 
-		public static Delegates.glClearBufferSubData glClearBufferSubData { get; set; }
+			public static Delegates.glClearBufferSubData glClearBufferSubData { get; set; }
 
-		public static Delegates.glClearBufferuiv glClearBufferuiv { get; set; }
+			public static Delegates.glClearBufferuiv glClearBufferuiv { get; set; }
 
-		public static Delegates.glClearColor glClearColor { get; set; }
+			public static Delegates.glClearColor glClearColor { get; set; }
 
-		public static Delegates.glClearDepth glClearDepth { get; set; }
+			public static Delegates.glClearDepth glClearDepth { get; set; }
 
-		public static Delegates.glClearDepthf glClearDepthf { get; set; }
+			public static Delegates.glClearDepthf glClearDepthf { get; set; }
 
-		public static Delegates.glClearNamedBufferData glClearNamedBufferData { get; set; }
+			public static Delegates.glClearNamedBufferData glClearNamedBufferData { get; set; }
 
-		public static Delegates.glClearNamedBufferSubData glClearNamedBufferSubData { get; set; }
+			public static Delegates.glClearNamedBufferSubData glClearNamedBufferSubData { get; set; }
 
-		public static Delegates.glClearNamedFramebufferfi glClearNamedFramebufferfi { get; set; }
+			public static Delegates.glClearNamedFramebufferfi glClearNamedFramebufferfi { get; set; }
 
-		public static Delegates.glClearNamedFramebufferfv glClearNamedFramebufferfv { get; set; }
+			public static Delegates.glClearNamedFramebufferfv glClearNamedFramebufferfv { get; set; }
 
-		public static Delegates.glClearNamedFramebufferiv glClearNamedFramebufferiv { get; set; }
+			public static Delegates.glClearNamedFramebufferiv glClearNamedFramebufferiv { get; set; }
 
-		public static Delegates.glClearNamedFramebufferuiv glClearNamedFramebufferuiv { get; set; }
+			public static Delegates.glClearNamedFramebufferuiv glClearNamedFramebufferuiv { get; set; }
 
-		public static Delegates.glClearStencil glClearStencil { get; set; }
+			public static Delegates.glClearStencil glClearStencil { get; set; }
 
-		public static Delegates.glClearTexImage glClearTexImage { get; set; }
+			public static Delegates.glClearTexImage glClearTexImage { get; set; }
 
-		public static Delegates.glClearTexSubImage glClearTexSubImage { get; set; }
+			public static Delegates.glClearTexSubImage glClearTexSubImage { get; set; }
 
-		public static Delegates.glClientWaitSync glClientWaitSync { get; set; }
+			public static Delegates.glClientWaitSync glClientWaitSync { get; set; }
 
-		public static Delegates.glClipControl glClipControl { get; set; }
+			public static Delegates.glClipControl glClipControl { get; set; }
 
-		public static Delegates.glColorMask glColorMask { get; set; }
+			public static Delegates.glColorMask glColorMask { get; set; }
 
-		public static Delegates.glColorMaski glColorMaski { get; set; }
+			public static Delegates.glColorMaski glColorMaski { get; set; }
 
-		public static Delegates.glCompileShader glCompileShader { get; set; }
+			public static Delegates.glCompileShader glCompileShader { get; set; }
 
-		public static Delegates.glCompressedTexImage1D glCompressedTexImage1D { get; set; }
+			public static Delegates.glCompressedTexImage1D glCompressedTexImage1D { get; set; }
 
-		public static Delegates.glCompressedTexImage2D glCompressedTexImage2D { get; set; }
+			public static Delegates.glCompressedTexImage2D glCompressedTexImage2D { get; set; }
 
-		public static Delegates.glCompressedTexImage3D glCompressedTexImage3D { get; set; }
+			public static Delegates.glCompressedTexImage3D glCompressedTexImage3D { get; set; }
 
-		public static Delegates.glCompressedTexSubImage1D glCompressedTexSubImage1D { get; set; }
+			public static Delegates.glCompressedTexSubImage1D glCompressedTexSubImage1D { get; set; }
 
-		public static Delegates.glCompressedTexSubImage2D glCompressedTexSubImage2D { get; set; }
+			public static Delegates.glCompressedTexSubImage2D glCompressedTexSubImage2D { get; set; }
 
-		public static Delegates.glCompressedTexSubImage3D glCompressedTexSubImage3D { get; set; }
+			public static Delegates.glCompressedTexSubImage3D glCompressedTexSubImage3D { get; set; }
 
-		public static Delegates.glCompressedTextureSubImage1D glCompressedTextureSubImage1D { get; set; }
+			public static Delegates.glCompressedTextureSubImage1D glCompressedTextureSubImage1D { get; set; }
 
-		public static Delegates.glCompressedTextureSubImage2D glCompressedTextureSubImage2D { get; set; }
+			public static Delegates.glCompressedTextureSubImage2D glCompressedTextureSubImage2D { get; set; }
 
-		public static Delegates.glCompressedTextureSubImage3D glCompressedTextureSubImage3D { get; set; }
+			public static Delegates.glCompressedTextureSubImage3D glCompressedTextureSubImage3D { get; set; }
 
-		public static Delegates.glCopyBufferSubData glCopyBufferSubData { get; set; }
+			public static Delegates.glCopyBufferSubData glCopyBufferSubData { get; set; }
 
-		public static Delegates.glCopyImageSubData glCopyImageSubData { get; set; }
+			public static Delegates.glCopyImageSubData glCopyImageSubData { get; set; }
 
-		public static Delegates.glCopyNamedBufferSubData glCopyNamedBufferSubData { get; set; }
+			public static Delegates.glCopyNamedBufferSubData glCopyNamedBufferSubData { get; set; }
 
-		public static Delegates.glCopyTexImage1D glCopyTexImage1D { get; set; }
+			public static Delegates.glCopyTexImage1D glCopyTexImage1D { get; set; }
 
-		public static Delegates.glCopyTexImage2D glCopyTexImage2D { get; set; }
+			public static Delegates.glCopyTexImage2D glCopyTexImage2D { get; set; }
 
-		public static Delegates.glCopyTexSubImage1D glCopyTexSubImage1D { get; set; }
+			public static Delegates.glCopyTexSubImage1D glCopyTexSubImage1D { get; set; }
 
-		public static Delegates.glCopyTexSubImage2D glCopyTexSubImage2D { get; set; }
+			public static Delegates.glCopyTexSubImage2D glCopyTexSubImage2D { get; set; }
 
-		public static Delegates.glCopyTexSubImage3D glCopyTexSubImage3D { get; set; }
+			public static Delegates.glCopyTexSubImage3D glCopyTexSubImage3D { get; set; }
 
-		public static Delegates.glCopyTextureSubImage1D glCopyTextureSubImage1D { get; set; }
+			public static Delegates.glCopyTextureSubImage1D glCopyTextureSubImage1D { get; set; }
 
-		public static Delegates.glCopyTextureSubImage2D glCopyTextureSubImage2D { get; set; }
+			public static Delegates.glCopyTextureSubImage2D glCopyTextureSubImage2D { get; set; }
 
-		public static Delegates.glCopyTextureSubImage3D glCopyTextureSubImage3D { get; set; }
+			public static Delegates.glCopyTextureSubImage3D glCopyTextureSubImage3D { get; set; }
 
-		public static Delegates.glCreateBuffers glCreateBuffers { get; set; }
+			public static Delegates.glCreateBuffers glCreateBuffers { get; set; }
 
-		public static Delegates.glCreateFramebuffers glCreateFramebuffers { get; set; }
+			public static Delegates.glCreateFramebuffers glCreateFramebuffers { get; set; }
 
-		public static Delegates.glCreateProgram glCreateProgram { get; set; }
+			public static Delegates.glCreateProgram glCreateProgram { get; set; }
 
-		public static Delegates.glCreateProgramPipelines glCreateProgramPipelines { get; set; }
+			public static Delegates.glCreateProgramPipelines glCreateProgramPipelines { get; set; }
 
-		public static Delegates.glCreateQueries glCreateQueries { get; set; }
+			public static Delegates.glCreateQueries glCreateQueries { get; set; }
 
-		public static Delegates.glCreateRenderbuffers glCreateRenderbuffers { get; set; }
+			public static Delegates.glCreateRenderbuffers glCreateRenderbuffers { get; set; }
 
-		public static Delegates.glCreateSamplers glCreateSamplers { get; set; }
+			public static Delegates.glCreateSamplers glCreateSamplers { get; set; }
 
-		public static Delegates.glCreateShader glCreateShader { get; set; }
+			public static Delegates.glCreateShader glCreateShader { get; set; }
 
-		public static Delegates.glCreateShaderProgramv glCreateShaderProgramv { get; set; }
+			public static Delegates.glCreateShaderProgramv glCreateShaderProgramv { get; set; }
 
-		public static Delegates.glCreateTextures glCreateTextures { get; set; }
+			public static Delegates.glCreateTextures glCreateTextures { get; set; }
 
-		public static Delegates.glCreateTransformFeedbacks glCreateTransformFeedbacks { get; set; }
+			public static Delegates.glCreateTransformFeedbacks glCreateTransformFeedbacks { get; set; }
 
-		public static Delegates.glCreateVertexArrays glCreateVertexArrays { get; set; }
+			public static Delegates.glCreateVertexArrays glCreateVertexArrays { get; set; }
 
-		public static Delegates.glCullFace glCullFace { get; set; }
+			public static Delegates.glCullFace glCullFace { get; set; }
 
-		public static Delegates.glDebugMessageCallback glDebugMessageCallback { get; set; }
+			public static Delegates.glDebugMessageCallback glDebugMessageCallback { get; set; }
 
-		public static Delegates.glDebugMessageControl glDebugMessageControl { get; set; }
+			public static Delegates.glDebugMessageControl glDebugMessageControl { get; set; }
 
-		public static Delegates.glDebugMessageInsert glDebugMessageInsert { get; set; }
+			public static Delegates.glDebugMessageInsert glDebugMessageInsert { get; set; }
 
-		public static Delegates.glDeleteBuffers glDeleteBuffers { get; set; }
+			public static Delegates.glDeleteBuffers glDeleteBuffers { get; set; }
 
-		public static Delegates.glDeleteFramebuffers glDeleteFramebuffers { get; set; }
+			public static Delegates.glDeleteFramebuffers glDeleteFramebuffers { get; set; }
 
-		public static Delegates.glDeleteProgram glDeleteProgram { get; set; }
+			public static Delegates.glDeleteProgram glDeleteProgram { get; set; }
 
-		public static Delegates.glDeleteProgramPipelines glDeleteProgramPipelines { get; set; }
+			public static Delegates.glDeleteProgramPipelines glDeleteProgramPipelines { get; set; }
 
-		public static Delegates.glDeleteQueries glDeleteQueries { get; set; }
+			public static Delegates.glDeleteQueries glDeleteQueries { get; set; }
 
-		public static Delegates.glDeleteRenderbuffers glDeleteRenderbuffers { get; set; }
+			public static Delegates.glDeleteRenderbuffers glDeleteRenderbuffers { get; set; }
 
-		public static Delegates.glDeleteSamplers glDeleteSamplers { get; set; }
+			public static Delegates.glDeleteSamplers glDeleteSamplers { get; set; }
 
-		public static Delegates.glDeleteShader glDeleteShader { get; set; }
+			public static Delegates.glDeleteShader glDeleteShader { get; set; }
 
-		public static Delegates.glDeleteSync glDeleteSync { get; set; }
+			public static Delegates.glDeleteSync glDeleteSync { get; set; }
 
-		public static Delegates.glDeleteTextures glDeleteTextures { get; set; }
+			public static Delegates.glDeleteTextures glDeleteTextures { get; set; }
 
-		public static Delegates.glDeleteTransformFeedbacks glDeleteTransformFeedbacks { get; set; }
+			public static Delegates.glDeleteTransformFeedbacks glDeleteTransformFeedbacks { get; set; }
 
-		public static Delegates.glDeleteVertexArrays glDeleteVertexArrays { get; set; }
+			public static Delegates.glDeleteVertexArrays glDeleteVertexArrays { get; set; }
 
-		public static Delegates.glDepthFunc glDepthFunc { get; set; }
+			public static Delegates.glDepthFunc glDepthFunc { get; set; }
 
-		public static Delegates.glDepthMask glDepthMask { get; set; }
+			public static Delegates.glDepthMask glDepthMask { get; set; }
 
-		public static Delegates.glDepthRange glDepthRange { get; set; }
+			public static Delegates.glDepthRange glDepthRange { get; set; }
 
-		public static Delegates.glDepthRangeArrayv glDepthRangeArrayv { get; set; }
+			public static Delegates.glDepthRangeArrayv glDepthRangeArrayv { get; set; }
 
-		public static Delegates.glDepthRangef glDepthRangef { get; set; }
+			public static Delegates.glDepthRangef glDepthRangef { get; set; }
 
-		public static Delegates.glDepthRangeIndexed glDepthRangeIndexed { get; set; }
+			public static Delegates.glDepthRangeIndexed glDepthRangeIndexed { get; set; }
 
-		public static Delegates.glDetachShader glDetachShader { get; set; }
+			public static Delegates.glDetachShader glDetachShader { get; set; }
 
-		public static Delegates.glDisable glDisable { get; set; }
+			public static Delegates.glDisable glDisable { get; set; }
 
-		public static Delegates.glDisablei glDisablei { get; set; }
+			public static Delegates.glDisablei glDisablei { get; set; }
 
-		public static Delegates.glDisableVertexArrayAttrib glDisableVertexArrayAttrib { get; set; }
+			public static Delegates.glDisableVertexArrayAttrib glDisableVertexArrayAttrib { get; set; }
 
-		public static Delegates.glDisableVertexAttribArray glDisableVertexAttribArray { get; set; }
+			public static Delegates.glDisableVertexAttribArray glDisableVertexAttribArray { get; set; }
 
-		public static Delegates.glDispatchCompute glDispatchCompute { get; set; }
+			public static Delegates.glDispatchCompute glDispatchCompute { get; set; }
 
-		public static Delegates.glDispatchComputeIndirect glDispatchComputeIndirect { get; set; }
+			public static Delegates.glDispatchComputeIndirect glDispatchComputeIndirect { get; set; }
 
-		public static Delegates.glDrawArrays glDrawArrays { get; set; }
+			public static Delegates.glDrawArrays glDrawArrays { get; set; }
 
-		public static Delegates.glDrawArraysIndirect glDrawArraysIndirect { get; set; }
+			public static Delegates.glDrawArraysIndirect glDrawArraysIndirect { get; set; }
 
-		public static Delegates.glDrawArraysInstanced glDrawArraysInstanced { get; set; }
+			public static Delegates.glDrawArraysInstanced glDrawArraysInstanced { get; set; }
 
-		public static Delegates.glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance { get; set; }
+			public static Delegates.glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance { get; set; }
 
-		public static Delegates.glDrawBuffer glDrawBuffer { get; set; }
+			public static Delegates.glDrawBuffer glDrawBuffer { get; set; }
 
-		public static Delegates.glDrawBuffers glDrawBuffers { get; set; }
+			public static Delegates.glDrawBuffers glDrawBuffers { get; set; }
 
-		public static Delegates.glDrawElements glDrawElements { get; set; }
+			public static Delegates.glDrawElements glDrawElements { get; set; }
 
-		public static Delegates.glDrawElementsBaseVertex glDrawElementsBaseVertex { get; set; }
+			public static Delegates.glDrawElementsBaseVertex glDrawElementsBaseVertex { get; set; }
 
-		public static Delegates.glDrawElementsIndirect glDrawElementsIndirect { get; set; }
+			public static Delegates.glDrawElementsIndirect glDrawElementsIndirect { get; set; }
 
-		public static Delegates.glDrawElementsInstanced glDrawElementsInstanced { get; set; }
+			public static Delegates.glDrawElementsInstanced glDrawElementsInstanced { get; set; }
 
-		public static Delegates.glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance { get; set; }
+			public static Delegates.glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance { get; set; }
 
-		public static Delegates.glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex { get; set; }
+			public static Delegates.glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex { get; set; }
 
-		public static Delegates.glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance { get; set; }
+			public static Delegates.glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance { get; set; }
 
-		public static Delegates.glDrawRangeElements glDrawRangeElements { get; set; }
+			public static Delegates.glDrawRangeElements glDrawRangeElements { get; set; }
 
-		public static Delegates.glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex { get; set; }
+			public static Delegates.glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex { get; set; }
 
-		public static Delegates.glDrawTransformFeedback glDrawTransformFeedback { get; set; }
+			public static Delegates.glDrawTransformFeedback glDrawTransformFeedback { get; set; }
 
-		public static Delegates.glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced { get; set; }
+			public static Delegates.glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced { get; set; }
 
-		public static Delegates.glDrawTransformFeedbackStream glDrawTransformFeedbackStream { get; set; }
+			public static Delegates.glDrawTransformFeedbackStream glDrawTransformFeedbackStream { get; set; }
 
-		public static Delegates.glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced { get; set; }
+			public static Delegates.glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced { get; set; }
 
-		public static Delegates.glEnable glEnable { get; set; }
+			public static Delegates.glEnable glEnable { get; set; }
 
-		public static Delegates.glEnablei glEnablei { get; set; }
+			public static Delegates.glEnablei glEnablei { get; set; }
 
-		public static Delegates.glEnableVertexArrayAttrib glEnableVertexArrayAttrib { get; set; }
+			public static Delegates.glEnableVertexArrayAttrib glEnableVertexArrayAttrib { get; set; }
 
-		public static Delegates.glEnableVertexAttribArray glEnableVertexAttribArray { get; set; }
+			public static Delegates.glEnableVertexAttribArray glEnableVertexAttribArray { get; set; }
 
-		public static Delegates.glEndConditionalRender glEndConditionalRender { get; set; }
+			public static Delegates.glEndConditionalRender glEndConditionalRender { get; set; }
 
-		public static Delegates.glEndQuery glEndQuery { get; set; }
+			public static Delegates.glEndQuery glEndQuery { get; set; }
 
-		public static Delegates.glEndQueryIndexed glEndQueryIndexed { get; set; }
+			public static Delegates.glEndQueryIndexed glEndQueryIndexed { get; set; }
 
-		public static Delegates.glEndTransformFeedback glEndTransformFeedback { get; set; }
+			public static Delegates.glEndTransformFeedback glEndTransformFeedback { get; set; }
 
-		public static Delegates.glFenceSync glFenceSync { get; set; }
+			public static Delegates.glFenceSync glFenceSync { get; set; }
 
-		public static Delegates.glFinish glFinish { get; set; }
+			public static Delegates.glFinish glFinish { get; set; }
 
-		public static Delegates.glFlush glFlush { get; set; }
+			public static Delegates.glFlush glFlush { get; set; }
 
-		public static Delegates.glFlushMappedBufferRange glFlushMappedBufferRange { get; set; }
+			public static Delegates.glFlushMappedBufferRange glFlushMappedBufferRange { get; set; }
 
-		public static Delegates.glFlushMappedNamedBufferRange glFlushMappedNamedBufferRange { get; set; }
+			public static Delegates.glFlushMappedNamedBufferRange glFlushMappedNamedBufferRange { get; set; }
 
-		public static Delegates.glFramebufferParameteri glFramebufferParameteri { get; set; }
+			public static Delegates.glFramebufferParameteri glFramebufferParameteri { get; set; }
 
-		public static Delegates.glFramebufferRenderbuffer glFramebufferRenderbuffer { get; set; }
+			public static Delegates.glFramebufferRenderbuffer glFramebufferRenderbuffer { get; set; }
 
-		public static Delegates.glFramebufferTexture glFramebufferTexture { get; set; }
+			public static Delegates.glFramebufferTexture glFramebufferTexture { get; set; }
 
-		public static Delegates.glFramebufferTexture1D glFramebufferTexture1D { get; set; }
+			public static Delegates.glFramebufferTexture1D glFramebufferTexture1D { get; set; }
 
-		public static Delegates.glFramebufferTexture2D glFramebufferTexture2D { get; set; }
+			public static Delegates.glFramebufferTexture2D glFramebufferTexture2D { get; set; }
 
-		public static Delegates.glFramebufferTexture3D glFramebufferTexture3D { get; set; }
+			public static Delegates.glFramebufferTexture3D glFramebufferTexture3D { get; set; }
 
-		public static Delegates.glFramebufferTextureLayer glFramebufferTextureLayer { get; set; }
+			public static Delegates.glFramebufferTextureLayer glFramebufferTextureLayer { get; set; }
 
-		public static Delegates.glFrontFace glFrontFace { get; set; }
+			public static Delegates.glFrontFace glFrontFace { get; set; }
 
-		public static Delegates.glGenBuffers glGenBuffers { get; set; }
+			public static Delegates.glGenBuffers glGenBuffers { get; set; }
 
-		public static Delegates.glGenerateMipmap glGenerateMipmap { get; set; }
+			public static Delegates.glGenerateMipmap glGenerateMipmap { get; set; }
 
-		public static Delegates.glGenerateTextureMipmap glGenerateTextureMipmap { get; set; }
+			public static Delegates.glGenerateTextureMipmap glGenerateTextureMipmap { get; set; }
 
-		public static Delegates.glGenFramebuffers glGenFramebuffers { get; set; }
+			public static Delegates.glGenFramebuffers glGenFramebuffers { get; set; }
 
-		public static Delegates.glGenProgramPipelines glGenProgramPipelines { get; set; }
+			public static Delegates.glGenProgramPipelines glGenProgramPipelines { get; set; }
 
-		public static Delegates.glGenQueries glGenQueries { get; set; }
+			public static Delegates.glGenQueries glGenQueries { get; set; }
 
-		public static Delegates.glGenRenderbuffers glGenRenderbuffers { get; set; }
+			public static Delegates.glGenRenderbuffers glGenRenderbuffers { get; set; }
 
-		public static Delegates.glGenSamplers glGenSamplers { get; set; }
+			public static Delegates.glGenSamplers glGenSamplers { get; set; }
 
-		public static Delegates.glGenTextures glGenTextures { get; set; }
+			public static Delegates.glGenTextures glGenTextures { get; set; }
 
-		public static Delegates.glGenTransformFeedbacks glGenTransformFeedbacks { get; set; }
+			public static Delegates.glGenTransformFeedbacks glGenTransformFeedbacks { get; set; }
 
-		public static Delegates.glGenVertexArrays glGenVertexArrays { get; set; }
+			public static Delegates.glGenVertexArrays glGenVertexArrays { get; set; }
 
-		public static Delegates.glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv { get; set; }
+			public static Delegates.glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv { get; set; }
 
-		public static Delegates.glGetActiveAttrib glGetActiveAttrib { get; set; }
+			public static Delegates.glGetActiveAttrib glGetActiveAttrib { get; set; }
 
-		public static Delegates.glGetActiveSubroutineName glGetActiveSubroutineName { get; set; }
+			public static Delegates.glGetActiveSubroutineName glGetActiveSubroutineName { get; set; }
 
-		public static Delegates.glGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv { get; set; }
+			public static Delegates.glGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv { get; set; }
 
-		public static Delegates.glGetActiveSubroutineUniformName glGetActiveSubroutineUniformName { get; set; }
+			public static Delegates.glGetActiveSubroutineUniformName glGetActiveSubroutineUniformName { get; set; }
 
-		public static Delegates.glGetActiveUniform glGetActiveUniform { get; set; }
+			public static Delegates.glGetActiveUniform glGetActiveUniform { get; set; }
 
-		public static Delegates.glGetActiveUniformBlockiv glGetActiveUniformBlockiv { get; set; }
+			public static Delegates.glGetActiveUniformBlockiv glGetActiveUniformBlockiv { get; set; }
 
-		public static Delegates.glGetActiveUniformBlockName glGetActiveUniformBlockName { get; set; }
+			public static Delegates.glGetActiveUniformBlockName glGetActiveUniformBlockName { get; set; }
 
-		public static Delegates.glGetActiveUniformName glGetActiveUniformName { get; set; }
+			public static Delegates.glGetActiveUniformName glGetActiveUniformName { get; set; }
 
-		public static Delegates.glGetActiveUniformsiv glGetActiveUniformsiv { get; set; }
+			public static Delegates.glGetActiveUniformsiv glGetActiveUniformsiv { get; set; }
 
-		public static Delegates.glGetAttachedShaders glGetAttachedShaders { get; set; }
+			public static Delegates.glGetAttachedShaders glGetAttachedShaders { get; set; }
 
-		public static Delegates.glGetAttribLocation glGetAttribLocation { get; set; }
+			public static Delegates.glGetAttribLocation glGetAttribLocation { get; set; }
 
-		public static Delegates.glGetBooleani_v glGetBooleani_v { get; set; }
+			public static Delegates.glGetBooleani_v glGetBooleani_v { get; set; }
 
-		public static Delegates.glGetBooleanv glGetBooleanv { get; set; }
+			public static Delegates.glGetBooleanv glGetBooleanv { get; set; }
 
-		public static Delegates.glGetBufferParameteri64v glGetBufferParameteri64v { get; set; }
+			public static Delegates.glGetBufferParameteri64v glGetBufferParameteri64v { get; set; }
 
-		public static Delegates.glGetBufferParameteriv glGetBufferParameteriv { get; set; }
+			public static Delegates.glGetBufferParameteriv glGetBufferParameteriv { get; set; }
 
-		public static Delegates.glGetBufferPointerv glGetBufferPointerv { get; set; }
+			public static Delegates.glGetBufferPointerv glGetBufferPointerv { get; set; }
 
-		public static Delegates.glGetBufferSubData glGetBufferSubData { get; set; }
+			public static Delegates.glGetBufferSubData glGetBufferSubData { get; set; }
 
-		public static Delegates.glGetCompressedTexImage glGetCompressedTexImage { get; set; }
+			public static Delegates.glGetCompressedTexImage glGetCompressedTexImage { get; set; }
 
-		public static Delegates.glGetCompressedTextureImage glGetCompressedTextureImage { get; set; }
+			public static Delegates.glGetCompressedTextureImage glGetCompressedTextureImage { get; set; }
 
-		public static Delegates.glGetCompressedTextureSubImage glGetCompressedTextureSubImage { get; set; }
+			public static Delegates.glGetCompressedTextureSubImage glGetCompressedTextureSubImage { get; set; }
 
-		public static Delegates.glGetDebugMessageLog glGetDebugMessageLog { get; set; }
+			public static Delegates.glGetDebugMessageLog glGetDebugMessageLog { get; set; }
 
-		public static Delegates.glGetDoublei_v glGetDoublei_v { get; set; }
+			public static Delegates.glGetDoublei_v glGetDoublei_v { get; set; }
 
-		public static Delegates.glGetDoublev glGetDoublev { get; set; }
+			public static Delegates.glGetDoublev glGetDoublev { get; set; }
 
-		public static Delegates.glGetError glGetError { get; set; }
+			public static Delegates.glGetError glGetError { get; set; }
 
-		public static Delegates.glGetFloati_v glGetFloati_v { get; set; }
+			public static Delegates.glGetFloati_v glGetFloati_v { get; set; }
 
-		public static Delegates.glGetFloatv glGetFloatv { get; set; }
+			public static Delegates.glGetFloatv glGetFloatv { get; set; }
 
-		public static Delegates.glGetFragDataIndex glGetFragDataIndex { get; set; }
+			public static Delegates.glGetFragDataIndex glGetFragDataIndex { get; set; }
 
-		public static Delegates.glGetFragDataLocation glGetFragDataLocation { get; set; }
+			public static Delegates.glGetFragDataLocation glGetFragDataLocation { get; set; }
 
-		public static Delegates.glGetFramebufferAttachmentParameteriv glGetFramebufferAttachmentParameteriv { get; set; }
+			public static Delegates.glGetFramebufferAttachmentParameteriv glGetFramebufferAttachmentParameteriv { get; set; }
 
-		public static Delegates.glGetFramebufferParameteriv glGetFramebufferParameteriv { get; set; }
+			public static Delegates.glGetFramebufferParameteriv glGetFramebufferParameteriv { get; set; }
 
-		public static Delegates.glGetGraphicsResetStatus glGetGraphicsResetStatus { get; set; }
+			public static Delegates.glGetGraphicsResetStatus glGetGraphicsResetStatus { get; set; }
 
-		public static Delegates.glGetInteger64i_v glGetInteger64i_v { get; set; }
+			public static Delegates.glGetInteger64i_v glGetInteger64i_v { get; set; }
 
-		public static Delegates.glGetInteger64v glGetInteger64v { get; set; }
+			public static Delegates.glGetInteger64v glGetInteger64v { get; set; }
 
-		public static Delegates.glGetIntegeri_v glGetIntegeri_v { get; set; }
+			public static Delegates.glGetIntegeri_v glGetIntegeri_v { get; set; }
 
-		public static Delegates.glGetIntegerv glGetIntegerv { get; set; }
+			public static Delegates.glGetIntegerv glGetIntegerv { get; set; }
 
-		public static Delegates.glGetInternalformati64v glGetInternalformati64v { get; set; }
+			public static Delegates.glGetInternalformati64v glGetInternalformati64v { get; set; }
 
-		public static Delegates.glGetInternalformativ glGetInternalformativ { get; set; }
+			public static Delegates.glGetInternalformativ glGetInternalformativ { get; set; }
 
-		public static Delegates.glGetMultisamplefv glGetMultisamplefv { get; set; }
+			public static Delegates.glGetMultisamplefv glGetMultisamplefv { get; set; }
 
-		public static Delegates.glGetNamedBufferParameteri64v glGetNamedBufferParameteri64v { get; set; }
+			public static Delegates.glGetNamedBufferParameteri64v glGetNamedBufferParameteri64v { get; set; }
 
-		public static Delegates.glGetNamedBufferParameteriv glGetNamedBufferParameteriv { get; set; }
+			public static Delegates.glGetNamedBufferParameteriv glGetNamedBufferParameteriv { get; set; }
 
-		public static Delegates.glGetNamedBufferPointerv glGetNamedBufferPointerv { get; set; }
+			public static Delegates.glGetNamedBufferPointerv glGetNamedBufferPointerv { get; set; }
 
-		public static Delegates.glGetNamedBufferSubData glGetNamedBufferSubData { get; set; }
+			public static Delegates.glGetNamedBufferSubData glGetNamedBufferSubData { get; set; }
 
-		public static Delegates.glGetNamedFramebufferAttachmentParameteriv glGetNamedFramebufferAttachmentParameteriv { get; set; }
+			public static Delegates.glGetNamedFramebufferAttachmentParameteriv glGetNamedFramebufferAttachmentParameteriv { get; set; }
 
-		public static Delegates.glGetNamedFramebufferParameteriv glGetNamedFramebufferParameteriv { get; set; }
+			public static Delegates.glGetNamedFramebufferParameteriv glGetNamedFramebufferParameteriv { get; set; }
 
-		public static Delegates.glGetNamedRenderbufferParameteriv glGetNamedRenderbufferParameteriv { get; set; }
+			public static Delegates.glGetNamedRenderbufferParameteriv glGetNamedRenderbufferParameteriv { get; set; }
 
-		public static Delegates.glGetnCompressedTexImage glGetnCompressedTexImage { get; set; }
+			public static Delegates.glGetnCompressedTexImage glGetnCompressedTexImage { get; set; }
 
-		public static Delegates.glGetnTexImage glGetnTexImage { get; set; }
+			public static Delegates.glGetnTexImage glGetnTexImage { get; set; }
 
-		public static Delegates.glGetnUniformdv glGetnUniformdv { get; set; }
+			public static Delegates.glGetnUniformdv glGetnUniformdv { get; set; }
 
-		public static Delegates.glGetnUniformfv glGetnUniformfv { get; set; }
+			public static Delegates.glGetnUniformfv glGetnUniformfv { get; set; }
 
-		public static Delegates.glGetnUniformiv glGetnUniformiv { get; set; }
+			public static Delegates.glGetnUniformiv glGetnUniformiv { get; set; }
 
-		public static Delegates.glGetnUniformuiv glGetnUniformuiv { get; set; }
+			public static Delegates.glGetnUniformuiv glGetnUniformuiv { get; set; }
 
-		public static Delegates.glGetObjectLabel glGetObjectLabel { get; set; }
+			public static Delegates.glGetObjectLabel glGetObjectLabel { get; set; }
 
-		public static Delegates.glGetObjectPtrLabel glGetObjectPtrLabel { get; set; }
+			public static Delegates.glGetObjectPtrLabel glGetObjectPtrLabel { get; set; }
 
-		public static Delegates.glGetPointerv glGetPointerv { get; set; }
+			public static Delegates.glGetPointerv glGetPointerv { get; set; }
 
-		public static Delegates.glGetProgramBinary glGetProgramBinary { get; set; }
+			public static Delegates.glGetProgramBinary glGetProgramBinary { get; set; }
 
-		public static Delegates.glGetProgramInfoLog glGetProgramInfoLog { get; set; }
+			public static Delegates.glGetProgramInfoLog glGetProgramInfoLog { get; set; }
 
-		public static Delegates.glGetProgramInterfaceiv glGetProgramInterfaceiv { get; set; }
+			public static Delegates.glGetProgramInterfaceiv glGetProgramInterfaceiv { get; set; }
 
-		public static Delegates.glGetProgramiv glGetProgramiv { get; set; }
+			public static Delegates.glGetProgramiv glGetProgramiv { get; set; }
 
-		public static Delegates.glGetProgramPipelineInfoLog glGetProgramPipelineInfoLog { get; set; }
+			public static Delegates.glGetProgramPipelineInfoLog glGetProgramPipelineInfoLog { get; set; }
 
-		public static Delegates.glGetProgramPipelineiv glGetProgramPipelineiv { get; set; }
+			public static Delegates.glGetProgramPipelineiv glGetProgramPipelineiv { get; set; }
 
-		public static Delegates.glGetProgramResourceIndex glGetProgramResourceIndex { get; set; }
+			public static Delegates.glGetProgramResourceIndex glGetProgramResourceIndex { get; set; }
 
-		public static Delegates.glGetProgramResourceiv glGetProgramResourceiv { get; set; }
+			public static Delegates.glGetProgramResourceiv glGetProgramResourceiv { get; set; }
 
-		public static Delegates.glGetProgramResourceLocation glGetProgramResourceLocation { get; set; }
+			public static Delegates.glGetProgramResourceLocation glGetProgramResourceLocation { get; set; }
 
-		public static Delegates.glGetProgramResourceLocationIndex glGetProgramResourceLocationIndex { get; set; }
+			public static Delegates.glGetProgramResourceLocationIndex glGetProgramResourceLocationIndex { get; set; }
 
-		public static Delegates.glGetProgramResourceName glGetProgramResourceName { get; set; }
+			public static Delegates.glGetProgramResourceName glGetProgramResourceName { get; set; }
 
-		public static Delegates.glGetProgramStageiv glGetProgramStageiv { get; set; }
+			public static Delegates.glGetProgramStageiv glGetProgramStageiv { get; set; }
 
-		public static Delegates.glGetQueryBufferObjecti64v glGetQueryBufferObjecti64v { get; set; }
+			public static Delegates.glGetQueryBufferObjecti64v glGetQueryBufferObjecti64v { get; set; }
 
-		public static Delegates.glGetQueryBufferObjectiv glGetQueryBufferObjectiv { get; set; }
+			public static Delegates.glGetQueryBufferObjectiv glGetQueryBufferObjectiv { get; set; }
 
-		public static Delegates.glGetQueryBufferObjectui64v glGetQueryBufferObjectui64v { get; set; }
+			public static Delegates.glGetQueryBufferObjectui64v glGetQueryBufferObjectui64v { get; set; }
 
-		public static Delegates.glGetQueryBufferObjectuiv glGetQueryBufferObjectuiv { get; set; }
+			public static Delegates.glGetQueryBufferObjectuiv glGetQueryBufferObjectuiv { get; set; }
 
-		public static Delegates.glGetQueryIndexediv glGetQueryIndexediv { get; set; }
+			public static Delegates.glGetQueryIndexediv glGetQueryIndexediv { get; set; }
 
-		public static Delegates.glGetQueryiv glGetQueryiv { get; set; }
+			public static Delegates.glGetQueryiv glGetQueryiv { get; set; }
 
-		public static Delegates.glGetQueryObjecti64v glGetQueryObjecti64v { get; set; }
+			public static Delegates.glGetQueryObjecti64v glGetQueryObjecti64v { get; set; }
 
-		public static Delegates.glGetQueryObjectiv glGetQueryObjectiv { get; set; }
+			public static Delegates.glGetQueryObjectiv glGetQueryObjectiv { get; set; }
 
-		public static Delegates.glGetQueryObjectui64v glGetQueryObjectui64v { get; set; }
+			public static Delegates.glGetQueryObjectui64v glGetQueryObjectui64v { get; set; }
 
-		public static Delegates.glGetQueryObjectuiv glGetQueryObjectuiv { get; set; }
+			public static Delegates.glGetQueryObjectuiv glGetQueryObjectuiv { get; set; }
 
-		public static Delegates.glGetRenderbufferParameteriv glGetRenderbufferParameteriv { get; set; }
+			public static Delegates.glGetRenderbufferParameteriv glGetRenderbufferParameteriv { get; set; }
 
-		public static Delegates.glGetSamplerParameterfv glGetSamplerParameterfv { get; set; }
+			public static Delegates.glGetSamplerParameterfv glGetSamplerParameterfv { get; set; }
 
-		public static Delegates.glGetSamplerParameterIiv glGetSamplerParameterIiv { get; set; }
+			public static Delegates.glGetSamplerParameterIiv glGetSamplerParameterIiv { get; set; }
 
-		public static Delegates.glGetSamplerParameterIuiv glGetSamplerParameterIuiv { get; set; }
+			public static Delegates.glGetSamplerParameterIuiv glGetSamplerParameterIuiv { get; set; }
 
-		public static Delegates.glGetSamplerParameteriv glGetSamplerParameteriv { get; set; }
+			public static Delegates.glGetSamplerParameteriv glGetSamplerParameteriv { get; set; }
 
-		public static Delegates.glGetShaderInfoLog glGetShaderInfoLog { get; set; }
+			public static Delegates.glGetShaderInfoLog glGetShaderInfoLog { get; set; }
 
-		public static Delegates.glGetShaderiv glGetShaderiv { get; set; }
+			public static Delegates.glGetShaderiv glGetShaderiv { get; set; }
 
-		public static Delegates.glGetShaderPrecisionFormat glGetShaderPrecisionFormat { get; set; }
+			public static Delegates.glGetShaderPrecisionFormat glGetShaderPrecisionFormat { get; set; }
 
-		public static Delegates.glGetShaderSource glGetShaderSource { get; set; }
+			public static Delegates.glGetShaderSource glGetShaderSource { get; set; }
 
-		public static Delegates.glGetString glGetString { get; set; }
+			public static Delegates.glGetString glGetString { get; set; }
 
-		public static Delegates.glGetStringi glGetStringi { get; set; }
+			public static Delegates.glGetStringi glGetStringi { get; set; }
 
-		public static Delegates.glGetSubroutineIndex glGetSubroutineIndex { get; set; }
+			public static Delegates.glGetSubroutineIndex glGetSubroutineIndex { get; set; }
 
-		public static Delegates.glGetSubroutineUniformLocation glGetSubroutineUniformLocation { get; set; }
+			public static Delegates.glGetSubroutineUniformLocation glGetSubroutineUniformLocation { get; set; }
 
-		public static Delegates.glGetSynciv glGetSynciv { get; set; }
+			public static Delegates.glGetSynciv glGetSynciv { get; set; }
 
-		public static Delegates.glGetTexImage glGetTexImage { get; set; }
+			public static Delegates.glGetTexImage glGetTexImage { get; set; }
 
-		public static Delegates.glGetTexLevelParameterfv glGetTexLevelParameterfv { get; set; }
+			public static Delegates.glGetTexLevelParameterfv glGetTexLevelParameterfv { get; set; }
 
-		public static Delegates.glGetTexLevelParameteriv glGetTexLevelParameteriv { get; set; }
+			public static Delegates.glGetTexLevelParameteriv glGetTexLevelParameteriv { get; set; }
 
-		public static Delegates.glGetTexParameterfv glGetTexParameterfv { get; set; }
+			public static Delegates.glGetTexParameterfv glGetTexParameterfv { get; set; }
 
-		public static Delegates.glGetTexParameterIiv glGetTexParameterIiv { get; set; }
+			public static Delegates.glGetTexParameterIiv glGetTexParameterIiv { get; set; }
 
-		public static Delegates.glGetTexParameterIuiv glGetTexParameterIuiv { get; set; }
+			public static Delegates.glGetTexParameterIuiv glGetTexParameterIuiv { get; set; }
 
-		public static Delegates.glGetTexParameteriv glGetTexParameteriv { get; set; }
+			public static Delegates.glGetTexParameteriv glGetTexParameteriv { get; set; }
 
-		public static Delegates.glGetTextureImage glGetTextureImage { get; set; }
+			public static Delegates.glGetTextureImage glGetTextureImage { get; set; }
 
-		public static Delegates.glGetTextureLevelParameterfv glGetTextureLevelParameterfv { get; set; }
+			public static Delegates.glGetTextureLevelParameterfv glGetTextureLevelParameterfv { get; set; }
 
-		public static Delegates.glGetTextureLevelParameteriv glGetTextureLevelParameteriv { get; set; }
+			public static Delegates.glGetTextureLevelParameteriv glGetTextureLevelParameteriv { get; set; }
 
-		public static Delegates.glGetTextureParameterfv glGetTextureParameterfv { get; set; }
+			public static Delegates.glGetTextureParameterfv glGetTextureParameterfv { get; set; }
 
-		public static Delegates.glGetTextureParameterIiv glGetTextureParameterIiv { get; set; }
+			public static Delegates.glGetTextureParameterIiv glGetTextureParameterIiv { get; set; }
 
-		public static Delegates.glGetTextureParameterIuiv glGetTextureParameterIuiv { get; set; }
+			public static Delegates.glGetTextureParameterIuiv glGetTextureParameterIuiv { get; set; }
 
-		public static Delegates.glGetTextureParameteriv glGetTextureParameteriv { get; set; }
+			public static Delegates.glGetTextureParameteriv glGetTextureParameteriv { get; set; }
 
-		public static Delegates.glGetTextureSubImage glGetTextureSubImage { get; set; }
+			public static Delegates.glGetTextureSubImage glGetTextureSubImage { get; set; }
 
-		public static Delegates.glGetTransformFeedbacki_v glGetTransformFeedbacki_v { get; set; }
+			public static Delegates.glGetTransformFeedbacki_v glGetTransformFeedbacki_v { get; set; }
 
-		public static Delegates.glGetTransformFeedbacki64_v glGetTransformFeedbacki64_v { get; set; }
+			public static Delegates.glGetTransformFeedbacki64_v glGetTransformFeedbacki64_v { get; set; }
 
-		public static Delegates.glGetTransformFeedbackiv glGetTransformFeedbackiv { get; set; }
+			public static Delegates.glGetTransformFeedbackiv glGetTransformFeedbackiv { get; set; }
 
-		public static Delegates.glGetTransformFeedbackVarying glGetTransformFeedbackVarying { get; set; }
+			public static Delegates.glGetTransformFeedbackVarying glGetTransformFeedbackVarying { get; set; }
 
-		public static Delegates.glGetUniformBlockIndex glGetUniformBlockIndex { get; set; }
+			public static Delegates.glGetUniformBlockIndex glGetUniformBlockIndex { get; set; }
 
-		public static Delegates.glGetUniformdv glGetUniformdv { get; set; }
+			public static Delegates.glGetUniformdv glGetUniformdv { get; set; }
 
-		public static Delegates.glGetUniformfv glGetUniformfv { get; set; }
+			public static Delegates.glGetUniformfv glGetUniformfv { get; set; }
 
-		public static Delegates.glGetUniformIndices glGetUniformIndices { get; set; }
+			public static Delegates.glGetUniformIndices glGetUniformIndices { get; set; }
 
-		public static Delegates.glGetUniformiv glGetUniformiv { get; set; }
+			public static Delegates.glGetUniformiv glGetUniformiv { get; set; }
 
-		public static Delegates.glGetUniformLocation glGetUniformLocation { get; set; }
+			public static Delegates.glGetUniformLocation glGetUniformLocation { get; set; }
 
-		public static Delegates.glGetUniformSubroutineuiv glGetUniformSubroutineuiv { get; set; }
+			public static Delegates.glGetUniformSubroutineuiv glGetUniformSubroutineuiv { get; set; }
 
-		public static Delegates.glGetUniformuiv glGetUniformuiv { get; set; }
+			public static Delegates.glGetUniformuiv glGetUniformuiv { get; set; }
 
-		public static Delegates.glGetVertexArrayIndexed64iv glGetVertexArrayIndexed64iv { get; set; }
+			public static Delegates.glGetVertexArrayIndexed64iv glGetVertexArrayIndexed64iv { get; set; }
 
-		public static Delegates.glGetVertexArrayIndexediv glGetVertexArrayIndexediv { get; set; }
+			public static Delegates.glGetVertexArrayIndexediv glGetVertexArrayIndexediv { get; set; }
 
-		public static Delegates.glGetVertexArrayiv glGetVertexArrayiv { get; set; }
+			public static Delegates.glGetVertexArrayiv glGetVertexArrayiv { get; set; }
 
-		public static Delegates.glGetVertexAttribdv glGetVertexAttribdv { get; set; }
+			public static Delegates.glGetVertexAttribdv glGetVertexAttribdv { get; set; }
 
-		public static Delegates.glGetVertexAttribfv glGetVertexAttribfv { get; set; }
+			public static Delegates.glGetVertexAttribfv glGetVertexAttribfv { get; set; }
 
-		public static Delegates.glGetVertexAttribIiv glGetVertexAttribIiv { get; set; }
+			public static Delegates.glGetVertexAttribIiv glGetVertexAttribIiv { get; set; }
 
-		public static Delegates.glGetVertexAttribIuiv glGetVertexAttribIuiv { get; set; }
+			public static Delegates.glGetVertexAttribIuiv glGetVertexAttribIuiv { get; set; }
 
-		public static Delegates.glGetVertexAttribiv glGetVertexAttribiv { get; set; }
+			public static Delegates.glGetVertexAttribiv glGetVertexAttribiv { get; set; }
 
-		public static Delegates.glGetVertexAttribLdv glGetVertexAttribLdv { get; set; }
+			public static Delegates.glGetVertexAttribLdv glGetVertexAttribLdv { get; set; }
 
-		public static Delegates.glGetVertexAttribPointerv glGetVertexAttribPointerv { get; set; }
+			public static Delegates.glGetVertexAttribPointerv glGetVertexAttribPointerv { get; set; }
 
-		public static Delegates.glHint glHint { get; set; }
+			public static Delegates.glHint glHint { get; set; }
 
-		public static Delegates.glInvalidateBufferData glInvalidateBufferData { get; set; }
+			public static Delegates.glInvalidateBufferData glInvalidateBufferData { get; set; }
 
-		public static Delegates.glInvalidateBufferSubData glInvalidateBufferSubData { get; set; }
+			public static Delegates.glInvalidateBufferSubData glInvalidateBufferSubData { get; set; }
 
-		public static Delegates.glInvalidateFramebuffer glInvalidateFramebuffer { get; set; }
+			public static Delegates.glInvalidateFramebuffer glInvalidateFramebuffer { get; set; }
 
-		public static Delegates.glInvalidateNamedFramebufferData glInvalidateNamedFramebufferData { get; set; }
+			public static Delegates.glInvalidateNamedFramebufferData glInvalidateNamedFramebufferData { get; set; }
 
-		public static Delegates.glInvalidateNamedFramebufferSubData glInvalidateNamedFramebufferSubData { get; set; }
+			public static Delegates.glInvalidateNamedFramebufferSubData glInvalidateNamedFramebufferSubData { get; set; }
 
-		public static Delegates.glInvalidateSubFramebuffer glInvalidateSubFramebuffer { get; set; }
+			public static Delegates.glInvalidateSubFramebuffer glInvalidateSubFramebuffer { get; set; }
 
-		public static Delegates.glInvalidateTexImage glInvalidateTexImage { get; set; }
+			public static Delegates.glInvalidateTexImage glInvalidateTexImage { get; set; }
 
-		public static Delegates.glInvalidateTexSubImage glInvalidateTexSubImage { get; set; }
+			public static Delegates.glInvalidateTexSubImage glInvalidateTexSubImage { get; set; }
 
-		public static Delegates.glIsBuffer glIsBuffer { get; set; }
+			public static Delegates.glIsBuffer glIsBuffer { get; set; }
 
-		public static Delegates.glIsEnabled glIsEnabled { get; set; }
+			public static Delegates.glIsEnabled glIsEnabled { get; set; }
 
-		public static Delegates.glIsEnabledi glIsEnabledi { get; set; }
+			public static Delegates.glIsEnabledi glIsEnabledi { get; set; }
 
-		public static Delegates.glIsFramebuffer glIsFramebuffer { get; set; }
+			public static Delegates.glIsFramebuffer glIsFramebuffer { get; set; }
 
-		public static Delegates.glIsProgram glIsProgram { get; set; }
+			public static Delegates.glIsProgram glIsProgram { get; set; }
 
-		public static Delegates.glIsProgramPipeline glIsProgramPipeline { get; set; }
+			public static Delegates.glIsProgramPipeline glIsProgramPipeline { get; set; }
 
-		public static Delegates.glIsQuery glIsQuery { get; set; }
+			public static Delegates.glIsQuery glIsQuery { get; set; }
 
-		public static Delegates.glIsRenderbuffer glIsRenderbuffer { get; set; }
+			public static Delegates.glIsRenderbuffer glIsRenderbuffer { get; set; }
 
-		public static Delegates.glIsSampler glIsSampler { get; set; }
+			public static Delegates.glIsSampler glIsSampler { get; set; }
 
-		public static Delegates.glIsShader glIsShader { get; set; }
+			public static Delegates.glIsShader glIsShader { get; set; }
 
-		public static Delegates.glIsSync glIsSync { get; set; }
+			public static Delegates.glIsSync glIsSync { get; set; }
 
-		public static Delegates.glIsTexture glIsTexture { get; set; }
+			public static Delegates.glIsTexture glIsTexture { get; set; }
 
-		public static Delegates.glIsTransformFeedback glIsTransformFeedback { get; set; }
+			public static Delegates.glIsTransformFeedback glIsTransformFeedback { get; set; }
 
-		public static Delegates.glIsVertexArray glIsVertexArray { get; set; }
+			public static Delegates.glIsVertexArray glIsVertexArray { get; set; }
 
-		public static Delegates.glLineWidth glLineWidth { get; set; }
+			public static Delegates.glLineWidth glLineWidth { get; set; }
 
-		public static Delegates.glLinkProgram glLinkProgram { get; set; }
+			public static Delegates.glLinkProgram glLinkProgram { get; set; }
 
-		public static Delegates.glLogicOp glLogicOp { get; set; }
+			public static Delegates.glLogicOp glLogicOp { get; set; }
 
-		public static Delegates.glMapBuffer glMapBuffer { get; set; }
+			public static Delegates.glMapBuffer glMapBuffer { get; set; }
 
-		public static Delegates.glMapBufferRange glMapBufferRange { get; set; }
+			public static Delegates.glMapBufferRange glMapBufferRange { get; set; }
 
-		public static Delegates.glMapNamedBuffer glMapNamedBuffer { get; set; }
+			public static Delegates.glMapNamedBuffer glMapNamedBuffer { get; set; }
 
-		public static Delegates.glMapNamedBufferRange glMapNamedBufferRange { get; set; }
+			public static Delegates.glMapNamedBufferRange glMapNamedBufferRange { get; set; }
 
-		public static Delegates.glMemoryBarrier glMemoryBarrier { get; set; }
+			public static Delegates.glMemoryBarrier glMemoryBarrier { get; set; }
 
-		public static Delegates.glMemoryBarrierByRegion glMemoryBarrierByRegion { get; set; }
+			public static Delegates.glMemoryBarrierByRegion glMemoryBarrierByRegion { get; set; }
 
-		public static Delegates.glMinSampleShading glMinSampleShading { get; set; }
+			public static Delegates.glMinSampleShading glMinSampleShading { get; set; }
 
-		public static Delegates.glMultiDrawArrays glMultiDrawArrays { get; set; }
+			public static Delegates.glMultiDrawArrays glMultiDrawArrays { get; set; }
 
-		public static Delegates.glMultiDrawArraysIndirect glMultiDrawArraysIndirect { get; set; }
+			public static Delegates.glMultiDrawArraysIndirect glMultiDrawArraysIndirect { get; set; }
 
-		public static Delegates.glMultiDrawArraysIndirectCount glMultiDrawArraysIndirectCount { get; set; }
+			public static Delegates.glMultiDrawArraysIndirectCount glMultiDrawArraysIndirectCount { get; set; }
 
-		public static Delegates.glMultiDrawElements glMultiDrawElements { get; set; }
+			public static Delegates.glMultiDrawElements glMultiDrawElements { get; set; }
 
-		public static Delegates.glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex { get; set; }
+			public static Delegates.glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex { get; set; }
 
-		public static Delegates.glMultiDrawElementsIndirect glMultiDrawElementsIndirect { get; set; }
+			public static Delegates.glMultiDrawElementsIndirect glMultiDrawElementsIndirect { get; set; }
 
-		public static Delegates.glMultiDrawElementsIndirectCount glMultiDrawElementsIndirectCount { get; set; }
+			public static Delegates.glMultiDrawElementsIndirectCount glMultiDrawElementsIndirectCount { get; set; }
 
-		public static Delegates.glNamedBufferData glNamedBufferData { get; set; }
+			public static Delegates.glNamedBufferData glNamedBufferData { get; set; }
 
-		public static Delegates.glNamedBufferStorage glNamedBufferStorage { get; set; }
+			public static Delegates.glNamedBufferStorage glNamedBufferStorage { get; set; }
 
-		public static Delegates.glNamedBufferSubData glNamedBufferSubData { get; set; }
+			public static Delegates.glNamedBufferSubData glNamedBufferSubData { get; set; }
 
-		public static Delegates.glNamedFramebufferDrawBuffer glNamedFramebufferDrawBuffer { get; set; }
+			public static Delegates.glNamedFramebufferDrawBuffer glNamedFramebufferDrawBuffer { get; set; }
 
-		public static Delegates.glNamedFramebufferDrawBuffers glNamedFramebufferDrawBuffers { get; set; }
+			public static Delegates.glNamedFramebufferDrawBuffers glNamedFramebufferDrawBuffers { get; set; }
 
-		public static Delegates.glNamedFramebufferParameteri glNamedFramebufferParameteri { get; set; }
+			public static Delegates.glNamedFramebufferParameteri glNamedFramebufferParameteri { get; set; }
 
-		public static Delegates.glNamedFramebufferReadBuffer glNamedFramebufferReadBuffer { get; set; }
+			public static Delegates.glNamedFramebufferReadBuffer glNamedFramebufferReadBuffer { get; set; }
 
-		public static Delegates.glNamedFramebufferRenderbuffer glNamedFramebufferRenderbuffer { get; set; }
+			public static Delegates.glNamedFramebufferRenderbuffer glNamedFramebufferRenderbuffer { get; set; }
 
-		public static Delegates.glNamedFramebufferTexture glNamedFramebufferTexture { get; set; }
+			public static Delegates.glNamedFramebufferTexture glNamedFramebufferTexture { get; set; }
 
-		public static Delegates.glNamedFramebufferTextureLayer glNamedFramebufferTextureLayer { get; set; }
+			public static Delegates.glNamedFramebufferTextureLayer glNamedFramebufferTextureLayer { get; set; }
 
-		public static Delegates.glNamedRenderbufferStorage glNamedRenderbufferStorage { get; set; }
+			public static Delegates.glNamedRenderbufferStorage glNamedRenderbufferStorage { get; set; }
 
-		public static Delegates.glNamedRenderbufferStorageMultisample glNamedRenderbufferStorageMultisample { get; set; }
+			public static Delegates.glNamedRenderbufferStorageMultisample glNamedRenderbufferStorageMultisample { get; set; }
 
-		public static Delegates.glObjectLabel glObjectLabel { get; set; }
+			public static Delegates.glObjectLabel glObjectLabel { get; set; }
 
-		public static Delegates.glObjectPtrLabel glObjectPtrLabel { get; set; }
+			public static Delegates.glObjectPtrLabel glObjectPtrLabel { get; set; }
 
-		public static Delegates.glPatchParameterfv glPatchParameterfv { get; set; }
+			public static Delegates.glPatchParameterfv glPatchParameterfv { get; set; }
 
-		public static Delegates.glPatchParameteri glPatchParameteri { get; set; }
+			public static Delegates.glPatchParameteri glPatchParameteri { get; set; }
 
-		public static Delegates.glPauseTransformFeedback glPauseTransformFeedback { get; set; }
+			public static Delegates.glPauseTransformFeedback glPauseTransformFeedback { get; set; }
 
-		public static Delegates.glPixelStoref glPixelStoref { get; set; }
+			public static Delegates.glPixelStoref glPixelStoref { get; set; }
 
-		public static Delegates.glPixelStorei glPixelStorei { get; set; }
+			public static Delegates.glPixelStorei glPixelStorei { get; set; }
 
-		public static Delegates.glPointParameterf glPointParameterf { get; set; }
+			public static Delegates.glPointParameterf glPointParameterf { get; set; }
 
-		public static Delegates.glPointParameterfv glPointParameterfv { get; set; }
+			public static Delegates.glPointParameterfv glPointParameterfv { get; set; }
 
-		public static Delegates.glPointParameteri glPointParameteri { get; set; }
+			public static Delegates.glPointParameteri glPointParameteri { get; set; }
 
-		public static Delegates.glPointParameteriv glPointParameteriv { get; set; }
+			public static Delegates.glPointParameteriv glPointParameteriv { get; set; }
 
-		public static Delegates.glPointSize glPointSize { get; set; }
+			public static Delegates.glPointSize glPointSize { get; set; }
 
-		public static Delegates.glPolygonMode glPolygonMode { get; set; }
+			public static Delegates.glPolygonMode glPolygonMode { get; set; }
 
-		public static Delegates.glPolygonOffset glPolygonOffset { get; set; }
+			public static Delegates.glPolygonOffset glPolygonOffset { get; set; }
 
-		public static Delegates.glPolygonOffsetClamp glPolygonOffsetClamp { get; set; }
+			public static Delegates.glPolygonOffsetClamp glPolygonOffsetClamp { get; set; }
 
-		public static Delegates.glPopDebugGroup glPopDebugGroup { get; set; }
+			public static Delegates.glPopDebugGroup glPopDebugGroup { get; set; }
 
-		public static Delegates.glPrimitiveRestartIndex glPrimitiveRestartIndex { get; set; }
+			public static Delegates.glPrimitiveRestartIndex glPrimitiveRestartIndex { get; set; }
 
-		public static Delegates.glProgramBinary glProgramBinary { get; set; }
+			public static Delegates.glProgramBinary glProgramBinary { get; set; }
 
-		public static Delegates.glProgramParameteri glProgramParameteri { get; set; }
+			public static Delegates.glProgramParameteri glProgramParameteri { get; set; }
 
-		public static Delegates.glProgramUniform1d glProgramUniform1d { get; set; }
+			public static Delegates.glProgramUniform1d glProgramUniform1d { get; set; }
 
-		public static Delegates.glProgramUniform1dv glProgramUniform1dv { get; set; }
+			public static Delegates.glProgramUniform1dv glProgramUniform1dv { get; set; }
 
-		public static Delegates.glProgramUniform1f glProgramUniform1f { get; set; }
+			public static Delegates.glProgramUniform1f glProgramUniform1f { get; set; }
 
-		public static Delegates.glProgramUniform1fv glProgramUniform1fv { get; set; }
+			public static Delegates.glProgramUniform1fv glProgramUniform1fv { get; set; }
 
-		public static Delegates.glProgramUniform1i glProgramUniform1i { get; set; }
+			public static Delegates.glProgramUniform1i glProgramUniform1i { get; set; }
 
-		public static Delegates.glProgramUniform1iv glProgramUniform1iv { get; set; }
+			public static Delegates.glProgramUniform1iv glProgramUniform1iv { get; set; }
 
-		public static Delegates.glProgramUniform1ui glProgramUniform1ui { get; set; }
+			public static Delegates.glProgramUniform1ui glProgramUniform1ui { get; set; }
 
-		public static Delegates.glProgramUniform1uiv glProgramUniform1uiv { get; set; }
+			public static Delegates.glProgramUniform1uiv glProgramUniform1uiv { get; set; }
 
-		public static Delegates.glProgramUniform2d glProgramUniform2d { get; set; }
+			public static Delegates.glProgramUniform2d glProgramUniform2d { get; set; }
 
-		public static Delegates.glProgramUniform2dv glProgramUniform2dv { get; set; }
+			public static Delegates.glProgramUniform2dv glProgramUniform2dv { get; set; }
 
-		public static Delegates.glProgramUniform2f glProgramUniform2f { get; set; }
+			public static Delegates.glProgramUniform2f glProgramUniform2f { get; set; }
 
-		public static Delegates.glProgramUniform2fv glProgramUniform2fv { get; set; }
+			public static Delegates.glProgramUniform2fv glProgramUniform2fv { get; set; }
 
-		public static Delegates.glProgramUniform2i glProgramUniform2i { get; set; }
+			public static Delegates.glProgramUniform2i glProgramUniform2i { get; set; }
 
-		public static Delegates.glProgramUniform2iv glProgramUniform2iv { get; set; }
+			public static Delegates.glProgramUniform2iv glProgramUniform2iv { get; set; }
 
-		public static Delegates.glProgramUniform2ui glProgramUniform2ui { get; set; }
+			public static Delegates.glProgramUniform2ui glProgramUniform2ui { get; set; }
 
-		public static Delegates.glProgramUniform2uiv glProgramUniform2uiv { get; set; }
+			public static Delegates.glProgramUniform2uiv glProgramUniform2uiv { get; set; }
 
-		public static Delegates.glProgramUniform3d glProgramUniform3d { get; set; }
+			public static Delegates.glProgramUniform3d glProgramUniform3d { get; set; }
 
-		public static Delegates.glProgramUniform3dv glProgramUniform3dv { get; set; }
+			public static Delegates.glProgramUniform3dv glProgramUniform3dv { get; set; }
 
-		public static Delegates.glProgramUniform3f glProgramUniform3f { get; set; }
+			public static Delegates.glProgramUniform3f glProgramUniform3f { get; set; }
 
-		public static Delegates.glProgramUniform3fv glProgramUniform3fv { get; set; }
+			public static Delegates.glProgramUniform3fv glProgramUniform3fv { get; set; }
 
-		public static Delegates.glProgramUniform3i glProgramUniform3i { get; set; }
+			public static Delegates.glProgramUniform3i glProgramUniform3i { get; set; }
 
-		public static Delegates.glProgramUniform3iv glProgramUniform3iv { get; set; }
+			public static Delegates.glProgramUniform3iv glProgramUniform3iv { get; set; }
 
-		public static Delegates.glProgramUniform3ui glProgramUniform3ui { get; set; }
+			public static Delegates.glProgramUniform3ui glProgramUniform3ui { get; set; }
 
-		public static Delegates.glProgramUniform3uiv glProgramUniform3uiv { get; set; }
+			public static Delegates.glProgramUniform3uiv glProgramUniform3uiv { get; set; }
 
-		public static Delegates.glProgramUniform4d glProgramUniform4d { get; set; }
+			public static Delegates.glProgramUniform4d glProgramUniform4d { get; set; }
 
-		public static Delegates.glProgramUniform4dv glProgramUniform4dv { get; set; }
+			public static Delegates.glProgramUniform4dv glProgramUniform4dv { get; set; }
 
-		public static Delegates.glProgramUniform4f glProgramUniform4f { get; set; }
+			public static Delegates.glProgramUniform4f glProgramUniform4f { get; set; }
 
-		public static Delegates.glProgramUniform4fv glProgramUniform4fv { get; set; }
+			public static Delegates.glProgramUniform4fv glProgramUniform4fv { get; set; }
 
-		public static Delegates.glProgramUniform4i glProgramUniform4i { get; set; }
+			public static Delegates.glProgramUniform4i glProgramUniform4i { get; set; }
 
-		public static Delegates.glProgramUniform4iv glProgramUniform4iv { get; set; }
+			public static Delegates.glProgramUniform4iv glProgramUniform4iv { get; set; }
 
-		public static Delegates.glProgramUniform4ui glProgramUniform4ui { get; set; }
+			public static Delegates.glProgramUniform4ui glProgramUniform4ui { get; set; }
 
-		public static Delegates.glProgramUniform4uiv glProgramUniform4uiv { get; set; }
+			public static Delegates.glProgramUniform4uiv glProgramUniform4uiv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2dv glProgramUniformMatrix2dv { get; set; }
+			public static Delegates.glProgramUniformMatrix2dv glProgramUniformMatrix2dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2fv glProgramUniformMatrix2fv { get; set; }
+			public static Delegates.glProgramUniformMatrix2fv glProgramUniformMatrix2fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2x3dv glProgramUniformMatrix2x3dv { get; set; }
+			public static Delegates.glProgramUniformMatrix2x3dv glProgramUniformMatrix2x3dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2x3fv glProgramUniformMatrix2x3fv { get; set; }
+			public static Delegates.glProgramUniformMatrix2x3fv glProgramUniformMatrix2x3fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2x4dv glProgramUniformMatrix2x4dv { get; set; }
+			public static Delegates.glProgramUniformMatrix2x4dv glProgramUniformMatrix2x4dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix2x4fv glProgramUniformMatrix2x4fv { get; set; }
+			public static Delegates.glProgramUniformMatrix2x4fv glProgramUniformMatrix2x4fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3dv glProgramUniformMatrix3dv { get; set; }
+			public static Delegates.glProgramUniformMatrix3dv glProgramUniformMatrix3dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3fv glProgramUniformMatrix3fv { get; set; }
+			public static Delegates.glProgramUniformMatrix3fv glProgramUniformMatrix3fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3x2dv glProgramUniformMatrix3x2dv { get; set; }
+			public static Delegates.glProgramUniformMatrix3x2dv glProgramUniformMatrix3x2dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3x2fv glProgramUniformMatrix3x2fv { get; set; }
+			public static Delegates.glProgramUniformMatrix3x2fv glProgramUniformMatrix3x2fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3x4dv glProgramUniformMatrix3x4dv { get; set; }
+			public static Delegates.glProgramUniformMatrix3x4dv glProgramUniformMatrix3x4dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix3x4fv glProgramUniformMatrix3x4fv { get; set; }
+			public static Delegates.glProgramUniformMatrix3x4fv glProgramUniformMatrix3x4fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4dv glProgramUniformMatrix4dv { get; set; }
+			public static Delegates.glProgramUniformMatrix4dv glProgramUniformMatrix4dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4fv glProgramUniformMatrix4fv { get; set; }
+			public static Delegates.glProgramUniformMatrix4fv glProgramUniformMatrix4fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4x2dv glProgramUniformMatrix4x2dv { get; set; }
+			public static Delegates.glProgramUniformMatrix4x2dv glProgramUniformMatrix4x2dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4x2fv glProgramUniformMatrix4x2fv { get; set; }
+			public static Delegates.glProgramUniformMatrix4x2fv glProgramUniformMatrix4x2fv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4x3dv glProgramUniformMatrix4x3dv { get; set; }
+			public static Delegates.glProgramUniformMatrix4x3dv glProgramUniformMatrix4x3dv { get; set; }
 
-		public static Delegates.glProgramUniformMatrix4x3fv glProgramUniformMatrix4x3fv { get; set; }
+			public static Delegates.glProgramUniformMatrix4x3fv glProgramUniformMatrix4x3fv { get; set; }
 
-		public static Delegates.glProvokingVertex glProvokingVertex { get; set; }
+			public static Delegates.glProvokingVertex glProvokingVertex { get; set; }
 
-		public static Delegates.glPushDebugGroup glPushDebugGroup { get; set; }
+			public static Delegates.glPushDebugGroup glPushDebugGroup { get; set; }
 
-		public static Delegates.glQueryCounter glQueryCounter { get; set; }
+			public static Delegates.glQueryCounter glQueryCounter { get; set; }
 
-		public static Delegates.glReadBuffer glReadBuffer { get; set; }
+			public static Delegates.glReadBuffer glReadBuffer { get; set; }
 
-		public static Delegates.glReadnPixels glReadnPixels { get; set; }
+			public static Delegates.glReadnPixels glReadnPixels { get; set; }
 
-		public static Delegates.glReadPixels glReadPixels { get; set; }
+			public static Delegates.glReadPixels glReadPixels { get; set; }
 
-		public static Delegates.glReleaseShaderCompiler glReleaseShaderCompiler { get; set; }
+			public static Delegates.glReleaseShaderCompiler glReleaseShaderCompiler { get; set; }
 
-		public static Delegates.glRenderbufferStorage glRenderbufferStorage { get; set; }
+			public static Delegates.glRenderbufferStorage glRenderbufferStorage { get; set; }
 
-		public static Delegates.glRenderbufferStorageMultisample glRenderbufferStorageMultisample { get; set; }
+			public static Delegates.glRenderbufferStorageMultisample glRenderbufferStorageMultisample { get; set; }
 
-		public static Delegates.glResumeTransformFeedback glResumeTransformFeedback { get; set; }
+			public static Delegates.glResumeTransformFeedback glResumeTransformFeedback { get; set; }
 
-		public static Delegates.glSampleCoverage glSampleCoverage { get; set; }
+			public static Delegates.glSampleCoverage glSampleCoverage { get; set; }
 
-		public static Delegates.glSampleMaski glSampleMaski { get; set; }
+			public static Delegates.glSampleMaski glSampleMaski { get; set; }
 
-		public static Delegates.glSamplerParameterf glSamplerParameterf { get; set; }
+			public static Delegates.glSamplerParameterf glSamplerParameterf { get; set; }
 
-		public static Delegates.glSamplerParameterfv glSamplerParameterfv { get; set; }
+			public static Delegates.glSamplerParameterfv glSamplerParameterfv { get; set; }
 
-		public static Delegates.glSamplerParameteri glSamplerParameteri { get; set; }
+			public static Delegates.glSamplerParameteri glSamplerParameteri { get; set; }
 
-		public static Delegates.glSamplerParameterIiv glSamplerParameterIiv { get; set; }
+			public static Delegates.glSamplerParameterIiv glSamplerParameterIiv { get; set; }
 
-		public static Delegates.glSamplerParameterIuiv glSamplerParameterIuiv { get; set; }
+			public static Delegates.glSamplerParameterIuiv glSamplerParameterIuiv { get; set; }
 
-		public static Delegates.glSamplerParameteriv glSamplerParameteriv { get; set; }
+			public static Delegates.glSamplerParameteriv glSamplerParameteriv { get; set; }
 
-		public static Delegates.glScissor glScissor { get; set; }
+			public static Delegates.glScissor glScissor { get; set; }
 
-		public static Delegates.glScissorArrayv glScissorArrayv { get; set; }
+			public static Delegates.glScissorArrayv glScissorArrayv { get; set; }
 
-		public static Delegates.glScissorIndexed glScissorIndexed { get; set; }
+			public static Delegates.glScissorIndexed glScissorIndexed { get; set; }
 
-		public static Delegates.glScissorIndexedv glScissorIndexedv { get; set; }
+			public static Delegates.glScissorIndexedv glScissorIndexedv { get; set; }
 
-		public static Delegates.glShaderBinary glShaderBinary { get; set; }
+			public static Delegates.glShaderBinary glShaderBinary { get; set; }
 
-		public static Delegates.glShaderSource glShaderSource { get; set; }
+			public static Delegates.glShaderSource glShaderSource { get; set; }
 
-		public static Delegates.glShaderStorageBlockBinding glShaderStorageBlockBinding { get; set; }
+			public static Delegates.glShaderStorageBlockBinding glShaderStorageBlockBinding { get; set; }
 
-		public static Delegates.glSpecializeShader glSpecializeShader { get; set; }
+			public static Delegates.glSpecializeShader glSpecializeShader { get; set; }
 
-		public static Delegates.glStencilFunc glStencilFunc { get; set; }
+			public static Delegates.glStencilFunc glStencilFunc { get; set; }
 
-		public static Delegates.glStencilFuncSeparate glStencilFuncSeparate { get; set; }
+			public static Delegates.glStencilFuncSeparate glStencilFuncSeparate { get; set; }
 
-		public static Delegates.glStencilMask glStencilMask { get; set; }
+			public static Delegates.glStencilMask glStencilMask { get; set; }
 
-		public static Delegates.glStencilMaskSeparate glStencilMaskSeparate { get; set; }
+			public static Delegates.glStencilMaskSeparate glStencilMaskSeparate { get; set; }
 
-		public static Delegates.glStencilOp glStencilOp { get; set; }
+			public static Delegates.glStencilOp glStencilOp { get; set; }
 
-		public static Delegates.glStencilOpSeparate glStencilOpSeparate { get; set; }
+			public static Delegates.glStencilOpSeparate glStencilOpSeparate { get; set; }
 
-		public static Delegates.glTexBuffer glTexBuffer { get; set; }
+			public static Delegates.glTexBuffer glTexBuffer { get; set; }
 
-		public static Delegates.glTexBufferRange glTexBufferRange { get; set; }
+			public static Delegates.glTexBufferRange glTexBufferRange { get; set; }
 
-		public static Delegates.glTexImage1D glTexImage1D { get; set; }
+			public static Delegates.glTexImage1D glTexImage1D { get; set; }
 
-		public static Delegates.glTexImage2D glTexImage2D { get; set; }
+			public static Delegates.glTexImage2D glTexImage2D { get; set; }
 
-		public static Delegates.glTexImage2DMultisample glTexImage2DMultisample { get; set; }
+			public static Delegates.glTexImage2DMultisample glTexImage2DMultisample { get; set; }
 
-		public static Delegates.glTexImage3D glTexImage3D { get; set; }
+			public static Delegates.glTexImage3D glTexImage3D { get; set; }
 
-		public static Delegates.glTexImage3DMultisample glTexImage3DMultisample { get; set; }
+			public static Delegates.glTexImage3DMultisample glTexImage3DMultisample { get; set; }
 
-		public static Delegates.glTexParameterf glTexParameterf { get; set; }
+			public static Delegates.glTexParameterf glTexParameterf { get; set; }
 
-		public static Delegates.glTexParameterfv glTexParameterfv { get; set; }
+			public static Delegates.glTexParameterfv glTexParameterfv { get; set; }
 
-		public static Delegates.glTexParameteri glTexParameteri { get; set; }
+			public static Delegates.glTexParameteri glTexParameteri { get; set; }
 
-		public static Delegates.glTexParameterIiv glTexParameterIiv { get; set; }
+			public static Delegates.glTexParameterIiv glTexParameterIiv { get; set; }
 
-		public static Delegates.glTexParameterIuiv glTexParameterIuiv { get; set; }
+			public static Delegates.glTexParameterIuiv glTexParameterIuiv { get; set; }
 
-		public static Delegates.glTexParameteriv glTexParameteriv { get; set; }
+			public static Delegates.glTexParameteriv glTexParameteriv { get; set; }
 
-		public static Delegates.glTexStorage1D glTexStorage1D { get; set; }
+			public static Delegates.glTexStorage1D glTexStorage1D { get; set; }
 
-		public static Delegates.glTexStorage2D glTexStorage2D { get; set; }
+			public static Delegates.glTexStorage2D glTexStorage2D { get; set; }
 
-		public static Delegates.glTexStorage2DMultisample glTexStorage2DMultisample { get; set; }
+			public static Delegates.glTexStorage2DMultisample glTexStorage2DMultisample { get; set; }
 
-		public static Delegates.glTexStorage3D glTexStorage3D { get; set; }
+			public static Delegates.glTexStorage3D glTexStorage3D { get; set; }
 
-		public static Delegates.glTexStorage3DMultisample glTexStorage3DMultisample { get; set; }
+			public static Delegates.glTexStorage3DMultisample glTexStorage3DMultisample { get; set; }
 
-		public static Delegates.glTexSubImage1D glTexSubImage1D { get; set; }
+			public static Delegates.glTexSubImage1D glTexSubImage1D { get; set; }
 
-		public static Delegates.glTexSubImage2D glTexSubImage2D { get; set; }
+			public static Delegates.glTexSubImage2D glTexSubImage2D { get; set; }
 
-		public static Delegates.glTexSubImage3D glTexSubImage3D { get; set; }
+			public static Delegates.glTexSubImage3D glTexSubImage3D { get; set; }
 
-		public static Delegates.glTextureBarrier glTextureBarrier { get; set; }
+			public static Delegates.glTextureBarrier glTextureBarrier { get; set; }
 
-		public static Delegates.glTextureBuffer glTextureBuffer { get; set; }
+			public static Delegates.glTextureBuffer glTextureBuffer { get; set; }
 
-		public static Delegates.glTextureBufferRange glTextureBufferRange { get; set; }
+			public static Delegates.glTextureBufferRange glTextureBufferRange { get; set; }
 
-		public static Delegates.glTextureParameterf glTextureParameterf { get; set; }
+			public static Delegates.glTextureParameterf glTextureParameterf { get; set; }
 
-		public static Delegates.glTextureParameterfv glTextureParameterfv { get; set; }
+			public static Delegates.glTextureParameterfv glTextureParameterfv { get; set; }
 
-		public static Delegates.glTextureParameteri glTextureParameteri { get; set; }
+			public static Delegates.glTextureParameteri glTextureParameteri { get; set; }
 
-		public static Delegates.glTextureParameterIiv glTextureParameterIiv { get; set; }
+			public static Delegates.glTextureParameterIiv glTextureParameterIiv { get; set; }
 
-		public static Delegates.glTextureParameterIuiv glTextureParameterIuiv { get; set; }
+			public static Delegates.glTextureParameterIuiv glTextureParameterIuiv { get; set; }
 
-		public static Delegates.glTextureParameteriv glTextureParameteriv { get; set; }
+			public static Delegates.glTextureParameteriv glTextureParameteriv { get; set; }
 
-		public static Delegates.glTextureStorage1D glTextureStorage1D { get; set; }
+			public static Delegates.glTextureStorage1D glTextureStorage1D { get; set; }
 
-		public static Delegates.glTextureStorage2D glTextureStorage2D { get; set; }
+			public static Delegates.glTextureStorage2D glTextureStorage2D { get; set; }
 
-		public static Delegates.glTextureStorage2DMultisample glTextureStorage2DMultisample { get; set; }
+			public static Delegates.glTextureStorage2DMultisample glTextureStorage2DMultisample { get; set; }
 
-		public static Delegates.glTextureStorage3D glTextureStorage3D { get; set; }
+			public static Delegates.glTextureStorage3D glTextureStorage3D { get; set; }
 
-		public static Delegates.glTextureStorage3DMultisample glTextureStorage3DMultisample { get; set; }
+			public static Delegates.glTextureStorage3DMultisample glTextureStorage3DMultisample { get; set; }
 
-		public static Delegates.glTextureSubImage1D glTextureSubImage1D { get; set; }
+			public static Delegates.glTextureSubImage1D glTextureSubImage1D { get; set; }
 
-		public static Delegates.glTextureSubImage2D glTextureSubImage2D { get; set; }
+			public static Delegates.glTextureSubImage2D glTextureSubImage2D { get; set; }
 
-		public static Delegates.glTextureSubImage3D glTextureSubImage3D { get; set; }
+			public static Delegates.glTextureSubImage3D glTextureSubImage3D { get; set; }
 
-		public static Delegates.glTextureView glTextureView { get; set; }
+			public static Delegates.glTextureView glTextureView { get; set; }
 
-		public static Delegates.glTransformFeedbackBufferBase glTransformFeedbackBufferBase { get; set; }
+			public static Delegates.glTransformFeedbackBufferBase glTransformFeedbackBufferBase { get; set; }
 
-		public static Delegates.glTransformFeedbackBufferRange glTransformFeedbackBufferRange { get; set; }
+			public static Delegates.glTransformFeedbackBufferRange glTransformFeedbackBufferRange { get; set; }
 
-		public static Delegates.glTransformFeedbackVaryings glTransformFeedbackVaryings { get; set; }
+			public static Delegates.glTransformFeedbackVaryings glTransformFeedbackVaryings { get; set; }
 
-		public static Delegates.glUniform1d glUniform1d { get; set; }
+			public static Delegates.glUniform1d glUniform1d { get; set; }
 
-		public static Delegates.glUniform1dv glUniform1dv { get; set; }
+			public static Delegates.glUniform1dv glUniform1dv { get; set; }
 
-		public static Delegates.glUniform1f glUniform1f { get; set; }
+			public static Delegates.glUniform1f glUniform1f { get; set; }
 
-		public static Delegates.glUniform1fv glUniform1fv { get; set; }
+			public static Delegates.glUniform1fv glUniform1fv { get; set; }
 
-		public static Delegates.glUniform1i glUniform1i { get; set; }
+			public static Delegates.glUniform1i glUniform1i { get; set; }
 
-		public static Delegates.glUniform1iv glUniform1iv { get; set; }
+			public static Delegates.glUniform1iv glUniform1iv { get; set; }
 
-		public static Delegates.glUniform1ui glUniform1ui { get; set; }
+			public static Delegates.glUniform1ui glUniform1ui { get; set; }
 
-		public static Delegates.glUniform1uiv glUniform1uiv { get; set; }
+			public static Delegates.glUniform1uiv glUniform1uiv { get; set; }
 
-		public static Delegates.glUniform2d glUniform2d { get; set; }
+			public static Delegates.glUniform2d glUniform2d { get; set; }
 
-		public static Delegates.glUniform2dv glUniform2dv { get; set; }
+			public static Delegates.glUniform2dv glUniform2dv { get; set; }
 
-		public static Delegates.glUniform2f glUniform2f { get; set; }
+			public static Delegates.glUniform2f glUniform2f { get; set; }
 
-		public static Delegates.glUniform2fv glUniform2fv { get; set; }
+			public static Delegates.glUniform2fv glUniform2fv { get; set; }
 
-		public static Delegates.glUniform2i glUniform2i { get; set; }
+			public static Delegates.glUniform2i glUniform2i { get; set; }
 
-		public static Delegates.glUniform2iv glUniform2iv { get; set; }
+			public static Delegates.glUniform2iv glUniform2iv { get; set; }
 
-		public static Delegates.glUniform2ui glUniform2ui { get; set; }
+			public static Delegates.glUniform2ui glUniform2ui { get; set; }
 
-		public static Delegates.glUniform2uiv glUniform2uiv { get; set; }
+			public static Delegates.glUniform2uiv glUniform2uiv { get; set; }
 
-		public static Delegates.glUniform3d glUniform3d { get; set; }
+			public static Delegates.glUniform3d glUniform3d { get; set; }
 
-		public static Delegates.glUniform3dv glUniform3dv { get; set; }
+			public static Delegates.glUniform3dv glUniform3dv { get; set; }
 
-		public static Delegates.glUniform3f glUniform3f { get; set; }
+			public static Delegates.glUniform3f glUniform3f { get; set; }
 
-		public static Delegates.glUniform3fv glUniform3fv { get; set; }
+			public static Delegates.glUniform3fv glUniform3fv { get; set; }
 
-		public static Delegates.glUniform3i glUniform3i { get; set; }
+			public static Delegates.glUniform3i glUniform3i { get; set; }
 
-		public static Delegates.glUniform3iv glUniform3iv { get; set; }
+			public static Delegates.glUniform3iv glUniform3iv { get; set; }
 
-		public static Delegates.glUniform3ui glUniform3ui { get; set; }
+			public static Delegates.glUniform3ui glUniform3ui { get; set; }
 
-		public static Delegates.glUniform3uiv glUniform3uiv { get; set; }
+			public static Delegates.glUniform3uiv glUniform3uiv { get; set; }
 
-		public static Delegates.glUniform4d glUniform4d { get; set; }
+			public static Delegates.glUniform4d glUniform4d { get; set; }
 
-		public static Delegates.glUniform4dv glUniform4dv { get; set; }
+			public static Delegates.glUniform4dv glUniform4dv { get; set; }
 
-		public static Delegates.glUniform4f glUniform4f { get; set; }
+			public static Delegates.glUniform4f glUniform4f { get; set; }
 
-		public static Delegates.glUniform4fv glUniform4fv { get; set; }
+			public static Delegates.glUniform4fv glUniform4fv { get; set; }
 
-		public static Delegates.glUniform4i glUniform4i { get; set; }
+			public static Delegates.glUniform4i glUniform4i { get; set; }
 
-		public static Delegates.glUniform4iv glUniform4iv { get; set; }
+			public static Delegates.glUniform4iv glUniform4iv { get; set; }
 
-		public static Delegates.glUniform4ui glUniform4ui { get; set; }
+			public static Delegates.glUniform4ui glUniform4ui { get; set; }
 
-		public static Delegates.glUniform4uiv glUniform4uiv { get; set; }
+			public static Delegates.glUniform4uiv glUniform4uiv { get; set; }
 
-		public static Delegates.glUniformBlockBinding glUniformBlockBinding { get; set; }
+			public static Delegates.glUniformBlockBinding glUniformBlockBinding { get; set; }
 
-		public static Delegates.glUniformMatrix2dv glUniformMatrix2dv { get; set; }
+			public static Delegates.glUniformMatrix2dv glUniformMatrix2dv { get; set; }
 
-		public static Delegates.glUniformMatrix2fv glUniformMatrix2fv { get; set; }
+			public static Delegates.glUniformMatrix2fv glUniformMatrix2fv { get; set; }
 
-		public static Delegates.glUniformMatrix2x3dv glUniformMatrix2x3dv { get; set; }
+			public static Delegates.glUniformMatrix2x3dv glUniformMatrix2x3dv { get; set; }
 
-		public static Delegates.glUniformMatrix2x3fv glUniformMatrix2x3fv { get; set; }
+			public static Delegates.glUniformMatrix2x3fv glUniformMatrix2x3fv { get; set; }
 
-		public static Delegates.glUniformMatrix2x4dv glUniformMatrix2x4dv { get; set; }
+			public static Delegates.glUniformMatrix2x4dv glUniformMatrix2x4dv { get; set; }
 
-		public static Delegates.glUniformMatrix2x4fv glUniformMatrix2x4fv { get; set; }
+			public static Delegates.glUniformMatrix2x4fv glUniformMatrix2x4fv { get; set; }
 
-		public static Delegates.glUniformMatrix3dv glUniformMatrix3dv { get; set; }
+			public static Delegates.glUniformMatrix3dv glUniformMatrix3dv { get; set; }
 
-		public static Delegates.glUniformMatrix3fv glUniformMatrix3fv { get; set; }
+			public static Delegates.glUniformMatrix3fv glUniformMatrix3fv { get; set; }
 
-		public static Delegates.glUniformMatrix3x2dv glUniformMatrix3x2dv { get; set; }
+			public static Delegates.glUniformMatrix3x2dv glUniformMatrix3x2dv { get; set; }
 
-		public static Delegates.glUniformMatrix3x2fv glUniformMatrix3x2fv { get; set; }
+			public static Delegates.glUniformMatrix3x2fv glUniformMatrix3x2fv { get; set; }
 
-		public static Delegates.glUniformMatrix3x4dv glUniformMatrix3x4dv { get; set; }
+			public static Delegates.glUniformMatrix3x4dv glUniformMatrix3x4dv { get; set; }
 
-		public static Delegates.glUniformMatrix3x4fv glUniformMatrix3x4fv { get; set; }
+			public static Delegates.glUniformMatrix3x4fv glUniformMatrix3x4fv { get; set; }
 
-		public static Delegates.glUniformMatrix4dv glUniformMatrix4dv { get; set; }
+			public static Delegates.glUniformMatrix4dv glUniformMatrix4dv { get; set; }
 
-		public static Delegates.glUniformMatrix4fv glUniformMatrix4fv { get; set; }
+			public static Delegates.glUniformMatrix4fv glUniformMatrix4fv { get; set; }
 
-		public static Delegates.glUniformMatrix4x2dv glUniformMatrix4x2dv { get; set; }
+			public static Delegates.glUniformMatrix4x2dv glUniformMatrix4x2dv { get; set; }
 
-		public static Delegates.glUniformMatrix4x2fv glUniformMatrix4x2fv { get; set; }
+			public static Delegates.glUniformMatrix4x2fv glUniformMatrix4x2fv { get; set; }
 
-		public static Delegates.glUniformMatrix4x3dv glUniformMatrix4x3dv { get; set; }
+			public static Delegates.glUniformMatrix4x3dv glUniformMatrix4x3dv { get; set; }
 
-		public static Delegates.glUniformMatrix4x3fv glUniformMatrix4x3fv { get; set; }
+			public static Delegates.glUniformMatrix4x3fv glUniformMatrix4x3fv { get; set; }
 
-		public static Delegates.glUniformSubroutinesuiv glUniformSubroutinesuiv { get; set; }
+			public static Delegates.glUniformSubroutinesuiv glUniformSubroutinesuiv { get; set; }
 
-		public static Delegates.glUnmapBuffer glUnmapBuffer { get; set; }
+			public static Delegates.glUnmapBuffer glUnmapBuffer { get; set; }
 
-		public static Delegates.glUnmapNamedBuffer glUnmapNamedBuffer { get; set; }
+			public static Delegates.glUnmapNamedBuffer glUnmapNamedBuffer { get; set; }
 
-		public static Delegates.glUseProgram glUseProgram { get; set; }
+			public static Delegates.glUseProgram glUseProgram { get; set; }
 
-		public static Delegates.glUseProgramStages glUseProgramStages { get; set; }
+			public static Delegates.glUseProgramStages glUseProgramStages { get; set; }
 
-		public static Delegates.glValidateProgram glValidateProgram { get; set; }
+			public static Delegates.glValidateProgram glValidateProgram { get; set; }
 
-		public static Delegates.glValidateProgramPipeline glValidateProgramPipeline { get; set; }
+			public static Delegates.glValidateProgramPipeline glValidateProgramPipeline { get; set; }
 
-		public static Delegates.glVertexArrayAttribBinding glVertexArrayAttribBinding { get; set; }
+			public static Delegates.glVertexArrayAttribBinding glVertexArrayAttribBinding { get; set; }
 
-		public static Delegates.glVertexArrayAttribFormat glVertexArrayAttribFormat { get; set; }
+			public static Delegates.glVertexArrayAttribFormat glVertexArrayAttribFormat { get; set; }
 
-		public static Delegates.glVertexArrayAttribIFormat glVertexArrayAttribIFormat { get; set; }
+			public static Delegates.glVertexArrayAttribIFormat glVertexArrayAttribIFormat { get; set; }
 
-		public static Delegates.glVertexArrayAttribLFormat glVertexArrayAttribLFormat { get; set; }
+			public static Delegates.glVertexArrayAttribLFormat glVertexArrayAttribLFormat { get; set; }
 
-		public static Delegates.glVertexArrayBindingDivisor glVertexArrayBindingDivisor { get; set; }
+			public static Delegates.glVertexArrayBindingDivisor glVertexArrayBindingDivisor { get; set; }
 
-		public static Delegates.glVertexArrayElementBuffer glVertexArrayElementBuffer { get; set; }
+			public static Delegates.glVertexArrayElementBuffer glVertexArrayElementBuffer { get; set; }
 
-		public static Delegates.glVertexArrayVertexBuffer glVertexArrayVertexBuffer { get; set; }
+			public static Delegates.glVertexArrayVertexBuffer glVertexArrayVertexBuffer { get; set; }
 
-		public static Delegates.glVertexArrayVertexBuffers glVertexArrayVertexBuffers { get; set; }
+			public static Delegates.glVertexArrayVertexBuffers glVertexArrayVertexBuffers { get; set; }
 
-		public static Delegates.glVertexAttrib1d glVertexAttrib1d { get; set; }
+			public static Delegates.glVertexAttrib1d glVertexAttrib1d { get; set; }
 
-		public static Delegates.glVertexAttrib1dv glVertexAttrib1dv { get; set; }
+			public static Delegates.glVertexAttrib1dv glVertexAttrib1dv { get; set; }
 
-		public static Delegates.glVertexAttrib1f glVertexAttrib1f { get; set; }
+			public static Delegates.glVertexAttrib1f glVertexAttrib1f { get; set; }
 
-		public static Delegates.glVertexAttrib1fv glVertexAttrib1fv { get; set; }
+			public static Delegates.glVertexAttrib1fv glVertexAttrib1fv { get; set; }
 
-		public static Delegates.glVertexAttrib1s glVertexAttrib1s { get; set; }
+			public static Delegates.glVertexAttrib1s glVertexAttrib1s { get; set; }
 
-		public static Delegates.glVertexAttrib1sv glVertexAttrib1sv { get; set; }
+			public static Delegates.glVertexAttrib1sv glVertexAttrib1sv { get; set; }
 
-		public static Delegates.glVertexAttrib2d glVertexAttrib2d { get; set; }
+			public static Delegates.glVertexAttrib2d glVertexAttrib2d { get; set; }
 
-		public static Delegates.glVertexAttrib2dv glVertexAttrib2dv { get; set; }
+			public static Delegates.glVertexAttrib2dv glVertexAttrib2dv { get; set; }
 
-		public static Delegates.glVertexAttrib2f glVertexAttrib2f { get; set; }
+			public static Delegates.glVertexAttrib2f glVertexAttrib2f { get; set; }
 
-		public static Delegates.glVertexAttrib2fv glVertexAttrib2fv { get; set; }
+			public static Delegates.glVertexAttrib2fv glVertexAttrib2fv { get; set; }
 
-		public static Delegates.glVertexAttrib2s glVertexAttrib2s { get; set; }
+			public static Delegates.glVertexAttrib2s glVertexAttrib2s { get; set; }
 
-		public static Delegates.glVertexAttrib2sv glVertexAttrib2sv { get; set; }
+			public static Delegates.glVertexAttrib2sv glVertexAttrib2sv { get; set; }
 
-		public static Delegates.glVertexAttrib3d glVertexAttrib3d { get; set; }
+			public static Delegates.glVertexAttrib3d glVertexAttrib3d { get; set; }
 
-		public static Delegates.glVertexAttrib3dv glVertexAttrib3dv { get; set; }
+			public static Delegates.glVertexAttrib3dv glVertexAttrib3dv { get; set; }
 
-		public static Delegates.glVertexAttrib3f glVertexAttrib3f { get; set; }
+			public static Delegates.glVertexAttrib3f glVertexAttrib3f { get; set; }
 
-		public static Delegates.glVertexAttrib3fv glVertexAttrib3fv { get; set; }
+			public static Delegates.glVertexAttrib3fv glVertexAttrib3fv { get; set; }
 
-		public static Delegates.glVertexAttrib3s glVertexAttrib3s { get; set; }
+			public static Delegates.glVertexAttrib3s glVertexAttrib3s { get; set; }
 
-		public static Delegates.glVertexAttrib3sv glVertexAttrib3sv { get; set; }
+			public static Delegates.glVertexAttrib3sv glVertexAttrib3sv { get; set; }
 
-		public static Delegates.glVertexAttrib4bv glVertexAttrib4bv { get; set; }
+			public static Delegates.glVertexAttrib4bv glVertexAttrib4bv { get; set; }
 
-		public static Delegates.glVertexAttrib4d glVertexAttrib4d { get; set; }
+			public static Delegates.glVertexAttrib4d glVertexAttrib4d { get; set; }
 
-		public static Delegates.glVertexAttrib4dv glVertexAttrib4dv { get; set; }
+			public static Delegates.glVertexAttrib4dv glVertexAttrib4dv { get; set; }
 
-		public static Delegates.glVertexAttrib4f glVertexAttrib4f { get; set; }
+			public static Delegates.glVertexAttrib4f glVertexAttrib4f { get; set; }
 
-		public static Delegates.glVertexAttrib4fv glVertexAttrib4fv { get; set; }
+			public static Delegates.glVertexAttrib4fv glVertexAttrib4fv { get; set; }
 
-		public static Delegates.glVertexAttrib4iv glVertexAttrib4iv { get; set; }
+			public static Delegates.glVertexAttrib4iv glVertexAttrib4iv { get; set; }
 
-		public static Delegates.glVertexAttrib4Nbv glVertexAttrib4Nbv { get; set; }
+			public static Delegates.glVertexAttrib4Nbv glVertexAttrib4Nbv { get; set; }
 
-		public static Delegates.glVertexAttrib4Niv glVertexAttrib4Niv { get; set; }
+			public static Delegates.glVertexAttrib4Niv glVertexAttrib4Niv { get; set; }
 
-		public static Delegates.glVertexAttrib4Nsv glVertexAttrib4Nsv { get; set; }
+			public static Delegates.glVertexAttrib4Nsv glVertexAttrib4Nsv { get; set; }
 
-		public static Delegates.glVertexAttrib4Nub glVertexAttrib4Nub { get; set; }
+			public static Delegates.glVertexAttrib4Nub glVertexAttrib4Nub { get; set; }
 
-		public static Delegates.glVertexAttrib4Nubv glVertexAttrib4Nubv { get; set; }
+			public static Delegates.glVertexAttrib4Nubv glVertexAttrib4Nubv { get; set; }
 
-		public static Delegates.glVertexAttrib4Nuiv glVertexAttrib4Nuiv { get; set; }
+			public static Delegates.glVertexAttrib4Nuiv glVertexAttrib4Nuiv { get; set; }
 
-		public static Delegates.glVertexAttrib4Nusv glVertexAttrib4Nusv { get; set; }
+			public static Delegates.glVertexAttrib4Nusv glVertexAttrib4Nusv { get; set; }
 
-		public static Delegates.glVertexAttrib4s glVertexAttrib4s { get; set; }
+			public static Delegates.glVertexAttrib4s glVertexAttrib4s { get; set; }
 
-		public static Delegates.glVertexAttrib4sv glVertexAttrib4sv { get; set; }
+			public static Delegates.glVertexAttrib4sv glVertexAttrib4sv { get; set; }
 
-		public static Delegates.glVertexAttrib4ubv glVertexAttrib4ubv { get; set; }
+			public static Delegates.glVertexAttrib4ubv glVertexAttrib4ubv { get; set; }
 
-		public static Delegates.glVertexAttrib4uiv glVertexAttrib4uiv { get; set; }
+			public static Delegates.glVertexAttrib4uiv glVertexAttrib4uiv { get; set; }
 
-		public static Delegates.glVertexAttrib4usv glVertexAttrib4usv { get; set; }
+			public static Delegates.glVertexAttrib4usv glVertexAttrib4usv { get; set; }
 
-		public static Delegates.glVertexAttribBinding glVertexAttribBinding { get; set; }
+			public static Delegates.glVertexAttribBinding glVertexAttribBinding { get; set; }
 
-		public static Delegates.glVertexAttribDivisor glVertexAttribDivisor { get; set; }
+			public static Delegates.glVertexAttribDivisor glVertexAttribDivisor { get; set; }
 
-		public static Delegates.glVertexAttribFormat glVertexAttribFormat { get; set; }
+			public static Delegates.glVertexAttribFormat glVertexAttribFormat { get; set; }
 
-		public static Delegates.glVertexAttribI1i glVertexAttribI1i { get; set; }
+			public static Delegates.glVertexAttribI1i glVertexAttribI1i { get; set; }
 
-		public static Delegates.glVertexAttribI1iv glVertexAttribI1iv { get; set; }
+			public static Delegates.glVertexAttribI1iv glVertexAttribI1iv { get; set; }
 
-		public static Delegates.glVertexAttribI1ui glVertexAttribI1ui { get; set; }
+			public static Delegates.glVertexAttribI1ui glVertexAttribI1ui { get; set; }
 
-		public static Delegates.glVertexAttribI1uiv glVertexAttribI1uiv { get; set; }
+			public static Delegates.glVertexAttribI1uiv glVertexAttribI1uiv { get; set; }
 
-		public static Delegates.glVertexAttribI2i glVertexAttribI2i { get; set; }
+			public static Delegates.glVertexAttribI2i glVertexAttribI2i { get; set; }
 
-		public static Delegates.glVertexAttribI2iv glVertexAttribI2iv { get; set; }
+			public static Delegates.glVertexAttribI2iv glVertexAttribI2iv { get; set; }
 
-		public static Delegates.glVertexAttribI2ui glVertexAttribI2ui { get; set; }
+			public static Delegates.glVertexAttribI2ui glVertexAttribI2ui { get; set; }
 
-		public static Delegates.glVertexAttribI2uiv glVertexAttribI2uiv { get; set; }
+			public static Delegates.glVertexAttribI2uiv glVertexAttribI2uiv { get; set; }
 
-		public static Delegates.glVertexAttribI3i glVertexAttribI3i { get; set; }
+			public static Delegates.glVertexAttribI3i glVertexAttribI3i { get; set; }
 
-		public static Delegates.glVertexAttribI3iv glVertexAttribI3iv { get; set; }
+			public static Delegates.glVertexAttribI3iv glVertexAttribI3iv { get; set; }
 
-		public static Delegates.glVertexAttribI3ui glVertexAttribI3ui { get; set; }
+			public static Delegates.glVertexAttribI3ui glVertexAttribI3ui { get; set; }
 
-		public static Delegates.glVertexAttribI3uiv glVertexAttribI3uiv { get; set; }
+			public static Delegates.glVertexAttribI3uiv glVertexAttribI3uiv { get; set; }
 
-		public static Delegates.glVertexAttribI4bv glVertexAttribI4bv { get; set; }
+			public static Delegates.glVertexAttribI4bv glVertexAttribI4bv { get; set; }
 
-		public static Delegates.glVertexAttribI4i glVertexAttribI4i { get; set; }
+			public static Delegates.glVertexAttribI4i glVertexAttribI4i { get; set; }
 
-		public static Delegates.glVertexAttribI4iv glVertexAttribI4iv { get; set; }
+			public static Delegates.glVertexAttribI4iv glVertexAttribI4iv { get; set; }
 
-		public static Delegates.glVertexAttribI4sv glVertexAttribI4sv { get; set; }
+			public static Delegates.glVertexAttribI4sv glVertexAttribI4sv { get; set; }
 
-		public static Delegates.glVertexAttribI4ubv glVertexAttribI4ubv { get; set; }
+			public static Delegates.glVertexAttribI4ubv glVertexAttribI4ubv { get; set; }
 
-		public static Delegates.glVertexAttribI4ui glVertexAttribI4ui { get; set; }
+			public static Delegates.glVertexAttribI4ui glVertexAttribI4ui { get; set; }
 
-		public static Delegates.glVertexAttribI4uiv glVertexAttribI4uiv { get; set; }
+			public static Delegates.glVertexAttribI4uiv glVertexAttribI4uiv { get; set; }
 
-		public static Delegates.glVertexAttribI4usv glVertexAttribI4usv { get; set; }
+			public static Delegates.glVertexAttribI4usv glVertexAttribI4usv { get; set; }
 
-		public static Delegates.glVertexAttribIFormat glVertexAttribIFormat { get; set; }
+			public static Delegates.glVertexAttribIFormat glVertexAttribIFormat { get; set; }
 
-		public static Delegates.glVertexAttribIPointer glVertexAttribIPointer { get; set; }
+			public static Delegates.glVertexAttribIPointer glVertexAttribIPointer { get; set; }
 
-		public static Delegates.glVertexAttribL1d glVertexAttribL1d { get; set; }
+			public static Delegates.glVertexAttribL1d glVertexAttribL1d { get; set; }
 
-		public static Delegates.glVertexAttribL1dv glVertexAttribL1dv { get; set; }
+			public static Delegates.glVertexAttribL1dv glVertexAttribL1dv { get; set; }
 
-		public static Delegates.glVertexAttribL2d glVertexAttribL2d { get; set; }
+			public static Delegates.glVertexAttribL2d glVertexAttribL2d { get; set; }
 
-		public static Delegates.glVertexAttribL2dv glVertexAttribL2dv { get; set; }
+			public static Delegates.glVertexAttribL2dv glVertexAttribL2dv { get; set; }
 
-		public static Delegates.glVertexAttribL3d glVertexAttribL3d { get; set; }
+			public static Delegates.glVertexAttribL3d glVertexAttribL3d { get; set; }
 
-		public static Delegates.glVertexAttribL3dv glVertexAttribL3dv { get; set; }
+			public static Delegates.glVertexAttribL3dv glVertexAttribL3dv { get; set; }
 
-		public static Delegates.glVertexAttribL4d glVertexAttribL4d { get; set; }
+			public static Delegates.glVertexAttribL4d glVertexAttribL4d { get; set; }
 
-		public static Delegates.glVertexAttribL4dv glVertexAttribL4dv { get; set; }
+			public static Delegates.glVertexAttribL4dv glVertexAttribL4dv { get; set; }
 
-		public static Delegates.glVertexAttribLFormat glVertexAttribLFormat { get; set; }
+			public static Delegates.glVertexAttribLFormat glVertexAttribLFormat { get; set; }
 
-		public static Delegates.glVertexAttribLPointer glVertexAttribLPointer { get; set; }
+			public static Delegates.glVertexAttribLPointer glVertexAttribLPointer { get; set; }
 
-		public static Delegates.glVertexAttribP1ui glVertexAttribP1ui { get; set; }
+			public static Delegates.glVertexAttribP1ui glVertexAttribP1ui { get; set; }
 
-		public static Delegates.glVertexAttribP1uiv glVertexAttribP1uiv { get; set; }
+			public static Delegates.glVertexAttribP1uiv glVertexAttribP1uiv { get; set; }
 
-		public static Delegates.glVertexAttribP2ui glVertexAttribP2ui { get; set; }
+			public static Delegates.glVertexAttribP2ui glVertexAttribP2ui { get; set; }
 
-		public static Delegates.glVertexAttribP2uiv glVertexAttribP2uiv { get; set; }
+			public static Delegates.glVertexAttribP2uiv glVertexAttribP2uiv { get; set; }
 
-		public static Delegates.glVertexAttribP3ui glVertexAttribP3ui { get; set; }
+			public static Delegates.glVertexAttribP3ui glVertexAttribP3ui { get; set; }
 
-		public static Delegates.glVertexAttribP3uiv glVertexAttribP3uiv { get; set; }
+			public static Delegates.glVertexAttribP3uiv glVertexAttribP3uiv { get; set; }
 
-		public static Delegates.glVertexAttribP4ui glVertexAttribP4ui { get; set; }
+			public static Delegates.glVertexAttribP4ui glVertexAttribP4ui { get; set; }
 
-		public static Delegates.glVertexAttribP4uiv glVertexAttribP4uiv { get; set; }
+			public static Delegates.glVertexAttribP4uiv glVertexAttribP4uiv { get; set; }
 
-		public static Delegates.glVertexAttribPointer glVertexAttribPointer { get; set; }
+			public static Delegates.glVertexAttribPointer glVertexAttribPointer { get; set; }
 
-		public static Delegates.glVertexBindingDivisor glVertexBindingDivisor { get; set; }
+			public static Delegates.glVertexBindingDivisor glVertexBindingDivisor { get; set; }
 
-		public static Delegates.glViewport glViewport { get; set; }
+			public static Delegates.glViewport glViewport { get; set; }
 
-		public static Delegates.glViewportArrayv glViewportArrayv { get; set; }
+			public static Delegates.glViewportArrayv glViewportArrayv { get; set; }
 
-		public static Delegates.glViewportIndexedf glViewportIndexedf { get; set; }
+			public static Delegates.glViewportIndexedf glViewportIndexedf { get; set; }
 
-		public static Delegates.glViewportIndexedfv glViewportIndexedfv { get; set; }
+			public static Delegates.glViewportIndexedfv glViewportIndexedfv { get; set; }
 
-		public static Delegates.glWaitSync glWaitSync { get; set; }
+			public static Delegates.glWaitSync glWaitSync { get; set; }
+
+		}
 
 #if !GLDOTNET_EXCLUDE_GLINIT
 		public static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)
@@ -4037,737 +4041,4023 @@ namespace GLDotNet
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 0))
 			{
-				glBlendFunc = getProc<Delegates.glBlendFunc>("glBlendFunc");
-				glClear = getProc<Delegates.glClear>("glClear");
-				glClearColor = getProc<Delegates.glClearColor>("glClearColor");
-				glClearDepth = getProc<Delegates.glClearDepth>("glClearDepth");
-				glClearStencil = getProc<Delegates.glClearStencil>("glClearStencil");
-				glColorMask = getProc<Delegates.glColorMask>("glColorMask");
-				glCullFace = getProc<Delegates.glCullFace>("glCullFace");
-				glDepthFunc = getProc<Delegates.glDepthFunc>("glDepthFunc");
-				glDepthMask = getProc<Delegates.glDepthMask>("glDepthMask");
-				glDepthRange = getProc<Delegates.glDepthRange>("glDepthRange");
-				glDisable = getProc<Delegates.glDisable>("glDisable");
-				glDrawBuffer = getProc<Delegates.glDrawBuffer>("glDrawBuffer");
-				glEnable = getProc<Delegates.glEnable>("glEnable");
-				glFinish = getProc<Delegates.glFinish>("glFinish");
-				glFlush = getProc<Delegates.glFlush>("glFlush");
-				glFrontFace = getProc<Delegates.glFrontFace>("glFrontFace");
-				glGetBooleanv = getProc<Delegates.glGetBooleanv>("glGetBooleanv");
-				glGetDoublev = getProc<Delegates.glGetDoublev>("glGetDoublev");
-				glGetError = getProc<Delegates.glGetError>("glGetError");
-				glGetFloatv = getProc<Delegates.glGetFloatv>("glGetFloatv");
-				glGetIntegerv = getProc<Delegates.glGetIntegerv>("glGetIntegerv");
-				glGetString = getProc<Delegates.glGetString>("glGetString");
-				glGetTexImage = getProc<Delegates.glGetTexImage>("glGetTexImage");
-				glGetTexLevelParameterfv = getProc<Delegates.glGetTexLevelParameterfv>("glGetTexLevelParameterfv");
-				glGetTexLevelParameteriv = getProc<Delegates.glGetTexLevelParameteriv>("glGetTexLevelParameteriv");
-				glGetTexParameterfv = getProc<Delegates.glGetTexParameterfv>("glGetTexParameterfv");
-				glGetTexParameteriv = getProc<Delegates.glGetTexParameteriv>("glGetTexParameteriv");
-				glHint = getProc<Delegates.glHint>("glHint");
-				glIsEnabled = getProc<Delegates.glIsEnabled>("glIsEnabled");
-				glLineWidth = getProc<Delegates.glLineWidth>("glLineWidth");
-				glLogicOp = getProc<Delegates.glLogicOp>("glLogicOp");
-				glPixelStoref = getProc<Delegates.glPixelStoref>("glPixelStoref");
-				glPixelStorei = getProc<Delegates.glPixelStorei>("glPixelStorei");
-				glPointSize = getProc<Delegates.glPointSize>("glPointSize");
-				glPolygonMode = getProc<Delegates.glPolygonMode>("glPolygonMode");
-				glReadBuffer = getProc<Delegates.glReadBuffer>("glReadBuffer");
-				glReadPixels = getProc<Delegates.glReadPixels>("glReadPixels");
-				glScissor = getProc<Delegates.glScissor>("glScissor");
-				glStencilFunc = getProc<Delegates.glStencilFunc>("glStencilFunc");
-				glStencilMask = getProc<Delegates.glStencilMask>("glStencilMask");
-				glStencilOp = getProc<Delegates.glStencilOp>("glStencilOp");
-				glTexImage1D = getProc<Delegates.glTexImage1D>("glTexImage1D");
-				glTexImage2D = getProc<Delegates.glTexImage2D>("glTexImage2D");
-				glTexParameterf = getProc<Delegates.glTexParameterf>("glTexParameterf");
-				glTexParameterfv = getProc<Delegates.glTexParameterfv>("glTexParameterfv");
-				glTexParameteri = getProc<Delegates.glTexParameteri>("glTexParameteri");
-				glTexParameteriv = getProc<Delegates.glTexParameteriv>("glTexParameteriv");
-				glViewport = getProc<Delegates.glViewport>("glViewport");
+				Functions.glBlendFunc = getProc<Delegates.glBlendFunc>("glBlendFunc");
+				Functions.glClear = getProc<Delegates.glClear>("glClear");
+				Functions.glClearColor = getProc<Delegates.glClearColor>("glClearColor");
+				Functions.glClearDepth = getProc<Delegates.glClearDepth>("glClearDepth");
+				Functions.glClearStencil = getProc<Delegates.glClearStencil>("glClearStencil");
+				Functions.glColorMask = getProc<Delegates.glColorMask>("glColorMask");
+				Functions.glCullFace = getProc<Delegates.glCullFace>("glCullFace");
+				Functions.glDepthFunc = getProc<Delegates.glDepthFunc>("glDepthFunc");
+				Functions.glDepthMask = getProc<Delegates.glDepthMask>("glDepthMask");
+				Functions.glDepthRange = getProc<Delegates.glDepthRange>("glDepthRange");
+				Functions.glDisable = getProc<Delegates.glDisable>("glDisable");
+				Functions.glDrawBuffer = getProc<Delegates.glDrawBuffer>("glDrawBuffer");
+				Functions.glEnable = getProc<Delegates.glEnable>("glEnable");
+				Functions.glFinish = getProc<Delegates.glFinish>("glFinish");
+				Functions.glFlush = getProc<Delegates.glFlush>("glFlush");
+				Functions.glFrontFace = getProc<Delegates.glFrontFace>("glFrontFace");
+				Functions.glGetBooleanv = getProc<Delegates.glGetBooleanv>("glGetBooleanv");
+				Functions.glGetDoublev = getProc<Delegates.glGetDoublev>("glGetDoublev");
+				Functions.glGetError = getProc<Delegates.glGetError>("glGetError");
+				Functions.glGetFloatv = getProc<Delegates.glGetFloatv>("glGetFloatv");
+				Functions.glGetIntegerv = getProc<Delegates.glGetIntegerv>("glGetIntegerv");
+				Functions.glGetString = getProc<Delegates.glGetString>("glGetString");
+				Functions.glGetTexImage = getProc<Delegates.glGetTexImage>("glGetTexImage");
+				Functions.glGetTexLevelParameterfv = getProc<Delegates.glGetTexLevelParameterfv>("glGetTexLevelParameterfv");
+				Functions.glGetTexLevelParameteriv = getProc<Delegates.glGetTexLevelParameteriv>("glGetTexLevelParameteriv");
+				Functions.glGetTexParameterfv = getProc<Delegates.glGetTexParameterfv>("glGetTexParameterfv");
+				Functions.glGetTexParameteriv = getProc<Delegates.glGetTexParameteriv>("glGetTexParameteriv");
+				Functions.glHint = getProc<Delegates.glHint>("glHint");
+				Functions.glIsEnabled = getProc<Delegates.glIsEnabled>("glIsEnabled");
+				Functions.glLineWidth = getProc<Delegates.glLineWidth>("glLineWidth");
+				Functions.glLogicOp = getProc<Delegates.glLogicOp>("glLogicOp");
+				Functions.glPixelStoref = getProc<Delegates.glPixelStoref>("glPixelStoref");
+				Functions.glPixelStorei = getProc<Delegates.glPixelStorei>("glPixelStorei");
+				Functions.glPointSize = getProc<Delegates.glPointSize>("glPointSize");
+				Functions.glPolygonMode = getProc<Delegates.glPolygonMode>("glPolygonMode");
+				Functions.glReadBuffer = getProc<Delegates.glReadBuffer>("glReadBuffer");
+				Functions.glReadPixels = getProc<Delegates.glReadPixels>("glReadPixels");
+				Functions.glScissor = getProc<Delegates.glScissor>("glScissor");
+				Functions.glStencilFunc = getProc<Delegates.glStencilFunc>("glStencilFunc");
+				Functions.glStencilMask = getProc<Delegates.glStencilMask>("glStencilMask");
+				Functions.glStencilOp = getProc<Delegates.glStencilOp>("glStencilOp");
+				Functions.glTexImage1D = getProc<Delegates.glTexImage1D>("glTexImage1D");
+				Functions.glTexImage2D = getProc<Delegates.glTexImage2D>("glTexImage2D");
+				Functions.glTexParameterf = getProc<Delegates.glTexParameterf>("glTexParameterf");
+				Functions.glTexParameterfv = getProc<Delegates.glTexParameterfv>("glTexParameterfv");
+				Functions.glTexParameteri = getProc<Delegates.glTexParameteri>("glTexParameteri");
+				Functions.glTexParameteriv = getProc<Delegates.glTexParameteriv>("glTexParameteriv");
+				Functions.glViewport = getProc<Delegates.glViewport>("glViewport");
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 1))
 			{
-				glBindTexture = getProc<Delegates.glBindTexture>("glBindTexture");
-				glCopyTexImage1D = getProc<Delegates.glCopyTexImage1D>("glCopyTexImage1D");
-				glCopyTexImage2D = getProc<Delegates.glCopyTexImage2D>("glCopyTexImage2D");
-				glCopyTexSubImage1D = getProc<Delegates.glCopyTexSubImage1D>("glCopyTexSubImage1D");
-				glCopyTexSubImage2D = getProc<Delegates.glCopyTexSubImage2D>("glCopyTexSubImage2D");
-				glDeleteTextures = getProc<Delegates.glDeleteTextures>("glDeleteTextures");
-				glDrawArrays = getProc<Delegates.glDrawArrays>("glDrawArrays");
-				glDrawElements = getProc<Delegates.glDrawElements>("glDrawElements");
-				glGenTextures = getProc<Delegates.glGenTextures>("glGenTextures");
-				glGetPointerv = getProc<Delegates.glGetPointerv>("glGetPointerv");
-				glIsTexture = getProc<Delegates.glIsTexture>("glIsTexture");
-				glPolygonOffset = getProc<Delegates.glPolygonOffset>("glPolygonOffset");
-				glTexSubImage1D = getProc<Delegates.glTexSubImage1D>("glTexSubImage1D");
-				glTexSubImage2D = getProc<Delegates.glTexSubImage2D>("glTexSubImage2D");
+				Functions.glBindTexture = getProc<Delegates.glBindTexture>("glBindTexture");
+				Functions.glCopyTexImage1D = getProc<Delegates.glCopyTexImage1D>("glCopyTexImage1D");
+				Functions.glCopyTexImage2D = getProc<Delegates.glCopyTexImage2D>("glCopyTexImage2D");
+				Functions.glCopyTexSubImage1D = getProc<Delegates.glCopyTexSubImage1D>("glCopyTexSubImage1D");
+				Functions.glCopyTexSubImage2D = getProc<Delegates.glCopyTexSubImage2D>("glCopyTexSubImage2D");
+				Functions.glDeleteTextures = getProc<Delegates.glDeleteTextures>("glDeleteTextures");
+				Functions.glDrawArrays = getProc<Delegates.glDrawArrays>("glDrawArrays");
+				Functions.glDrawElements = getProc<Delegates.glDrawElements>("glDrawElements");
+				Functions.glGenTextures = getProc<Delegates.glGenTextures>("glGenTextures");
+				Functions.glGetPointerv = getProc<Delegates.glGetPointerv>("glGetPointerv");
+				Functions.glIsTexture = getProc<Delegates.glIsTexture>("glIsTexture");
+				Functions.glPolygonOffset = getProc<Delegates.glPolygonOffset>("glPolygonOffset");
+				Functions.glTexSubImage1D = getProc<Delegates.glTexSubImage1D>("glTexSubImage1D");
+				Functions.glTexSubImage2D = getProc<Delegates.glTexSubImage2D>("glTexSubImage2D");
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 2))
 			{
-				glCopyTexSubImage3D = getProc<Delegates.glCopyTexSubImage3D>("glCopyTexSubImage3D");
-				glDrawRangeElements = getProc<Delegates.glDrawRangeElements>("glDrawRangeElements");
-				glTexImage3D = getProc<Delegates.glTexImage3D>("glTexImage3D");
-				glTexSubImage3D = getProc<Delegates.glTexSubImage3D>("glTexSubImage3D");
+				Functions.glCopyTexSubImage3D = getProc<Delegates.glCopyTexSubImage3D>("glCopyTexSubImage3D");
+				Functions.glDrawRangeElements = getProc<Delegates.glDrawRangeElements>("glDrawRangeElements");
+				Functions.glTexImage3D = getProc<Delegates.glTexImage3D>("glTexImage3D");
+				Functions.glTexSubImage3D = getProc<Delegates.glTexSubImage3D>("glTexSubImage3D");
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 3))
 			{
-				glActiveTexture = getProc<Delegates.glActiveTexture>("glActiveTexture");
-				glCompressedTexImage1D = getProc<Delegates.glCompressedTexImage1D>("glCompressedTexImage1D");
-				glCompressedTexImage2D = getProc<Delegates.glCompressedTexImage2D>("glCompressedTexImage2D");
-				glCompressedTexImage3D = getProc<Delegates.glCompressedTexImage3D>("glCompressedTexImage3D");
-				glCompressedTexSubImage1D = getProc<Delegates.glCompressedTexSubImage1D>("glCompressedTexSubImage1D");
-				glCompressedTexSubImage2D = getProc<Delegates.glCompressedTexSubImage2D>("glCompressedTexSubImage2D");
-				glCompressedTexSubImage3D = getProc<Delegates.glCompressedTexSubImage3D>("glCompressedTexSubImage3D");
-				glGetCompressedTexImage = getProc<Delegates.glGetCompressedTexImage>("glGetCompressedTexImage");
-				glSampleCoverage = getProc<Delegates.glSampleCoverage>("glSampleCoverage");
+				Functions.glActiveTexture = getProc<Delegates.glActiveTexture>("glActiveTexture");
+				Functions.glCompressedTexImage1D = getProc<Delegates.glCompressedTexImage1D>("glCompressedTexImage1D");
+				Functions.glCompressedTexImage2D = getProc<Delegates.glCompressedTexImage2D>("glCompressedTexImage2D");
+				Functions.glCompressedTexImage3D = getProc<Delegates.glCompressedTexImage3D>("glCompressedTexImage3D");
+				Functions.glCompressedTexSubImage1D = getProc<Delegates.glCompressedTexSubImage1D>("glCompressedTexSubImage1D");
+				Functions.glCompressedTexSubImage2D = getProc<Delegates.glCompressedTexSubImage2D>("glCompressedTexSubImage2D");
+				Functions.glCompressedTexSubImage3D = getProc<Delegates.glCompressedTexSubImage3D>("glCompressedTexSubImage3D");
+				Functions.glGetCompressedTexImage = getProc<Delegates.glGetCompressedTexImage>("glGetCompressedTexImage");
+				Functions.glSampleCoverage = getProc<Delegates.glSampleCoverage>("glSampleCoverage");
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 4))
 			{
-				glBlendColor = getProc<Delegates.glBlendColor>("glBlendColor");
-				glBlendEquation = getProc<Delegates.glBlendEquation>("glBlendEquation");
-				glBlendFuncSeparate = getProc<Delegates.glBlendFuncSeparate>("glBlendFuncSeparate");
-				glMultiDrawArrays = getProc<Delegates.glMultiDrawArrays>("glMultiDrawArrays");
-				glMultiDrawElements = getProc<Delegates.glMultiDrawElements>("glMultiDrawElements");
-				glPointParameterf = getProc<Delegates.glPointParameterf>("glPointParameterf");
-				glPointParameterfv = getProc<Delegates.glPointParameterfv>("glPointParameterfv");
-				glPointParameteri = getProc<Delegates.glPointParameteri>("glPointParameteri");
-				glPointParameteriv = getProc<Delegates.glPointParameteriv>("glPointParameteriv");
+				Functions.glBlendColor = getProc<Delegates.glBlendColor>("glBlendColor");
+				Functions.glBlendEquation = getProc<Delegates.glBlendEquation>("glBlendEquation");
+				Functions.glBlendFuncSeparate = getProc<Delegates.glBlendFuncSeparate>("glBlendFuncSeparate");
+				Functions.glMultiDrawArrays = getProc<Delegates.glMultiDrawArrays>("glMultiDrawArrays");
+				Functions.glMultiDrawElements = getProc<Delegates.glMultiDrawElements>("glMultiDrawElements");
+				Functions.glPointParameterf = getProc<Delegates.glPointParameterf>("glPointParameterf");
+				Functions.glPointParameterfv = getProc<Delegates.glPointParameterfv>("glPointParameterfv");
+				Functions.glPointParameteri = getProc<Delegates.glPointParameteri>("glPointParameteri");
+				Functions.glPointParameteriv = getProc<Delegates.glPointParameteriv>("glPointParameteriv");
 			}
 
 			if (versionMajor > 1 || (versionMajor == 1 && versionMinor >= 5))
 			{
-				glBeginQuery = getProc<Delegates.glBeginQuery>("glBeginQuery");
-				glBindBuffer = getProc<Delegates.glBindBuffer>("glBindBuffer");
-				glBufferData = getProc<Delegates.glBufferData>("glBufferData");
-				glBufferSubData = getProc<Delegates.glBufferSubData>("glBufferSubData");
-				glDeleteBuffers = getProc<Delegates.glDeleteBuffers>("glDeleteBuffers");
-				glDeleteQueries = getProc<Delegates.glDeleteQueries>("glDeleteQueries");
-				glEndQuery = getProc<Delegates.glEndQuery>("glEndQuery");
-				glGenBuffers = getProc<Delegates.glGenBuffers>("glGenBuffers");
-				glGenQueries = getProc<Delegates.glGenQueries>("glGenQueries");
-				glGetBufferParameteriv = getProc<Delegates.glGetBufferParameteriv>("glGetBufferParameteriv");
-				glGetBufferPointerv = getProc<Delegates.glGetBufferPointerv>("glGetBufferPointerv");
-				glGetBufferSubData = getProc<Delegates.glGetBufferSubData>("glGetBufferSubData");
-				glGetQueryiv = getProc<Delegates.glGetQueryiv>("glGetQueryiv");
-				glGetQueryObjectiv = getProc<Delegates.glGetQueryObjectiv>("glGetQueryObjectiv");
-				glGetQueryObjectuiv = getProc<Delegates.glGetQueryObjectuiv>("glGetQueryObjectuiv");
-				glIsBuffer = getProc<Delegates.glIsBuffer>("glIsBuffer");
-				glIsQuery = getProc<Delegates.glIsQuery>("glIsQuery");
-				glMapBuffer = getProc<Delegates.glMapBuffer>("glMapBuffer");
-				glUnmapBuffer = getProc<Delegates.glUnmapBuffer>("glUnmapBuffer");
+				Functions.glBeginQuery = getProc<Delegates.glBeginQuery>("glBeginQuery");
+				Functions.glBindBuffer = getProc<Delegates.glBindBuffer>("glBindBuffer");
+				Functions.glBufferData = getProc<Delegates.glBufferData>("glBufferData");
+				Functions.glBufferSubData = getProc<Delegates.glBufferSubData>("glBufferSubData");
+				Functions.glDeleteBuffers = getProc<Delegates.glDeleteBuffers>("glDeleteBuffers");
+				Functions.glDeleteQueries = getProc<Delegates.glDeleteQueries>("glDeleteQueries");
+				Functions.glEndQuery = getProc<Delegates.glEndQuery>("glEndQuery");
+				Functions.glGenBuffers = getProc<Delegates.glGenBuffers>("glGenBuffers");
+				Functions.glGenQueries = getProc<Delegates.glGenQueries>("glGenQueries");
+				Functions.glGetBufferParameteriv = getProc<Delegates.glGetBufferParameteriv>("glGetBufferParameteriv");
+				Functions.glGetBufferPointerv = getProc<Delegates.glGetBufferPointerv>("glGetBufferPointerv");
+				Functions.glGetBufferSubData = getProc<Delegates.glGetBufferSubData>("glGetBufferSubData");
+				Functions.glGetQueryiv = getProc<Delegates.glGetQueryiv>("glGetQueryiv");
+				Functions.glGetQueryObjectiv = getProc<Delegates.glGetQueryObjectiv>("glGetQueryObjectiv");
+				Functions.glGetQueryObjectuiv = getProc<Delegates.glGetQueryObjectuiv>("glGetQueryObjectuiv");
+				Functions.glIsBuffer = getProc<Delegates.glIsBuffer>("glIsBuffer");
+				Functions.glIsQuery = getProc<Delegates.glIsQuery>("glIsQuery");
+				Functions.glMapBuffer = getProc<Delegates.glMapBuffer>("glMapBuffer");
+				Functions.glUnmapBuffer = getProc<Delegates.glUnmapBuffer>("glUnmapBuffer");
 			}
 
 			if (versionMajor > 2 || (versionMajor == 2 && versionMinor >= 0))
 			{
-				glAttachShader = getProc<Delegates.glAttachShader>("glAttachShader");
-				glBindAttribLocation = getProc<Delegates.glBindAttribLocation>("glBindAttribLocation");
-				glBlendEquationSeparate = getProc<Delegates.glBlendEquationSeparate>("glBlendEquationSeparate");
-				glCompileShader = getProc<Delegates.glCompileShader>("glCompileShader");
-				glCreateProgram = getProc<Delegates.glCreateProgram>("glCreateProgram");
-				glCreateShader = getProc<Delegates.glCreateShader>("glCreateShader");
-				glDeleteProgram = getProc<Delegates.glDeleteProgram>("glDeleteProgram");
-				glDeleteShader = getProc<Delegates.glDeleteShader>("glDeleteShader");
-				glDetachShader = getProc<Delegates.glDetachShader>("glDetachShader");
-				glDisableVertexAttribArray = getProc<Delegates.glDisableVertexAttribArray>("glDisableVertexAttribArray");
-				glDrawBuffers = getProc<Delegates.glDrawBuffers>("glDrawBuffers");
-				glEnableVertexAttribArray = getProc<Delegates.glEnableVertexAttribArray>("glEnableVertexAttribArray");
-				glGetActiveAttrib = getProc<Delegates.glGetActiveAttrib>("glGetActiveAttrib");
-				glGetActiveUniform = getProc<Delegates.glGetActiveUniform>("glGetActiveUniform");
-				glGetAttachedShaders = getProc<Delegates.glGetAttachedShaders>("glGetAttachedShaders");
-				glGetAttribLocation = getProc<Delegates.glGetAttribLocation>("glGetAttribLocation");
-				glGetProgramInfoLog = getProc<Delegates.glGetProgramInfoLog>("glGetProgramInfoLog");
-				glGetProgramiv = getProc<Delegates.glGetProgramiv>("glGetProgramiv");
-				glGetShaderInfoLog = getProc<Delegates.glGetShaderInfoLog>("glGetShaderInfoLog");
-				glGetShaderiv = getProc<Delegates.glGetShaderiv>("glGetShaderiv");
-				glGetShaderSource = getProc<Delegates.glGetShaderSource>("glGetShaderSource");
-				glGetUniformfv = getProc<Delegates.glGetUniformfv>("glGetUniformfv");
-				glGetUniformiv = getProc<Delegates.glGetUniformiv>("glGetUniformiv");
-				glGetUniformLocation = getProc<Delegates.glGetUniformLocation>("glGetUniformLocation");
-				glGetVertexAttribdv = getProc<Delegates.glGetVertexAttribdv>("glGetVertexAttribdv");
-				glGetVertexAttribfv = getProc<Delegates.glGetVertexAttribfv>("glGetVertexAttribfv");
-				glGetVertexAttribiv = getProc<Delegates.glGetVertexAttribiv>("glGetVertexAttribiv");
-				glGetVertexAttribPointerv = getProc<Delegates.glGetVertexAttribPointerv>("glGetVertexAttribPointerv");
-				glIsProgram = getProc<Delegates.glIsProgram>("glIsProgram");
-				glIsShader = getProc<Delegates.glIsShader>("glIsShader");
-				glLinkProgram = getProc<Delegates.glLinkProgram>("glLinkProgram");
-				glShaderSource = getProc<Delegates.glShaderSource>("glShaderSource");
-				glStencilFuncSeparate = getProc<Delegates.glStencilFuncSeparate>("glStencilFuncSeparate");
-				glStencilMaskSeparate = getProc<Delegates.glStencilMaskSeparate>("glStencilMaskSeparate");
-				glStencilOpSeparate = getProc<Delegates.glStencilOpSeparate>("glStencilOpSeparate");
-				glUniform1f = getProc<Delegates.glUniform1f>("glUniform1f");
-				glUniform1fv = getProc<Delegates.glUniform1fv>("glUniform1fv");
-				glUniform1i = getProc<Delegates.glUniform1i>("glUniform1i");
-				glUniform1iv = getProc<Delegates.glUniform1iv>("glUniform1iv");
-				glUniform2f = getProc<Delegates.glUniform2f>("glUniform2f");
-				glUniform2fv = getProc<Delegates.glUniform2fv>("glUniform2fv");
-				glUniform2i = getProc<Delegates.glUniform2i>("glUniform2i");
-				glUniform2iv = getProc<Delegates.glUniform2iv>("glUniform2iv");
-				glUniform3f = getProc<Delegates.glUniform3f>("glUniform3f");
-				glUniform3fv = getProc<Delegates.glUniform3fv>("glUniform3fv");
-				glUniform3i = getProc<Delegates.glUniform3i>("glUniform3i");
-				glUniform3iv = getProc<Delegates.glUniform3iv>("glUniform3iv");
-				glUniform4f = getProc<Delegates.glUniform4f>("glUniform4f");
-				glUniform4fv = getProc<Delegates.glUniform4fv>("glUniform4fv");
-				glUniform4i = getProc<Delegates.glUniform4i>("glUniform4i");
-				glUniform4iv = getProc<Delegates.glUniform4iv>("glUniform4iv");
-				glUniformMatrix2fv = getProc<Delegates.glUniformMatrix2fv>("glUniformMatrix2fv");
-				glUniformMatrix3fv = getProc<Delegates.glUniformMatrix3fv>("glUniformMatrix3fv");
-				glUniformMatrix4fv = getProc<Delegates.glUniformMatrix4fv>("glUniformMatrix4fv");
-				glUseProgram = getProc<Delegates.glUseProgram>("glUseProgram");
-				glValidateProgram = getProc<Delegates.glValidateProgram>("glValidateProgram");
-				glVertexAttrib1d = getProc<Delegates.glVertexAttrib1d>("glVertexAttrib1d");
-				glVertexAttrib1dv = getProc<Delegates.glVertexAttrib1dv>("glVertexAttrib1dv");
-				glVertexAttrib1f = getProc<Delegates.glVertexAttrib1f>("glVertexAttrib1f");
-				glVertexAttrib1fv = getProc<Delegates.glVertexAttrib1fv>("glVertexAttrib1fv");
-				glVertexAttrib1s = getProc<Delegates.glVertexAttrib1s>("glVertexAttrib1s");
-				glVertexAttrib1sv = getProc<Delegates.glVertexAttrib1sv>("glVertexAttrib1sv");
-				glVertexAttrib2d = getProc<Delegates.glVertexAttrib2d>("glVertexAttrib2d");
-				glVertexAttrib2dv = getProc<Delegates.glVertexAttrib2dv>("glVertexAttrib2dv");
-				glVertexAttrib2f = getProc<Delegates.glVertexAttrib2f>("glVertexAttrib2f");
-				glVertexAttrib2fv = getProc<Delegates.glVertexAttrib2fv>("glVertexAttrib2fv");
-				glVertexAttrib2s = getProc<Delegates.glVertexAttrib2s>("glVertexAttrib2s");
-				glVertexAttrib2sv = getProc<Delegates.glVertexAttrib2sv>("glVertexAttrib2sv");
-				glVertexAttrib3d = getProc<Delegates.glVertexAttrib3d>("glVertexAttrib3d");
-				glVertexAttrib3dv = getProc<Delegates.glVertexAttrib3dv>("glVertexAttrib3dv");
-				glVertexAttrib3f = getProc<Delegates.glVertexAttrib3f>("glVertexAttrib3f");
-				glVertexAttrib3fv = getProc<Delegates.glVertexAttrib3fv>("glVertexAttrib3fv");
-				glVertexAttrib3s = getProc<Delegates.glVertexAttrib3s>("glVertexAttrib3s");
-				glVertexAttrib3sv = getProc<Delegates.glVertexAttrib3sv>("glVertexAttrib3sv");
-				glVertexAttrib4bv = getProc<Delegates.glVertexAttrib4bv>("glVertexAttrib4bv");
-				glVertexAttrib4d = getProc<Delegates.glVertexAttrib4d>("glVertexAttrib4d");
-				glVertexAttrib4dv = getProc<Delegates.glVertexAttrib4dv>("glVertexAttrib4dv");
-				glVertexAttrib4f = getProc<Delegates.glVertexAttrib4f>("glVertexAttrib4f");
-				glVertexAttrib4fv = getProc<Delegates.glVertexAttrib4fv>("glVertexAttrib4fv");
-				glVertexAttrib4iv = getProc<Delegates.glVertexAttrib4iv>("glVertexAttrib4iv");
-				glVertexAttrib4Nbv = getProc<Delegates.glVertexAttrib4Nbv>("glVertexAttrib4Nbv");
-				glVertexAttrib4Niv = getProc<Delegates.glVertexAttrib4Niv>("glVertexAttrib4Niv");
-				glVertexAttrib4Nsv = getProc<Delegates.glVertexAttrib4Nsv>("glVertexAttrib4Nsv");
-				glVertexAttrib4Nub = getProc<Delegates.glVertexAttrib4Nub>("glVertexAttrib4Nub");
-				glVertexAttrib4Nubv = getProc<Delegates.glVertexAttrib4Nubv>("glVertexAttrib4Nubv");
-				glVertexAttrib4Nuiv = getProc<Delegates.glVertexAttrib4Nuiv>("glVertexAttrib4Nuiv");
-				glVertexAttrib4Nusv = getProc<Delegates.glVertexAttrib4Nusv>("glVertexAttrib4Nusv");
-				glVertexAttrib4s = getProc<Delegates.glVertexAttrib4s>("glVertexAttrib4s");
-				glVertexAttrib4sv = getProc<Delegates.glVertexAttrib4sv>("glVertexAttrib4sv");
-				glVertexAttrib4ubv = getProc<Delegates.glVertexAttrib4ubv>("glVertexAttrib4ubv");
-				glVertexAttrib4uiv = getProc<Delegates.glVertexAttrib4uiv>("glVertexAttrib4uiv");
-				glVertexAttrib4usv = getProc<Delegates.glVertexAttrib4usv>("glVertexAttrib4usv");
-				glVertexAttribPointer = getProc<Delegates.glVertexAttribPointer>("glVertexAttribPointer");
+				Functions.glAttachShader = getProc<Delegates.glAttachShader>("glAttachShader");
+				Functions.glBindAttribLocation = getProc<Delegates.glBindAttribLocation>("glBindAttribLocation");
+				Functions.glBlendEquationSeparate = getProc<Delegates.glBlendEquationSeparate>("glBlendEquationSeparate");
+				Functions.glCompileShader = getProc<Delegates.glCompileShader>("glCompileShader");
+				Functions.glCreateProgram = getProc<Delegates.glCreateProgram>("glCreateProgram");
+				Functions.glCreateShader = getProc<Delegates.glCreateShader>("glCreateShader");
+				Functions.glDeleteProgram = getProc<Delegates.glDeleteProgram>("glDeleteProgram");
+				Functions.glDeleteShader = getProc<Delegates.glDeleteShader>("glDeleteShader");
+				Functions.glDetachShader = getProc<Delegates.glDetachShader>("glDetachShader");
+				Functions.glDisableVertexAttribArray = getProc<Delegates.glDisableVertexAttribArray>("glDisableVertexAttribArray");
+				Functions.glDrawBuffers = getProc<Delegates.glDrawBuffers>("glDrawBuffers");
+				Functions.glEnableVertexAttribArray = getProc<Delegates.glEnableVertexAttribArray>("glEnableVertexAttribArray");
+				Functions.glGetActiveAttrib = getProc<Delegates.glGetActiveAttrib>("glGetActiveAttrib");
+				Functions.glGetActiveUniform = getProc<Delegates.glGetActiveUniform>("glGetActiveUniform");
+				Functions.glGetAttachedShaders = getProc<Delegates.glGetAttachedShaders>("glGetAttachedShaders");
+				Functions.glGetAttribLocation = getProc<Delegates.glGetAttribLocation>("glGetAttribLocation");
+				Functions.glGetProgramInfoLog = getProc<Delegates.glGetProgramInfoLog>("glGetProgramInfoLog");
+				Functions.glGetProgramiv = getProc<Delegates.glGetProgramiv>("glGetProgramiv");
+				Functions.glGetShaderInfoLog = getProc<Delegates.glGetShaderInfoLog>("glGetShaderInfoLog");
+				Functions.glGetShaderiv = getProc<Delegates.glGetShaderiv>("glGetShaderiv");
+				Functions.glGetShaderSource = getProc<Delegates.glGetShaderSource>("glGetShaderSource");
+				Functions.glGetUniformfv = getProc<Delegates.glGetUniformfv>("glGetUniformfv");
+				Functions.glGetUniformiv = getProc<Delegates.glGetUniformiv>("glGetUniformiv");
+				Functions.glGetUniformLocation = getProc<Delegates.glGetUniformLocation>("glGetUniformLocation");
+				Functions.glGetVertexAttribdv = getProc<Delegates.glGetVertexAttribdv>("glGetVertexAttribdv");
+				Functions.glGetVertexAttribfv = getProc<Delegates.glGetVertexAttribfv>("glGetVertexAttribfv");
+				Functions.glGetVertexAttribiv = getProc<Delegates.glGetVertexAttribiv>("glGetVertexAttribiv");
+				Functions.glGetVertexAttribPointerv = getProc<Delegates.glGetVertexAttribPointerv>("glGetVertexAttribPointerv");
+				Functions.glIsProgram = getProc<Delegates.glIsProgram>("glIsProgram");
+				Functions.glIsShader = getProc<Delegates.glIsShader>("glIsShader");
+				Functions.glLinkProgram = getProc<Delegates.glLinkProgram>("glLinkProgram");
+				Functions.glShaderSource = getProc<Delegates.glShaderSource>("glShaderSource");
+				Functions.glStencilFuncSeparate = getProc<Delegates.glStencilFuncSeparate>("glStencilFuncSeparate");
+				Functions.glStencilMaskSeparate = getProc<Delegates.glStencilMaskSeparate>("glStencilMaskSeparate");
+				Functions.glStencilOpSeparate = getProc<Delegates.glStencilOpSeparate>("glStencilOpSeparate");
+				Functions.glUniform1f = getProc<Delegates.glUniform1f>("glUniform1f");
+				Functions.glUniform1fv = getProc<Delegates.glUniform1fv>("glUniform1fv");
+				Functions.glUniform1i = getProc<Delegates.glUniform1i>("glUniform1i");
+				Functions.glUniform1iv = getProc<Delegates.glUniform1iv>("glUniform1iv");
+				Functions.glUniform2f = getProc<Delegates.glUniform2f>("glUniform2f");
+				Functions.glUniform2fv = getProc<Delegates.glUniform2fv>("glUniform2fv");
+				Functions.glUniform2i = getProc<Delegates.glUniform2i>("glUniform2i");
+				Functions.glUniform2iv = getProc<Delegates.glUniform2iv>("glUniform2iv");
+				Functions.glUniform3f = getProc<Delegates.glUniform3f>("glUniform3f");
+				Functions.glUniform3fv = getProc<Delegates.glUniform3fv>("glUniform3fv");
+				Functions.glUniform3i = getProc<Delegates.glUniform3i>("glUniform3i");
+				Functions.glUniform3iv = getProc<Delegates.glUniform3iv>("glUniform3iv");
+				Functions.glUniform4f = getProc<Delegates.glUniform4f>("glUniform4f");
+				Functions.glUniform4fv = getProc<Delegates.glUniform4fv>("glUniform4fv");
+				Functions.glUniform4i = getProc<Delegates.glUniform4i>("glUniform4i");
+				Functions.glUniform4iv = getProc<Delegates.glUniform4iv>("glUniform4iv");
+				Functions.glUniformMatrix2fv = getProc<Delegates.glUniformMatrix2fv>("glUniformMatrix2fv");
+				Functions.glUniformMatrix3fv = getProc<Delegates.glUniformMatrix3fv>("glUniformMatrix3fv");
+				Functions.glUniformMatrix4fv = getProc<Delegates.glUniformMatrix4fv>("glUniformMatrix4fv");
+				Functions.glUseProgram = getProc<Delegates.glUseProgram>("glUseProgram");
+				Functions.glValidateProgram = getProc<Delegates.glValidateProgram>("glValidateProgram");
+				Functions.glVertexAttrib1d = getProc<Delegates.glVertexAttrib1d>("glVertexAttrib1d");
+				Functions.glVertexAttrib1dv = getProc<Delegates.glVertexAttrib1dv>("glVertexAttrib1dv");
+				Functions.glVertexAttrib1f = getProc<Delegates.glVertexAttrib1f>("glVertexAttrib1f");
+				Functions.glVertexAttrib1fv = getProc<Delegates.glVertexAttrib1fv>("glVertexAttrib1fv");
+				Functions.glVertexAttrib1s = getProc<Delegates.glVertexAttrib1s>("glVertexAttrib1s");
+				Functions.glVertexAttrib1sv = getProc<Delegates.glVertexAttrib1sv>("glVertexAttrib1sv");
+				Functions.glVertexAttrib2d = getProc<Delegates.glVertexAttrib2d>("glVertexAttrib2d");
+				Functions.glVertexAttrib2dv = getProc<Delegates.glVertexAttrib2dv>("glVertexAttrib2dv");
+				Functions.glVertexAttrib2f = getProc<Delegates.glVertexAttrib2f>("glVertexAttrib2f");
+				Functions.glVertexAttrib2fv = getProc<Delegates.glVertexAttrib2fv>("glVertexAttrib2fv");
+				Functions.glVertexAttrib2s = getProc<Delegates.glVertexAttrib2s>("glVertexAttrib2s");
+				Functions.glVertexAttrib2sv = getProc<Delegates.glVertexAttrib2sv>("glVertexAttrib2sv");
+				Functions.glVertexAttrib3d = getProc<Delegates.glVertexAttrib3d>("glVertexAttrib3d");
+				Functions.glVertexAttrib3dv = getProc<Delegates.glVertexAttrib3dv>("glVertexAttrib3dv");
+				Functions.glVertexAttrib3f = getProc<Delegates.glVertexAttrib3f>("glVertexAttrib3f");
+				Functions.glVertexAttrib3fv = getProc<Delegates.glVertexAttrib3fv>("glVertexAttrib3fv");
+				Functions.glVertexAttrib3s = getProc<Delegates.glVertexAttrib3s>("glVertexAttrib3s");
+				Functions.glVertexAttrib3sv = getProc<Delegates.glVertexAttrib3sv>("glVertexAttrib3sv");
+				Functions.glVertexAttrib4bv = getProc<Delegates.glVertexAttrib4bv>("glVertexAttrib4bv");
+				Functions.glVertexAttrib4d = getProc<Delegates.glVertexAttrib4d>("glVertexAttrib4d");
+				Functions.glVertexAttrib4dv = getProc<Delegates.glVertexAttrib4dv>("glVertexAttrib4dv");
+				Functions.glVertexAttrib4f = getProc<Delegates.glVertexAttrib4f>("glVertexAttrib4f");
+				Functions.glVertexAttrib4fv = getProc<Delegates.glVertexAttrib4fv>("glVertexAttrib4fv");
+				Functions.glVertexAttrib4iv = getProc<Delegates.glVertexAttrib4iv>("glVertexAttrib4iv");
+				Functions.glVertexAttrib4Nbv = getProc<Delegates.glVertexAttrib4Nbv>("glVertexAttrib4Nbv");
+				Functions.glVertexAttrib4Niv = getProc<Delegates.glVertexAttrib4Niv>("glVertexAttrib4Niv");
+				Functions.glVertexAttrib4Nsv = getProc<Delegates.glVertexAttrib4Nsv>("glVertexAttrib4Nsv");
+				Functions.glVertexAttrib4Nub = getProc<Delegates.glVertexAttrib4Nub>("glVertexAttrib4Nub");
+				Functions.glVertexAttrib4Nubv = getProc<Delegates.glVertexAttrib4Nubv>("glVertexAttrib4Nubv");
+				Functions.glVertexAttrib4Nuiv = getProc<Delegates.glVertexAttrib4Nuiv>("glVertexAttrib4Nuiv");
+				Functions.glVertexAttrib4Nusv = getProc<Delegates.glVertexAttrib4Nusv>("glVertexAttrib4Nusv");
+				Functions.glVertexAttrib4s = getProc<Delegates.glVertexAttrib4s>("glVertexAttrib4s");
+				Functions.glVertexAttrib4sv = getProc<Delegates.glVertexAttrib4sv>("glVertexAttrib4sv");
+				Functions.glVertexAttrib4ubv = getProc<Delegates.glVertexAttrib4ubv>("glVertexAttrib4ubv");
+				Functions.glVertexAttrib4uiv = getProc<Delegates.glVertexAttrib4uiv>("glVertexAttrib4uiv");
+				Functions.glVertexAttrib4usv = getProc<Delegates.glVertexAttrib4usv>("glVertexAttrib4usv");
+				Functions.glVertexAttribPointer = getProc<Delegates.glVertexAttribPointer>("glVertexAttribPointer");
 			}
 
 			if (versionMajor > 2 || (versionMajor == 2 && versionMinor >= 1))
 			{
-				glUniformMatrix2x3fv = getProc<Delegates.glUniformMatrix2x3fv>("glUniformMatrix2x3fv");
-				glUniformMatrix2x4fv = getProc<Delegates.glUniformMatrix2x4fv>("glUniformMatrix2x4fv");
-				glUniformMatrix3x2fv = getProc<Delegates.glUniformMatrix3x2fv>("glUniformMatrix3x2fv");
-				glUniformMatrix3x4fv = getProc<Delegates.glUniformMatrix3x4fv>("glUniformMatrix3x4fv");
-				glUniformMatrix4x2fv = getProc<Delegates.glUniformMatrix4x2fv>("glUniformMatrix4x2fv");
-				glUniformMatrix4x3fv = getProc<Delegates.glUniformMatrix4x3fv>("glUniformMatrix4x3fv");
+				Functions.glUniformMatrix2x3fv = getProc<Delegates.glUniformMatrix2x3fv>("glUniformMatrix2x3fv");
+				Functions.glUniformMatrix2x4fv = getProc<Delegates.glUniformMatrix2x4fv>("glUniformMatrix2x4fv");
+				Functions.glUniformMatrix3x2fv = getProc<Delegates.glUniformMatrix3x2fv>("glUniformMatrix3x2fv");
+				Functions.glUniformMatrix3x4fv = getProc<Delegates.glUniformMatrix3x4fv>("glUniformMatrix3x4fv");
+				Functions.glUniformMatrix4x2fv = getProc<Delegates.glUniformMatrix4x2fv>("glUniformMatrix4x2fv");
+				Functions.glUniformMatrix4x3fv = getProc<Delegates.glUniformMatrix4x3fv>("glUniformMatrix4x3fv");
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 0))
 			{
-				glBeginConditionalRender = getProc<Delegates.glBeginConditionalRender>("glBeginConditionalRender");
-				glBeginTransformFeedback = getProc<Delegates.glBeginTransformFeedback>("glBeginTransformFeedback");
-				glBindBufferBase = getProc<Delegates.glBindBufferBase>("glBindBufferBase");
-				glBindBufferRange = getProc<Delegates.glBindBufferRange>("glBindBufferRange");
-				glBindFragDataLocation = getProc<Delegates.glBindFragDataLocation>("glBindFragDataLocation");
-				glBindFramebuffer = getProc<Delegates.glBindFramebuffer>("glBindFramebuffer");
-				glBindRenderbuffer = getProc<Delegates.glBindRenderbuffer>("glBindRenderbuffer");
-				glBindVertexArray = getProc<Delegates.glBindVertexArray>("glBindVertexArray");
-				glBlitFramebuffer = getProc<Delegates.glBlitFramebuffer>("glBlitFramebuffer");
-				glCheckFramebufferStatus = getProc<Delegates.glCheckFramebufferStatus>("glCheckFramebufferStatus");
-				glClampColor = getProc<Delegates.glClampColor>("glClampColor");
-				glClearBufferfi = getProc<Delegates.glClearBufferfi>("glClearBufferfi");
-				glClearBufferfv = getProc<Delegates.glClearBufferfv>("glClearBufferfv");
-				glClearBufferiv = getProc<Delegates.glClearBufferiv>("glClearBufferiv");
-				glClearBufferuiv = getProc<Delegates.glClearBufferuiv>("glClearBufferuiv");
-				glColorMaski = getProc<Delegates.glColorMaski>("glColorMaski");
-				glDeleteFramebuffers = getProc<Delegates.glDeleteFramebuffers>("glDeleteFramebuffers");
-				glDeleteRenderbuffers = getProc<Delegates.glDeleteRenderbuffers>("glDeleteRenderbuffers");
-				glDeleteVertexArrays = getProc<Delegates.glDeleteVertexArrays>("glDeleteVertexArrays");
-				glDisablei = getProc<Delegates.glDisablei>("glDisablei");
-				glEnablei = getProc<Delegates.glEnablei>("glEnablei");
-				glEndConditionalRender = getProc<Delegates.glEndConditionalRender>("glEndConditionalRender");
-				glEndTransformFeedback = getProc<Delegates.glEndTransformFeedback>("glEndTransformFeedback");
-				glFlushMappedBufferRange = getProc<Delegates.glFlushMappedBufferRange>("glFlushMappedBufferRange");
-				glFramebufferRenderbuffer = getProc<Delegates.glFramebufferRenderbuffer>("glFramebufferRenderbuffer");
-				glFramebufferTexture1D = getProc<Delegates.glFramebufferTexture1D>("glFramebufferTexture1D");
-				glFramebufferTexture2D = getProc<Delegates.glFramebufferTexture2D>("glFramebufferTexture2D");
-				glFramebufferTexture3D = getProc<Delegates.glFramebufferTexture3D>("glFramebufferTexture3D");
-				glFramebufferTextureLayer = getProc<Delegates.glFramebufferTextureLayer>("glFramebufferTextureLayer");
-				glGenerateMipmap = getProc<Delegates.glGenerateMipmap>("glGenerateMipmap");
-				glGenFramebuffers = getProc<Delegates.glGenFramebuffers>("glGenFramebuffers");
-				glGenRenderbuffers = getProc<Delegates.glGenRenderbuffers>("glGenRenderbuffers");
-				glGenVertexArrays = getProc<Delegates.glGenVertexArrays>("glGenVertexArrays");
-				glGetBooleani_v = getProc<Delegates.glGetBooleani_v>("glGetBooleani_v");
-				glGetFragDataLocation = getProc<Delegates.glGetFragDataLocation>("glGetFragDataLocation");
-				glGetFramebufferAttachmentParameteriv = getProc<Delegates.glGetFramebufferAttachmentParameteriv>("glGetFramebufferAttachmentParameteriv");
-				glGetIntegeri_v = getProc<Delegates.glGetIntegeri_v>("glGetIntegeri_v");
-				glGetRenderbufferParameteriv = getProc<Delegates.glGetRenderbufferParameteriv>("glGetRenderbufferParameteriv");
-				glGetStringi = getProc<Delegates.glGetStringi>("glGetStringi");
-				glGetTexParameterIiv = getProc<Delegates.glGetTexParameterIiv>("glGetTexParameterIiv");
-				glGetTexParameterIuiv = getProc<Delegates.glGetTexParameterIuiv>("glGetTexParameterIuiv");
-				glGetTransformFeedbackVarying = getProc<Delegates.glGetTransformFeedbackVarying>("glGetTransformFeedbackVarying");
-				glGetUniformuiv = getProc<Delegates.glGetUniformuiv>("glGetUniformuiv");
-				glGetVertexAttribIiv = getProc<Delegates.glGetVertexAttribIiv>("glGetVertexAttribIiv");
-				glGetVertexAttribIuiv = getProc<Delegates.glGetVertexAttribIuiv>("glGetVertexAttribIuiv");
-				glIsEnabledi = getProc<Delegates.glIsEnabledi>("glIsEnabledi");
-				glIsFramebuffer = getProc<Delegates.glIsFramebuffer>("glIsFramebuffer");
-				glIsRenderbuffer = getProc<Delegates.glIsRenderbuffer>("glIsRenderbuffer");
-				glIsVertexArray = getProc<Delegates.glIsVertexArray>("glIsVertexArray");
-				glMapBufferRange = getProc<Delegates.glMapBufferRange>("glMapBufferRange");
-				glRenderbufferStorage = getProc<Delegates.glRenderbufferStorage>("glRenderbufferStorage");
-				glRenderbufferStorageMultisample = getProc<Delegates.glRenderbufferStorageMultisample>("glRenderbufferStorageMultisample");
-				glTexParameterIiv = getProc<Delegates.glTexParameterIiv>("glTexParameterIiv");
-				glTexParameterIuiv = getProc<Delegates.glTexParameterIuiv>("glTexParameterIuiv");
-				glTransformFeedbackVaryings = getProc<Delegates.glTransformFeedbackVaryings>("glTransformFeedbackVaryings");
-				glUniform1ui = getProc<Delegates.glUniform1ui>("glUniform1ui");
-				glUniform1uiv = getProc<Delegates.glUniform1uiv>("glUniform1uiv");
-				glUniform2ui = getProc<Delegates.glUniform2ui>("glUniform2ui");
-				glUniform2uiv = getProc<Delegates.glUniform2uiv>("glUniform2uiv");
-				glUniform3ui = getProc<Delegates.glUniform3ui>("glUniform3ui");
-				glUniform3uiv = getProc<Delegates.glUniform3uiv>("glUniform3uiv");
-				glUniform4ui = getProc<Delegates.glUniform4ui>("glUniform4ui");
-				glUniform4uiv = getProc<Delegates.glUniform4uiv>("glUniform4uiv");
-				glVertexAttribI1i = getProc<Delegates.glVertexAttribI1i>("glVertexAttribI1i");
-				glVertexAttribI1iv = getProc<Delegates.glVertexAttribI1iv>("glVertexAttribI1iv");
-				glVertexAttribI1ui = getProc<Delegates.glVertexAttribI1ui>("glVertexAttribI1ui");
-				glVertexAttribI1uiv = getProc<Delegates.glVertexAttribI1uiv>("glVertexAttribI1uiv");
-				glVertexAttribI2i = getProc<Delegates.glVertexAttribI2i>("glVertexAttribI2i");
-				glVertexAttribI2iv = getProc<Delegates.glVertexAttribI2iv>("glVertexAttribI2iv");
-				glVertexAttribI2ui = getProc<Delegates.glVertexAttribI2ui>("glVertexAttribI2ui");
-				glVertexAttribI2uiv = getProc<Delegates.glVertexAttribI2uiv>("glVertexAttribI2uiv");
-				glVertexAttribI3i = getProc<Delegates.glVertexAttribI3i>("glVertexAttribI3i");
-				glVertexAttribI3iv = getProc<Delegates.glVertexAttribI3iv>("glVertexAttribI3iv");
-				glVertexAttribI3ui = getProc<Delegates.glVertexAttribI3ui>("glVertexAttribI3ui");
-				glVertexAttribI3uiv = getProc<Delegates.glVertexAttribI3uiv>("glVertexAttribI3uiv");
-				glVertexAttribI4bv = getProc<Delegates.glVertexAttribI4bv>("glVertexAttribI4bv");
-				glVertexAttribI4i = getProc<Delegates.glVertexAttribI4i>("glVertexAttribI4i");
-				glVertexAttribI4iv = getProc<Delegates.glVertexAttribI4iv>("glVertexAttribI4iv");
-				glVertexAttribI4sv = getProc<Delegates.glVertexAttribI4sv>("glVertexAttribI4sv");
-				glVertexAttribI4ubv = getProc<Delegates.glVertexAttribI4ubv>("glVertexAttribI4ubv");
-				glVertexAttribI4ui = getProc<Delegates.glVertexAttribI4ui>("glVertexAttribI4ui");
-				glVertexAttribI4uiv = getProc<Delegates.glVertexAttribI4uiv>("glVertexAttribI4uiv");
-				glVertexAttribI4usv = getProc<Delegates.glVertexAttribI4usv>("glVertexAttribI4usv");
-				glVertexAttribIPointer = getProc<Delegates.glVertexAttribIPointer>("glVertexAttribIPointer");
+				Functions.glBeginConditionalRender = getProc<Delegates.glBeginConditionalRender>("glBeginConditionalRender");
+				Functions.glBeginTransformFeedback = getProc<Delegates.glBeginTransformFeedback>("glBeginTransformFeedback");
+				Functions.glBindBufferBase = getProc<Delegates.glBindBufferBase>("glBindBufferBase");
+				Functions.glBindBufferRange = getProc<Delegates.glBindBufferRange>("glBindBufferRange");
+				Functions.glBindFragDataLocation = getProc<Delegates.glBindFragDataLocation>("glBindFragDataLocation");
+				Functions.glBindFramebuffer = getProc<Delegates.glBindFramebuffer>("glBindFramebuffer");
+				Functions.glBindRenderbuffer = getProc<Delegates.glBindRenderbuffer>("glBindRenderbuffer");
+				Functions.glBindVertexArray = getProc<Delegates.glBindVertexArray>("glBindVertexArray");
+				Functions.glBlitFramebuffer = getProc<Delegates.glBlitFramebuffer>("glBlitFramebuffer");
+				Functions.glCheckFramebufferStatus = getProc<Delegates.glCheckFramebufferStatus>("glCheckFramebufferStatus");
+				Functions.glClampColor = getProc<Delegates.glClampColor>("glClampColor");
+				Functions.glClearBufferfi = getProc<Delegates.glClearBufferfi>("glClearBufferfi");
+				Functions.glClearBufferfv = getProc<Delegates.glClearBufferfv>("glClearBufferfv");
+				Functions.glClearBufferiv = getProc<Delegates.glClearBufferiv>("glClearBufferiv");
+				Functions.glClearBufferuiv = getProc<Delegates.glClearBufferuiv>("glClearBufferuiv");
+				Functions.glColorMaski = getProc<Delegates.glColorMaski>("glColorMaski");
+				Functions.glDeleteFramebuffers = getProc<Delegates.glDeleteFramebuffers>("glDeleteFramebuffers");
+				Functions.glDeleteRenderbuffers = getProc<Delegates.glDeleteRenderbuffers>("glDeleteRenderbuffers");
+				Functions.glDeleteVertexArrays = getProc<Delegates.glDeleteVertexArrays>("glDeleteVertexArrays");
+				Functions.glDisablei = getProc<Delegates.glDisablei>("glDisablei");
+				Functions.glEnablei = getProc<Delegates.glEnablei>("glEnablei");
+				Functions.glEndConditionalRender = getProc<Delegates.glEndConditionalRender>("glEndConditionalRender");
+				Functions.glEndTransformFeedback = getProc<Delegates.glEndTransformFeedback>("glEndTransformFeedback");
+				Functions.glFlushMappedBufferRange = getProc<Delegates.glFlushMappedBufferRange>("glFlushMappedBufferRange");
+				Functions.glFramebufferRenderbuffer = getProc<Delegates.glFramebufferRenderbuffer>("glFramebufferRenderbuffer");
+				Functions.glFramebufferTexture1D = getProc<Delegates.glFramebufferTexture1D>("glFramebufferTexture1D");
+				Functions.glFramebufferTexture2D = getProc<Delegates.glFramebufferTexture2D>("glFramebufferTexture2D");
+				Functions.glFramebufferTexture3D = getProc<Delegates.glFramebufferTexture3D>("glFramebufferTexture3D");
+				Functions.glFramebufferTextureLayer = getProc<Delegates.glFramebufferTextureLayer>("glFramebufferTextureLayer");
+				Functions.glGenerateMipmap = getProc<Delegates.glGenerateMipmap>("glGenerateMipmap");
+				Functions.glGenFramebuffers = getProc<Delegates.glGenFramebuffers>("glGenFramebuffers");
+				Functions.glGenRenderbuffers = getProc<Delegates.glGenRenderbuffers>("glGenRenderbuffers");
+				Functions.glGenVertexArrays = getProc<Delegates.glGenVertexArrays>("glGenVertexArrays");
+				Functions.glGetBooleani_v = getProc<Delegates.glGetBooleani_v>("glGetBooleani_v");
+				Functions.glGetFragDataLocation = getProc<Delegates.glGetFragDataLocation>("glGetFragDataLocation");
+				Functions.glGetFramebufferAttachmentParameteriv = getProc<Delegates.glGetFramebufferAttachmentParameteriv>("glGetFramebufferAttachmentParameteriv");
+				Functions.glGetIntegeri_v = getProc<Delegates.glGetIntegeri_v>("glGetIntegeri_v");
+				Functions.glGetRenderbufferParameteriv = getProc<Delegates.glGetRenderbufferParameteriv>("glGetRenderbufferParameteriv");
+				Functions.glGetStringi = getProc<Delegates.glGetStringi>("glGetStringi");
+				Functions.glGetTexParameterIiv = getProc<Delegates.glGetTexParameterIiv>("glGetTexParameterIiv");
+				Functions.glGetTexParameterIuiv = getProc<Delegates.glGetTexParameterIuiv>("glGetTexParameterIuiv");
+				Functions.glGetTransformFeedbackVarying = getProc<Delegates.glGetTransformFeedbackVarying>("glGetTransformFeedbackVarying");
+				Functions.glGetUniformuiv = getProc<Delegates.glGetUniformuiv>("glGetUniformuiv");
+				Functions.glGetVertexAttribIiv = getProc<Delegates.glGetVertexAttribIiv>("glGetVertexAttribIiv");
+				Functions.glGetVertexAttribIuiv = getProc<Delegates.glGetVertexAttribIuiv>("glGetVertexAttribIuiv");
+				Functions.glIsEnabledi = getProc<Delegates.glIsEnabledi>("glIsEnabledi");
+				Functions.glIsFramebuffer = getProc<Delegates.glIsFramebuffer>("glIsFramebuffer");
+				Functions.glIsRenderbuffer = getProc<Delegates.glIsRenderbuffer>("glIsRenderbuffer");
+				Functions.glIsVertexArray = getProc<Delegates.glIsVertexArray>("glIsVertexArray");
+				Functions.glMapBufferRange = getProc<Delegates.glMapBufferRange>("glMapBufferRange");
+				Functions.glRenderbufferStorage = getProc<Delegates.glRenderbufferStorage>("glRenderbufferStorage");
+				Functions.glRenderbufferStorageMultisample = getProc<Delegates.glRenderbufferStorageMultisample>("glRenderbufferStorageMultisample");
+				Functions.glTexParameterIiv = getProc<Delegates.glTexParameterIiv>("glTexParameterIiv");
+				Functions.glTexParameterIuiv = getProc<Delegates.glTexParameterIuiv>("glTexParameterIuiv");
+				Functions.glTransformFeedbackVaryings = getProc<Delegates.glTransformFeedbackVaryings>("glTransformFeedbackVaryings");
+				Functions.glUniform1ui = getProc<Delegates.glUniform1ui>("glUniform1ui");
+				Functions.glUniform1uiv = getProc<Delegates.glUniform1uiv>("glUniform1uiv");
+				Functions.glUniform2ui = getProc<Delegates.glUniform2ui>("glUniform2ui");
+				Functions.glUniform2uiv = getProc<Delegates.glUniform2uiv>("glUniform2uiv");
+				Functions.glUniform3ui = getProc<Delegates.glUniform3ui>("glUniform3ui");
+				Functions.glUniform3uiv = getProc<Delegates.glUniform3uiv>("glUniform3uiv");
+				Functions.glUniform4ui = getProc<Delegates.glUniform4ui>("glUniform4ui");
+				Functions.glUniform4uiv = getProc<Delegates.glUniform4uiv>("glUniform4uiv");
+				Functions.glVertexAttribI1i = getProc<Delegates.glVertexAttribI1i>("glVertexAttribI1i");
+				Functions.glVertexAttribI1iv = getProc<Delegates.glVertexAttribI1iv>("glVertexAttribI1iv");
+				Functions.glVertexAttribI1ui = getProc<Delegates.glVertexAttribI1ui>("glVertexAttribI1ui");
+				Functions.glVertexAttribI1uiv = getProc<Delegates.glVertexAttribI1uiv>("glVertexAttribI1uiv");
+				Functions.glVertexAttribI2i = getProc<Delegates.glVertexAttribI2i>("glVertexAttribI2i");
+				Functions.glVertexAttribI2iv = getProc<Delegates.glVertexAttribI2iv>("glVertexAttribI2iv");
+				Functions.glVertexAttribI2ui = getProc<Delegates.glVertexAttribI2ui>("glVertexAttribI2ui");
+				Functions.glVertexAttribI2uiv = getProc<Delegates.glVertexAttribI2uiv>("glVertexAttribI2uiv");
+				Functions.glVertexAttribI3i = getProc<Delegates.glVertexAttribI3i>("glVertexAttribI3i");
+				Functions.glVertexAttribI3iv = getProc<Delegates.glVertexAttribI3iv>("glVertexAttribI3iv");
+				Functions.glVertexAttribI3ui = getProc<Delegates.glVertexAttribI3ui>("glVertexAttribI3ui");
+				Functions.glVertexAttribI3uiv = getProc<Delegates.glVertexAttribI3uiv>("glVertexAttribI3uiv");
+				Functions.glVertexAttribI4bv = getProc<Delegates.glVertexAttribI4bv>("glVertexAttribI4bv");
+				Functions.glVertexAttribI4i = getProc<Delegates.glVertexAttribI4i>("glVertexAttribI4i");
+				Functions.glVertexAttribI4iv = getProc<Delegates.glVertexAttribI4iv>("glVertexAttribI4iv");
+				Functions.glVertexAttribI4sv = getProc<Delegates.glVertexAttribI4sv>("glVertexAttribI4sv");
+				Functions.glVertexAttribI4ubv = getProc<Delegates.glVertexAttribI4ubv>("glVertexAttribI4ubv");
+				Functions.glVertexAttribI4ui = getProc<Delegates.glVertexAttribI4ui>("glVertexAttribI4ui");
+				Functions.glVertexAttribI4uiv = getProc<Delegates.glVertexAttribI4uiv>("glVertexAttribI4uiv");
+				Functions.glVertexAttribI4usv = getProc<Delegates.glVertexAttribI4usv>("glVertexAttribI4usv");
+				Functions.glVertexAttribIPointer = getProc<Delegates.glVertexAttribIPointer>("glVertexAttribIPointer");
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 1))
 			{
-				glCopyBufferSubData = getProc<Delegates.glCopyBufferSubData>("glCopyBufferSubData");
-				glDrawArraysInstanced = getProc<Delegates.glDrawArraysInstanced>("glDrawArraysInstanced");
-				glDrawElementsInstanced = getProc<Delegates.glDrawElementsInstanced>("glDrawElementsInstanced");
-				glGetActiveUniformBlockiv = getProc<Delegates.glGetActiveUniformBlockiv>("glGetActiveUniformBlockiv");
-				glGetActiveUniformBlockName = getProc<Delegates.glGetActiveUniformBlockName>("glGetActiveUniformBlockName");
-				glGetActiveUniformName = getProc<Delegates.glGetActiveUniformName>("glGetActiveUniformName");
-				glGetActiveUniformsiv = getProc<Delegates.glGetActiveUniformsiv>("glGetActiveUniformsiv");
-				glGetUniformBlockIndex = getProc<Delegates.glGetUniformBlockIndex>("glGetUniformBlockIndex");
-				glGetUniformIndices = getProc<Delegates.glGetUniformIndices>("glGetUniformIndices");
-				glPrimitiveRestartIndex = getProc<Delegates.glPrimitiveRestartIndex>("glPrimitiveRestartIndex");
-				glTexBuffer = getProc<Delegates.glTexBuffer>("glTexBuffer");
-				glUniformBlockBinding = getProc<Delegates.glUniformBlockBinding>("glUniformBlockBinding");
+				Functions.glCopyBufferSubData = getProc<Delegates.glCopyBufferSubData>("glCopyBufferSubData");
+				Functions.glDrawArraysInstanced = getProc<Delegates.glDrawArraysInstanced>("glDrawArraysInstanced");
+				Functions.glDrawElementsInstanced = getProc<Delegates.glDrawElementsInstanced>("glDrawElementsInstanced");
+				Functions.glGetActiveUniformBlockiv = getProc<Delegates.glGetActiveUniformBlockiv>("glGetActiveUniformBlockiv");
+				Functions.glGetActiveUniformBlockName = getProc<Delegates.glGetActiveUniformBlockName>("glGetActiveUniformBlockName");
+				Functions.glGetActiveUniformName = getProc<Delegates.glGetActiveUniformName>("glGetActiveUniformName");
+				Functions.glGetActiveUniformsiv = getProc<Delegates.glGetActiveUniformsiv>("glGetActiveUniformsiv");
+				Functions.glGetUniformBlockIndex = getProc<Delegates.glGetUniformBlockIndex>("glGetUniformBlockIndex");
+				Functions.glGetUniformIndices = getProc<Delegates.glGetUniformIndices>("glGetUniformIndices");
+				Functions.glPrimitiveRestartIndex = getProc<Delegates.glPrimitiveRestartIndex>("glPrimitiveRestartIndex");
+				Functions.glTexBuffer = getProc<Delegates.glTexBuffer>("glTexBuffer");
+				Functions.glUniformBlockBinding = getProc<Delegates.glUniformBlockBinding>("glUniformBlockBinding");
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 2))
 			{
-				glClientWaitSync = getProc<Delegates.glClientWaitSync>("glClientWaitSync");
-				glDeleteSync = getProc<Delegates.glDeleteSync>("glDeleteSync");
-				glDrawElementsBaseVertex = getProc<Delegates.glDrawElementsBaseVertex>("glDrawElementsBaseVertex");
-				glDrawElementsInstancedBaseVertex = getProc<Delegates.glDrawElementsInstancedBaseVertex>("glDrawElementsInstancedBaseVertex");
-				glDrawRangeElementsBaseVertex = getProc<Delegates.glDrawRangeElementsBaseVertex>("glDrawRangeElementsBaseVertex");
-				glFenceSync = getProc<Delegates.glFenceSync>("glFenceSync");
-				glFramebufferTexture = getProc<Delegates.glFramebufferTexture>("glFramebufferTexture");
-				glGetBufferParameteri64v = getProc<Delegates.glGetBufferParameteri64v>("glGetBufferParameteri64v");
-				glGetInteger64i_v = getProc<Delegates.glGetInteger64i_v>("glGetInteger64i_v");
-				glGetInteger64v = getProc<Delegates.glGetInteger64v>("glGetInteger64v");
-				glGetMultisamplefv = getProc<Delegates.glGetMultisamplefv>("glGetMultisamplefv");
-				glGetSynciv = getProc<Delegates.glGetSynciv>("glGetSynciv");
-				glIsSync = getProc<Delegates.glIsSync>("glIsSync");
-				glMultiDrawElementsBaseVertex = getProc<Delegates.glMultiDrawElementsBaseVertex>("glMultiDrawElementsBaseVertex");
-				glProvokingVertex = getProc<Delegates.glProvokingVertex>("glProvokingVertex");
-				glSampleMaski = getProc<Delegates.glSampleMaski>("glSampleMaski");
-				glTexImage2DMultisample = getProc<Delegates.glTexImage2DMultisample>("glTexImage2DMultisample");
-				glTexImage3DMultisample = getProc<Delegates.glTexImage3DMultisample>("glTexImage3DMultisample");
-				glWaitSync = getProc<Delegates.glWaitSync>("glWaitSync");
+				Functions.glClientWaitSync = getProc<Delegates.glClientWaitSync>("glClientWaitSync");
+				Functions.glDeleteSync = getProc<Delegates.glDeleteSync>("glDeleteSync");
+				Functions.glDrawElementsBaseVertex = getProc<Delegates.glDrawElementsBaseVertex>("glDrawElementsBaseVertex");
+				Functions.glDrawElementsInstancedBaseVertex = getProc<Delegates.glDrawElementsInstancedBaseVertex>("glDrawElementsInstancedBaseVertex");
+				Functions.glDrawRangeElementsBaseVertex = getProc<Delegates.glDrawRangeElementsBaseVertex>("glDrawRangeElementsBaseVertex");
+				Functions.glFenceSync = getProc<Delegates.glFenceSync>("glFenceSync");
+				Functions.glFramebufferTexture = getProc<Delegates.glFramebufferTexture>("glFramebufferTexture");
+				Functions.glGetBufferParameteri64v = getProc<Delegates.glGetBufferParameteri64v>("glGetBufferParameteri64v");
+				Functions.glGetInteger64i_v = getProc<Delegates.glGetInteger64i_v>("glGetInteger64i_v");
+				Functions.glGetInteger64v = getProc<Delegates.glGetInteger64v>("glGetInteger64v");
+				Functions.glGetMultisamplefv = getProc<Delegates.glGetMultisamplefv>("glGetMultisamplefv");
+				Functions.glGetSynciv = getProc<Delegates.glGetSynciv>("glGetSynciv");
+				Functions.glIsSync = getProc<Delegates.glIsSync>("glIsSync");
+				Functions.glMultiDrawElementsBaseVertex = getProc<Delegates.glMultiDrawElementsBaseVertex>("glMultiDrawElementsBaseVertex");
+				Functions.glProvokingVertex = getProc<Delegates.glProvokingVertex>("glProvokingVertex");
+				Functions.glSampleMaski = getProc<Delegates.glSampleMaski>("glSampleMaski");
+				Functions.glTexImage2DMultisample = getProc<Delegates.glTexImage2DMultisample>("glTexImage2DMultisample");
+				Functions.glTexImage3DMultisample = getProc<Delegates.glTexImage3DMultisample>("glTexImage3DMultisample");
+				Functions.glWaitSync = getProc<Delegates.glWaitSync>("glWaitSync");
 			}
 
 			if (versionMajor > 3 || (versionMajor == 3 && versionMinor >= 3))
 			{
-				glBindFragDataLocationIndexed = getProc<Delegates.glBindFragDataLocationIndexed>("glBindFragDataLocationIndexed");
-				glBindSampler = getProc<Delegates.glBindSampler>("glBindSampler");
-				glDeleteSamplers = getProc<Delegates.glDeleteSamplers>("glDeleteSamplers");
-				glGenSamplers = getProc<Delegates.glGenSamplers>("glGenSamplers");
-				glGetFragDataIndex = getProc<Delegates.glGetFragDataIndex>("glGetFragDataIndex");
-				glGetQueryObjecti64v = getProc<Delegates.glGetQueryObjecti64v>("glGetQueryObjecti64v");
-				glGetQueryObjectui64v = getProc<Delegates.glGetQueryObjectui64v>("glGetQueryObjectui64v");
-				glGetSamplerParameterfv = getProc<Delegates.glGetSamplerParameterfv>("glGetSamplerParameterfv");
-				glGetSamplerParameterIiv = getProc<Delegates.glGetSamplerParameterIiv>("glGetSamplerParameterIiv");
-				glGetSamplerParameterIuiv = getProc<Delegates.glGetSamplerParameterIuiv>("glGetSamplerParameterIuiv");
-				glGetSamplerParameteriv = getProc<Delegates.glGetSamplerParameteriv>("glGetSamplerParameteriv");
-				glIsSampler = getProc<Delegates.glIsSampler>("glIsSampler");
-				glQueryCounter = getProc<Delegates.glQueryCounter>("glQueryCounter");
-				glSamplerParameterf = getProc<Delegates.glSamplerParameterf>("glSamplerParameterf");
-				glSamplerParameterfv = getProc<Delegates.glSamplerParameterfv>("glSamplerParameterfv");
-				glSamplerParameteri = getProc<Delegates.glSamplerParameteri>("glSamplerParameteri");
-				glSamplerParameterIiv = getProc<Delegates.glSamplerParameterIiv>("glSamplerParameterIiv");
-				glSamplerParameterIuiv = getProc<Delegates.glSamplerParameterIuiv>("glSamplerParameterIuiv");
-				glSamplerParameteriv = getProc<Delegates.glSamplerParameteriv>("glSamplerParameteriv");
-				glVertexAttribDivisor = getProc<Delegates.glVertexAttribDivisor>("glVertexAttribDivisor");
-				glVertexAttribP1ui = getProc<Delegates.glVertexAttribP1ui>("glVertexAttribP1ui");
-				glVertexAttribP1uiv = getProc<Delegates.glVertexAttribP1uiv>("glVertexAttribP1uiv");
-				glVertexAttribP2ui = getProc<Delegates.glVertexAttribP2ui>("glVertexAttribP2ui");
-				glVertexAttribP2uiv = getProc<Delegates.glVertexAttribP2uiv>("glVertexAttribP2uiv");
-				glVertexAttribP3ui = getProc<Delegates.glVertexAttribP3ui>("glVertexAttribP3ui");
-				glVertexAttribP3uiv = getProc<Delegates.glVertexAttribP3uiv>("glVertexAttribP3uiv");
-				glVertexAttribP4ui = getProc<Delegates.glVertexAttribP4ui>("glVertexAttribP4ui");
-				glVertexAttribP4uiv = getProc<Delegates.glVertexAttribP4uiv>("glVertexAttribP4uiv");
+				Functions.glBindFragDataLocationIndexed = getProc<Delegates.glBindFragDataLocationIndexed>("glBindFragDataLocationIndexed");
+				Functions.glBindSampler = getProc<Delegates.glBindSampler>("glBindSampler");
+				Functions.glDeleteSamplers = getProc<Delegates.glDeleteSamplers>("glDeleteSamplers");
+				Functions.glGenSamplers = getProc<Delegates.glGenSamplers>("glGenSamplers");
+				Functions.glGetFragDataIndex = getProc<Delegates.glGetFragDataIndex>("glGetFragDataIndex");
+				Functions.glGetQueryObjecti64v = getProc<Delegates.glGetQueryObjecti64v>("glGetQueryObjecti64v");
+				Functions.glGetQueryObjectui64v = getProc<Delegates.glGetQueryObjectui64v>("glGetQueryObjectui64v");
+				Functions.glGetSamplerParameterfv = getProc<Delegates.glGetSamplerParameterfv>("glGetSamplerParameterfv");
+				Functions.glGetSamplerParameterIiv = getProc<Delegates.glGetSamplerParameterIiv>("glGetSamplerParameterIiv");
+				Functions.glGetSamplerParameterIuiv = getProc<Delegates.glGetSamplerParameterIuiv>("glGetSamplerParameterIuiv");
+				Functions.glGetSamplerParameteriv = getProc<Delegates.glGetSamplerParameteriv>("glGetSamplerParameteriv");
+				Functions.glIsSampler = getProc<Delegates.glIsSampler>("glIsSampler");
+				Functions.glQueryCounter = getProc<Delegates.glQueryCounter>("glQueryCounter");
+				Functions.glSamplerParameterf = getProc<Delegates.glSamplerParameterf>("glSamplerParameterf");
+				Functions.glSamplerParameterfv = getProc<Delegates.glSamplerParameterfv>("glSamplerParameterfv");
+				Functions.glSamplerParameteri = getProc<Delegates.glSamplerParameteri>("glSamplerParameteri");
+				Functions.glSamplerParameterIiv = getProc<Delegates.glSamplerParameterIiv>("glSamplerParameterIiv");
+				Functions.glSamplerParameterIuiv = getProc<Delegates.glSamplerParameterIuiv>("glSamplerParameterIuiv");
+				Functions.glSamplerParameteriv = getProc<Delegates.glSamplerParameteriv>("glSamplerParameteriv");
+				Functions.glVertexAttribDivisor = getProc<Delegates.glVertexAttribDivisor>("glVertexAttribDivisor");
+				Functions.glVertexAttribP1ui = getProc<Delegates.glVertexAttribP1ui>("glVertexAttribP1ui");
+				Functions.glVertexAttribP1uiv = getProc<Delegates.glVertexAttribP1uiv>("glVertexAttribP1uiv");
+				Functions.glVertexAttribP2ui = getProc<Delegates.glVertexAttribP2ui>("glVertexAttribP2ui");
+				Functions.glVertexAttribP2uiv = getProc<Delegates.glVertexAttribP2uiv>("glVertexAttribP2uiv");
+				Functions.glVertexAttribP3ui = getProc<Delegates.glVertexAttribP3ui>("glVertexAttribP3ui");
+				Functions.glVertexAttribP3uiv = getProc<Delegates.glVertexAttribP3uiv>("glVertexAttribP3uiv");
+				Functions.glVertexAttribP4ui = getProc<Delegates.glVertexAttribP4ui>("glVertexAttribP4ui");
+				Functions.glVertexAttribP4uiv = getProc<Delegates.glVertexAttribP4uiv>("glVertexAttribP4uiv");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 0))
 			{
-				glBeginQueryIndexed = getProc<Delegates.glBeginQueryIndexed>("glBeginQueryIndexed");
-				glBindTransformFeedback = getProc<Delegates.glBindTransformFeedback>("glBindTransformFeedback");
-				glBlendEquationi = getProc<Delegates.glBlendEquationi>("glBlendEquationi");
-				glBlendEquationSeparatei = getProc<Delegates.glBlendEquationSeparatei>("glBlendEquationSeparatei");
-				glBlendFunci = getProc<Delegates.glBlendFunci>("glBlendFunci");
-				glBlendFuncSeparatei = getProc<Delegates.glBlendFuncSeparatei>("glBlendFuncSeparatei");
-				glDeleteTransformFeedbacks = getProc<Delegates.glDeleteTransformFeedbacks>("glDeleteTransformFeedbacks");
-				glDrawArraysIndirect = getProc<Delegates.glDrawArraysIndirect>("glDrawArraysIndirect");
-				glDrawElementsIndirect = getProc<Delegates.glDrawElementsIndirect>("glDrawElementsIndirect");
-				glDrawTransformFeedback = getProc<Delegates.glDrawTransformFeedback>("glDrawTransformFeedback");
-				glDrawTransformFeedbackStream = getProc<Delegates.glDrawTransformFeedbackStream>("glDrawTransformFeedbackStream");
-				glEndQueryIndexed = getProc<Delegates.glEndQueryIndexed>("glEndQueryIndexed");
-				glGenTransformFeedbacks = getProc<Delegates.glGenTransformFeedbacks>("glGenTransformFeedbacks");
-				glGetActiveSubroutineName = getProc<Delegates.glGetActiveSubroutineName>("glGetActiveSubroutineName");
-				glGetActiveSubroutineUniformiv = getProc<Delegates.glGetActiveSubroutineUniformiv>("glGetActiveSubroutineUniformiv");
-				glGetActiveSubroutineUniformName = getProc<Delegates.glGetActiveSubroutineUniformName>("glGetActiveSubroutineUniformName");
-				glGetProgramStageiv = getProc<Delegates.glGetProgramStageiv>("glGetProgramStageiv");
-				glGetQueryIndexediv = getProc<Delegates.glGetQueryIndexediv>("glGetQueryIndexediv");
-				glGetSubroutineIndex = getProc<Delegates.glGetSubroutineIndex>("glGetSubroutineIndex");
-				glGetSubroutineUniformLocation = getProc<Delegates.glGetSubroutineUniformLocation>("glGetSubroutineUniformLocation");
-				glGetUniformdv = getProc<Delegates.glGetUniformdv>("glGetUniformdv");
-				glGetUniformSubroutineuiv = getProc<Delegates.glGetUniformSubroutineuiv>("glGetUniformSubroutineuiv");
-				glIsTransformFeedback = getProc<Delegates.glIsTransformFeedback>("glIsTransformFeedback");
-				glMinSampleShading = getProc<Delegates.glMinSampleShading>("glMinSampleShading");
-				glPatchParameterfv = getProc<Delegates.glPatchParameterfv>("glPatchParameterfv");
-				glPatchParameteri = getProc<Delegates.glPatchParameteri>("glPatchParameteri");
-				glPauseTransformFeedback = getProc<Delegates.glPauseTransformFeedback>("glPauseTransformFeedback");
-				glResumeTransformFeedback = getProc<Delegates.glResumeTransformFeedback>("glResumeTransformFeedback");
-				glUniform1d = getProc<Delegates.glUniform1d>("glUniform1d");
-				glUniform1dv = getProc<Delegates.glUniform1dv>("glUniform1dv");
-				glUniform2d = getProc<Delegates.glUniform2d>("glUniform2d");
-				glUniform2dv = getProc<Delegates.glUniform2dv>("glUniform2dv");
-				glUniform3d = getProc<Delegates.glUniform3d>("glUniform3d");
-				glUniform3dv = getProc<Delegates.glUniform3dv>("glUniform3dv");
-				glUniform4d = getProc<Delegates.glUniform4d>("glUniform4d");
-				glUniform4dv = getProc<Delegates.glUniform4dv>("glUniform4dv");
-				glUniformMatrix2dv = getProc<Delegates.glUniformMatrix2dv>("glUniformMatrix2dv");
-				glUniformMatrix2x3dv = getProc<Delegates.glUniformMatrix2x3dv>("glUniformMatrix2x3dv");
-				glUniformMatrix2x4dv = getProc<Delegates.glUniformMatrix2x4dv>("glUniformMatrix2x4dv");
-				glUniformMatrix3dv = getProc<Delegates.glUniformMatrix3dv>("glUniformMatrix3dv");
-				glUniformMatrix3x2dv = getProc<Delegates.glUniformMatrix3x2dv>("glUniformMatrix3x2dv");
-				glUniformMatrix3x4dv = getProc<Delegates.glUniformMatrix3x4dv>("glUniformMatrix3x4dv");
-				glUniformMatrix4dv = getProc<Delegates.glUniformMatrix4dv>("glUniformMatrix4dv");
-				glUniformMatrix4x2dv = getProc<Delegates.glUniformMatrix4x2dv>("glUniformMatrix4x2dv");
-				glUniformMatrix4x3dv = getProc<Delegates.glUniformMatrix4x3dv>("glUniformMatrix4x3dv");
-				glUniformSubroutinesuiv = getProc<Delegates.glUniformSubroutinesuiv>("glUniformSubroutinesuiv");
+				Functions.glBeginQueryIndexed = getProc<Delegates.glBeginQueryIndexed>("glBeginQueryIndexed");
+				Functions.glBindTransformFeedback = getProc<Delegates.glBindTransformFeedback>("glBindTransformFeedback");
+				Functions.glBlendEquationi = getProc<Delegates.glBlendEquationi>("glBlendEquationi");
+				Functions.glBlendEquationSeparatei = getProc<Delegates.glBlendEquationSeparatei>("glBlendEquationSeparatei");
+				Functions.glBlendFunci = getProc<Delegates.glBlendFunci>("glBlendFunci");
+				Functions.glBlendFuncSeparatei = getProc<Delegates.glBlendFuncSeparatei>("glBlendFuncSeparatei");
+				Functions.glDeleteTransformFeedbacks = getProc<Delegates.glDeleteTransformFeedbacks>("glDeleteTransformFeedbacks");
+				Functions.glDrawArraysIndirect = getProc<Delegates.glDrawArraysIndirect>("glDrawArraysIndirect");
+				Functions.glDrawElementsIndirect = getProc<Delegates.glDrawElementsIndirect>("glDrawElementsIndirect");
+				Functions.glDrawTransformFeedback = getProc<Delegates.glDrawTransformFeedback>("glDrawTransformFeedback");
+				Functions.glDrawTransformFeedbackStream = getProc<Delegates.glDrawTransformFeedbackStream>("glDrawTransformFeedbackStream");
+				Functions.glEndQueryIndexed = getProc<Delegates.glEndQueryIndexed>("glEndQueryIndexed");
+				Functions.glGenTransformFeedbacks = getProc<Delegates.glGenTransformFeedbacks>("glGenTransformFeedbacks");
+				Functions.glGetActiveSubroutineName = getProc<Delegates.glGetActiveSubroutineName>("glGetActiveSubroutineName");
+				Functions.glGetActiveSubroutineUniformiv = getProc<Delegates.glGetActiveSubroutineUniformiv>("glGetActiveSubroutineUniformiv");
+				Functions.glGetActiveSubroutineUniformName = getProc<Delegates.glGetActiveSubroutineUniformName>("glGetActiveSubroutineUniformName");
+				Functions.glGetProgramStageiv = getProc<Delegates.glGetProgramStageiv>("glGetProgramStageiv");
+				Functions.glGetQueryIndexediv = getProc<Delegates.glGetQueryIndexediv>("glGetQueryIndexediv");
+				Functions.glGetSubroutineIndex = getProc<Delegates.glGetSubroutineIndex>("glGetSubroutineIndex");
+				Functions.glGetSubroutineUniformLocation = getProc<Delegates.glGetSubroutineUniformLocation>("glGetSubroutineUniformLocation");
+				Functions.glGetUniformdv = getProc<Delegates.glGetUniformdv>("glGetUniformdv");
+				Functions.glGetUniformSubroutineuiv = getProc<Delegates.glGetUniformSubroutineuiv>("glGetUniformSubroutineuiv");
+				Functions.glIsTransformFeedback = getProc<Delegates.glIsTransformFeedback>("glIsTransformFeedback");
+				Functions.glMinSampleShading = getProc<Delegates.glMinSampleShading>("glMinSampleShading");
+				Functions.glPatchParameterfv = getProc<Delegates.glPatchParameterfv>("glPatchParameterfv");
+				Functions.glPatchParameteri = getProc<Delegates.glPatchParameteri>("glPatchParameteri");
+				Functions.glPauseTransformFeedback = getProc<Delegates.glPauseTransformFeedback>("glPauseTransformFeedback");
+				Functions.glResumeTransformFeedback = getProc<Delegates.glResumeTransformFeedback>("glResumeTransformFeedback");
+				Functions.glUniform1d = getProc<Delegates.glUniform1d>("glUniform1d");
+				Functions.glUniform1dv = getProc<Delegates.glUniform1dv>("glUniform1dv");
+				Functions.glUniform2d = getProc<Delegates.glUniform2d>("glUniform2d");
+				Functions.glUniform2dv = getProc<Delegates.glUniform2dv>("glUniform2dv");
+				Functions.glUniform3d = getProc<Delegates.glUniform3d>("glUniform3d");
+				Functions.glUniform3dv = getProc<Delegates.glUniform3dv>("glUniform3dv");
+				Functions.glUniform4d = getProc<Delegates.glUniform4d>("glUniform4d");
+				Functions.glUniform4dv = getProc<Delegates.glUniform4dv>("glUniform4dv");
+				Functions.glUniformMatrix2dv = getProc<Delegates.glUniformMatrix2dv>("glUniformMatrix2dv");
+				Functions.glUniformMatrix2x3dv = getProc<Delegates.glUniformMatrix2x3dv>("glUniformMatrix2x3dv");
+				Functions.glUniformMatrix2x4dv = getProc<Delegates.glUniformMatrix2x4dv>("glUniformMatrix2x4dv");
+				Functions.glUniformMatrix3dv = getProc<Delegates.glUniformMatrix3dv>("glUniformMatrix3dv");
+				Functions.glUniformMatrix3x2dv = getProc<Delegates.glUniformMatrix3x2dv>("glUniformMatrix3x2dv");
+				Functions.glUniformMatrix3x4dv = getProc<Delegates.glUniformMatrix3x4dv>("glUniformMatrix3x4dv");
+				Functions.glUniformMatrix4dv = getProc<Delegates.glUniformMatrix4dv>("glUniformMatrix4dv");
+				Functions.glUniformMatrix4x2dv = getProc<Delegates.glUniformMatrix4x2dv>("glUniformMatrix4x2dv");
+				Functions.glUniformMatrix4x3dv = getProc<Delegates.glUniformMatrix4x3dv>("glUniformMatrix4x3dv");
+				Functions.glUniformSubroutinesuiv = getProc<Delegates.glUniformSubroutinesuiv>("glUniformSubroutinesuiv");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 1))
 			{
-				glActiveShaderProgram = getProc<Delegates.glActiveShaderProgram>("glActiveShaderProgram");
-				glBindProgramPipeline = getProc<Delegates.glBindProgramPipeline>("glBindProgramPipeline");
-				glClearDepthf = getProc<Delegates.glClearDepthf>("glClearDepthf");
-				glCreateShaderProgramv = getProc<Delegates.glCreateShaderProgramv>("glCreateShaderProgramv");
-				glDeleteProgramPipelines = getProc<Delegates.glDeleteProgramPipelines>("glDeleteProgramPipelines");
-				glDepthRangeArrayv = getProc<Delegates.glDepthRangeArrayv>("glDepthRangeArrayv");
-				glDepthRangef = getProc<Delegates.glDepthRangef>("glDepthRangef");
-				glDepthRangeIndexed = getProc<Delegates.glDepthRangeIndexed>("glDepthRangeIndexed");
-				glGenProgramPipelines = getProc<Delegates.glGenProgramPipelines>("glGenProgramPipelines");
-				glGetDoublei_v = getProc<Delegates.glGetDoublei_v>("glGetDoublei_v");
-				glGetFloati_v = getProc<Delegates.glGetFloati_v>("glGetFloati_v");
-				glGetProgramBinary = getProc<Delegates.glGetProgramBinary>("glGetProgramBinary");
-				glGetProgramPipelineInfoLog = getProc<Delegates.glGetProgramPipelineInfoLog>("glGetProgramPipelineInfoLog");
-				glGetProgramPipelineiv = getProc<Delegates.glGetProgramPipelineiv>("glGetProgramPipelineiv");
-				glGetShaderPrecisionFormat = getProc<Delegates.glGetShaderPrecisionFormat>("glGetShaderPrecisionFormat");
-				glGetVertexAttribLdv = getProc<Delegates.glGetVertexAttribLdv>("glGetVertexAttribLdv");
-				glIsProgramPipeline = getProc<Delegates.glIsProgramPipeline>("glIsProgramPipeline");
-				glProgramBinary = getProc<Delegates.glProgramBinary>("glProgramBinary");
-				glProgramParameteri = getProc<Delegates.glProgramParameteri>("glProgramParameteri");
-				glProgramUniform1d = getProc<Delegates.glProgramUniform1d>("glProgramUniform1d");
-				glProgramUniform1dv = getProc<Delegates.glProgramUniform1dv>("glProgramUniform1dv");
-				glProgramUniform1f = getProc<Delegates.glProgramUniform1f>("glProgramUniform1f");
-				glProgramUniform1fv = getProc<Delegates.glProgramUniform1fv>("glProgramUniform1fv");
-				glProgramUniform1i = getProc<Delegates.glProgramUniform1i>("glProgramUniform1i");
-				glProgramUniform1iv = getProc<Delegates.glProgramUniform1iv>("glProgramUniform1iv");
-				glProgramUniform1ui = getProc<Delegates.glProgramUniform1ui>("glProgramUniform1ui");
-				glProgramUniform1uiv = getProc<Delegates.glProgramUniform1uiv>("glProgramUniform1uiv");
-				glProgramUniform2d = getProc<Delegates.glProgramUniform2d>("glProgramUniform2d");
-				glProgramUniform2dv = getProc<Delegates.glProgramUniform2dv>("glProgramUniform2dv");
-				glProgramUniform2f = getProc<Delegates.glProgramUniform2f>("glProgramUniform2f");
-				glProgramUniform2fv = getProc<Delegates.glProgramUniform2fv>("glProgramUniform2fv");
-				glProgramUniform2i = getProc<Delegates.glProgramUniform2i>("glProgramUniform2i");
-				glProgramUniform2iv = getProc<Delegates.glProgramUniform2iv>("glProgramUniform2iv");
-				glProgramUniform2ui = getProc<Delegates.glProgramUniform2ui>("glProgramUniform2ui");
-				glProgramUniform2uiv = getProc<Delegates.glProgramUniform2uiv>("glProgramUniform2uiv");
-				glProgramUniform3d = getProc<Delegates.glProgramUniform3d>("glProgramUniform3d");
-				glProgramUniform3dv = getProc<Delegates.glProgramUniform3dv>("glProgramUniform3dv");
-				glProgramUniform3f = getProc<Delegates.glProgramUniform3f>("glProgramUniform3f");
-				glProgramUniform3fv = getProc<Delegates.glProgramUniform3fv>("glProgramUniform3fv");
-				glProgramUniform3i = getProc<Delegates.glProgramUniform3i>("glProgramUniform3i");
-				glProgramUniform3iv = getProc<Delegates.glProgramUniform3iv>("glProgramUniform3iv");
-				glProgramUniform3ui = getProc<Delegates.glProgramUniform3ui>("glProgramUniform3ui");
-				glProgramUniform3uiv = getProc<Delegates.glProgramUniform3uiv>("glProgramUniform3uiv");
-				glProgramUniform4d = getProc<Delegates.glProgramUniform4d>("glProgramUniform4d");
-				glProgramUniform4dv = getProc<Delegates.glProgramUniform4dv>("glProgramUniform4dv");
-				glProgramUniform4f = getProc<Delegates.glProgramUniform4f>("glProgramUniform4f");
-				glProgramUniform4fv = getProc<Delegates.glProgramUniform4fv>("glProgramUniform4fv");
-				glProgramUniform4i = getProc<Delegates.glProgramUniform4i>("glProgramUniform4i");
-				glProgramUniform4iv = getProc<Delegates.glProgramUniform4iv>("glProgramUniform4iv");
-				glProgramUniform4ui = getProc<Delegates.glProgramUniform4ui>("glProgramUniform4ui");
-				glProgramUniform4uiv = getProc<Delegates.glProgramUniform4uiv>("glProgramUniform4uiv");
-				glProgramUniformMatrix2dv = getProc<Delegates.glProgramUniformMatrix2dv>("glProgramUniformMatrix2dv");
-				glProgramUniformMatrix2fv = getProc<Delegates.glProgramUniformMatrix2fv>("glProgramUniformMatrix2fv");
-				glProgramUniformMatrix2x3dv = getProc<Delegates.glProgramUniformMatrix2x3dv>("glProgramUniformMatrix2x3dv");
-				glProgramUniformMatrix2x3fv = getProc<Delegates.glProgramUniformMatrix2x3fv>("glProgramUniformMatrix2x3fv");
-				glProgramUniformMatrix2x4dv = getProc<Delegates.glProgramUniformMatrix2x4dv>("glProgramUniformMatrix2x4dv");
-				glProgramUniformMatrix2x4fv = getProc<Delegates.glProgramUniformMatrix2x4fv>("glProgramUniformMatrix2x4fv");
-				glProgramUniformMatrix3dv = getProc<Delegates.glProgramUniformMatrix3dv>("glProgramUniformMatrix3dv");
-				glProgramUniformMatrix3fv = getProc<Delegates.glProgramUniformMatrix3fv>("glProgramUniformMatrix3fv");
-				glProgramUniformMatrix3x2dv = getProc<Delegates.glProgramUniformMatrix3x2dv>("glProgramUniformMatrix3x2dv");
-				glProgramUniformMatrix3x2fv = getProc<Delegates.glProgramUniformMatrix3x2fv>("glProgramUniformMatrix3x2fv");
-				glProgramUniformMatrix3x4dv = getProc<Delegates.glProgramUniformMatrix3x4dv>("glProgramUniformMatrix3x4dv");
-				glProgramUniformMatrix3x4fv = getProc<Delegates.glProgramUniformMatrix3x4fv>("glProgramUniformMatrix3x4fv");
-				glProgramUniformMatrix4dv = getProc<Delegates.glProgramUniformMatrix4dv>("glProgramUniformMatrix4dv");
-				glProgramUniformMatrix4fv = getProc<Delegates.glProgramUniformMatrix4fv>("glProgramUniformMatrix4fv");
-				glProgramUniformMatrix4x2dv = getProc<Delegates.glProgramUniformMatrix4x2dv>("glProgramUniformMatrix4x2dv");
-				glProgramUniformMatrix4x2fv = getProc<Delegates.glProgramUniformMatrix4x2fv>("glProgramUniformMatrix4x2fv");
-				glProgramUniformMatrix4x3dv = getProc<Delegates.glProgramUniformMatrix4x3dv>("glProgramUniformMatrix4x3dv");
-				glProgramUniformMatrix4x3fv = getProc<Delegates.glProgramUniformMatrix4x3fv>("glProgramUniformMatrix4x3fv");
-				glReleaseShaderCompiler = getProc<Delegates.glReleaseShaderCompiler>("glReleaseShaderCompiler");
-				glScissorArrayv = getProc<Delegates.glScissorArrayv>("glScissorArrayv");
-				glScissorIndexed = getProc<Delegates.glScissorIndexed>("glScissorIndexed");
-				glScissorIndexedv = getProc<Delegates.glScissorIndexedv>("glScissorIndexedv");
-				glShaderBinary = getProc<Delegates.glShaderBinary>("glShaderBinary");
-				glUseProgramStages = getProc<Delegates.glUseProgramStages>("glUseProgramStages");
-				glValidateProgramPipeline = getProc<Delegates.glValidateProgramPipeline>("glValidateProgramPipeline");
-				glVertexAttribL1d = getProc<Delegates.glVertexAttribL1d>("glVertexAttribL1d");
-				glVertexAttribL1dv = getProc<Delegates.glVertexAttribL1dv>("glVertexAttribL1dv");
-				glVertexAttribL2d = getProc<Delegates.glVertexAttribL2d>("glVertexAttribL2d");
-				glVertexAttribL2dv = getProc<Delegates.glVertexAttribL2dv>("glVertexAttribL2dv");
-				glVertexAttribL3d = getProc<Delegates.glVertexAttribL3d>("glVertexAttribL3d");
-				glVertexAttribL3dv = getProc<Delegates.glVertexAttribL3dv>("glVertexAttribL3dv");
-				glVertexAttribL4d = getProc<Delegates.glVertexAttribL4d>("glVertexAttribL4d");
-				glVertexAttribL4dv = getProc<Delegates.glVertexAttribL4dv>("glVertexAttribL4dv");
-				glVertexAttribLPointer = getProc<Delegates.glVertexAttribLPointer>("glVertexAttribLPointer");
-				glViewportArrayv = getProc<Delegates.glViewportArrayv>("glViewportArrayv");
-				glViewportIndexedf = getProc<Delegates.glViewportIndexedf>("glViewportIndexedf");
-				glViewportIndexedfv = getProc<Delegates.glViewportIndexedfv>("glViewportIndexedfv");
+				Functions.glActiveShaderProgram = getProc<Delegates.glActiveShaderProgram>("glActiveShaderProgram");
+				Functions.glBindProgramPipeline = getProc<Delegates.glBindProgramPipeline>("glBindProgramPipeline");
+				Functions.glClearDepthf = getProc<Delegates.glClearDepthf>("glClearDepthf");
+				Functions.glCreateShaderProgramv = getProc<Delegates.glCreateShaderProgramv>("glCreateShaderProgramv");
+				Functions.glDeleteProgramPipelines = getProc<Delegates.glDeleteProgramPipelines>("glDeleteProgramPipelines");
+				Functions.glDepthRangeArrayv = getProc<Delegates.glDepthRangeArrayv>("glDepthRangeArrayv");
+				Functions.glDepthRangef = getProc<Delegates.glDepthRangef>("glDepthRangef");
+				Functions.glDepthRangeIndexed = getProc<Delegates.glDepthRangeIndexed>("glDepthRangeIndexed");
+				Functions.glGenProgramPipelines = getProc<Delegates.glGenProgramPipelines>("glGenProgramPipelines");
+				Functions.glGetDoublei_v = getProc<Delegates.glGetDoublei_v>("glGetDoublei_v");
+				Functions.glGetFloati_v = getProc<Delegates.glGetFloati_v>("glGetFloati_v");
+				Functions.glGetProgramBinary = getProc<Delegates.glGetProgramBinary>("glGetProgramBinary");
+				Functions.glGetProgramPipelineInfoLog = getProc<Delegates.glGetProgramPipelineInfoLog>("glGetProgramPipelineInfoLog");
+				Functions.glGetProgramPipelineiv = getProc<Delegates.glGetProgramPipelineiv>("glGetProgramPipelineiv");
+				Functions.glGetShaderPrecisionFormat = getProc<Delegates.glGetShaderPrecisionFormat>("glGetShaderPrecisionFormat");
+				Functions.glGetVertexAttribLdv = getProc<Delegates.glGetVertexAttribLdv>("glGetVertexAttribLdv");
+				Functions.glIsProgramPipeline = getProc<Delegates.glIsProgramPipeline>("glIsProgramPipeline");
+				Functions.glProgramBinary = getProc<Delegates.glProgramBinary>("glProgramBinary");
+				Functions.glProgramParameteri = getProc<Delegates.glProgramParameteri>("glProgramParameteri");
+				Functions.glProgramUniform1d = getProc<Delegates.glProgramUniform1d>("glProgramUniform1d");
+				Functions.glProgramUniform1dv = getProc<Delegates.glProgramUniform1dv>("glProgramUniform1dv");
+				Functions.glProgramUniform1f = getProc<Delegates.glProgramUniform1f>("glProgramUniform1f");
+				Functions.glProgramUniform1fv = getProc<Delegates.glProgramUniform1fv>("glProgramUniform1fv");
+				Functions.glProgramUniform1i = getProc<Delegates.glProgramUniform1i>("glProgramUniform1i");
+				Functions.glProgramUniform1iv = getProc<Delegates.glProgramUniform1iv>("glProgramUniform1iv");
+				Functions.glProgramUniform1ui = getProc<Delegates.glProgramUniform1ui>("glProgramUniform1ui");
+				Functions.glProgramUniform1uiv = getProc<Delegates.glProgramUniform1uiv>("glProgramUniform1uiv");
+				Functions.glProgramUniform2d = getProc<Delegates.glProgramUniform2d>("glProgramUniform2d");
+				Functions.glProgramUniform2dv = getProc<Delegates.glProgramUniform2dv>("glProgramUniform2dv");
+				Functions.glProgramUniform2f = getProc<Delegates.glProgramUniform2f>("glProgramUniform2f");
+				Functions.glProgramUniform2fv = getProc<Delegates.glProgramUniform2fv>("glProgramUniform2fv");
+				Functions.glProgramUniform2i = getProc<Delegates.glProgramUniform2i>("glProgramUniform2i");
+				Functions.glProgramUniform2iv = getProc<Delegates.glProgramUniform2iv>("glProgramUniform2iv");
+				Functions.glProgramUniform2ui = getProc<Delegates.glProgramUniform2ui>("glProgramUniform2ui");
+				Functions.glProgramUniform2uiv = getProc<Delegates.glProgramUniform2uiv>("glProgramUniform2uiv");
+				Functions.glProgramUniform3d = getProc<Delegates.glProgramUniform3d>("glProgramUniform3d");
+				Functions.glProgramUniform3dv = getProc<Delegates.glProgramUniform3dv>("glProgramUniform3dv");
+				Functions.glProgramUniform3f = getProc<Delegates.glProgramUniform3f>("glProgramUniform3f");
+				Functions.glProgramUniform3fv = getProc<Delegates.glProgramUniform3fv>("glProgramUniform3fv");
+				Functions.glProgramUniform3i = getProc<Delegates.glProgramUniform3i>("glProgramUniform3i");
+				Functions.glProgramUniform3iv = getProc<Delegates.glProgramUniform3iv>("glProgramUniform3iv");
+				Functions.glProgramUniform3ui = getProc<Delegates.glProgramUniform3ui>("glProgramUniform3ui");
+				Functions.glProgramUniform3uiv = getProc<Delegates.glProgramUniform3uiv>("glProgramUniform3uiv");
+				Functions.glProgramUniform4d = getProc<Delegates.glProgramUniform4d>("glProgramUniform4d");
+				Functions.glProgramUniform4dv = getProc<Delegates.glProgramUniform4dv>("glProgramUniform4dv");
+				Functions.glProgramUniform4f = getProc<Delegates.glProgramUniform4f>("glProgramUniform4f");
+				Functions.glProgramUniform4fv = getProc<Delegates.glProgramUniform4fv>("glProgramUniform4fv");
+				Functions.glProgramUniform4i = getProc<Delegates.glProgramUniform4i>("glProgramUniform4i");
+				Functions.glProgramUniform4iv = getProc<Delegates.glProgramUniform4iv>("glProgramUniform4iv");
+				Functions.glProgramUniform4ui = getProc<Delegates.glProgramUniform4ui>("glProgramUniform4ui");
+				Functions.glProgramUniform4uiv = getProc<Delegates.glProgramUniform4uiv>("glProgramUniform4uiv");
+				Functions.glProgramUniformMatrix2dv = getProc<Delegates.glProgramUniformMatrix2dv>("glProgramUniformMatrix2dv");
+				Functions.glProgramUniformMatrix2fv = getProc<Delegates.glProgramUniformMatrix2fv>("glProgramUniformMatrix2fv");
+				Functions.glProgramUniformMatrix2x3dv = getProc<Delegates.glProgramUniformMatrix2x3dv>("glProgramUniformMatrix2x3dv");
+				Functions.glProgramUniformMatrix2x3fv = getProc<Delegates.glProgramUniformMatrix2x3fv>("glProgramUniformMatrix2x3fv");
+				Functions.glProgramUniformMatrix2x4dv = getProc<Delegates.glProgramUniformMatrix2x4dv>("glProgramUniformMatrix2x4dv");
+				Functions.glProgramUniformMatrix2x4fv = getProc<Delegates.glProgramUniformMatrix2x4fv>("glProgramUniformMatrix2x4fv");
+				Functions.glProgramUniformMatrix3dv = getProc<Delegates.glProgramUniformMatrix3dv>("glProgramUniformMatrix3dv");
+				Functions.glProgramUniformMatrix3fv = getProc<Delegates.glProgramUniformMatrix3fv>("glProgramUniformMatrix3fv");
+				Functions.glProgramUniformMatrix3x2dv = getProc<Delegates.glProgramUniformMatrix3x2dv>("glProgramUniformMatrix3x2dv");
+				Functions.glProgramUniformMatrix3x2fv = getProc<Delegates.glProgramUniformMatrix3x2fv>("glProgramUniformMatrix3x2fv");
+				Functions.glProgramUniformMatrix3x4dv = getProc<Delegates.glProgramUniformMatrix3x4dv>("glProgramUniformMatrix3x4dv");
+				Functions.glProgramUniformMatrix3x4fv = getProc<Delegates.glProgramUniformMatrix3x4fv>("glProgramUniformMatrix3x4fv");
+				Functions.glProgramUniformMatrix4dv = getProc<Delegates.glProgramUniformMatrix4dv>("glProgramUniformMatrix4dv");
+				Functions.glProgramUniformMatrix4fv = getProc<Delegates.glProgramUniformMatrix4fv>("glProgramUniformMatrix4fv");
+				Functions.glProgramUniformMatrix4x2dv = getProc<Delegates.glProgramUniformMatrix4x2dv>("glProgramUniformMatrix4x2dv");
+				Functions.glProgramUniformMatrix4x2fv = getProc<Delegates.glProgramUniformMatrix4x2fv>("glProgramUniformMatrix4x2fv");
+				Functions.glProgramUniformMatrix4x3dv = getProc<Delegates.glProgramUniformMatrix4x3dv>("glProgramUniformMatrix4x3dv");
+				Functions.glProgramUniformMatrix4x3fv = getProc<Delegates.glProgramUniformMatrix4x3fv>("glProgramUniformMatrix4x3fv");
+				Functions.glReleaseShaderCompiler = getProc<Delegates.glReleaseShaderCompiler>("glReleaseShaderCompiler");
+				Functions.glScissorArrayv = getProc<Delegates.glScissorArrayv>("glScissorArrayv");
+				Functions.glScissorIndexed = getProc<Delegates.glScissorIndexed>("glScissorIndexed");
+				Functions.glScissorIndexedv = getProc<Delegates.glScissorIndexedv>("glScissorIndexedv");
+				Functions.glShaderBinary = getProc<Delegates.glShaderBinary>("glShaderBinary");
+				Functions.glUseProgramStages = getProc<Delegates.glUseProgramStages>("glUseProgramStages");
+				Functions.glValidateProgramPipeline = getProc<Delegates.glValidateProgramPipeline>("glValidateProgramPipeline");
+				Functions.glVertexAttribL1d = getProc<Delegates.glVertexAttribL1d>("glVertexAttribL1d");
+				Functions.glVertexAttribL1dv = getProc<Delegates.glVertexAttribL1dv>("glVertexAttribL1dv");
+				Functions.glVertexAttribL2d = getProc<Delegates.glVertexAttribL2d>("glVertexAttribL2d");
+				Functions.glVertexAttribL2dv = getProc<Delegates.glVertexAttribL2dv>("glVertexAttribL2dv");
+				Functions.glVertexAttribL3d = getProc<Delegates.glVertexAttribL3d>("glVertexAttribL3d");
+				Functions.glVertexAttribL3dv = getProc<Delegates.glVertexAttribL3dv>("glVertexAttribL3dv");
+				Functions.glVertexAttribL4d = getProc<Delegates.glVertexAttribL4d>("glVertexAttribL4d");
+				Functions.glVertexAttribL4dv = getProc<Delegates.glVertexAttribL4dv>("glVertexAttribL4dv");
+				Functions.glVertexAttribLPointer = getProc<Delegates.glVertexAttribLPointer>("glVertexAttribLPointer");
+				Functions.glViewportArrayv = getProc<Delegates.glViewportArrayv>("glViewportArrayv");
+				Functions.glViewportIndexedf = getProc<Delegates.glViewportIndexedf>("glViewportIndexedf");
+				Functions.glViewportIndexedfv = getProc<Delegates.glViewportIndexedfv>("glViewportIndexedfv");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 2))
 			{
-				glBindImageTexture = getProc<Delegates.glBindImageTexture>("glBindImageTexture");
-				glDrawArraysInstancedBaseInstance = getProc<Delegates.glDrawArraysInstancedBaseInstance>("glDrawArraysInstancedBaseInstance");
-				glDrawElementsInstancedBaseInstance = getProc<Delegates.glDrawElementsInstancedBaseInstance>("glDrawElementsInstancedBaseInstance");
-				glDrawElementsInstancedBaseVertexBaseInstance = getProc<Delegates.glDrawElementsInstancedBaseVertexBaseInstance>("glDrawElementsInstancedBaseVertexBaseInstance");
-				glDrawTransformFeedbackInstanced = getProc<Delegates.glDrawTransformFeedbackInstanced>("glDrawTransformFeedbackInstanced");
-				glDrawTransformFeedbackStreamInstanced = getProc<Delegates.glDrawTransformFeedbackStreamInstanced>("glDrawTransformFeedbackStreamInstanced");
-				glGetActiveAtomicCounterBufferiv = getProc<Delegates.glGetActiveAtomicCounterBufferiv>("glGetActiveAtomicCounterBufferiv");
-				glGetInternalformativ = getProc<Delegates.glGetInternalformativ>("glGetInternalformativ");
-				glMemoryBarrier = getProc<Delegates.glMemoryBarrier>("glMemoryBarrier");
-				glTexStorage1D = getProc<Delegates.glTexStorage1D>("glTexStorage1D");
-				glTexStorage2D = getProc<Delegates.glTexStorage2D>("glTexStorage2D");
-				glTexStorage3D = getProc<Delegates.glTexStorage3D>("glTexStorage3D");
+				Functions.glBindImageTexture = getProc<Delegates.glBindImageTexture>("glBindImageTexture");
+				Functions.glDrawArraysInstancedBaseInstance = getProc<Delegates.glDrawArraysInstancedBaseInstance>("glDrawArraysInstancedBaseInstance");
+				Functions.glDrawElementsInstancedBaseInstance = getProc<Delegates.glDrawElementsInstancedBaseInstance>("glDrawElementsInstancedBaseInstance");
+				Functions.glDrawElementsInstancedBaseVertexBaseInstance = getProc<Delegates.glDrawElementsInstancedBaseVertexBaseInstance>("glDrawElementsInstancedBaseVertexBaseInstance");
+				Functions.glDrawTransformFeedbackInstanced = getProc<Delegates.glDrawTransformFeedbackInstanced>("glDrawTransformFeedbackInstanced");
+				Functions.glDrawTransformFeedbackStreamInstanced = getProc<Delegates.glDrawTransformFeedbackStreamInstanced>("glDrawTransformFeedbackStreamInstanced");
+				Functions.glGetActiveAtomicCounterBufferiv = getProc<Delegates.glGetActiveAtomicCounterBufferiv>("glGetActiveAtomicCounterBufferiv");
+				Functions.glGetInternalformativ = getProc<Delegates.glGetInternalformativ>("glGetInternalformativ");
+				Functions.glMemoryBarrier = getProc<Delegates.glMemoryBarrier>("glMemoryBarrier");
+				Functions.glTexStorage1D = getProc<Delegates.glTexStorage1D>("glTexStorage1D");
+				Functions.glTexStorage2D = getProc<Delegates.glTexStorage2D>("glTexStorage2D");
+				Functions.glTexStorage3D = getProc<Delegates.glTexStorage3D>("glTexStorage3D");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 3))
 			{
-				glBindVertexBuffer = getProc<Delegates.glBindVertexBuffer>("glBindVertexBuffer");
-				glClearBufferData = getProc<Delegates.glClearBufferData>("glClearBufferData");
-				glClearBufferSubData = getProc<Delegates.glClearBufferSubData>("glClearBufferSubData");
-				glCopyImageSubData = getProc<Delegates.glCopyImageSubData>("glCopyImageSubData");
-				glDebugMessageCallback = getProc<Delegates.glDebugMessageCallback>("glDebugMessageCallback");
-				glDebugMessageControl = getProc<Delegates.glDebugMessageControl>("glDebugMessageControl");
-				glDebugMessageInsert = getProc<Delegates.glDebugMessageInsert>("glDebugMessageInsert");
-				glDispatchCompute = getProc<Delegates.glDispatchCompute>("glDispatchCompute");
-				glDispatchComputeIndirect = getProc<Delegates.glDispatchComputeIndirect>("glDispatchComputeIndirect");
-				glFramebufferParameteri = getProc<Delegates.glFramebufferParameteri>("glFramebufferParameteri");
-				glGetDebugMessageLog = getProc<Delegates.glGetDebugMessageLog>("glGetDebugMessageLog");
-				glGetFramebufferParameteriv = getProc<Delegates.glGetFramebufferParameteriv>("glGetFramebufferParameteriv");
-				glGetInternalformati64v = getProc<Delegates.glGetInternalformati64v>("glGetInternalformati64v");
-				glGetObjectLabel = getProc<Delegates.glGetObjectLabel>("glGetObjectLabel");
-				glGetObjectPtrLabel = getProc<Delegates.glGetObjectPtrLabel>("glGetObjectPtrLabel");
-				glGetProgramInterfaceiv = getProc<Delegates.glGetProgramInterfaceiv>("glGetProgramInterfaceiv");
-				glGetProgramResourceIndex = getProc<Delegates.glGetProgramResourceIndex>("glGetProgramResourceIndex");
-				glGetProgramResourceiv = getProc<Delegates.glGetProgramResourceiv>("glGetProgramResourceiv");
-				glGetProgramResourceLocation = getProc<Delegates.glGetProgramResourceLocation>("glGetProgramResourceLocation");
-				glGetProgramResourceLocationIndex = getProc<Delegates.glGetProgramResourceLocationIndex>("glGetProgramResourceLocationIndex");
-				glGetProgramResourceName = getProc<Delegates.glGetProgramResourceName>("glGetProgramResourceName");
-				glInvalidateBufferData = getProc<Delegates.glInvalidateBufferData>("glInvalidateBufferData");
-				glInvalidateBufferSubData = getProc<Delegates.glInvalidateBufferSubData>("glInvalidateBufferSubData");
-				glInvalidateFramebuffer = getProc<Delegates.glInvalidateFramebuffer>("glInvalidateFramebuffer");
-				glInvalidateSubFramebuffer = getProc<Delegates.glInvalidateSubFramebuffer>("glInvalidateSubFramebuffer");
-				glInvalidateTexImage = getProc<Delegates.glInvalidateTexImage>("glInvalidateTexImage");
-				glInvalidateTexSubImage = getProc<Delegates.glInvalidateTexSubImage>("glInvalidateTexSubImage");
-				glMultiDrawArraysIndirect = getProc<Delegates.glMultiDrawArraysIndirect>("glMultiDrawArraysIndirect");
-				glMultiDrawElementsIndirect = getProc<Delegates.glMultiDrawElementsIndirect>("glMultiDrawElementsIndirect");
-				glObjectLabel = getProc<Delegates.glObjectLabel>("glObjectLabel");
-				glObjectPtrLabel = getProc<Delegates.glObjectPtrLabel>("glObjectPtrLabel");
-				glPopDebugGroup = getProc<Delegates.glPopDebugGroup>("glPopDebugGroup");
-				glPushDebugGroup = getProc<Delegates.glPushDebugGroup>("glPushDebugGroup");
-				glShaderStorageBlockBinding = getProc<Delegates.glShaderStorageBlockBinding>("glShaderStorageBlockBinding");
-				glTexBufferRange = getProc<Delegates.glTexBufferRange>("glTexBufferRange");
-				glTexStorage2DMultisample = getProc<Delegates.glTexStorage2DMultisample>("glTexStorage2DMultisample");
-				glTexStorage3DMultisample = getProc<Delegates.glTexStorage3DMultisample>("glTexStorage3DMultisample");
-				glTextureView = getProc<Delegates.glTextureView>("glTextureView");
-				glVertexAttribBinding = getProc<Delegates.glVertexAttribBinding>("glVertexAttribBinding");
-				glVertexAttribFormat = getProc<Delegates.glVertexAttribFormat>("glVertexAttribFormat");
-				glVertexAttribIFormat = getProc<Delegates.glVertexAttribIFormat>("glVertexAttribIFormat");
-				glVertexAttribLFormat = getProc<Delegates.glVertexAttribLFormat>("glVertexAttribLFormat");
-				glVertexBindingDivisor = getProc<Delegates.glVertexBindingDivisor>("glVertexBindingDivisor");
+				Functions.glBindVertexBuffer = getProc<Delegates.glBindVertexBuffer>("glBindVertexBuffer");
+				Functions.glClearBufferData = getProc<Delegates.glClearBufferData>("glClearBufferData");
+				Functions.glClearBufferSubData = getProc<Delegates.glClearBufferSubData>("glClearBufferSubData");
+				Functions.glCopyImageSubData = getProc<Delegates.glCopyImageSubData>("glCopyImageSubData");
+				Functions.glDebugMessageCallback = getProc<Delegates.glDebugMessageCallback>("glDebugMessageCallback");
+				Functions.glDebugMessageControl = getProc<Delegates.glDebugMessageControl>("glDebugMessageControl");
+				Functions.glDebugMessageInsert = getProc<Delegates.glDebugMessageInsert>("glDebugMessageInsert");
+				Functions.glDispatchCompute = getProc<Delegates.glDispatchCompute>("glDispatchCompute");
+				Functions.glDispatchComputeIndirect = getProc<Delegates.glDispatchComputeIndirect>("glDispatchComputeIndirect");
+				Functions.glFramebufferParameteri = getProc<Delegates.glFramebufferParameteri>("glFramebufferParameteri");
+				Functions.glGetDebugMessageLog = getProc<Delegates.glGetDebugMessageLog>("glGetDebugMessageLog");
+				Functions.glGetFramebufferParameteriv = getProc<Delegates.glGetFramebufferParameteriv>("glGetFramebufferParameteriv");
+				Functions.glGetInternalformati64v = getProc<Delegates.glGetInternalformati64v>("glGetInternalformati64v");
+				Functions.glGetObjectLabel = getProc<Delegates.glGetObjectLabel>("glGetObjectLabel");
+				Functions.glGetObjectPtrLabel = getProc<Delegates.glGetObjectPtrLabel>("glGetObjectPtrLabel");
+				Functions.glGetProgramInterfaceiv = getProc<Delegates.glGetProgramInterfaceiv>("glGetProgramInterfaceiv");
+				Functions.glGetProgramResourceIndex = getProc<Delegates.glGetProgramResourceIndex>("glGetProgramResourceIndex");
+				Functions.glGetProgramResourceiv = getProc<Delegates.glGetProgramResourceiv>("glGetProgramResourceiv");
+				Functions.glGetProgramResourceLocation = getProc<Delegates.glGetProgramResourceLocation>("glGetProgramResourceLocation");
+				Functions.glGetProgramResourceLocationIndex = getProc<Delegates.glGetProgramResourceLocationIndex>("glGetProgramResourceLocationIndex");
+				Functions.glGetProgramResourceName = getProc<Delegates.glGetProgramResourceName>("glGetProgramResourceName");
+				Functions.glInvalidateBufferData = getProc<Delegates.glInvalidateBufferData>("glInvalidateBufferData");
+				Functions.glInvalidateBufferSubData = getProc<Delegates.glInvalidateBufferSubData>("glInvalidateBufferSubData");
+				Functions.glInvalidateFramebuffer = getProc<Delegates.glInvalidateFramebuffer>("glInvalidateFramebuffer");
+				Functions.glInvalidateSubFramebuffer = getProc<Delegates.glInvalidateSubFramebuffer>("glInvalidateSubFramebuffer");
+				Functions.glInvalidateTexImage = getProc<Delegates.glInvalidateTexImage>("glInvalidateTexImage");
+				Functions.glInvalidateTexSubImage = getProc<Delegates.glInvalidateTexSubImage>("glInvalidateTexSubImage");
+				Functions.glMultiDrawArraysIndirect = getProc<Delegates.glMultiDrawArraysIndirect>("glMultiDrawArraysIndirect");
+				Functions.glMultiDrawElementsIndirect = getProc<Delegates.glMultiDrawElementsIndirect>("glMultiDrawElementsIndirect");
+				Functions.glObjectLabel = getProc<Delegates.glObjectLabel>("glObjectLabel");
+				Functions.glObjectPtrLabel = getProc<Delegates.glObjectPtrLabel>("glObjectPtrLabel");
+				Functions.glPopDebugGroup = getProc<Delegates.glPopDebugGroup>("glPopDebugGroup");
+				Functions.glPushDebugGroup = getProc<Delegates.glPushDebugGroup>("glPushDebugGroup");
+				Functions.glShaderStorageBlockBinding = getProc<Delegates.glShaderStorageBlockBinding>("glShaderStorageBlockBinding");
+				Functions.glTexBufferRange = getProc<Delegates.glTexBufferRange>("glTexBufferRange");
+				Functions.glTexStorage2DMultisample = getProc<Delegates.glTexStorage2DMultisample>("glTexStorage2DMultisample");
+				Functions.glTexStorage3DMultisample = getProc<Delegates.glTexStorage3DMultisample>("glTexStorage3DMultisample");
+				Functions.glTextureView = getProc<Delegates.glTextureView>("glTextureView");
+				Functions.glVertexAttribBinding = getProc<Delegates.glVertexAttribBinding>("glVertexAttribBinding");
+				Functions.glVertexAttribFormat = getProc<Delegates.glVertexAttribFormat>("glVertexAttribFormat");
+				Functions.glVertexAttribIFormat = getProc<Delegates.glVertexAttribIFormat>("glVertexAttribIFormat");
+				Functions.glVertexAttribLFormat = getProc<Delegates.glVertexAttribLFormat>("glVertexAttribLFormat");
+				Functions.glVertexBindingDivisor = getProc<Delegates.glVertexBindingDivisor>("glVertexBindingDivisor");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 4))
 			{
-				glBindBuffersBase = getProc<Delegates.glBindBuffersBase>("glBindBuffersBase");
-				glBindBuffersRange = getProc<Delegates.glBindBuffersRange>("glBindBuffersRange");
-				glBindImageTextures = getProc<Delegates.glBindImageTextures>("glBindImageTextures");
-				glBindSamplers = getProc<Delegates.glBindSamplers>("glBindSamplers");
-				glBindTextures = getProc<Delegates.glBindTextures>("glBindTextures");
-				glBindVertexBuffers = getProc<Delegates.glBindVertexBuffers>("glBindVertexBuffers");
-				glBufferStorage = getProc<Delegates.glBufferStorage>("glBufferStorage");
-				glClearTexImage = getProc<Delegates.glClearTexImage>("glClearTexImage");
-				glClearTexSubImage = getProc<Delegates.glClearTexSubImage>("glClearTexSubImage");
+				Functions.glBindBuffersBase = getProc<Delegates.glBindBuffersBase>("glBindBuffersBase");
+				Functions.glBindBuffersRange = getProc<Delegates.glBindBuffersRange>("glBindBuffersRange");
+				Functions.glBindImageTextures = getProc<Delegates.glBindImageTextures>("glBindImageTextures");
+				Functions.glBindSamplers = getProc<Delegates.glBindSamplers>("glBindSamplers");
+				Functions.glBindTextures = getProc<Delegates.glBindTextures>("glBindTextures");
+				Functions.glBindVertexBuffers = getProc<Delegates.glBindVertexBuffers>("glBindVertexBuffers");
+				Functions.glBufferStorage = getProc<Delegates.glBufferStorage>("glBufferStorage");
+				Functions.glClearTexImage = getProc<Delegates.glClearTexImage>("glClearTexImage");
+				Functions.glClearTexSubImage = getProc<Delegates.glClearTexSubImage>("glClearTexSubImage");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5))
 			{
-				glBindTextureUnit = getProc<Delegates.glBindTextureUnit>("glBindTextureUnit");
-				glBlitNamedFramebuffer = getProc<Delegates.glBlitNamedFramebuffer>("glBlitNamedFramebuffer");
-				glCheckNamedFramebufferStatus = getProc<Delegates.glCheckNamedFramebufferStatus>("glCheckNamedFramebufferStatus");
-				glClearNamedBufferData = getProc<Delegates.glClearNamedBufferData>("glClearNamedBufferData");
-				glClearNamedBufferSubData = getProc<Delegates.glClearNamedBufferSubData>("glClearNamedBufferSubData");
-				glClearNamedFramebufferfi = getProc<Delegates.glClearNamedFramebufferfi>("glClearNamedFramebufferfi");
-				glClearNamedFramebufferfv = getProc<Delegates.glClearNamedFramebufferfv>("glClearNamedFramebufferfv");
-				glClearNamedFramebufferiv = getProc<Delegates.glClearNamedFramebufferiv>("glClearNamedFramebufferiv");
-				glClearNamedFramebufferuiv = getProc<Delegates.glClearNamedFramebufferuiv>("glClearNamedFramebufferuiv");
-				glClipControl = getProc<Delegates.glClipControl>("glClipControl");
-				glCompressedTextureSubImage1D = getProc<Delegates.glCompressedTextureSubImage1D>("glCompressedTextureSubImage1D");
-				glCompressedTextureSubImage2D = getProc<Delegates.glCompressedTextureSubImage2D>("glCompressedTextureSubImage2D");
-				glCompressedTextureSubImage3D = getProc<Delegates.glCompressedTextureSubImage3D>("glCompressedTextureSubImage3D");
-				glCopyNamedBufferSubData = getProc<Delegates.glCopyNamedBufferSubData>("glCopyNamedBufferSubData");
-				glCopyTextureSubImage1D = getProc<Delegates.glCopyTextureSubImage1D>("glCopyTextureSubImage1D");
-				glCopyTextureSubImage2D = getProc<Delegates.glCopyTextureSubImage2D>("glCopyTextureSubImage2D");
-				glCopyTextureSubImage3D = getProc<Delegates.glCopyTextureSubImage3D>("glCopyTextureSubImage3D");
-				glCreateBuffers = getProc<Delegates.glCreateBuffers>("glCreateBuffers");
-				glCreateFramebuffers = getProc<Delegates.glCreateFramebuffers>("glCreateFramebuffers");
-				glCreateProgramPipelines = getProc<Delegates.glCreateProgramPipelines>("glCreateProgramPipelines");
-				glCreateQueries = getProc<Delegates.glCreateQueries>("glCreateQueries");
-				glCreateRenderbuffers = getProc<Delegates.glCreateRenderbuffers>("glCreateRenderbuffers");
-				glCreateSamplers = getProc<Delegates.glCreateSamplers>("glCreateSamplers");
-				glCreateTextures = getProc<Delegates.glCreateTextures>("glCreateTextures");
-				glCreateTransformFeedbacks = getProc<Delegates.glCreateTransformFeedbacks>("glCreateTransformFeedbacks");
-				glCreateVertexArrays = getProc<Delegates.glCreateVertexArrays>("glCreateVertexArrays");
-				glDisableVertexArrayAttrib = getProc<Delegates.glDisableVertexArrayAttrib>("glDisableVertexArrayAttrib");
-				glEnableVertexArrayAttrib = getProc<Delegates.glEnableVertexArrayAttrib>("glEnableVertexArrayAttrib");
-				glFlushMappedNamedBufferRange = getProc<Delegates.glFlushMappedNamedBufferRange>("glFlushMappedNamedBufferRange");
-				glGenerateTextureMipmap = getProc<Delegates.glGenerateTextureMipmap>("glGenerateTextureMipmap");
-				glGetCompressedTextureImage = getProc<Delegates.glGetCompressedTextureImage>("glGetCompressedTextureImage");
-				glGetCompressedTextureSubImage = getProc<Delegates.glGetCompressedTextureSubImage>("glGetCompressedTextureSubImage");
-				glGetGraphicsResetStatus = getProc<Delegates.glGetGraphicsResetStatus>("glGetGraphicsResetStatus");
-				glGetNamedBufferParameteri64v = getProc<Delegates.glGetNamedBufferParameteri64v>("glGetNamedBufferParameteri64v");
-				glGetNamedBufferParameteriv = getProc<Delegates.glGetNamedBufferParameteriv>("glGetNamedBufferParameteriv");
-				glGetNamedBufferPointerv = getProc<Delegates.glGetNamedBufferPointerv>("glGetNamedBufferPointerv");
-				glGetNamedBufferSubData = getProc<Delegates.glGetNamedBufferSubData>("glGetNamedBufferSubData");
-				glGetNamedFramebufferAttachmentParameteriv = getProc<Delegates.glGetNamedFramebufferAttachmentParameteriv>("glGetNamedFramebufferAttachmentParameteriv");
-				glGetNamedFramebufferParameteriv = getProc<Delegates.glGetNamedFramebufferParameteriv>("glGetNamedFramebufferParameteriv");
-				glGetNamedRenderbufferParameteriv = getProc<Delegates.glGetNamedRenderbufferParameteriv>("glGetNamedRenderbufferParameteriv");
-				glGetnCompressedTexImage = getProc<Delegates.glGetnCompressedTexImage>("glGetnCompressedTexImage");
-				glGetnTexImage = getProc<Delegates.glGetnTexImage>("glGetnTexImage");
-				glGetnUniformdv = getProc<Delegates.glGetnUniformdv>("glGetnUniformdv");
-				glGetnUniformfv = getProc<Delegates.glGetnUniformfv>("glGetnUniformfv");
-				glGetnUniformiv = getProc<Delegates.glGetnUniformiv>("glGetnUniformiv");
-				glGetnUniformuiv = getProc<Delegates.glGetnUniformuiv>("glGetnUniformuiv");
-				glGetQueryBufferObjecti64v = getProc<Delegates.glGetQueryBufferObjecti64v>("glGetQueryBufferObjecti64v");
-				glGetQueryBufferObjectiv = getProc<Delegates.glGetQueryBufferObjectiv>("glGetQueryBufferObjectiv");
-				glGetQueryBufferObjectui64v = getProc<Delegates.glGetQueryBufferObjectui64v>("glGetQueryBufferObjectui64v");
-				glGetQueryBufferObjectuiv = getProc<Delegates.glGetQueryBufferObjectuiv>("glGetQueryBufferObjectuiv");
-				glGetTextureImage = getProc<Delegates.glGetTextureImage>("glGetTextureImage");
-				glGetTextureLevelParameterfv = getProc<Delegates.glGetTextureLevelParameterfv>("glGetTextureLevelParameterfv");
-				glGetTextureLevelParameteriv = getProc<Delegates.glGetTextureLevelParameteriv>("glGetTextureLevelParameteriv");
-				glGetTextureParameterfv = getProc<Delegates.glGetTextureParameterfv>("glGetTextureParameterfv");
-				glGetTextureParameterIiv = getProc<Delegates.glGetTextureParameterIiv>("glGetTextureParameterIiv");
-				glGetTextureParameterIuiv = getProc<Delegates.glGetTextureParameterIuiv>("glGetTextureParameterIuiv");
-				glGetTextureParameteriv = getProc<Delegates.glGetTextureParameteriv>("glGetTextureParameteriv");
-				glGetTextureSubImage = getProc<Delegates.glGetTextureSubImage>("glGetTextureSubImage");
-				glGetTransformFeedbacki_v = getProc<Delegates.glGetTransformFeedbacki_v>("glGetTransformFeedbacki_v");
-				glGetTransformFeedbacki64_v = getProc<Delegates.glGetTransformFeedbacki64_v>("glGetTransformFeedbacki64_v");
-				glGetTransformFeedbackiv = getProc<Delegates.glGetTransformFeedbackiv>("glGetTransformFeedbackiv");
-				glGetVertexArrayIndexed64iv = getProc<Delegates.glGetVertexArrayIndexed64iv>("glGetVertexArrayIndexed64iv");
-				glGetVertexArrayIndexediv = getProc<Delegates.glGetVertexArrayIndexediv>("glGetVertexArrayIndexediv");
-				glGetVertexArrayiv = getProc<Delegates.glGetVertexArrayiv>("glGetVertexArrayiv");
-				glInvalidateNamedFramebufferData = getProc<Delegates.glInvalidateNamedFramebufferData>("glInvalidateNamedFramebufferData");
-				glInvalidateNamedFramebufferSubData = getProc<Delegates.glInvalidateNamedFramebufferSubData>("glInvalidateNamedFramebufferSubData");
-				glMapNamedBuffer = getProc<Delegates.glMapNamedBuffer>("glMapNamedBuffer");
-				glMapNamedBufferRange = getProc<Delegates.glMapNamedBufferRange>("glMapNamedBufferRange");
-				glMemoryBarrierByRegion = getProc<Delegates.glMemoryBarrierByRegion>("glMemoryBarrierByRegion");
-				glNamedBufferData = getProc<Delegates.glNamedBufferData>("glNamedBufferData");
-				glNamedBufferStorage = getProc<Delegates.glNamedBufferStorage>("glNamedBufferStorage");
-				glNamedBufferSubData = getProc<Delegates.glNamedBufferSubData>("glNamedBufferSubData");
-				glNamedFramebufferDrawBuffer = getProc<Delegates.glNamedFramebufferDrawBuffer>("glNamedFramebufferDrawBuffer");
-				glNamedFramebufferDrawBuffers = getProc<Delegates.glNamedFramebufferDrawBuffers>("glNamedFramebufferDrawBuffers");
-				glNamedFramebufferParameteri = getProc<Delegates.glNamedFramebufferParameteri>("glNamedFramebufferParameteri");
-				glNamedFramebufferReadBuffer = getProc<Delegates.glNamedFramebufferReadBuffer>("glNamedFramebufferReadBuffer");
-				glNamedFramebufferRenderbuffer = getProc<Delegates.glNamedFramebufferRenderbuffer>("glNamedFramebufferRenderbuffer");
-				glNamedFramebufferTexture = getProc<Delegates.glNamedFramebufferTexture>("glNamedFramebufferTexture");
-				glNamedFramebufferTextureLayer = getProc<Delegates.glNamedFramebufferTextureLayer>("glNamedFramebufferTextureLayer");
-				glNamedRenderbufferStorage = getProc<Delegates.glNamedRenderbufferStorage>("glNamedRenderbufferStorage");
-				glNamedRenderbufferStorageMultisample = getProc<Delegates.glNamedRenderbufferStorageMultisample>("glNamedRenderbufferStorageMultisample");
-				glReadnPixels = getProc<Delegates.glReadnPixels>("glReadnPixels");
-				glTextureBarrier = getProc<Delegates.glTextureBarrier>("glTextureBarrier");
-				glTextureBuffer = getProc<Delegates.glTextureBuffer>("glTextureBuffer");
-				glTextureBufferRange = getProc<Delegates.glTextureBufferRange>("glTextureBufferRange");
-				glTextureParameterf = getProc<Delegates.glTextureParameterf>("glTextureParameterf");
-				glTextureParameterfv = getProc<Delegates.glTextureParameterfv>("glTextureParameterfv");
-				glTextureParameteri = getProc<Delegates.glTextureParameteri>("glTextureParameteri");
-				glTextureParameterIiv = getProc<Delegates.glTextureParameterIiv>("glTextureParameterIiv");
-				glTextureParameterIuiv = getProc<Delegates.glTextureParameterIuiv>("glTextureParameterIuiv");
-				glTextureParameteriv = getProc<Delegates.glTextureParameteriv>("glTextureParameteriv");
-				glTextureStorage1D = getProc<Delegates.glTextureStorage1D>("glTextureStorage1D");
-				glTextureStorage2D = getProc<Delegates.glTextureStorage2D>("glTextureStorage2D");
-				glTextureStorage2DMultisample = getProc<Delegates.glTextureStorage2DMultisample>("glTextureStorage2DMultisample");
-				glTextureStorage3D = getProc<Delegates.glTextureStorage3D>("glTextureStorage3D");
-				glTextureStorage3DMultisample = getProc<Delegates.glTextureStorage3DMultisample>("glTextureStorage3DMultisample");
-				glTextureSubImage1D = getProc<Delegates.glTextureSubImage1D>("glTextureSubImage1D");
-				glTextureSubImage2D = getProc<Delegates.glTextureSubImage2D>("glTextureSubImage2D");
-				glTextureSubImage3D = getProc<Delegates.glTextureSubImage3D>("glTextureSubImage3D");
-				glTransformFeedbackBufferBase = getProc<Delegates.glTransformFeedbackBufferBase>("glTransformFeedbackBufferBase");
-				glTransformFeedbackBufferRange = getProc<Delegates.glTransformFeedbackBufferRange>("glTransformFeedbackBufferRange");
-				glUnmapNamedBuffer = getProc<Delegates.glUnmapNamedBuffer>("glUnmapNamedBuffer");
-				glVertexArrayAttribBinding = getProc<Delegates.glVertexArrayAttribBinding>("glVertexArrayAttribBinding");
-				glVertexArrayAttribFormat = getProc<Delegates.glVertexArrayAttribFormat>("glVertexArrayAttribFormat");
-				glVertexArrayAttribIFormat = getProc<Delegates.glVertexArrayAttribIFormat>("glVertexArrayAttribIFormat");
-				glVertexArrayAttribLFormat = getProc<Delegates.glVertexArrayAttribLFormat>("glVertexArrayAttribLFormat");
-				glVertexArrayBindingDivisor = getProc<Delegates.glVertexArrayBindingDivisor>("glVertexArrayBindingDivisor");
-				glVertexArrayElementBuffer = getProc<Delegates.glVertexArrayElementBuffer>("glVertexArrayElementBuffer");
-				glVertexArrayVertexBuffer = getProc<Delegates.glVertexArrayVertexBuffer>("glVertexArrayVertexBuffer");
-				glVertexArrayVertexBuffers = getProc<Delegates.glVertexArrayVertexBuffers>("glVertexArrayVertexBuffers");
+				Functions.glBindTextureUnit = getProc<Delegates.glBindTextureUnit>("glBindTextureUnit");
+				Functions.glBlitNamedFramebuffer = getProc<Delegates.glBlitNamedFramebuffer>("glBlitNamedFramebuffer");
+				Functions.glCheckNamedFramebufferStatus = getProc<Delegates.glCheckNamedFramebufferStatus>("glCheckNamedFramebufferStatus");
+				Functions.glClearNamedBufferData = getProc<Delegates.glClearNamedBufferData>("glClearNamedBufferData");
+				Functions.glClearNamedBufferSubData = getProc<Delegates.glClearNamedBufferSubData>("glClearNamedBufferSubData");
+				Functions.glClearNamedFramebufferfi = getProc<Delegates.glClearNamedFramebufferfi>("glClearNamedFramebufferfi");
+				Functions.glClearNamedFramebufferfv = getProc<Delegates.glClearNamedFramebufferfv>("glClearNamedFramebufferfv");
+				Functions.glClearNamedFramebufferiv = getProc<Delegates.glClearNamedFramebufferiv>("glClearNamedFramebufferiv");
+				Functions.glClearNamedFramebufferuiv = getProc<Delegates.glClearNamedFramebufferuiv>("glClearNamedFramebufferuiv");
+				Functions.glClipControl = getProc<Delegates.glClipControl>("glClipControl");
+				Functions.glCompressedTextureSubImage1D = getProc<Delegates.glCompressedTextureSubImage1D>("glCompressedTextureSubImage1D");
+				Functions.glCompressedTextureSubImage2D = getProc<Delegates.glCompressedTextureSubImage2D>("glCompressedTextureSubImage2D");
+				Functions.glCompressedTextureSubImage3D = getProc<Delegates.glCompressedTextureSubImage3D>("glCompressedTextureSubImage3D");
+				Functions.glCopyNamedBufferSubData = getProc<Delegates.glCopyNamedBufferSubData>("glCopyNamedBufferSubData");
+				Functions.glCopyTextureSubImage1D = getProc<Delegates.glCopyTextureSubImage1D>("glCopyTextureSubImage1D");
+				Functions.glCopyTextureSubImage2D = getProc<Delegates.glCopyTextureSubImage2D>("glCopyTextureSubImage2D");
+				Functions.glCopyTextureSubImage3D = getProc<Delegates.glCopyTextureSubImage3D>("glCopyTextureSubImage3D");
+				Functions.glCreateBuffers = getProc<Delegates.glCreateBuffers>("glCreateBuffers");
+				Functions.glCreateFramebuffers = getProc<Delegates.glCreateFramebuffers>("glCreateFramebuffers");
+				Functions.glCreateProgramPipelines = getProc<Delegates.glCreateProgramPipelines>("glCreateProgramPipelines");
+				Functions.glCreateQueries = getProc<Delegates.glCreateQueries>("glCreateQueries");
+				Functions.glCreateRenderbuffers = getProc<Delegates.glCreateRenderbuffers>("glCreateRenderbuffers");
+				Functions.glCreateSamplers = getProc<Delegates.glCreateSamplers>("glCreateSamplers");
+				Functions.glCreateTextures = getProc<Delegates.glCreateTextures>("glCreateTextures");
+				Functions.glCreateTransformFeedbacks = getProc<Delegates.glCreateTransformFeedbacks>("glCreateTransformFeedbacks");
+				Functions.glCreateVertexArrays = getProc<Delegates.glCreateVertexArrays>("glCreateVertexArrays");
+				Functions.glDisableVertexArrayAttrib = getProc<Delegates.glDisableVertexArrayAttrib>("glDisableVertexArrayAttrib");
+				Functions.glEnableVertexArrayAttrib = getProc<Delegates.glEnableVertexArrayAttrib>("glEnableVertexArrayAttrib");
+				Functions.glFlushMappedNamedBufferRange = getProc<Delegates.glFlushMappedNamedBufferRange>("glFlushMappedNamedBufferRange");
+				Functions.glGenerateTextureMipmap = getProc<Delegates.glGenerateTextureMipmap>("glGenerateTextureMipmap");
+				Functions.glGetCompressedTextureImage = getProc<Delegates.glGetCompressedTextureImage>("glGetCompressedTextureImage");
+				Functions.glGetCompressedTextureSubImage = getProc<Delegates.glGetCompressedTextureSubImage>("glGetCompressedTextureSubImage");
+				Functions.glGetGraphicsResetStatus = getProc<Delegates.glGetGraphicsResetStatus>("glGetGraphicsResetStatus");
+				Functions.glGetNamedBufferParameteri64v = getProc<Delegates.glGetNamedBufferParameteri64v>("glGetNamedBufferParameteri64v");
+				Functions.glGetNamedBufferParameteriv = getProc<Delegates.glGetNamedBufferParameteriv>("glGetNamedBufferParameteriv");
+				Functions.glGetNamedBufferPointerv = getProc<Delegates.glGetNamedBufferPointerv>("glGetNamedBufferPointerv");
+				Functions.glGetNamedBufferSubData = getProc<Delegates.glGetNamedBufferSubData>("glGetNamedBufferSubData");
+				Functions.glGetNamedFramebufferAttachmentParameteriv = getProc<Delegates.glGetNamedFramebufferAttachmentParameteriv>("glGetNamedFramebufferAttachmentParameteriv");
+				Functions.glGetNamedFramebufferParameteriv = getProc<Delegates.glGetNamedFramebufferParameteriv>("glGetNamedFramebufferParameteriv");
+				Functions.glGetNamedRenderbufferParameteriv = getProc<Delegates.glGetNamedRenderbufferParameteriv>("glGetNamedRenderbufferParameteriv");
+				Functions.glGetnCompressedTexImage = getProc<Delegates.glGetnCompressedTexImage>("glGetnCompressedTexImage");
+				Functions.glGetnTexImage = getProc<Delegates.glGetnTexImage>("glGetnTexImage");
+				Functions.glGetnUniformdv = getProc<Delegates.glGetnUniformdv>("glGetnUniformdv");
+				Functions.glGetnUniformfv = getProc<Delegates.glGetnUniformfv>("glGetnUniformfv");
+				Functions.glGetnUniformiv = getProc<Delegates.glGetnUniformiv>("glGetnUniformiv");
+				Functions.glGetnUniformuiv = getProc<Delegates.glGetnUniformuiv>("glGetnUniformuiv");
+				Functions.glGetQueryBufferObjecti64v = getProc<Delegates.glGetQueryBufferObjecti64v>("glGetQueryBufferObjecti64v");
+				Functions.glGetQueryBufferObjectiv = getProc<Delegates.glGetQueryBufferObjectiv>("glGetQueryBufferObjectiv");
+				Functions.glGetQueryBufferObjectui64v = getProc<Delegates.glGetQueryBufferObjectui64v>("glGetQueryBufferObjectui64v");
+				Functions.glGetQueryBufferObjectuiv = getProc<Delegates.glGetQueryBufferObjectuiv>("glGetQueryBufferObjectuiv");
+				Functions.glGetTextureImage = getProc<Delegates.glGetTextureImage>("glGetTextureImage");
+				Functions.glGetTextureLevelParameterfv = getProc<Delegates.glGetTextureLevelParameterfv>("glGetTextureLevelParameterfv");
+				Functions.glGetTextureLevelParameteriv = getProc<Delegates.glGetTextureLevelParameteriv>("glGetTextureLevelParameteriv");
+				Functions.glGetTextureParameterfv = getProc<Delegates.glGetTextureParameterfv>("glGetTextureParameterfv");
+				Functions.glGetTextureParameterIiv = getProc<Delegates.glGetTextureParameterIiv>("glGetTextureParameterIiv");
+				Functions.glGetTextureParameterIuiv = getProc<Delegates.glGetTextureParameterIuiv>("glGetTextureParameterIuiv");
+				Functions.glGetTextureParameteriv = getProc<Delegates.glGetTextureParameteriv>("glGetTextureParameteriv");
+				Functions.glGetTextureSubImage = getProc<Delegates.glGetTextureSubImage>("glGetTextureSubImage");
+				Functions.glGetTransformFeedbacki_v = getProc<Delegates.glGetTransformFeedbacki_v>("glGetTransformFeedbacki_v");
+				Functions.glGetTransformFeedbacki64_v = getProc<Delegates.glGetTransformFeedbacki64_v>("glGetTransformFeedbacki64_v");
+				Functions.glGetTransformFeedbackiv = getProc<Delegates.glGetTransformFeedbackiv>("glGetTransformFeedbackiv");
+				Functions.glGetVertexArrayIndexed64iv = getProc<Delegates.glGetVertexArrayIndexed64iv>("glGetVertexArrayIndexed64iv");
+				Functions.glGetVertexArrayIndexediv = getProc<Delegates.glGetVertexArrayIndexediv>("glGetVertexArrayIndexediv");
+				Functions.glGetVertexArrayiv = getProc<Delegates.glGetVertexArrayiv>("glGetVertexArrayiv");
+				Functions.glInvalidateNamedFramebufferData = getProc<Delegates.glInvalidateNamedFramebufferData>("glInvalidateNamedFramebufferData");
+				Functions.glInvalidateNamedFramebufferSubData = getProc<Delegates.glInvalidateNamedFramebufferSubData>("glInvalidateNamedFramebufferSubData");
+				Functions.glMapNamedBuffer = getProc<Delegates.glMapNamedBuffer>("glMapNamedBuffer");
+				Functions.glMapNamedBufferRange = getProc<Delegates.glMapNamedBufferRange>("glMapNamedBufferRange");
+				Functions.glMemoryBarrierByRegion = getProc<Delegates.glMemoryBarrierByRegion>("glMemoryBarrierByRegion");
+				Functions.glNamedBufferData = getProc<Delegates.glNamedBufferData>("glNamedBufferData");
+				Functions.glNamedBufferStorage = getProc<Delegates.glNamedBufferStorage>("glNamedBufferStorage");
+				Functions.glNamedBufferSubData = getProc<Delegates.glNamedBufferSubData>("glNamedBufferSubData");
+				Functions.glNamedFramebufferDrawBuffer = getProc<Delegates.glNamedFramebufferDrawBuffer>("glNamedFramebufferDrawBuffer");
+				Functions.glNamedFramebufferDrawBuffers = getProc<Delegates.glNamedFramebufferDrawBuffers>("glNamedFramebufferDrawBuffers");
+				Functions.glNamedFramebufferParameteri = getProc<Delegates.glNamedFramebufferParameteri>("glNamedFramebufferParameteri");
+				Functions.glNamedFramebufferReadBuffer = getProc<Delegates.glNamedFramebufferReadBuffer>("glNamedFramebufferReadBuffer");
+				Functions.glNamedFramebufferRenderbuffer = getProc<Delegates.glNamedFramebufferRenderbuffer>("glNamedFramebufferRenderbuffer");
+				Functions.glNamedFramebufferTexture = getProc<Delegates.glNamedFramebufferTexture>("glNamedFramebufferTexture");
+				Functions.glNamedFramebufferTextureLayer = getProc<Delegates.glNamedFramebufferTextureLayer>("glNamedFramebufferTextureLayer");
+				Functions.glNamedRenderbufferStorage = getProc<Delegates.glNamedRenderbufferStorage>("glNamedRenderbufferStorage");
+				Functions.glNamedRenderbufferStorageMultisample = getProc<Delegates.glNamedRenderbufferStorageMultisample>("glNamedRenderbufferStorageMultisample");
+				Functions.glReadnPixels = getProc<Delegates.glReadnPixels>("glReadnPixels");
+				Functions.glTextureBarrier = getProc<Delegates.glTextureBarrier>("glTextureBarrier");
+				Functions.glTextureBuffer = getProc<Delegates.glTextureBuffer>("glTextureBuffer");
+				Functions.glTextureBufferRange = getProc<Delegates.glTextureBufferRange>("glTextureBufferRange");
+				Functions.glTextureParameterf = getProc<Delegates.glTextureParameterf>("glTextureParameterf");
+				Functions.glTextureParameterfv = getProc<Delegates.glTextureParameterfv>("glTextureParameterfv");
+				Functions.glTextureParameteri = getProc<Delegates.glTextureParameteri>("glTextureParameteri");
+				Functions.glTextureParameterIiv = getProc<Delegates.glTextureParameterIiv>("glTextureParameterIiv");
+				Functions.glTextureParameterIuiv = getProc<Delegates.glTextureParameterIuiv>("glTextureParameterIuiv");
+				Functions.glTextureParameteriv = getProc<Delegates.glTextureParameteriv>("glTextureParameteriv");
+				Functions.glTextureStorage1D = getProc<Delegates.glTextureStorage1D>("glTextureStorage1D");
+				Functions.glTextureStorage2D = getProc<Delegates.glTextureStorage2D>("glTextureStorage2D");
+				Functions.glTextureStorage2DMultisample = getProc<Delegates.glTextureStorage2DMultisample>("glTextureStorage2DMultisample");
+				Functions.glTextureStorage3D = getProc<Delegates.glTextureStorage3D>("glTextureStorage3D");
+				Functions.glTextureStorage3DMultisample = getProc<Delegates.glTextureStorage3DMultisample>("glTextureStorage3DMultisample");
+				Functions.glTextureSubImage1D = getProc<Delegates.glTextureSubImage1D>("glTextureSubImage1D");
+				Functions.glTextureSubImage2D = getProc<Delegates.glTextureSubImage2D>("glTextureSubImage2D");
+				Functions.glTextureSubImage3D = getProc<Delegates.glTextureSubImage3D>("glTextureSubImage3D");
+				Functions.glTransformFeedbackBufferBase = getProc<Delegates.glTransformFeedbackBufferBase>("glTransformFeedbackBufferBase");
+				Functions.glTransformFeedbackBufferRange = getProc<Delegates.glTransformFeedbackBufferRange>("glTransformFeedbackBufferRange");
+				Functions.glUnmapNamedBuffer = getProc<Delegates.glUnmapNamedBuffer>("glUnmapNamedBuffer");
+				Functions.glVertexArrayAttribBinding = getProc<Delegates.glVertexArrayAttribBinding>("glVertexArrayAttribBinding");
+				Functions.glVertexArrayAttribFormat = getProc<Delegates.glVertexArrayAttribFormat>("glVertexArrayAttribFormat");
+				Functions.glVertexArrayAttribIFormat = getProc<Delegates.glVertexArrayAttribIFormat>("glVertexArrayAttribIFormat");
+				Functions.glVertexArrayAttribLFormat = getProc<Delegates.glVertexArrayAttribLFormat>("glVertexArrayAttribLFormat");
+				Functions.glVertexArrayBindingDivisor = getProc<Delegates.glVertexArrayBindingDivisor>("glVertexArrayBindingDivisor");
+				Functions.glVertexArrayElementBuffer = getProc<Delegates.glVertexArrayElementBuffer>("glVertexArrayElementBuffer");
+				Functions.glVertexArrayVertexBuffer = getProc<Delegates.glVertexArrayVertexBuffer>("glVertexArrayVertexBuffer");
+				Functions.glVertexArrayVertexBuffers = getProc<Delegates.glVertexArrayVertexBuffers>("glVertexArrayVertexBuffers");
 			}
 
 			if (versionMajor > 4 || (versionMajor == 4 && versionMinor >= 6))
 			{
-				glMultiDrawArraysIndirectCount = getProc<Delegates.glMultiDrawArraysIndirectCount>("glMultiDrawArraysIndirectCount");
-				glMultiDrawElementsIndirectCount = getProc<Delegates.glMultiDrawElementsIndirectCount>("glMultiDrawElementsIndirectCount");
-				glPolygonOffsetClamp = getProc<Delegates.glPolygonOffsetClamp>("glPolygonOffsetClamp");
-				glSpecializeShader = getProc<Delegates.glSpecializeShader>("glSpecializeShader");
+				Functions.glMultiDrawArraysIndirectCount = getProc<Delegates.glMultiDrawArraysIndirectCount>("glMultiDrawArraysIndirectCount");
+				Functions.glMultiDrawElementsIndirectCount = getProc<Delegates.glMultiDrawElementsIndirectCount>("glMultiDrawElementsIndirectCount");
+				Functions.glPolygonOffsetClamp = getProc<Delegates.glPolygonOffsetClamp>("glPolygonOffsetClamp");
+				Functions.glSpecializeShader = getProc<Delegates.glSpecializeShader>("glSpecializeShader");
 			}
 		}
 #endif
+
+		public static void glActiveShaderProgram(uint pipeline, uint program)
+		{
+			Functions.glActiveShaderProgram(pipeline, program);
+		}
+
+		public static void glActiveTexture(uint texture)
+		{
+			Functions.glActiveTexture(texture);
+		}
+
+		public static void glAttachShader(uint program, uint shader)
+		{
+			Functions.glAttachShader(program, shader);
+		}
+
+		public static void glBeginConditionalRender(uint id, uint mode)
+		{
+			Functions.glBeginConditionalRender(id, mode);
+		}
+
+		public static void glBeginQuery(uint target, uint id)
+		{
+			Functions.glBeginQuery(target, id);
+		}
+
+		public static void glBeginQueryIndexed(uint target, uint index, uint id)
+		{
+			Functions.glBeginQueryIndexed(target, index, id);
+		}
+
+		public static void glBeginTransformFeedback(uint primitiveMode)
+		{
+			Functions.glBeginTransformFeedback(primitiveMode);
+		}
+
+		public static void glBindAttribLocation(uint program, uint index, string name)
+		{
+			Functions.glBindAttribLocation(program, index, name);
+		}
+
+		public static void glBindBuffer(uint target, uint buffer)
+		{
+			Functions.glBindBuffer(target, buffer);
+		}
+
+		public static void glBindBufferBase(uint target, uint index, uint buffer)
+		{
+			Functions.glBindBufferBase(target, index, buffer);
+		}
+
+		public static void glBindBufferRange(uint target, uint index, uint buffer, int offset, int size)
+		{
+			Functions.glBindBufferRange(target, index, buffer, offset, size);
+		}
+
+		public static void glBindBuffersBase(uint target, uint first, int count, uint* buffers)
+		{
+			Functions.glBindBuffersBase(target, first, count, buffers);
+		}
+
+		public static void glBindBuffersRange(uint target, uint first, int count, uint* buffers, int* offsets, int* sizes)
+		{
+			Functions.glBindBuffersRange(target, first, count, buffers, offsets, sizes);
+		}
+
+		public static void glBindFragDataLocation(uint program, uint color, string name)
+		{
+			Functions.glBindFragDataLocation(program, color, name);
+		}
+
+		public static void glBindFragDataLocationIndexed(uint program, uint colorNumber, uint index, string name)
+		{
+			Functions.glBindFragDataLocationIndexed(program, colorNumber, index, name);
+		}
+
+		public static void glBindFramebuffer(uint target, uint framebuffer)
+		{
+			Functions.glBindFramebuffer(target, framebuffer);
+		}
+
+		public static void glBindImageTexture(uint unit, uint texture, int level, bool layered, int layer, uint access, uint format)
+		{
+			Functions.glBindImageTexture(unit, texture, level, layered, layer, access, format);
+		}
+
+		public static void glBindImageTextures(uint first, int count, uint* textures)
+		{
+			Functions.glBindImageTextures(first, count, textures);
+		}
+
+		public static void glBindProgramPipeline(uint pipeline)
+		{
+			Functions.glBindProgramPipeline(pipeline);
+		}
+
+		public static void glBindRenderbuffer(uint target, uint renderbuffer)
+		{
+			Functions.glBindRenderbuffer(target, renderbuffer);
+		}
+
+		public static void glBindSampler(uint unit, uint sampler)
+		{
+			Functions.glBindSampler(unit, sampler);
+		}
+
+		public static void glBindSamplers(uint first, int count, uint* samplers)
+		{
+			Functions.glBindSamplers(first, count, samplers);
+		}
+
+		public static void glBindTexture(uint target, uint texture)
+		{
+			Functions.glBindTexture(target, texture);
+		}
+
+		public static void glBindTextures(uint first, int count, uint* textures)
+		{
+			Functions.glBindTextures(first, count, textures);
+		}
+
+		public static void glBindTextureUnit(uint unit, uint texture)
+		{
+			Functions.glBindTextureUnit(unit, texture);
+		}
+
+		public static void glBindTransformFeedback(uint target, uint id)
+		{
+			Functions.glBindTransformFeedback(target, id);
+		}
+
+		public static void glBindVertexArray(uint array)
+		{
+			Functions.glBindVertexArray(array);
+		}
+
+		public static void glBindVertexBuffer(uint bindingindex, uint buffer, int offset, int stride)
+		{
+			Functions.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+		}
+
+		public static void glBindVertexBuffers(uint first, int count, uint* buffers, int* offsets, int* strides)
+		{
+			Functions.glBindVertexBuffers(first, count, buffers, offsets, strides);
+		}
+
+		public static void glBlendColor(float red, float green, float blue, float alpha)
+		{
+			Functions.glBlendColor(red, green, blue, alpha);
+		}
+
+		public static void glBlendEquation(uint mode)
+		{
+			Functions.glBlendEquation(mode);
+		}
+
+		public static void glBlendEquationi(uint buf, uint mode)
+		{
+			Functions.glBlendEquationi(buf, mode);
+		}
+
+		public static void glBlendEquationSeparate(uint modeRGB, uint modeAlpha)
+		{
+			Functions.glBlendEquationSeparate(modeRGB, modeAlpha);
+		}
+
+		public static void glBlendEquationSeparatei(uint buf, uint modeRGB, uint modeAlpha)
+		{
+			Functions.glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
+		}
+
+		public static void glBlendFunc(uint sfactor, uint dfactor)
+		{
+			Functions.glBlendFunc(sfactor, dfactor);
+		}
+
+		public static void glBlendFunci(uint buf, uint src, uint dst)
+		{
+			Functions.glBlendFunci(buf, src, dst);
+		}
+
+		public static void glBlendFuncSeparate(uint sfactorRGB, uint dfactorRGB, uint sfactorAlpha, uint dfactorAlpha)
+		{
+			Functions.glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+		}
+
+		public static void glBlendFuncSeparatei(uint buf, uint srcRGB, uint dstRGB, uint srcAlpha, uint dstAlpha)
+		{
+			Functions.glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+		}
+
+		public static void glBlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
+		{
+			Functions.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+		}
+
+		public static void glBlitNamedFramebuffer(uint readFramebuffer, uint drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, uint mask, uint filter)
+		{
+			Functions.glBlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+		}
+
+		public static void glBufferData(uint target, int size, void* data, uint usage)
+		{
+			Functions.glBufferData(target, size, data, usage);
+		}
+
+		public static void glBufferStorage(uint target, int size, void* data, uint flags)
+		{
+			Functions.glBufferStorage(target, size, data, flags);
+		}
+
+		public static void glBufferSubData(uint target, int offset, int size, void* data)
+		{
+			Functions.glBufferSubData(target, offset, size, data);
+		}
+
+		public static uint glCheckFramebufferStatus(uint target)
+		{
+			return Functions.glCheckFramebufferStatus(target);
+		}
+
+		public static uint glCheckNamedFramebufferStatus(uint framebuffer, uint target)
+		{
+			return Functions.glCheckNamedFramebufferStatus(framebuffer, target);
+		}
+
+		public static void glClampColor(uint target, uint clamp)
+		{
+			Functions.glClampColor(target, clamp);
+		}
+
+		public static void glClear(uint mask)
+		{
+			Functions.glClear(mask);
+		}
+
+		public static void glClearBufferData(uint target, uint internalformat, uint format, uint type, void* data)
+		{
+			Functions.glClearBufferData(target, internalformat, format, type, data);
+		}
+
+		public static void glClearBufferfi(uint buffer, int drawbuffer, float depth, int stencil)
+		{
+			Functions.glClearBufferfi(buffer, drawbuffer, depth, stencil);
+		}
+
+		public static void glClearBufferfv(uint buffer, int drawbuffer, float* value)
+		{
+			Functions.glClearBufferfv(buffer, drawbuffer, value);
+		}
+
+		public static void glClearBufferiv(uint buffer, int drawbuffer, int* value)
+		{
+			Functions.glClearBufferiv(buffer, drawbuffer, value);
+		}
+
+		public static void glClearBufferSubData(uint target, uint internalformat, int offset, int size, uint format, uint type, void* data)
+		{
+			Functions.glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+		}
+
+		public static void glClearBufferuiv(uint buffer, int drawbuffer, uint* value)
+		{
+			Functions.glClearBufferuiv(buffer, drawbuffer, value);
+		}
+
+		public static void glClearColor(float red, float green, float blue, float alpha)
+		{
+			Functions.glClearColor(red, green, blue, alpha);
+		}
+
+		public static void glClearDepth(double depth)
+		{
+			Functions.glClearDepth(depth);
+		}
+
+		public static void glClearDepthf(float d)
+		{
+			Functions.glClearDepthf(d);
+		}
+
+		public static void glClearNamedBufferData(uint buffer, uint internalformat, uint format, uint type, void* data)
+		{
+			Functions.glClearNamedBufferData(buffer, internalformat, format, type, data);
+		}
+
+		public static void glClearNamedBufferSubData(uint buffer, uint internalformat, int offset, int size, uint format, uint type, void* data)
+		{
+			Functions.glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
+		}
+
+		public static void glClearNamedFramebufferfi(uint framebuffer, uint buffer, int drawbuffer, float depth, int stencil)
+		{
+			Functions.glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
+		}
+
+		public static void glClearNamedFramebufferfv(uint framebuffer, uint buffer, int drawbuffer, float* value)
+		{
+			Functions.glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value);
+		}
+
+		public static void glClearNamedFramebufferiv(uint framebuffer, uint buffer, int drawbuffer, int* value)
+		{
+			Functions.glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
+		}
+
+		public static void glClearNamedFramebufferuiv(uint framebuffer, uint buffer, int drawbuffer, uint* value)
+		{
+			Functions.glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value);
+		}
+
+		public static void glClearStencil(int s)
+		{
+			Functions.glClearStencil(s);
+		}
+
+		public static void glClearTexImage(uint texture, int level, uint format, uint type, void* data)
+		{
+			Functions.glClearTexImage(texture, level, format, type, data);
+		}
+
+		public static void glClearTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* data)
+		{
+			Functions.glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+		}
+
+		public static uint glClientWaitSync(IntPtr sync, uint flags, ulong timeout)
+		{
+			return Functions.glClientWaitSync(sync, flags, timeout);
+		}
+
+		public static void glClipControl(uint origin, uint depth)
+		{
+			Functions.glClipControl(origin, depth);
+		}
+
+		public static void glColorMask(bool red, bool green, bool blue, bool alpha)
+		{
+			Functions.glColorMask(red, green, blue, alpha);
+		}
+
+		public static void glColorMaski(uint index, bool r, bool g, bool b, bool a)
+		{
+			Functions.glColorMaski(index, r, g, b, a);
+		}
+
+		public static void glCompileShader(uint shader)
+		{
+			Functions.glCompileShader(shader);
+		}
+
+		public static void glCompressedTexImage1D(uint target, int level, uint internalformat, int width, int border, int imageSize, void* data)
+		{
+			Functions.glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+		}
+
+		public static void glCompressedTexImage2D(uint target, int level, uint internalformat, int width, int height, int border, int imageSize, void* data)
+		{
+			Functions.glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+		}
+
+		public static void glCompressedTexImage3D(uint target, int level, uint internalformat, int width, int height, int depth, int border, int imageSize, void* data)
+		{
+			Functions.glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+		}
+
+		public static void glCompressedTexSubImage1D(uint target, int level, int xoffset, int width, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+		}
+
+		public static void glCompressedTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+		}
+
+		public static void glCompressedTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+		}
+
+		public static void glCompressedTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
+		}
+
+		public static void glCompressedTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
+		}
+
+		public static void glCompressedTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, int imageSize, void* data)
+		{
+			Functions.glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+		}
+
+		public static void glCopyBufferSubData(uint readTarget, uint writeTarget, int readOffset, int writeOffset, int size)
+		{
+			Functions.glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+		}
+
+		public static void glCopyImageSubData(uint srcName, uint srcTarget, int srcLevel, int srcX, int srcY, int srcZ, uint dstName, uint dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth)
+		{
+			Functions.glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+		}
+
+		public static void glCopyNamedBufferSubData(uint readBuffer, uint writeBuffer, int readOffset, int writeOffset, int size)
+		{
+			Functions.glCopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size);
+		}
+
+		public static void glCopyTexImage1D(uint target, int level, uint internalformat, int x, int y, int width, int border)
+		{
+			Functions.glCopyTexImage1D(target, level, internalformat, x, y, width, border);
+		}
+
+		public static void glCopyTexImage2D(uint target, int level, uint internalformat, int x, int y, int width, int height, int border)
+		{
+			Functions.glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+		}
+
+		public static void glCopyTexSubImage1D(uint target, int level, int xoffset, int x, int y, int width)
+		{
+			Functions.glCopyTexSubImage1D(target, level, xoffset, x, y, width);
+		}
+
+		public static void glCopyTexSubImage2D(uint target, int level, int xoffset, int yoffset, int x, int y, int width, int height)
+		{
+			Functions.glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+		}
+
+		public static void glCopyTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
+		{
+			Functions.glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+		}
+
+		public static void glCopyTextureSubImage1D(uint texture, int level, int xoffset, int x, int y, int width)
+		{
+			Functions.glCopyTextureSubImage1D(texture, level, xoffset, x, y, width);
+		}
+
+		public static void glCopyTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int x, int y, int width, int height)
+		{
+			Functions.glCopyTextureSubImage2D(texture, level, xoffset, yoffset, x, y, width, height);
+		}
+
+		public static void glCopyTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height)
+		{
+			Functions.glCopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
+		}
+
+		public static void glCreateBuffers(int n, uint* buffers)
+		{
+			Functions.glCreateBuffers(n, buffers);
+		}
+
+		public static void glCreateFramebuffers(int n, uint* framebuffers)
+		{
+			Functions.glCreateFramebuffers(n, framebuffers);
+		}
+
+		public static uint glCreateProgram()
+		{
+			return Functions.glCreateProgram();
+		}
+
+		public static void glCreateProgramPipelines(int n, uint* pipelines)
+		{
+			Functions.glCreateProgramPipelines(n, pipelines);
+		}
+
+		public static void glCreateQueries(uint target, int n, uint* ids)
+		{
+			Functions.glCreateQueries(target, n, ids);
+		}
+
+		public static void glCreateRenderbuffers(int n, uint* renderbuffers)
+		{
+			Functions.glCreateRenderbuffers(n, renderbuffers);
+		}
+
+		public static void glCreateSamplers(int n, uint* samplers)
+		{
+			Functions.glCreateSamplers(n, samplers);
+		}
+
+		public static uint glCreateShader(uint type)
+		{
+			return Functions.glCreateShader(type);
+		}
+
+		public static uint glCreateShaderProgramv(uint type, int count, string[] strings)
+		{
+			return Functions.glCreateShaderProgramv(type, count, strings);
+		}
+
+		public static void glCreateTextures(uint target, int n, uint* textures)
+		{
+			Functions.glCreateTextures(target, n, textures);
+		}
+
+		public static void glCreateTransformFeedbacks(int n, uint* ids)
+		{
+			Functions.glCreateTransformFeedbacks(n, ids);
+		}
+
+		public static void glCreateVertexArrays(int n, uint* arrays)
+		{
+			Functions.glCreateVertexArrays(n, arrays);
+		}
+
+		public static void glCullFace(uint mode)
+		{
+			Functions.glCullFace(mode);
+		}
+
+		public static void glDebugMessageCallback(glDebugProc callback, void* userParam)
+		{
+			Functions.glDebugMessageCallback(callback, userParam);
+		}
+
+		public static void glDebugMessageControl(uint source, uint type, uint severity, int count, uint* ids, bool enabled)
+		{
+			Functions.glDebugMessageControl(source, type, severity, count, ids, enabled);
+		}
+
+		public static void glDebugMessageInsert(uint source, uint type, uint id, uint severity, int length, string buf)
+		{
+			Functions.glDebugMessageInsert(source, type, id, severity, length, buf);
+		}
+
+		public static void glDeleteBuffers(int n, uint* buffers)
+		{
+			Functions.glDeleteBuffers(n, buffers);
+		}
+
+		public static void glDeleteFramebuffers(int n, uint* framebuffers)
+		{
+			Functions.glDeleteFramebuffers(n, framebuffers);
+		}
+
+		public static void glDeleteProgram(uint program)
+		{
+			Functions.glDeleteProgram(program);
+		}
+
+		public static void glDeleteProgramPipelines(int n, uint* pipelines)
+		{
+			Functions.glDeleteProgramPipelines(n, pipelines);
+		}
+
+		public static void glDeleteQueries(int n, uint* ids)
+		{
+			Functions.glDeleteQueries(n, ids);
+		}
+
+		public static void glDeleteRenderbuffers(int n, uint* renderbuffers)
+		{
+			Functions.glDeleteRenderbuffers(n, renderbuffers);
+		}
+
+		public static void glDeleteSamplers(int count, uint* samplers)
+		{
+			Functions.glDeleteSamplers(count, samplers);
+		}
+
+		public static void glDeleteShader(uint shader)
+		{
+			Functions.glDeleteShader(shader);
+		}
+
+		public static void glDeleteSync(IntPtr sync)
+		{
+			Functions.glDeleteSync(sync);
+		}
+
+		public static void glDeleteTextures(int n, uint* textures)
+		{
+			Functions.glDeleteTextures(n, textures);
+		}
+
+		public static void glDeleteTransformFeedbacks(int n, uint* ids)
+		{
+			Functions.glDeleteTransformFeedbacks(n, ids);
+		}
+
+		public static void glDeleteVertexArrays(int n, uint* arrays)
+		{
+			Functions.glDeleteVertexArrays(n, arrays);
+		}
+
+		public static void glDepthFunc(uint func)
+		{
+			Functions.glDepthFunc(func);
+		}
+
+		public static void glDepthMask(bool flag)
+		{
+			Functions.glDepthMask(flag);
+		}
+
+		public static void glDepthRange(double n, double f)
+		{
+			Functions.glDepthRange(n, f);
+		}
+
+		public static void glDepthRangeArrayv(uint first, int count, double* v)
+		{
+			Functions.glDepthRangeArrayv(first, count, v);
+		}
+
+		public static void glDepthRangef(float n, float f)
+		{
+			Functions.glDepthRangef(n, f);
+		}
+
+		public static void glDepthRangeIndexed(uint index, double n, double f)
+		{
+			Functions.glDepthRangeIndexed(index, n, f);
+		}
+
+		public static void glDetachShader(uint program, uint shader)
+		{
+			Functions.glDetachShader(program, shader);
+		}
+
+		public static void glDisable(uint cap)
+		{
+			Functions.glDisable(cap);
+		}
+
+		public static void glDisablei(uint target, uint index)
+		{
+			Functions.glDisablei(target, index);
+		}
+
+		public static void glDisableVertexArrayAttrib(uint vaobj, uint index)
+		{
+			Functions.glDisableVertexArrayAttrib(vaobj, index);
+		}
+
+		public static void glDisableVertexAttribArray(uint index)
+		{
+			Functions.glDisableVertexAttribArray(index);
+		}
+
+		public static void glDispatchCompute(uint num_groups_x, uint num_groups_y, uint num_groups_z)
+		{
+			Functions.glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+		}
+
+		public static void glDispatchComputeIndirect(int indirect)
+		{
+			Functions.glDispatchComputeIndirect(indirect);
+		}
+
+		public static void glDrawArrays(uint mode, int first, int count)
+		{
+			Functions.glDrawArrays(mode, first, count);
+		}
+
+		public static void glDrawArraysIndirect(uint mode, void* indirect)
+		{
+			Functions.glDrawArraysIndirect(mode, indirect);
+		}
+
+		public static void glDrawArraysInstanced(uint mode, int first, int count, int instancecount)
+		{
+			Functions.glDrawArraysInstanced(mode, first, count, instancecount);
+		}
+
+		public static void glDrawArraysInstancedBaseInstance(uint mode, int first, int count, int instancecount, uint baseinstance)
+		{
+			Functions.glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
+		}
+
+		public static void glDrawBuffer(uint buf)
+		{
+			Functions.glDrawBuffer(buf);
+		}
+
+		public static void glDrawBuffers(int n, uint* bufs)
+		{
+			Functions.glDrawBuffers(n, bufs);
+		}
+
+		public static void glDrawElements(uint mode, int count, uint type, void* indices)
+		{
+			Functions.glDrawElements(mode, count, type, indices);
+		}
+
+		public static void glDrawElementsBaseVertex(uint mode, int count, uint type, void* indices, int basevertex)
+		{
+			Functions.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+		}
+
+		public static void glDrawElementsIndirect(uint mode, uint type, void* indirect)
+		{
+			Functions.glDrawElementsIndirect(mode, type, indirect);
+		}
+
+		public static void glDrawElementsInstanced(uint mode, int count, uint type, void* indices, int instancecount)
+		{
+			Functions.glDrawElementsInstanced(mode, count, type, indices, instancecount);
+		}
+
+		public static void glDrawElementsInstancedBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, uint baseinstance)
+		{
+			Functions.glDrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance);
+		}
+
+		public static void glDrawElementsInstancedBaseVertex(uint mode, int count, uint type, void* indices, int instancecount, int basevertex)
+		{
+			Functions.glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+		}
+
+		public static void glDrawElementsInstancedBaseVertexBaseInstance(uint mode, int count, uint type, void* indices, int instancecount, int basevertex, uint baseinstance)
+		{
+			Functions.glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance);
+		}
+
+		public static void glDrawRangeElements(uint mode, uint start, uint end, int count, uint type, void* indices)
+		{
+			Functions.glDrawRangeElements(mode, start, end, count, type, indices);
+		}
+
+		public static void glDrawRangeElementsBaseVertex(uint mode, uint start, uint end, int count, uint type, void* indices, int basevertex)
+		{
+			Functions.glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+		}
+
+		public static void glDrawTransformFeedback(uint mode, uint id)
+		{
+			Functions.glDrawTransformFeedback(mode, id);
+		}
+
+		public static void glDrawTransformFeedbackInstanced(uint mode, uint id, int instancecount)
+		{
+			Functions.glDrawTransformFeedbackInstanced(mode, id, instancecount);
+		}
+
+		public static void glDrawTransformFeedbackStream(uint mode, uint id, uint stream)
+		{
+			Functions.glDrawTransformFeedbackStream(mode, id, stream);
+		}
+
+		public static void glDrawTransformFeedbackStreamInstanced(uint mode, uint id, uint stream, int instancecount)
+		{
+			Functions.glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
+		}
+
+		public static void glEnable(uint cap)
+		{
+			Functions.glEnable(cap);
+		}
+
+		public static void glEnablei(uint target, uint index)
+		{
+			Functions.glEnablei(target, index);
+		}
+
+		public static void glEnableVertexArrayAttrib(uint vaobj, uint index)
+		{
+			Functions.glEnableVertexArrayAttrib(vaobj, index);
+		}
+
+		public static void glEnableVertexAttribArray(uint index)
+		{
+			Functions.glEnableVertexAttribArray(index);
+		}
+
+		public static void glEndConditionalRender()
+		{
+			Functions.glEndConditionalRender();
+		}
+
+		public static void glEndQuery(uint target)
+		{
+			Functions.glEndQuery(target);
+		}
+
+		public static void glEndQueryIndexed(uint target, uint index)
+		{
+			Functions.glEndQueryIndexed(target, index);
+		}
+
+		public static void glEndTransformFeedback()
+		{
+			Functions.glEndTransformFeedback();
+		}
+
+		public static IntPtr glFenceSync(uint condition, uint flags)
+		{
+			return Functions.glFenceSync(condition, flags);
+		}
+
+		public static void glFinish()
+		{
+			Functions.glFinish();
+		}
+
+		public static void glFlush()
+		{
+			Functions.glFlush();
+		}
+
+		public static void glFlushMappedBufferRange(uint target, int offset, int length)
+		{
+			Functions.glFlushMappedBufferRange(target, offset, length);
+		}
+
+		public static void glFlushMappedNamedBufferRange(uint buffer, int offset, int length)
+		{
+			Functions.glFlushMappedNamedBufferRange(buffer, offset, length);
+		}
+
+		public static void glFramebufferParameteri(uint target, uint pname, int param)
+		{
+			Functions.glFramebufferParameteri(target, pname, param);
+		}
+
+		public static void glFramebufferRenderbuffer(uint target, uint attachment, uint renderbuffertarget, uint renderbuffer)
+		{
+			Functions.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+		}
+
+		public static void glFramebufferTexture(uint target, uint attachment, uint texture, int level)
+		{
+			Functions.glFramebufferTexture(target, attachment, texture, level);
+		}
+
+		public static void glFramebufferTexture1D(uint target, uint attachment, uint textarget, uint texture, int level)
+		{
+			Functions.glFramebufferTexture1D(target, attachment, textarget, texture, level);
+		}
+
+		public static void glFramebufferTexture2D(uint target, uint attachment, uint textarget, uint texture, int level)
+		{
+			Functions.glFramebufferTexture2D(target, attachment, textarget, texture, level);
+		}
+
+		public static void glFramebufferTexture3D(uint target, uint attachment, uint textarget, uint texture, int level, int zoffset)
+		{
+			Functions.glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
+		}
+
+		public static void glFramebufferTextureLayer(uint target, uint attachment, uint texture, int level, int layer)
+		{
+			Functions.glFramebufferTextureLayer(target, attachment, texture, level, layer);
+		}
+
+		public static void glFrontFace(uint mode)
+		{
+			Functions.glFrontFace(mode);
+		}
+
+		public static void glGenBuffers(int n, uint* buffers)
+		{
+			Functions.glGenBuffers(n, buffers);
+		}
+
+		public static void glGenerateMipmap(uint target)
+		{
+			Functions.glGenerateMipmap(target);
+		}
+
+		public static void glGenerateTextureMipmap(uint texture)
+		{
+			Functions.glGenerateTextureMipmap(texture);
+		}
+
+		public static void glGenFramebuffers(int n, uint* framebuffers)
+		{
+			Functions.glGenFramebuffers(n, framebuffers);
+		}
+
+		public static void glGenProgramPipelines(int n, uint* pipelines)
+		{
+			Functions.glGenProgramPipelines(n, pipelines);
+		}
+
+		public static void glGenQueries(int n, uint* ids)
+		{
+			Functions.glGenQueries(n, ids);
+		}
+
+		public static void glGenRenderbuffers(int n, uint* renderbuffers)
+		{
+			Functions.glGenRenderbuffers(n, renderbuffers);
+		}
+
+		public static void glGenSamplers(int count, uint* samplers)
+		{
+			Functions.glGenSamplers(count, samplers);
+		}
+
+		public static void glGenTextures(int n, uint* textures)
+		{
+			Functions.glGenTextures(n, textures);
+		}
+
+		public static void glGenTransformFeedbacks(int n, uint* ids)
+		{
+			Functions.glGenTransformFeedbacks(n, ids);
+		}
+
+		public static void glGenVertexArrays(int n, uint* arrays)
+		{
+			Functions.glGenVertexArrays(n, arrays);
+		}
+
+		public static void glGetActiveAtomicCounterBufferiv(uint program, uint bufferIndex, uint pname, int* @params)
+		{
+			Functions.glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, @params);
+		}
+
+		public static void glGetActiveAttrib(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name)
+		{
+			Functions.glGetActiveAttrib(program, index, bufSize, length, size, type, name);
+		}
+
+		public static void glGetActiveSubroutineName(uint program, uint shadertype, uint index, int bufsize, int* length, StringBuilder name)
+		{
+			Functions.glGetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
+		}
+
+		public static void glGetActiveSubroutineUniformiv(uint program, uint shadertype, uint index, uint pname, int* values)
+		{
+			Functions.glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
+		}
+
+		public static void glGetActiveSubroutineUniformName(uint program, uint shadertype, uint index, int bufsize, int* length, StringBuilder name)
+		{
+			Functions.glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
+		}
+
+		public static void glGetActiveUniform(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name)
+		{
+			Functions.glGetActiveUniform(program, index, bufSize, length, size, type, name);
+		}
+
+		public static void glGetActiveUniformBlockiv(uint program, uint uniformBlockIndex, uint pname, int* @params)
+		{
+			Functions.glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, @params);
+		}
+
+		public static void glGetActiveUniformBlockName(uint program, uint uniformBlockIndex, int bufSize, int* length, StringBuilder uniformBlockName)
+		{
+			Functions.glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
+		}
+
+		public static void glGetActiveUniformName(uint program, uint uniformIndex, int bufSize, int* length, StringBuilder uniformName)
+		{
+			Functions.glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
+		}
+
+		public static void glGetActiveUniformsiv(uint program, int uniformCount, uint* uniformIndices, uint pname, int* @params)
+		{
+			Functions.glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, @params);
+		}
+
+		public static void glGetAttachedShaders(uint program, int maxCount, int* count, uint* shaders)
+		{
+			Functions.glGetAttachedShaders(program, maxCount, count, shaders);
+		}
+
+		public static int glGetAttribLocation(uint program, string name)
+		{
+			return Functions.glGetAttribLocation(program, name);
+		}
+
+		public static void glGetBooleani_v(uint target, uint index, bool* data)
+		{
+			Functions.glGetBooleani_v(target, index, data);
+		}
+
+		public static void glGetBooleanv(uint pname, bool* data)
+		{
+			Functions.glGetBooleanv(pname, data);
+		}
+
+		public static void glGetBufferParameteri64v(uint target, uint pname, long* @params)
+		{
+			Functions.glGetBufferParameteri64v(target, pname, @params);
+		}
+
+		public static void glGetBufferParameteriv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetBufferParameteriv(target, pname, @params);
+		}
+
+		public static void glGetBufferPointerv(uint target, uint pname, void** @params)
+		{
+			Functions.glGetBufferPointerv(target, pname, @params);
+		}
+
+		public static void glGetBufferSubData(uint target, int offset, int size, void* data)
+		{
+			Functions.glGetBufferSubData(target, offset, size, data);
+		}
+
+		public static void glGetCompressedTexImage(uint target, int level, void* img)
+		{
+			Functions.glGetCompressedTexImage(target, level, img);
+		}
+
+		public static void glGetCompressedTextureImage(uint texture, int level, int bufSize, void* pixels)
+		{
+			Functions.glGetCompressedTextureImage(texture, level, bufSize, pixels);
+		}
+
+		public static void glGetCompressedTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, void* pixels)
+		{
+			Functions.glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
+		}
+
+		public static uint glGetDebugMessageLog(uint count, int bufSize, uint* sources, uint* types, uint* ids, uint* severities, int* lengths, StringBuilder messageLog)
+		{
+			return Functions.glGetDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog);
+		}
+
+		public static void glGetDoublei_v(uint target, uint index, double* data)
+		{
+			Functions.glGetDoublei_v(target, index, data);
+		}
+
+		public static void glGetDoublev(uint pname, double* data)
+		{
+			Functions.glGetDoublev(pname, data);
+		}
+
+		public static uint glGetError()
+		{
+			return Functions.glGetError();
+		}
+
+		public static void glGetFloati_v(uint target, uint index, float* data)
+		{
+			Functions.glGetFloati_v(target, index, data);
+		}
+
+		public static void glGetFloatv(uint pname, float* data)
+		{
+			Functions.glGetFloatv(pname, data);
+		}
+
+		public static int glGetFragDataIndex(uint program, string name)
+		{
+			return Functions.glGetFragDataIndex(program, name);
+		}
+
+		public static int glGetFragDataLocation(uint program, string name)
+		{
+			return Functions.glGetFragDataLocation(program, name);
+		}
+
+		public static void glGetFramebufferAttachmentParameteriv(uint target, uint attachment, uint pname, int* @params)
+		{
+			Functions.glGetFramebufferAttachmentParameteriv(target, attachment, pname, @params);
+		}
+
+		public static void glGetFramebufferParameteriv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetFramebufferParameteriv(target, pname, @params);
+		}
+
+		public static uint glGetGraphicsResetStatus()
+		{
+			return Functions.glGetGraphicsResetStatus();
+		}
+
+		public static void glGetInteger64i_v(uint target, uint index, long* data)
+		{
+			Functions.glGetInteger64i_v(target, index, data);
+		}
+
+		public static void glGetInteger64v(uint pname, long* data)
+		{
+			Functions.glGetInteger64v(pname, data);
+		}
+
+		public static void glGetIntegeri_v(uint target, uint index, int* data)
+		{
+			Functions.glGetIntegeri_v(target, index, data);
+		}
+
+		public static void glGetIntegerv(uint pname, int* data)
+		{
+			Functions.glGetIntegerv(pname, data);
+		}
+
+		public static void glGetInternalformati64v(uint target, uint internalformat, uint pname, int bufSize, long* @params)
+		{
+			Functions.glGetInternalformati64v(target, internalformat, pname, bufSize, @params);
+		}
+
+		public static void glGetInternalformativ(uint target, uint internalformat, uint pname, int bufSize, int* @params)
+		{
+			Functions.glGetInternalformativ(target, internalformat, pname, bufSize, @params);
+		}
+
+		public static void glGetMultisamplefv(uint pname, uint index, float* val)
+		{
+			Functions.glGetMultisamplefv(pname, index, val);
+		}
+
+		public static void glGetNamedBufferParameteri64v(uint buffer, uint pname, long* @params)
+		{
+			Functions.glGetNamedBufferParameteri64v(buffer, pname, @params);
+		}
+
+		public static void glGetNamedBufferParameteriv(uint buffer, uint pname, int* @params)
+		{
+			Functions.glGetNamedBufferParameteriv(buffer, pname, @params);
+		}
+
+		public static void glGetNamedBufferPointerv(uint buffer, uint pname, void** @params)
+		{
+			Functions.glGetNamedBufferPointerv(buffer, pname, @params);
+		}
+
+		public static void glGetNamedBufferSubData(uint buffer, int offset, int size, void* data)
+		{
+			Functions.glGetNamedBufferSubData(buffer, offset, size, data);
+		}
+
+		public static void glGetNamedFramebufferAttachmentParameteriv(uint framebuffer, uint attachment, uint pname, int* @params)
+		{
+			Functions.glGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, @params);
+		}
+
+		public static void glGetNamedFramebufferParameteriv(uint framebuffer, uint pname, int* param)
+		{
+			Functions.glGetNamedFramebufferParameteriv(framebuffer, pname, param);
+		}
+
+		public static void glGetNamedRenderbufferParameteriv(uint renderbuffer, uint pname, int* @params)
+		{
+			Functions.glGetNamedRenderbufferParameteriv(renderbuffer, pname, @params);
+		}
+
+		public static void glGetnCompressedTexImage(uint target, int lod, int bufSize, void* pixels)
+		{
+			Functions.glGetnCompressedTexImage(target, lod, bufSize, pixels);
+		}
+
+		public static void glGetnTexImage(uint target, int level, uint format, uint type, int bufSize, void* pixels)
+		{
+			Functions.glGetnTexImage(target, level, format, type, bufSize, pixels);
+		}
+
+		public static void glGetnUniformdv(uint program, int location, int bufSize, double* @params)
+		{
+			Functions.glGetnUniformdv(program, location, bufSize, @params);
+		}
+
+		public static void glGetnUniformfv(uint program, int location, int bufSize, float* @params)
+		{
+			Functions.glGetnUniformfv(program, location, bufSize, @params);
+		}
+
+		public static void glGetnUniformiv(uint program, int location, int bufSize, int* @params)
+		{
+			Functions.glGetnUniformiv(program, location, bufSize, @params);
+		}
+
+		public static void glGetnUniformuiv(uint program, int location, int bufSize, uint* @params)
+		{
+			Functions.glGetnUniformuiv(program, location, bufSize, @params);
+		}
+
+		public static void glGetObjectLabel(uint identifier, uint name, int bufSize, int* length, StringBuilder label)
+		{
+			Functions.glGetObjectLabel(identifier, name, bufSize, length, label);
+		}
+
+		public static void glGetObjectPtrLabel(void* ptr, int bufSize, int* length, StringBuilder label)
+		{
+			Functions.glGetObjectPtrLabel(ptr, bufSize, length, label);
+		}
+
+		public static void glGetPointerv(uint pname, void** @params)
+		{
+			Functions.glGetPointerv(pname, @params);
+		}
+
+		public static void glGetProgramBinary(uint program, int bufSize, int* length, uint* binaryFormat, void* binary)
+		{
+			Functions.glGetProgramBinary(program, bufSize, length, binaryFormat, binary);
+		}
+
+		public static void glGetProgramInfoLog(uint program, int bufSize, int* length, StringBuilder infoLog)
+		{
+			Functions.glGetProgramInfoLog(program, bufSize, length, infoLog);
+		}
+
+		public static void glGetProgramInterfaceiv(uint program, uint programInterface, uint pname, int* @params)
+		{
+			Functions.glGetProgramInterfaceiv(program, programInterface, pname, @params);
+		}
+
+		public static void glGetProgramiv(uint program, uint pname, int* @params)
+		{
+			Functions.glGetProgramiv(program, pname, @params);
+		}
+
+		public static void glGetProgramPipelineInfoLog(uint pipeline, int bufSize, int* length, StringBuilder infoLog)
+		{
+			Functions.glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog);
+		}
+
+		public static void glGetProgramPipelineiv(uint pipeline, uint pname, int* @params)
+		{
+			Functions.glGetProgramPipelineiv(pipeline, pname, @params);
+		}
+
+		public static uint glGetProgramResourceIndex(uint program, uint programInterface, string name)
+		{
+			return Functions.glGetProgramResourceIndex(program, programInterface, name);
+		}
+
+		public static void glGetProgramResourceiv(uint program, uint programInterface, uint index, int propCount, uint* props, int bufSize, int* length, int* @params)
+		{
+			Functions.glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, @params);
+		}
+
+		public static int glGetProgramResourceLocation(uint program, uint programInterface, string name)
+		{
+			return Functions.glGetProgramResourceLocation(program, programInterface, name);
+		}
+
+		public static int glGetProgramResourceLocationIndex(uint program, uint programInterface, string name)
+		{
+			return Functions.glGetProgramResourceLocationIndex(program, programInterface, name);
+		}
+
+		public static void glGetProgramResourceName(uint program, uint programInterface, uint index, int bufSize, int* length, StringBuilder name)
+		{
+			Functions.glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+		}
+
+		public static void glGetProgramStageiv(uint program, uint shadertype, uint pname, int* values)
+		{
+			Functions.glGetProgramStageiv(program, shadertype, pname, values);
+		}
+
+		public static void glGetQueryBufferObjecti64v(uint id, uint buffer, uint pname, int offset)
+		{
+			Functions.glGetQueryBufferObjecti64v(id, buffer, pname, offset);
+		}
+
+		public static void glGetQueryBufferObjectiv(uint id, uint buffer, uint pname, int offset)
+		{
+			Functions.glGetQueryBufferObjectiv(id, buffer, pname, offset);
+		}
+
+		public static void glGetQueryBufferObjectui64v(uint id, uint buffer, uint pname, int offset)
+		{
+			Functions.glGetQueryBufferObjectui64v(id, buffer, pname, offset);
+		}
+
+		public static void glGetQueryBufferObjectuiv(uint id, uint buffer, uint pname, int offset)
+		{
+			Functions.glGetQueryBufferObjectuiv(id, buffer, pname, offset);
+		}
+
+		public static void glGetQueryIndexediv(uint target, uint index, uint pname, int* @params)
+		{
+			Functions.glGetQueryIndexediv(target, index, pname, @params);
+		}
+
+		public static void glGetQueryiv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetQueryiv(target, pname, @params);
+		}
+
+		public static void glGetQueryObjecti64v(uint id, uint pname, long* @params)
+		{
+			Functions.glGetQueryObjecti64v(id, pname, @params);
+		}
+
+		public static void glGetQueryObjectiv(uint id, uint pname, int* @params)
+		{
+			Functions.glGetQueryObjectiv(id, pname, @params);
+		}
+
+		public static void glGetQueryObjectui64v(uint id, uint pname, ulong* @params)
+		{
+			Functions.glGetQueryObjectui64v(id, pname, @params);
+		}
+
+		public static void glGetQueryObjectuiv(uint id, uint pname, uint* @params)
+		{
+			Functions.glGetQueryObjectuiv(id, pname, @params);
+		}
+
+		public static void glGetRenderbufferParameteriv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetRenderbufferParameteriv(target, pname, @params);
+		}
+
+		public static void glGetSamplerParameterfv(uint sampler, uint pname, float* @params)
+		{
+			Functions.glGetSamplerParameterfv(sampler, pname, @params);
+		}
+
+		public static void glGetSamplerParameterIiv(uint sampler, uint pname, int* @params)
+		{
+			Functions.glGetSamplerParameterIiv(sampler, pname, @params);
+		}
+
+		public static void glGetSamplerParameterIuiv(uint sampler, uint pname, uint* @params)
+		{
+			Functions.glGetSamplerParameterIuiv(sampler, pname, @params);
+		}
+
+		public static void glGetSamplerParameteriv(uint sampler, uint pname, int* @params)
+		{
+			Functions.glGetSamplerParameteriv(sampler, pname, @params);
+		}
+
+		public static void glGetShaderInfoLog(uint shader, int bufSize, int* length, StringBuilder infoLog)
+		{
+			Functions.glGetShaderInfoLog(shader, bufSize, length, infoLog);
+		}
+
+		public static void glGetShaderiv(uint shader, uint pname, int* @params)
+		{
+			Functions.glGetShaderiv(shader, pname, @params);
+		}
+
+		public static void glGetShaderPrecisionFormat(uint shadertype, uint precisiontype, int* range, int* precision)
+		{
+			Functions.glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision);
+		}
+
+		public static void glGetShaderSource(uint shader, int bufSize, int* length, StringBuilder source)
+		{
+			Functions.glGetShaderSource(shader, bufSize, length, source);
+		}
+
+		public static IntPtr glGetString(uint name)
+		{
+			return Functions.glGetString(name);
+		}
+
+		public static IntPtr glGetStringi(uint name, uint index)
+		{
+			return Functions.glGetStringi(name, index);
+		}
+
+		public static uint glGetSubroutineIndex(uint program, uint shadertype, string name)
+		{
+			return Functions.glGetSubroutineIndex(program, shadertype, name);
+		}
+
+		public static int glGetSubroutineUniformLocation(uint program, uint shadertype, string name)
+		{
+			return Functions.glGetSubroutineUniformLocation(program, shadertype, name);
+		}
+
+		public static void glGetSynciv(IntPtr sync, uint pname, int bufSize, int* length, int* values)
+		{
+			Functions.glGetSynciv(sync, pname, bufSize, length, values);
+		}
+
+		public static void glGetTexImage(uint target, int level, uint format, uint type, void* pixels)
+		{
+			Functions.glGetTexImage(target, level, format, type, pixels);
+		}
+
+		public static void glGetTexLevelParameterfv(uint target, int level, uint pname, float* @params)
+		{
+			Functions.glGetTexLevelParameterfv(target, level, pname, @params);
+		}
+
+		public static void glGetTexLevelParameteriv(uint target, int level, uint pname, int* @params)
+		{
+			Functions.glGetTexLevelParameteriv(target, level, pname, @params);
+		}
+
+		public static void glGetTexParameterfv(uint target, uint pname, float* @params)
+		{
+			Functions.glGetTexParameterfv(target, pname, @params);
+		}
+
+		public static void glGetTexParameterIiv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetTexParameterIiv(target, pname, @params);
+		}
+
+		public static void glGetTexParameterIuiv(uint target, uint pname, uint* @params)
+		{
+			Functions.glGetTexParameterIuiv(target, pname, @params);
+		}
+
+		public static void glGetTexParameteriv(uint target, uint pname, int* @params)
+		{
+			Functions.glGetTexParameteriv(target, pname, @params);
+		}
+
+		public static void glGetTextureImage(uint texture, int level, uint format, uint type, int bufSize, void* pixels)
+		{
+			Functions.glGetTextureImage(texture, level, format, type, bufSize, pixels);
+		}
+
+		public static void glGetTextureLevelParameterfv(uint texture, int level, uint pname, float* @params)
+		{
+			Functions.glGetTextureLevelParameterfv(texture, level, pname, @params);
+		}
+
+		public static void glGetTextureLevelParameteriv(uint texture, int level, uint pname, int* @params)
+		{
+			Functions.glGetTextureLevelParameteriv(texture, level, pname, @params);
+		}
+
+		public static void glGetTextureParameterfv(uint texture, uint pname, float* @params)
+		{
+			Functions.glGetTextureParameterfv(texture, pname, @params);
+		}
+
+		public static void glGetTextureParameterIiv(uint texture, uint pname, int* @params)
+		{
+			Functions.glGetTextureParameterIiv(texture, pname, @params);
+		}
+
+		public static void glGetTextureParameterIuiv(uint texture, uint pname, uint* @params)
+		{
+			Functions.glGetTextureParameterIuiv(texture, pname, @params);
+		}
+
+		public static void glGetTextureParameteriv(uint texture, uint pname, int* @params)
+		{
+			Functions.glGetTextureParameteriv(texture, pname, @params);
+		}
+
+		public static void glGetTextureSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, int bufSize, void* pixels)
+		{
+			Functions.glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
+		}
+
+		public static void glGetTransformFeedbacki_v(uint xfb, uint pname, uint index, int* param)
+		{
+			Functions.glGetTransformFeedbacki_v(xfb, pname, index, param);
+		}
+
+		public static void glGetTransformFeedbacki64_v(uint xfb, uint pname, uint index, long* param)
+		{
+			Functions.glGetTransformFeedbacki64_v(xfb, pname, index, param);
+		}
+
+		public static void glGetTransformFeedbackiv(uint xfb, uint pname, int* param)
+		{
+			Functions.glGetTransformFeedbackiv(xfb, pname, param);
+		}
+
+		public static void glGetTransformFeedbackVarying(uint program, uint index, int bufSize, int* length, int* size, uint* type, StringBuilder name)
+		{
+			Functions.glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
+		}
+
+		public static uint glGetUniformBlockIndex(uint program, string uniformBlockName)
+		{
+			return Functions.glGetUniformBlockIndex(program, uniformBlockName);
+		}
+
+		public static void glGetUniformdv(uint program, int location, double* @params)
+		{
+			Functions.glGetUniformdv(program, location, @params);
+		}
+
+		public static void glGetUniformfv(uint program, int location, float* @params)
+		{
+			Functions.glGetUniformfv(program, location, @params);
+		}
+
+		public static void glGetUniformIndices(uint program, int uniformCount, string[] uniformNames, uint* uniformIndices)
+		{
+			Functions.glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
+		}
+
+		public static void glGetUniformiv(uint program, int location, int* @params)
+		{
+			Functions.glGetUniformiv(program, location, @params);
+		}
+
+		public static int glGetUniformLocation(uint program, string name)
+		{
+			return Functions.glGetUniformLocation(program, name);
+		}
+
+		public static void glGetUniformSubroutineuiv(uint shadertype, int location, uint* @params)
+		{
+			Functions.glGetUniformSubroutineuiv(shadertype, location, @params);
+		}
+
+		public static void glGetUniformuiv(uint program, int location, uint* @params)
+		{
+			Functions.glGetUniformuiv(program, location, @params);
+		}
+
+		public static void glGetVertexArrayIndexed64iv(uint vaobj, uint index, uint pname, long* param)
+		{
+			Functions.glGetVertexArrayIndexed64iv(vaobj, index, pname, param);
+		}
+
+		public static void glGetVertexArrayIndexediv(uint vaobj, uint index, uint pname, int* param)
+		{
+			Functions.glGetVertexArrayIndexediv(vaobj, index, pname, param);
+		}
+
+		public static void glGetVertexArrayiv(uint vaobj, uint pname, int* param)
+		{
+			Functions.glGetVertexArrayiv(vaobj, pname, param);
+		}
+
+		public static void glGetVertexAttribdv(uint index, uint pname, double* @params)
+		{
+			Functions.glGetVertexAttribdv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribfv(uint index, uint pname, float* @params)
+		{
+			Functions.glGetVertexAttribfv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribIiv(uint index, uint pname, int* @params)
+		{
+			Functions.glGetVertexAttribIiv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribIuiv(uint index, uint pname, uint* @params)
+		{
+			Functions.glGetVertexAttribIuiv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribiv(uint index, uint pname, int* @params)
+		{
+			Functions.glGetVertexAttribiv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribLdv(uint index, uint pname, double* @params)
+		{
+			Functions.glGetVertexAttribLdv(index, pname, @params);
+		}
+
+		public static void glGetVertexAttribPointerv(uint index, uint pname, void** pointer)
+		{
+			Functions.glGetVertexAttribPointerv(index, pname, pointer);
+		}
+
+		public static void glHint(uint target, uint mode)
+		{
+			Functions.glHint(target, mode);
+		}
+
+		public static void glInvalidateBufferData(uint buffer)
+		{
+			Functions.glInvalidateBufferData(buffer);
+		}
+
+		public static void glInvalidateBufferSubData(uint buffer, int offset, int length)
+		{
+			Functions.glInvalidateBufferSubData(buffer, offset, length);
+		}
+
+		public static void glInvalidateFramebuffer(uint target, int numAttachments, uint* attachments)
+		{
+			Functions.glInvalidateFramebuffer(target, numAttachments, attachments);
+		}
+
+		public static void glInvalidateNamedFramebufferData(uint framebuffer, int numAttachments, uint* attachments)
+		{
+			Functions.glInvalidateNamedFramebufferData(framebuffer, numAttachments, attachments);
+		}
+
+		public static void glInvalidateNamedFramebufferSubData(uint framebuffer, int numAttachments, uint* attachments, int x, int y, int width, int height)
+		{
+			Functions.glInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height);
+		}
+
+		public static void glInvalidateSubFramebuffer(uint target, int numAttachments, uint* attachments, int x, int y, int width, int height)
+		{
+			Functions.glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+		}
+
+		public static void glInvalidateTexImage(uint texture, int level)
+		{
+			Functions.glInvalidateTexImage(texture, level);
+		}
+
+		public static void glInvalidateTexSubImage(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth)
+		{
+			Functions.glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+		}
+
+		public static bool glIsBuffer(uint buffer)
+		{
+			return Functions.glIsBuffer(buffer);
+		}
+
+		public static bool glIsEnabled(uint cap)
+		{
+			return Functions.glIsEnabled(cap);
+		}
+
+		public static bool glIsEnabledi(uint target, uint index)
+		{
+			return Functions.glIsEnabledi(target, index);
+		}
+
+		public static bool glIsFramebuffer(uint framebuffer)
+		{
+			return Functions.glIsFramebuffer(framebuffer);
+		}
+
+		public static bool glIsProgram(uint program)
+		{
+			return Functions.glIsProgram(program);
+		}
+
+		public static bool glIsProgramPipeline(uint pipeline)
+		{
+			return Functions.glIsProgramPipeline(pipeline);
+		}
+
+		public static bool glIsQuery(uint id)
+		{
+			return Functions.glIsQuery(id);
+		}
+
+		public static bool glIsRenderbuffer(uint renderbuffer)
+		{
+			return Functions.glIsRenderbuffer(renderbuffer);
+		}
+
+		public static bool glIsSampler(uint sampler)
+		{
+			return Functions.glIsSampler(sampler);
+		}
+
+		public static bool glIsShader(uint shader)
+		{
+			return Functions.glIsShader(shader);
+		}
+
+		public static bool glIsSync(IntPtr sync)
+		{
+			return Functions.glIsSync(sync);
+		}
+
+		public static bool glIsTexture(uint texture)
+		{
+			return Functions.glIsTexture(texture);
+		}
+
+		public static bool glIsTransformFeedback(uint id)
+		{
+			return Functions.glIsTransformFeedback(id);
+		}
+
+		public static bool glIsVertexArray(uint array)
+		{
+			return Functions.glIsVertexArray(array);
+		}
+
+		public static void glLineWidth(float width)
+		{
+			Functions.glLineWidth(width);
+		}
+
+		public static void glLinkProgram(uint program)
+		{
+			Functions.glLinkProgram(program);
+		}
+
+		public static void glLogicOp(uint opcode)
+		{
+			Functions.glLogicOp(opcode);
+		}
+
+		public static IntPtr glMapBuffer(uint target, uint access)
+		{
+			return Functions.glMapBuffer(target, access);
+		}
+
+		public static IntPtr glMapBufferRange(uint target, int offset, int length, uint access)
+		{
+			return Functions.glMapBufferRange(target, offset, length, access);
+		}
+
+		public static IntPtr glMapNamedBuffer(uint buffer, uint access)
+		{
+			return Functions.glMapNamedBuffer(buffer, access);
+		}
+
+		public static IntPtr glMapNamedBufferRange(uint buffer, int offset, int length, uint access)
+		{
+			return Functions.glMapNamedBufferRange(buffer, offset, length, access);
+		}
+
+		public static void glMemoryBarrier(uint barriers)
+		{
+			Functions.glMemoryBarrier(barriers);
+		}
+
+		public static void glMemoryBarrierByRegion(uint barriers)
+		{
+			Functions.glMemoryBarrierByRegion(barriers);
+		}
+
+		public static void glMinSampleShading(float value)
+		{
+			Functions.glMinSampleShading(value);
+		}
+
+		public static void glMultiDrawArrays(uint mode, int* first, int* count, int drawcount)
+		{
+			Functions.glMultiDrawArrays(mode, first, count, drawcount);
+		}
+
+		public static void glMultiDrawArraysIndirect(uint mode, void* indirect, int drawcount, int stride)
+		{
+			Functions.glMultiDrawArraysIndirect(mode, indirect, drawcount, stride);
+		}
+
+		public static void glMultiDrawArraysIndirectCount(uint mode, void* indirect, int drawcount, int maxdrawcount, int stride)
+		{
+			Functions.glMultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride);
+		}
+
+		public static void glMultiDrawElements(uint mode, int* count, uint type, void** indices, int drawcount)
+		{
+			Functions.glMultiDrawElements(mode, count, type, indices, drawcount);
+		}
+
+		public static void glMultiDrawElementsBaseVertex(uint mode, int* count, uint type, void** indices, int drawcount, int* basevertex)
+		{
+			Functions.glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+		}
+
+		public static void glMultiDrawElementsIndirect(uint mode, uint type, void* indirect, int drawcount, int stride)
+		{
+			Functions.glMultiDrawElementsIndirect(mode, type, indirect, drawcount, stride);
+		}
+
+		public static void glMultiDrawElementsIndirectCount(uint mode, uint type, void* indirect, int drawcount, int maxdrawcount, int stride)
+		{
+			Functions.glMultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride);
+		}
+
+		public static void glNamedBufferData(uint buffer, int size, void* data, uint usage)
+		{
+			Functions.glNamedBufferData(buffer, size, data, usage);
+		}
+
+		public static void glNamedBufferStorage(uint buffer, int size, void* data, uint flags)
+		{
+			Functions.glNamedBufferStorage(buffer, size, data, flags);
+		}
+
+		public static void glNamedBufferSubData(uint buffer, int offset, int size, void* data)
+		{
+			Functions.glNamedBufferSubData(buffer, offset, size, data);
+		}
+
+		public static void glNamedFramebufferDrawBuffer(uint framebuffer, uint buf)
+		{
+			Functions.glNamedFramebufferDrawBuffer(framebuffer, buf);
+		}
+
+		public static void glNamedFramebufferDrawBuffers(uint framebuffer, int n, uint* bufs)
+		{
+			Functions.glNamedFramebufferDrawBuffers(framebuffer, n, bufs);
+		}
+
+		public static void glNamedFramebufferParameteri(uint framebuffer, uint pname, int param)
+		{
+			Functions.glNamedFramebufferParameteri(framebuffer, pname, param);
+		}
+
+		public static void glNamedFramebufferReadBuffer(uint framebuffer, uint src)
+		{
+			Functions.glNamedFramebufferReadBuffer(framebuffer, src);
+		}
+
+		public static void glNamedFramebufferRenderbuffer(uint framebuffer, uint attachment, uint renderbuffertarget, uint renderbuffer)
+		{
+			Functions.glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer);
+		}
+
+		public static void glNamedFramebufferTexture(uint framebuffer, uint attachment, uint texture, int level)
+		{
+			Functions.glNamedFramebufferTexture(framebuffer, attachment, texture, level);
+		}
+
+		public static void glNamedFramebufferTextureLayer(uint framebuffer, uint attachment, uint texture, int level, int layer)
+		{
+			Functions.glNamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer);
+		}
+
+		public static void glNamedRenderbufferStorage(uint renderbuffer, uint internalformat, int width, int height)
+		{
+			Functions.glNamedRenderbufferStorage(renderbuffer, internalformat, width, height);
+		}
+
+		public static void glNamedRenderbufferStorageMultisample(uint renderbuffer, int samples, uint internalformat, int width, int height)
+		{
+			Functions.glNamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
+		}
+
+		public static void glObjectLabel(uint identifier, uint name, int length, string label)
+		{
+			Functions.glObjectLabel(identifier, name, length, label);
+		}
+
+		public static void glObjectPtrLabel(void* ptr, int length, string label)
+		{
+			Functions.glObjectPtrLabel(ptr, length, label);
+		}
+
+		public static void glPatchParameterfv(uint pname, float* values)
+		{
+			Functions.glPatchParameterfv(pname, values);
+		}
+
+		public static void glPatchParameteri(uint pname, int value)
+		{
+			Functions.glPatchParameteri(pname, value);
+		}
+
+		public static void glPauseTransformFeedback()
+		{
+			Functions.glPauseTransformFeedback();
+		}
+
+		public static void glPixelStoref(uint pname, float param)
+		{
+			Functions.glPixelStoref(pname, param);
+		}
+
+		public static void glPixelStorei(uint pname, int param)
+		{
+			Functions.glPixelStorei(pname, param);
+		}
+
+		public static void glPointParameterf(uint pname, float param)
+		{
+			Functions.glPointParameterf(pname, param);
+		}
+
+		public static void glPointParameterfv(uint pname, float* @params)
+		{
+			Functions.glPointParameterfv(pname, @params);
+		}
+
+		public static void glPointParameteri(uint pname, int param)
+		{
+			Functions.glPointParameteri(pname, param);
+		}
+
+		public static void glPointParameteriv(uint pname, int* @params)
+		{
+			Functions.glPointParameteriv(pname, @params);
+		}
+
+		public static void glPointSize(float size)
+		{
+			Functions.glPointSize(size);
+		}
+
+		public static void glPolygonMode(uint face, uint mode)
+		{
+			Functions.glPolygonMode(face, mode);
+		}
+
+		public static void glPolygonOffset(float factor, float units)
+		{
+			Functions.glPolygonOffset(factor, units);
+		}
+
+		public static void glPolygonOffsetClamp(float factor, float units, float clamp)
+		{
+			Functions.glPolygonOffsetClamp(factor, units, clamp);
+		}
+
+		public static void glPopDebugGroup()
+		{
+			Functions.glPopDebugGroup();
+		}
+
+		public static void glPrimitiveRestartIndex(uint index)
+		{
+			Functions.glPrimitiveRestartIndex(index);
+		}
+
+		public static void glProgramBinary(uint program, uint binaryFormat, void* binary, int length)
+		{
+			Functions.glProgramBinary(program, binaryFormat, binary, length);
+		}
+
+		public static void glProgramParameteri(uint program, uint pname, int value)
+		{
+			Functions.glProgramParameteri(program, pname, value);
+		}
+
+		public static void glProgramUniform1d(uint program, int location, double v0)
+		{
+			Functions.glProgramUniform1d(program, location, v0);
+		}
+
+		public static void glProgramUniform1dv(uint program, int location, int count, double* value)
+		{
+			Functions.glProgramUniform1dv(program, location, count, value);
+		}
+
+		public static void glProgramUniform1f(uint program, int location, float v0)
+		{
+			Functions.glProgramUniform1f(program, location, v0);
+		}
+
+		public static void glProgramUniform1fv(uint program, int location, int count, float* value)
+		{
+			Functions.glProgramUniform1fv(program, location, count, value);
+		}
+
+		public static void glProgramUniform1i(uint program, int location, int v0)
+		{
+			Functions.glProgramUniform1i(program, location, v0);
+		}
+
+		public static void glProgramUniform1iv(uint program, int location, int count, int* value)
+		{
+			Functions.glProgramUniform1iv(program, location, count, value);
+		}
+
+		public static void glProgramUniform1ui(uint program, int location, uint v0)
+		{
+			Functions.glProgramUniform1ui(program, location, v0);
+		}
+
+		public static void glProgramUniform1uiv(uint program, int location, int count, uint* value)
+		{
+			Functions.glProgramUniform1uiv(program, location, count, value);
+		}
+
+		public static void glProgramUniform2d(uint program, int location, double v0, double v1)
+		{
+			Functions.glProgramUniform2d(program, location, v0, v1);
+		}
+
+		public static void glProgramUniform2dv(uint program, int location, int count, double* value)
+		{
+			Functions.glProgramUniform2dv(program, location, count, value);
+		}
+
+		public static void glProgramUniform2f(uint program, int location, float v0, float v1)
+		{
+			Functions.glProgramUniform2f(program, location, v0, v1);
+		}
+
+		public static void glProgramUniform2fv(uint program, int location, int count, float* value)
+		{
+			Functions.glProgramUniform2fv(program, location, count, value);
+		}
+
+		public static void glProgramUniform2i(uint program, int location, int v0, int v1)
+		{
+			Functions.glProgramUniform2i(program, location, v0, v1);
+		}
+
+		public static void glProgramUniform2iv(uint program, int location, int count, int* value)
+		{
+			Functions.glProgramUniform2iv(program, location, count, value);
+		}
+
+		public static void glProgramUniform2ui(uint program, int location, uint v0, uint v1)
+		{
+			Functions.glProgramUniform2ui(program, location, v0, v1);
+		}
+
+		public static void glProgramUniform2uiv(uint program, int location, int count, uint* value)
+		{
+			Functions.glProgramUniform2uiv(program, location, count, value);
+		}
+
+		public static void glProgramUniform3d(uint program, int location, double v0, double v1, double v2)
+		{
+			Functions.glProgramUniform3d(program, location, v0, v1, v2);
+		}
+
+		public static void glProgramUniform3dv(uint program, int location, int count, double* value)
+		{
+			Functions.glProgramUniform3dv(program, location, count, value);
+		}
+
+		public static void glProgramUniform3f(uint program, int location, float v0, float v1, float v2)
+		{
+			Functions.glProgramUniform3f(program, location, v0, v1, v2);
+		}
+
+		public static void glProgramUniform3fv(uint program, int location, int count, float* value)
+		{
+			Functions.glProgramUniform3fv(program, location, count, value);
+		}
+
+		public static void glProgramUniform3i(uint program, int location, int v0, int v1, int v2)
+		{
+			Functions.glProgramUniform3i(program, location, v0, v1, v2);
+		}
+
+		public static void glProgramUniform3iv(uint program, int location, int count, int* value)
+		{
+			Functions.glProgramUniform3iv(program, location, count, value);
+		}
+
+		public static void glProgramUniform3ui(uint program, int location, uint v0, uint v1, uint v2)
+		{
+			Functions.glProgramUniform3ui(program, location, v0, v1, v2);
+		}
+
+		public static void glProgramUniform3uiv(uint program, int location, int count, uint* value)
+		{
+			Functions.glProgramUniform3uiv(program, location, count, value);
+		}
+
+		public static void glProgramUniform4d(uint program, int location, double v0, double v1, double v2, double v3)
+		{
+			Functions.glProgramUniform4d(program, location, v0, v1, v2, v3);
+		}
+
+		public static void glProgramUniform4dv(uint program, int location, int count, double* value)
+		{
+			Functions.glProgramUniform4dv(program, location, count, value);
+		}
+
+		public static void glProgramUniform4f(uint program, int location, float v0, float v1, float v2, float v3)
+		{
+			Functions.glProgramUniform4f(program, location, v0, v1, v2, v3);
+		}
+
+		public static void glProgramUniform4fv(uint program, int location, int count, float* value)
+		{
+			Functions.glProgramUniform4fv(program, location, count, value);
+		}
+
+		public static void glProgramUniform4i(uint program, int location, int v0, int v1, int v2, int v3)
+		{
+			Functions.glProgramUniform4i(program, location, v0, v1, v2, v3);
+		}
+
+		public static void glProgramUniform4iv(uint program, int location, int count, int* value)
+		{
+			Functions.glProgramUniform4iv(program, location, count, value);
+		}
+
+		public static void glProgramUniform4ui(uint program, int location, uint v0, uint v1, uint v2, uint v3)
+		{
+			Functions.glProgramUniform4ui(program, location, v0, v1, v2, v3);
+		}
+
+		public static void glProgramUniform4uiv(uint program, int location, int count, uint* value)
+		{
+			Functions.glProgramUniform4uiv(program, location, count, value);
+		}
+
+		public static void glProgramUniformMatrix2dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix2dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix2fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix2fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix2x3dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix2x3dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix2x3fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix2x3fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix2x4dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix2x4dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix2x4fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix2x4fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix3dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix3fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3x2dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix3x2dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3x2fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix3x2fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3x4dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix3x4dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix3x4fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix3x4fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix4dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix4fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4x2dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix4x2dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4x2fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix4x2fv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4x3dv(uint program, int location, int count, bool transpose, double* value)
+		{
+			Functions.glProgramUniformMatrix4x3dv(program, location, count, transpose, value);
+		}
+
+		public static void glProgramUniformMatrix4x3fv(uint program, int location, int count, bool transpose, float* value)
+		{
+			Functions.glProgramUniformMatrix4x3fv(program, location, count, transpose, value);
+		}
+
+		public static void glProvokingVertex(uint mode)
+		{
+			Functions.glProvokingVertex(mode);
+		}
+
+		public static void glPushDebugGroup(uint source, uint id, int length, string message)
+		{
+			Functions.glPushDebugGroup(source, id, length, message);
+		}
+
+		public static void glQueryCounter(uint id, uint target)
+		{
+			Functions.glQueryCounter(id, target);
+		}
+
+		public static void glReadBuffer(uint src)
+		{
+			Functions.glReadBuffer(src);
+		}
+
+		public static void glReadnPixels(int x, int y, int width, int height, uint format, uint type, int bufSize, void* data)
+		{
+			Functions.glReadnPixels(x, y, width, height, format, type, bufSize, data);
+		}
+
+		public static void glReadPixels(int x, int y, int width, int height, uint format, uint type, void* pixels)
+		{
+			Functions.glReadPixels(x, y, width, height, format, type, pixels);
+		}
+
+		public static void glReleaseShaderCompiler()
+		{
+			Functions.glReleaseShaderCompiler();
+		}
+
+		public static void glRenderbufferStorage(uint target, uint internalformat, int width, int height)
+		{
+			Functions.glRenderbufferStorage(target, internalformat, width, height);
+		}
+
+		public static void glRenderbufferStorageMultisample(uint target, int samples, uint internalformat, int width, int height)
+		{
+			Functions.glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
+		}
+
+		public static void glResumeTransformFeedback()
+		{
+			Functions.glResumeTransformFeedback();
+		}
+
+		public static void glSampleCoverage(float value, bool invert)
+		{
+			Functions.glSampleCoverage(value, invert);
+		}
+
+		public static void glSampleMaski(uint maskNumber, uint mask)
+		{
+			Functions.glSampleMaski(maskNumber, mask);
+		}
+
+		public static void glSamplerParameterf(uint sampler, uint pname, float param)
+		{
+			Functions.glSamplerParameterf(sampler, pname, param);
+		}
+
+		public static void glSamplerParameterfv(uint sampler, uint pname, float* param)
+		{
+			Functions.glSamplerParameterfv(sampler, pname, param);
+		}
+
+		public static void glSamplerParameteri(uint sampler, uint pname, int param)
+		{
+			Functions.glSamplerParameteri(sampler, pname, param);
+		}
+
+		public static void glSamplerParameterIiv(uint sampler, uint pname, int* param)
+		{
+			Functions.glSamplerParameterIiv(sampler, pname, param);
+		}
+
+		public static void glSamplerParameterIuiv(uint sampler, uint pname, uint* param)
+		{
+			Functions.glSamplerParameterIuiv(sampler, pname, param);
+		}
+
+		public static void glSamplerParameteriv(uint sampler, uint pname, int* param)
+		{
+			Functions.glSamplerParameteriv(sampler, pname, param);
+		}
+
+		public static void glScissor(int x, int y, int width, int height)
+		{
+			Functions.glScissor(x, y, width, height);
+		}
+
+		public static void glScissorArrayv(uint first, int count, int* v)
+		{
+			Functions.glScissorArrayv(first, count, v);
+		}
+
+		public static void glScissorIndexed(uint index, int left, int bottom, int width, int height)
+		{
+			Functions.glScissorIndexed(index, left, bottom, width, height);
+		}
+
+		public static void glScissorIndexedv(uint index, int* v)
+		{
+			Functions.glScissorIndexedv(index, v);
+		}
+
+		public static void glShaderBinary(int count, uint* shaders, uint binaryformat, void* binary, int length)
+		{
+			Functions.glShaderBinary(count, shaders, binaryformat, binary, length);
+		}
+
+		public static void glShaderSource(uint shader, int count, string[] @string, int* length)
+		{
+			Functions.glShaderSource(shader, count, @string, length);
+		}
+
+		public static void glShaderStorageBlockBinding(uint program, uint storageBlockIndex, uint storageBlockBinding)
+		{
+			Functions.glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+		}
+
+		public static void glSpecializeShader(uint shader, string pEntryPoint, uint numSpecializationConstants, uint* pConstantIndex, uint* pConstantValue)
+		{
+			Functions.glSpecializeShader(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+		}
+
+		public static void glStencilFunc(uint func, int @ref, uint mask)
+		{
+			Functions.glStencilFunc(func, @ref, mask);
+		}
+
+		public static void glStencilFuncSeparate(uint face, uint func, int @ref, uint mask)
+		{
+			Functions.glStencilFuncSeparate(face, func, @ref, mask);
+		}
+
+		public static void glStencilMask(uint mask)
+		{
+			Functions.glStencilMask(mask);
+		}
+
+		public static void glStencilMaskSeparate(uint face, uint mask)
+		{
+			Functions.glStencilMaskSeparate(face, mask);
+		}
+
+		public static void glStencilOp(uint fail, uint zfail, uint zpass)
+		{
+			Functions.glStencilOp(fail, zfail, zpass);
+		}
+
+		public static void glStencilOpSeparate(uint face, uint sfail, uint dpfail, uint dppass)
+		{
+			Functions.glStencilOpSeparate(face, sfail, dpfail, dppass);
+		}
+
+		public static void glTexBuffer(uint target, uint internalformat, uint buffer)
+		{
+			Functions.glTexBuffer(target, internalformat, buffer);
+		}
+
+		public static void glTexBufferRange(uint target, uint internalformat, uint buffer, int offset, int size)
+		{
+			Functions.glTexBufferRange(target, internalformat, buffer, offset, size);
+		}
+
+		public static void glTexImage1D(uint target, int level, int internalformat, int width, int border, uint format, uint type, void* pixels)
+		{
+			Functions.glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+		}
+
+		public static void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, void* pixels)
+		{
+			Functions.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+		}
+
+		public static void glTexImage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			Functions.glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+		}
+
+		public static void glTexImage3D(uint target, int level, int internalformat, int width, int height, int depth, int border, uint format, uint type, void* pixels)
+		{
+			Functions.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+		}
+
+		public static void glTexImage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			Functions.glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+		}
+
+		public static void glTexParameterf(uint target, uint pname, float param)
+		{
+			Functions.glTexParameterf(target, pname, param);
+		}
+
+		public static void glTexParameterfv(uint target, uint pname, float* @params)
+		{
+			Functions.glTexParameterfv(target, pname, @params);
+		}
+
+		public static void glTexParameteri(uint target, uint pname, int param)
+		{
+			Functions.glTexParameteri(target, pname, param);
+		}
+
+		public static void glTexParameterIiv(uint target, uint pname, int* @params)
+		{
+			Functions.glTexParameterIiv(target, pname, @params);
+		}
+
+		public static void glTexParameterIuiv(uint target, uint pname, uint* @params)
+		{
+			Functions.glTexParameterIuiv(target, pname, @params);
+		}
+
+		public static void glTexParameteriv(uint target, uint pname, int* @params)
+		{
+			Functions.glTexParameteriv(target, pname, @params);
+		}
+
+		public static void glTexStorage1D(uint target, int levels, uint internalformat, int width)
+		{
+			Functions.glTexStorage1D(target, levels, internalformat, width);
+		}
+
+		public static void glTexStorage2D(uint target, int levels, uint internalformat, int width, int height)
+		{
+			Functions.glTexStorage2D(target, levels, internalformat, width, height);
+		}
+
+		public static void glTexStorage2DMultisample(uint target, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			Functions.glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+		}
+
+		public static void glTexStorage3D(uint target, int levels, uint internalformat, int width, int height, int depth)
+		{
+			Functions.glTexStorage3D(target, levels, internalformat, width, height, depth);
+		}
+
+		public static void glTexStorage3DMultisample(uint target, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			Functions.glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+		}
+
+		public static void glTexSubImage1D(uint target, int level, int xoffset, int width, uint format, uint type, void* pixels)
+		{
+			Functions.glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
+		}
+
+		public static void glTexSubImage2D(uint target, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels)
+		{
+			Functions.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+		}
+
+		public static void glTexSubImage3D(uint target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels)
+		{
+			Functions.glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+		}
+
+		public static void glTextureBarrier()
+		{
+			Functions.glTextureBarrier();
+		}
+
+		public static void glTextureBuffer(uint texture, uint internalformat, uint buffer)
+		{
+			Functions.glTextureBuffer(texture, internalformat, buffer);
+		}
+
+		public static void glTextureBufferRange(uint texture, uint internalformat, uint buffer, int offset, int size)
+		{
+			Functions.glTextureBufferRange(texture, internalformat, buffer, offset, size);
+		}
+
+		public static void glTextureParameterf(uint texture, uint pname, float param)
+		{
+			Functions.glTextureParameterf(texture, pname, param);
+		}
+
+		public static void glTextureParameterfv(uint texture, uint pname, float* param)
+		{
+			Functions.glTextureParameterfv(texture, pname, param);
+		}
+
+		public static void glTextureParameteri(uint texture, uint pname, int param)
+		{
+			Functions.glTextureParameteri(texture, pname, param);
+		}
+
+		public static void glTextureParameterIiv(uint texture, uint pname, int* @params)
+		{
+			Functions.glTextureParameterIiv(texture, pname, @params);
+		}
+
+		public static void glTextureParameterIuiv(uint texture, uint pname, uint* @params)
+		{
+			Functions.glTextureParameterIuiv(texture, pname, @params);
+		}
+
+		public static void glTextureParameteriv(uint texture, uint pname, int* param)
+		{
+			Functions.glTextureParameteriv(texture, pname, param);
+		}
+
+		public static void glTextureStorage1D(uint texture, int levels, uint internalformat, int width)
+		{
+			Functions.glTextureStorage1D(texture, levels, internalformat, width);
+		}
+
+		public static void glTextureStorage2D(uint texture, int levels, uint internalformat, int width, int height)
+		{
+			Functions.glTextureStorage2D(texture, levels, internalformat, width, height);
+		}
+
+		public static void glTextureStorage2DMultisample(uint texture, int samples, uint internalformat, int width, int height, bool fixedsamplelocations)
+		{
+			Functions.glTextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations);
+		}
+
+		public static void glTextureStorage3D(uint texture, int levels, uint internalformat, int width, int height, int depth)
+		{
+			Functions.glTextureStorage3D(texture, levels, internalformat, width, height, depth);
+		}
+
+		public static void glTextureStorage3DMultisample(uint texture, int samples, uint internalformat, int width, int height, int depth, bool fixedsamplelocations)
+		{
+			Functions.glTextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
+		}
+
+		public static void glTextureSubImage1D(uint texture, int level, int xoffset, int width, uint format, uint type, void* pixels)
+		{
+			Functions.glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels);
+		}
+
+		public static void glTextureSubImage2D(uint texture, int level, int xoffset, int yoffset, int width, int height, uint format, uint type, void* pixels)
+		{
+			Functions.glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
+		}
+
+		public static void glTextureSubImage3D(uint texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, uint format, uint type, void* pixels)
+		{
+			Functions.glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+		}
+
+		public static void glTextureView(uint texture, uint target, uint origtexture, uint internalformat, uint minlevel, uint numlevels, uint minlayer, uint numlayers)
+		{
+			Functions.glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
+		}
+
+		public static void glTransformFeedbackBufferBase(uint xfb, uint index, uint buffer)
+		{
+			Functions.glTransformFeedbackBufferBase(xfb, index, buffer);
+		}
+
+		public static void glTransformFeedbackBufferRange(uint xfb, uint index, uint buffer, int offset, int size)
+		{
+			Functions.glTransformFeedbackBufferRange(xfb, index, buffer, offset, size);
+		}
+
+		public static void glTransformFeedbackVaryings(uint program, int count, string[] varyings, uint bufferMode)
+		{
+			Functions.glTransformFeedbackVaryings(program, count, varyings, bufferMode);
+		}
+
+		public static void glUniform1d(int location, double x)
+		{
+			Functions.glUniform1d(location, x);
+		}
+
+		public static void glUniform1dv(int location, int count, double* value)
+		{
+			Functions.glUniform1dv(location, count, value);
+		}
+
+		public static void glUniform1f(int location, float v0)
+		{
+			Functions.glUniform1f(location, v0);
+		}
+
+		public static void glUniform1fv(int location, int count, float* value)
+		{
+			Functions.glUniform1fv(location, count, value);
+		}
+
+		public static void glUniform1i(int location, int v0)
+		{
+			Functions.glUniform1i(location, v0);
+		}
+
+		public static void glUniform1iv(int location, int count, int* value)
+		{
+			Functions.glUniform1iv(location, count, value);
+		}
+
+		public static void glUniform1ui(int location, uint v0)
+		{
+			Functions.glUniform1ui(location, v0);
+		}
+
+		public static void glUniform1uiv(int location, int count, uint* value)
+		{
+			Functions.glUniform1uiv(location, count, value);
+		}
+
+		public static void glUniform2d(int location, double x, double y)
+		{
+			Functions.glUniform2d(location, x, y);
+		}
+
+		public static void glUniform2dv(int location, int count, double* value)
+		{
+			Functions.glUniform2dv(location, count, value);
+		}
+
+		public static void glUniform2f(int location, float v0, float v1)
+		{
+			Functions.glUniform2f(location, v0, v1);
+		}
+
+		public static void glUniform2fv(int location, int count, float* value)
+		{
+			Functions.glUniform2fv(location, count, value);
+		}
+
+		public static void glUniform2i(int location, int v0, int v1)
+		{
+			Functions.glUniform2i(location, v0, v1);
+		}
+
+		public static void glUniform2iv(int location, int count, int* value)
+		{
+			Functions.glUniform2iv(location, count, value);
+		}
+
+		public static void glUniform2ui(int location, uint v0, uint v1)
+		{
+			Functions.glUniform2ui(location, v0, v1);
+		}
+
+		public static void glUniform2uiv(int location, int count, uint* value)
+		{
+			Functions.glUniform2uiv(location, count, value);
+		}
+
+		public static void glUniform3d(int location, double x, double y, double z)
+		{
+			Functions.glUniform3d(location, x, y, z);
+		}
+
+		public static void glUniform3dv(int location, int count, double* value)
+		{
+			Functions.glUniform3dv(location, count, value);
+		}
+
+		public static void glUniform3f(int location, float v0, float v1, float v2)
+		{
+			Functions.glUniform3f(location, v0, v1, v2);
+		}
+
+		public static void glUniform3fv(int location, int count, float* value)
+		{
+			Functions.glUniform3fv(location, count, value);
+		}
+
+		public static void glUniform3i(int location, int v0, int v1, int v2)
+		{
+			Functions.glUniform3i(location, v0, v1, v2);
+		}
+
+		public static void glUniform3iv(int location, int count, int* value)
+		{
+			Functions.glUniform3iv(location, count, value);
+		}
+
+		public static void glUniform3ui(int location, uint v0, uint v1, uint v2)
+		{
+			Functions.glUniform3ui(location, v0, v1, v2);
+		}
+
+		public static void glUniform3uiv(int location, int count, uint* value)
+		{
+			Functions.glUniform3uiv(location, count, value);
+		}
+
+		public static void glUniform4d(int location, double x, double y, double z, double w)
+		{
+			Functions.glUniform4d(location, x, y, z, w);
+		}
+
+		public static void glUniform4dv(int location, int count, double* value)
+		{
+			Functions.glUniform4dv(location, count, value);
+		}
+
+		public static void glUniform4f(int location, float v0, float v1, float v2, float v3)
+		{
+			Functions.glUniform4f(location, v0, v1, v2, v3);
+		}
+
+		public static void glUniform4fv(int location, int count, float* value)
+		{
+			Functions.glUniform4fv(location, count, value);
+		}
+
+		public static void glUniform4i(int location, int v0, int v1, int v2, int v3)
+		{
+			Functions.glUniform4i(location, v0, v1, v2, v3);
+		}
+
+		public static void glUniform4iv(int location, int count, int* value)
+		{
+			Functions.glUniform4iv(location, count, value);
+		}
+
+		public static void glUniform4ui(int location, uint v0, uint v1, uint v2, uint v3)
+		{
+			Functions.glUniform4ui(location, v0, v1, v2, v3);
+		}
+
+		public static void glUniform4uiv(int location, int count, uint* value)
+		{
+			Functions.glUniform4uiv(location, count, value);
+		}
+
+		public static void glUniformBlockBinding(uint program, uint uniformBlockIndex, uint uniformBlockBinding)
+		{
+			Functions.glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
+		}
+
+		public static void glUniformMatrix2dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix2dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix2fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix2fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix2x3dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix2x3dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix2x3fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix2x3fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix2x4dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix2x4dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix2x4fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix2x4fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix3dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix3fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3x2dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix3x2dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3x2fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix3x2fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3x4dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix3x4dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix3x4fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix3x4fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix4dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix4fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4x2dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix4x2dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4x2fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix4x2fv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4x3dv(int location, int count, bool transpose, double* value)
+		{
+			Functions.glUniformMatrix4x3dv(location, count, transpose, value);
+		}
+
+		public static void glUniformMatrix4x3fv(int location, int count, bool transpose, float* value)
+		{
+			Functions.glUniformMatrix4x3fv(location, count, transpose, value);
+		}
+
+		public static void glUniformSubroutinesuiv(uint shadertype, int count, uint* indices)
+		{
+			Functions.glUniformSubroutinesuiv(shadertype, count, indices);
+		}
+
+		public static bool glUnmapBuffer(uint target)
+		{
+			return Functions.glUnmapBuffer(target);
+		}
+
+		public static bool glUnmapNamedBuffer(uint buffer)
+		{
+			return Functions.glUnmapNamedBuffer(buffer);
+		}
+
+		public static void glUseProgram(uint program)
+		{
+			Functions.glUseProgram(program);
+		}
+
+		public static void glUseProgramStages(uint pipeline, uint stages, uint program)
+		{
+			Functions.glUseProgramStages(pipeline, stages, program);
+		}
+
+		public static void glValidateProgram(uint program)
+		{
+			Functions.glValidateProgram(program);
+		}
+
+		public static void glValidateProgramPipeline(uint pipeline)
+		{
+			Functions.glValidateProgramPipeline(pipeline);
+		}
+
+		public static void glVertexArrayAttribBinding(uint vaobj, uint attribindex, uint bindingindex)
+		{
+			Functions.glVertexArrayAttribBinding(vaobj, attribindex, bindingindex);
+		}
+
+		public static void glVertexArrayAttribFormat(uint vaobj, uint attribindex, int size, uint type, bool normalized, uint relativeoffset)
+		{
+			Functions.glVertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset);
+		}
+
+		public static void glVertexArrayAttribIFormat(uint vaobj, uint attribindex, int size, uint type, uint relativeoffset)
+		{
+			Functions.glVertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset);
+		}
+
+		public static void glVertexArrayAttribLFormat(uint vaobj, uint attribindex, int size, uint type, uint relativeoffset)
+		{
+			Functions.glVertexArrayAttribLFormat(vaobj, attribindex, size, type, relativeoffset);
+		}
+
+		public static void glVertexArrayBindingDivisor(uint vaobj, uint bindingindex, uint divisor)
+		{
+			Functions.glVertexArrayBindingDivisor(vaobj, bindingindex, divisor);
+		}
+
+		public static void glVertexArrayElementBuffer(uint vaobj, uint buffer)
+		{
+			Functions.glVertexArrayElementBuffer(vaobj, buffer);
+		}
+
+		public static void glVertexArrayVertexBuffer(uint vaobj, uint bindingindex, uint buffer, int offset, int stride)
+		{
+			Functions.glVertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride);
+		}
+
+		public static void glVertexArrayVertexBuffers(uint vaobj, uint first, int count, uint* buffers, int* offsets, int* strides)
+		{
+			Functions.glVertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides);
+		}
+
+		public static void glVertexAttrib1d(uint index, double x)
+		{
+			Functions.glVertexAttrib1d(index, x);
+		}
+
+		public static void glVertexAttrib1dv(uint index, double* v)
+		{
+			Functions.glVertexAttrib1dv(index, v);
+		}
+
+		public static void glVertexAttrib1f(uint index, float x)
+		{
+			Functions.glVertexAttrib1f(index, x);
+		}
+
+		public static void glVertexAttrib1fv(uint index, float* v)
+		{
+			Functions.glVertexAttrib1fv(index, v);
+		}
+
+		public static void glVertexAttrib1s(uint index, short x)
+		{
+			Functions.glVertexAttrib1s(index, x);
+		}
+
+		public static void glVertexAttrib1sv(uint index, short* v)
+		{
+			Functions.glVertexAttrib1sv(index, v);
+		}
+
+		public static void glVertexAttrib2d(uint index, double x, double y)
+		{
+			Functions.glVertexAttrib2d(index, x, y);
+		}
+
+		public static void glVertexAttrib2dv(uint index, double* v)
+		{
+			Functions.glVertexAttrib2dv(index, v);
+		}
+
+		public static void glVertexAttrib2f(uint index, float x, float y)
+		{
+			Functions.glVertexAttrib2f(index, x, y);
+		}
+
+		public static void glVertexAttrib2fv(uint index, float* v)
+		{
+			Functions.glVertexAttrib2fv(index, v);
+		}
+
+		public static void glVertexAttrib2s(uint index, short x, short y)
+		{
+			Functions.glVertexAttrib2s(index, x, y);
+		}
+
+		public static void glVertexAttrib2sv(uint index, short* v)
+		{
+			Functions.glVertexAttrib2sv(index, v);
+		}
+
+		public static void glVertexAttrib3d(uint index, double x, double y, double z)
+		{
+			Functions.glVertexAttrib3d(index, x, y, z);
+		}
+
+		public static void glVertexAttrib3dv(uint index, double* v)
+		{
+			Functions.glVertexAttrib3dv(index, v);
+		}
+
+		public static void glVertexAttrib3f(uint index, float x, float y, float z)
+		{
+			Functions.glVertexAttrib3f(index, x, y, z);
+		}
+
+		public static void glVertexAttrib3fv(uint index, float* v)
+		{
+			Functions.glVertexAttrib3fv(index, v);
+		}
+
+		public static void glVertexAttrib3s(uint index, short x, short y, short z)
+		{
+			Functions.glVertexAttrib3s(index, x, y, z);
+		}
+
+		public static void glVertexAttrib3sv(uint index, short* v)
+		{
+			Functions.glVertexAttrib3sv(index, v);
+		}
+
+		public static void glVertexAttrib4bv(uint index, sbyte* v)
+		{
+			Functions.glVertexAttrib4bv(index, v);
+		}
+
+		public static void glVertexAttrib4d(uint index, double x, double y, double z, double w)
+		{
+			Functions.glVertexAttrib4d(index, x, y, z, w);
+		}
+
+		public static void glVertexAttrib4dv(uint index, double* v)
+		{
+			Functions.glVertexAttrib4dv(index, v);
+		}
+
+		public static void glVertexAttrib4f(uint index, float x, float y, float z, float w)
+		{
+			Functions.glVertexAttrib4f(index, x, y, z, w);
+		}
+
+		public static void glVertexAttrib4fv(uint index, float* v)
+		{
+			Functions.glVertexAttrib4fv(index, v);
+		}
+
+		public static void glVertexAttrib4iv(uint index, int* v)
+		{
+			Functions.glVertexAttrib4iv(index, v);
+		}
+
+		public static void glVertexAttrib4Nbv(uint index, sbyte* v)
+		{
+			Functions.glVertexAttrib4Nbv(index, v);
+		}
+
+		public static void glVertexAttrib4Niv(uint index, int* v)
+		{
+			Functions.glVertexAttrib4Niv(index, v);
+		}
+
+		public static void glVertexAttrib4Nsv(uint index, short* v)
+		{
+			Functions.glVertexAttrib4Nsv(index, v);
+		}
+
+		public static void glVertexAttrib4Nub(uint index, byte x, byte y, byte z, byte w)
+		{
+			Functions.glVertexAttrib4Nub(index, x, y, z, w);
+		}
+
+		public static void glVertexAttrib4Nubv(uint index, byte* v)
+		{
+			Functions.glVertexAttrib4Nubv(index, v);
+		}
+
+		public static void glVertexAttrib4Nuiv(uint index, uint* v)
+		{
+			Functions.glVertexAttrib4Nuiv(index, v);
+		}
+
+		public static void glVertexAttrib4Nusv(uint index, ushort* v)
+		{
+			Functions.glVertexAttrib4Nusv(index, v);
+		}
+
+		public static void glVertexAttrib4s(uint index, short x, short y, short z, short w)
+		{
+			Functions.glVertexAttrib4s(index, x, y, z, w);
+		}
+
+		public static void glVertexAttrib4sv(uint index, short* v)
+		{
+			Functions.glVertexAttrib4sv(index, v);
+		}
+
+		public static void glVertexAttrib4ubv(uint index, byte* v)
+		{
+			Functions.glVertexAttrib4ubv(index, v);
+		}
+
+		public static void glVertexAttrib4uiv(uint index, uint* v)
+		{
+			Functions.glVertexAttrib4uiv(index, v);
+		}
+
+		public static void glVertexAttrib4usv(uint index, ushort* v)
+		{
+			Functions.glVertexAttrib4usv(index, v);
+		}
+
+		public static void glVertexAttribBinding(uint attribindex, uint bindingindex)
+		{
+			Functions.glVertexAttribBinding(attribindex, bindingindex);
+		}
+
+		public static void glVertexAttribDivisor(uint index, uint divisor)
+		{
+			Functions.glVertexAttribDivisor(index, divisor);
+		}
+
+		public static void glVertexAttribFormat(uint attribindex, int size, uint type, bool normalized, uint relativeoffset)
+		{
+			Functions.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+		}
+
+		public static void glVertexAttribI1i(uint index, int x)
+		{
+			Functions.glVertexAttribI1i(index, x);
+		}
+
+		public static void glVertexAttribI1iv(uint index, int* v)
+		{
+			Functions.glVertexAttribI1iv(index, v);
+		}
+
+		public static void glVertexAttribI1ui(uint index, uint x)
+		{
+			Functions.glVertexAttribI1ui(index, x);
+		}
+
+		public static void glVertexAttribI1uiv(uint index, uint* v)
+		{
+			Functions.glVertexAttribI1uiv(index, v);
+		}
+
+		public static void glVertexAttribI2i(uint index, int x, int y)
+		{
+			Functions.glVertexAttribI2i(index, x, y);
+		}
+
+		public static void glVertexAttribI2iv(uint index, int* v)
+		{
+			Functions.glVertexAttribI2iv(index, v);
+		}
+
+		public static void glVertexAttribI2ui(uint index, uint x, uint y)
+		{
+			Functions.glVertexAttribI2ui(index, x, y);
+		}
+
+		public static void glVertexAttribI2uiv(uint index, uint* v)
+		{
+			Functions.glVertexAttribI2uiv(index, v);
+		}
+
+		public static void glVertexAttribI3i(uint index, int x, int y, int z)
+		{
+			Functions.glVertexAttribI3i(index, x, y, z);
+		}
+
+		public static void glVertexAttribI3iv(uint index, int* v)
+		{
+			Functions.glVertexAttribI3iv(index, v);
+		}
+
+		public static void glVertexAttribI3ui(uint index, uint x, uint y, uint z)
+		{
+			Functions.glVertexAttribI3ui(index, x, y, z);
+		}
+
+		public static void glVertexAttribI3uiv(uint index, uint* v)
+		{
+			Functions.glVertexAttribI3uiv(index, v);
+		}
+
+		public static void glVertexAttribI4bv(uint index, sbyte* v)
+		{
+			Functions.glVertexAttribI4bv(index, v);
+		}
+
+		public static void glVertexAttribI4i(uint index, int x, int y, int z, int w)
+		{
+			Functions.glVertexAttribI4i(index, x, y, z, w);
+		}
+
+		public static void glVertexAttribI4iv(uint index, int* v)
+		{
+			Functions.glVertexAttribI4iv(index, v);
+		}
+
+		public static void glVertexAttribI4sv(uint index, short* v)
+		{
+			Functions.glVertexAttribI4sv(index, v);
+		}
+
+		public static void glVertexAttribI4ubv(uint index, byte* v)
+		{
+			Functions.glVertexAttribI4ubv(index, v);
+		}
+
+		public static void glVertexAttribI4ui(uint index, uint x, uint y, uint z, uint w)
+		{
+			Functions.glVertexAttribI4ui(index, x, y, z, w);
+		}
+
+		public static void glVertexAttribI4uiv(uint index, uint* v)
+		{
+			Functions.glVertexAttribI4uiv(index, v);
+		}
+
+		public static void glVertexAttribI4usv(uint index, ushort* v)
+		{
+			Functions.glVertexAttribI4usv(index, v);
+		}
+
+		public static void glVertexAttribIFormat(uint attribindex, int size, uint type, uint relativeoffset)
+		{
+			Functions.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+		}
+
+		public static void glVertexAttribIPointer(uint index, int size, uint type, int stride, void* pointer)
+		{
+			Functions.glVertexAttribIPointer(index, size, type, stride, pointer);
+		}
+
+		public static void glVertexAttribL1d(uint index, double x)
+		{
+			Functions.glVertexAttribL1d(index, x);
+		}
+
+		public static void glVertexAttribL1dv(uint index, double* v)
+		{
+			Functions.glVertexAttribL1dv(index, v);
+		}
+
+		public static void glVertexAttribL2d(uint index, double x, double y)
+		{
+			Functions.glVertexAttribL2d(index, x, y);
+		}
+
+		public static void glVertexAttribL2dv(uint index, double* v)
+		{
+			Functions.glVertexAttribL2dv(index, v);
+		}
+
+		public static void glVertexAttribL3d(uint index, double x, double y, double z)
+		{
+			Functions.glVertexAttribL3d(index, x, y, z);
+		}
+
+		public static void glVertexAttribL3dv(uint index, double* v)
+		{
+			Functions.glVertexAttribL3dv(index, v);
+		}
+
+		public static void glVertexAttribL4d(uint index, double x, double y, double z, double w)
+		{
+			Functions.glVertexAttribL4d(index, x, y, z, w);
+		}
+
+		public static void glVertexAttribL4dv(uint index, double* v)
+		{
+			Functions.glVertexAttribL4dv(index, v);
+		}
+
+		public static void glVertexAttribLFormat(uint attribindex, int size, uint type, uint relativeoffset)
+		{
+			Functions.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+		}
+
+		public static void glVertexAttribLPointer(uint index, int size, uint type, int stride, void* pointer)
+		{
+			Functions.glVertexAttribLPointer(index, size, type, stride, pointer);
+		}
+
+		public static void glVertexAttribP1ui(uint index, uint type, bool normalized, uint value)
+		{
+			Functions.glVertexAttribP1ui(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP1uiv(uint index, uint type, bool normalized, uint* value)
+		{
+			Functions.glVertexAttribP1uiv(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP2ui(uint index, uint type, bool normalized, uint value)
+		{
+			Functions.glVertexAttribP2ui(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP2uiv(uint index, uint type, bool normalized, uint* value)
+		{
+			Functions.glVertexAttribP2uiv(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP3ui(uint index, uint type, bool normalized, uint value)
+		{
+			Functions.glVertexAttribP3ui(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP3uiv(uint index, uint type, bool normalized, uint* value)
+		{
+			Functions.glVertexAttribP3uiv(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP4ui(uint index, uint type, bool normalized, uint value)
+		{
+			Functions.glVertexAttribP4ui(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribP4uiv(uint index, uint type, bool normalized, uint* value)
+		{
+			Functions.glVertexAttribP4uiv(index, type, normalized, value);
+		}
+
+		public static void glVertexAttribPointer(uint index, int size, uint type, bool normalized, int stride, void* pointer)
+		{
+			Functions.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+		}
+
+		public static void glVertexBindingDivisor(uint bindingindex, uint divisor)
+		{
+			Functions.glVertexBindingDivisor(bindingindex, divisor);
+		}
+
+		public static void glViewport(int x, int y, int width, int height)
+		{
+			Functions.glViewport(x, y, width, height);
+		}
+
+		public static void glViewportArrayv(uint first, int count, float* v)
+		{
+			Functions.glViewportArrayv(first, count, v);
+		}
+
+		public static void glViewportIndexedf(uint index, float x, float y, float w, float h)
+		{
+			Functions.glViewportIndexedf(index, x, y, w, h);
+		}
+
+		public static void glViewportIndexedfv(uint index, float* v)
+		{
+			Functions.glViewportIndexedfv(index, v);
+		}
+
+		public static void glWaitSync(IntPtr sync, uint flags, ulong timeout)
+		{
+			Functions.glWaitSync(sync, flags, timeout);
+		}
+
 	}
 }

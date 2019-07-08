@@ -298,7 +298,7 @@ namespace GLGenerator
 
             sb.AppendLine();
 
-            sb.AppendLine("\t\tpublic delegate void DebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);");
+            sb.AppendLine("\t\tpublic delegate void glDebugProc(uint source, uint type, uint id, uint severity, int length, string message, IntPtr userParam);");
             sb.AppendLine();
 
             sb.AppendLine($"\t\tpublic static class Delegates");
@@ -317,13 +317,19 @@ namespace GLGenerator
             sb.AppendLine("\t\t}");
             sb.AppendLine();
 
+            sb.AppendLine($"\t\tpublic static class Functions");
+            sb.AppendLine("\t\t{");
+
             foreach (var function in orderedFunctions)
             {
                 string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
-                sb.AppendLine($"\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; set; }}");
+                sb.AppendLine($"\t\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; set; }}");
                 sb.AppendLine();
             }
+
+            sb.AppendLine("\t\t}");
+            sb.AppendLine();
 
             sb.AppendLine("#if !GLDOTNET_EXCLUDE_GLINIT");
             sb.AppendLine("\t\tpublic static void glInit(Func<string, IntPtr> getProcAddress, int versionMajor, int versionMinor)");
@@ -335,7 +341,7 @@ namespace GLGenerator
 
             void AppendLoadDelegate(string indent, FunctionData function)
             {
-                sb.AppendLine($"{indent}{function.Name} = getProc<Delegates.{function.Name}>(\"{function.Name}\");");
+                sb.AppendLine($"{indent}Functions.{function.Name} = getProc<Delegates.{function.Name}>(\"{function.Name}\");");
             }
 
             int versionMajor = -1;
@@ -364,71 +370,53 @@ namespace GLGenerator
             sb.AppendLine("\t\t\t}");
             sb.AppendLine("\t\t}");
             sb.AppendLine("#endif");
-            //sb.AppendLine();
+            sb.AppendLine();
 
-            //foreach (var function in orderedFunctions)
-            //{
-            //    string returnType = GetReturnType(function.ReturnType);
-            //    string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-            //    string parameterNames = string.Join(", ", function.Params.Select(x => GetParamInvoke(x)));
+            foreach (var function in orderedFunctions)
+            {
+                string returnType = GetReturnType(function.ReturnType);
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamTypeForDelegate(x) + " " + GetParamName(x.Name)));
+                string parameterNames = string.Join(", ", function.Params.Select(x => GetParamName(x.Name)));
 
-            //    bool isUnsafe = function.Params.Any(x => x.PointerCount > 0);
+                sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
+                sb.AppendLine("\t\t{");
 
-            //    sb.AppendLine($"\t\tpublic static {(isUnsafe ? "unsafe " : "")}{returnType} {function.Name}({parameters})");
-            //    sb.AppendLine("\t\t{");
+                if (returnType != "void")
+                {
+                    sb.AppendLine($"\t\t\treturn Functions.{function.Name}({parameterNames});");
+                }
+                else
+                {
+                    sb.AppendLine($"\t\t\tFunctions.{function.Name}({parameterNames});");
+                }
 
-            //    bool hasPointers = function.Params.Any(x => ShouldUsePointerForInvoke(x));
+                sb.AppendLine("\t\t}");
+                sb.AppendLine();
 
-            //    if (hasPointers)
-            //    {
-            //        foreach (var param in function.Params.Where(x => x.PointerCount > 0))
-            //            sb.AppendLine($"\t\t\tfixed ({GetParamTypeForDelegate(param)} {GetParamName(param.Name)}Ptr = {GetParamName(param.Name)})");
-
-            //        sb.AppendLine("\t\t\t{");
-            //        sb.Append("\t");
-            //    }
-
-            //    if (returnType != "void")
-            //    {
-            //        sb.AppendLine($"\t\t\treturn _{function.Name}({parameterNames});");
-            //    }
-            //    else
-            //    {
-            //        sb.AppendLine($"\t\t\t_{function.Name}({parameterNames});");
-            //    }
-
-            //    if (hasPointers)
-            //    {
-            //        sb.AppendLine("\t\t\t}");
-            //    }
-
-            //    sb.AppendLine("\t\t}");
-            //    sb.AppendLine();
-
-            //    if (function.Name.StartsWith("glDelete") &&
-            //        function.Name != "glDeleteProgram" &&
-            //        function.Name != "glDeleteShader" &&
-            //        function.Name != "glDeleteSync")
-            //    {
-            //        sb.AppendLine($"\t\tpublic static void {function.Name.TrimEnd('s')}(uint handle)");
-            //        sb.AppendLine("\t\t{");
-            //        sb.AppendLine("\t\t\tvar temp = new uint[] { handle };");
-            //        sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
-            //        sb.AppendLine("\t\t}");
-            //        sb.AppendLine();
-            //    }
-            //    else if (function.Name.StartsWith("glGen") &&
-            //             !function.Name.StartsWith("glGenerate"))
-            //    {
-            //        sb.AppendLine($"\t\tpublic static uint {function.Name.TrimEnd('s')}()");
-            //        sb.AppendLine("\t\t{");
-            //        sb.AppendLine($"\t\t\tvar temp = new uint[1];");
-            //        sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
-            //        sb.AppendLine($"\t\t\treturn temp[0];");
-            //        sb.AppendLine("\t\t}");
-            //        sb.AppendLine();
-            //    }
-            //}
+                //if (function.Name.StartsWith("glDelete") &&
+                //    function.Name != "glDeleteProgram" &&
+                //    function.Name != "glDeleteShader" &&
+                //    function.Name != "glDeleteSync")
+                //{
+                //    sb.AppendLine($"\t\tpublic static void {function.Name.TrimEnd('s')}(uint handle)");
+                //    sb.AppendLine("\t\t{");
+                //    sb.AppendLine("\t\t\tvar temp = new uint[] { handle };");
+                //    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
+                //else if (function.Name.StartsWith("glGen") &&
+                //         !function.Name.StartsWith("glGenerate"))
+                //{
+                //    sb.AppendLine($"\t\tpublic static uint {function.Name.TrimEnd('s')}()");
+                //    sb.AppendLine("\t\t{");
+                //    sb.AppendLine($"\t\t\tvar temp = new uint[1];");
+                //    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
+                //    sb.AppendLine($"\t\t\treturn temp[0];");
+                //    sb.AppendLine("\t\t}");
+                //    sb.AppendLine();
+                //}
+            }
 
             sb.AppendLine("\t}");
             sb.AppendLine("}");
@@ -506,7 +494,7 @@ namespace GLGenerator
                         break;
 
                     case "GLDEBUGPROC":
-                        type = "DebugProc";
+                        type = "glDebugProc";
                         break;
 
                     case "GLdouble":
