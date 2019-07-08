@@ -114,22 +114,6 @@ namespace GLGenerator
             var glBufferSubData = functions.Single(x => x.Name == "glBufferSubData");
             glBufferSubData.Params.Single(x => x.Name == "data").UseForVoidPointerOverload = true;
 
-            //var glGetProgramInfoLog = functions.Single(x => x.Name == "glGetProgramInfoLog");
-            //glGetProgramInfoLog.Params.Single(x => x.Name == "length").OverrideType("int*", "out");
-
-            //var glGetProgramiv = functions.Single(x => x.Name == "glGetProgramiv");
-            //glGetProgramiv.Params.Single(x => x.Name == "params").OverrideType("int*", "out");
-
-            //var glGetShaderInfoLog = functions.Single(x => x.Name == "glGetShaderInfoLog");
-            //glGetShaderInfoLog.Params.Single(x => x.Name == "length").OverrideType("int*", "out");
-
-            //var glGetShaderiv = functions.Single(x => x.Name == "glGetShaderiv");
-            //glGetShaderiv.Params.Single(x => x.Name == "params").OverrideType("int*", "out");
-
-            //var glShaderSource = functions.Single(x => x.Name == "glShaderSource");
-            //glShaderSource.Params.Single(x => x.Name == "string").OverrideType("string", "ref");
-            //glShaderSource.Params.Single(x => x.Name == "length").OverrideType("int", "ref");
-
             var glTexImage1D = functions.Single(x => x.Name == "glTexImage1D");
             glTexImage1D.Params.Single(x => x.Name == "pixels").UseForVoidPointerOverload = true;
 
@@ -308,7 +292,7 @@ namespace GLGenerator
 
             foreach (var function in orderedFunctions)
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamTypeForDelegate(x) + " " + GetParamName(x.Name)));
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
 
                 sb.AppendLine($"\t\t\tpublic delegate {GetReturnType(function.ReturnType)} {function.Name}({parameters});");
                 sb.AppendLine();
@@ -322,8 +306,6 @@ namespace GLGenerator
 
             foreach (var function in orderedFunctions)
             {
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
-
                 sb.AppendLine($"\t\t\tpublic static Delegates.{function.Name} {function.Name} {{ get; set; }}");
                 sb.AppendLine();
             }
@@ -375,7 +357,7 @@ namespace GLGenerator
             foreach (var function in orderedFunctions)
             {
                 string returnType = GetReturnType(function.ReturnType);
-                string parameters = string.Join(", ", function.Params.Select(x => GetParamTypeForDelegate(x) + " " + GetParamName(x.Name)));
+                string parameters = string.Join(", ", function.Params.Select(x => GetParamType(x) + " " + GetParamName(x.Name)));
                 string parameterNames = string.Join(", ", function.Params.Select(x => GetParamName(x.Name)));
 
                 sb.AppendLine($"\t\tpublic static {returnType} {function.Name}({parameters})");
@@ -392,30 +374,6 @@ namespace GLGenerator
 
                 sb.AppendLine("\t\t}");
                 sb.AppendLine();
-
-                //if (function.Name.StartsWith("glDelete") &&
-                //    function.Name != "glDeleteProgram" &&
-                //    function.Name != "glDeleteShader" &&
-                //    function.Name != "glDeleteSync")
-                //{
-                //    sb.AppendLine($"\t\tpublic static void {function.Name.TrimEnd('s')}(uint handle)");
-                //    sb.AppendLine("\t\t{");
-                //    sb.AppendLine("\t\t\tvar temp = new uint[] { handle };");
-                //    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
-                //    sb.AppendLine("\t\t}");
-                //    sb.AppendLine();
-                //}
-                //else if (function.Name.StartsWith("glGen") &&
-                //         !function.Name.StartsWith("glGenerate"))
-                //{
-                //    sb.AppendLine($"\t\tpublic static uint {function.Name.TrimEnd('s')}()");
-                //    sb.AppendLine("\t\t{");
-                //    sb.AppendLine($"\t\t\tvar temp = new uint[1];");
-                //    sb.AppendLine($"\t\t\t{function.Name}(1, temp);");
-                //    sb.AppendLine($"\t\t\treturn temp[0];");
-                //    sb.AppendLine("\t\t}");
-                //    sb.AppendLine();
-                //}
             }
 
             sb.AppendLine("\t}");
@@ -454,7 +412,7 @@ namespace GLGenerator
             return returnType;
         }
 
-        private static string GetParamTypeForDelegate(FunctionParamData param, bool refOverload = false)
+        private static string GetParamType(FunctionParamData param)
         {
             string type = param.Type;
 
@@ -593,189 +551,7 @@ namespace GLGenerator
                         type = "ushort*";
                         break;
                 }
-
-                //if (!type.StartsWith("string") && !type.StartsWith("StringBuilder") && !type.StartsWith("IntPtr"))
-                //{
-                //    if (param.PointerCount > 0)
-                //    {
-                //        type += "[]";
-                //    }
-                //}
             }
-
-            //if (param.TypePrefix != null)
-            //    type = param.TypePrefix + " " + type;
-
-            //if (refOverload && param.UseForByRefOverload)
-            //{
-            //    if (type.EndsWith("[]"))
-            //        type = type.Substring(0, type.Length - 2);
-
-            //    type = "ref " + type;
-            //}
-
-            return type;
-        }
-
-        private static string GetParamType(FunctionParamData param, bool refOverload = false)
-        {
-            string type = param.Type;
-
-            if (!param.TypeOverridden)
-            {
-                switch (param.Type)
-                {
-                    case "GLboolean":
-                        type = "bool";
-                        break;
-
-                    case "GLboolean*":
-                        type = "bool";
-                        break;
-
-                    case "GLubyte":
-                        type = "byte";
-                        break;
-
-                    case "GLubyte*":
-                        type = "byte";
-                        break;
-
-                    case "GLchar*":
-                        if (param.IsConst)
-                        {
-                            type = "string";
-                        }
-                        else
-                        {
-                            type = "StringBuilder";
-                        }
-                        break;
-
-                    case "GLchar**":
-                        type = "string[]";
-                        break;
-
-                    case "GLDEBUGPROC":
-                        type = "DebugProc";
-                        break;
-
-                    case "GLdouble":
-                        type = "double";
-                        break;
-
-                    case "GLdouble*":
-                        type = "double";
-                        break;
-
-                    case "GLfloat":
-                        type = "float";
-                        break;
-
-                    case "GLfloat*":
-                        type = "float";
-                        break;
-
-                    case "GLint":
-                    case "GLsizei":
-                    case "GLintptr":
-                    case "GLsizeiptr":
-                        type = "int";
-                        break;
-
-                    case "GLint*":
-                    case "GLsizei*":
-                    case "GLintptr*":
-                    case "GLsizeiptr*":
-                        type = "int";
-                        break;
-
-                    case "GLsync":
-                        type = "IntPtr";
-                        break;
-
-                    case "void*":
-                        if (param.PointerCount == 2)
-                        {
-                            type = "IntPtr[]";
-                        }
-                        else
-                        {
-                            type = "IntPtr";
-                        }
-                        break;
-
-                    case "GLint64":
-                        type = "long";
-                        break;
-
-                    case "GLint64*":
-                        type = "long";
-                        break;
-
-                    case "GLbyte":
-                        type = "sbyte";
-                        break;
-
-                    case "GLbyte*":
-                        type = "sbyte";
-                        break;
-
-                    case "GLshort":
-                        type = "short";
-                        break;
-
-                    case "GLshort*":
-                        type = "short";
-                        break;
-
-                    case "GLbitfield":
-                    case "GLenum":
-                    case "GLuint":
-                        type = "uint";
-                        break;
-
-                    case "GLuint*":
-                    case "GLenum*":
-                        type = "uint";
-                        break;
-
-                    case "GLuint64":
-                        type = "ulong";
-                        break;
-
-                    case "GLuint64*":
-                        type = "ulong";
-                        break;
-
-                    case "GLushort":
-                        type = "ushort";
-                        break;
-
-                    case "GLushort*":
-                        type = "ushort";
-                        break;
-                }
-
-                if (!type.StartsWith("string") && !type.StartsWith("StringBuilder") && !type.StartsWith("IntPtr"))
-                {
-                    if (param.PointerCount > 0)
-                    {
-                        type += "[]";
-                    }
-                }
-            }
-
-            //if (param.TypePrefix != null)
-            //    type = param.TypePrefix + " " + type;
-
-            //if (refOverload && param.UseForByRefOverload)
-            //{
-            //    if (type.EndsWith("[]"))
-            //        type = type.Substring(0, type.Length - 2);
-
-            //    type = "ref " + type;
-            //}
 
             return type;
         }
@@ -788,76 +564,6 @@ namespace GLGenerator
             {
                 name = "@" + name;
             }
-
-            return name;
-        }
-
-        private static bool ShouldUsePointerForInvoke(FunctionParamData param)
-        {
-            if (param.PointerCount > 0)
-            {
-                var paramType = GetParamType(param);
-
-                if (paramType != "string" &&
-                    paramType != "StringBuilder" &&
-                    paramType != "IntPtr")
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private static string GetParamInvoke(FunctionParamData param, string cast = null)
-        {
-            string name = GetParamName(param.Name);
-
-            if (param.TypePrefix != null)
-            {
-                name = param.TypePrefix + " " + name;
-            }
-
-            if (cast != null)
-            {
-                name = $"({cast}){name}";
-            }
-
-            if (ShouldUsePointerForInvoke(param))
-            {
-                name += "Ptr";
-            }
-
-            if (GetParamType(param) == "IntPtr")
-            {
-                name += ".ToPointer()";
-            }
-
-            return name;
-        }
-
-        private static string GetEnumName(string input)
-        {
-            string[] parts = input.Split('_');
-            string[] temp = new string[parts.Length];
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (parts[i].Length > 0)
-                {
-                    int capitalizeLength = 1;
-
-                    if (parts[i].Length > 1 && char.IsDigit(parts[i][0]))
-                        capitalizeLength = 2;
-
-                    temp[i] = parts[i].Substring(0, capitalizeLength).ToUpper() + parts[i].Substring(capitalizeLength).ToLower();
-                }
-            }
-
-            string name = string.Join(string.Empty, temp);
-
-            if (char.IsDigit(name[0]))
-                name = "_" + name;
 
             return name;
         }
