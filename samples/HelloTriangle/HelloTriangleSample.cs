@@ -4,7 +4,6 @@
 ///////////////////////
 
 using System;
-using System.Runtime.InteropServices;
 using GLDotNet.Samples;
 using static GLDotNet.GL;
 
@@ -57,26 +56,15 @@ void main()
                 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f
             };
 
-            uint pointsBuffer = 0;
-            glGenBuffers(1, &pointsBuffer);
+            var pointsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            fixed (float* pointsPtr = points)
-            {
-                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * points.Length, pointsPtr, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)points.AsSpan(), GL_STATIC_DRAW);
 
-            uint colorsBuffer = 0;
-            glGenBuffers(1, &colorsBuffer);
+            var colorsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            fixed (float* colorsPtr = colors)
-            {
-                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * colors.Length, colorsPtr, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, (ReadOnlySpan<float>)colors.AsSpan(), GL_STATIC_DRAW);
 
-            fixed (uint* vertexArrayPtr = &_vertexArray)
-            {
-                glGenVertexArrays(1, vertexArrayPtr);
-            }
+            _vertexArray = glGenVertexArray();
             glBindVertexArray(_vertexArray);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, null);

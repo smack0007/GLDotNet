@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using GLDotNet.Samples;
 using ImageDotNet;
 using static GLDotNet.GL;
@@ -53,34 +52,19 @@ void main()
             float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
             float[] uv = new float[] { 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f };
 
-            uint pointsBuffer = 0;
-            glGenBuffers(1, &pointsBuffer);
+            var pointsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            fixed (float* pointsPtr = points)
-            {
-                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * points.Length, pointsPtr, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.Length, points, GL_STATIC_DRAW);
 
-            uint colorsBuffer = 0;
-            glGenBuffers(1, &colorsBuffer);
+            var colorsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            fixed (float* colorsPtr = colors)
-            {
-                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * colors.Length, colorsPtr, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * colors.Length, colors, GL_STATIC_DRAW);
 
-            uint uvBuffer = 0;
-            glGenBuffers(1, &uvBuffer);
+            var uvBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, uvBuffer);
-            fixed (float* uvPtr = uv)
-            {
-                glBufferData(GL_ARRAY_BUFFER, Marshal.SizeOf<float>() * uv.Length, uvPtr, GL_STATIC_DRAW);
-            }
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * uv.Length, uv, GL_STATIC_DRAW);
 
-            fixed (uint* vertexArrayPtr = &_vertexArray)
-            {
-                glGenVertexArrays(1, vertexArrayPtr);
-            }
+            _vertexArray = glGenVertexArray();
             glBindVertexArray(_vertexArray);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
             glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, null);
@@ -92,10 +76,7 @@ void main()
             glEnableVertexAttribArray(1);
             glEnableVertexAttribArray(2);
 
-            fixed (uint* texturePtr = &_texture)
-            {
-                glGenTextures(1, texturePtr);
-            }
+            _texture = glGenTexture();
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, _texture);
                         
@@ -103,7 +84,7 @@ void main()
             var image = Image.LoadTga("Box.tga").To<Rgb24>();
             using (var data = image.GetDataPointer())
             {
-                glTexImage2D(GL_TEXTURE_2D, 0, (int)GL_RGB, image.Width, image.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.Pointer.ToPointer());
+                glTexImage2D(GL_TEXTURE_2D, 0, (int)GL_RGB, image.Width, image.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.Pointer);
             }
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, (int)GL_LINEAR);
