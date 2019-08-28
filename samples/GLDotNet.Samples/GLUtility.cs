@@ -17,14 +17,12 @@ namespace GLDotNet.Samples
         public static uint CreateAndCompileShader(uint type, string source)
         {
             var shader = glCreateShader(type);
-            CheckErrors(nameof(glCreateShader));
-
             ShaderSource(shader, source);
-
             glCompileShader(shader);
+
             CheckErrors(nameof(glCompileShader));
 
-            var result = glGetShaderi(shader, GL_COMPILE_STATUS);
+            glGetShaderiv(shader, GL_COMPILE_STATUS, out var result);
             if (result == GL_FALSE)
             {
                 string infoLog = GetShaderInfoLog(shader);
@@ -44,7 +42,7 @@ namespace GLDotNet.Samples
             glLinkProgram(program);
             CheckErrors(nameof(glLinkProgram));
 
-            var result = glGetProgrami(program, GL_LINK_STATUS);
+            glGetProgramiv(program, GL_LINK_STATUS, out var result);
             if (result == GL_FALSE)
             {
                 string infoLog = GetProgramInfoLog(program);
@@ -58,42 +56,48 @@ namespace GLDotNet.Samples
         {
             switch (error)
             {
-                case GL_NO_ERROR: return nameof(GL_NO_ERROR);
-                case GL_INVALID_ENUM: return nameof(GL_INVALID_ENUM);
-                case GL_INVALID_VALUE: return nameof(GL_INVALID_VALUE);
-                case GL_INVALID_FRAMEBUFFER_OPERATION: return nameof(GL_INVALID_FRAMEBUFFER_OPERATION);
-                case GL_INVALID_OPERATION: return nameof(GL_INVALID_OPERATION);
-                case GL_OUT_OF_MEMORY: return nameof(GL_OUT_OF_MEMORY);
-                case GL_STACK_OVERFLOW: return nameof(GL_STACK_OVERFLOW);
-                case GL_STACK_UNDERFLOW: return nameof(GL_STACK_UNDERFLOW);
+                case GL_NO_ERROR:
+                    return nameof(GL_NO_ERROR);
+                case GL_INVALID_ENUM:
+                    return nameof(GL_INVALID_ENUM);
+                case GL_INVALID_VALUE:
+                    return nameof(GL_INVALID_VALUE);
+                case GL_INVALID_FRAMEBUFFER_OPERATION:
+                    return nameof(GL_INVALID_FRAMEBUFFER_OPERATION);
+                case GL_INVALID_OPERATION:
+                    return nameof(GL_INVALID_OPERATION);
+                case GL_OUT_OF_MEMORY:
+                    return nameof(GL_OUT_OF_MEMORY);
+                case GL_STACK_OVERFLOW:
+                    return nameof(GL_STACK_OVERFLOW);
+                case GL_STACK_UNDERFLOW:
+                    return nameof(GL_STACK_UNDERFLOW);
             }
 
             return "UNKNOWN";
         }
 
-        public static unsafe string GetProgramInfoLog(uint program)
+        public static string GetProgramInfoLog(uint program)
         {
-            var infoLogLength = glGetProgrami(program, GL_INFO_LOG_LENGTH);
+            glGetProgramiv(program, GL_INFO_LOG_LENGTH, out var infoLogLegth);
 
-            StringBuilder infoLog = new StringBuilder(infoLogLength);
-            glGetProgramInfoLog(program, infoLog.Capacity, &infoLogLength, infoLog);
+            StringBuilder infoLog = new StringBuilder(infoLogLegth);
+            glGetProgramInfoLog(program, infoLog.Capacity, out int length, infoLog);
             return infoLog.ToString();
         }
 
-        public static unsafe string GetShaderInfoLog(uint shader)
+        public static string GetShaderInfoLog(uint shader)
         {
-            var infoLogLength = glGetShaderi(shader, GL_INFO_LOG_LENGTH);
+            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, out var infoLogLength);
 
             StringBuilder infoLog = new StringBuilder(infoLogLength);
-            glGetShaderInfoLog(shader, infoLog.Capacity, &infoLogLength, infoLog);
+            glGetShaderInfoLog(shader, infoLog.Capacity, out int length, infoLog);
             return infoLog.ToString();
         }
 
-        public static unsafe void ShaderSource(uint shader, string source)
+        public static void ShaderSource(uint shader, string source)
         {
-            int length = source.Length;
-            glShaderSource(shader, 1, new string[] { source }, &length);
-            CheckErrors(nameof(glShaderSource));
+            glShaderSource(shader, source);
         }
     }
 }

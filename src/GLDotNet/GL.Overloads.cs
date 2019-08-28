@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace GLDotNet
 {
@@ -75,11 +76,63 @@ namespace GLDotNet
             return param;
         }
 
+        public static void glGetProgramInfoLog(uint program, int bufSize, out int length, StringBuilder infoLog)
+        {
+            length = default;
+            fixed (int* lengthPtr = &length)
+            {
+                glGetProgramInfoLog(program, bufSize, lengthPtr, infoLog);
+            }
+        }
+
+        public static void glGetProgramiv(uint program, uint pname, out int @params)
+        {
+            @params = default;
+            fixed (int* paramsPtr = &@params)
+            {
+                glGetProgramiv(program, pname, paramsPtr);
+            }
+        }
+
         public static int glGetShaderi(uint shader, uint pname)
         {
             int param = 0;
             glGetShaderiv(shader, pname, &param);
             return param;
+        }
+
+        public static void glGetShaderInfoLog(uint shader, int bufSize, out int length, StringBuilder infoLog)
+        {
+            length = default;
+            fixed (int* lengthPtr = &length)
+            {
+                glGetShaderInfoLog(shader, bufSize, lengthPtr, infoLog);
+            }
+        }
+
+        public static void glGetShaderiv(uint shader, uint pname, out int @params)
+        {
+            @params = default;
+            fixed (int* paramsPtr = &@params)
+            {
+                glGetShaderiv(shader, pname, paramsPtr);
+            }
+        }
+
+        public static void glGetShaderSource(uint shader, int bufSize, out int length, StringBuilder source)
+        {
+            length = default;
+            fixed (int* lengthPtr = &@length)
+            {
+                glGetShaderSource(shader, bufSize, lengthPtr, source);
+            }
+        }
+
+        public static void glShaderSource(uint shader, string @string)
+        {
+            var stringArray = new string[] { @string };
+            int length = @string.Length;
+            glShaderSource(shader, 1, stringArray, &length);
         }
 
         public static void glTexImage2D(uint target, int level, int internalformat, int width, int height, int border, uint format, uint type, IntPtr pixels)
