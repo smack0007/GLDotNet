@@ -1,7 +1,7 @@
-﻿using System;
-using GLDotNet.Samples;
+﻿using GLDotNet.Samples;
 using ImageDotNet;
 using static GLDotNet.GL;
+using GLDotNet.Utilities;
 
 namespace HelloTriangle
 {

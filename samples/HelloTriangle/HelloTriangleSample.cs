@@ -6,6 +6,7 @@
 using System;
 using GLDotNet.Samples;
 using static GLDotNet.GL;
+using GLDotNet.Utilities;
 
 namespace HelloTriangle
 {

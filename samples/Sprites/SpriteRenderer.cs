@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using GLDotNet.Samples;
 using static GLDotNet.GL;
+using GLDotNet.Utilities;
 
 namespace Sprites
 {

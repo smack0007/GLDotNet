@@ -2,7 +2,7 @@
 using System.Text;
 using static GLDotNet.GL;
 
-namespace GLDotNet.Samples
+namespace GLDotNet.Utilities
 {
     public static class GLUtility
     {
