@@ -1,28 +1,38 @@
 <Project>
-    <PropertyGroup>
-        <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
-        <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
-        <BinDirectory>$(RepositoryRootDirectory)bin\</BinDirectory>
-        <OutputPath>$([System.IO.Path]::GetFullPath('$(BinDirectory)$(Configuration)'))\$(MSBuildProjectName)</OutputPath>
-    
-        <LangVersion>latest</LangVersion>
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
+    <BinDirectory>$(RepositoryRootDirectory)bin\</BinDirectory>
+    <OutputPath>$([System.IO.Path]::GetFullPath('$(BinDirectory)$(Configuration)'))\$(MSBuildProjectName)</OutputPath>
 
-        <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
-        <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
-        
-        <PatchNumber Condition=" $(PatchNumber) == '' ">0</PatchNumber>
-        <BuildNumber Condition=" $(BuildNumber) == '' ">0</BuildNumber>
-        <VersionPrefix>$(CurrentYear).$(CurrentMonth).$(PatchNumber)</VersionPrefix>
-        <VersionPostfix>$(BuildNumber)</VersionPostfix>
+    <LangVersion>latest</LangVersion>
 
-        <Authors>smack0007</Authors>
-        <Copyright>Copyright © Zachary Snow 2019</Copyright>
+    <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
+    <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
 
-        <PackageProjectUrl>https://github.com/smack0007/GLDotNet/</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/smack0007/GLDotNet/master/License.txt</PackageLicenseUrl>
-        <PackageTags>Graphics;OpenGL;C#;.NET</PackageTags>
+    <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
+    <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
+    <PatchNumber Condition="$(PatchNumber) == ''">0</PatchNumber>
+    <VersionPrefix>$(CurrentYear).$(CurrentMonth).$(PatchNumber)</VersionPrefix>
 
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/smack0007/GLDotNet.git</RepositoryUrl>
-    </PropertyGroup>
+    <Authors>smack0007</Authors>
+    <Copyright>Copyright © Zachary Snow $([System.DateTime]::Now.ToString(yyyy))</Copyright>
+
+    <PackageProjectUrl>https://github.com/smack0007/GLDotNet/</PackageProjectUrl>
+    <PackageTags>Graphics;OpenGL;C#;.NET</PackageTags>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/smack0007/GLDotNet.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)License.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+  </ItemGroup>
+
+  <Target Name="CalculateVersions" BeforeTargets="GenerateTargetFrameworkMonikerAttribute" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true" StandardOutputImportance="Low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="InformationalVersion" />
+    </Exec>
+  </Target>
 </Project>
