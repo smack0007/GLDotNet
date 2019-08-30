@@ -12,7 +12,7 @@
 
     <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
     <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
-    <PatchNumber Condition="$(PatchNumber) == ''">0</PatchNumber>
+    <PatchNumber Condition="$(PatchNumber) == ''">1</PatchNumber>
     <VersionPrefix>$(CurrentYear).$(CurrentMonth).$(PatchNumber)</VersionPrefix>
 
     <Authors>smack0007</Authors>
