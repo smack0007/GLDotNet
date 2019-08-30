@@ -104,6 +104,14 @@ void main()
             glFrontFace(GL_CW);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            glDeleteProgram(_program);
+            glDeleteTexture(_texture);
+            glDeleteVertexArray(_vertexArray);
+        }
+
         protected override void Draw()
         {
             glClearColor(0, 0, 0, 0);

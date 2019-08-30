@@ -22,17 +22,17 @@ namespace GLDotNet
 
         public static void glDeleteBuffer(uint buffer)
         {
-            glDeleteBuffers(1, (uint*)buffer);
+            glDeleteBuffers(1, &buffer);
         }
 
         public static void glDeleteTexture(uint texture)
         {
-            glDeleteVertexArrays(1, (uint*)texture);
+            glDeleteVertexArrays(1, &texture);
         }
 
         public static void glDeleteVertexArray(uint vertexArray)
         {
-            glDeleteVertexArrays(1, (uint*)vertexArray);
+            glDeleteVertexArrays(1, &vertexArray);
         }
 
         public static void glDrawElements(uint mode, int count, uint type, IntPtr indices)
