@@ -13,7 +13,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: src/GLDotNet/GLDotNet.csproj
-    buildProperties: 'Configuration=Release;BuildNumber=$(Build.BuildNumber)'
+    buildProperties: 'Configuration=Release'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
