@@ -5,7 +5,7 @@
     <BinDirectory>$(RepositoryRootDirectory)bin\</BinDirectory>
     <OutputPath>$([System.IO.Path]::GetFullPath('$(BinDirectory)$(Configuration)'))\$(MSBuildProjectName)</OutputPath>
 
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
 
     <Authors>smack0007</Authors>
     <Copyright>Copyright © Zachary Snow $([System.DateTime]::Now.ToString(yyyy))</Copyright>
