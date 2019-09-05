@@ -16,12 +16,14 @@
       
       <!-- Increment GitVersionPatch -->
       <GitVersionPatch>$([MSBuild]::Add($(GitVersionPatch), 1))</GitVersionPatch>
+
+      <GitVersion>$(GitVersionMajor).$(GitVersionMinor).$(GitVersionPatch)</GitVersion>
       
-      <VersionPrefix>$(GitVersionMajor).$(GitVersionMinor).$(GitVersionPatch)</VersionPrefix>
-      <Version>$(VersionPrefix)</Version>
-      <PackageVersion>$(VersionPrefix)</PackageVersion>
-      <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
-      <FileVersion>$(VersionPrefix)</FileVersion>
+      <VersionPrefix>$(GitVersion)</VersionPrefix>
+      <Version>$(GitVersion)</Version>
+      <PackageVersion>$(GitVersion)</PackageVersion>
+      <AssemblyVersion>$(GitVersion)</AssemblyVersion>
+      <FileVersion>$(GitVersion)</FileVersion>
     </PropertyGroup>
     
     <Message Importance="High" Text="VersionPrefix = '$(VersionPrefix)'" />

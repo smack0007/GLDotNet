@@ -1,15 +1,29 @@
 <Project DefaultTargets="Build">
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <PropertyGroup>
+    <UseGitVersion>true</UseGitVersion>
+  </PropertyGroup>
 
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  
+  <!--
+  Clean
+  -->
+  
+  <Target Name="Clean">
+    <Exec
+      Command="dotnet clean GLDotNet.sln"
+      WorkingDirectory="$(RepositoryRootDirectory)" />
+  </Target>
+  
+  <!--
+  Build
+  -->
+  
   <PropertyGroup>
     <BuildArgs>-c Release -p:UseGitVersion=true</BuildArgs>
   </PropertyGroup>
   
-  <Target Name="Build" DependsOnTargets="DebugInfo;BuildSolution;PackLibrary" />
-
-  <Target Name="DebugInfo">
-    <Message Importance="High" Text="ArtifactStagingDirectory = '$(ArtifactStagingDirectory)'" />
-  </Target>
+  <Target Name="Build" DependsOnTargets="BuildSolution;PackLibrary" />
   
   <Target Name="BuildSolution">
     <Exec
@@ -21,16 +35,42 @@
     <Exec
       Command="dotnet pack GLDotNet.csproj $(BuildArgs)"
       WorkingDirectory="$(RepositoryRootDirectory)src/GLDotNet/" />
-
-    <ItemGroup>
-      <Artifacts Include="$(RepositoryRootDirectory)bin/**/*.nupkg" />
-    </ItemGroup>
-
-    <Message Importance="High" Text="Artifacts = '@(Artifacts)'" />
     
     <Copy
       Condition="$(ArtifactStagingDirectory) != ''"
       SourceFiles="@(Artifacts)"
       DestinationFolder="$(ArtifactStagingDirectory)" />
+  </Target>
+
+  <!--
+  Release
+  -->
+  
+  <Target Name="Release" DependsOnTargets="Clean;Build;EnsureNoChanges;PushNuGet;CalculateGitVersions;TagRepository" />
+
+  <Target Name="EnsureNoChanges">
+    <Exec Command="git status -s" ConsoleToMSBuild="true" StandardOutputImportance="Low" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitStatus" />
+    </Exec>
+
+    <Error
+      Condition="$(GitStatus) != ''"
+      Text="There are currently uncommitted changes." />
+  </Target>
+  
+  <Target Name="PushNuGet">
+    <ItemGroup>
+      <Packages Include="$(RepositoryRootDirectory)bin/**/*.nupkg" />
+    </ItemGroup>
+
+    <!--<Exec
+      Command="dotnet nuget push %(Packages.Identity) -s https://api.nuget.org/v3/index.json"
+      WorkingDirectory="$(RepositoryRootDirectory)" />-->
+  </Target>
+  
+  <Target Name="TagRepository">
+    <Exec
+      Command="git tag -a v$(GitVersion) -m &quot;Version $(GitVersion)&quot;"
+      WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
 </Project>
