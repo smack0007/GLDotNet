@@ -22,9 +22,15 @@
       Command="dotnet pack GLDotNet.csproj $(BuildArgs)"
       WorkingDirectory="$(RepositoryRootDirectory)src/GLDotNet/" />
 
+    <ItemGroup>
+      <Artifacts Include="$(RepositoryRootDirectory)bin/**/*.nupkg" />
+    </ItemGroup>
+
+    <Message Importance="High" Text="Artifacts = '@(Artifacts)'" />
+    
     <Copy
       Condition="$(ArtifactStagingDirectory) != ''"
-      SourceFiles="$(RepositoryRootDirectory)/bin/**/*.nupkg"
+      SourceFiles="@(Artifacts)"
       DestinationFolder="$(ArtifactStagingDirectory)" />
   </Target>
 </Project>
