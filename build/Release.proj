@@ -1,0 +1,5 @@
+<Project DefaultTargets="Release">
+	<Target Name="Release">
+		<Message Importance="High" Text="Hello World!" />
+	</Target>
+</Project>

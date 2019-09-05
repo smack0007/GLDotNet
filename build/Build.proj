@@ -1,0 +1,17 @@
+<Project DefaultTargets="Build">
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <Target Name="Build" DependsOnTargets="BuildSolution;PackLibrary" />
+
+  <Target Name="BuildSolution">
+    <Exec
+      Command="dotnet build GLDotNet.sln -c Release"
+      WorkingDirectory="$(RepositoryRootDirectory)" />
+  </Target>
+
+  <Target Name="PackLibrary">
+    <Exec
+      Command="dotnet pack GLDotNet.csproj -c Release"
+      WorkingDirectory="$(RepositoryRootDirectory)src/GLDotNet/" />
+  </Target>
+</Project>

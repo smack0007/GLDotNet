@@ -38,10 +38,6 @@ _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
 
-#Project files
-[Bb]uild/
-!Source/Build
-
 #Subversion files
 .svn
 
