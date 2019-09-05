@@ -1,17 +1,30 @@
 <Project DefaultTargets="Build">
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
-  <Target Name="Build" DependsOnTargets="BuildSolution;PackLibrary" />
+  <PropertyGroup>
+    <BuildArgs>-c Release -p:UseGitVersion=true</BuildArgs>
+  </PropertyGroup>
+  
+  <Target Name="Build" DependsOnTargets="DebugInfo;BuildSolution;PackLibrary" />
 
+  <Target Name="DebugInfo">
+    <Message Importance="High" Text="ArtifactStagingDirectory = '$(ArtifactStagingDirectory)'" />
+  </Target>
+  
   <Target Name="BuildSolution">
     <Exec
-      Command="dotnet build GLDotNet.sln -c Release"
+      Command="dotnet build GLDotNet.sln $(BuildArgs)"
       WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
 
   <Target Name="PackLibrary">
     <Exec
-      Command="dotnet pack GLDotNet.csproj -c Release"
+      Command="dotnet pack GLDotNet.csproj $(BuildArgs)"
       WorkingDirectory="$(RepositoryRootDirectory)src/GLDotNet/" />
+
+    <Copy
+      Condition="$(ArtifactStagingDirectory) != ''"
+      SourceFiles="$(RepositoryRootDirectory)/bin/**/*.nupkg"
+      DestinationFolder="$(ArtifactStagingDirectory)" />
   </Target>
 </Project>

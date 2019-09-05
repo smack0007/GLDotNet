@@ -1,0 +1,39 @@
+<Project>
+  <Target Name="CalculateGitVersions" BeforeTargets="PrepareForBuild" Condition="$(UseGitVersion) == true">
+    <PropertyGroup>
+      <GitVersionTag>v0.0.1</GitVersionTag>
+    </PropertyGroup>
+
+    <Exec Command="git describe --tags --abbrev=0 --match v*" ConsoleToMSBuild="true" StandardOutputImportance="Low" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitVersionTag" />
+    </Exec>
+
+    <PropertyGroup>
+      <GitVersion>$(GitVersionTag.Substring(1))</GitVersion>
+      <GitVersionMajor>$(GitVersion.Split('.')[0])</GitVersionMajor>
+      <GitVersionMinor>$(GitVersion.Split('.')[1])</GitVersionMinor>
+      <GitVersionPatch>$(GitVersion.Split('.')[2])</GitVersionPatch>
+      
+      <!-- Increment GitVersionPatch -->
+      <GitVersionPatch>$([MSBuild]::Add($(GitVersionPatch), 1))</GitVersionPatch>
+      
+      <VersionPrefix>$(GitVersionMajor).$(GitVersionMinor).$(GitVersionPatch)</VersionPrefix>
+      <Version>$(VersionPrefix)</Version>
+      <PackageVersion>$(VersionPrefix)</PackageVersion>
+      <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+      <FileVersion>$(VersionPrefix)</FileVersion>
+    </PropertyGroup>
+    
+    <Message Importance="High" Text="VersionPrefix = '$(VersionPrefix)'" />
+    <Message Importance="High" Text="Version = '$(Version)'" />
+    <Message Importance="High" Text="PackageVersion = '$(PackageVersion)'" />
+    <Message Importance="High" Text="AssemblyVersion = '$(AssemblyVersion)'" />
+    <Message Importance="High" Text="FileVersion = '$(FileVersion)'" />
+    
+    <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true" StandardOutputImportance="Low" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="InformationalVersion" />
+    </Exec>
+
+    <Message Importance="High" Text="InformationalVersion = '$(InformationalVersion)'" />
+  </Target>
+</Project>

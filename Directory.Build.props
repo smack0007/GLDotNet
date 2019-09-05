@@ -1,4 +1,4 @@
-<Project>
+<Project>  
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
@@ -10,6 +10,8 @@
     <Authors>smack0007</Authors>
     <Copyright>Copyright © Zachary Snow $([System.DateTime]::Now.ToString(yyyy))</Copyright>
 
+    <VersionPrefix>0.0.1</VersionPrefix>
+    
     <PackageProjectUrl>https://github.com/smack0007/GLDotNet/</PackageProjectUrl>
     <PackageTags>Graphics;OpenGL;C#;.NET</PackageTags>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
@@ -22,29 +24,5 @@
     <None Include="$(MSBuildThisFileDirectory)License.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
   </ItemGroup>
 
-  <Target Name="CalculateVersions" BeforeTargets="PrepareForBuild" Condition="'$(Configuration)' == 'Release'">
-    <Exec Command="git describe --tags --abbrev=0 --match v*" ConsoleToMSBuild="true" StandardOutputImportance="Low">
-      <Output TaskParameter="ConsoleOutput" PropertyName="GitVersionTag" />
-    </Exec>
-
-    <PropertyGroup>
-      <VersionPrefix>$(GitVersionTag.Substring(1))</VersionPrefix>
-      <Version>$(VersionPrefix)</Version>
-      <PackageVersion>$(VersionPrefix)</PackageVersion>
-      <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
-      <FileVersion>$(VersionPrefix)</FileVersion>
-    </PropertyGroup>
-    
-    <Message Importance="High" Text="VersionPrefix = '$(VersionPrefix)'" />
-    <Message Importance="High" Text="Version = '$(Version)'" />
-    <Message Importance="High" Text="PackageVersion = '$(PackageVersion)'" />
-    <Message Importance="High" Text="AssemblyVersion = '$(AssemblyVersion)'" />
-    <Message Importance="High" Text="FileVersion = '$(FileVersion)'" />
-    
-    <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true" StandardOutputImportance="Low">
-      <Output TaskParameter="ConsoleOutput" PropertyName="InformationalVersion" />
-    </Exec>
-
-    <Message Importance="High" Text="InformationalVersion = '$(InformationalVersion)'" />
-  </Target>
+  <Import Project="$(MSBuildThisFileDirectory)/build/GitVersion.targets" />
 </Project>
