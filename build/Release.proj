@@ -1,5 +1,13 @@
 <Project DefaultTargets="Release">
-	<Target Name="Release">
-		<Message Importance="High" Text="Hello World!" />
-	</Target>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <Target Name="Release" DependsOnTargets="DebugInfo;PushNuGet" />
+
+  <Target Name="DebugInfo">
+    <Message Importance="High" Text="ArtifactStagingDirectory = '$(ArtifactStagingDirectory)'" />
+  </Target>
+
+  <Target Name="PushNuGet">
+  </Target>
+  
 </Project>
