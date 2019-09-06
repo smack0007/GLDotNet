@@ -36,7 +36,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{C85D2E80-85B2-48E3-8421-CE08D60A67E7}"
 	ProjectSection(SolutionItems) = preProject
 		build\Build.proj = build\Build.proj
-		build\Release.proj = build\Release.proj
+		build\GitVersion.targets = build\GitVersion.targets
 	EndProjectSection
 EndProject
 Global
