@@ -19,8 +19,8 @@
       <_CurrentPatch>0</_CurrentPatch>
 
       <!-- If the last version occured in the same Year/Month then add one to the patch. -->
-      <_CurrentPatch Condition="$(_CurrentYear) == $(GitVersionMajor) And $(_CurrentMonth) == $(GitVersionMajor)">$([MSBuild]::Add($(GitVersionPatch), 1))</_CurrentPatch>
-
+      <_CurrentPatch Condition="'$(_CurrentYear)' == '$(GitVersionMajor)' And '$(_CurrentMonth)' == '$(GitVersionMinor)'">$([MSBuild]::Add($(GitVersionPatch), 1))</_CurrentPatch>
+      
       <GitVersion>$(_CurrentYear).$(_CurrentMonth).$(_CurrentPatch)</GitVersion>
       <GitVersionMajor>$(_CurrentYear)</GitVersionMajor>
       <GitVersionMinor>$(_CurrentMonth)</GitVersionMinor>
@@ -33,16 +33,8 @@
       <FileVersion>$(GitVersion)</FileVersion>
     </PropertyGroup>
     
-    <Message Importance="High" Text="VersionPrefix = '$(VersionPrefix)'" />
-    <Message Importance="High" Text="Version = '$(Version)'" />
-    <Message Importance="High" Text="PackageVersion = '$(PackageVersion)'" />
-    <Message Importance="High" Text="AssemblyVersion = '$(AssemblyVersion)'" />
-    <Message Importance="High" Text="FileVersion = '$(FileVersion)'" />
-    
     <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true" StandardOutputImportance="Low" ContinueOnError="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="InformationalVersion" />
     </Exec>
-
-    <Message Importance="High" Text="InformationalVersion = '$(InformationalVersion)'" />
   </Target>
 </Project>

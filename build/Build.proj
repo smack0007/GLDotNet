@@ -20,7 +20,7 @@
   -->
   
   <PropertyGroup>
-    <BuildArgs>-c Release -p:UseGitVersion=true</BuildArgs>
+    <BuildArgs>-v:n -c Release -p:UseGitVersion=true</BuildArgs>
   </PropertyGroup>
   
   <Target Name="Build" DependsOnTargets="BuildSolution;PackLibrary" />
@@ -63,9 +63,9 @@
       <Packages Include="$(RepositoryRootDirectory)bin/**/*.nupkg" />
     </ItemGroup>
 
-    <!--<Exec
+    <Exec
       Command="dotnet nuget push %(Packages.Identity) -s https://api.nuget.org/v3/index.json"
-      WorkingDirectory="$(RepositoryRootDirectory)" />-->
+      WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
   
   <Target Name="TagRepository">
