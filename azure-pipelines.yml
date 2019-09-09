@@ -8,11 +8,6 @@ steps:
     command: 'custom'
     custom: 'msbuild'
     projects: build/Build.proj
-    arguments: '-v:n -p:ArtifactStagingDirectory=$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    artifactName: 'GLDotNet'
+    arguments: '-v:n'
 
 
