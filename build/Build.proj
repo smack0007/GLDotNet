@@ -4,6 +4,11 @@
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <ItemGroup>
+    <ProjectSolutions Include="$(RepositoryRootDirectory)/*.sln" />
+    <ProjectSources Include="$(RepositoryRootDirectory)/src/**/*.csproj" />
+  </ItemGroup>
   
   <!--
   Clean
@@ -11,7 +16,7 @@
   
   <Target Name="Clean">
     <Exec
-      Command="dotnet clean GLDotNet.sln"
+      Command="dotnet clean %(ProjectSolutions.Identity)"
       WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
   
@@ -27,19 +32,14 @@
   
   <Target Name="BuildSolution">
     <Exec
-      Command="dotnet build GLDotNet.sln $(BuildArgs)"
+      Command="dotnet build %(ProjectSolutions.Identity) $(BuildArgs)"
       WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
 
   <Target Name="PackLibrary">
     <Exec
-      Command="dotnet pack GLDotNet.csproj $(BuildArgs)"
-      WorkingDirectory="$(RepositoryRootDirectory)src/GLDotNet/" />
-    
-    <Copy
-      Condition="$(ArtifactStagingDirectory) != ''"
-      SourceFiles="@(Artifacts)"
-      DestinationFolder="$(ArtifactStagingDirectory)" />
+      Command="dotnet pack %(ProjectSources.Identity) $(BuildArgs)"
+      WorkingDirectory="$(RepositoryRootDirectory)" />
   </Target>
 
   <!--
