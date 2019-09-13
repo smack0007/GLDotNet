@@ -25,6 +25,11 @@ namespace GLDotNet
             glDeleteBuffers(1, &buffer);
         }
 
+        public static void glDeleteFramebuffer(uint framebuffer)
+        {
+            glDeleteFramebuffers(1, &framebuffer);
+        }
+
         public static void glDeleteTexture(uint texture)
         {
             glDeleteVertexArrays(1, &texture);
@@ -45,6 +50,13 @@ namespace GLDotNet
             uint buffer;
             glGenBuffers(1, &buffer);
             return buffer;
+        }
+
+        public static uint glGenFramebuffer()
+        {
+            uint framebuffer;
+            glGenFramebuffers(1, &framebuffer);
+            return framebuffer;
         }
 
         public static uint glGenTexture()
