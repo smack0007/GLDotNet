@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="HelloTexturesSample.cs~RF102f238.TMP" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="..\assets\Box.tga" Link="Box.tga">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

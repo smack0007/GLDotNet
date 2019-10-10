@@ -49,9 +49,38 @@ void main()
         {
             Title = "Hello Textures";
 
-            float[] points = new float[] { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
-            float[] colors = new float[] { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
-            float[] uv = new float[] { 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f };
+            float[] points = new float[]
+            {
+                -0.5f, -0.5f, 0.0f,
+                -0.5f, 0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
+
+                -0.5f, -0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f,
+            };
+            
+            float[] colors = new float[]
+            {
+                1.0f, 0.0f, 0.0f,
+                0.0f, 1.0f, 0.0f,
+                0.0f, 0.0f, 1.0f,
+
+                1.0f, 0.0f, 0.0f,
+                0.0f, 1.0f, 0.0f,
+                1.0f, 0.0f, 1.0f
+            };
+            
+            float[] uv = new float[]
+            {
+                0.0f, 1.0f,
+                0.0f, 0.0f,
+                1.0f, 0.0f,
+
+                0.0f, 1.0f,
+                1.0f, 0.0f,
+                1.0f, 1.0f
+            };
 
             var pointsBuffer = glGenBuffer();
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
@@ -127,7 +156,7 @@ void main()
             glBindTexture(GL_TEXTURE_2D, _texture);
             glUniform1ui(_fragTextureLocation, 0); // 0 indicates Texture Unit 0
 
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
         }
 
         public static void Main(string[] args)
