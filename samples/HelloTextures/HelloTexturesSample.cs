@@ -2,10 +2,11 @@
 using ImageDotNet;
 using static GLDotNet.GL;
 using GLDotNet.Utilities;
+using System;
 
 namespace HelloTriangle
 {
-    public unsafe class HelloTriangleSample : Sample
+    public class HelloTriangleSample : Sample
     {
         public override int VersionMajor => 4;
         public override int VersionMinor => 0;
@@ -67,11 +68,11 @@ void main()
             _vertexArray = glGenVertexArray();
             glBindVertexArray(_vertexArray);
             glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-            glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, null);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, IntPtr.Zero);
             glBindBuffer(GL_ARRAY_BUFFER, colorsBuffer);
-            glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, null);
+            glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, IntPtr.Zero);
             glBindBuffer(GL_ARRAY_BUFFER, uvBuffer);
-            glVertexAttribPointer(2, 2, GL_FLOAT, false, 0, null);
+            glVertexAttribPointer(2, 2, GL_FLOAT, false, 0, IntPtr.Zero);
             glEnableVertexAttribArray(0);
             glEnableVertexAttribArray(1);
             glEnableVertexAttribArray(2);
