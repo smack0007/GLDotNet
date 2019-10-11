@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{C85D2E80
 		build\GitVersion.targets = build\GitVersion.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framebuffer", "samples\Framebuffer\Framebuffer.csproj", "{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{C492FE6A-18C0-422B-9365-F0B94836A7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C492FE6A-18C0-422B-9365-F0B94836A7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C492FE6A-18C0-422B-9365-F0B94836A7E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{06654377-BA43-4418-88E6-17DC19C7479A} = {8A1E21B2-2D4B-4B1F-AF8B-C1697BD151B4}
 		{C492FE6A-18C0-422B-9365-F0B94836A7E9} = {8A1E21B2-2D4B-4B1F-AF8B-C1697BD151B4}
 		{C85D2E80-85B2-48E3-8421-CE08D60A67E7} = {65D6A4CA-D864-433D-9109-5325B9B46CB2}
+		{6FC0D3B6-EBB6-438F-B23C-F4D2BB43A5FE} = {8A1E21B2-2D4B-4B1F-AF8B-C1697BD151B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {439D4E12-5888-40F6-AB6D-AD61FABA3641}
