@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="GLFWDotNet" Version="19.8.0" />
 
-    <PackageReference Include="ImageDotNet" Version="19.1.0" />
+    <PackageReference Include="ImageDotNet" Version="20.2.1" />
 
     <ProjectReference Condition=" $(MSBuildProjectName) != 'GLDotNet.Samples' "
                       Include="$(MSBuildThisFileDirectory)GLDotNet.Samples\GLDotNet.Samples.csproj" />
